@@ -27,18 +27,18 @@ export default function AboutPage() {
   return (
     <PageTransition>
       <Nav />
-      <main className="pt-14 md:pt-16">
-        {/* Hero */}
-        <section className="relative overflow-hidden">
+      <main>
+        {/* 100vh Hero */}
+        <section className="relative min-h-screen flex items-center overflow-hidden">
           <div className="absolute inset-0 bg-grid bg-grid-animated pointer-events-none" aria-hidden="true" />
-          <Container className="relative z-10 pt-16 md:pt-24 pb-12 md:pb-16">
+          <Container className="relative z-10 py-32 md:py-0">
             <AnimateIn>
               <p className="font-mono text-[11px] tracking-[0.2em] text-accent uppercase mb-6">
                 About
               </p>
             </AnimateIn>
             <AnimateIn delay={0.1}>
-              <h1 className="text-2xl md:text-4xl lg:text-[2.75rem] font-medium leading-[1.2] tracking-tight text-foreground max-w-2xl text-balance">
+              <h1 className="font-mono text-2xl md:text-4xl lg:text-[2.75rem] font-medium leading-[1.2] tracking-tight text-foreground max-w-2xl text-balance">
                 I design interaction systems that feel obvious only in hindsight.
               </h1>
             </AnimateIn>
@@ -50,12 +50,12 @@ export default function AboutPage() {
           <Container>
             <AnimateIn>
               <div className="max-w-2xl">
-                <p className="text-base md:text-lg text-foreground-secondary leading-relaxed mb-6">
+                <p className="text-base md:text-lg text-foreground-secondary leading-relaxed mb-6 font-sans">
                   I{"'"}m a Senior UX/Product Designer focused on large-scale systems — from
                   virtual classroom collaboration to AI-powered memory and ambient agents
                   inside Windows.
                 </p>
-                <p className="text-base md:text-lg text-foreground-secondary leading-relaxed mb-2">
+                <p className="text-base md:text-lg text-foreground-secondary leading-relaxed mb-2 font-sans">
                   I{"'"}m drawn to problems where:
                 </p>
                 <ul className="flex flex-col gap-2.5 mb-0">
@@ -66,7 +66,7 @@ export default function AboutPage() {
                   ].map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-3 text-base text-foreground-secondary leading-relaxed"
+                      className="flex items-start gap-3 text-base text-foreground-secondary leading-relaxed font-sans"
                     >
                       <span className="mt-2.5 w-1 h-1 rounded-full bg-accent opacity-60 shrink-0" />
                       {item}
@@ -81,13 +81,13 @@ export default function AboutPage() {
         {/* How I Think */}
         <Section className="pt-0">
           <Container>
-            <SectionHeader label="How I Think" />
+            <SectionHeader label="How I Think" counter="001" />
             <AnimateIn>
               <ul className="flex flex-col gap-4 max-w-2xl">
                 {thinkItems.map((item) => (
                   <li
                     key={item}
-                    className="text-base md:text-lg text-foreground leading-relaxed"
+                    className="text-base md:text-lg text-foreground leading-relaxed font-sans"
                   >
                     {item}
                   </li>
@@ -100,7 +100,7 @@ export default function AboutPage() {
         {/* What I Do Best */}
         <Section className="pt-0">
           <Container>
-            <SectionHeader label="What I Do Best" />
+            <SectionHeader label="What I Do Best" counter="002" />
             <AnimateIn>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {doItems.map((item) => (
@@ -110,7 +110,7 @@ export default function AboutPage() {
                   >
                     <div className="flex items-start gap-3">
                       <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent opacity-60 shrink-0" />
-                      <span className="text-sm text-foreground-secondary leading-relaxed">
+                      <span className="text-sm text-foreground-secondary leading-relaxed font-sans">
                         {item}
                       </span>
                     </div>
@@ -124,10 +124,10 @@ export default function AboutPage() {
         {/* Let's Talk */}
         <Section className="pt-0 pb-8">
           <Container>
-            <SectionHeader label="Let's Talk" />
+            <SectionHeader label="Let's Talk" counter="003" />
             <AnimateIn>
               <div className="max-w-2xl">
-                <p className="text-base md:text-lg text-foreground-secondary leading-relaxed mb-8">
+                <p className="text-base md:text-lg text-foreground-secondary leading-relaxed mb-8 font-sans">
                   If you{"'"}re building something complex and want it to feel calm,
                   intentional, and trustworthy — I{"'"}d love to connect.
                 </p>

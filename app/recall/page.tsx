@@ -34,10 +34,11 @@ export default function RecallPage() {
     <CaseStudyLayout
       title="Windows Recall"
       subtitle="Designing memory for your PC — without sacrificing trust"
+      meta="Senior UX Designer / Windows / Semantic Memory"
       specs={specs}
       navItems={navItems}
     >
-      <CaseStudySection id="context" label="Context">
+      <CaseStudySection id="context" label="Context" counter="001">
         <CaseStudyHeading>The Problem</CaseStudyHeading>
         <CaseStudyParagraph>
           Search assumes users remember file names, keywords, and folder locations.
@@ -52,7 +53,7 @@ export default function RecallPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="tension" label="Tension">
+      <CaseStudySection id="tension" label="Tension" counter="002">
         <CaseStudyParagraph>
           A system that remembers what you{"'"}ve seen is helpful.
           It can also feel invasive.
@@ -63,7 +64,7 @@ export default function RecallPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="goal" label="Goal">
+      <CaseStudySection id="goal" label="Goal" counter="003">
         <CaseStudyHeading>
           Make your PC feel like it remembers with you — not watches you
         </CaseStudyHeading>
@@ -73,7 +74,7 @@ export default function RecallPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="solution" label="Solution">
+      <CaseStudySection id="solution" label="Solution" counter="004">
         <CaseStudyHeading>Semantic Memory Cards</CaseStudyHeading>
         <CaseStudyParagraph>
           We designed a recall interface built around rich cards combining:
@@ -90,12 +91,12 @@ export default function RecallPage() {
           We prioritized progressive disclosure — advanced filtering and controls
           were accessible but unobtrusive.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 01 — Card-based results (visual + text)" className="mt-8 mb-4 max-w-2xl" />
-        <FigurePanel caption="FIG 02 — Progressive disclosure controls" className="mt-4 mb-4 max-w-2xl" />
-        <FigurePanel caption="FIG 03 — Match types: visual vs text" className="mt-4 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 01 — Card-based results (visual + text)" variant="layout" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 02 — Progressive disclosure controls" variant="controls" className="mt-4 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 03 — Match types: visual vs text" variant="flow" className="mt-4 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="key-decisions" label="Key Decisions">
+      <CaseStudySection id="key-decisions" label="Key Decisions" counter="005">
         <CaseStudyList
           items={[
             "Visual + text pairing for richer recall triggers",
@@ -106,7 +107,7 @@ export default function RecallPage() {
         />
       </CaseStudySection>
 
-      <CaseStudySection id="impact" label="Impact">
+      <CaseStudySection id="impact" label="Impact" counter="006">
         <CaseStudyList
           items={[
             "Improved task recovery in prototype testing",
@@ -120,7 +121,7 @@ export default function RecallPage() {
         </CaseStudyCallout>
       </CaseStudySection>
 
-      <CaseStudySection id="contribution" label="My Contribution">
+      <CaseStudySection id="contribution" label="My Contribution" counter="007">
         <CaseStudyList
           items={[
             "Defined interaction model for recall experience",

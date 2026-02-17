@@ -18,7 +18,7 @@ export function Nav() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md"
+      className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background"
       role="navigation"
       aria-label="Main navigation"
     >
@@ -46,10 +46,11 @@ export function Nav() {
                 key={link.label}
                 href={link.href}
                 className={cn(
-                  "font-mono text-[11px] tracking-[0.15em] uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+                  "relative font-mono text-[11px] tracking-[0.15em] uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent py-1",
                   isActive
                     ? "text-foreground"
-                    : "text-foreground-tertiary hover:text-foreground"
+                    : "text-foreground-tertiary hover:text-accent",
+                  "after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-200 hover:after:w-full"
                 )}
                 {...(link.href.startsWith("mailto:") && {
                   target: "_blank",
@@ -97,7 +98,7 @@ export function Nav() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="font-mono text-xs tracking-[0.15em] uppercase text-foreground-secondary hover:text-foreground transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent py-1"
+                className="font-mono text-xs tracking-[0.15em] uppercase text-foreground-secondary hover:text-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent py-1"
                 {...(link.href.startsWith("mailto:") && {
                   target: "_blank",
                   rel: "noopener noreferrer",

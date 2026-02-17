@@ -33,10 +33,11 @@ export default function AgentsInWindowsPage() {
     <CaseStudyLayout
       title="Agents in Windows"
       subtitle="Making autonomous AI visible and trustworthy at the OS level"
+      meta="Senior UX Designer / Windows Shell / Ambient AI"
       specs={specs}
       navItems={navItems}
     >
-      <CaseStudySection id="context" label="Context">
+      <CaseStudySection id="context" label="Context" counter="001">
         <CaseStudyHeading>The Problem</CaseStudyHeading>
         <CaseStudyParagraph>
           AI agents don{"'"}t behave like apps. They run continuously, operate across
@@ -48,7 +49,7 @@ export default function AgentsInWindowsPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="tension" label="Tension">
+      <CaseStudySection id="tension" label="Tension" counter="002">
         <CaseStudyParagraph>
           Agents must be visible but not noisy, persistent but lightweight,
           interruptible but not fragile.
@@ -58,7 +59,7 @@ export default function AgentsInWindowsPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="goal" label="Goal">
+      <CaseStudySection id="goal" label="Goal" counter="003">
         <CaseStudyHeading>A shell-level language for agents</CaseStudyHeading>
         <CaseStudyParagraph>
           Users should be able to see when an agent is running, understand what it{"'"}s
@@ -69,7 +70,7 @@ export default function AgentsInWindowsPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="solution" label="Solution">
+      <CaseStudySection id="solution" label="Solution" counter="004">
         <CaseStudyHeading>Taskbar Presence</CaseStudyHeading>
         <CaseStudyParagraph>
           Persistent, lightweight representation of active agents:
@@ -81,7 +82,7 @@ export default function AgentsInWindowsPage() {
             "Clear interaction affordances",
           ]}
         />
-        <FigurePanel caption="FIG 01 — Taskbar presence + state indicators" className="mt-8 mb-8 max-w-2xl" />
+        <FigurePanel caption="FIG 01 — Taskbar presence + state indicators" variant="layout" className="mt-8 mb-8 max-w-2xl" />
 
         <CaseStudyHeading>Hover Cards</CaseStudyHeading>
         <CaseStudyParagraph>
@@ -95,7 +96,7 @@ export default function AgentsInWindowsPage() {
             "Pause or stop options",
           ]}
         />
-        <FigurePanel caption="FIG 02 — Hover summary: progress + controls" className="mt-8 mb-8 max-w-2xl" />
+        <FigurePanel caption="FIG 02 — Hover summary: progress + controls" variant="controls" className="mt-8 mb-8 max-w-2xl" />
 
         <CaseStudyHeading>Intelligent Escalation</CaseStudyHeading>
         <CaseStudyParagraph>
@@ -108,10 +109,10 @@ export default function AgentsInWindowsPage() {
             "Sensitive permissions are involved",
           ]}
         />
-        <FigurePanel caption="FIG 03 — Escalation patterns" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 03 — Escalation patterns" variant="flow" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="key-decisions" label="Key Decisions">
+      <CaseStudySection id="key-decisions" label="Key Decisions" counter="005">
         <CaseStudyList
           items={[
             "Autonomy requires transparency",
@@ -122,7 +123,7 @@ export default function AgentsInWindowsPage() {
         />
       </CaseStudySection>
 
-      <CaseStudySection id="impact" label="Impact">
+      <CaseStudySection id="impact" label="Impact" counter="006">
         <CaseStudyList
           items={[
             "Improved clarity in user testing around agent state",
@@ -136,7 +137,7 @@ export default function AgentsInWindowsPage() {
         </CaseStudyCallout>
       </CaseStudySection>
 
-      <CaseStudySection id="contribution" label="My Contribution">
+      <CaseStudySection id="contribution" label="My Contribution" counter="007">
         <CaseStudyList
           items={[
             "Defined system-level interaction patterns",

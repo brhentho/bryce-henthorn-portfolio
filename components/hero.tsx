@@ -16,12 +16,12 @@ export function Hero() {
           </p>
         </AnimateIn>
         <AnimateIn delay={0.1}>
-          <h1 className="text-3xl md:text-5xl lg:text-[3.5rem] font-medium leading-[1.15] tracking-tight text-foreground max-w-3xl text-balance">
+          <h1 className="font-mono text-3xl md:text-5xl lg:text-[3.5rem] font-medium leading-[1.15] tracking-tight text-foreground max-w-3xl text-balance">
             Designing calm, trustworthy AI systems at OS scale.
           </h1>
         </AnimateIn>
         <AnimateIn delay={0.2}>
-          <p className="mt-6 text-base md:text-lg text-foreground-secondary leading-relaxed max-w-2xl">
+          <p className="mt-6 text-base md:text-lg text-foreground-secondary leading-relaxed max-w-2xl font-sans">
             Senior UX/Product Designer focused on interaction architecture, ambient agents, and scalable system design inside Windows.
           </p>
         </AnimateIn>

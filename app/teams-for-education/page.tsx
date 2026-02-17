@@ -34,10 +34,11 @@ export default function TeamsForEducationPage() {
     <CaseStudyLayout
       title="Teams for Education"
       subtitle="Restoring human connection to remote classrooms"
+      meta="Senior UX Designer / Microsoft Teams / Virtual Collaboration"
       specs={specs}
       navItems={navItems}
     >
-      <CaseStudySection id="context" label="Context">
+      <CaseStudySection id="context" label="Context" counter="001">
         <CaseStudyHeading>When Classrooms Went Quiet</CaseStudyHeading>
         <CaseStudyParagraph>
           When schools moved online, classrooms didn{"'"}t just relocate. They flattened.
@@ -51,10 +52,10 @@ export default function TeamsForEducationPage() {
           Engagement wasn{"'"}t failing because of video quality. It was failing because
           of lost social architecture.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 01 — From flat grids to structured groups" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 01 — From flat grids to structured groups" variant="layout" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="insight" label="Insight">
+      <CaseStudySection id="insight" label="Insight" counter="002">
         <CaseStudyHeading>Engagement is structural</CaseStudyHeading>
         <CaseStudyParagraph>
           Students participate more when:
@@ -71,7 +72,7 @@ export default function TeamsForEducationPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="goal" label="Goal">
+      <CaseStudySection id="goal" label="Goal" counter="003">
         <CaseStudyHeading>The Design Challenge</CaseStudyHeading>
         <CaseStudyParagraph>
           We needed to:
@@ -89,7 +90,7 @@ export default function TeamsForEducationPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="solution" label="Solution">
+      <CaseStudySection id="solution" label="Solution" counter="004">
         <CaseStudyHeading>Virtual Tables</CaseStudyHeading>
         <CaseStudyParagraph>
           We introduced structured {"\""}virtual tables{"\""} inside Teams meetings.
@@ -108,11 +109,11 @@ export default function TeamsForEducationPage() {
           We deliberately avoided skeuomorphic classroom maps. The design leaned toward
           stability and predictability.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 02 — Table membership visibility" className="mt-8 mb-4 max-w-2xl" />
-        <FigurePanel caption="FIG 03 — Whole class to tables transitions" className="mt-4 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 02 — Table membership visibility" variant="controls" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 03 — Whole class to tables transitions" variant="flow" className="mt-4 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="key-decisions" label="Key Decisions">
+      <CaseStudySection id="key-decisions" label="Key Decisions" counter="005">
         <CaseStudyList
           items={[
             "Clarity over novelty",
@@ -123,7 +124,7 @@ export default function TeamsForEducationPage() {
         />
       </CaseStudySection>
 
-      <CaseStudySection id="impact" label="Impact">
+      <CaseStudySection id="impact" label="Impact" counter="006">
         <CaseStudyList
           items={[
             "Increased small-group participation in research sessions",
@@ -137,7 +138,7 @@ export default function TeamsForEducationPage() {
         </CaseStudyCallout>
       </CaseStudySection>
 
-      <CaseStudySection id="contribution" label="My Contribution">
+      <CaseStudySection id="contribution" label="My Contribution" counter="007">
         <CaseStudyList
           items={[
             "Defined interaction model for structured group collaboration",
