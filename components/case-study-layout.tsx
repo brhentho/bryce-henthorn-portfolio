@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer"
 import { Container } from "@/components/container"
 import { SectionHeader } from "@/components/section-header"
 import { OverviewSpecPanel } from "@/components/overview-spec-panel"
+import { IntroSchematicPanel } from "@/components/intro-schematic-panel"
 import { CaseStudyNav } from "@/components/case-study-nav"
 import { AnimateIn } from "@/components/animate-in"
 import { PageTransition } from "@/components/page-transition"
@@ -25,6 +26,7 @@ interface CaseStudyLayoutProps {
   meta?: string
   specs: SpecItem[]
   navItems: NavItem[]
+  schematicVariant?: "teams" | "recall" | "agents"
   children: React.ReactNode
 }
 
@@ -34,6 +36,7 @@ export function CaseStudyLayout({
   meta,
   specs,
   navItems,
+  schematicVariant,
   children,
 }: CaseStudyLayoutProps) {
   return (
@@ -75,10 +78,18 @@ export function CaseStudyLayout({
           </Container>
         </section>
 
-        {/* Overview */}
+        {/* Overview + Intro Schematic - two column */}
         <Container>
           <AnimateIn delay={0.1}>
-            <OverviewSpecPanel specs={specs} className="mb-16 md:mb-20" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16 md:mb-20">
+              <OverviewSpecPanel specs={specs} />
+              {schematicVariant && (
+                <IntroSchematicPanel
+                  variant={schematicVariant}
+                  className="min-h-[280px] lg:min-h-0"
+                />
+              )}
+            </div>
           </AnimateIn>
         </Container>
 
@@ -150,11 +161,12 @@ export function CaseStudyList({ items }: { items: string[] }) {
 
 export function CaseStudyCallout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-lg border border-border bg-surface p-5 md:p-6 mb-6 max-w-2xl relative">
-      <div className="absolute top-3 left-3 w-3 h-3 border-l border-t border-accent/20" aria-hidden="true" />
-      <div className="flex gap-3 pl-2">
-        <div className="mt-0.5 w-1 h-1 rounded-full bg-accent shrink-0" />
-        <p className="text-sm text-foreground leading-relaxed italic font-sans">
+    <div className="rounded-lg border border-border bg-surface p-5 md:p-6 mb-6 max-w-2xl relative overflow-hidden">
+      {/* Left teal accent rule */}
+      <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-accent opacity-40" aria-hidden="true" />
+      <div className="absolute top-3 left-4 w-3 h-3 border-l border-t border-accent/20" aria-hidden="true" />
+      <div className="pl-4">
+        <p className="text-base md:text-lg text-foreground leading-relaxed italic font-sans">
           {children}
         </p>
       </div>

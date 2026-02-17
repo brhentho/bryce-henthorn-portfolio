@@ -32,7 +32,7 @@ export function FigurePanel({ caption, variant = "layout", className, aspectRati
         <div className="absolute inset-0 bg-grid opacity-40" aria-hidden="true" />
 
         {/* Schematic diagram content */}
-        <div className="absolute inset-0 flex items-center justify-center p-8">
+        <div className="absolute inset-0 flex items-center justify-center p-6 md:p-7">
           {variant === "layout" && <FigureSchematicLayout />}
           {variant === "controls" && <FigureSchematicControls />}
           {variant === "flow" && <FigureSchematicFlow />}
@@ -47,7 +47,7 @@ export function FigurePanel({ caption, variant = "layout", className, aspectRati
 
 function FigureSchematicLayout() {
   return (
-    <svg width="100%" height="100%" viewBox="0 0 320 160" fill="none" className="opacity-20 max-w-[320px]">
+    <svg width="100%" height="100%" viewBox="0 0 320 160" fill="none" className="opacity-25 max-w-[380px]">
       {/* Main container */}
       <rect x="20" y="10" width="280" height="140" rx="3" stroke="currentColor" strokeWidth="1" className="text-foreground" />
       {/* Header bar */}
@@ -72,7 +72,7 @@ function FigureSchematicLayout() {
 
 function FigureSchematicControls() {
   return (
-    <svg width="100%" height="100%" viewBox="0 0 320 160" fill="none" className="opacity-20 max-w-[320px]">
+    <svg width="100%" height="100%" viewBox="0 0 320 160" fill="none" className="opacity-25 max-w-[380px]">
       {/* Panel */}
       <rect x="40" y="20" width="240" height="120" rx="3" stroke="currentColor" strokeWidth="1" className="text-foreground" />
       {/* Toggle rows */}
@@ -98,7 +98,7 @@ function FigureSchematicControls() {
 
 function FigureSchematicFlow() {
   return (
-    <svg width="100%" height="100%" viewBox="0 0 320 160" fill="none" className="opacity-20 max-w-[320px]">
+    <svg width="100%" height="100%" viewBox="0 0 320 160" fill="none" className="opacity-25 max-w-[380px]">
       {/* Flow nodes */}
       <rect x="20" y="60" width="64" height="40" rx="3" stroke="currentColor" strokeWidth="1" className="text-foreground" />
       <line x1="30" y1="76" x2="60" y2="76" stroke="currentColor" strokeWidth="0.5" className="text-accent" opacity="0.3" />

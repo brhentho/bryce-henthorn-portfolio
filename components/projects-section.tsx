@@ -12,7 +12,7 @@ export function ProjectsSection() {
   const [modalOpen, setModalOpen] = useState(false)
 
   return (
-    <Section id="projects">
+    <Section id="projects" className="pb-24 md:pb-32">
       <Container>
         <SectionHeader label="Selected Work" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">

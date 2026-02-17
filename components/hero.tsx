@@ -2,6 +2,7 @@
 
 import { Container } from "@/components/container"
 import { AnimateIn } from "@/components/animate-in"
+import { HeroIntroAnimation } from "@/components/hero-intro-animation"
 
 export function Hero() {
   return (
@@ -9,14 +10,18 @@ export function Hero() {
       {/* Background grid */}
       <div className="absolute inset-0 bg-grid bg-grid-animated pointer-events-none" aria-hidden="true" />
 
+      {/* Non-blocking intro animation */}
+      <HeroIntroAnimation />
+
       <Container className="relative z-10 py-32 md:py-0">
         <AnimateIn>
-          <p className="font-mono text-[11px] tracking-[0.2em] text-accent uppercase mb-6">
+          <p className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-foreground-secondary uppercase mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent opacity-70" aria-hidden="true" />
             Senior UX / Product Designer
           </p>
         </AnimateIn>
         <AnimateIn delay={0.1}>
-          <h1 className="font-mono text-3xl md:text-5xl lg:text-[3.5rem] font-medium leading-[1.15] tracking-tight text-foreground max-w-3xl text-balance">
+          <h1 className="font-mono text-3xl md:text-5xl lg:text-[4rem] font-medium leading-[1.08] tracking-tight text-[#F2F4F7] max-w-3xl text-balance">
             Designing calm, trustworthy AI systems at OS scale.
           </h1>
         </AnimateIn>

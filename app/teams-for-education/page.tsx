@@ -37,6 +37,7 @@ export default function TeamsForEducationPage() {
       meta="Senior UX Designer / Microsoft Teams / Virtual Collaboration"
       specs={specs}
       navItems={navItems}
+      schematicVariant="teams"
     >
       <CaseStudySection id="context" label="Context" counter="001">
         <CaseStudyHeading>When Classrooms Went Quiet</CaseStudyHeading>

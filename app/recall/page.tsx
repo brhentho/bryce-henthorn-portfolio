@@ -37,6 +37,7 @@ export default function RecallPage() {
       meta="Senior UX Designer / Windows / Semantic Memory"
       specs={specs}
       navItems={navItems}
+      schematicVariant="recall"
     >
       <CaseStudySection id="context" label="Context" counter="001">
         <CaseStudyHeading>The Problem</CaseStudyHeading>

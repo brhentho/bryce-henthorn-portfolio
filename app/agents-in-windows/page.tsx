@@ -36,6 +36,7 @@ export default function AgentsInWindowsPage() {
       meta="Senior UX Designer / Windows Shell / Ambient AI"
       specs={specs}
       navItems={navItems}
+      schematicVariant="agents"
     >
       <CaseStudySection id="context" label="Context" counter="001">
         <CaseStudyHeading>The Problem</CaseStudyHeading>

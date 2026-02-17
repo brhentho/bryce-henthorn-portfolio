@@ -38,8 +38,12 @@ export default function AboutPage() {
               </p>
             </AnimateIn>
             <AnimateIn delay={0.1}>
-              <h1 className="font-mono text-2xl md:text-4xl lg:text-[2.75rem] font-medium leading-[1.2] tracking-tight text-foreground max-w-2xl text-balance">
-                I design interaction systems that feel obvious only in hindsight.
+              <h1 className="font-mono text-2xl md:text-4xl lg:text-[2.75rem] font-medium leading-[1.2] tracking-tight text-foreground max-w-2xl">
+                I design interaction systems
+                <br className="hidden md:block" />
+                {" "}that feel obvious only
+                <br className="hidden md:block" />
+                {" "}in hindsight.
               </h1>
             </AnimateIn>
           </Container>
@@ -50,12 +54,12 @@ export default function AboutPage() {
           <Container>
             <AnimateIn>
               <div className="max-w-2xl">
-                <p className="text-base md:text-lg text-foreground-secondary leading-relaxed mb-6 font-sans">
+                <p className="text-base md:text-lg text-foreground/90 leading-relaxed mb-6 font-sans">
                   I{"'"}m a Senior UX/Product Designer focused on large-scale systems — from
                   virtual classroom collaboration to AI-powered memory and ambient agents
                   inside Windows.
                 </p>
-                <p className="text-base md:text-lg text-foreground-secondary leading-relaxed mb-2 font-sans">
+                <p className="text-base md:text-lg text-foreground/90 leading-relaxed mb-2 font-sans">
                   I{"'"}m drawn to problems where:
                 </p>
                 <ul className="flex flex-col gap-2.5 mb-0">
@@ -106,8 +110,9 @@ export default function AboutPage() {
                 {doItems.map((item) => (
                   <div
                     key={item}
-                    className="rounded-lg border border-border bg-surface p-5 md:p-6"
+                    className="rounded-lg border border-border-hover bg-surface p-5 md:p-6 relative overflow-hidden"
                   >
+                    <div className="absolute top-0 left-0 right-0 h-px bg-accent/[0.12]" aria-hidden="true" />
                     <div className="flex items-start gap-3">
                       <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent opacity-60 shrink-0" />
                       <span className="text-sm text-foreground-secondary leading-relaxed font-sans">
