@@ -1,0 +1,127 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Background */
+  --background: #0E0F12;
+  /* Surfaces */
+  --surface: #14161B;
+  --surface-raised: #1A1C20;
+  /* Text */
+  --foreground: #EDEFF2;
+  --foreground-secondary: rgba(237, 239, 242, 0.72);
+  --foreground-tertiary: rgba(237, 239, 242, 0.48);
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.06);
+  --border-divider: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.14);
+  /* Accent */
+  --accent: #2DE2D2;
+  --accent-dim: rgba(45, 226, 210, 0.12);
+  /* Other tokens mapped for shadcn compat */
+  --card: #14161B;
+  --card-foreground: #EDEFF2;
+  --popover: #14161B;
+  --popover-foreground: #EDEFF2;
+  --primary: #EDEFF2;
+  --primary-foreground: #0E0F12;
+  --secondary: #1A1C20;
+  --secondary-foreground: #EDEFF2;
+  --muted: #1A1C20;
+  --muted-foreground: rgba(237, 239, 242, 0.48);
+  --destructive: #ef4444;
+  --destructive-foreground: #EDEFF2;
+  --input: rgba(255, 255, 255, 0.06);
+  --ring: #2DE2D2;
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'JetBrains Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-tertiary: var(--foreground-tertiary);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-border-divider: var(--border-divider);
+  --color-border-hover: var(--border-hover);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Background grid */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size:
+    160px 160px,
+    160px 160px,
+    40px 40px,
+    40px 40px;
+  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+}
+
+/* Animated grid mask */
+.bg-grid-animated {
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
+  animation: grid-drift 30s ease-in-out infinite;
+}
+
+@keyframes grid-drift {
+  0%, 100% {
+    mask-position: 0% 0%;
+    -webkit-mask-position: 0% 0%;
+  }
+  50% {
+    mask-position: 5% 3%;
+    -webkit-mask-position: 5% 3%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-grid-animated {
+    animation: none;
+  }
+}
+
+/* Selection */
+::selection {
+  background: rgba(45, 226, 210, 0.2);
+  color: #EDEFF2;
+}
