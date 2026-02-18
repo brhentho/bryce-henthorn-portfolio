@@ -1,119 +1,221 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useCallback } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 
+// --- DOT GRID CONFIGURATION ---
+const COLS = 6
+const ROWS = 5
+const TOTAL = COLS * ROWS // 30 dots
+
+// Generate initial scattered positions (center-biased)
+function generateScattered(): { x: number; y: number }[] {
+  const dots: { x: number; y: number }[] = []
+  for (let i = 0; i < TOTAL; i++) {
+    dots.push({
+      x: 30 + Math.random() * 40, // 30%–70% horizontal
+      y: 25 + Math.random() * 50, // 25%–75% vertical
+    })
+  }
+  return dots
+}
+
+// Generate final structured grid positions
+function generateGrid(): { x: number; y: number }[] {
+  const dots: { x: number; y: number }[] = []
+  const startX = 20
+  const startY = 30
+  const spacingX = 8
+  const spacingY = 8
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      dots.push({
+        x: startX + c * spacingX,
+        y: startY + r * spacingY,
+      })
+    }
+  }
+  return dots
+}
+
+const scatteredPositions = generateScattered()
+const gridPositions = generateGrid()
+
+// --- MAIN COMPONENT ---
 export function HeroIntroAnimation() {
-  const [shouldAnimate, setShouldAnimate] = useState(false)
-  const [phase, setPhase] = useState<"idle" | "scan" | "dots" | "done">("idle")
   const prefersReducedMotion = useReducedMotion()
-  const hasRun = useRef(false)
+  const [phase, setPhase] = useState<"scatter" | "form" | "sweep" | "reveal" | "live">("scatter")
+  const containerRef = useRef<HTMLDivElement>(null)
+  const mouseRef = useRef({ x: -1, y: -1 })
+  const rafRef = useRef<number>(0)
+  const dotsRef = useRef<(HTMLDivElement | null)[]>([])
 
+  // Phase sequencing
   useEffect(() => {
-    if (prefersReducedMotion || hasRun.current) return
-    if (typeof window === "undefined") return
+    if (prefersReducedMotion) {
+      setPhase("live")
+      return
+    }
 
-    const seen = sessionStorage.getItem("bh_intro_seen")
-    if (seen === "true") return
-
-    hasRun.current = true
-    setShouldAnimate(true)
-    setPhase("scan")
-
-    const scanTimer = setTimeout(() => setPhase("dots"), 600)
-    const doneTimer = setTimeout(() => {
-      setPhase("done")
-      sessionStorage.setItem("bh_intro_seen", "true")
-    }, 1200)
+    // Start forming immediately
+    const t1 = setTimeout(() => setPhase("form"), 50)
+    // Sweep starts at 900ms
+    const t2 = setTimeout(() => setPhase("sweep"), 900)
+    // Text reveal at 1200ms
+    const t3 = setTimeout(() => setPhase("reveal"), 1200)
+    // Live mode at 1800ms
+    const t4 = setTimeout(() => setPhase("live"), 1800)
 
     return () => {
-      clearTimeout(scanTimer)
-      clearTimeout(doneTimer)
+      clearTimeout(t1)
+      clearTimeout(t2)
+      clearTimeout(t3)
+      clearTimeout(t4)
     }
   }, [prefersReducedMotion])
 
-  if (!shouldAnimate || prefersReducedMotion) return null
+  // Cursor tracking for live mode
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (!containerRef.current) return
+    const rect = containerRef.current.getBoundingClientRect()
+    mouseRef.current = {
+      x: ((e.clientX - rect.left) / rect.width) * 100,
+      y: ((e.clientY - rect.top) / rect.height) * 100,
+    }
+  }, [])
 
-  return (
-    <div className="absolute inset-0 pointer-events-none z-[1]" aria-hidden="true">
-      {/* Scan line */}
-      <motion.div
-        className="absolute left-0 right-0 h-px"
-        style={{
-          background: "linear-gradient(90deg, transparent 0%, rgba(237,239,242,0.06) 20%, rgba(237,239,242,0.1) 50%, rgba(237,239,242,0.06) 80%, transparent 100%)",
-        }}
-        initial={{ top: "0%" }}
-        animate={
-          phase === "scan" || phase === "dots" || phase === "done"
-            ? { top: "100%" }
-            : { top: "0%" }
-        }
-        transition={{ duration: 0.6, ease: "linear" }}
-      />
+  // Live dot cursor reactivity via rAF (no state, direct DOM)
+  useEffect(() => {
+    if (phase !== "live" || prefersReducedMotion) return
 
-      {/* Dot constellation */}
-      <DotConstellation phase={phase} />
-    </div>
-  )
-}
+    const el = containerRef.current
+    if (!el) return
+    el.addEventListener("mousemove", handleMouseMove)
 
-const dotPositions = [
-  { x: "15%", y: "30%" },
-  { x: "25%", y: "22%" },
-  { x: "35%", y: "45%" },
-  { x: "18%", y: "55%" },
-  { x: "42%", y: "35%" },
-  { x: "30%", y: "65%" },
-  { x: "48%", y: "50%" },
-  { x: "22%", y: "42%" },
-  { x: "38%", y: "28%" },
-  { x: "12%", y: "48%" },
-  { x: "45%", y: "62%" },
-  { x: "28%", y: "38%" },
-]
+    const animate = () => {
+      const mx = mouseRef.current.x
+      const my = mouseRef.current.y
 
-const dotTargets = [
-  { x: "16%", y: "32%" },
-  { x: "24%", y: "24%" },
-  { x: "34%", y: "44%" },
-  { x: "19%", y: "54%" },
-  { x: "41%", y: "36%" },
-  { x: "29%", y: "64%" },
-  { x: "47%", y: "48%" },
-  { x: "23%", y: "40%" },
-  { x: "37%", y: "30%" },
-  { x: "13%", y: "46%" },
-  { x: "44%", y: "60%" },
-  { x: "27%", y: "36%" },
-]
+      for (let i = 0; i < TOTAL; i++) {
+        const dot = dotsRef.current[i]
+        if (!dot) continue
+        const gp = gridPositions[i]
+        let dx = 0
+        let dy = 0
+        let scale = 1
 
-function DotConstellation({ phase }: { phase: string }) {
-  return (
-    <>
-      {dotPositions.map((pos, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-[2px] h-[2px] rounded-full bg-foreground"
-          style={{ left: pos.x, top: pos.y }}
-          initial={{ opacity: 0 }}
-          animate={
-            phase === "dots"
-              ? {
-                  opacity: [0, 0.2, 0.2],
-                  left: dotTargets[i].x,
-                  top: dotTargets[i].y,
-                }
-              : phase === "done"
-                ? { opacity: 0 }
-                : { opacity: 0 }
+        if (mx >= 0 && my >= 0) {
+          const distX = gp.x - mx
+          const distY = gp.y - my
+          const dist = Math.sqrt(distX * distX + distY * distY)
+          const radius = 18
+          if (dist < radius) {
+            const force = (1 - dist / radius) * 2.5
+            dx = (distX / (dist || 1)) * force
+            dy = (distY / (dist || 1)) * force
+            scale = 1 + (1 - dist / radius) * 0.08
           }
-          transition={{
-            duration: phase === "done" ? 0.3 : 0.5,
-            delay: phase === "dots" ? i * 0.03 : 0,
-            ease: "easeOut",
+        }
+
+        dot.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`
+      }
+
+      rafRef.current = requestAnimationFrame(animate)
+    }
+    rafRef.current = requestAnimationFrame(animate)
+
+    return () => {
+      el.removeEventListener("mousemove", handleMouseMove)
+      cancelAnimationFrame(rafRef.current)
+    }
+  }, [phase, prefersReducedMotion, handleMouseMove])
+
+  // Reset cursor when it leaves
+  useEffect(() => {
+    if (phase !== "live") return
+    const el = containerRef.current
+    if (!el) return
+    const handleLeave = () => {
+      mouseRef.current = { x: -1, y: -1 }
+    }
+    el.addEventListener("mouseleave", handleLeave)
+    return () => el.removeEventListener("mouseleave", handleLeave)
+  }, [phase])
+
+  if (prefersReducedMotion) return null
+
+  const isForming = phase === "form" || phase === "sweep" || phase === "reveal" || phase === "live"
+
+  return (
+    <div
+      ref={containerRef}
+      className="absolute inset-0 pointer-events-none z-[1]"
+      style={{ pointerEvents: phase === "live" ? "auto" : "none" }}
+      aria-hidden="true"
+    >
+      {/* Calibration sweep line */}
+      {(phase === "sweep" || phase === "reveal") && (
+        <motion.div
+          className="absolute left-0 right-0 h-[1px]"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 0%, rgba(237,239,242,0.05) 15%, rgba(237,239,242,0.12) 50%, rgba(237,239,242,0.05) 85%, transparent 100%)",
           }}
+          initial={{ top: "15%" }}
+          animate={{ top: "85%" }}
+          transition={{ duration: 0.7, ease: "linear" }}
         />
-      ))}
-    </>
+      )}
+
+      {/* Grid brightness ramp during sweep */}
+      {phase === "sweep" && (
+        <motion.div
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 0.03, 0] }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+          style={{ background: "rgba(255,255,255,1)" }}
+        />
+      )}
+
+      {/* Dot system */}
+      {Array.from({ length: TOTAL }).map((_, i) => {
+        const sp = scatteredPositions[i]
+        const gp = gridPositions[i]
+
+        return (
+          <motion.div
+            key={i}
+            ref={(el) => { dotsRef.current[i] = el }}
+            className="absolute w-[2px] h-[2px] rounded-full bg-foreground"
+            initial={{
+              left: `${sp.x}%`,
+              top: `${sp.y}%`,
+              opacity: 0.25,
+              scale: 1,
+            }}
+            animate={
+              isForming
+                ? {
+                    left: `${gp.x}%`,
+                    top: `${gp.y}%`,
+                    opacity: phase === "live" ? 0.18 : 0.25,
+                    scale: 1,
+                  }
+                : {
+                    opacity: 0.25,
+                  }
+            }
+            transition={{
+              left: { duration: 1.0, delay: i * 0.015, ease: [0.42, 0, 0.58, 1] },
+              top: { duration: 1.0, delay: i * 0.015, ease: [0.42, 0, 0.58, 1] },
+              opacity: { duration: 0.4, delay: isForming ? i * 0.015 : 0 },
+              scale: { duration: 0.3 },
+            }}
+            style={{ willChange: "transform" }}
+          />
+        )
+      })}
+    </div>
   )
 }

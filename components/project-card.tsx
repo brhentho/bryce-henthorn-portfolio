@@ -1,61 +1,88 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
-import { SchematicPanel } from "@/components/schematic-panel"
 
 interface ProjectCardProps {
   title: string
-  description: string
+  summary: string
   href?: string
-  meta?: string
+  tags?: string[]
+  cardImage?: string
+  imageAlt?: string
   tag?: string
   disabled?: boolean
   onDisabledClick?: () => void
-  schematicVariant?: "grid" | "flow" | "blocks" | "hierarchy"
   className?: string
 }
 
 export function ProjectCard({
   title,
-  description,
+  summary,
   href,
-  meta,
+  tags,
+  cardImage,
+  imageAlt,
   tag,
   disabled,
   onDisabledClick,
-  schematicVariant = "grid",
   className,
 }: ProjectCardProps) {
   const cardInner = (
-    <>
-      {/* Floating schematic panel above card */}
-      <SchematicPanel variant={schematicVariant} className="h-[88px] md:h-[100px] -mb-px" />
-
-      {/* Card body */}
-      <div className="rounded-b-lg border border-border bg-surface p-6 md:p-7">
-        {/* Metadata line */}
-        {meta && (
-          <span className="font-mono text-[10px] tracking-[0.2em] text-foreground-tertiary uppercase">
-            {meta}
-          </span>
+    <div className="rounded-lg border border-border bg-surface overflow-hidden transition-colors duration-200 group-hover:border-border-hover">
+      {/* Image area */}
+      <div className="relative aspect-[16/10] bg-surface-raised overflow-hidden">
+        {cardImage ? (
+          <Image
+            src={cardImage}
+            alt={imageAlt || title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-grid opacity-30" />
         )}
-        <div className="flex items-start justify-between gap-3 mt-2">
-          <h3 className="font-mono text-base md:text-lg font-medium text-foreground tracking-tight">
-            {title}
-          </h3>
-          {tag && (
-            <span className="shrink-0 font-mono text-[10px] tracking-[0.15em] text-accent bg-accent-dim px-2 py-1 rounded uppercase">
+        {/* Coming soon badge overlay */}
+        {tag && (
+          <div className="absolute top-3 right-3">
+            <span className="font-mono text-[10px] tracking-[0.15em] text-accent bg-background/80 backdrop-blur-sm px-2.5 py-1 rounded border border-accent/20 uppercase">
               {tag}
             </span>
-          )}
-        </div>
-        <p className="mt-3 text-sm text-foreground-secondary leading-relaxed font-sans">
-          {description}
+          </div>
+        )}
+      </div>
+
+      {/* Card body */}
+      <div className="p-5 md:p-6">
+        {/* One-line summary */}
+        <p className="text-[13px] text-foreground-secondary leading-relaxed font-sans mb-2">
+          {summary}
         </p>
-        {/* Bottom arrow indicator */}
+
+        {/* Title */}
+        <h3 className="font-mono text-base md:text-lg font-medium text-foreground tracking-tight mb-3">
+          {title}
+        </h3>
+
+        {/* Tags row */}
+        {tags && tags.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {tags.map((t) => (
+              <span
+                key={t}
+                className="font-mono text-[10px] tracking-[0.1em] text-foreground-tertiary bg-surface-raised px-2 py-1 rounded border border-border uppercase"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* CTA indicator */}
         {!disabled && (
-          <div className="mt-6 flex items-center gap-1.5 text-foreground-tertiary group-hover:text-accent transition-colors duration-200">
+          <div className="flex items-center gap-1.5 text-foreground-tertiary group-hover:text-accent transition-colors duration-200 pt-1">
             <span className="font-mono text-[11px] tracking-[0.1em] uppercase">
               Read case study
             </span>
@@ -73,14 +100,13 @@ export function ProjectCard({
           </div>
         )}
       </div>
-    </>
+    </div>
   )
 
   const wrapperClasses = cn(
     "group block transition-colors duration-200",
     !disabled && "cursor-pointer",
-    !disabled && "[&:hover_.rounded-t-lg]:border-border-hover [&:hover_.rounded-b-lg]:border-border-hover",
-    disabled && "opacity-70 cursor-default",
+    disabled && "cursor-default",
     className
   )
 

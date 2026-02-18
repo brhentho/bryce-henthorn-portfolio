@@ -9,6 +9,7 @@ import {
   CaseStudyCallout,
 } from "@/components/case-study-layout"
 import { FigurePanel } from "@/components/figure-panel"
+import { projectImages } from "@/lib/images"
 
 const specs = [
   { label: "Role", value: "Senior UX Designer" },
@@ -34,10 +35,11 @@ export default function RecallPage() {
     <CaseStudyLayout
       title="Windows Recall"
       subtitle="Designing memory for your PC — without sacrificing trust"
-      meta="Senior UX Designer / Windows / Semantic Memory"
+      tags={["Trust + privacy", "Systems thinking", "Windows", "Semantic search"]}
+      heroImage={projectImages["recall"].heroImage}
+      heroImageAlt={projectImages["recall"].alt}
       specs={specs}
       navItems={navItems}
-      schematicVariant="recall"
     >
       <CaseStudySection id="context" label="Context" counter="001">
         <CaseStudyHeading>The Problem</CaseStudyHeading>
