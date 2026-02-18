@@ -27,6 +27,7 @@ export function Nav() {
         <Link
           href="/"
           className="font-heading text-sm font-semibold tracking-tight text-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          onClick={() => console.log("[v0] Logo link clicked")}
         >
           Bryce Henthorn
         </Link>

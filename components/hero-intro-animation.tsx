@@ -81,7 +81,7 @@ export function HeroIntroAnimation() {
       />
 
       {/* Animated cluster in the right portion */}
-      <div className="absolute right-0 top-0 bottom-0 w-[42%] hidden lg:flex items-center justify-center">
+      <div className="absolute right-0 top-0 bottom-0 w-[42%] hidden lg:flex items-center justify-center pointer-events-none">
         <div className="relative w-full h-[60%]">
           {/* Calibration sweep line */}
           {phase === "sweep" && !prefersReducedMotion && (
