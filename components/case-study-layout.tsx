@@ -124,19 +124,23 @@ export function CaseStudyLayout({
 
         {/* Overview spec panel - full width centered */}
         <Container className="mt-16 md:mt-20">
-          <AnimateIn delay={0.1}>
-            <div className="mb-16 md:mb-20">
-              <OverviewSpecPanel specs={specs} />
-            </div>
-          </AnimateIn>
+          <div className="mx-auto max-w-[1140px]">
+            <AnimateIn delay={0.1}>
+              <div className="mb-16 md:mb-20">
+                <OverviewSpecPanel specs={specs} />
+              </div>
+            </AnimateIn>
+          </div>
         </Container>
 
         {/* Content with sticky nav */}
         <Container>
-          <div className="flex gap-16">
-            <CaseStudyNav items={navItems} />
-            <div className="flex-1 min-w-0 pb-16 md:pb-24">
-              {children}
+          <div className="mx-auto max-w-[1140px]">
+            <div className="flex gap-16">
+              <CaseStudyNav items={navItems} />
+              <div className="flex-1 min-w-0 pb-16 md:pb-24">
+                {children}
+              </div>
             </div>
           </div>
         </Container>
