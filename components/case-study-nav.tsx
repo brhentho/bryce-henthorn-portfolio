@@ -46,7 +46,7 @@ export function CaseStudyNav({ items }: CaseStudyNavProps) {
             <a
               href={`#${item.id}`}
               className={cn(
-                "font-mono text-[10px] tracking-[0.2em] uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+                "text-sm font-sans font-medium transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
                 activeId === item.id
                   ? "text-accent"
                   : "text-foreground-tertiary hover:text-foreground-secondary"

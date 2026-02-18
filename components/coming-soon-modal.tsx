@@ -24,20 +24,17 @@ export function ComingSoonModal({ open, onClose }: ComingSoonModalProps) {
         onKeyDown={(e) => e.key === "Escape" && onClose()}
       />
       {/* Modal */}
-      <div className="relative rounded-lg border border-border bg-surface p-8 max-w-sm w-full text-center">
-        <div className="flex justify-center mb-4">
-          <div className="w-2 h-2 rounded-full bg-accent opacity-60" />
-        </div>
-        <p className="text-foreground text-sm mb-1.5">Case study coming soon.</p>
-        <p className="text-foreground-tertiary text-xs mb-6">
+      <div className="relative rounded-[var(--radius-card)] border border-border bg-surface p-8 max-w-sm w-full text-center">
+        <p className="text-foreground font-heading font-semibold text-base mb-1.5">Case study coming soon</p>
+        <p className="text-foreground-tertiary text-sm font-sans mb-6">
           This project is still being documented.
         </p>
         <button
           type="button"
           onClick={onClose}
           className={cn(
-            "font-mono text-[11px] tracking-[0.15em] uppercase px-5 py-2.5 rounded border border-border",
-            "text-foreground-secondary hover:bg-foreground hover:text-background transition-colors duration-200",
+            "text-sm font-sans font-medium px-5 py-2.5 rounded-[var(--radius-button)] border border-border",
+            "text-foreground-secondary hover:bg-foreground hover:text-background transition-all duration-300",
             "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           )}
         >

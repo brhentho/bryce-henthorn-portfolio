@@ -5,42 +5,46 @@
 
 :root {
   /* Background */
-  --background: #0E0F12;
+  --background: #0B0B0D;
   /* Surfaces */
-  --surface: #14161B;
-  --surface-raised: #1A1C20;
+  --surface: #121214;
+  --surface-raised: #1A1A1E;
   /* Text */
-  --foreground: #EDEFF2;
-  --foreground-secondary: rgba(237, 239, 242, 0.72);
-  --foreground-tertiary: rgba(237, 239, 242, 0.48);
+  --foreground: #F0F0F3;
+  --foreground-secondary: rgba(240, 240, 243, 0.68);
+  --foreground-tertiary: rgba(240, 240, 243, 0.42);
   /* Borders */
-  --border: rgba(255, 255, 255, 0.06);
-  --border-divider: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.14);
+  --border: rgba(255, 255, 255, 0.07);
+  --border-divider: rgba(255, 255, 255, 0.09);
+  --border-hover: rgba(255, 255, 255, 0.16);
   /* Accent */
   --accent: #2DE2D2;
-  --accent-dim: rgba(45, 226, 210, 0.12);
+  --accent-dim: rgba(45, 226, 210, 0.10);
+  /* Radius */
+  --radius: 0.75rem;
+  --radius-card: 1.125rem;
+  --radius-button: 0.75rem;
+  --radius-hero-image: 1.25rem;
   /* Other tokens mapped for shadcn compat */
-  --card: #14161B;
-  --card-foreground: #EDEFF2;
-  --popover: #14161B;
-  --popover-foreground: #EDEFF2;
-  --primary: #EDEFF2;
-  --primary-foreground: #0E0F12;
-  --secondary: #1A1C20;
-  --secondary-foreground: #EDEFF2;
-  --muted: #1A1C20;
-  --muted-foreground: rgba(237, 239, 242, 0.48);
+  --card: #121214;
+  --card-foreground: #F0F0F3;
+  --popover: #121214;
+  --popover-foreground: #F0F0F3;
+  --primary: #F0F0F3;
+  --primary-foreground: #0B0B0D;
+  --secondary: #1A1A1E;
+  --secondary-foreground: #F0F0F3;
+  --muted: #1A1A1E;
+  --muted-foreground: rgba(240, 240, 243, 0.42);
   --destructive: #ef4444;
-  --destructive-foreground: #EDEFF2;
-  --input: rgba(255, 255, 255, 0.06);
+  --destructive-foreground: #F0F0F3;
+  --input: rgba(255, 255, 255, 0.07);
   --ring: #2DE2D2;
-  --radius: 0.5rem;
 }
 
 @theme inline {
-  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'JetBrains Mono Fallback', monospace;
+  --font-sans: 'Open Sans', 'Open Sans Fallback', system-ui, sans-serif;
+  --font-heading: 'Poppins', 'Poppins Fallback', system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-foreground-secondary: var(--foreground-secondary);
@@ -81,47 +85,8 @@
   }
 }
 
-/* Background grid */
-.bg-grid {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size:
-    160px 160px,
-    160px 160px,
-    40px 40px,
-    40px 40px;
-  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
-}
-
-/* Animated grid mask */
-.bg-grid-animated {
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
-  animation: grid-drift 30s ease-in-out infinite;
-}
-
-@keyframes grid-drift {
-  0%, 100% {
-    mask-position: 0% 0%;
-    -webkit-mask-position: 0% 0%;
-  }
-  50% {
-    mask-position: 5% 3%;
-    -webkit-mask-position: 5% 3%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bg-grid-animated {
-    animation: none;
-  }
-}
-
 /* Selection */
 ::selection {
   background: rgba(45, 226, 210, 0.2);
-  color: #EDEFF2;
+  color: #F0F0F3;
 }

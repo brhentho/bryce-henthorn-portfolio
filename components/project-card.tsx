@@ -5,10 +5,11 @@ import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 interface ProjectCardProps {
-  title: string
-  summary: string
+  /** Small product/project name (e.g. "Teams for Education") */
+  productName: string
+  /** Large heading (the case-study tagline) */
+  heading: string
   href?: string
-  tags?: string[]
   cardImage?: string
   imageAlt?: string
   tag?: string
@@ -18,10 +19,9 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({
-  title,
-  summary,
+  productName,
+  heading,
   href,
-  tags,
   cardImage,
   imageAlt,
   tag,
@@ -30,24 +30,24 @@ export function ProjectCard({
   className,
 }: ProjectCardProps) {
   const cardInner = (
-    <div className="rounded-lg border border-border bg-surface overflow-hidden transition-colors duration-200 group-hover:border-border-hover">
+    <div className="rounded-[var(--radius-card)] border border-border bg-surface overflow-hidden transition-all duration-500 ease-out group-hover:border-border-hover group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
       {/* Image area */}
       <div className="relative aspect-[16/10] bg-surface-raised overflow-hidden">
         {cardImage ? (
           <Image
             src={cardImage}
-            alt={imageAlt || title}
+            alt={imageAlt || productName}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
           />
         ) : (
-          <div className="absolute inset-0 bg-grid opacity-30" />
+          <div className="absolute inset-0 bg-surface-raised" />
         )}
         {/* Coming soon badge overlay */}
         {tag && (
           <div className="absolute top-3 right-3">
-            <span className="font-mono text-[10px] tracking-[0.15em] text-accent bg-background/80 backdrop-blur-sm px-2.5 py-1 rounded border border-accent/20 uppercase">
+            <span className="text-[11px] font-sans font-medium text-accent bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-accent/20">
               {tag}
             </span>
           </div>
@@ -56,34 +56,20 @@ export function ProjectCard({
 
       {/* Card body */}
       <div className="p-5 md:p-6">
-        {/* One-line summary */}
-        <p className="text-[13px] text-foreground-secondary leading-relaxed font-sans mb-2">
-          {summary}
+        {/* Small product name */}
+        <p className="text-xs font-sans font-medium text-foreground-tertiary uppercase tracking-wider mb-2">
+          {productName}
         </p>
 
-        {/* Title */}
-        <h3 className="font-mono text-base md:text-lg font-medium text-foreground tracking-tight mb-3">
-          {title}
+        {/* Large heading */}
+        <h3 className="font-heading text-lg md:text-xl font-semibold text-foreground tracking-tight leading-snug mb-5">
+          {heading}
         </h3>
-
-        {/* Tags row */}
-        {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {tags.map((t) => (
-              <span
-                key={t}
-                className="font-mono text-[10px] tracking-[0.1em] text-foreground-tertiary bg-surface-raised px-2 py-1 rounded border border-border uppercase"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        )}
 
         {/* CTA indicator */}
         {!disabled && (
-          <div className="flex items-center gap-1.5 text-foreground-tertiary group-hover:text-accent transition-colors duration-200 pt-1">
-            <span className="font-mono text-[11px] tracking-[0.1em] uppercase">
+          <div className="flex items-center gap-1.5 text-foreground-tertiary group-hover:text-accent transition-colors duration-300">
+            <span className="text-sm font-sans font-medium">
               Read case study
             </span>
             <svg
@@ -93,7 +79,7 @@ export function ProjectCard({
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
-              className="transition-transform duration-200 group-hover:translate-x-0.5"
+              className="transition-transform duration-300 group-hover:translate-x-1"
             >
               <path d="M3 8h10M9 4l4 4-4 4" />
             </svg>

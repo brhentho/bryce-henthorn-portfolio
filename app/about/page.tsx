@@ -8,6 +8,8 @@ import { SectionHeader } from "@/components/section-header"
 import { AnimateIn } from "@/components/animate-in"
 import { PageTransition } from "@/components/page-transition"
 
+const GRID_SPACING = 40
+
 const drawnToItems = [
   "Novel interaction paradigms with no existing mental model",
   "Structure that must emerge from ambiguity",
@@ -21,56 +23,35 @@ export default function AboutPage() {
     <PageTransition>
       <Nav />
       <main>
-        {/* 100vh Hero - 2 column: text left, portrait right */}
+        {/* Hero - single column, no portrait, with static dot grid */}
         <section className="relative min-h-screen flex items-center overflow-hidden">
-          <div className="absolute inset-0 bg-grid bg-grid-animated pointer-events-none" aria-hidden="true" />
-          <Container className="relative z-10 py-32 md:py-0">
-            <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16">
-              {/* Left: headline */}
-              <div className="flex-1 min-w-0">
-                <AnimateIn>
-                  <p className="font-mono text-[11px] tracking-[0.2em] text-foreground-tertiary uppercase mb-8">
-                    About
-                  </p>
-                </AnimateIn>
-                <AnimateIn delay={0.1}>
-                  <h1 className="font-mono text-2xl md:text-3xl lg:text-[2.5rem] font-medium leading-[1.35] tracking-tight text-foreground max-w-lg">
-                    Serial problem solver.
-                    <br />
-                    Fixated on optimizing systems.
-                    <br />
-                    Obsessed with structure and flow.
-                    <br />
-                    Unapologetic technology geek.
-                    <br />
-                    <span className="text-foreground-secondary">
-                      So naturally, I fell in love
-                      <br className="hidden md:block" />
-                      {" "}with UX design.
-                    </span>
-                  </h1>
-                </AnimateIn>
-              </div>
+          {/* Static dot grid background */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+            style={{
+              backgroundImage: `radial-gradient(circle, rgba(240,240,243,0.12) 1.5px, transparent 1.5px)`,
+              backgroundSize: `${GRID_SPACING}px ${GRID_SPACING}px`,
+              backgroundPosition: `${GRID_SPACING / 2}px ${GRID_SPACING / 2}px`,
+            }}
+          />
 
-              {/* Right: portrait placeholder */}
-              <AnimateIn delay={0.2} className="flex-1 min-w-0 flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-[360px] aspect-[3/4] rounded-lg border border-border bg-surface-raised overflow-hidden">
-                  {/* Placeholder silhouette tile - replace with real portrait */}
-                  <div className="absolute inset-0 bg-grid opacity-30" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 rounded-full bg-border-divider mx-auto mb-4" />
-                      <span className="font-mono text-[10px] tracking-[0.15em] text-foreground-tertiary uppercase">
-                        Portrait
-                      </span>
-                    </div>
-                  </div>
-                  {/* Corner brackets */}
-                  <div className="absolute top-3 left-3 w-4 h-4 border-l border-t border-foreground/[0.08]" />
-                  <div className="absolute top-3 right-3 w-4 h-4 border-r border-t border-foreground/[0.08]" />
-                  <div className="absolute bottom-3 left-3 w-4 h-4 border-l border-b border-foreground/[0.08]" />
-                  <div className="absolute bottom-3 right-3 w-4 h-4 border-r border-b border-foreground/[0.08]" />
-                </div>
+          <Container className="relative z-10 py-32 md:py-0">
+            <div className="max-w-2xl">
+              <AnimateIn delay={0.1}>
+                <h1 className="font-heading text-2xl md:text-3xl lg:text-[2.5rem] font-bold leading-[1.4] tracking-tight text-foreground">
+                  Serial problem solver.
+                  <br />
+                  Fixated on optimizing systems.
+                  <br />
+                  Obsessed with structure and flow.
+                  <br />
+                  Unapologetic technology geek.
+                  <br />
+                  <span className="text-foreground-secondary">
+                    So naturally, I fell in love with UX design.
+                  </span>
+                </h1>
               </AnimateIn>
             </div>
           </Container>
@@ -79,7 +60,7 @@ export default function AboutPage() {
         {/* Want a bit more? - Two column text */}
         <Section>
           <Container>
-            <SectionHeader label="Want a bit more?" counter="001" />
+            <SectionHeader label="Want a bit more?" />
             <AnimateIn>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 {/* Left column: story */}
@@ -125,7 +106,7 @@ export default function AboutPage() {
         {/* What I'm drawn to */}
         <Section className="pt-0">
           <Container>
-            <SectionHeader label="What I'm drawn to" counter="002" />
+            <SectionHeader label="What I'm drawn to" />
             <AnimateIn>
               <ul className="flex flex-col gap-3 max-w-2xl">
                 {drawnToItems.map((item) => (
@@ -145,7 +126,7 @@ export default function AboutPage() {
         {/* Drop a line */}
         <Section className="pt-0 pb-8">
           <Container>
-            <SectionHeader label="Drop a line" counter="003" />
+            <SectionHeader label="Drop a line" />
             <AnimateIn>
               <div className="max-w-2xl">
                 <p className="text-base md:text-lg text-foreground-secondary leading-relaxed mb-8 font-sans">
@@ -156,14 +137,14 @@ export default function AboutPage() {
                 <div className="flex flex-col gap-3">
                   <a
                     href="mailto:bhenthorn2757@gmail.com"
-                    className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase px-6 py-3 rounded border border-foreground-secondary text-foreground hover:bg-foreground hover:text-background transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent w-fit min-h-[44px]"
+                    className="inline-flex items-center gap-2 text-sm font-sans font-medium px-6 py-3 rounded-[var(--radius-button)] border border-foreground/20 text-foreground hover:bg-accent hover:text-background hover:border-accent transition-all duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent w-fit min-h-[44px] hover:scale-[1.03] active:scale-[0.98]"
                   >
                     bhenthorn2757@gmail.com
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M3 8h10M9 4l4 4-4 4" />
                     </svg>
                   </a>
-                  <span className="font-mono text-[10px] tracking-[0.15em] text-foreground-tertiary">
+                  <span className="text-xs font-sans text-foreground-tertiary">
                     Seattle, WA
                   </span>
                 </div>
