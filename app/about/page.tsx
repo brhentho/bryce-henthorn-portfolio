@@ -8,6 +8,8 @@ import { SectionHeader } from "@/components/section-header"
 import { AnimateIn } from "@/components/animate-in"
 import { PageTransition } from "@/components/page-transition"
 
+const GRID_SPACING = 40
+
 const drawnToItems = [
   "Novel interaction paradigms with no existing mental model",
   "Structure that must emerge from ambiguity",
@@ -21,48 +23,35 @@ export default function AboutPage() {
     <PageTransition>
       <Nav />
       <main>
-        {/* Hero - 2 column: text left, portrait right */}
+        {/* Hero - single column, no portrait, with static dot grid */}
         <section className="relative min-h-screen flex items-center overflow-hidden">
-          <Container className="relative z-10 py-32 md:py-0">
-            <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16">
-              {/* Left: headline */}
-              <div className="flex-1 min-w-0">
-                <AnimateIn>
-                  <p className="text-sm font-sans text-foreground-tertiary mb-8">
-                    About
-                  </p>
-                </AnimateIn>
-                <AnimateIn delay={0.1}>
-                  <h1 className="font-heading text-2xl md:text-3xl lg:text-[2.5rem] font-bold leading-[1.35] tracking-tight text-foreground max-w-lg">
-                    Serial problem solver.
-                    <br />
-                    Fixated on optimizing systems.
-                    <br />
-                    Obsessed with structure and flow.
-                    <br />
-                    Unapologetic technology geek.
-                    <br />
-                    <span className="text-foreground-secondary">
-                      So naturally, I fell in love
-                      <br className="hidden md:block" />
-                      {" "}with UX design.
-                    </span>
-                  </h1>
-                </AnimateIn>
-              </div>
+          {/* Static dot grid background */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+            style={{
+              backgroundImage: `radial-gradient(circle, rgba(240,240,243,0.12) 1.5px, transparent 1.5px)`,
+              backgroundSize: `${GRID_SPACING}px ${GRID_SPACING}px`,
+              backgroundPosition: `${GRID_SPACING / 2}px ${GRID_SPACING / 2}px`,
+            }}
+          />
 
-              {/* Right: portrait placeholder */}
-              <AnimateIn delay={0.2} className="flex-1 min-w-0 flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-[360px] aspect-[3/4] rounded-[var(--radius-hero-image)] border border-border bg-surface-raised overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 rounded-full bg-border-divider mx-auto mb-4" />
-                      <span className="text-xs font-sans text-foreground-tertiary">
-                        Portrait
-                      </span>
-                    </div>
-                  </div>
-                </div>
+          <Container className="relative z-10 py-32 md:py-0">
+            <div className="max-w-2xl">
+              <AnimateIn delay={0.1}>
+                <h1 className="font-heading text-2xl md:text-3xl lg:text-[2.5rem] font-bold leading-[1.4] tracking-tight text-foreground">
+                  Serial problem solver.
+                  <br />
+                  Fixated on optimizing systems.
+                  <br />
+                  Obsessed with structure and flow.
+                  <br />
+                  Unapologetic technology geek.
+                  <br />
+                  <span className="text-foreground-secondary">
+                    So naturally, I fell in love with UX design.
+                  </span>
+                </h1>
               </AnimateIn>
             </div>
           </Container>
