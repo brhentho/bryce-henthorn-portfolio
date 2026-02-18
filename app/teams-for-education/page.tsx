@@ -15,141 +15,121 @@ const specs = [
   { label: "Role", value: "Senior UX Designer" },
   { label: "Platform", value: "Microsoft Teams" },
   { label: "Focus", value: "Virtual classroom collaboration" },
-  { label: "Challenge", value: "Engagement collapsed during remote learning" },
-  { label: "Solution", value: "Structured 'virtual tables' for small-group dynamics" },
-  { label: "Impact", value: "Improved participation signals & restored classroom structure" },
+  { label: "Challenge", value: "Engagement collapsed when classrooms went virtual" },
+  { label: "Solution", value: "Persistent virtual tables with spatial consistency" },
+  { label: "Impact", value: "Improved participation, faster group transitions, educator trust" },
 ]
 
 const navItems = [
   { id: "context", label: "Context" },
-  { id: "insight", label: "Insight" },
-  { id: "goal", label: "Goal" },
+  { id: "problem", label: "Problem" },
+  { id: "research", label: "Research" },
   { id: "solution", label: "Solution" },
-  { id: "key-decisions", label: "Key Decisions" },
+  { id: "iteration", label: "Iteration" },
+  { id: "group-creation", label: "Group Creation" },
+  { id: "student-view", label: "Student View" },
   { id: "impact", label: "Impact" },
-  { id: "contribution", label: "Contribution" },
 ]
 
 export default function TeamsForEducationPage() {
   return (
     <CaseStudyLayout
-      title="Teams for Education"
-      subtitle="Restoring human connection to remote classrooms"
-      tags={["0\u21921", "Interaction design", "Enterprise", "Microsoft Teams"]}
+      title="Modernizing online class for an authentic virtual experience"
+      subtitle="Teams for Education"
+      tags={["UX Strategy", "Microsoft Teams Enterprise", "Senior Designer", "2020"]}
       heroImage={projectImages["teams-for-education"].heroImage}
       heroImageAlt={projectImages["teams-for-education"].alt}
       specs={specs}
       navItems={navItems}
     >
       <CaseStudySection id="context" label="Context">
-        <CaseStudyHeading>When Classrooms Went Quiet</CaseStudyHeading>
+        <CaseStudyHeading>COVID brought millions of new students to online classrooms</CaseStudyHeading>
         <CaseStudyParagraph>
-          When schools moved online, classrooms didn{"'"}t just relocate. They flattened.
+          At the height of the pandemic, Microsoft Teams became a lifeline for education, used by more than 150 million students and educators worldwide. Adoption surged almost overnight. Our team was asked to figure out how to retain this massive growth. The real question was not how to add more features. It was how to make virtual class feel human again.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Teachers faced grids of muted tiles. Students disengaged. Participation dropped.
-          Physical classrooms rely on spatial structure — tables, proximity, micro-groups.
-          Online, that structure disappeared.
+          Before designing anything, we ran extensive research with students, parents, and teachers to understand their daily experience inside Teams. I led several of these sessions to map the full day-in-the-life of both educators and students. We observed where engagement broke down, when energy dropped, and what felt emotionally uncomfortable in a virtual classroom. These sessions were not about usability tweaks. They were about understanding how it felt to spend six hours a day in small boxes on a screen.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Engagement wasn{"'"}t failing because of video quality. It was failing because
-          of lost social architecture.
+          Once we stepped back and looked at the data, a heartbreaking theme emerged. Students did not just miss content. They missed their friends. They missed social cues. They missed feeling seen. That emotional gap was the real problem.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 01 — From flat grids to structured groups" variant="layout" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 01 — Research synthesis: mapping the emotional gap" variant="layout" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="insight" label="Insight">
-        <CaseStudyHeading>Engagement is structural</CaseStudyHeading>
+      <CaseStudySection id="problem" label="Problem">
+        <CaseStudyHeading>Engagement collapsed when classrooms went virtual</CaseStudyHeading>
         <CaseStudyParagraph>
-          Students participate more when:
+          Educators were juggling attendance, chat moderation, breakout rooms, and lesson delivery all at once. Students quietly disengaged. Participation felt risky in a room of muted avatars. Teachers struggled to track who was present and who was drifting away.
         </CaseStudyParagraph>
-        <CaseStudyList
-          items={[
-            "Group boundaries are visible",
-            "Social context is clear",
-            "Movement between collaboration states feels safe",
-          ]}
-        />
         <CaseStudyParagraph>
-          Without spatial cues, collaboration becomes awkward and risky.
+          The online classroom lacked spatial structure. In a physical classroom, students sit in the same seats every day. Teachers scan the room and know who belongs where. Online, that anchor disappeared. Everyone felt interchangeable.
         </CaseStudyParagraph>
+        <CaseStudyCallout>
+          If we wanted to improve engagement, we needed to restore structure and social visibility.
+        </CaseStudyCallout>
       </CaseStudySection>
 
-      <CaseStudySection id="goal" label="Goal">
-        <CaseStudyHeading>The Design Challenge</CaseStudyHeading>
+      <CaseStudySection id="research" label="Research">
+        <CaseStudyHeading>Designing from real classroom behavior</CaseStudyHeading>
         <CaseStudyParagraph>
-          We needed to:
+          Through research sessions with students and teachers, we identified moments where engagement naturally happened and moments where it collapsed. Small group discussions consistently drove participation. Students felt safer speaking in groups of four than in front of thirty.
         </CaseStudyParagraph>
-        <CaseStudyList
-          items={[
-            "Introduce small-group collaboration inside large meetings",
-            "Preserve clarity and institutional tone",
-            "Avoid gimmicky classroom metaphors",
-            "Scale across devices and accessibility requirements",
-          ]}
-        />
         <CaseStudyParagraph>
-          This was not about adding visual flair. It was about restoring classroom dynamics.
+          We also saw that teachers relied heavily on visual attendance. In a real classroom, an empty seat is obvious. Online, it required scanning names in a list.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          This insight shaped everything. The product needed to recreate spatial consistency and lower the emotional barrier to participation.
         </CaseStudyParagraph>
       </CaseStudySection>
 
       <CaseStudySection id="solution" label="Solution">
-        <CaseStudyHeading>Virtual Tables</CaseStudyHeading>
+        <CaseStudyHeading>Reintroducing structure without turning Teams into a cartoon classroom</CaseStudyHeading>
         <CaseStudyParagraph>
-          We introduced structured {"\""}virtual tables{"\""} inside Teams meetings.
-          Students could:
+          We explored how literal the idea of tables should be. One direction visualized full classroom maps with avatars sitting at drawn tables. It was playful but risked feeling gimmicky inside a professional enterprise tool. The opposite direction was purely functional, essentially renaming breakout channels.
         </CaseStudyParagraph>
-        <CaseStudyList
-          items={[
-            "Join smaller group clusters",
-            "See clearly who was at their table",
-            "Transition between full-class and small-group modes",
-            "Maintain awareness of classroom structure",
-          ]}
-        />
         <CaseStudyParagraph>
-          The interface emphasized clarity, visible membership, and lightweight transitions.
-          We deliberately avoided skeuomorphic classroom maps. The design leaned toward
-          stability and predictability.
+          We landed somewhere in between. We designed persistent table cards arranged in a grid. Students sat in fixed positions within these tables, with their avatars resting in consistent seats. If a student was absent, their seat remained empty. Teachers could take attendance visually in seconds. Students could see exactly who they were sitting next to.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 02 — Table membership visibility" variant="controls" className="mt-8 mb-4 max-w-2xl" />
-        <FigurePanel caption="FIG 03 — Whole class to tables transitions" variant="flow" className="mt-4 mb-4 max-w-2xl" />
+        <CaseStudyParagraph>
+          This approach restored spatial awareness without sacrificing clarity. It was structured enough to feel real, but restrained enough to feel native inside Teams.
+        </CaseStudyParagraph>
+        <FigurePanel caption="FIG 02 — From flat grids to persistent table cards" variant="controls" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="key-decisions" label="Key Decisions">
-        <CaseStudyList
-          items={[
-            "Clarity over novelty",
-            "Social visibility reduces friction",
-            "Movement must feel safe",
-            "Design for scale",
-          ]}
-        />
+      <CaseStudySection id="iteration" label="Iteration">
+        <CaseStudyHeading>Designing meetings for engagement, not just broadcasting</CaseStudyHeading>
+        <CaseStudyParagraph>
+          We redesigned class meetings around predictable transitions between whole-class instruction and small group collaboration. Students could move between tables and the main session fluidly. Teachers could create and assign groups quickly before class began.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          The key constraint was speed. Group creation had to be fast enough to happen minutes before a class started. Any friction here would break trust immediately.
+        </CaseStudyParagraph>
+        <FigurePanel caption="FIG 03 — Whole class to table transitions" variant="flow" className="mt-8 mb-4 max-w-2xl" />
+      </CaseStudySection>
+
+      <CaseStudySection id="group-creation" label="Group Creation">
+        <CaseStudyParagraph>
+          Teachers could pre-create tables, assign students manually or automatically, and see group composition at a glance. The system made participation feel intentional instead of random. Students always knew where they belonged.
+        </CaseStudyParagraph>
+        <FigurePanel caption="FIG 04 — Group creation and assignment flow" variant="layout" className="mt-8 mb-4 max-w-2xl" />
+      </CaseStudySection>
+
+      <CaseStudySection id="student-view" label="Student View">
+        <CaseStudyParagraph>
+          From the student perspective, the experience reinforced belonging. They saw familiar group members, recognized their seat, and felt accountable to the people around them. That subtle shift made participation feel manageable again.
+        </CaseStudyParagraph>
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
-        <CaseStudyList
-          items={[
-            "Increased small-group participation in research sessions",
-            "Positive educator feedback around classroom control",
-            "Strong adoption during peak remote learning",
-            "Structural collaboration patterns reused across education scenarios",
-          ]}
-        />
+        <CaseStudyParagraph>
+          User interest and delight were strong in research sessions. Teachers reported faster response times when moving between group discussions. Participation became more equitable because students felt safer contributing in smaller groups.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          The design patterns later informed enterprise meeting experiences and contributed to the launch of the Class Homepage. Teachers shared positive feedback publicly, describing how the experience felt closer to a real classroom.
+        </CaseStudyParagraph>
         <CaseStudyCallout>
-          Teachers described it simply: {"\""}It feels like a classroom again.{"\""}
+          Engagement does not come from adding more controls. It comes from removing friction. When you design with empathy first, inclusivity scales naturally. The UI fades into the background where it belongs.
         </CaseStudyCallout>
-      </CaseStudySection>
-
-      <CaseStudySection id="contribution" label="My Contribution">
-        <CaseStudyList
-          items={[
-            "Defined interaction model for structured group collaboration",
-            "Led UX exploration and prototyping",
-            "Partnered closely with engineering and research",
-            "Drove alignment around clarity and scalability principles",
-          ]}
-        />
       </CaseStudySection>
     </CaseStudyLayout>
   )

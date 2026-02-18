@@ -12,141 +12,109 @@ import { FigurePanel } from "@/components/figure-panel"
 import { projectImages } from "@/lib/images"
 
 const specs = [
-  { label: "Role", value: "Senior UX Designer" },
+  { label: "Role", value: "UX Lead" },
   { label: "Platform", value: "Windows Shell" },
-  { label: "Challenge", value: "Autonomous agents lacked visibility and user trust" },
-  { label: "Solution", value: "Shell-level presence + hover summaries + intelligent escalation" },
-  { label: "Impact", value: "Defined foundational patterns for ambient AI inside Windows" },
+  { label: "Challenge", value: "Users welcomed assistance but disliked surprises" },
+  { label: "Solution", value: "Taskbar presence, hover summaries, unified invocation" },
+  { label: "Impact", value: "Agents became visible, interruptible, and integrated in the OS" },
 ]
 
 const navItems = [
   { id: "context", label: "Context" },
-  { id: "tension", label: "Tension" },
-  { id: "goal", label: "Goal" },
-  { id: "solution", label: "Solution" },
-  { id: "key-decisions", label: "Key Decisions" },
+  { id: "problem", label: "Problem" },
+  { id: "process", label: "Process" },
+  { id: "taskbar", label: "Taskbar" },
+  { id: "invocation", label: "Invocation" },
   { id: "impact", label: "Impact" },
-  { id: "contribution", label: "Contribution" },
 ]
 
 export default function AgentsInWindowsPage() {
   return (
     <CaseStudyLayout
-      title="Agents in Windows"
-      subtitle="Making autonomous AI visible and trustworthy at the OS level"
-      tags={["OS shell", "Interaction design", "Systems thinking", "Ambient AI"]}
+      title="Solving trust and visibility for AI agents in the operating system"
+      subtitle="Agents in Windows"
+      tags={["Enterprise Systems Thinking", "UX Lead", "2025"]}
       heroImage={projectImages["agents-in-windows"].heroImage}
       heroImageAlt={projectImages["agents-in-windows"].alt}
       specs={specs}
       navItems={navItems}
     >
       <CaseStudySection id="context" label="Context">
-        <CaseStudyHeading>The Problem</CaseStudyHeading>
+        <CaseStudyHeading>Windows is evolving into a canvas for AI agents</CaseStudyHeading>
         <CaseStudyParagraph>
-          AI agents don{"'"}t behave like apps. They run continuously, operate across
-          multiple surfaces, execute multi-step workflows, and trigger based on context.
+          Microsoft leadership, including Satya Nadella, has outlined a future where AI agents take on routine work so people can focus on higher-value thinking. This vision positions Windows as more than a desktop operating system. It becomes the environment where agents are deployed, monitored, secured, and orchestrated.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          When agents act silently, users feel loss of control. Without visibility,
-          autonomy feels unsafe.
+          The opportunity was to make Windows the best place for enterprise workers and developers to run intelligent agents. Not hidden inside apps. Integrated into the OS itself.
         </CaseStudyParagraph>
+        <FigurePanel caption="FIG 01 — Agents as first-class OS citizens" variant="layout" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="tension" label="Tension">
+      <CaseStudySection id="problem" label="Problem">
+        <CaseStudyHeading>People do not object to help. They object to not knowing what is happening.</CaseStudyHeading>
         <CaseStudyParagraph>
-          Agents must be visible but not noisy, persistent but lightweight,
-          interruptible but not fragile.
+          Early feedback revealed a consistent pattern. Users welcomed assistance. They disliked surprises. They wanted situational awareness.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          This wasn{"'"}t about adding UI. It was about defining system behavior.
+          Agent behavior was scattered across notifications and app windows. Users could not easily tell what was running, what needed attention, or what had completed.
         </CaseStudyParagraph>
-      </CaseStudySection>
-
-      <CaseStudySection id="goal" label="Goal">
-        <CaseStudyHeading>A shell-level language for agents</CaseStudyHeading>
-        <CaseStudyParagraph>
-          Users should be able to see when an agent is running, understand what it{"'"}s
-          doing, intervene when necessary, and resume outcomes later.
-        </CaseStudyParagraph>
-        <CaseStudyParagraph>
-          Agents needed to feel like collaborators, not background scripts.
-        </CaseStudyParagraph>
-      </CaseStudySection>
-
-      <CaseStudySection id="solution" label="Solution">
-        <CaseStudyHeading>Taskbar Presence</CaseStudyHeading>
-        <CaseStudyParagraph>
-          Persistent, lightweight representation of active agents:
-        </CaseStudyParagraph>
-        <CaseStudyList
-          items={[
-            "Status indicators showing agent state",
-            "Hover summaries with current activity",
-            "Clear interaction affordances",
-          ]}
-        />
-        <FigurePanel caption="FIG 01 — Taskbar presence + state indicators" variant="layout" className="mt-8 mb-8 max-w-2xl" />
-
-        <CaseStudyHeading>Hover Cards</CaseStudyHeading>
-        <CaseStudyParagraph>
-          On-demand detail showing:
-        </CaseStudyParagraph>
-        <CaseStudyList
-          items={[
-            "Current workflow step",
-            "Recent activity",
-            "Next action",
-            "Pause or stop options",
-          ]}
-        />
-        <FigurePanel caption="FIG 02 — Hover summary: progress + controls" variant="controls" className="mt-8 mb-8 max-w-2xl" />
-
-        <CaseStudyHeading>Intelligent Escalation</CaseStudyHeading>
-        <CaseStudyParagraph>
-          Agents interrupt only when:
-        </CaseStudyParagraph>
-        <CaseStudyList
-          items={[
-            "Decisions are required",
-            "Tasks fail",
-            "Sensitive permissions are involved",
-          ]}
-        />
-        <FigurePanel caption="FIG 03 — Escalation patterns" variant="flow" className="mt-8 mb-4 max-w-2xl" />
-      </CaseStudySection>
-
-      <CaseStudySection id="key-decisions" label="Key Decisions">
-        <CaseStudyList
-          items={[
-            "Autonomy requires transparency",
-            "Ambient does not mean invisible",
-            "Interruptibility builds trust",
-            "OS coherence matters",
-          ]}
-        />
-      </CaseStudySection>
-
-      <CaseStudySection id="impact" label="Impact">
-        <CaseStudyList
-          items={[
-            "Improved clarity in user testing around agent state",
-            "Influenced internal strategy for ambient AI orchestration",
-            "Established patterns for long-running system agents",
-          ]}
-        />
         <CaseStudyCallout>
-          This work shifted the conversation from: {"\""}What can agents do?{"\""}
-          to {"\""}How should agents behave inside an operating system?{"\""}
+          The narrative spine became clear. Clarity creates trust.
         </CaseStudyCallout>
       </CaseStudySection>
 
-      <CaseStudySection id="contribution" label="My Contribution">
+      <CaseStudySection id="process" label="Process">
+        <CaseStudyHeading>Making agents first-class citizens</CaseStudyHeading>
+        <CaseStudyParagraph>
+          Agents behave differently than apps. They can run in the background, interact with system resources, and take time to complete tasks.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          We explored multiple models. Should agents live inside apps. Should they be pinned separately. Should they have dedicated panels. We tested and iterated across many variations.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          For the discretion of this project, I cannot share detailed early explorations, as the system continues to evolve. What I can share is the tension. We wanted to move toward a bold vision, but we also needed to evolve patterns gradually. You cannot move the cheese too much inside an operating system.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          The solution was to treat agents like first-class citizens. They follow the same structural rules as apps, but extend them with new states and visibility patterns.
+        </CaseStudyParagraph>
+      </CaseStudySection>
+
+      <CaseStudySection id="taskbar" label="Agents on the Taskbar">
+        <CaseStudyParagraph>
+          After initiating an agent task, either from Microsoft 365 Copilot or Ask Copilot on the taskbar, the agent appears as an icon just like a regular app. Status badging communicates whether it is active, idle, complete, or needs attention. Hover cards reveal contextual progress and allow intervention without opening a full window.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          We defined a clear state system. Idle meant waiting. Active meant working. Needs attention meant user intervention was required. Complete meant the artifact was ready. Each state used minimal and consistent visual cues. Nothing flashy. Everything legible.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          This transformed the taskbar into a dynamic hub. Users could monitor and unblock agents directly from the shell. Completed artifacts were not buried inside conversations. Visibility stayed at the system level.
+        </CaseStudyParagraph>
+        <FigurePanel caption="FIG 02 — Taskbar presence and state indicators" variant="controls" className="mt-8 mb-4 max-w-2xl" />
+      </CaseStudySection>
+
+      <CaseStudySection id="invocation" label="Unified Invocation">
+        <CaseStudyParagraph>
+          Ask Copilot on the taskbar became a universal composer. Users could invoke agents from anywhere using text or voice. Typing the at symbol allowed direct targeting of specific agents.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          This created one consistent entry point across the OS.
+        </CaseStudyParagraph>
+        <FigurePanel caption="FIG 03 — Universal agent invocation from taskbar" variant="flow" className="mt-8 mb-4 max-w-2xl" />
+      </CaseStudySection>
+
+      <CaseStudySection id="impact" label="Impact">
+        <CaseStudyParagraph>
+          Agents now feel visible and understandable inside Windows. They are discoverable. Interruptible. Integrated.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          Instead of opaque automation, users experience collaborative assistance.
+        </CaseStudyParagraph>
         <CaseStudyList
           items={[
-            "Defined system-level interaction patterns",
-            "Led exploration across shell surfaces",
-            "Partnered with engineering on feasibility",
-            "Shaped trust and escalation behaviors",
+            "Visibility unlocks trust. Agents should never feel hidden if they are acting on your behalf.",
+            "Control builds confidence. Pause and stop affordances matter.",
+            "Integration must be seamless and predictable.",
+            "Agents should feel like tools you use, not black boxes you fear.",
           ]}
         />
       </CaseStudySection>

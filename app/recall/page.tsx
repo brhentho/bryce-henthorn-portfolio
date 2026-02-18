@@ -12,125 +12,107 @@ import { FigurePanel } from "@/components/figure-panel"
 import { projectImages } from "@/lib/images"
 
 const specs = [
-  { label: "Role", value: "Senior UX Designer" },
-  { label: "Platform", value: "Windows" },
-  { label: "Challenge", value: "Traditional search doesn't match human memory" },
-  { label: "Constraint", value: "High privacy sensitivity" },
-  { label: "Solution", value: "Semantic memory cards + progressive disclosure controls" },
-  { label: "Impact", value: "Established trust-forward patterns for AI-powered memory" },
+  { label: "Role", value: "UX Lead" },
+  { label: "Platform", value: "Windows / Copilot+ PCs" },
+  { label: "Challenge", value: "Traditional search breaks down at human scale" },
+  { label: "Constraint", value: "High privacy sensitivity, always-on memory layer" },
+  { label: "Solution", value: "Semantic memory cards with visual-first retrieval" },
+  { label: "Impact", value: "Established trust-forward patterns for AI-powered memory in Windows" },
 ]
 
 const navItems = [
   { id: "context", label: "Context" },
-  { id: "tension", label: "Tension" },
-  { id: "goal", label: "Goal" },
-  { id: "solution", label: "Solution" },
-  { id: "key-decisions", label: "Key Decisions" },
+  { id: "problem", label: "Problem" },
+  { id: "process", label: "Process" },
+  { id: "iteration", label: "Iteration" },
   { id: "impact", label: "Impact" },
-  { id: "contribution", label: "Contribution" },
 ]
 
 export default function RecallPage() {
   return (
     <CaseStudyLayout
-      title="Windows Recall"
-      subtitle="Designing memory for your PC — without sacrificing trust"
-      tags={["Trust + privacy", "Systems thinking", "Windows", "Semantic search"]}
+      title="Semantic search for everything you've viewed, across apps"
+      subtitle="Recall"
+      tags={["0 to 1", "AI", "Semantic Search", "UX Lead", "2024"]}
       heroImage={projectImages["recall"].heroImage}
       heroImageAlt={projectImages["recall"].alt}
       specs={specs}
       navItems={navItems}
     >
       <CaseStudySection id="context" label="Context">
-        <CaseStudyHeading>The Problem</CaseStudyHeading>
+        <CaseStudyHeading>What if your computer could remember everything you{"'"}ve seen?</CaseStudyHeading>
         <CaseStudyParagraph>
-          Search assumes users remember file names, keywords, and folder locations.
-          Humans remember differently.
+          That question became Windows Recall, an AI-powered memory system built directly into Copilot+ PCs. The opportunity was compelling. The risks were obvious.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          We remember: {"\""}that slide with the blue chart{"\""}... {"\""}the document
-          after the meeting{"\""}... {"\""}that website from last Tuesday.{"\""}
+          We were designing an always-on memory layer for the operating system. It needed to feel powerful but not invasive. Helpful but not overwhelming. Local and private by design.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Memory is associative and visual. Windows search was powerful — but not human.
+          Our challenge was not simply building semantic search. It was balancing intelligence with trust.
         </CaseStudyParagraph>
+        <FigurePanel caption="FIG 01 — Recall: semantic memory at the OS level" variant="layout" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="tension" label="Tension">
+      <CaseStudySection id="problem" label="Problem">
+        <CaseStudyHeading>Traditional search breaks down at human scale</CaseStudyHeading>
         <CaseStudyParagraph>
-          A system that remembers what you{"'"}ve seen is helpful.
-          It can also feel invasive.
+          People remember fragments, not file names. They remember visuals, context, and moments.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          If Recall felt opaque or uncontrollable, adoption would collapse.
-          The challenge was not just retrieval. It was trust.
+          If Recall required precise input, it would fail immediately. But if it returned unpredictable results, users would lose confidence.
         </CaseStudyParagraph>
-      </CaseStudySection>
-
-      <CaseStudySection id="goal" label="Goal">
-        <CaseStudyHeading>
-          Make your PC feel like it remembers with you — not watches you
-        </CaseStudyHeading>
-        <CaseStudyParagraph>
-          That required transparent indexing, clear scope boundaries, lightweight
-          privacy controls, and calm structured presentation.
-        </CaseStudyParagraph>
-      </CaseStudySection>
-
-      <CaseStudySection id="solution" label="Solution">
-        <CaseStudyHeading>Semantic Memory Cards</CaseStudyHeading>
-        <CaseStudyParagraph>
-          We designed a recall interface built around rich cards combining:
-        </CaseStudyParagraph>
-        <CaseStudyList
-          items={[
-            "Visual snapshot",
-            "Extracted text",
-            "Contextual metadata (app, date, timeline)",
-          ]}
-        />
-        <CaseStudyParagraph>
-          Why cards? Because visual fragments trigger memory faster than filenames.
-          We prioritized progressive disclosure — advanced filtering and controls
-          were accessible but unobtrusive.
-        </CaseStudyParagraph>
-        <FigurePanel caption="FIG 01 — Card-based results (visual + text)" variant="layout" className="mt-8 mb-4 max-w-2xl" />
-        <FigurePanel caption="FIG 02 — Progressive disclosure controls" variant="controls" className="mt-4 mb-4 max-w-2xl" />
-        <FigurePanel caption="FIG 03 — Match types: visual vs text" variant="flow" className="mt-4 mb-4 max-w-2xl" />
-      </CaseStudySection>
-
-      <CaseStudySection id="key-decisions" label="Key Decisions">
-        <CaseStudyList
-          items={[
-            "Visual + text pairing for richer recall triggers",
-            "Progressive disclosure to manage complexity",
-            "User-in-the-loop control for all indexing behavior",
-            "OS-level coherence with existing Windows patterns",
-          ]}
-        />
-      </CaseStudySection>
-
-      <CaseStudySection id="impact" label="Impact">
-        <CaseStudyList
-          items={[
-            "Improved task recovery in prototype testing",
-            "Strong user comprehension around indexing behavior",
-            "Influenced trust patterns across AI surfaces in Windows",
-            "Helped shape how memory is framed inside the OS",
-          ]}
-        />
         <CaseStudyCallout>
-          Recall wasn{"'"}t just a feature. It was a shift in how Windows thinks about memory.
+          We needed to bridge fuzzy human memory with structured AI retrieval, while making relevance understandable.
         </CaseStudyCallout>
       </CaseStudySection>
 
-      <CaseStudySection id="contribution" label="My Contribution">
+      <CaseStudySection id="process" label="Process">
+        <CaseStudyHeading>Designing memory, not a file browser</CaseStudyHeading>
+        <CaseStudyParagraph>
+          We began by defining the anatomy of a Recall card. Each card contained a screenshot, timestamp, app association, extracted text, and ranking score. Creating hierarchy was straightforward. Creating the feeling of memory was not.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          We intentionally grounded the card in the visual snapshot. The screenshot sat prominently, reinforcing that this was a moment you saw, not just a document you opened.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          We also clarified interaction paths. Entering the memory view was distinct from reopening the original window. That distinction prevented confusion and reinforced predictability.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          Throughout the process, we worked closely with researchers and engineers. Decisions were shaped by real user reactions, not internal preference.
+        </CaseStudyParagraph>
+        <FigurePanel caption="FIG 02 — Card anatomy: visual snapshot, text, metadata" variant="controls" className="mt-8 mb-4 max-w-2xl" />
+      </CaseStudySection>
+
+      <CaseStudySection id="iteration" label="Iteration">
+        <CaseStudyHeading>Explaining relevance, not just returning results</CaseStudyHeading>
+        <CaseStudyParagraph>
+          Early versions blended text and visual matches into one ranked list. Users struggled to understand why certain items appeared.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          We separated text and visual results into clear sections. That simple structural change dramatically improved comprehension.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          Live search updated as users typed, creating a fluid experience. Underneath, semantic embeddings were doing heavy computation. We designed loading states that communicated progress without exposing complexity.
+        </CaseStudyParagraph>
+        <CaseStudyCallout>
+          Users do not need to understand embeddings. They need confidence that the system knows what it is doing.
+        </CaseStudyCallout>
+        <FigurePanel caption="FIG 03 — Separated text vs visual result types" variant="flow" className="mt-8 mb-4 max-w-2xl" />
+      </CaseStudySection>
+
+      <CaseStudySection id="impact" label="Impact">
+        <CaseStudyParagraph>
+          Users described Recall as surprising and useful. Separating visual and text results improved clarity. Many found information they would not have been able to retrieve through traditional search.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          Trust was central. Recall is opt-in and local-only. Transparency about data storage built confidence. Internally, the project influenced how high-sensitivity AI features are introduced in Windows.
+        </CaseStudyParagraph>
         <CaseStudyList
           items={[
-            "Defined interaction model for recall experience",
-            "Led UX exploration of trust and privacy controls",
-            "Partnered with research to validate comprehension",
-            "Established reusable patterns for AI-powered retrieval",
+            "Explain relevance, not just results",
+            "Hide complexity, keep the magic",
+            "Design with engineering, not after it",
+            "Tight collaboration shaped both the interface and the model behavior",
           ]}
         />
       </CaseStudySection>
