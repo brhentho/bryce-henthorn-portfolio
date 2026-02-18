@@ -1,25 +1,28 @@
 "use client"
 
-import { motion, useReducedMotion } from "framer-motion"
+import { useEffect, useState } from "react"
 
 interface PageTransitionProps {
   children: React.ReactNode
 }
 
 export function PageTransition({ children }: PageTransitionProps) {
-  const prefersReducedMotion = useReducedMotion()
+  const [mounted, setMounted] = useState(false)
 
-  if (prefersReducedMotion) {
-    return <>{children}</>
-  }
+  useEffect(() => {
+    // Trigger animation on next frame after mount
+    requestAnimationFrame(() => setMounted(true))
+  }, [])
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+    <div
+      style={{
+        opacity: mounted ? 1 : 0,
+        transform: mounted ? "translateY(0)" : "translateY(12px)",
+        transition: "opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)",
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }
