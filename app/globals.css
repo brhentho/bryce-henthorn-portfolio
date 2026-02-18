@@ -90,3 +90,12 @@
   background: rgba(45, 226, 210, 0.2);
   color: #F0F0F3;
 }
+
+/* Sweep line animation for hero intro */
+@keyframes sweep-line {
+  from { top: 10%; }
+  to { top: 90%; }
+}
+.animate-sweep-line {
+  animation: sweep-line 0.3s linear forwards;
+}
