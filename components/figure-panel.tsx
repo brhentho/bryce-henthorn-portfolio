@@ -93,7 +93,10 @@ export function FigurePanel({ caption, variant, src, videoSrc, className, aspect
   return (
     <figure className={cn("group", className)}>
       <div
-        className="relative rounded-[var(--radius-card)] border border-border bg-surface-raised overflow-hidden"
+        className={cn(
+          "relative overflow-hidden",
+          !(src || videoSrc) && "rounded-[var(--radius-card)] border border-border bg-surface-raised"
+        )}
         style={{ aspectRatio: (src || videoSrc) ? undefined : aspectRatio }}
       >
         {videoSrc ? (
@@ -102,10 +105,10 @@ export function FigurePanel({ caption, variant, src, videoSrc, className, aspect
           <Image
             src={src}
             alt={caption}
-            width={1200}
-            height={675}
-            className="w-full h-auto block"
-            sizes="(max-width: 768px) 100vw, 720px"
+            width={1600}
+            height={900}
+            className="w-full h-auto block object-contain"
+            sizes="(max-width: 768px) 100vw, 900px"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center" style={{ aspectRatio }}>

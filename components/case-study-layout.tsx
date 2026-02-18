@@ -64,7 +64,7 @@ export function CaseStudyLayout({
             }}
           />
 
-          <Container className="relative z-10 py-32 md:py-0">
+          <Container className="relative z-10 pt-10 md:pt-14 lg:pt-16 pb-16 md:pb-0">
             <AnimateIn>
               <Link
                 href="/"
@@ -77,9 +77,9 @@ export function CaseStudyLayout({
               </Link>
             </AnimateIn>
 
-            <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
+            <div className="flex flex-col lg:grid lg:grid-cols-[2fr_3fr] lg:items-center gap-10 lg:gap-10 xl:gap-12">
               {/* Left: Product name + Title + tags + subtitle */}
-              <div className="flex-1 min-w-0">
+              <div className="min-w-0">
                 <AnimateIn delay={0.05}>
                   <p className="text-sm font-sans font-medium text-accent mb-4 tracking-wide">
                     {productName}
@@ -87,7 +87,7 @@ export function CaseStudyLayout({
                 </AnimateIn>
 
                 <AnimateIn delay={0.1}>
-                  <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground max-w-xl text-balance">
+                  <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance">
                     {title}
                   </h1>
                 </AnimateIn>
@@ -117,19 +117,18 @@ export function CaseStudyLayout({
                 )}
               </div>
 
-              {/* Right: Hero image */}
+              {/* Right: Hero image — no card/border/bg, just the PNG floating naturally */}
               {heroImage && (
-                <AnimateIn delay={0.2} className="flex-1 min-w-0">
-                  <div className="relative aspect-[16/10] rounded-[var(--radius-hero-image)] border border-border overflow-hidden bg-surface-raised">
-                    <Image
-                      src={heroImage}
-                      alt={heroImageAlt || title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      priority
-                    />
-                  </div>
+                <AnimateIn delay={0.2} className="min-w-0">
+                  <Image
+                    src={heroImage}
+                    alt={heroImageAlt || title}
+                    width={1600}
+                    height={1000}
+                    className="w-full h-auto object-contain"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    priority
+                  />
                 </AnimateIn>
               )}
             </div>
