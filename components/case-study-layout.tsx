@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import Image from "next/image"
 import { Nav } from "@/components/nav"
 import { Footer } from "@/components/footer"
@@ -64,19 +63,7 @@ export function CaseStudyLayout({
             }}
           />
 
-          <Container className="relative z-10 pt-10 md:pt-14 lg:pt-16 pb-16 md:pb-0">
-            <AnimateIn>
-              <Link
-                href="/"
-                className="inline-flex items-center gap-1.5 text-sm font-sans text-foreground-tertiary hover:text-accent transition-colors duration-200 mb-10 md:mb-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              >
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M13 8H3M7 4L3 8l4 4" />
-                </svg>
-                Back to Work
-              </Link>
-            </AnimateIn>
-
+          <Container className="relative z-10 pt-16 md:pt-20 pb-16 md:pb-20">
             <div className="flex flex-col lg:grid lg:grid-cols-[2fr_3fr] lg:items-center gap-10 lg:gap-10 xl:gap-12">
               {/* Left: Product name + Title + tags + subtitle */}
               <div className="min-w-0">
@@ -136,7 +123,7 @@ export function CaseStudyLayout({
         </section>
 
         {/* Overview spec panel - full width centered */}
-        <Container>
+        <Container className="mt-16 md:mt-20">
           <AnimateIn delay={0.1}>
             <div className="mb-16 md:mb-20">
               <OverviewSpecPanel specs={specs} />
