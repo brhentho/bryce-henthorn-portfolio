@@ -22,7 +22,7 @@ export const projectImages: Record<string, ProjectImages> = {
   },
   "agents-in-windows": {
     cardImage: "/images/projects/agents-card-real.png",
-    heroImage: "/images/projects/agents-hero.jpg",
+    heroImage: "/images/projects/agents-hero-real.png",
     alt: "Agents in Windows — Researcher agent showing multi-step task progress on the desktop",
   },
   "copilot-actions": {

@@ -52,7 +52,7 @@ export default function AgentsInWindowsPage() {
         <CaseStudyParagraph>
           This work was not about embedding Copilot into Windows as a feature. It was about establishing Windows as the canvas where agents become first-class citizens of the operating system.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 01 -- Agents as first-class OS citizens" variant="layout" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 01 — Agents as first-class OS citizens" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Agents_fig01-Ba0MkmsniFvg89l6rRoCLNrfOR6wA6.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="problem" label="Problem">
@@ -103,7 +103,7 @@ export default function AgentsInWindowsPage() {
         <CaseStudyParagraph>
           This approach turned the taskbar into more than a launcher. It became a dynamic control surface for agent activity. Users can monitor, intervene, and retrieve completed work directly from the shell rather than hunting through conversations or buried notifications.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 02 -- Taskbar presence: state badges, hover cards, and controls" variant="controls" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 02 — Taskbar presence: state badges, hover cards, and controls" src="/images/projects/agents-fig02.jpg" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="invocation" label="Unified Invocation">
@@ -114,7 +114,7 @@ export default function AgentsInWindowsPage() {
         <CaseStudyParagraph>
           This unified entry point reinforces a consistent mental model. Agents are not confined to individual apps. They are accessible from the system layer. Invocation and monitoring both live within predictable, centralized surfaces.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 03 -- Universal agent invocation from the taskbar" variant="video" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 03 — Universal agent invocation from the taskbar" src="/images/projects/agents-fig03.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="iteration" label="Iteration">
@@ -134,6 +134,7 @@ export default function AgentsInWindowsPage() {
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
+        <FigurePanel caption="FIG 04 — Agents on Windows taskbar, announced at Microsoft Build" src="/images/projects/agents-fig04.png" className="mb-8 max-w-2xl" />
         <CaseStudyHeading>From opaque automation to collaborative assistance</CaseStudyHeading>
         <CaseStudyParagraph>
           Today, agents in Windows feel visible and understandable. They are discoverable at a glance and interruptible when needed. Completed work does not disappear into hidden surfaces. It remains accessible and contextual.
