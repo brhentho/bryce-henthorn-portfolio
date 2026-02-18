@@ -13,12 +13,12 @@ export function Nav() {
   const links = [
     { label: "Work", href: "/#projects" },
     { label: "About", href: "/about" },
-    { label: "Email", href: "mailto:bhenthorn2757@gmail.com" },
+    { label: "Contact", href: "mailto:bhenthorn2757@gmail.com" },
   ]
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background"
+      className="fixed top-0 left-0 right-0 z-50 bg-background"
       role="navigation"
       aria-label="Main navigation"
     >
@@ -61,9 +61,7 @@ export function Nav() {
               </Link>
             )
           })}
-          <span className="text-xs font-sans text-foreground-tertiary bg-surface-raised px-3 py-1.5 rounded-lg border border-border">
-            Seattle, WA
-          </span>
+
         </div>
 
         {/* Mobile menu button */}

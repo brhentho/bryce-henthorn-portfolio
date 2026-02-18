@@ -10,6 +10,8 @@ import { CaseStudyNav } from "@/components/case-study-nav"
 import { AnimateIn } from "@/components/animate-in"
 import { PageTransition } from "@/components/page-transition"
 
+const GRID_SPACING = 40
+
 interface SpecItem {
   label: string
   value: string
@@ -21,6 +23,8 @@ interface NavItem {
 }
 
 interface CaseStudyLayoutProps {
+  /** Small product name shown above the title in accent color */
+  productName: string
   title: string
   subtitle?: string
   tags?: string[]
@@ -32,6 +36,7 @@ interface CaseStudyLayoutProps {
 }
 
 export function CaseStudyLayout({
+  productName,
   title,
   subtitle,
   tags,
@@ -47,6 +52,17 @@ export function CaseStudyLayout({
       <main>
         {/* Hero - 2 column: text left, image right */}
         <section className="relative min-h-screen flex items-center overflow-hidden">
+          {/* Static dot grid background */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+            style={{
+              backgroundImage: `radial-gradient(circle, rgba(240,240,243,0.12) 1.5px, transparent 1.5px)`,
+              backgroundSize: `${GRID_SPACING}px ${GRID_SPACING}px`,
+              backgroundPosition: `${GRID_SPACING / 2}px ${GRID_SPACING / 2}px`,
+            }}
+          />
+
           <Container className="relative z-10 py-32 md:py-0">
             <AnimateIn>
               <a
@@ -61,8 +77,14 @@ export function CaseStudyLayout({
             </AnimateIn>
 
             <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
-              {/* Left: Title + tags + subtitle */}
+              {/* Left: Product name + Title + tags + subtitle */}
               <div className="flex-1 min-w-0">
+                <AnimateIn delay={0.05}>
+                  <p className="text-sm font-sans font-medium text-accent mb-4 tracking-wide">
+                    {productName}
+                  </p>
+                </AnimateIn>
+
                 <AnimateIn delay={0.1}>
                   <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground max-w-xl text-balance">
                     {title}
@@ -113,10 +135,10 @@ export function CaseStudyLayout({
           </Container>
         </section>
 
-        {/* Overview spec panel */}
+        {/* Overview spec panel - full width centered */}
         <Container>
           <AnimateIn delay={0.1}>
-            <div className="mb-16 md:mb-20 max-w-3xl">
+            <div className="mb-16 md:mb-20">
               <OverviewSpecPanel specs={specs} />
             </div>
           </AnimateIn>

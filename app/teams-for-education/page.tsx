@@ -34,8 +34,8 @@ const navItems = [
 export default function TeamsForEducationPage() {
   return (
     <CaseStudyLayout
+      productName="Teams for Education"
       title="Modernizing online class for an authentic virtual experience"
-      subtitle="Teams for Education"
       tags={["UX Strategy", "Microsoft Teams Enterprise", "Senior Designer", "2020"]}
       heroImage={projectImages["teams-for-education"].heroImage}
       heroImageAlt={projectImages["teams-for-education"].alt}
@@ -48,10 +48,13 @@ export default function TeamsForEducationPage() {
           At the height of the pandemic, Microsoft Teams became a lifeline for education, used by more than 150 million students and educators worldwide. Adoption surged almost overnight. Our team was asked to figure out how to retain this massive growth. The real question was not how to add more features. It was how to make virtual class feel human again.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Before designing anything, we ran extensive research with students, parents, and teachers to understand their daily experience inside Teams. I led several of these sessions to map the full day-in-the-life of both educators and students. We observed where engagement broke down, when energy dropped, and what felt emotionally uncomfortable in a virtual classroom. These sessions were not about usability tweaks. They were about understanding how it felt to spend six hours a day in small boxes on a screen.
+          Through research sessions with students and teachers, we identified moments where engagement naturally happened and moments where it collapsed. Small group discussions consistently drove participation. Students felt safer speaking in groups of four than in front of thirty.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Once we stepped back and looked at the data, a heartbreaking theme emerged. Students did not just miss content. They missed their friends. They missed social cues. They missed feeling seen. That emotional gap was the real problem.
+          We also saw that teachers relied heavily on visual attendance. In a real classroom, an empty seat is obvious. Online, it required scanning names in a list.
+        </CaseStudyParagraph>
+        <CaseStudyParagraph>
+          This insight shaped everything. The product needed to recreate spatial consistency and lower the emotional barrier to participation.
         </CaseStudyParagraph>
         <FigurePanel caption="FIG 01 — Research synthesis: mapping the emotional gap" variant="layout" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
@@ -65,20 +68,17 @@ export default function TeamsForEducationPage() {
           The online classroom lacked spatial structure. In a physical classroom, students sit in the same seats every day. Teachers scan the room and know who belongs where. Online, that anchor disappeared. Everyone felt interchangeable.
         </CaseStudyParagraph>
         <CaseStudyCallout>
-          If we wanted to improve engagement, we needed to restore structure and social visibility.
+          {'"'}I don{"'"}t really like it when the teacher says {"'"}okay you guys can discuss on video{"'"} because everyone either starts talking or no one talks, so then there{"'"}s just awkward silence.{'"'} - Karen, grade 12
         </CaseStudyCallout>
       </CaseStudySection>
 
       <CaseStudySection id="research" label="Research">
         <CaseStudyHeading>Designing from real classroom behavior</CaseStudyHeading>
         <CaseStudyParagraph>
-          Through research sessions with students and teachers, we identified moments where engagement naturally happened and moments where it collapsed. Small group discussions consistently drove participation. Students felt safer speaking in groups of four than in front of thirty.
+          Before designing anything, we ran extensive research with students, parents, and teachers to understand their daily experience inside Teams. I led several of these sessions to map the full day-in-the-life of both educators and students. We observed where engagement broke down, when energy dropped, and what felt emotionally uncomfortable in a virtual classroom. These sessions were not about usability tweaks. They were about understanding how it felt to spend six hours a day in small boxes on a screen.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          We also saw that teachers relied heavily on visual attendance. In a real classroom, an empty seat is obvious. Online, it required scanning names in a list.
-        </CaseStudyParagraph>
-        <CaseStudyParagraph>
-          This insight shaped everything. The product needed to recreate spatial consistency and lower the emotional barrier to participation.
+          Once we stepped back and looked at the data, a heartbreaking theme emerged. Students did not just miss content. They missed their friends. They missed social cues. They missed feeling seen. That emotional gap was the real problem.
         </CaseStudyParagraph>
       </CaseStudySection>
 
@@ -118,9 +118,11 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           From the student perspective, the experience reinforced belonging. They saw familiar group members, recognized their seat, and felt accountable to the people around them. That subtle shift made participation feel manageable again.
         </CaseStudyParagraph>
+        <FigurePanel caption="FIG 05 — Student view of their virtual table" variant="video" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
+        <FigurePanel caption="End-to-end video: group creation and class orchestration" variant="video" className="mb-8 max-w-2xl" />
         <CaseStudyParagraph>
           User interest and delight were strong in research sessions. Teachers reported faster response times when moving between group discussions. Participation became more equitable because students felt safer contributing in smaller groups.
         </CaseStudyParagraph>

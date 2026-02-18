@@ -29,15 +29,15 @@ export function PhilosophySection() {
       <Container>
         <SectionHeader label="Philosophy" />
         <AnimateIn>
-          <p className="text-lg md:text-xl text-foreground leading-relaxed max-w-2xl mb-12 font-sans">
+          <p className="text-lg md:text-xl text-foreground leading-relaxed max-w-2xl mb-14 font-sans">
             I design systems before surfaces. Great interaction feels invisible until
             it{"'"}s missing. Clarity beats novelty. Trust scales better than features.
           </p>
         </AnimateIn>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
           {principles.map((p, i) => (
             <AnimateIn key={p.title} delay={i * 0.1}>
-              <div className="rounded-[var(--radius-card)] border border-border bg-surface p-6 transition-all duration-300 hover:border-border-hover">
+              <div>
                 <h3 className="font-heading text-sm font-semibold text-foreground mb-3 tracking-tight">
                   {p.title}
                 </h3>

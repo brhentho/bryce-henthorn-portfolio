@@ -5,10 +5,11 @@ import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 interface ProjectCardProps {
-  title: string
-  summary: string
+  /** Small product/project name (e.g. "Teams for Education") */
+  productName: string
+  /** Large heading (the case-study tagline) */
+  heading: string
   href?: string
-  tags?: string[]
   cardImage?: string
   imageAlt?: string
   tag?: string
@@ -18,10 +19,9 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({
-  title,
-  summary,
+  productName,
+  heading,
   href,
-  tags,
   cardImage,
   imageAlt,
   tag,
@@ -36,7 +36,7 @@ export function ProjectCard({
         {cardImage ? (
           <Image
             src={cardImage}
-            alt={imageAlt || title}
+            alt={imageAlt || productName}
             fill
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
@@ -56,33 +56,19 @@ export function ProjectCard({
 
       {/* Card body */}
       <div className="p-5 md:p-6">
-        {/* Title */}
-        <h3 className="font-heading text-lg md:text-xl font-semibold text-foreground tracking-tight mb-2">
-          {title}
-        </h3>
-
-        {/* Summary */}
-        <p className="text-sm text-foreground-secondary leading-relaxed font-sans mb-4">
-          {summary}
+        {/* Small product name */}
+        <p className="text-xs font-sans font-medium text-foreground-tertiary uppercase tracking-wider mb-2">
+          {productName}
         </p>
 
-        {/* Tags row */}
-        {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {tags.map((t) => (
-              <span
-                key={t}
-                className="text-[11px] font-sans font-medium text-foreground-tertiary bg-surface-raised px-2.5 py-1 rounded-lg border border-border"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        )}
+        {/* Large heading */}
+        <h3 className="font-heading text-lg md:text-xl font-semibold text-foreground tracking-tight leading-snug mb-5">
+          {heading}
+        </h3>
 
         {/* CTA indicator */}
         {!disabled && (
-          <div className="flex items-center gap-1.5 text-foreground-tertiary group-hover:text-accent transition-colors duration-300 pt-1">
+          <div className="flex items-center gap-1.5 text-foreground-tertiary group-hover:text-accent transition-colors duration-300">
             <span className="text-sm font-sans font-medium">
               Read case study
             </span>
