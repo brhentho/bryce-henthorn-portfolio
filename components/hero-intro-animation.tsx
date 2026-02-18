@@ -12,12 +12,22 @@ const CLUSTER_COLS = 7
 const CLUSTER_ROWS = 5
 const CLUSTER_TOTAL = CLUSTER_COLS * CLUSTER_ROWS
 
+// Deterministic pseudo-random using a seed so server & client produce identical values
+function seededRandom(seed: number): () => number {
+  let s = seed
+  return () => {
+    s = (s * 16807 + 0) % 2147483647
+    return (s - 1) / 2147483646
+  }
+}
+
 function generateScattered(): { x: number; y: number }[] {
+  const rand = seededRandom(42)
   const dots: { x: number; y: number }[] = []
   for (let i = 0; i < CLUSTER_TOTAL; i++) {
     dots.push({
-      x: 10 + Math.random() * 80,
-      y: 10 + Math.random() * 80,
+      x: 10 + rand() * 80,
+      y: 10 + rand() * 80,
     })
   }
   return dots
