@@ -1,14 +1,24 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { Container } from "@/components/container"
-import { motion, useReducedMotion } from "framer-motion"
 import { HeroIntroAnimation } from "@/components/hero-intro-animation"
 
 export function Hero() {
-  const prefersReducedMotion = useReducedMotion()
+  const [animate, setAnimate] = useState(false)
 
-  const textDelay = prefersReducedMotion ? 0 : 1.75
-  const stagger = prefersReducedMotion ? 0 : 0.12
+  useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (prefersReduced) {
+      setAnimate(true)
+      return
+    }
+    // Delay to match dot animation completion
+    const timer = setTimeout(() => setAnimate(true), 1750)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const baseTransition = "opacity 0.7s cubic-bezier(0.25,0.1,0.25,1), transform 0.7s cubic-bezier(0.25,0.1,0.25,1)"
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -17,32 +27,40 @@ export function Hero() {
 
       <Container className="relative z-10 py-32 md:py-0">
         <div className="max-w-2xl md:py-8 lg:py-12">
-          <motion.div
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: textDelay, ease: [0.25, 0.1, 0.25, 1] }}
+          <div
+            style={{
+              opacity: animate ? 1 : 0,
+              transform: animate ? "translateY(0)" : "translateY(10px)",
+              transition: baseTransition,
+            }}
           >
             <h1 className="font-heading text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.02em] text-foreground">
               Product
               <br />
               <span className="block mt-1">Maker.</span>
             </h1>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: textDelay + stagger, ease: [0.25, 0.1, 0.25, 1] }}
+          <div
+            style={{
+              opacity: animate ? 1 : 0,
+              transform: animate ? "translateY(0)" : "translateY(10px)",
+              transition: baseTransition,
+              transitionDelay: animate ? "0.12s" : "0s",
+            }}
           >
             <p className="mt-8 md:mt-10 text-base md:text-lg text-foreground-secondary leading-relaxed font-sans max-w-md">
               Designing human-AI systems at enterprise scale in Windows
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: textDelay + stagger * 2, ease: [0.25, 0.1, 0.25, 1] }}
+          <div
+            style={{
+              opacity: animate ? 1 : 0,
+              transform: animate ? "translateY(0)" : "translateY(10px)",
+              transition: baseTransition,
+              transitionDelay: animate ? "0.24s" : "0s",
+            }}
           >
             <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-4">
               <a
@@ -61,7 +79,7 @@ export function Hero() {
                 Get in Touch
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </Container>
     </section>
