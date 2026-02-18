@@ -17,7 +17,7 @@ export const projectImages: Record<string, ProjectImages> = {
   },
   recall: {
     cardImage: "/images/projects/recall-card-real.png",
-    heroImage: "/images/projects/recall-hero.jpg",
+    heroImage: "/images/projects/recall-hero-real.png",
     alt: "Windows Recall — semantic memory timeline showing visual search results and recalled content",
   },
   "agents-in-windows": {

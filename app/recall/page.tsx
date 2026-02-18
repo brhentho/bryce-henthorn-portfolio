@@ -25,7 +25,6 @@ const navItems = [
   { id: "early-iteration", label: "Early Iteration" },
   { id: "card-design", label: "Card Design" },
   { id: "performance", label: "Performance" },
-  { id: "trust", label: "Trust & Control" },
   { id: "impact", label: "Impact" },
 ]
 
@@ -51,6 +50,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           From the beginning, we knew the challenge was not only technical. Capturing what users see is powerful, but it also raises immediate concerns about privacy and control. The design problem was to create a system that felt intelligent without feeling invasive, and useful without feeling unpredictable. The feature would only succeed if users trusted it.
         </CaseStudyParagraph>
+        <FigurePanel caption="FIG 01 — Recall overview and core interaction model" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig01-FojMNuJbZGndg7ATAFhxOZEypdzfDq.mp4" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="problem" label="Problem">
@@ -64,7 +64,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           In early iterations, the underlying AI performed well enough to retrieve relevant results. The interface, however, was not yet helping users understand those results.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 01 -- Zoomed-out schematic of the Recall system architecture" variant="layout" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 02 — Zoomed-out schematic of the Recall system architecture" src="/images/projects/recall-fig02.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="early-iteration" label="Early Iteration">
@@ -81,7 +81,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           We separated text-based matches and visual matches into distinct sections. This structural change made the system{"'"}s behavior easier to interpret. It reduced cognitive load and improved trust almost immediately. Instead of competing within one opaque ranking, each type of result had a clear place.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 02 -- Match types: text-based vs visual results" variant="controls" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 03 — Recall search results with separated match types" src="/images/projects/recall-fig03.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="card-design" label="Card Design">
@@ -98,7 +98,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           Close collaboration with research and engineering was essential during this phase. Small adjustments in labeling, hierarchy, and interaction timing significantly improved clarity. This was not about visual polish. It was about reinforcing a stable mental model.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 03 -- Card anatomy: visual snapshot, metadata, interaction paths" variant="layout" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 04 — Card anatomy: visual snapshot, metadata, match types" src="/images/projects/recall-fig04.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="performance" label="Performance">
@@ -115,23 +115,11 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           The challenge was balancing transparency with simplicity. Users did not need to understand embeddings or indexing pipelines. They needed confidence that the system would respond reliably.
         </CaseStudyParagraph>
-      </CaseStudySection>
-
-      <CaseStudySection id="trust" label="Trust & Control">
-        <CaseStudyHeading>Making an always-on system feel optional and safe</CaseStudyHeading>
-        <CaseStudyParagraph>
-          Because Recall captures screen content, privacy considerations were central to the design. The feature is opt-in and local-only. Nothing is sent to the cloud. Users can pause capture and delete stored data.
-        </CaseStudyParagraph>
-        <CaseStudyParagraph>
-          We surfaced these controls clearly and early in the experience. In testing, we observed initial hesitation followed by reassurance once boundaries were understood. The difference between feeling monitored and feeling supported often came down to clarity.
-        </CaseStudyParagraph>
-        <CaseStudyParagraph>
-          Designing these trust mechanisms was not an afterthought. It shaped the architecture of the experience from the beginning.
-        </CaseStudyParagraph>
-        <FigurePanel caption="FIG 04 -- Trust and privacy controls" variant="controls" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 05 — Live search performance and loading states" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
+        <FigurePanel caption="FIG 06 — Recall keynote presentation and system architecture" src="/images/projects/recall-fig06.png" className="mb-8 max-w-2xl" />
         <CaseStudyParagraph>
           Separating visual and text results improved comprehension significantly in usability studies. Users could articulate why a result appeared and whether it matched their intent. The feature began to feel predictable rather than mysterious.
         </CaseStudyParagraph>
