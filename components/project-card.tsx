@@ -38,7 +38,7 @@ export function ProjectCard({
             src={cardImage}
             alt={imageAlt || productName}
             fill
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            className="object-contain transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
           />
         ) : (
@@ -109,7 +109,10 @@ export function ProjectCard({
   }
 
   return (
-    <Link href={href || "/"} className={wrapperClasses}>
+    <Link
+      href={href || "/"}
+      className={wrapperClasses}
+    >
       {cardInner}
     </Link>
   )

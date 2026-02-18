@@ -63,22 +63,10 @@ export function CaseStudyLayout({
             }}
           />
 
-          <Container className="relative z-10 py-32 md:py-0">
-            <AnimateIn>
-              <a
-                href="/"
-                className="inline-flex items-center gap-1.5 text-sm font-sans text-foreground-tertiary hover:text-accent transition-colors duration-200 mb-10 md:mb-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              >
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M13 8H3M7 4L3 8l4 4" />
-                </svg>
-                Back to Work
-              </a>
-            </AnimateIn>
-
-            <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
+          <Container className="relative z-10 pt-16 md:pt-20 pb-16 md:pb-20">
+            <div className="flex flex-col lg:grid lg:grid-cols-[2fr_3fr] lg:items-center gap-10 lg:gap-10 xl:gap-12">
               {/* Left: Product name + Title + tags + subtitle */}
-              <div className="flex-1 min-w-0">
+              <div className="min-w-0">
                 <AnimateIn delay={0.05}>
                   <p className="text-sm font-sans font-medium text-accent mb-4 tracking-wide">
                     {productName}
@@ -86,7 +74,7 @@ export function CaseStudyLayout({
                 </AnimateIn>
 
                 <AnimateIn delay={0.1}>
-                  <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground max-w-xl text-balance">
+                  <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance">
                     {title}
                   </h1>
                 </AnimateIn>
@@ -116,19 +104,18 @@ export function CaseStudyLayout({
                 )}
               </div>
 
-              {/* Right: Hero image */}
+              {/* Right: Hero image — no card/border/bg, just the PNG floating naturally */}
               {heroImage && (
-                <AnimateIn delay={0.2} className="flex-1 min-w-0">
-                  <div className="relative aspect-[16/10] rounded-[var(--radius-hero-image)] border border-border overflow-hidden bg-surface-raised">
-                    <Image
-                      src={heroImage}
-                      alt={heroImageAlt || title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      priority
-                    />
-                  </div>
+                <AnimateIn delay={0.2} className="min-w-0">
+                  <Image
+                    src={heroImage}
+                    alt={heroImageAlt || title}
+                    width={1600}
+                    height={1000}
+                    className="w-full h-auto object-contain"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    priority
+                  />
                 </AnimateIn>
               )}
             </div>
@@ -136,7 +123,7 @@ export function CaseStudyLayout({
         </section>
 
         {/* Overview spec panel - full width centered */}
-        <Container>
+        <Container className="mt-16 md:mt-20">
           <AnimateIn delay={0.1}>
             <div className="mb-16 md:mb-20">
               <OverviewSpecPanel specs={specs} />

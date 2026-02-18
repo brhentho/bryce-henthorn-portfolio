@@ -1,7 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { motion, useReducedMotion } from "framer-motion"
+import { useEffect, useState, useMemo } from "react"
 
 // --- FULL-HERO GRID CONFIGURATION ---
 const GRID_SPACING = 40 // px between dots
@@ -11,17 +10,6 @@ const DOT_SIZE = 3 // px
 const CLUSTER_COLS = 7
 const CLUSTER_ROWS = 5
 const CLUSTER_TOTAL = CLUSTER_COLS * CLUSTER_ROWS
-
-function generateScattered(): { x: number; y: number }[] {
-  const dots: { x: number; y: number }[] = []
-  for (let i = 0; i < CLUSTER_TOTAL; i++) {
-    dots.push({
-      x: 10 + Math.random() * 80,
-      y: 10 + Math.random() * 80,
-    })
-  }
-  return dots
-}
 
 function generateClusterGrid(): { x: number; y: number }[] {
   const dots: { x: number; y: number }[] = []
@@ -42,15 +30,30 @@ function generateClusterGrid(): { x: number; y: number }[] {
   return dots
 }
 
-const scatteredPositions = generateScattered()
 const clusterGridPositions = generateClusterGrid()
 
 export function HeroIntroAnimation() {
-  const prefersReducedMotion = useReducedMotion()
+  const [mounted, setMounted] = useState(false)
   const [phase, setPhase] = useState<"scatter" | "form" | "sweep" | "stable">("scatter")
 
+  // Generate scattered positions only on client after mount to avoid hydration mismatch
+  const scatteredPositions = useMemo(() => {
+    if (!mounted) return []
+    const dots: { x: number; y: number }[] = []
+    for (let i = 0; i < CLUSTER_TOTAL; i++) {
+      dots.push({
+        x: 10 + Math.random() * 80,
+        y: 10 + Math.random() * 80,
+      })
+    }
+    return dots
+  }, [mounted])
+
   useEffect(() => {
-    if (prefersReducedMotion) {
+    setMounted(true)
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (prefersReduced) {
       setPhase("stable")
       return
     }
@@ -64,13 +67,13 @@ export function HeroIntroAnimation() {
       clearTimeout(t2)
       clearTimeout(t3)
     }
-  }, [prefersReducedMotion])
+  }, [])
 
-  const isForming = phase !== "scatter"
+  const isForming = phase === "form" || phase === "sweep" || phase === "stable"
 
   return (
     <div className="absolute inset-0 pointer-events-none z-[1]" aria-hidden="true">
-      {/* Full-hero static dot grid */}
+      {/* Full-hero static dot grid -- pure CSS, identical on server & client */}
       <div
         className="absolute inset-0"
         style={{
@@ -80,73 +83,48 @@ export function HeroIntroAnimation() {
         }}
       />
 
-      {/* Animated cluster in the right portion */}
-      <div className="absolute right-0 top-0 bottom-0 w-[42%] hidden lg:flex items-center justify-center">
-        <div className="relative w-full h-[60%]">
-          {/* Calibration sweep line */}
-          {phase === "sweep" && !prefersReducedMotion && (
-            <motion.div
-              className="absolute left-0 right-0 h-[1px]"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent 0%, rgba(240,240,243,0.06) 20%, rgba(240,240,243,0.14) 50%, rgba(240,240,243,0.06) 80%, transparent 100%)",
-              }}
-              initial={{ top: "10%" }}
-              animate={{ top: "90%" }}
-              transition={{ duration: 0.3, ease: "linear" }}
-            />
-          )}
+      {/* Animated cluster -- rendered ONLY after mount to avoid any hydration mismatch */}
+      {mounted && scatteredPositions.length > 0 && (
+        <div className="absolute right-0 top-0 bottom-0 w-[42%] hidden lg:flex items-center justify-center pointer-events-none">
+          <div className="relative w-full h-[60%]">
+            {/* Calibration sweep line */}
+            {phase === "sweep" && (
+              <div
+                className="absolute left-0 right-0 h-[1px] animate-sweep-line"
+                style={{
+                  background:
+                    "linear-gradient(90deg, transparent 0%, rgba(240,240,243,0.06) 20%, rgba(240,240,243,0.14) 50%, rgba(240,240,243,0.06) 80%, transparent 100%)",
+                }}
+              />
+            )}
 
-          {/* Animated dots */}
-          {!prefersReducedMotion ? (
-            Array.from({ length: CLUSTER_TOTAL }).map((_, i) => {
-              const sp = scatteredPositions[i]
+            {/* All dots -- plain divs with CSS transitions, no Framer Motion */}
+            {scatteredPositions.map((sp, i) => {
               const gp = clusterGridPositions[i]
+              const targetX = isForming ? gp.x : sp.x
+              const targetY = isForming ? gp.y : sp.y
+              const targetOpacity = isForming ? 0.7 : 0.4
 
               return (
-                <motion.div
+                <div
                   key={i}
-                  className="absolute rounded-full bg-foreground"
-                  style={{ width: DOT_SIZE, height: DOT_SIZE }}
-                  initial={{
-                    left: `${sp.x}%`,
-                    top: `${sp.y}%`,
-                    opacity: 0.4,
-                  }}
-                  animate={
-                    isForming
-                      ? {
-                          left: `${gp.x}%`,
-                          top: `${gp.y}%`,
-                          opacity: 0.7,
-                        }
-                      : { opacity: 0.4 }
-                  }
-                  transition={{
-                    left: { duration: 1.0, delay: i * 0.012, ease: [0.42, 0, 0.58, 1] },
-                    top: { duration: 1.0, delay: i * 0.012, ease: [0.42, 0, 0.58, 1] },
-                    opacity: { duration: 0.5, delay: isForming ? 0.8 + i * 0.008 : 0 },
+                  className="absolute rounded-full bg-foreground pointer-events-none"
+                  style={{
+                    width: `${DOT_SIZE}px`,
+                    height: `${DOT_SIZE}px`,
+                    left: `${targetX}%`,
+                    top: `${targetY}%`,
+                    opacity: targetOpacity,
+                    transition: isForming
+                      ? `left 1s cubic-bezier(0.42,0,0.58,1) ${i * 0.012}s, top 1s cubic-bezier(0.42,0,0.58,1) ${i * 0.012}s, opacity 0.5s ease ${0.8 + i * 0.008}s`
+                      : "none",
                   }}
                 />
               )
-            })
-          ) : (
-            clusterGridPositions.map((gp, i) => (
-              <div
-                key={i}
-                className="absolute rounded-full bg-foreground"
-                style={{
-                  width: DOT_SIZE,
-                  height: DOT_SIZE,
-                  left: `${gp.x}%`,
-                  top: `${gp.y}%`,
-                  opacity: 0.7,
-                }}
-              />
-            ))
-          )}
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
