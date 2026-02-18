@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import Image from "next/image"
 import { Nav } from "@/components/nav"
 import { Footer } from "@/components/footer"
@@ -65,7 +66,7 @@ export function CaseStudyLayout({
 
           <Container className="relative z-10 py-32 md:py-0">
             <AnimateIn>
-              <a
+              <Link
                 href="/"
                 className="inline-flex items-center gap-1.5 text-sm font-sans text-foreground-tertiary hover:text-accent transition-colors duration-200 mb-10 md:mb-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
@@ -73,7 +74,7 @@ export function CaseStudyLayout({
                   <path d="M13 8H3M7 4L3 8l4 4" />
                 </svg>
                 Back to Work
-              </a>
+              </Link>
             </AnimateIn>
 
             <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">

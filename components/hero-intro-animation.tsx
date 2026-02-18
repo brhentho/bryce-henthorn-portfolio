@@ -106,7 +106,7 @@ export function HeroIntroAnimation() {
               return (
                 <motion.div
                   key={i}
-                  className="absolute rounded-full bg-foreground"
+                  className="absolute rounded-full bg-foreground pointer-events-none"
                   style={{ width: DOT_SIZE, height: DOT_SIZE }}
                   initial={{
                     left: `${sp.x}%`,

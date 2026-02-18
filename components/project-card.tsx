@@ -100,10 +100,7 @@ export function ProjectCard({
     return (
       <button
         type="button"
-        onClick={() => {
-          console.log("[v0] Disabled card clicked:", productName)
-          onDisabledClick?.()
-        }}
+        onClick={onDisabledClick}
         className={cn(wrapperClasses, "text-left w-full")}
       >
         {cardInner}
@@ -115,7 +112,6 @@ export function ProjectCard({
     <Link
       href={href || "/"}
       className={wrapperClasses}
-      onClick={() => console.log("[v0] ProjectCard link clicked:", productName, "->", href)}
     >
       {cardInner}
     </Link>

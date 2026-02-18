@@ -23,13 +23,22 @@ export function FigurePanel({ caption, variant, src, videoSrc, className, aspect
       >
         {videoSrc ? (
           <video
-            src={videoSrc}
             autoPlay
             loop
             muted
             playsInline
+            preload="metadata"
             className="w-full h-auto block"
-          />
+          >
+            <source src={videoSrc} type={videoSrc.endsWith(".mp4") ? "video/mp4" : "video/quicktime"} />
+            {/* mp4 fallback for browsers that don't support quicktime */}
+            {videoSrc.endsWith(".mov") && (
+              <source src={videoSrc} type="video/mp4" />
+            )}
+            <div className="flex items-center justify-center p-8 text-foreground-tertiary text-sm font-sans">
+              Video not supported in this browser
+            </div>
+          </video>
         ) : src ? (
           <Image
             src={src}
