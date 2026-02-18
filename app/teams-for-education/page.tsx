@@ -104,14 +104,14 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           The key constraint was speed. Group creation had to be fast enough to happen minutes before a class started. Any friction here would break trust immediately.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 03 — Whole class to table transitions" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 03 — Whole class to table transitions" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="group-creation" label="Group Creation">
         <CaseStudyParagraph>
           Teachers could pre-create tables, assign students manually or automatically, and see group composition at a glance. The system made participation feel intentional instead of random. Students always knew where they belonged.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 04 — Group creation and assignment flow" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 04 — Group creation and assignment flow" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="student-view" label="Student View">
