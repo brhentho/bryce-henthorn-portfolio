@@ -30,7 +30,7 @@ export function ProjectCard({
   className,
 }: ProjectCardProps) {
   const cardInner = (
-    <div className="rounded-lg border border-border bg-surface overflow-hidden transition-colors duration-200 group-hover:border-border-hover">
+    <div className="rounded-[var(--radius-card)] border border-border bg-surface overflow-hidden transition-all duration-500 ease-out group-hover:border-border-hover group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
       {/* Image area */}
       <div className="relative aspect-[16/10] bg-surface-raised overflow-hidden">
         {cardImage ? (
@@ -38,16 +38,16 @@ export function ProjectCard({
             src={cardImage}
             alt={imageAlt || title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
           />
         ) : (
-          <div className="absolute inset-0 bg-grid opacity-30" />
+          <div className="absolute inset-0 bg-surface-raised" />
         )}
         {/* Coming soon badge overlay */}
         {tag && (
           <div className="absolute top-3 right-3">
-            <span className="font-mono text-[10px] tracking-[0.15em] text-accent bg-background/80 backdrop-blur-sm px-2.5 py-1 rounded border border-accent/20 uppercase">
+            <span className="text-[11px] font-sans font-medium text-accent bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-accent/20">
               {tag}
             </span>
           </div>
@@ -56,15 +56,15 @@ export function ProjectCard({
 
       {/* Card body */}
       <div className="p-5 md:p-6">
-        {/* One-line summary */}
-        <p className="text-[13px] text-foreground-secondary leading-relaxed font-sans mb-2">
-          {summary}
-        </p>
-
         {/* Title */}
-        <h3 className="font-mono text-base md:text-lg font-medium text-foreground tracking-tight mb-3">
+        <h3 className="font-heading text-lg md:text-xl font-semibold text-foreground tracking-tight mb-2">
           {title}
         </h3>
+
+        {/* Summary */}
+        <p className="text-sm text-foreground-secondary leading-relaxed font-sans mb-4">
+          {summary}
+        </p>
 
         {/* Tags row */}
         {tags && tags.length > 0 && (
@@ -72,7 +72,7 @@ export function ProjectCard({
             {tags.map((t) => (
               <span
                 key={t}
-                className="font-mono text-[10px] tracking-[0.1em] text-foreground-tertiary bg-surface-raised px-2 py-1 rounded border border-border uppercase"
+                className="text-[11px] font-sans font-medium text-foreground-tertiary bg-surface-raised px-2.5 py-1 rounded-lg border border-border"
               >
                 {t}
               </span>
@@ -82,8 +82,8 @@ export function ProjectCard({
 
         {/* CTA indicator */}
         {!disabled && (
-          <div className="flex items-center gap-1.5 text-foreground-tertiary group-hover:text-accent transition-colors duration-200 pt-1">
-            <span className="font-mono text-[11px] tracking-[0.1em] uppercase">
+          <div className="flex items-center gap-1.5 text-foreground-tertiary group-hover:text-accent transition-colors duration-300 pt-1">
+            <span className="text-sm font-sans font-medium">
               Read case study
             </span>
             <svg
@@ -93,7 +93,7 @@ export function ProjectCard({
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
-              className="transition-transform duration-200 group-hover:translate-x-0.5"
+              className="transition-transform duration-300 group-hover:translate-x-1"
             >
               <path d="M3 8h10M9 4l4 4-4 4" />
             </svg>

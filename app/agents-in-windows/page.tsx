@@ -40,7 +40,7 @@ export default function AgentsInWindowsPage() {
       specs={specs}
       navItems={navItems}
     >
-      <CaseStudySection id="context" label="Context" counter="001">
+      <CaseStudySection id="context" label="Context">
         <CaseStudyHeading>The Problem</CaseStudyHeading>
         <CaseStudyParagraph>
           AI agents don{"'"}t behave like apps. They run continuously, operate across
@@ -52,7 +52,7 @@ export default function AgentsInWindowsPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="tension" label="Tension" counter="002">
+      <CaseStudySection id="tension" label="Tension">
         <CaseStudyParagraph>
           Agents must be visible but not noisy, persistent but lightweight,
           interruptible but not fragile.
@@ -62,7 +62,7 @@ export default function AgentsInWindowsPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="goal" label="Goal" counter="003">
+      <CaseStudySection id="goal" label="Goal">
         <CaseStudyHeading>A shell-level language for agents</CaseStudyHeading>
         <CaseStudyParagraph>
           Users should be able to see when an agent is running, understand what it{"'"}s
@@ -73,7 +73,7 @@ export default function AgentsInWindowsPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="solution" label="Solution" counter="004">
+      <CaseStudySection id="solution" label="Solution">
         <CaseStudyHeading>Taskbar Presence</CaseStudyHeading>
         <CaseStudyParagraph>
           Persistent, lightweight representation of active agents:
@@ -115,7 +115,7 @@ export default function AgentsInWindowsPage() {
         <FigurePanel caption="FIG 03 — Escalation patterns" variant="flow" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="key-decisions" label="Key Decisions" counter="005">
+      <CaseStudySection id="key-decisions" label="Key Decisions">
         <CaseStudyList
           items={[
             "Autonomy requires transparency",
@@ -126,7 +126,7 @@ export default function AgentsInWindowsPage() {
         />
       </CaseStudySection>
 
-      <CaseStudySection id="impact" label="Impact" counter="006">
+      <CaseStudySection id="impact" label="Impact">
         <CaseStudyList
           items={[
             "Improved clarity in user testing around agent state",
@@ -140,7 +140,7 @@ export default function AgentsInWindowsPage() {
         </CaseStudyCallout>
       </CaseStudySection>
 
-      <CaseStudySection id="contribution" label="My Contribution" counter="007">
+      <CaseStudySection id="contribution" label="My Contribution">
         <CaseStudyList
           items={[
             "Defined system-level interaction patterns",

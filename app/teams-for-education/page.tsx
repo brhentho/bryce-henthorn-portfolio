@@ -41,7 +41,7 @@ export default function TeamsForEducationPage() {
       specs={specs}
       navItems={navItems}
     >
-      <CaseStudySection id="context" label="Context" counter="001">
+      <CaseStudySection id="context" label="Context">
         <CaseStudyHeading>When Classrooms Went Quiet</CaseStudyHeading>
         <CaseStudyParagraph>
           When schools moved online, classrooms didn{"'"}t just relocate. They flattened.
@@ -58,7 +58,7 @@ export default function TeamsForEducationPage() {
         <FigurePanel caption="FIG 01 — From flat grids to structured groups" variant="layout" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="insight" label="Insight" counter="002">
+      <CaseStudySection id="insight" label="Insight">
         <CaseStudyHeading>Engagement is structural</CaseStudyHeading>
         <CaseStudyParagraph>
           Students participate more when:
@@ -75,7 +75,7 @@ export default function TeamsForEducationPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="goal" label="Goal" counter="003">
+      <CaseStudySection id="goal" label="Goal">
         <CaseStudyHeading>The Design Challenge</CaseStudyHeading>
         <CaseStudyParagraph>
           We needed to:
@@ -93,7 +93,7 @@ export default function TeamsForEducationPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="solution" label="Solution" counter="004">
+      <CaseStudySection id="solution" label="Solution">
         <CaseStudyHeading>Virtual Tables</CaseStudyHeading>
         <CaseStudyParagraph>
           We introduced structured {"\""}virtual tables{"\""} inside Teams meetings.
@@ -116,7 +116,7 @@ export default function TeamsForEducationPage() {
         <FigurePanel caption="FIG 03 — Whole class to tables transitions" variant="flow" className="mt-4 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="key-decisions" label="Key Decisions" counter="005">
+      <CaseStudySection id="key-decisions" label="Key Decisions">
         <CaseStudyList
           items={[
             "Clarity over novelty",
@@ -127,7 +127,7 @@ export default function TeamsForEducationPage() {
         />
       </CaseStudySection>
 
-      <CaseStudySection id="impact" label="Impact" counter="006">
+      <CaseStudySection id="impact" label="Impact">
         <CaseStudyList
           items={[
             "Increased small-group participation in research sessions",
@@ -141,7 +141,7 @@ export default function TeamsForEducationPage() {
         </CaseStudyCallout>
       </CaseStudySection>
 
-      <CaseStudySection id="contribution" label="My Contribution" counter="007">
+      <CaseStudySection id="contribution" label="My Contribution">
         <CaseStudyList
           items={[
             "Defined interaction model for structured group collaboration",

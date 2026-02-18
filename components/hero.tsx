@@ -7,26 +7,22 @@ import { HeroIntroAnimation } from "@/components/hero-intro-animation"
 export function Hero() {
   const prefersReducedMotion = useReducedMotion()
 
-  // Text appears at ~1200ms (phase "reveal") with staggered fade-in
-  const textDelay = prefersReducedMotion ? 0 : 1.25
+  const textDelay = prefersReducedMotion ? 0 : 1.75
   const stagger = prefersReducedMotion ? 0 : 0.12
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-grid bg-grid-animated pointer-events-none" aria-hidden="true" />
-
-      {/* Dot system: intro animation + live cursor reactivity */}
+      {/* Right-side dot animation */}
       <HeroIntroAnimation />
 
       <Container className="relative z-10 py-32 md:py-0">
-        <div className="md:py-8 lg:py-12">
+        <div className="max-w-2xl md:py-8 lg:py-12">
           <motion.div
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: 8 }}
+            initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: textDelay, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.7, delay: textDelay, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <h1 className="font-mono text-5xl md:text-7xl lg:text-[5.5rem] font-medium leading-[0.98] tracking-[-0.02em] text-[#F2F4F7]">
+            <h1 className="font-heading text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.02em] text-foreground">
               Product
               <br />
               <span className="block mt-1">Maker.</span>
@@ -34,24 +30,24 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: 8 }}
+            initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: textDelay + stagger, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.7, delay: textDelay + stagger, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <p className="mt-8 md:mt-10 font-mono text-[12px] md:text-[13px] tracking-[0.08em] text-foreground-secondary leading-relaxed">
-              {"AI interaction systems \u2022 enterprise scale \u2022 Windows"}
+            <p className="mt-8 md:mt-10 text-base md:text-lg text-foreground-secondary leading-relaxed font-sans max-w-md">
+              Designing human-AI systems at enterprise scale in Windows
             </p>
           </motion.div>
 
           <motion.div
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: 8 }}
+            initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: textDelay + stagger * 2, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.7, delay: textDelay + stagger * 2, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-4">
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase px-6 py-3 rounded border border-foreground-secondary text-foreground hover:bg-foreground hover:text-background transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent min-h-[44px]"
+                className="inline-flex items-center gap-2 text-sm font-sans font-medium px-6 py-3 rounded-[var(--radius-button)] border border-foreground/20 text-foreground hover:bg-accent hover:text-background hover:border-accent transition-all duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent min-h-[44px] hover:scale-[1.03] active:scale-[0.98]"
               >
                 View Work
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -60,7 +56,7 @@ export function Hero() {
               </a>
               <a
                 href="mailto:bhenthorn2757@gmail.com"
-                className="inline-flex items-center font-mono text-[11px] tracking-[0.15em] uppercase px-6 py-3 rounded border border-border text-foreground-secondary hover:border-border-hover hover:text-foreground transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent min-h-[44px]"
+                className="inline-flex items-center text-sm font-sans font-medium px-6 py-3 rounded-[var(--radius-button)] border border-border text-foreground-secondary hover:border-border-hover hover:text-foreground transition-all duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent min-h-[44px] hover:scale-[1.03] active:scale-[0.98]"
               >
                 Get in Touch
               </a>

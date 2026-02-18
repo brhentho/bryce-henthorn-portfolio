@@ -1,22 +1,24 @@
 import type { Metadata, Viewport } from "next"
-import { Inter, JetBrains_Mono } from "next/font/google"
+import { Poppins, Open_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
 })
 
-const jetbrainsMono = JetBrains_Mono({
+const openSans = Open_Sans({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  weight: ["400", "500", "600"],
+  variable: "--font-open-sans",
 })
 
 export const metadata: Metadata = {
   title: "Bryce Henthorn — Senior UX/Product Designer",
   description:
-    "Designing calm, trustworthy AI systems at OS scale. Senior UX/Product Designer focused on interaction architecture, ambient agents, and scalable system design.",
+    "Designing human-AI systems at enterprise scale in Windows. Senior UX/Product Designer focused on interaction architecture, ambient agents, and scalable system design.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -32,7 +34,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: "#0E0F12",
+  themeColor: "#0B0B0D",
 }
 
 export default function RootLayout({
@@ -41,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} bg-background`}>
+    <html lang="en" className={`${poppins.variable} ${openSans.variable} bg-background`}>
       <body className="font-sans antialiased bg-background text-foreground min-h-screen">
         {children}
         <Analytics />

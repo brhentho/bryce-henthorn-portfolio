@@ -26,9 +26,9 @@ export function Nav() {
         {/* Left: Logo */}
         <Link
           href="/"
-          className="font-mono text-xs tracking-[0.15em] text-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          className="font-heading text-sm font-semibold tracking-tight text-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
-          BRYCE HENTHORN
+          Bryce Henthorn
         </Link>
 
         {/* Desktop links */}
@@ -46,11 +46,11 @@ export function Nav() {
                 key={link.label}
                 href={link.href}
                 className={cn(
-                  "relative font-mono text-[11px] tracking-[0.15em] uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent py-1",
+                  "relative text-sm font-sans font-medium transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent py-1",
                   isActive
                     ? "text-foreground"
-                    : "text-foreground-tertiary hover:text-accent",
-                  "after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-200 hover:after:w-full"
+                    : "text-foreground-tertiary hover:text-foreground",
+                  "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200 hover:after:w-full"
                 )}
                 {...(link.href.startsWith("mailto:") && {
                   target: "_blank",
@@ -61,7 +61,7 @@ export function Nav() {
               </Link>
             )
           })}
-          <span className="font-mono text-[10px] tracking-[0.15em] text-foreground-tertiary bg-surface-raised px-2.5 py-1 rounded border border-border">
+          <span className="text-xs font-sans text-foreground-tertiary bg-surface-raised px-3 py-1.5 rounded-lg border border-border">
             Seattle, WA
           </span>
         </div>
@@ -98,7 +98,7 @@ export function Nav() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="font-mono text-xs tracking-[0.15em] uppercase text-foreground-secondary hover:text-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent py-1"
+                className="text-sm font-sans font-medium text-foreground-secondary hover:text-foreground transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent py-1"
                 {...(link.href.startsWith("mailto:") && {
                   target: "_blank",
                   rel: "noopener noreferrer",
@@ -107,7 +107,7 @@ export function Nav() {
                 {link.label}
               </Link>
             ))}
-            <span className="font-mono text-[10px] tracking-[0.15em] text-foreground-tertiary mt-2">
+            <span className="text-xs font-sans text-foreground-tertiary mt-2">
               Seattle, WA
             </span>
           </Container>

@@ -41,7 +41,7 @@ export default function RecallPage() {
       specs={specs}
       navItems={navItems}
     >
-      <CaseStudySection id="context" label="Context" counter="001">
+      <CaseStudySection id="context" label="Context">
         <CaseStudyHeading>The Problem</CaseStudyHeading>
         <CaseStudyParagraph>
           Search assumes users remember file names, keywords, and folder locations.
@@ -56,7 +56,7 @@ export default function RecallPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="tension" label="Tension" counter="002">
+      <CaseStudySection id="tension" label="Tension">
         <CaseStudyParagraph>
           A system that remembers what you{"'"}ve seen is helpful.
           It can also feel invasive.
@@ -67,7 +67,7 @@ export default function RecallPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="goal" label="Goal" counter="003">
+      <CaseStudySection id="goal" label="Goal">
         <CaseStudyHeading>
           Make your PC feel like it remembers with you — not watches you
         </CaseStudyHeading>
@@ -77,7 +77,7 @@ export default function RecallPage() {
         </CaseStudyParagraph>
       </CaseStudySection>
 
-      <CaseStudySection id="solution" label="Solution" counter="004">
+      <CaseStudySection id="solution" label="Solution">
         <CaseStudyHeading>Semantic Memory Cards</CaseStudyHeading>
         <CaseStudyParagraph>
           We designed a recall interface built around rich cards combining:
@@ -99,7 +99,7 @@ export default function RecallPage() {
         <FigurePanel caption="FIG 03 — Match types: visual vs text" variant="flow" className="mt-4 mb-4 max-w-2xl" />
       </CaseStudySection>
 
-      <CaseStudySection id="key-decisions" label="Key Decisions" counter="005">
+      <CaseStudySection id="key-decisions" label="Key Decisions">
         <CaseStudyList
           items={[
             "Visual + text pairing for richer recall triggers",
@@ -110,7 +110,7 @@ export default function RecallPage() {
         />
       </CaseStudySection>
 
-      <CaseStudySection id="impact" label="Impact" counter="006">
+      <CaseStudySection id="impact" label="Impact">
         <CaseStudyList
           items={[
             "Improved task recovery in prototype testing",
@@ -124,7 +124,7 @@ export default function RecallPage() {
         </CaseStudyCallout>
       </CaseStudySection>
 
-      <CaseStudySection id="contribution" label="My Contribution" counter="007">
+      <CaseStudySection id="contribution" label="My Contribution">
         <CaseStudyList
           items={[
             "Defined interaction model for recall experience",

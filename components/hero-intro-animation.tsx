@@ -1,32 +1,34 @@
 "use client"
 
-import { useEffect, useState, useRef, useCallback } from "react"
+import { useEffect, useState, useRef } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 
 // --- DOT GRID CONFIGURATION ---
-const COLS = 6
+const COLS = 7
 const ROWS = 5
-const TOTAL = COLS * ROWS // 30 dots
+const TOTAL = COLS * ROWS // 35 dots
 
-// Generate initial scattered positions (center-biased)
+// Generate initial scattered positions (within the right-side container)
 function generateScattered(): { x: number; y: number }[] {
   const dots: { x: number; y: number }[] = []
   for (let i = 0; i < TOTAL; i++) {
     dots.push({
-      x: 30 + Math.random() * 40, // 30%–70% horizontal
-      y: 25 + Math.random() * 50, // 25%–75% vertical
+      x: 10 + Math.random() * 80,
+      y: 10 + Math.random() * 80,
     })
   }
   return dots
 }
 
-// Generate final structured grid positions
+// Generate final structured grid positions (centered in container)
 function generateGrid(): { x: number; y: number }[] {
   const dots: { x: number; y: number }[] = []
-  const startX = 20
-  const startY = 30
-  const spacingX = 8
-  const spacingY = 8
+  const spacingX = 12
+  const spacingY = 14
+  const totalW = (COLS - 1) * spacingX
+  const totalH = (ROWS - 1) * spacingY
+  const startX = (100 - totalW) / 2
+  const startY = (100 - totalH) / 2
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       dots.push({
@@ -41,181 +43,105 @@ function generateGrid(): { x: number; y: number }[] {
 const scatteredPositions = generateScattered()
 const gridPositions = generateGrid()
 
-// --- MAIN COMPONENT ---
 export function HeroIntroAnimation() {
   const prefersReducedMotion = useReducedMotion()
-  const [phase, setPhase] = useState<"scatter" | "form" | "sweep" | "reveal" | "live">("scatter")
+  const [phase, setPhase] = useState<"scatter" | "form" | "sweep" | "stable">("scatter")
   const containerRef = useRef<HTMLDivElement>(null)
-  const mouseRef = useRef({ x: -1, y: -1 })
-  const rafRef = useRef<number>(0)
-  const dotsRef = useRef<(HTMLDivElement | null)[]>([])
 
-  // Phase sequencing
   useEffect(() => {
     if (prefersReducedMotion) {
-      setPhase("live")
+      setPhase("stable")
       return
     }
 
-    // Start forming immediately
-    const t1 = setTimeout(() => setPhase("form"), 50)
-    // Sweep starts at 900ms
-    const t2 = setTimeout(() => setPhase("sweep"), 900)
-    // Text reveal at 1200ms
-    const t3 = setTimeout(() => setPhase("reveal"), 1200)
-    // Live mode at 1800ms
-    const t4 = setTimeout(() => setPhase("live"), 1800)
+    const t1 = setTimeout(() => setPhase("form"), 400)
+    const t2 = setTimeout(() => setPhase("sweep"), 1400)
+    const t3 = setTimeout(() => setPhase("stable"), 1700)
 
     return () => {
       clearTimeout(t1)
       clearTimeout(t2)
       clearTimeout(t3)
-      clearTimeout(t4)
     }
   }, [prefersReducedMotion])
 
-  // Cursor tracking for live mode
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (!containerRef.current) return
-    const rect = containerRef.current.getBoundingClientRect()
-    mouseRef.current = {
-      x: ((e.clientX - rect.left) / rect.width) * 100,
-      y: ((e.clientY - rect.top) / rect.height) * 100,
-    }
-  }, [])
+  if (prefersReducedMotion) {
+    // Render static grid instantly
+    return (
+      <div className="absolute right-0 top-0 bottom-0 w-[42%] hidden lg:flex items-center justify-center pointer-events-none" aria-hidden="true">
+        <div className="relative w-full h-[60%]">
+          {gridPositions.map((gp, i) => (
+            <div
+              key={i}
+              className="absolute w-[3px] h-[3px] rounded-full bg-foreground"
+              style={{ left: `${gp.x}%`, top: `${gp.y}%`, opacity: 0.7 }}
+            />
+          ))}
+        </div>
+      </div>
+    )
+  }
 
-  // Live dot cursor reactivity via rAF (no state, direct DOM)
-  useEffect(() => {
-    if (phase !== "live" || prefersReducedMotion) return
-
-    const el = containerRef.current
-    if (!el) return
-    el.addEventListener("mousemove", handleMouseMove)
-
-    const animate = () => {
-      const mx = mouseRef.current.x
-      const my = mouseRef.current.y
-
-      for (let i = 0; i < TOTAL; i++) {
-        const dot = dotsRef.current[i]
-        if (!dot) continue
-        const gp = gridPositions[i]
-        let dx = 0
-        let dy = 0
-        let scale = 1
-
-        if (mx >= 0 && my >= 0) {
-          const distX = gp.x - mx
-          const distY = gp.y - my
-          const dist = Math.sqrt(distX * distX + distY * distY)
-          const radius = 18
-          if (dist < radius) {
-            const force = (1 - dist / radius) * 2.5
-            dx = (distX / (dist || 1)) * force
-            dy = (distY / (dist || 1)) * force
-            scale = 1 + (1 - dist / radius) * 0.08
-          }
-        }
-
-        dot.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`
-      }
-
-      rafRef.current = requestAnimationFrame(animate)
-    }
-    rafRef.current = requestAnimationFrame(animate)
-
-    return () => {
-      el.removeEventListener("mousemove", handleMouseMove)
-      cancelAnimationFrame(rafRef.current)
-    }
-  }, [phase, prefersReducedMotion, handleMouseMove])
-
-  // Reset cursor when it leaves
-  useEffect(() => {
-    if (phase !== "live") return
-    const el = containerRef.current
-    if (!el) return
-    const handleLeave = () => {
-      mouseRef.current = { x: -1, y: -1 }
-    }
-    el.addEventListener("mouseleave", handleLeave)
-    return () => el.removeEventListener("mouseleave", handleLeave)
-  }, [phase])
-
-  if (prefersReducedMotion) return null
-
-  const isForming = phase === "form" || phase === "sweep" || phase === "reveal" || phase === "live"
+  const isForming = phase !== "scatter"
 
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 pointer-events-none z-[1]"
-      style={{ pointerEvents: phase === "live" ? "auto" : "none" }}
+      className="absolute right-0 top-0 bottom-0 w-[42%] hidden lg:flex items-center justify-center pointer-events-none z-[1]"
       aria-hidden="true"
     >
-      {/* Calibration sweep line */}
-      {(phase === "sweep" || phase === "reveal") && (
-        <motion.div
-          className="absolute left-0 right-0 h-[1px]"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(237,239,242,0.05) 15%, rgba(237,239,242,0.12) 50%, rgba(237,239,242,0.05) 85%, transparent 100%)",
-          }}
-          initial={{ top: "15%" }}
-          animate={{ top: "85%" }}
-          transition={{ duration: 0.7, ease: "linear" }}
-        />
-      )}
-
-      {/* Grid brightness ramp during sweep */}
-      {phase === "sweep" && (
-        <motion.div
-          className="absolute inset-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 0.03, 0] }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
-          style={{ background: "rgba(255,255,255,1)" }}
-        />
-      )}
-
-      {/* Dot system */}
-      {Array.from({ length: TOTAL }).map((_, i) => {
-        const sp = scatteredPositions[i]
-        const gp = gridPositions[i]
-
-        return (
+      <div className="relative w-full h-[60%]">
+        {/* Calibration sweep line */}
+        {phase === "sweep" && (
           <motion.div
-            key={i}
-            ref={(el) => { dotsRef.current[i] = el }}
-            className="absolute w-[2px] h-[2px] rounded-full bg-foreground"
-            initial={{
-              left: `${sp.x}%`,
-              top: `${sp.y}%`,
-              opacity: 0.25,
-              scale: 1,
+            className="absolute left-0 right-0 h-[1px]"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent 0%, rgba(240,240,243,0.06) 20%, rgba(240,240,243,0.14) 50%, rgba(240,240,243,0.06) 80%, transparent 100%)",
             }}
-            animate={
-              isForming
-                ? {
-                    left: `${gp.x}%`,
-                    top: `${gp.y}%`,
-                    opacity: phase === "live" ? 0.18 : 0.25,
-                    scale: 1,
-                  }
-                : {
-                    opacity: 0.25,
-                  }
-            }
-            transition={{
-              left: { duration: 1.0, delay: i * 0.015, ease: [0.42, 0, 0.58, 1] },
-              top: { duration: 1.0, delay: i * 0.015, ease: [0.42, 0, 0.58, 1] },
-              opacity: { duration: 0.4, delay: isForming ? i * 0.015 : 0 },
-              scale: { duration: 0.3 },
-            }}
-            style={{ willChange: "transform" }}
+            initial={{ top: "10%" }}
+            animate={{ top: "90%" }}
+            transition={{ duration: 0.3, ease: "linear" }}
           />
-        )
-      })}
+        )}
+
+        {/* Dot system */}
+        {Array.from({ length: TOTAL }).map((_, i) => {
+          const sp = scatteredPositions[i]
+          const gp = gridPositions[i]
+
+          return (
+            <motion.div
+              key={i}
+              className="absolute w-[3px] h-[3px] rounded-full bg-foreground"
+              initial={{
+                left: `${sp.x}%`,
+                top: `${sp.y}%`,
+                opacity: 0.4,
+                scale: 1,
+              }}
+              animate={
+                isForming
+                  ? {
+                      left: `${gp.x}%`,
+                      top: `${gp.y}%`,
+                      opacity: 0.7,
+                      scale: 1,
+                    }
+                  : {
+                      opacity: 0.4,
+                    }
+              }
+              transition={{
+                left: { duration: 1.0, delay: i * 0.012, ease: [0.42, 0, 0.58, 1] },
+                top: { duration: 1.0, delay: i * 0.012, ease: [0.42, 0, 0.58, 1] },
+                opacity: { duration: 0.5, delay: isForming ? 0.8 + i * 0.008 : 0 },
+                scale: { duration: 0.3 },
+              }}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

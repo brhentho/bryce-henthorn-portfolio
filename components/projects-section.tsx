@@ -16,7 +16,7 @@ export function ProjectsSection() {
     <Section id="projects" className="pb-24 md:pb-32">
       <Container>
         <SectionHeader label="Selected Work" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           <AnimateIn>
             <ProjectCard
               title="Teams for Education"
