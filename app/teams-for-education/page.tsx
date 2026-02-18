@@ -56,7 +56,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           This insight shaped everything. The product needed to recreate spatial consistency and lower the emotional barrier to participation.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 01 — Research synthesis: mapping the emotional gap" variant="layout" className="mt-8 mb-4 max-w-2xl" />
+
       </CaseStudySection>
 
       <CaseStudySection id="problem" label="Problem">
@@ -93,7 +93,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           This approach restored spatial awareness without sacrificing clarity. It was structured enough to feel real, but restrained enough to feel native inside Teams.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 02 — From flat grids to persistent table cards" variant="controls" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 02 — From flat grids to persistent table cards" src="/images/projects/teams-fig02.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="iteration" label="Iteration">
@@ -104,25 +104,25 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           The key constraint was speed. Group creation had to be fast enough to happen minutes before a class started. Any friction here would break trust immediately.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 03 — Whole class to table transitions" variant="flow" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 03 — Whole class to table transitions" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="group-creation" label="Group Creation">
         <CaseStudyParagraph>
           Teachers could pre-create tables, assign students manually or automatically, and see group composition at a glance. The system made participation feel intentional instead of random. Students always knew where they belonged.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 04 — Group creation and assignment flow" variant="layout" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 04 — Group creation and assignment flow" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="student-view" label="Student View">
         <CaseStudyParagraph>
           From the student perspective, the experience reinforced belonging. They saw familiar group members, recognized their seat, and felt accountable to the people around them. That subtle shift made participation feel manageable again.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 05 — Student view of their virtual table" variant="video" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="FIG 05 — Student view of their virtual table" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig06-2YDd5QkvxbZD2b8O44R0Nag6g14UhH.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
-        <FigurePanel caption="End-to-end video: group creation and class orchestration" variant="video" className="mb-8 max-w-2xl" />
+        <FigurePanel caption="End-to-end video: group creation and class orchestration" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov" className="mb-8 max-w-2xl" />
         <CaseStudyParagraph>
           User interest and delight were strong in research sessions. Teachers reported faster response times when moving between group discussions. Participation became more equitable because students felt safer contributing in smaller groups.
         </CaseStudyParagraph>

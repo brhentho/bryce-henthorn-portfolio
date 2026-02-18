@@ -11,8 +11,8 @@ export interface ProjectImages {
  */
 export const projectImages: Record<string, ProjectImages> = {
   "teams-for-education": {
-    cardImage: "/images/projects/teams-card.jpg",
-    heroImage: "/images/projects/teams-hero.jpg",
+    cardImage: "/images/projects/teams-hero-real.png",
+    heroImage: "/images/projects/teams-hero-real.png",
     alt: "Teams for Education — virtual tables interface showing structured group collaboration",
   },
   recall: {
