@@ -7,6 +7,7 @@ import { SectionHeader } from "@/components/section-header"
 import { ProjectCard } from "@/components/project-card"
 import { ComingSoonModal } from "@/components/coming-soon-modal"
 import { AnimateIn } from "@/components/animate-in"
+import { projectImages } from "@/lib/images"
 
 export function ProjectsSection() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -19,39 +20,43 @@ export function ProjectsSection() {
           <AnimateIn>
             <ProjectCard
               title="Teams for Education"
-              description="Restored small-group collaboration to remote classrooms by introducing structured 'virtual tables' inside Teams."
+              summary="Restored small-group collaboration to remote classrooms by introducing structured virtual tables inside Teams."
               href="/teams-for-education"
-              meta="Senior UX Designer / Microsoft Teams / 2021"
-              schematicVariant="grid"
+              tags={["0\u21921", "Interaction design", "Enterprise"]}
+              cardImage={projectImages["teams-for-education"].cardImage}
+              imageAlt={projectImages["teams-for-education"].alt}
             />
           </AnimateIn>
           <AnimateIn delay={0.1}>
             <ProjectCard
               title="Windows Recall"
-              description="Reimagined search as memory using semantic retrieval and trust-forward interaction patterns."
+              summary="Reimagined search as memory using semantic retrieval and trust-forward interaction patterns."
               href="/recall"
-              meta="Senior UX Designer / Windows / 2024"
-              schematicVariant="blocks"
+              tags={["Trust + privacy", "Systems thinking", "Windows"]}
+              cardImage={projectImages["recall"].cardImage}
+              imageAlt={projectImages["recall"].alt}
             />
           </AnimateIn>
           <AnimateIn delay={0.2}>
             <ProjectCard
               title="Agents in Windows"
-              description="Defined OS-level visibility and control patterns for long-running AI agents in the Windows shell."
+              summary="Defined OS-level visibility and control patterns for long-running AI agents in the Windows shell."
               href="/agents-in-windows"
-              meta="Senior UX Designer / Windows Shell / 2024"
-              schematicVariant="hierarchy"
+              tags={["OS shell", "Interaction design", "Systems thinking"]}
+              cardImage={projectImages["agents-in-windows"].cardImage}
+              imageAlt={projectImages["agents-in-windows"].alt}
             />
           </AnimateIn>
           <AnimateIn delay={0.3}>
             <ProjectCard
               title="Copilot Actions"
-              description="Designed taskbar entry points and interruption patterns for actions that run across apps."
+              summary="Designed taskbar entry points and interruption patterns for actions that run across apps."
               tag="Coming soon"
               disabled
               onDisabledClick={() => setModalOpen(true)}
-              meta="Senior UX Designer / Windows / 2025"
-              schematicVariant="flow"
+              tags={["0\u21921", "Enterprise", "Windows"]}
+              cardImage={projectImages["copilot-actions"].cardImage}
+              imageAlt={projectImages["copilot-actions"].alt}
             />
           </AnimateIn>
         </div>

@@ -1,11 +1,11 @@
 "use client"
 
+import Image from "next/image"
 import { Nav } from "@/components/nav"
 import { Footer } from "@/components/footer"
 import { Container } from "@/components/container"
 import { SectionHeader } from "@/components/section-header"
 import { OverviewSpecPanel } from "@/components/overview-spec-panel"
-import { IntroSchematicPanel } from "@/components/intro-schematic-panel"
 import { CaseStudyNav } from "@/components/case-study-nav"
 import { AnimateIn } from "@/components/animate-in"
 import { PageTransition } from "@/components/page-transition"
@@ -22,35 +22,37 @@ interface NavItem {
 
 interface CaseStudyLayoutProps {
   title: string
-  subtitle: string
-  meta?: string
+  subtitle?: string
+  tags?: string[]
+  heroImage?: string
+  heroImageAlt?: string
   specs: SpecItem[]
   navItems: NavItem[]
-  schematicVariant?: "teams" | "recall" | "agents"
   children: React.ReactNode
 }
 
 export function CaseStudyLayout({
   title,
   subtitle,
-  meta,
+  tags,
+  heroImage,
+  heroImageAlt,
   specs,
   navItems,
-  schematicVariant,
   children,
 }: CaseStudyLayoutProps) {
   return (
     <PageTransition>
       <Nav />
       <main>
-        {/* 100vh Hero - text only */}
+        {/* 100vh Hero - 2 column: text left, image right */}
         <section className="relative min-h-screen flex items-center overflow-hidden">
           <div className="absolute inset-0 bg-grid bg-grid-animated pointer-events-none" aria-hidden="true" />
           <Container className="relative z-10 py-32 md:py-0">
             <AnimateIn>
               <a
                 href="/"
-                className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.15em] text-foreground-tertiary hover:text-accent transition-colors duration-200 uppercase mb-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.15em] text-foreground-tertiary hover:text-accent transition-colors duration-200 uppercase mb-10 md:mb-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M13 8H3M7 4L3 8l4 4" />
@@ -58,37 +60,65 @@ export function CaseStudyLayout({
                 Back to Work
               </a>
             </AnimateIn>
-            <AnimateIn delay={0.1}>
-              <h1 className="font-mono text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.15] tracking-tight text-foreground max-w-2xl text-balance">
-                {title}
-              </h1>
-            </AnimateIn>
-            <AnimateIn delay={0.15}>
-              <p className="mt-5 font-mono text-base md:text-lg text-foreground-secondary leading-relaxed max-w-xl">
-                {subtitle}
-              </p>
-            </AnimateIn>
-            {meta && (
-              <AnimateIn delay={0.2}>
-                <p className="mt-6 font-mono text-[11px] tracking-[0.15em] text-foreground-tertiary uppercase">
-                  {meta}
-                </p>
-              </AnimateIn>
-            )}
+
+            <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
+              {/* Left: Title + tags + optional intro */}
+              <div className="flex-1 min-w-0">
+                <AnimateIn delay={0.1}>
+                  <h1 className="font-mono text-3xl md:text-4xl lg:text-5xl font-medium leading-[1.1] tracking-tight text-foreground max-w-xl text-balance">
+                    {title}
+                  </h1>
+                </AnimateIn>
+
+                {/* Tags row */}
+                {tags && tags.length > 0 && (
+                  <AnimateIn delay={0.15}>
+                    <div className="flex flex-wrap gap-1.5 mt-5">
+                      {tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-mono text-[10px] tracking-[0.1em] text-foreground-tertiary bg-surface-raised px-2.5 py-1 rounded border border-border uppercase"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </AnimateIn>
+                )}
+
+                {subtitle && (
+                  <AnimateIn delay={0.2}>
+                    <p className="mt-6 text-base md:text-lg text-foreground-secondary leading-relaxed max-w-lg font-sans">
+                      {subtitle}
+                    </p>
+                  </AnimateIn>
+                )}
+              </div>
+
+              {/* Right: Hero image */}
+              {heroImage && (
+                <AnimateIn delay={0.2} className="flex-1 min-w-0">
+                  <div className="relative aspect-[16/10] rounded-lg border border-border overflow-hidden bg-surface-raised">
+                    <Image
+                      src={heroImage}
+                      alt={heroImageAlt || title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      priority
+                    />
+                  </div>
+                </AnimateIn>
+              )}
+            </div>
           </Container>
         </section>
 
-        {/* Overview + Intro Schematic - two column */}
+        {/* Overview spec panel */}
         <Container>
           <AnimateIn delay={0.1}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16 md:mb-20">
+            <div className="mb-16 md:mb-20 max-w-3xl">
               <OverviewSpecPanel specs={specs} />
-              {schematicVariant && (
-                <IntroSchematicPanel
-                  variant={schematicVariant}
-                  className="min-h-[280px] lg:min-h-0"
-                />
-              )}
             </div>
           </AnimateIn>
         </Container>

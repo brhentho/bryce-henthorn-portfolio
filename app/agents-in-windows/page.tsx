@@ -9,6 +9,7 @@ import {
   CaseStudyCallout,
 } from "@/components/case-study-layout"
 import { FigurePanel } from "@/components/figure-panel"
+import { projectImages } from "@/lib/images"
 
 const specs = [
   { label: "Role", value: "Senior UX Designer" },
@@ -33,10 +34,11 @@ export default function AgentsInWindowsPage() {
     <CaseStudyLayout
       title="Agents in Windows"
       subtitle="Making autonomous AI visible and trustworthy at the OS level"
-      meta="Senior UX Designer / Windows Shell / Ambient AI"
+      tags={["OS shell", "Interaction design", "Systems thinking", "Ambient AI"]}
+      heroImage={projectImages["agents-in-windows"].heroImage}
+      heroImageAlt={projectImages["agents-in-windows"].alt}
       specs={specs}
       navItems={navItems}
-      schematicVariant="agents"
     >
       <CaseStudySection id="context" label="Context" counter="001">
         <CaseStudyHeading>The Problem</CaseStudyHeading>

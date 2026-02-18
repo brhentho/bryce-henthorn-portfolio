@@ -9,6 +9,7 @@ import {
   CaseStudyCallout,
 } from "@/components/case-study-layout"
 import { FigurePanel } from "@/components/figure-panel"
+import { projectImages } from "@/lib/images"
 
 const specs = [
   { label: "Role", value: "Senior UX Designer" },
@@ -34,10 +35,11 @@ export default function TeamsForEducationPage() {
     <CaseStudyLayout
       title="Teams for Education"
       subtitle="Restoring human connection to remote classrooms"
-      meta="Senior UX Designer / Microsoft Teams / Virtual Collaboration"
+      tags={["0\u21921", "Interaction design", "Enterprise", "Microsoft Teams"]}
+      heroImage={projectImages["teams-for-education"].heroImage}
+      heroImageAlt={projectImages["teams-for-education"].alt}
       specs={specs}
       navItems={navItems}
-      schematicVariant="teams"
     >
       <CaseStudySection id="context" label="Context" counter="001">
         <CaseStudyHeading>When Classrooms Went Quiet</CaseStudyHeading>

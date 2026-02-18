@@ -15,22 +15,18 @@ export function Hero() {
 
       <Container className="relative z-10 py-32 md:py-0">
         <AnimateIn>
-          <p className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-foreground-secondary uppercase mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent opacity-70" aria-hidden="true" />
-            Senior UX / Product Designer
-          </p>
-        </AnimateIn>
-        <AnimateIn delay={0.1}>
-          <h1 className="font-mono text-3xl md:text-5xl lg:text-[4rem] font-medium leading-[1.08] tracking-tight text-[#F2F4F7] max-w-3xl text-balance">
-            Designing calm, trustworthy AI systems at OS scale.
+          <h1 className="font-mono text-5xl md:text-7xl lg:text-[6rem] font-medium leading-[1.02] tracking-tight text-[#F2F4F7]">
+            Product
+            <br />
+            Maker.
           </h1>
         </AnimateIn>
-        <AnimateIn delay={0.2}>
-          <p className="mt-6 text-base md:text-lg text-foreground-secondary leading-relaxed max-w-2xl font-sans">
-            Senior UX/Product Designer focused on interaction architecture, ambient agents, and scalable system design inside Windows.
+        <AnimateIn delay={0.15}>
+          <p className="mt-8 font-mono text-[12px] md:text-[13px] tracking-[0.08em] text-foreground-secondary">
+            {"AI interaction systems \u2022 enterprise scale \u2022 Windows"}
           </p>
         </AnimateIn>
-        <AnimateIn delay={0.3}>
+        <AnimateIn delay={0.25}>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#projects"
