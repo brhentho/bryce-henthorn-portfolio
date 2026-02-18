@@ -11,23 +11,23 @@ export interface ProjectImages {
  */
 export const projectImages: Record<string, ProjectImages> = {
   "teams-for-education": {
-    cardImage: "/images/projects/teams-hero-real.png",
+    cardImage: "/images/projects/teams-card-real.png",
     heroImage: "/images/projects/teams-hero-real.png",
     alt: "Teams for Education — virtual tables interface showing structured group collaboration",
   },
   recall: {
-    cardImage: "/images/projects/recall-card.jpg",
+    cardImage: "/images/projects/recall-card-real.png",
     heroImage: "/images/projects/recall-hero.jpg",
-    alt: "Windows Recall — semantic memory cards showing visual search results",
+    alt: "Windows Recall — semantic memory timeline showing visual search results and recalled content",
   },
   "agents-in-windows": {
-    cardImage: "/images/projects/agents-card.jpg",
+    cardImage: "/images/projects/agents-card-real.png",
     heroImage: "/images/projects/agents-hero.jpg",
-    alt: "Agents in Windows — taskbar presence and hover summary for AI agents",
+    alt: "Agents in Windows — Researcher agent showing multi-step task progress on the desktop",
   },
   "copilot-actions": {
-    cardImage: "/images/projects/copilot-card.jpg",
-    heroImage: "/images/projects/copilot-hero.jpg",
-    alt: "Copilot Actions — taskbar entry points for cross-app actions",
+    cardImage: "/images/projects/copilot-card-real.png",
+    heroImage: "/images/projects/copilot-card-real.png",
+    alt: "Copilot Actions — Windows desktop with blurred overlay suggesting unrevealed work",
   },
 }
