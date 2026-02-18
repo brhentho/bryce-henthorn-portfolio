@@ -1,3 +1,6 @@
+"use client"
+
+import { useRef, useEffect, useState } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
@@ -12,6 +15,78 @@ interface FigurePanelProps {
   aspectRatio?: string
 }
 
+function LazyVideo({ videoSrc }: { videoSrc: string }) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: "200px" }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  // Pause video when it scrolls out of view to free memory
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video || !isVisible) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {})
+        } else {
+          video.pause()
+        }
+      },
+      { rootMargin: "50px" }
+    )
+
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [isVisible])
+
+  return (
+    <div ref={containerRef} style={{ aspectRatio: isVisible ? undefined : "16/9" }}>
+      {isVisible ? (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          className="w-full h-auto block"
+        >
+          <source src={videoSrc} type={videoSrc.endsWith(".mp4") ? "video/mp4" : "video/quicktime"} />
+          {videoSrc.endsWith(".mov") && (
+            <source src={videoSrc} type="video/mp4" />
+          )}
+        </video>
+      ) : (
+        <div className="flex items-center justify-center h-full">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-foreground opacity-20">
+            <circle cx="12" cy="12" r="10" />
+            <polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none" />
+          </svg>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export function FigurePanel({ caption, variant, src, videoSrc, className, aspectRatio = "16/9" }: FigurePanelProps) {
   const isVideo = variant === "video" || !!videoSrc
 
@@ -22,23 +97,7 @@ export function FigurePanel({ caption, variant, src, videoSrc, className, aspect
         style={{ aspectRatio: (src || videoSrc) ? undefined : aspectRatio }}
       >
         {videoSrc ? (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            className="w-full h-auto block"
-          >
-            <source src={videoSrc} type={videoSrc.endsWith(".mp4") ? "video/mp4" : "video/quicktime"} />
-            {/* mp4 fallback for browsers that don't support quicktime */}
-            {videoSrc.endsWith(".mov") && (
-              <source src={videoSrc} type="video/mp4" />
-            )}
-            <div className="flex items-center justify-center p-8 text-foreground-tertiary text-sm font-sans">
-              Video not supported in this browser
-            </div>
-          </video>
+          <LazyVideo videoSrc={videoSrc} />
         ) : src ? (
           <Image
             src={src}
