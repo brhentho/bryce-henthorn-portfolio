@@ -31,18 +31,22 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const cardInner = (
     <div className="rounded-[var(--radius-card)] border border-border bg-surface overflow-hidden transition-all duration-500 ease-out group-hover:border-border-hover group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
-      {/* Image area */}
-      <div className="relative aspect-[16/10] bg-surface-raised overflow-hidden">
+      {/* Image area -- transparent bg, padded so image floats */}
+      <div className="relative aspect-[16/10] overflow-hidden">
         {cardImage ? (
-          <Image
-            src={cardImage}
-            alt={imageAlt || productName}
-            fill
-            className="object-contain transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-          />
+          <div className="absolute inset-0 p-5 md:p-6 flex items-center justify-center">
+            <div className="relative w-full h-full overflow-hidden rounded-lg transition-transform duration-700 ease-out group-hover:scale-[1.06]">
+              <Image
+                src={cardImage}
+                alt={imageAlt || productName}
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+              />
+            </div>
+          </div>
         ) : (
-          <div className="absolute inset-0 bg-surface-raised" />
+          <div className="absolute inset-0" />
         )}
         {/* Coming soon badge overlay */}
         {tag && (
