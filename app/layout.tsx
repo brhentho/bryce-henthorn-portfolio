@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   title: "Bryce Henthorn — Senior UX/Product Designer",
   description:
     "Designing human-AI systems at enterprise scale in Windows. Senior UX/Product Designer focused on interaction architecture, ambient agents, and scalable system design.",
-  generator: "v0.app",
   icons: {
     icon: [
       { url: "/icon-light-32x32.png", media: "(prefers-color-scheme: light)" },

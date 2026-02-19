@@ -27,19 +27,29 @@ export function Hero() {
 
       <Container className="relative z-10 py-32 md:py-0">
         <div className="max-w-2xl md:py-8 lg:py-12">
-          <div
-            style={{
-              opacity: animate ? 1 : 0,
-              transform: animate ? "translateY(0)" : "translateY(10px)",
-              transition: baseTransition,
-            }}
-          >
-            <h1 className="font-heading text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.02em] text-foreground">
+          <h1 className="font-heading text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.02em] text-foreground">
+            <span
+              className="block"
+              style={{
+                opacity: animate ? 1 : 0,
+                transform: animate ? "translateY(0)" : "translateY(10px)",
+                transition: baseTransition,
+              }}
+            >
               Product
-              <br />
-              <span className="block mt-1">Maker.</span>
-            </h1>
-          </div>
+            </span>
+            <span
+              className="block mt-1"
+              style={{
+                opacity: animate ? 1 : 0,
+                transform: animate ? "translateY(0)" : "translateY(10px)",
+                transition: baseTransition,
+                transitionDelay: animate ? "0.1s" : "0s",
+              }}
+            >
+              Maker.
+            </span>
+          </h1>
 
           <div
             style={{

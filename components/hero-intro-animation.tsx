@@ -35,6 +35,7 @@ const clusterGridPositions = generateClusterGrid()
 export function HeroIntroAnimation() {
   const [mounted, setMounted] = useState(false)
   const [phase, setPhase] = useState<"scatter" | "form" | "sweep" | "stable">("scatter")
+  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 })
 
   // Generate scattered positions only on client after mount to avoid hydration mismatch
   const scatteredPositions = useMemo(() => {
@@ -69,7 +70,29 @@ export function HeroIntroAnimation() {
     }
   }, [])
 
-  const isForming = phase === "form" || phase === "sweep" || phase === "stable"
+  // Mouse-reactive parallax — activates once dots have settled
+  useEffect(() => {
+    if (phase !== "stable") return
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (prefersReduced) return
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const cx = window.innerWidth / 2
+      const cy = window.innerHeight / 2
+      const normX = (e.clientX - cx) / cx // -1 to 1
+      const normY = (e.clientY - cy) / cy // -1 to 1
+      setMouseOffset({ x: normX * 8, y: normY * 6 })
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [phase])
+
+  // Use grid positions for all non-scatter phases
+  const useGridPosition = phase !== "scatter"
+  // Only apply the slow staggered forming transition during form/sweep
+  const isAnimating = phase === "form" || phase === "sweep"
 
   return (
     <div className="absolute inset-0 pointer-events-none z-[1]" aria-hidden="true">
@@ -85,7 +108,13 @@ export function HeroIntroAnimation() {
 
       {/* Animated cluster -- rendered ONLY after mount to avoid any hydration mismatch */}
       {mounted && scatteredPositions.length > 0 && (
-        <div className="absolute right-0 top-0 bottom-0 w-[42%] hidden lg:flex items-center justify-center pointer-events-none">
+        <div
+          className="absolute right-0 top-0 bottom-0 w-[42%] hidden lg:flex items-center justify-center pointer-events-none"
+          style={{
+            transform: phase === "stable" ? `translate(${mouseOffset.x}px, ${mouseOffset.y}px)` : "none",
+            transition: phase === "stable" ? "transform 0.12s ease-out" : "none",
+          }}
+        >
           <div className="relative w-full h-[60%]">
             {/* Calibration sweep line */}
             {phase === "sweep" && (
@@ -101,9 +130,9 @@ export function HeroIntroAnimation() {
             {/* All dots -- plain divs with CSS transitions, no Framer Motion */}
             {scatteredPositions.map((sp, i) => {
               const gp = clusterGridPositions[i]
-              const targetX = isForming ? gp.x : sp.x
-              const targetY = isForming ? gp.y : sp.y
-              const targetOpacity = isForming ? 0.7 : 0.4
+              const targetX = useGridPosition ? gp.x : sp.x
+              const targetY = useGridPosition ? gp.y : sp.y
+              const targetOpacity = useGridPosition ? 0.7 : 0.4
 
               return (
                 <div
@@ -115,7 +144,7 @@ export function HeroIntroAnimation() {
                     left: `${targetX}%`,
                     top: `${targetY}%`,
                     opacity: targetOpacity,
-                    transition: isForming
+                    transition: isAnimating
                       ? `left 1s cubic-bezier(0.42,0,0.58,1) ${i * 0.012}s, top 1s cubic-bezier(0.42,0,0.58,1) ${i * 0.012}s, opacity 0.5s ease ${0.8 + i * 0.008}s`
                       : "none",
                   }}
