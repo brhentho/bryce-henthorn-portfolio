@@ -9,7 +9,7 @@ const INTRO_DOT_COUNT = 150
 const FORM_DURATION   = 1500
 const SCATTER_DELAY   = 400
 const WIPE_DURATION   = 400
-const WIPE_DELAY      = 1900  // SCATTER_DELAY + FORM_DURATION
+const WIPE_DELAY      = SCATTER_DELAY + FORM_DURATION
 
 function easeInOutCubic(t: number) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
@@ -34,6 +34,10 @@ export function HeroIntroOverlay({ onComplete }: HeroIntroOverlayProps) {
   const [clipProgress, setClipProgress] = useState(0)
   const [phase, setPhase] = useState<"scatter" | "form" | "wipe" | "done">("scatter")
 
+  // Fix 1: Use a ref to decouple onComplete from the effect's dependency array
+  const onCompleteRef = useRef(onComplete)
+  useEffect(() => { onCompleteRef.current = onComplete }, [onComplete])
+
   // Canvas animation (scatter → form)
   useEffect(() => {
     const canvas = canvasRef.current
@@ -44,7 +48,11 @@ export function HeroIntroOverlay({ onComplete }: HeroIntroOverlayProps) {
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
     canvas.width  = w * dpr
     canvas.height = h * dpr
-    const ctx = canvas.getContext("2d")!
+
+    // Fix 2: Non-null assertion replaced with early return guard
+    const ctxOrNull = canvas.getContext("2d")
+    if (!ctxOrNull) return
+    const ctx: CanvasRenderingContext2D = ctxOrNull
     ctx.scale(dpr, dpr)
 
     const allGrid = buildGridPositions(w, h)
@@ -60,9 +68,13 @@ export function HeroIntroOverlay({ onComplete }: HeroIntroOverlayProps) {
     }))
 
     let formStartTime: number | null = null
-    let rafId: number
+    // Fix 3: Initialize rafId to 0
+    let rafId: number = 0
+    // Fix 4: Track whether the animation is complete to stop the rAF loop
+    let animationComplete = false
 
     function draw(ts: number) {
+      if (animationComplete) return
       ctx.clearRect(0, 0, w, h)
 
       if (formStartTime === null) {
@@ -85,6 +97,13 @@ export function HeroIntroOverlay({ onComplete }: HeroIntroOverlayProps) {
           ctx.fillStyle = `rgba(240,240,243,${opacity})`
           ctx.fill()
         })
+
+        // Fix 4: Stop rescheduling once all dots have finished animating
+        const elapsed = ts - formStartTime! - 200  // account for max stagger delay
+        if (elapsed > FORM_DURATION) {
+          animationComplete = true
+          return
+        }
       }
 
       rafId = requestAnimationFrame(draw)
@@ -94,7 +113,8 @@ export function HeroIntroOverlay({ onComplete }: HeroIntroOverlayProps) {
 
     const t1 = setTimeout(() => { formStartTime = performance.now(); setPhase("form") }, SCATTER_DELAY)
     const t2 = setTimeout(() => { setPhase("wipe") }, WIPE_DELAY)
-    const t3 = setTimeout(() => { setPhase("done"); onComplete() }, WIPE_DELAY + WIPE_DURATION + 50)
+    // Fix 1: Use onCompleteRef.current instead of onComplete directly
+    const t3 = setTimeout(() => { setPhase("done"); onCompleteRef.current() }, WIPE_DELAY + WIPE_DURATION + 50)
 
     return () => {
       cancelAnimationFrame(rafId)
@@ -102,13 +122,15 @@ export function HeroIntroOverlay({ onComplete }: HeroIntroOverlayProps) {
       clearTimeout(t2)
       clearTimeout(t3)
     }
-  }, [onComplete])
+  // Fix 1: Dependency array is now [] — onComplete is accessed via ref
+  }, [])
 
   // Animate clip progress during wipe phase
   useEffect(() => {
     if (phase !== "wipe") return
     const start = performance.now()
-    let rafId: number
+    // Fix 3: Initialize rafId to 0
+    let rafId: number = 0
 
     function step(ts: number) {
       const t = Math.min((ts - start) / WIPE_DURATION, 1)
