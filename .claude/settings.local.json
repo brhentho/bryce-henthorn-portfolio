@@ -28,7 +28,8 @@
       "Bash(pnpm --version:*)",
       "Bash(pnpm lint:*)",
       "Bash(npx next lint:*)",
-      "Bash(node_modules/.bin/next build)"
+      "Bash(node_modules/.bin/next build)",
+      "Bash(/c/Users/brhentho/AppData/Local/pnpm/.tools/pnpm/9.15.4_tmp_31084/bin/pnpm install:*)"
     ]
   }
 }
