@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm tsc:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(npm install:*)",
+      "Bash(\"/c/Users/brhentho/OneDrive - Microsoft/Documents/GitHub/bryce-henthorn-portfolio/node_modules/.bin/tsc\" --noEmit --project \"/c/Users/brhentho/OneDrive - Microsoft/Documents/GitHub/bryce-henthorn-portfolio/tsconfig.json\")",
+      "Bash(/c/Users/brhentho/AppData/Roaming/npm/pnpm.cmd tsc --noEmit)",
+      "Bash(node node_modules/.bin/tsc:*)",
+      "Bash(node:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(export PATH:*)",
+      "Bash(where:*)",
+      "Bash(echo:*)",
+      "Bash(\"/c/Program Files/nodejs/node.exe\" \"/c/Users/brhentho/OneDrive - Microsoft/Documents/GitHub/bryce-henthorn-portfolio/node_modules/.bin/tsc\" --noEmit --project \"/c/Users/brhentho/OneDrive - Microsoft/Documents/GitHub/bryce-henthorn-portfolio/tsconfig.json\")",
+      "Bash(\"/c/Users/brhentho/OneDrive - Microsoft/Documents/GitHub/bryce-henthorn-portfolio/node_modules/.bin/tsc.cmd\" --noEmit)",
+      "Bash(export PATH=\"$PATH:/c/Users/brhentho/AppData/Roaming/npm:/c/Program Files/nodejs\")",
+      "Bash(node_modules/.bin/tsc:*)",
+      "Bash(pnpm build:*)",
+      "Bash(cmd.exe /c \"where pnpm 2>&1\")",
+      "Bash(cmd.exe /c \"where pnpm\")",
+      "Bash(cmd.exe /c \"where pnpm & exit\")",
+      "Bash(powershell.exe -Command \"Get-Command pnpm -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source\")",
+      "Bash(export PATH=\"$PATH:/c/Users/brhentho/AppData/Local/pnpm\")",
+      "Bash(pnpm --version:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(npx next lint:*)",
+      "Bash(node_modules/.bin/next build)"
+    ]
+  }
+}
