@@ -2,28 +2,37 @@
 
 import { useEffect, useState } from "react"
 import { Container } from "@/components/container"
-import { HeroIntroAnimation } from "@/components/hero-intro-animation"
+import { HeroIntroOverlay } from "@/components/hero-intro-overlay"
+import { HeroGrid } from "@/components/hero-grid"
 
 export function Hero() {
-  const [animate, setAnimate] = useState(false)
+  const [introComplete, setIntroComplete] = useState(false)
+  const [showText, setShowText] = useState(false)
+  const [skipIntro, setSkipIntro] = useState(false)
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     if (prefersReduced) {
-      setAnimate(true)
-      return
+      setSkipIntro(true)
+      setIntroComplete(true)
+      setShowText(true)
     }
-    // Delay to match dot animation completion
-    const timer = setTimeout(() => setAnimate(true), 1750)
-    return () => clearTimeout(timer)
   }, [])
+
+  function handleIntroComplete() {
+    setIntroComplete(true)
+    setTimeout(() => setShowText(true), 300)
+  }
 
   const baseTransition = "opacity 0.7s cubic-bezier(0.25,0.1,0.25,1), transform 0.7s cubic-bezier(0.25,0.1,0.25,1)"
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Right-side dot animation */}
-      <HeroIntroAnimation />
+      {/* Full-screen intro overlay — plays once, self-destructs */}
+      {!skipIntro && <HeroIntroOverlay onComplete={handleIntroComplete} />}
+
+      {/* Stable interactive dot grid (canvas) */}
+      <HeroGrid visible={introComplete} />
 
       <Container className="relative z-10 py-32 md:py-0">
         <div className="max-w-2xl md:py-8 lg:py-12">
@@ -31,8 +40,8 @@ export function Hero() {
             <span
               className="block"
               style={{
-                opacity: animate ? 1 : 0,
-                transform: animate ? "translateY(0)" : "translateY(10px)",
+                opacity: showText ? 1 : 0,
+                transform: showText ? "translateY(0)" : "translateY(10px)",
                 transition: baseTransition,
               }}
             >
@@ -41,10 +50,10 @@ export function Hero() {
             <span
               className="block mt-1"
               style={{
-                opacity: animate ? 1 : 0,
-                transform: animate ? "translateY(0)" : "translateY(10px)",
+                opacity: showText ? 1 : 0,
+                transform: showText ? "translateY(0)" : "translateY(10px)",
                 transition: baseTransition,
-                transitionDelay: animate ? "0.1s" : "0s",
+                transitionDelay: showText ? "0.1s" : "0s",
               }}
             >
               Maker.
@@ -53,10 +62,10 @@ export function Hero() {
 
           <div
             style={{
-              opacity: animate ? 1 : 0,
-              transform: animate ? "translateY(0)" : "translateY(10px)",
+              opacity: showText ? 1 : 0,
+              transform: showText ? "translateY(0)" : "translateY(10px)",
               transition: baseTransition,
-              transitionDelay: animate ? "0.12s" : "0s",
+              transitionDelay: showText ? "0.12s" : "0s",
             }}
           >
             <p className="mt-8 md:mt-10 text-base md:text-lg text-foreground-secondary leading-relaxed font-sans max-w-md">
@@ -66,10 +75,10 @@ export function Hero() {
 
           <div
             style={{
-              opacity: animate ? 1 : 0,
-              transform: animate ? "translateY(0)" : "translateY(10px)",
+              opacity: showText ? 1 : 0,
+              transform: showText ? "translateY(0)" : "translateY(10px)",
               transition: baseTransition,
-              transitionDelay: animate ? "0.24s" : "0s",
+              transitionDelay: showText ? "0.24s" : "0s",
             }}
           >
             <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-4">
