@@ -56,6 +56,8 @@ export function HeroGrid({ visible }: HeroGridProps) {
       if (w === 0 || h === 0) return null
       canvas!.width  = w * dpr
       canvas!.height = h * dpr
+      canvas!.style.width  = w + 'px'
+      canvas!.style.height = h + 'px'
       const ctx = canvas!.getContext("2d")
       if (!ctx) return null
       ctx.scale(dpr, dpr)

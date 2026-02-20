@@ -48,6 +48,8 @@ export function HeroIntroOverlay({ onComplete }: HeroIntroOverlayProps) {
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
     canvas.width  = w * dpr
     canvas.height = h * dpr
+    canvas.style.width  = w + 'px'
+    canvas.style.height = h + 'px'
 
     // Fix 2: Non-null assertion replaced with early return guard
     const ctxOrNull = canvas.getContext("2d")
@@ -158,7 +160,7 @@ export function HeroIntroOverlay({ onComplete }: HeroIntroOverlayProps) {
         pointerEvents: "none",
       }}
     >
-      <canvas ref={canvasRef} style={{ display: "block", width: "100%", height: "100%" }} />
+      <canvas ref={canvasRef} style={{ display: "block" }} />
     </div>
   )
 }
