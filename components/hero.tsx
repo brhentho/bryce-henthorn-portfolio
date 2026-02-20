@@ -6,12 +6,15 @@ import { HeroIntroOverlay } from "@/components/hero-intro-overlay"
 import { HeroGrid } from "@/components/hero-grid"
 
 export function Hero() {
+  const [hydrated, setHydrated] = useState(false)
   const [introComplete, setIntroComplete] = useState(false)
   const [showText, setShowText] = useState(false)
   const [skipIntro, setSkipIntro] = useState(false)
 
+  // 1. Hydration + reduced-motion check
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    setHydrated(true)
     if (prefersReduced) {
       setSkipIntro(true)
       setIntroComplete(true)
@@ -19,9 +22,15 @@ export function Hero() {
     }
   }, [])
 
+  // 2. Text reveal delay after intro completes
+  useEffect(() => {
+    if (!introComplete || skipIntro) return
+    const timer = setTimeout(() => setShowText(true), 300)
+    return () => clearTimeout(timer)
+  }, [introComplete, skipIntro])
+
   function handleIntroComplete() {
     setIntroComplete(true)
-    setTimeout(() => setShowText(true), 300)
   }
 
   const baseTransition = "opacity 0.7s cubic-bezier(0.25,0.1,0.25,1), transform 0.7s cubic-bezier(0.25,0.1,0.25,1)"
@@ -29,7 +38,7 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Full-screen intro overlay — plays once, self-destructs */}
-      {!skipIntro && <HeroIntroOverlay onComplete={handleIntroComplete} />}
+      {hydrated && !skipIntro && <HeroIntroOverlay onComplete={handleIntroComplete} />}
 
       {/* Stable interactive dot grid (canvas) */}
       <HeroGrid visible={introComplete} />
