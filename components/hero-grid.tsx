@@ -46,12 +46,14 @@ export function HeroGrid({ visible }: HeroGridProps) {
     const canvas  = canvasRef.current
     if (!wrapper || !canvas) return
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2)
-
+    // Fix 3: dpr is read inside initCanvas so resize recaptures current ratio
     function initCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
       const rect = wrapper!.getBoundingClientRect()
       const w = rect.width
       const h = rect.height
+      // Fix 4: guard against zero-dimension canvas
+      if (w === 0 || h === 0) return null
       canvas!.width  = w * dpr
       canvas!.height = h * dpr
       const ctx = canvas!.getContext("2d")
@@ -69,19 +71,24 @@ export function HeroGrid({ visible }: HeroGridProps) {
     let mouseY = -999
     let rafId: number = 0
 
+    // Fix 2: use globalAlpha instead of rgba string, and squared-distance check
     function draw() {
       ctx.clearRect(0, 0, w, h)
+      ctx.fillStyle = "rgb(240,240,243)"  // set once outside the loop
+
+      const repelRadiusSq = REPEL_RADIUS * REPEL_RADIUS
 
       for (const d of dots) {
         const dx = mouseX - d.baseX
         const dy = mouseY - d.baseY
-        const dist = Math.sqrt(dx * dx + dy * dy)
+        const distSq = dx * dx + dy * dy
 
         let targetX = d.baseX
         let targetY = d.baseY
         let targetOpacity = BASE_OPACITY
 
-        if (dist < REPEL_RADIUS && dist > 0) {
+        if (distSq < repelRadiusSq && distSq > 0) {
+          const dist = Math.sqrt(distSq)  // only sqrt when within range
           const force = 1 - dist / REPEL_RADIUS
           const angle = Math.atan2(dy, dx)
           targetX = d.baseX - Math.cos(angle) * force * REPEL_MAX_PX
@@ -93,45 +100,54 @@ export function HeroGrid({ visible }: HeroGridProps) {
         d.y += (targetY - d.y) * SPRING
         d.opacity += (targetOpacity - d.opacity) * SPRING
 
+        ctx.globalAlpha = d.opacity  // use globalAlpha instead of rgba string
         ctx.beginPath()
         ctx.arc(d.x, d.y, DOT_RADIUS, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(240,240,243,${d.opacity.toFixed(3)})`
         ctx.fill()
       }
+
+      ctx.globalAlpha = 1  // reset after loop
 
       rafId = requestAnimationFrame(draw)
     }
 
     rafId = requestAnimationFrame(draw)
 
+    // Fix 1: cache bounding rect; use window-level mousemove with bounds check
+    let cachedRect = wrapper.getBoundingClientRect()
+
     function onMouseMove(e: MouseEvent) {
-      const r = wrapper!.getBoundingClientRect()
-      mouseX = e.clientX - r.left
-      mouseY = e.clientY - r.top
+      const x = e.clientX - cachedRect.left
+      const y = e.clientY - cachedRect.top
+      if (x >= 0 && x <= cachedRect.width && y >= 0 && y <= cachedRect.height) {
+        mouseX = x
+        mouseY = y
+      } else {
+        mouseX = -999
+        mouseY = -999
+      }
     }
 
-    function onMouseLeave() {
-      mouseX = -999
-      mouseY = -999
-    }
-
+    // Fix 1 + Fix 3: onResize updates cachedRect and re-reads dpr via initCanvas
     function onResize() {
+      cancelAnimationFrame(rafId)
+      cachedRect = wrapper!.getBoundingClientRect()  // update cached rect
       const reinit = initCanvas()
       if (!reinit) return
       ctx = reinit.ctx
       w = reinit.w
       h = reinit.h
       dots = buildGridDots(w, h)
+      rafId = requestAnimationFrame(draw)
     }
 
-    wrapper.addEventListener("mousemove", onMouseMove)
-    wrapper.addEventListener("mouseleave", onMouseLeave)
+    // Fix 1: attach mousemove to window instead of the pointer-events:none wrapper
+    window.addEventListener("mousemove", onMouseMove)
     window.addEventListener("resize", onResize)
 
     return () => {
       cancelAnimationFrame(rafId)
-      wrapper.removeEventListener("mousemove", onMouseMove)
-      wrapper.removeEventListener("mouseleave", onMouseLeave)
+      window.removeEventListener("mousemove", onMouseMove)
       window.removeEventListener("resize", onResize)
     }
   }, [])
