@@ -29,7 +29,15 @@
       "Bash(pnpm lint:*)",
       "Bash(npx next lint:*)",
       "Bash(node_modules/.bin/next build)",
-      "Bash(/c/Users/brhentho/AppData/Local/pnpm/.tools/pnpm/9.15.4_tmp_31084/bin/pnpm install:*)"
+      "Bash(/c/Users/brhentho/AppData/Local/pnpm/.tools/pnpm/9.15.4_tmp_31084/bin/pnpm install:*)",
+      "Bash(tail:)",
+      "Bash(tail:*)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "mcp__plugin_playwright_playwright__browser_wait_for",
+      "mcp__plugin_playwright_playwright__browser_resize",
+      "mcp__plugin_playwright_playwright__browser_close"
     ]
   }
 }

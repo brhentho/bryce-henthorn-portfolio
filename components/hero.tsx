@@ -11,11 +11,12 @@ export function Hero() {
   const [showText, setShowText] = useState(false)
   const [skipIntro, setSkipIntro] = useState(false)
 
-  // 1. Hydration + reduced-motion check
+  // 1. Hydration + reduced-motion check + repeat-visit skip
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const alreadyPlayed = sessionStorage.getItem("introPlayed")
     setHydrated(true)
-    if (prefersReduced) {
+    if (prefersReduced || alreadyPlayed) {
       setSkipIntro(true)
       setIntroComplete(true)
       setShowText(true)
@@ -31,6 +32,7 @@ export function Hero() {
 
   function handleIntroComplete() {
     setIntroComplete(true)
+    sessionStorage.setItem("introPlayed", "1")
   }
 
   const baseTransition = "opacity 0.7s cubic-bezier(0.25,0.1,0.25,1), transform 0.7s cubic-bezier(0.25,0.1,0.25,1)"

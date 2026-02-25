@@ -13,7 +13,7 @@ export function ProjectsSection() {
   const [modalOpen, setModalOpen] = useState(false)
 
   return (
-    <Section id="projects" className="pb-24 md:pb-32">
+    <Section id="projects" className="pt-0 md:pt-0 pb-24 md:pb-32">
       <Container>
         <SectionHeader label="Selected Work" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -22,6 +22,7 @@ export function ProjectsSection() {
               productName="Teams for Education"
               heading="Modernizing Online Classes for an Authentic Virtual Experience."
               href="/teams-for-education"
+              year="2020"
               cardImage={projectImages["teams-for-education"].cardImage}
               imageAlt={projectImages["teams-for-education"].alt}
             />
@@ -31,6 +32,7 @@ export function ProjectsSection() {
               productName="Windows Recall"
               heading="Designing Semantic Search for Everything You've Seen."
               href="/recall"
+              year="2024"
               cardImage={projectImages["recall"].cardImage}
               imageAlt={projectImages["recall"].alt}
             />
@@ -40,6 +42,7 @@ export function ProjectsSection() {
               productName="Agents in Windows"
               heading="Solving Trust and Visibility for AI Agents in the Operating System."
               href="/agents-in-windows"
+              year="2024"
               cardImage={projectImages["agents-in-windows"].cardImage}
               imageAlt={projectImages["agents-in-windows"].alt}
             />

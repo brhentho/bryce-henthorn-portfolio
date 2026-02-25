@@ -5,49 +5,27 @@ import { Section } from "@/components/section"
 import { SectionHeader } from "@/components/section-header"
 import { AnimateIn } from "@/components/animate-in"
 
-const principles = [
-  {
-    title: "Systems before surfaces",
-    description:
-      "Structure and behavior come first. Visual design follows from clear interaction architecture.",
-  },
-  {
-    title: "Progressive disclosure",
-    description:
-      "Complexity should unfold on demand. Calm defaults, depth when needed.",
-  },
-  {
-    title: "Trust-first design",
-    description:
-      "Transparency, predictability, and user control are not features. They are foundations.",
-  },
-]
-
 export function PhilosophySection() {
   return (
     <Section>
       <Container>
-        <SectionHeader label="Philosophy" />
+        <SectionHeader label="About" />
         <AnimateIn>
-          <p className="text-lg md:text-xl text-foreground leading-relaxed max-w-2xl mb-14 font-sans">
-            I design systems before surfaces. Great interaction feels invisible until
-            it{"'"}s missing. Clarity beats novelty. Trust scales better than features.
-          </p>
+          <div className="max-w-2xl">
+            <p className="text-lg md:text-xl text-foreground leading-relaxed font-sans mb-6">
+              Senior Product Designer with 8+ years at Microsoft leading AI-native
+              experiences across Windows. I specialize in agent orchestration systems,
+              OS-level interaction models, and trustworthy human–AI workflows at
+              enterprise scale.
+            </p>
+            <p className="text-base md:text-lg text-foreground-secondary leading-relaxed font-sans">
+              I design systems before surfaces — structure and behavior come first,
+              complexity unfolds on demand, and transparency, predictability, and user
+              control are never features but foundations. A systems thinker with deep
+              cross-functional leadership across shell, platform, and M365 ecosystems.
+            </p>
+          </div>
         </AnimateIn>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
-          {principles.map((p, i) => (
-            <AnimateIn key={p.title} delay={i * 0.1}>
-              <div>
-                <h3 className="font-heading text-sm font-semibold text-foreground mb-3 tracking-tight">
-                  {p.title}
-                </h3>
-                <p className="text-sm text-foreground-secondary leading-relaxed font-sans">
-                  {p.description}
-                </p>
-              </div>
-            </AnimateIn>
-          ))}
-        </div>
       </Container>
     </Section>
   )

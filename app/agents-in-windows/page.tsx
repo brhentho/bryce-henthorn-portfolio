@@ -40,6 +40,7 @@ export default function AgentsInWindowsPage() {
       heroImageAlt={projectImages["agents-in-windows"].alt}
       specs={specs}
       navItems={navItems}
+      nextProject={{ name: "Teams for Education", href: "/teams-for-education" }}
     >
       <CaseStudySection id="context" label="Context">
         <CaseStudyHeading>Windows is evolving into a canvas for AI agents</CaseStudyHeading>

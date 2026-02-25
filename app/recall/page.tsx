@@ -39,6 +39,7 @@ export default function RecallPage() {
       heroImageAlt={projectImages["recall"].alt}
       specs={specs}
       navItems={navItems}
+      nextProject={{ name: "Agents in Windows", href: "/agents-in-windows" }}
     >
       <CaseStudySection id="context" label="Context">
         <CaseStudyHeading>What if your computer could remember everything you{"'"}ve seen?</CaseStudyHeading>

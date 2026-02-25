@@ -48,7 +48,7 @@ export default function AboutPage() {
                   <br />
                   Unapologetic technology geek.
                   <br />
-                  <span className="text-foreground-secondary">
+                  <span className="text-accent">
                     So naturally, I fell in love with UX design.
                   </span>
                 </h1>
@@ -66,17 +66,17 @@ export default function AboutPage() {
                 {/* Left column: story */}
                 <div className="max-w-lg">
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    I{"'"}ve always been drawn to how things work underneath — the architecture,
+                    I{"'"}ve always been drawn to <strong className="text-foreground font-semibold">how things work underneath</strong> — the architecture,
                     the flow, the hidden logic that makes complex systems feel simple. I think
                     in research loops and systems diagrams. I optimize compulsively.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    That instinct led me to UX design, where I get to untangle ambiguity for a
+                    That instinct led me to UX design, where I get to <strong className="text-foreground font-semibold">untangle ambiguity</strong> for a
                     living. I{"'"}m most energized by the problems that don{"'"}t have a playbook yet —
                     the ones where structure has to be invented, not borrowed.
                   </p>
                   <p className="text-sm md:text-base text-foreground-secondary leading-relaxed font-sans">
-                    I spend a lot of time thinking about what makes interaction feel trustworthy.
+                    I spend a lot of time thinking about what makes interaction feel <strong className="text-foreground font-semibold">trustworthy</strong>.
                     How do you make an AI system that people actually rely on? How do you surface
                     complexity without overwhelming? Those are the questions I keep coming back to.
                   </p>
@@ -84,19 +84,81 @@ export default function AboutPage() {
                 {/* Right column: philosophy */}
                 <div className="max-w-lg">
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    I believe the best design is invisible until it{"'"}s missing. Progressive
-                    disclosure over information overload. Clear hierarchy over clever decoration.
+                    I believe the best design is invisible until it{"'"}s missing. <strong className="text-foreground font-semibold">Progressive
+                    disclosure</strong> over information overload. Clear hierarchy over clever decoration.
                     All killer, no filler.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    Recently, my work has focused on large-scale systems inside Windows —
+                    Recently, my work has focused on <strong className="text-foreground font-semibold">large-scale systems inside Windows</strong> —
                     AI-powered memory, ambient agents, and OS-level interaction patterns. These
                     are problems where you{"'"}re inventing structure where none existed before.
                   </p>
                   <p className="text-sm md:text-base text-foreground-secondary leading-relaxed font-sans">
-                    I care about craft, but I care more about clarity. I{"'"}d rather ship
+                    I care about craft, but I care more about <strong className="text-foreground font-semibold">clarity</strong>. I{"'"}d rather ship
                     something calm and trustworthy than something flashy and fragile.
                   </p>
+                </div>
+              </div>
+            </AnimateIn>
+          </Container>
+        </Section>
+
+        {/* Experience timeline */}
+        <Section>
+          <Container>
+            <SectionHeader label="Experience" />
+            <AnimateIn>
+              <div className="max-w-2xl flex flex-col gap-10">
+                {/* Microsoft */}
+                <div className="flex gap-6">
+                  <div className="shrink-0 w-28">
+                    <span className="text-xs font-sans font-medium text-foreground-tertiary">2018 — Present</span>
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-sm font-semibold text-foreground tracking-tight">Microsoft</h3>
+                    <ul className="mt-3 flex flex-col gap-3">
+                      <li>
+                        <p className="text-sm font-sans font-medium text-foreground">Windows Agent Platform</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2025 — Present</p>
+                      </li>
+                      <li>
+                        <p className="text-sm font-sans font-medium text-foreground">Copilot Actions</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2025 — Present</p>
+                      </li>
+                      <li>
+                        <p className="text-sm font-sans font-medium text-foreground">Windows Recall (AI-Powered Memory Search)</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2023 — 2025</p>
+                      </li>
+                      <li>
+                        <p className="text-sm font-sans font-medium text-foreground">File Explorer Modernization (Windows 11)</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2022 — 2023</p>
+                      </li>
+                      <li>
+                        <p className="text-sm font-sans font-medium text-foreground">Teams for Education</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2020 — 2021</p>
+                      </li>
+                      <li>
+                        <p className="text-sm font-sans font-medium text-foreground">Microsoft Education</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2018 — 2020</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                {/* Prior */}
+                <div className="flex gap-6">
+                  <div className="shrink-0 w-28">
+                    <span className="text-xs font-sans font-medium text-foreground-tertiary">Prior</span>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <div>
+                      <h3 className="font-heading text-sm font-semibold text-foreground tracking-tight">Amazon</h3>
+                      <p className="text-xs font-sans text-foreground-tertiary mt-0.5">Contract</p>
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-sm font-semibold text-foreground tracking-tight">Nordstrom</h3>
+                      <p className="text-xs font-sans text-foreground-tertiary mt-0.5">Contract</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </AnimateIn>

@@ -41,17 +41,18 @@ export default function TeamsForEducationPage() {
       heroImageAlt={projectImages["teams-for-education"].alt}
       specs={specs}
       navItems={navItems}
+      nextProject={{ name: "Windows Recall", href: "/recall" }}
     >
       <CaseStudySection id="context" label="Context">
         <CaseStudyHeading>COVID brought millions of new students to online classrooms</CaseStudyHeading>
         <CaseStudyParagraph>
-          At the height of the pandemic, Microsoft Teams became a lifeline for education, used by over 150 million students and educators worldwide. Our team was asked to figure out how to retain this massive growth. Adoption had surged, but educators were struggling and students were quietly disengaging.
+          At the height of the pandemic, Microsoft Teams became a lifeline for education — used by over 150 million students and educators worldwide. Growth was massive, but it was fragile. Our team was tasked with figuring out how to retain it. Educators were overwhelmed, students were quietly disengaging, and the initial surge was already showing signs of erosion.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Before proposing solutions, we conducted extensive research with students, parents, and teachers. I led several day-in-the-life sessions to understand how a full school day unfolded inside Teams. We mapped where engagement broke down, what felt emotionally uncomfortable in virtual settings, and how teachers were trying to manage energy and participation.
+          The initial ask was about growth metrics — how to keep the numbers up. But through a rigorous design process loop of research, synthesis, and prototyping, we discovered that the real lever for retention wasn{"'"}t feature additions. It was solving the fundamental user problems that were causing disengagement.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Only after hearing those stories did the real problem become clear. Students deeply missed the social dynamics of a classroom. In a grid of silent avatars, it was easy to disappear. Teachers could not quickly scan the room, take attendance visually, or sense the pulse of discussion. This project shifted from feature growth to a much more human goal: how do we make virtual class feel human again?
+          That reframing changed everything. Instead of optimizing for adoption metrics, we focused on what was actually breaking down in the virtual classroom experience. The retention strategy became inseparable from the user experience strategy. My role centered on leading that design process and shaping the interaction patterns that emerged from it.
         </CaseStudyParagraph>
       </CaseStudySection>
 

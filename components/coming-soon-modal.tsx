@@ -27,7 +27,7 @@ export function ComingSoonModal({ open, onClose }: ComingSoonModalProps) {
       <div className="relative rounded-[var(--radius-card)] border border-border bg-surface p-8 max-w-sm w-full text-center">
         <p className="text-foreground font-heading font-semibold text-base mb-1.5">Case study coming soon</p>
         <p className="text-foreground-tertiary text-sm font-sans mb-6">
-          This project is still being documented.
+          Designing safe, legible, and interruptible AI actions in Windows. Case study coming early 2025.
         </p>
         <button
           type="button"

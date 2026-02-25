@@ -13,6 +13,7 @@ interface ProjectCardProps {
   cardImage?: string
   imageAlt?: string
   tag?: string
+  year?: string
   disabled?: boolean
   onDisabledClick?: () => void
   className?: string
@@ -25,6 +26,7 @@ export function ProjectCard({
   cardImage,
   imageAlt,
   tag,
+  year,
   disabled,
   onDisabledClick,
   className,
@@ -62,7 +64,7 @@ export function ProjectCard({
       <div className="p-5 md:p-6">
         {/* Small product name */}
         <p className="text-xs font-sans font-medium text-foreground-tertiary uppercase tracking-wider mb-2">
-          {productName}
+          {productName}{year && <span> · {year}</span>}
         </p>
 
         {/* Large heading */}

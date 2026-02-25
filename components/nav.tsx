@@ -2,23 +2,39 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { Container } from "@/components/container"
 
 export function Nav() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 0)
+    }
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   const links = [
     { label: "Work", href: "/#projects" },
     { label: "About", href: "/about" },
+    { label: "Resume", href: "/resume.pdf", external: true },
     { label: "Contact", href: "mailto:bhenthorn2757@gmail.com" },
   ]
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 bg-background"
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-colors duration-200",
+        scrolled
+          ? "backdrop-blur-md bg-background/80 border-b border-border"
+          : "bg-background"
+      )}
       role="navigation"
       aria-label="Main navigation"
     >
@@ -52,7 +68,7 @@ export function Nav() {
                     : "text-foreground-tertiary hover:text-foreground",
                   "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-200 hover:after:w-full"
                 )}
-                {...(link.href.startsWith("mailto:") && {
+                {...((link.href.startsWith("mailto:") || link.external) && {
                   target: "_blank",
                   rel: "noopener noreferrer",
                 })}
@@ -97,7 +113,7 @@ export function Nav() {
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className="text-sm font-sans font-medium text-foreground-secondary hover:text-foreground transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent py-1"
-                {...(link.href.startsWith("mailto:") && {
+                {...((link.href.startsWith("mailto:") || link.external) && {
                   target: "_blank",
                   rel: "noopener noreferrer",
                 })}

@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { Nav } from "@/components/nav"
 import { Footer } from "@/components/footer"
 import { Container } from "@/components/container"
@@ -32,6 +33,7 @@ interface CaseStudyLayoutProps {
   heroImageAlt?: string
   specs: SpecItem[]
   navItems: NavItem[]
+  nextProject?: { name: string; href: string }
   children: React.ReactNode
 }
 
@@ -44,6 +46,7 @@ export function CaseStudyLayout({
   heroImageAlt,
   specs,
   navItems,
+  nextProject,
   children,
 }: CaseStudyLayoutProps) {
   return (
@@ -145,6 +148,39 @@ export function CaseStudyLayout({
           </div>
         </Container>
       </main>
+
+      {/* Next project navigation */}
+      {nextProject && (
+        <section className="border-t border-border">
+          <Container className="py-16 md:py-20">
+            <Link
+              href={nextProject.href}
+              className="group flex items-center justify-between"
+            >
+              <div>
+                <span className="text-xs font-sans font-medium text-foreground-tertiary uppercase tracking-wider mb-3 block">
+                  Next project
+                </span>
+                <span className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-foreground group-hover:text-accent transition-colors duration-300 tracking-tight">
+                  {nextProject.name}
+                </span>
+              </div>
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="text-foreground-tertiary group-hover:text-accent group-hover:translate-x-2 transition-all duration-300 shrink-0 ml-4"
+              >
+                <path d="M6 16h20M18 8l8 8-8 8" />
+              </svg>
+            </Link>
+          </Container>
+        </section>
+      )}
+
       <Footer />
     </PageTransition>
   )

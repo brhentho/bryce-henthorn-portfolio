@@ -21,18 +21,23 @@ export const metadata: Metadata = {
     "Designing human-AI systems at enterprise scale in Windows. Senior UX/Product Designer focused on interaction architecture, ambient agents, and scalable system design.",
   icons: {
     icon: [
-      { url: "/icon-light-32x32.png", media: "(prefers-color-scheme: light)" },
-      { url: "/icon-dark-32x32.png", media: "(prefers-color-scheme: dark)" },
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/images/projects/favicons/Favicon-Light.png", media: "(prefers-color-scheme: light)" },
+      { url: "/images/projects/favicons/Favicon-Dark.png", media: "(prefers-color-scheme: dark)" },
     ],
-    apple: "/apple-icon.png",
+    apple: "/images/projects/favicons/Favicon-Light.png",
+  },
+  openGraph: {
+    title: "Bryce Henthorn — Senior UX/Product Designer",
+    description:
+      "Designing human-AI systems at enterprise scale in Windows. Senior UX/Product Designer focused on interaction architecture, ambient agents, and scalable system design.",
+    type: "website",
+    url: "https://bhenthorn.com",
   },
 }
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
   themeColor: "#0B0B0D",
 }
 
