@@ -66,36 +66,55 @@ export default function AboutPage() {
                 {/* Left column: story */}
                 <div className="max-w-lg">
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    I{"'"}ve always been drawn to <strong className="text-foreground font-semibold">how things work underneath</strong> — the architecture,
-                    the flow, the hidden logic that makes complex systems feel simple. I think
-                    in research loops and systems diagrams. I optimize compulsively.
+                    I{"'"}m a product designer working on <strong className="text-foreground font-semibold">AI experiences inside Windows</strong> at Microsoft.
+                    My job sits at a strange and exciting intersection — operating systems, agents, enterprise
+                    workflows, trust, orchestration. All the messy, high-stakes problems that show up when
+                    software stops being a tool and starts acting on your behalf.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    That instinct led me to UX design, where I get to <strong className="text-foreground font-semibold">untangle ambiguity</strong> for a
-                    living. I{"'"}m most energized by the problems that don{"'"}t have a playbook yet —
-                    the ones where structure has to be invented, not borrowed.
+                    The more honest version is that I{"'"}m <strong className="text-foreground font-semibold">wired to solve problems</strong>. I don{"'"}t
+                    really know how to turn it off. If something feels inefficient, structurally off, or just
+                    vaguely wrong, I will keep pulling on it until I understand it. Sometimes that means building
+                    prototypes late at night. Sometimes it means mapping systems no one asked me to map.
+                    Sometimes it means going ten layers deeper than necessary just to make sure the foundation is solid.
+                  </p>
+                  <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
+                    I have a habit of <strong className="text-foreground font-semibold">obsessively researching</strong> the {'"'}right{'"'} solution to things
+                    most people would settle on in an afternoon. I like constraints. I like tradeoffs. I like
+                    figuring out what the real problem is underneath the surface problem.
                   </p>
                   <p className="text-sm md:text-base text-foreground-secondary leading-relaxed font-sans">
-                    I spend a lot of time thinking about what makes interaction feel <strong className="text-foreground font-semibold">trustworthy</strong>.
-                    How do you make an AI system that people actually rely on? How do you surface
-                    complexity without overwhelming? Those are the questions I keep coming back to.
+                    My family would probably tell you I overthink everything. They are not wrong.
                   </p>
                 </div>
                 {/* Right column: philosophy */}
                 <div className="max-w-lg">
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    I believe the best design is invisible until it{"'"}s missing. <strong className="text-foreground font-semibold">Progressive
-                    disclosure</strong> over information overload. Clear hierarchy over clever decoration.
-                    All killer, no filler.
+                    Design, for me, is <strong className="text-foreground font-semibold">structure</strong>. It{"'"}s the quiet architecture that makes
+                    complexity feel obvious. I care about progressive disclosure. I care about removing noise.
+                    I care about building systems that scale without collapsing under their own weight. Good
+                    design should feel inevitable in hindsight.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    Recently, my work has focused on <strong className="text-foreground font-semibold">large-scale systems inside Windows</strong> —
-                    AI-powered memory, ambient agents, and OS-level interaction patterns. These
-                    are problems where you{"'"}re inventing structure where none existed before.
+                    In the AI space especially, I think we{"'"}re in a moment where <strong className="text-foreground font-semibold">clarity matters more
+                    than novelty</strong>. Agents that interrupt at the wrong time. Automation that feels unpredictable.
+                    Interfaces that overpromise and under-explain. Those are structural problems, not styling
+                    problems. The work I care about is building the guardrails and interaction patterns that
+                    make intelligence feel reliable and human.
+                  </p>
+                  <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
+                    I{"'"}m not trying to design isolated features. I{"'"}m trying to design <strong className="text-foreground font-semibold">how systems behave
+                    over time</strong>. How they learn. How they earn trust. How they stay in flow instead of fragmenting it.
+                  </p>
+                  <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
+                    I{"'"}m ambitious about the impact of the work, but I{"'"}m pretty grounded about the craft.
+                    I still sweat alignment, hierarchy, edge cases, and empty states. The <strong className="text-foreground font-semibold">details matter</strong> because
+                    they{"'"}re where trust is won or lost.
                   </p>
                   <p className="text-sm md:text-base text-foreground-secondary leading-relaxed font-sans">
-                    I care about craft, but I care more about <strong className="text-foreground font-semibold">clarity</strong>. I{"'"}d rather ship
-                    something calm and trustworthy than something flashy and fragile.
+                    If you{"'"}re building something that sits at the edge of what software can do — especially
+                    where AI and real human workflows meet — that{"'"}s where I{"'"}m most energized. I like hard
+                    problems. I like unclear terrain. And I like turning chaos into something that feels simple and durable.
                   </p>
                 </div>
               </div>

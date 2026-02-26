@@ -23,8 +23,7 @@ export function Nav() {
   const links = [
     { label: "Work", href: "/#projects" },
     { label: "About", href: "/about" },
-    { label: "Resume", href: "/resume.pdf", external: true },
-    { label: "Contact", href: "mailto:bhenthorn2757@gmail.com" },
+{ label: "Contact", href: "mailto:bhenthorn2757@gmail.com" },
   ]
 
   return (

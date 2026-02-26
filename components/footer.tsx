@@ -27,14 +27,6 @@ export function Footer() {
             >
               About
             </Link>
-            <Link
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-sans text-foreground-tertiary hover:text-foreground transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            >
-              Resume
-            </Link>
           </div>
         </div>
       </Container>
