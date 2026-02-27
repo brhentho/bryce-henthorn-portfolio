@@ -55,7 +55,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           My role focused specifically on the semantic search experience — how users search their memories, how results are ranked and displayed, and how relevance is communicated in a way that feels understandable and trustworthy.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 01 — Recall overview and core interaction model" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig01-FojMNuJbZGndg7ATAFhxOZEypdzfDq.mp4" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Recall overview and core interaction model" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig01-FojMNuJbZGndg7ATAFhxOZEypdzfDq.mp4" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="problem" label="Problem">
@@ -72,7 +72,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           Because searching memory is different from searching files, we tested rotating prompts and contextual suggestions based on recent activity. These cues helped teach users that they could describe what they remembered in natural language. This subtle mental model shift was essential to adoption.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 02 — Zoomed-out schematic of the Recall system architecture" src="/images/projects/recall-fig02.png" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Zoomed-out schematic of the Recall system architecture" src="/images/projects/recall-fig02.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="card-design" label="Card Design">
@@ -92,7 +92,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           We were careful to make this feel like browsing moments in time rather than launching files. Clicking a card needed to set clear expectations. In some cases it opened the Recall detail view. In others it rehydrated the original window. Designing those affordances carefully prevented confusion and reinforced that this was memory, not file management.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 03 — Card anatomy: visual snapshot, metadata, match types" src="/images/projects/recall-fig04.png" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Card anatomy: visual snapshot, metadata, match types" src="/images/projects/recall-fig04.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="early-iteration" label="Early Iteration">
@@ -112,7 +112,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           Even when the AI was technically correct, the experience felt opaque. Users could not tell why something appeared. That lack of explanation eroded confidence. The problem was no longer just ranking. It was legibility.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 04 — Recall search results with separated match types" src="/images/projects/recall-fig03.png" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Recall search results with separated match types" src="/images/projects/recall-fig03.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="relevance" label="Making Relevance Legible">
@@ -148,11 +148,11 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           Trust and privacy framing were parallel workstreams. Recall includes opt-in controls, local-only messaging, and indexing transparency. While that design effort is a project in itself, the search interface had to reinforce those trust decisions visually and behaviorally.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 05 — Live search performance and loading states" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Live search performance and loading states" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
-        <FigurePanel caption="FIG 06 — Recall keynote presentation and system architecture" src="/images/projects/recall-fig06.png" className="mb-8 max-w-2xl" />
+        <FigurePanel caption="Recall keynote presentation and system architecture" src="/images/projects/recall-fig06.png" className="mb-8 max-w-2xl" />
         <CaseStudyParagraph>
           Separating visual and text results improved comprehension significantly in usability studies. Users could articulate why a result appeared and whether it matched their intent. The feature began to feel predictable rather than mysterious.
         </CaseStudyParagraph>

@@ -93,7 +93,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           This approach restored spatial awareness without sacrificing clarity. It was structured enough to feel real, but restrained enough to feel native inside Teams.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 02 — From flat grids to persistent table cards" src="/images/projects/teams-fig02.png" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="From flat grids to persistent table cards" src="/images/projects/teams-fig02.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="iteration" label="Classroom Orchestration">
@@ -107,7 +107,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           This orchestration layer restored something subtle but powerful: situational awareness. Instead of fragmented breakout rooms, teachers had a cohesive classroom again.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 03 — Whole class to table transitions" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig06-2YDd5QkvxbZD2b8O44R0Nag6g14UhH.mov" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Whole class to table transitions" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig06-2YDd5QkvxbZD2b8O44R0Nag6g14UhH.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="group-creation" label="Group Creation">
@@ -120,14 +120,14 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           This made attendance easier, transitions smoother, and the start of class far more focused. Preparation moved outside the meeting, which allowed learning to begin without friction.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 04 — Group creation and assignment flow" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Group creation and assignment flow" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="student-view" label="Student View">
         <CaseStudyParagraph>
           From the student perspective, the experience reinforced belonging. They saw familiar group members, recognized their seat, and felt accountable to the people around them. That subtle shift made participation feel manageable again.
         </CaseStudyParagraph>
-        <FigurePanel caption="FIG 05 — Student view of their virtual table" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Student view of their virtual table" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
