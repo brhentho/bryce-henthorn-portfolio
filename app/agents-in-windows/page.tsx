@@ -104,7 +104,7 @@ export default function AgentsInWindowsPage() {
         <CaseStudyParagraph>
           This approach turned the taskbar into more than a launcher. It became a dynamic control surface for agent activity. Users can monitor, intervene, and retrieve completed work directly from the shell rather than hunting through conversations or buried notifications.
         </CaseStudyParagraph>
-        <FigurePanel caption="Taskbar presence: state badges, hover cards, and controls" src="/images/projects/agents-fig02.jpg" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Taskbar presence and observability of agent activities" src="/images/projects/agents-fig02.jpg" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="invocation" label="Unified Invocation">
