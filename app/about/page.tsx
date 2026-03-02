@@ -67,7 +67,7 @@ export default function AboutPage() {
                 <div className="max-w-lg">
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
                     I{"'"}m a product designer working on <strong className="text-foreground font-semibold">AI experiences inside Windows</strong> at Microsoft.
-                    My job sits at a strange and exciting intersection — operating systems, agents, enterprise
+                    My job sits at a strange and exciting intersection: operating systems, agents, enterprise
                     workflows, trust, orchestration. All the messy, high-stakes problems that show up when
                     software stops being a tool and starts acting on your behalf.
                   </p>
@@ -84,7 +84,8 @@ export default function AboutPage() {
                     figuring out what the real problem is underneath the surface problem.
                   </p>
                   <p className="text-sm md:text-base text-foreground-secondary leading-relaxed font-sans">
-                    My family would probably tell you I overthink everything. They are not wrong.
+                    If you ask my family, they{"'"}ll probably tell you something similar. I{"'"}m always researching
+                    and trying to find the most efficient ways to do things, even outside of work.
                   </p>
                 </div>
                 {/* Right column: philosophy */}
@@ -112,8 +113,8 @@ export default function AboutPage() {
                     they{"'"}re where trust is won or lost.
                   </p>
                   <p className="text-sm md:text-base text-foreground-secondary leading-relaxed font-sans">
-                    If you{"'"}re building something that sits at the edge of what software can do — especially
-                    where AI and real human workflows meet — that{"'"}s where I{"'"}m most energized. I like hard
+                    If you{"'"}re building something that sits at the edge of what software can do, especially
+                    where AI and real human workflows meet, that{"'"}s where I{"'"}m most energized. I like hard
                     problems. I like unclear terrain. And I like turning chaos into something that feels simple and durable.
                   </p>
                 </div>
@@ -131,34 +132,34 @@ export default function AboutPage() {
                 {/* Microsoft */}
                 <div className="flex gap-6">
                   <div className="shrink-0 w-28">
-                    <span className="text-xs font-sans font-medium text-foreground-tertiary">2018 — Present</span>
+                    <span className="text-xs font-sans font-medium text-foreground-tertiary">2018 – Present</span>
                   </div>
                   <div>
                     <h3 className="font-heading text-sm font-semibold text-foreground tracking-tight">Microsoft</h3>
                     <ul className="mt-3 flex flex-col gap-3">
                       <li>
                         <p className="text-sm font-sans font-medium text-foreground">Windows Agent Platform</p>
-                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2025 — Present</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2025 – Present</p>
                       </li>
                       <li>
                         <p className="text-sm font-sans font-medium text-foreground">Copilot Actions</p>
-                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2025 — Present</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2025 – Present</p>
                       </li>
                       <li>
                         <p className="text-sm font-sans font-medium text-foreground">Windows Recall (AI-Powered Memory Search)</p>
-                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2023 — 2025</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2023 – 2025</p>
                       </li>
                       <li>
                         <p className="text-sm font-sans font-medium text-foreground">File Explorer Modernization (Windows 11)</p>
-                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2022 — 2023</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2022 – 2023</p>
                       </li>
                       <li>
                         <p className="text-sm font-sans font-medium text-foreground">Teams for Education</p>
-                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2020 — 2021</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2020 – 2021</p>
                       </li>
                       <li>
                         <p className="text-sm font-sans font-medium text-foreground">Microsoft Education</p>
-                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2018 — 2020</p>
+                        <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2018 – 2020</p>
                       </li>
                     </ul>
                   </div>
@@ -211,8 +212,8 @@ export default function AboutPage() {
             <AnimateIn>
               <div className="max-w-2xl">
                 <p className="text-base md:text-lg text-foreground-secondary leading-relaxed mb-8 font-sans">
-                  If you{"'"}re working on something complex — AI systems, enterprise tooling,
-                  OS-level interaction — and you want it to feel calm, intentional, and
+                  If you{"'"}re working on something complex like AI systems, enterprise tooling, or
+                  OS-level interaction and you want it to feel calm, intentional, and
                   trustworthy, I{"'"}d love to hear about it.
                 </p>
                 <div className="flex flex-col gap-3">

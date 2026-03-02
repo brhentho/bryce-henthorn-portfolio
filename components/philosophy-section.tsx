@@ -19,7 +19,7 @@ export function PhilosophySection() {
               enterprise scale.
             </p>
             <p className="text-base md:text-lg text-foreground-secondary leading-relaxed font-sans">
-              I design systems before surfaces — structure and behavior come first,
+              I design systems before surfaces. Structure and behavior come first,
               complexity unfolds on demand, and transparency, predictability, and user
               control are never features but foundations. A systems thinker with deep
               cross-functional leadership across shell, platform, and M365 ecosystems.

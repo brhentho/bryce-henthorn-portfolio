@@ -16,7 +16,7 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Bryce Henthorn — Senior UX/Product Designer",
+  title: "Bryce Henthorn | Senior UX/Product Designer",
   description:
     "Designing human-AI systems at enterprise scale in Windows. Senior UX/Product Designer focused on interaction architecture, ambient agents, and scalable system design.",
   icons: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     apple: "/images/projects/favicons/Favicon-Light.png",
   },
   openGraph: {
-    title: "Bryce Henthorn — Senior UX/Product Designer",
+    title: "Bryce Henthorn | Senior UX/Product Designer",
     description:
       "Designing human-AI systems at enterprise scale in Windows. Senior UX/Product Designer focused on interaction architecture, ambient agents, and scalable system design.",
     type: "website",

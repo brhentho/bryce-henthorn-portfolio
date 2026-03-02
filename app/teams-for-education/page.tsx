@@ -46,10 +46,10 @@ export default function TeamsForEducationPage() {
       <CaseStudySection id="context" label="Context">
         <CaseStudyHeading>COVID brought millions of new students to online classrooms</CaseStudyHeading>
         <CaseStudyParagraph>
-          At the height of the pandemic, Microsoft Teams became a lifeline for education — used by over 150 million students and educators worldwide. Growth was massive, but it was fragile. Our team was tasked with figuring out how to retain it. Educators were overwhelmed, students were quietly disengaging, and the initial surge was already showing signs of erosion.
+          At the height of the pandemic, Microsoft Teams became a lifeline for education, used by over 150 million students and educators worldwide. Growth was massive, but it was fragile. Our team was tasked with figuring out how to retain it. Educators were overwhelmed, students were quietly disengaging, and the initial surge was already showing signs of erosion.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          The initial ask was about growth metrics — how to keep the numbers up. But through a rigorous design process loop of research, synthesis, and prototyping, we discovered that the real lever for retention wasn{"'"}t feature additions. It was solving the fundamental user problems that were causing disengagement.
+          The initial ask was about growth metrics, specifically how to keep the numbers up. But through a rigorous design process loop of research, synthesis, and prototyping, we discovered that the real lever for retention wasn{"'"}t feature additions. It was solving the fundamental user problems that were causing disengagement.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
           That reframing changed everything. Instead of optimizing for adoption metrics, we focused on what was actually breaking down in the virtual classroom experience. The retention strategy became inseparable from the user experience strategy. My role centered on leading that design process and shaping the interaction patterns that emerged from it.
@@ -93,7 +93,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           This approach restored spatial awareness without sacrificing clarity. It was structured enough to feel real, but restrained enough to feel native inside Teams.
         </CaseStudyParagraph>
-        <FigurePanel caption="The spatial classroom view with virtual tables" src="/images/projects/teams-fig02.png" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="The spatial classroom view with virtual tables" src="/images/projects/teams-chat.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="iteration" label="Classroom Orchestration">
@@ -131,7 +131,7 @@ export default function TeamsForEducationPage() {
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
-        <FigurePanel caption="End-to-end group creation to classroom orchestration" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov" className="mb-8 max-w-2xl" />
+        <FigurePanel caption="Teachers' reactions to the Class Homepage" src="/images/projects/teams-teacher-reactions.png" className="mb-8 max-w-2xl" />
         <CaseStudyParagraph>
           User interest and delight were strong in research sessions. Teachers reported faster response times when moving between group discussions. Participation became more equitable because students felt safer contributing in smaller groups.
         </CaseStudyParagraph>

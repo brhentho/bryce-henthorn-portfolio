@@ -53,7 +53,7 @@ export default function RecallPage() {
           From the beginning, we knew the challenge was not only technical. Capturing what users see is powerful, but it also raises immediate concerns about privacy and control. The design problem was to create a system that felt intelligent without feeling invasive, and useful without feeling unpredictable. The feature would only succeed if users trusted it.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          My role focused specifically on the semantic search experience — how users search their memories, how results are ranked and displayed, and how relevance is communicated in a way that feels understandable and trustworthy.
+          My role focused specifically on the semantic search experience: how users search their memories, how results are ranked and displayed, and how relevance is communicated in a way that feels understandable and trustworthy.
         </CaseStudyParagraph>
         <FigurePanel caption="Recall sizzle overview" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig01-FojMNuJbZGndg7ATAFhxOZEypdzfDq.mp4" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
