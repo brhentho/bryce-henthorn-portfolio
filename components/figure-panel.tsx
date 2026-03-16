@@ -87,6 +87,39 @@ function LazyVideo({ videoSrc }: { videoSrc: string }) {
   )
 }
 
+interface DiagramPlaceholderProps {
+  label: string
+  aspectRatio?: string
+  className?: string
+}
+
+export function DiagramPlaceholder({ label, aspectRatio = "16/9", className }: DiagramPlaceholderProps) {
+  return (
+    <figure className={cn("group mt-8 mb-4 max-w-2xl", className)}>
+      <div
+        className="relative rounded-[var(--radius-card)] border border-dashed border-border bg-surface-raised overflow-hidden flex items-center justify-center"
+        style={{ aspectRatio }}
+      >
+        <div className="flex flex-col items-center gap-3 px-8 text-center">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-foreground opacity-25">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <line x1="9" y1="3" x2="9" y2="21" />
+            <line x1="15" y1="3" x2="15" y2="21" />
+            <line x1="3" y1="9" x2="21" y2="9" />
+            <line x1="3" y1="15" x2="21" y2="15" />
+          </svg>
+          <span className="text-xs font-sans text-foreground-tertiary opacity-50 max-w-xs leading-relaxed">
+            Diagram coming
+          </span>
+        </div>
+      </div>
+      <figcaption className="mt-3 text-sm font-sans text-foreground-tertiary">
+        {label}
+      </figcaption>
+    </figure>
+  )
+}
+
 export function FigurePanel({ caption, variant, src, videoSrc, className, aspectRatio = "16/9" }: FigurePanelProps) {
   const isVideo = variant === "video" || !!videoSrc
 

@@ -13,9 +13,10 @@ interface ProjectCardProps {
   cardImage?: string
   imageAlt?: string
   tag?: string
-  year?: string
   /** Subtle background tint for the image area (e.g. "rgba(88,101,242,0.08)") */
   imageBg?: string
+  /** Custom placeholder rendered when no cardImage is provided */
+  placeholder?: React.ReactNode
   disabled?: boolean
   onDisabledClick?: () => void
   className?: string
@@ -28,47 +29,28 @@ export function ProjectCard({
   cardImage,
   imageAlt,
   tag,
-  year,
   imageBg,
+  placeholder,
   disabled,
   onDisabledClick,
   className,
 }: ProjectCardProps) {
   const cardInner = (
-    <div className="h-full rounded-[var(--radius-card)] border border-border bg-surface overflow-hidden transition-all duration-500 ease-out group-hover:border-border-hover group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] flex flex-col">
-      {/* Image area */}
-      <div className="relative aspect-[16/10] overflow-hidden" style={imageBg ? { background: imageBg } : undefined}>
-        {cardImage ? (
-          <div className="absolute inset-0 p-5 md:p-6 flex items-center justify-center">
-            <div className="relative w-full h-full overflow-hidden rounded-lg transition-transform duration-700 ease-out group-hover:scale-[1.06]">
-              <Image
-                src={cardImage}
-                alt={imageAlt || productName}
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-              />
-            </div>
-          </div>
-        ) : (
-          <div className="absolute inset-0" />
-        )}
-      </div>
-
-      {/* Card body */}
-      <div className="p-5 md:p-6 flex flex-col flex-1">
+    <div className="h-full rounded-[var(--radius-card)] border border-border bg-surface overflow-hidden transition-all duration-500 ease-out group-hover:border-border-hover group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] flex flex-col md:flex-row min-h-[280px] md:min-h-[320px]">
+      {/* Card body - left */}
+      <div className="p-6 md:p-10 flex flex-col justify-center md:w-[38%] shrink-0">
         {/* Small product name */}
-        <p className="text-xs font-sans font-medium text-foreground-tertiary uppercase tracking-wider mb-2">
+        <p className="text-xs font-sans font-medium text-foreground-tertiary uppercase tracking-wider mb-3">
           {productName}
         </p>
 
         {/* Large heading */}
-        <h3 className="font-heading text-lg md:text-xl font-semibold text-foreground tracking-tight leading-snug mb-5">
+        <h3 className="font-heading text-xl md:text-2xl font-semibold text-foreground tracking-tight leading-snug mb-6">
           {heading}
         </h3>
 
-        {/* CTA / tag area -- pushed to bottom */}
-        <div className="mt-auto">
+        {/* CTA / tag area */}
+        <div>
           {!disabled ? (
             <div className="flex items-center gap-1.5 text-foreground-tertiary group-hover:text-accent transition-colors duration-300">
               <span className="text-sm font-sans font-medium">
@@ -93,6 +75,28 @@ export function ProjectCard({
           ) : null}
         </div>
       </div>
+
+      {/* Visual area - right: full bleed */}
+      <div
+        className="relative flex-1 min-h-[240px] md:min-h-0 overflow-hidden"
+        style={imageBg ? { background: imageBg } : undefined}
+      >
+        {cardImage ? (
+          <Image
+            src={cardImage}
+            alt={imageAlt || productName}
+            fill
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            sizes="(max-width: 768px) 100vw, 62vw"
+          />
+        ) : placeholder ? (
+          <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.02]">
+            {placeholder}
+          </div>
+        ) : (
+          <div className="absolute inset-0 bg-surface-elevated" />
+        )}
+      </div>
     </div>
   )
 
@@ -116,10 +120,7 @@ export function ProjectCard({
   }
 
   return (
-    <Link
-      href={href || "/"}
-      className={wrapperClasses}
-    >
+    <Link href={href || "/"} className={wrapperClasses}>
       {cardInner}
     </Link>
   )

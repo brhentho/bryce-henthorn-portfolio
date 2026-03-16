@@ -140,14 +140,16 @@ export default function AboutPage() {
                       <li>
                         <p className="text-sm font-sans font-medium text-foreground">Windows Agent Platform</p>
                         <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2025 – Present</p>
+                        <p className="text-xs font-sans text-foreground-secondary mt-1">Led agent visibility and orchestration design across Shell, Copilot, and M365 integration surfaces. 3 engineering partner teams.</p>
                       </li>
                       <li>
                         <p className="text-sm font-sans font-medium text-foreground">Copilot Actions</p>
                         <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2025 – Present</p>
                       </li>
                       <li>
-                        <p className="text-sm font-sans font-medium text-foreground">Windows Recall (AI-Powered Memory Search)</p>
+                        <p className="text-sm font-sans font-medium text-foreground">Windows Recall</p>
                         <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2023 – 2025</p>
+                        <p className="text-xs font-sans text-foreground-secondary mt-1">Designed semantic search experience for Copilot+ PCs. Shipped at Build 2024. Navigated privacy redesign after public launch.</p>
                       </li>
                       <li>
                         <p className="text-sm font-sans font-medium text-foreground">File Explorer Modernization (Windows 11)</p>
@@ -156,6 +158,7 @@ export default function AboutPage() {
                       <li>
                         <p className="text-sm font-sans font-medium text-foreground">Teams for Education</p>
                         <p className="text-xs font-sans text-foreground-tertiary mt-0.5">2020 – 2021</p>
+                        <p className="text-xs font-sans text-foreground-secondary mt-1">Led interaction design for virtual classroom experience serving 150M+ users. Reframed team strategy from growth metrics to engagement architecture.</p>
                       </li>
                       <li>
                         <p className="text-sm font-sans font-medium text-foreground">Microsoft Education</p>
