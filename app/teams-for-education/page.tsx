@@ -8,6 +8,9 @@ import {
   CaseStudyCallout,
 } from "@/components/case-study-layout"
 import { FigurePanel, DiagramPlaceholder } from "@/components/figure-panel"
+import { HeroFigurePanel } from "@/components/hero-figure-panel"
+import { RetentionReframeDiagram } from "@/components/diagrams/retention-reframe-diagram"
+import { EngagementBreakdownDiagram } from "@/components/diagrams/engagement-breakdown-diagram"
 import { projectImages } from "@/lib/images"
 
 const specs = [
@@ -58,7 +61,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           I was a Senior UX Designer in the Microsoft Education organization, working closely with the core Teams design group to develop this proposal for leadership. My role was to advocate for the education audience within the broader Teams ecosystem. I led UX research sessions with educators and students, facilitated cross-functional ideation and concept development workshops, and translated the insights into design solutions from early wireframes through high-fidelity prototypes. The goal was to demonstrate how Teams could move beyond basic video conferencing and better support the social dynamics that make classrooms effective learning environments.
         </CaseStudyParagraph>
-        <DiagramPlaceholder label="Retention strategy reframe: from feature additions to classroom dynamics" />
+        <RetentionReframeDiagram />
       </CaseStudySection>
 
       <CaseStudySection id="problem" label="Problem">
@@ -72,7 +75,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyCallout>
           {'"'}I don{"'"}t really like it when the teacher says {"'"}okay you guys can discuss on video{"'"} because everyone either starts talking or no one talks, so then there{"'"}s just awkward silence.{'"'} - Karen, grade 12
         </CaseStudyCallout>
-        <DiagramPlaceholder label="Breakdown of virtual classroom engagement — spatial and social gaps" />
+        <EngagementBreakdownDiagram />
       </CaseStudySection>
 
       <CaseStudySection id="research" label="Research">
@@ -100,7 +103,13 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           This approach restored spatial awareness without sacrificing clarity. It was structured enough to feel real, but restrained enough to feel native inside Teams.
         </CaseStudyParagraph>
-        <FigurePanel caption="The spatial classroom view with virtual tables" src="/images/projects/teams-chat.png" className="mt-8 mb-4 max-w-2xl" />
+        <HeroFigurePanel 
+          src="/images/projects/teams-chat.png" 
+          alt="The spatial classroom view with virtual tables"
+          caption="The spatial classroom view with virtual tables" 
+          className="mt-8 mb-4 max-w-2xl"
+          blurColor="rgba(139, 92, 246, 0.15)"
+        />
       </CaseStudySection>
 
       <CaseStudySection id="iteration" label="Classroom Orchestration">
@@ -167,7 +176,13 @@ export default function TeamsForEducationPage() {
 
       <CaseStudySection id="impact" label="Impact">
         <CaseStudyHeading>Impact</CaseStudyHeading>
-        <FigurePanel caption="Teachers' reactions to the Class Homepage" src="/images/projects/teams-teacher-reactions.png" className="mb-8 max-w-2xl" />
+        <HeroFigurePanel 
+          src="/images/projects/teams-teacher-reactions.png" 
+          alt="Teachers' reactions to the Class Homepage"
+          caption="Teachers' reactions to the Class Homepage" 
+          className="mb-8 max-w-2xl"
+          blurColor="rgba(59, 130, 246, 0.2)"
+        />
         <CaseStudyParagraph>
           The original brief focused on retention. Leadership wanted to understand how Teams could maintain engagement across the rapidly growing education audience. While the virtual tables concept was primarily explored through research and prototyping rather than a full production launch, the work was evaluated against the same core metrics: participation, instructional flow, and teacher workload.
         </CaseStudyParagraph>

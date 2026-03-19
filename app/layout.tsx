@@ -47,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${openSans.variable} bg-background`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${poppins.variable} ${openSans.variable} bg-background`}>
       <body className="font-sans antialiased bg-background text-foreground min-h-screen">
         {children}
         <Analytics />
