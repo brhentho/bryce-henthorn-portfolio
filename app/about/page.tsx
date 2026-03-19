@@ -66,56 +66,28 @@ export default function AboutPage() {
                 {/* Left column: story */}
                 <div className="max-w-lg">
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    I{"'"}m a product designer working on <strong className="text-foreground font-semibold">AI experiences inside Windows</strong> at Microsoft.
-                    My job sits at a strange and exciting intersection: operating systems, agents, enterprise
-                    workflows, trust, orchestration. All the messy, high-stakes problems that show up when
-                    software stops being a tool and starts acting on your behalf.
+                    I{"'"}m a product designer at Microsoft working on <strong className="text-foreground font-semibold">AI experiences in Windows</strong>. A lot of my work lives in that in-between space where operating systems, agents, and real-world workflows meet. It{"'"}s where software starts to act on your behalf instead of just responding to you, which makes the problems both messy and really interesting.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    The more honest version is that I{"'"}m <strong className="text-foreground font-semibold">wired to solve problems</strong>. I don{"'"}t
-                    really know how to turn it off. If something feels inefficient, structurally off, or just
-                    vaguely wrong, I will keep pulling on it until I understand it. Sometimes that means building
-                    prototypes late at night. Sometimes it means mapping systems no one asked me to map.
-                    Sometimes it means going ten layers deeper than necessary just to make sure the foundation is solid.
+                    If I{"'"}m being honest, I{"'"}m someone who has a <strong className="text-foreground font-semibold">hard time leaving things alone</strong>. When something feels inefficient or slightly off, I tend to keep digging until I understand why. Sometimes that turns into a quick prototype, sometimes it becomes mapping out a system no one asked for, and sometimes it{"'"}s just me going way deeper than necessary to make sure the foundation actually makes sense. I don{"'"}t really see that as extra work. It{"'"}s just how I think.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    I have a habit of <strong className="text-foreground font-semibold">obsessively researching</strong> the {'"'}right{'"'} solution to things
-                    most people would settle on in an afternoon. I like constraints. I like tradeoffs. I like
-                    figuring out what the real problem is underneath the surface problem.
-                  </p>
-                  <p className="text-sm md:text-base text-foreground-secondary leading-relaxed font-sans">
-                    If you ask my family, they{"'"}ll probably tell you something similar. I{"'"}m always researching
-                    and trying to find the most efficient ways to do things, even outside of work.
+                    I{"'"}ve always been drawn to <strong className="text-foreground font-semibold">constraints and tradeoffs</strong>. I like figuring out what the real problem is underneath the obvious one, and I{"'"}m okay spending more time there if it means getting to something that holds up. That mindset shows up outside of work too. I{"'"}m usually tinkering with something, trying to make it a little more efficient or a little more thought through than it needs to be.
                   </p>
                 </div>
                 {/* Right column: philosophy */}
                 <div className="max-w-lg">
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    Design, for me, is <strong className="text-foreground font-semibold">structure</strong>. It{"'"}s the quiet architecture that makes
-                    complexity feel obvious. I care about progressive disclosure. I care about removing noise.
-                    I care about building systems that scale without collapsing under their own weight. Good
-                    design should feel inevitable in hindsight.
+                    For me, design is really about <strong className="text-foreground font-semibold">structure</strong>. It{"'"}s about taking something complex and making it feel clear without oversimplifying it. I think a lot about how things reveal themselves over time, how to remove unnecessary noise, and how to build systems that can grow without breaking. The best designs don{"'"}t feel flashy. They just make sense when you use them.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    In the AI space especially, I think we{"'"}re in a moment where <strong className="text-foreground font-semibold">clarity matters more
-                    than novelty</strong>. Agents that interrupt at the wrong time. Automation that feels unpredictable.
-                    Interfaces that overpromise and under-explain. Those are structural problems, not styling
-                    problems. The work I care about is building the guardrails and interaction patterns that
-                    make intelligence feel reliable and human.
+                    That feels especially important right now in AI. There{"'"}s a lot of excitement, but also a lot of friction. Things interrupt at the wrong time, behave in ways people don{"'"}t expect, or feel like they{"'"}re doing more than they can actually explain. Those aren{"'"}t styling issues. They{"'"}re deeper <strong className="text-foreground font-semibold">interaction and system problems</strong>. The work I{"'"}m interested in is figuring out how to make these systems feel more understandable and more reliable in everyday use.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    I{"'"}m not trying to design isolated features. I{"'"}m trying to design <strong className="text-foreground font-semibold">how systems behave
-                    over time</strong>. How they learn. How they earn trust. How they stay in flow instead of fragmenting it.
-                  </p>
-                  <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    I{"'"}m ambitious about the impact of the work, but I{"'"}m pretty grounded about the craft.
-                    I still sweat alignment, hierarchy, edge cases, and empty states. The <strong className="text-foreground font-semibold">details matter</strong> because
-                    they{"'"}re where trust is won or lost.
+                    It still feels like early days. A lot of this work is about trying things, seeing where they break, and rebuilding them in a better way. That{"'"}s part of what makes it fun. If you{"'"}re working on something where the path isn{"'"}t fully defined yet, especially where AI meets real human behavior, that{"'"}s usually where I feel most at home.
                   </p>
                   <p className="text-sm md:text-base text-foreground-secondary leading-relaxed font-sans">
-                    If you{"'"}re building something that sits at the edge of what software can do, especially
-                    where AI and real human workflows meet, that{"'"}s where I{"'"}m most energized. I like hard
-                    problems. I like unclear terrain. And I like turning chaos into something that feels simple and durable.
+                    I like working through hard problems and unclear spaces, and turning them into something that feels simple and solid in the end.
                   </p>
                 </div>
               </div>
