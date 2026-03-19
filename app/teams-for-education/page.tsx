@@ -58,7 +58,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           I was a Senior UX Designer in the Microsoft Education organization, working closely with the core Teams design group to develop this proposal for leadership. My role was to advocate for the education audience within the broader Teams ecosystem. I led UX research sessions with educators and students, facilitated cross-functional ideation and concept development workshops, and translated the insights into design solutions from early wireframes through high-fidelity prototypes. The goal was to demonstrate how Teams could move beyond basic video conferencing and better support the social dynamics that make classrooms effective learning environments.
         </CaseStudyParagraph>
-        <DiagramPlaceholder label="Retention strategy reframe: from feature additions to classroom dynamics" />
+        <FigurePanel caption="Retention strategy reframe: from feature additions to classroom dynamics" src="/images/projects/teams-retention-strategy.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="problem" label="Problem">
@@ -72,7 +72,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyCallout>
           {'"'}I don{"'"}t really like it when the teacher says {"'"}okay you guys can discuss on video{"'"} because everyone either starts talking or no one talks, so then there{"'"}s just awkward silence.{'"'} - Karen, grade 12
         </CaseStudyCallout>
-        <DiagramPlaceholder label="Breakdown of virtual classroom engagement — spatial and social gaps" />
+        <FigurePanel caption="Co-design session with educators" src="/images/projects/teams-cocreation.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="research" label="Research">
@@ -83,7 +83,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           Once we stepped back and looked at the data, a heartbreaking theme emerged. Students did not just miss content. They missed their friends. They missed social cues. They missed feeling seen. That emotional gap was the real problem.
         </CaseStudyParagraph>
-        <DiagramPlaceholder label="Research synthesis: emotional themes across teachers and students" />
+        <FigurePanel caption="Research synthesis: emotional themes across teachers and students" src="/images/projects/teams-research-synthesis.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="solution" label="Solution">
@@ -151,7 +151,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           Designing for education meant designing for the realities of students{"'"} environments, not ideal network conditions. By supporting pre-class preparation and lightweight access to materials, the system helped reduce bandwidth friction and kept valuable instructional time focused on learning rather than technical setup.
         </CaseStudyParagraph>
-        <DiagramPlaceholder label="Pre-class material distribution flow — bandwidth constraint solution" />
+        <FigurePanel caption="Pre-class material distribution flow" src="/images/projects/teams-preclass-distribution.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="constraints" label="Constraints & Tradeoffs">
@@ -162,7 +162,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           The deepest technical constraint was the breakout room infrastructure. Breakout rooms were session-based and temporary: created during a meeting, dissolved after. Virtual tables needed the opposite — persistent groups that existed before class started, carried consistent seating across sessions, and allowed teachers to prepare materials and assignments per table in advance. We had to design a persistent, spatially stable classroom experience on top of infrastructure that assumed every grouping was disposable. That tension shaped every interaction decision, from how groups were created and saved to how transitions between whole-class and table modes actually worked under the hood.
         </CaseStudyParagraph>
-        <DiagramPlaceholder label="Platform constraint map: breakout room infrastructure vs. classroom persistence needs" />
+        <FigurePanel caption="Platform constraint map: breakout room infrastructure vs. classroom persistence needs" src="/images/projects/teams-platform-constraints.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">

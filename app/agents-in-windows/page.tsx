@@ -68,7 +68,7 @@ export default function AgentsInWindowsPage() {
         <CaseStudyParagraph>
           Early feedback and testing revealed a consistent pattern. Users welcomed assistance. They did not welcome surprises. They wanted situational awareness. They wanted to know what was running, what was complete, and what required attention. In other words, people did not fear automation. They feared invisibility.
         </CaseStudyParagraph>
-        <DiagramPlaceholder label="Fragmented agent presence: where agents live today across surfaces" />
+        <FigurePanel caption="Fragmented agent presence: where agents live today across surfaces" src="/images/projects/AgentsProof.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="process" label="Process">
