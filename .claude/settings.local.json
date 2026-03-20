@@ -38,7 +38,11 @@
       "mcp__plugin_playwright_playwright__browser_wait_for",
       "mcp__plugin_playwright_playwright__browser_resize",
       "mcp__plugin_playwright_playwright__browser_close",
-      "Bash(node_modules/.bin/next dev:*)"
+      "Bash(node_modules/.bin/next dev:*)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(git checkout:*)",
+      "Bash(git push:*)",
+      "Bash(npm run:*)"
     ]
   }
 }
