@@ -11,11 +11,11 @@ import { PageTransition } from "@/components/page-transition"
 const GRID_SPACING = 40
 
 const drawnToItems = [
-  "Novel interaction paradigms with no existing mental model",
-  "Structure that must emerge from ambiguity",
-  "Problems where trust determines adoption",
-  "Systems thinking at enterprise and OS scale",
-  "Progressive disclosure and calm complexity",
+  "Designing for things that don't have a playbook yet",
+  "Getting the fundamentals right so the whole thing holds up",
+  "Systems where trust is the actual user need, not a side effect",
+  "Problems that live at the intersection of OS, workflows, and human behavior",
+  "Making complex things feel calm instead of magical",
 ]
 
 export default function AboutPage() {
@@ -40,16 +40,16 @@ export default function AboutPage() {
             <div className="max-w-2xl">
               <AnimateIn delay={0.1}>
                 <h1 className="font-heading text-2xl md:text-3xl lg:text-[2.5rem] font-bold leading-[1.4] tracking-tight text-foreground">
-                  Serial problem solver.
+                  I notice when things are broken.
                   <br />
-                  Fixated on optimizing systems.
+                  I can't stop thinking about systems.
                   <br />
-                  Obsessed with structure and flow.
+                  I prefer structure over speed.
                   <br />
-                  Unapologetic technology geek.
+                  Cars and software scratch the same itch for me.
                   <br />
                   <span className="text-accent">
-                    So naturally, I fell in love with UX design.
+                    Design is how I actually build things.
                   </span>
                 </h1>
               </AnimateIn>
@@ -66,28 +66,25 @@ export default function AboutPage() {
                 {/* Left column: story */}
                 <div className="max-w-lg">
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    I{"'"}m a product designer at Microsoft working on <strong className="text-foreground font-semibold">AI experiences in Windows</strong>. A lot of my work lives in that in-between space where operating systems, agents, and real-world workflows meet. It{"'"}s where software starts to act on your behalf instead of just responding to you, which makes the problems both messy and really interesting.
+                    I work on <strong className="text-foreground font-semibold">AI experiences at Microsoft</strong>, mostly in that messy space where Windows, agents, and how people actually work collide. It{"'"}s where software stops just responding and starts acting on your behalf. That makes everything harder to design but infinitely more interesting to think about.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    If I{"'"}m being honest, I{"'"}m someone who has a <strong className="text-foreground font-semibold">hard time leaving things alone</strong>. When something feels inefficient or slightly off, I tend to keep digging until I understand why. Sometimes that turns into a quick prototype, sometimes it becomes mapping out a system no one asked for, and sometimes it{"'"}s just me going way deeper than necessary to make sure the foundation actually makes sense. I don{"'"}t really see that as extra work. It{"'"}s just how I think.
+                    I{"'"}m the type of person who notices when something is slightly off and then can{"'"}t let it go. When I see inefficiency or loose logic, I dig. Sometimes that{"'"}s a prototype, sometimes it{"'"}s mapping out a system nobody asked for. I don{"'"}t see it as scope creep. I see it as getting the ground right so nothing collapses later. Same thing with my Elantra N: I spent way too long understanding the suspension tuning because that{"'"}s how I think about most things.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    I{"'"}ve always been drawn to <strong className="text-foreground font-semibold">constraints and tradeoffs</strong>. I like figuring out what the real problem is underneath the obvious one, and I{"'"}m okay spending more time there if it means getting to something that holds up. That mindset shows up outside of work too. I{"'"}m usually tinkering with something, trying to make it a little more efficient or a little more thought through than it needs to be.
+                    I care about <strong className="text-foreground font-semibold">constraints and tradeoffs</strong> more than most people probably should. I like finding the real problem hiding underneath the stated one, even if it means spending longer there. That's where solid design starts. It's the same reason I tinker with things in my life: systems, processes, how I spend time with my kids. Get the fundamentals right, and everything else gets easier.
                   </p>
                 </div>
                 {/* Right column: philosophy */}
                 <div className="max-w-lg">
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    For me, design is really about <strong className="text-foreground font-semibold">structure</strong>. It{"'"}s about taking something complex and making it feel clear without oversimplifying it. I think a lot about how things reveal themselves over time, how to remove unnecessary noise, and how to build systems that can grow without breaking. The best designs don{"'"}t feel flashy. They just make sense when you use them.
+                    For me, design is about <strong className="text-foreground font-semibold">structure and clarity</strong>. Taking something genuinely complex and making it feel obvious, not dumbed down. I think constantly about how information reveals itself to you, what actually matters, and how to build things that can scale without falling apart. Good design shouldn{"'"}t whisper about itself. It just works.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    That feels especially important right now in AI. There{"'"}s a lot of excitement, but also a lot of friction. Things interrupt at the wrong time, behave in ways people don{"'"}t expect, or feel like they{"'"}re doing more than they can actually explain. Those aren{"'"}t styling issues. They{"'"}re deeper <strong className="text-foreground font-semibold">interaction and system problems</strong>. The work I{"'"}m interested in is figuring out how to make these systems feel more understandable and more reliable in everyday use.
+                    Right now in AI, most of the problems I see aren{"'"}t visual ones. They{"'"}re deeper. Things interrupt at the wrong moment. Systems behave in ways people don{"'"}t anticipate. Features do more than they can explain. These are <strong className="text-foreground font-semibold">interaction and system failures</strong>. I{"'"}m most interested in the work of making these systems feel understandable and trustworthy in real use.
                   </p>
                   <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-4 font-sans">
-                    It still feels like early days. A lot of this work is about trying things, seeing where they break, and rebuilding them in a better way. That{"'"}s part of what makes it fun. If you{"'"}re working on something where the path isn{"'"}t fully defined yet, especially where AI meets real human behavior, that{"'"}s usually where I feel most at home.
-                  </p>
-                  <p className="text-sm md:text-base text-foreground-secondary leading-relaxed font-sans">
-                    I like working through hard problems and unclear spaces, and turning them into something that feels simple and solid in the end.
+                    This still feels like early ground. Lots of trying, breaking, rebuilding. That{"'"}s where I{"'"}m most engaged: working on something where the rule book doesn{"'"}t exist yet, especially when you{"'"}re sitting at the line between AI behavior and how humans actually operate.
                   </p>
                 </div>
               </div>
@@ -187,9 +184,7 @@ export default function AboutPage() {
             <AnimateIn>
               <div className="max-w-2xl">
                 <p className="text-base md:text-lg text-foreground-secondary leading-relaxed mb-8 font-sans">
-                  If you{"'"}re working on something complex like AI systems, enterprise tooling, or
-                  OS-level interaction and you want it to feel calm, intentional, and
-                  trustworthy, I{"'"}d love to hear about it.
+                  If you{"'"}re building something complex where the interaction model still matters, the system needs to feel reliable, and you care more about being right than being first, let{"'"}s talk.
                 </p>
                 <div className="flex flex-col gap-3">
                   <a

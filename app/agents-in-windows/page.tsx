@@ -18,9 +18,9 @@ const specs = [
   { label: "Role", value: "Senior UX Designer" },
   { label: "Platform", value: "Windows Shell" },
   { label: "Focus", value: "Agent visibility, trust, and OS integration" },
-  { label: "Challenge", value: "Users welcomed assistance but disliked surprises" },
-  { label: "Solution", value: "Taskbar presence, hover summaries, unified invocation" },
-  { label: "Impact", value: "Agents became visible, interruptible, and integrated in the OS" },
+  { label: "Challenge", value: "Users want to help. They hate surprises." },
+  { label: "Solution", value: "Taskbar anchor, observability, system-wide invocation" },
+  { label: "Impact", value: "Agents moved from invisible to interruptible" },
 ]
 
 const navItems = [
@@ -68,7 +68,7 @@ const agentsHero = (
 
         <AnimateIn delay={0.1}>
           <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance">
-            Solving trust and visibility for AI agents in the operating system
+            Making AI agents visible and interruptible in Windows
           </h1>
         </AnimateIn>
 
@@ -106,7 +106,7 @@ export default function AgentsInWindowsPage() {
   return (
     <CaseStudyLayout
       productName="Agents in Windows"
-      title="Solving trust and visibility for AI agents in the operating system"
+      title="Making AI agents visible and interruptible in Windows"
       tags={["OS shell", "Systems thinking", "Ambient AI", "Senior Designer", "2025"]}
       heroContent={agentsHero}
       specs={specs}
@@ -114,149 +114,149 @@ export default function AgentsInWindowsPage() {
       nextProject={{ name: "Teams for Education", href: "/teams-for-education" }}
     >
       <CaseStudySection id="context" label="Context">
-        <CaseStudyHeading>Windows is evolving into a canvas for AI agents</CaseStudyHeading>
+        <CaseStudyHeading>Windows needed a place for agents to live</CaseStudyHeading>
         <CaseStudyParagraph>
-          Microsoft leadership, including Satya Nadella, has articulated a clear shift in how AI will transform knowledge work. The future is not about replacing people outright. It is about agents taking on routine or time-consuming tasks so humans can focus on higher-value thinking and collaboration.
+          Microsoft is betting on agents as the next layer of computing. Not replacements for humans, but tools that handle routine work so people can focus on judgment and creation. That means Windows can't stay a place where you launch apps and manage files. It has to become the environment where agents actually run.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          That vision places Windows in a new role. It is no longer just a platform for launching apps. It becomes the environment where AI agents are deployed, monitored, secured, and orchestrated. The opportunity is to make Windows the best place for developers and enterprise workers to run intelligent agents, from personal productivity helpers to broader organizational automation.
+          Right now agents scatter across the system. Some hide inside apps. Some show up in Copilot chats. Others surface as notifications. No one knows where their work actually lives. The OS level is where this fragmentation breaks. Windows needed to be the place where agents became visible, manageable, and trustworthy.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          This work was not about embedding Copilot into Windows as a feature. It was about establishing Windows as the canvas where agents become first-class citizens of the operating system.
+          This wasn't about bolting Copilot onto Windows. It was about making agents a first-class construct in the operating system itself. Desktop apps took decades to become a natural part of how Windows feels. Agents deserve the same foundation.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          As a lead designer on this initiative, I worked with partner teams to understand scope of needs for agent lifecycle and worked closely with engineering to translate those insights into scalable interaction patterns for the Windows shell.
+          I led the core design work alongside partner teams across Microsoft, mapping the entire lifecycle of how agents would operate in the OS, then building a system stable enough to ship but flexible enough to evolve.
         </CaseStudyParagraph>
         <figure className="group mt-8 mb-4 max-w-2xl">
           <AgentCapabilityViz />
           <figcaption className="mt-3 text-sm font-sans text-foreground-tertiary">
-            Agents as first-class OS citizens
+            Building agents into the OS, not just into apps
           </figcaption>
         </figure>
       </CaseStudySection>
 
       <CaseStudySection id="problem" label="Problem">
-        <CaseStudyHeading>Trust Comes From Visibility, Not Automation</CaseStudyHeading>
+        <CaseStudyHeading>People don{"'"}t fear automation. They fear not knowing.</CaseStudyHeading>
         <CaseStudyParagraph>
-          As AI agents began to take on more responsibility, their presence across the system became fragmented. Some lived inside app experiences. Some surfaced through Copilot conversations. Others relied on notifications. Users were left to piece together what was happening and where. Our goal was to transform Windows into an observability layer for monitoring your agents while keeping you in flow.
+          Agents scattered everywhere. Inside apps, buried in chat history, coming through notifications. Users had no idea where their work actually was or if anything was still running. Fragments. No coherent picture.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Early feedback and testing revealed a consistent pattern. Users welcomed assistance. They did not welcome surprises. They wanted situational awareness. They wanted to know what was running, what was complete, and what required attention. In other words, people did not fear automation. They feared invisibility.
+          Early interviews hit a consistent note. Users liked having help. What they hated was surprises. They wanted to know what was happening, where it was happening, when it'd be done. They didn't distrust automation itself. They distrusted invisibility.
         </CaseStudyParagraph>
-        <FigurePanel caption="Fragmented agent presence: where agents live today across surfaces" src="/images/projects/AgentsProof.png" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Today agents scatter across the system: inside apps, in chats, in notifications" src="/images/projects/AgentsProof.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="process" label="Process">
-        <CaseStudyHeading>Making agents first-class citizens of the OS</CaseStudyHeading>
+        <CaseStudyHeading>Anchoring to what users already know</CaseStudyHeading>
         <CaseStudyParagraph>
-          We explored several structural models for where agents should live in the system. One option was to keep them inside the apps that invoked them. Another was to allow agents to be pinned independently, similar to apps. We also explored dedicated panels or dashboards designed specifically for agent management. Each approach came with tradeoffs. Some models made agents feel too heavy and overbuilt for early adoption, while others made them too hidden, leaving users unsure where their agents were running or how to return to them.
+          We tested three directions. Keep agents inside the apps that spawn them. Pin them independently like applications. Or create a dedicated agent workspace. Each had problems. Some felt bloated for something that barely existed yet. Others made agents too cryptic about where they actually were and how to get back to them.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Early concepts assumed agents would need their own dedicated space. We experimented with designs that placed them in a central agent area tied to the composer, where agents could be created and managed. We explored layouts anchored from both the left and right sides of the system to see how a persistent agent workspace might function. While these approaches gave agents strong visibility, they also introduced an entirely new mental model that risked overwhelming users.
+          Early sketches showed agents in their own dedicated panel. Central hub. Left side workspace. Right side dock. All of it gave agents visibility, but all of it asked users to learn a completely new model before most agents even existed. And if the model didn{"'"}t work once agents actually landed, we{"'"}d built a mental framework into the OS that couldn{"'"}t be changed easily.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Because agents represent such a fundamental shift in computing, we pushed toward a more progressive approach. Rather than introducing an entirely new system upfront, we looked for ways to build on patterns users already understand. In the end, we anchored agents in the taskbar, allowing them to behave similarly to apps while adding new states and signals that reflect agent activity. This allowed the system to scale gradually as agents become more common, instead of forcing users to learn a new model before the ecosystem fully exists.
+          Agents are genuinely new, but they don{"'"}t have to feel alien. We pushed for a progressive approach. Build on something users already use every day rather than forcing them to memorize a new system. We anchored agents to the taskbar. Same place apps live. Same behaviors. But with new states and signals that reflect how agents work. Let agents become common gradually. Don{"'"}t demand a new mental model before anyone{"'"}s actually using them.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          The resulting direction extended existing OS contracts rather than inventing entirely new ones. Agents inherit familiar behaviors like presence in the taskbar, while gaining additional visibility and lifecycle awareness tailored to how agent workflows operate.
+          The final direction reused existing OS patterns instead of inventing new ones. Agents in the taskbar. Familiar. But with additional signals for progress, completion, and when a human needs to step in.
         </CaseStudyParagraph>
-        <DiagramPlaceholder label="Design concepts explored: dedicated hub, panel, taskbar anchor" />
+        <DiagramPlaceholder label="Three directions: keep inside apps, pin independently, create dedicated workspace" />
       </CaseStudySection>
 
       <CaseStudySection id="taskbar" label="Agents on the Taskbar">
-        <CaseStudyHeading>Turning the Taskbar Into an Agent Control Surface</CaseStudyHeading>
+        <CaseStudyHeading>The taskbar becomes a window into agent work</CaseStudyHeading>
         <CaseStudyParagraph>
-          One of the most important shifts was giving agents a persistent presence on the taskbar. After initiating an agent task—whether from Microsoft 365 Copilot or from Ask Copilot in the taskbar—the agent appears as an icon, similar to a traditional application. This approach preserved familiarity and made it intuitive for users to understand that something is actively working on their behalf.
+          Agents pin to the taskbar just like apps do. Invoke one and it appears as an icon. Familiar. Clear that something{"'"}s working. The metaphor works. But agents don{"'"}t behave like apps. They move through states: planning, executing, waiting, done. We had to create a badge and state system that could show all of that clearly without making the taskbar chaotic.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          However, agents behave very differently from apps. Unlike a typical application, an agent moves through multiple states: planning, running, waiting for input, and completing work over time. To support this, we had to define new system states that could communicate when an agent was actively working versus when it needed user intervention. This required studying the full lifecycle of agents being developed across Microsoft and continuously monitoring new agent patterns emerging in the industry so we could design a system that was structured enough for consistency while remaining flexible for new behaviors.
+          The real challenge was fitting agent progress into taskbar space. Agents from different providers send different outputs and different cadences. Some stream step-by-step. Some go silent. We built hover cards that expand from the icon to show progress in detail. A lightweight view that tells you what the agent's doing, whether it's stuck waiting for you, when it'll be done. Compact enough to glance at. Detailed enough to actually understand what's happening.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          A key challenge was representing agent progress and reasoning within the limited space of the taskbar. Different agents produce different types of outputs, and many stream progress incrementally as they work. We introduced hovercards that expand from the taskbar icon to surface a lightweight view of the agent{"'"}s status, including progress updates or a &ldquo;hand raise&rdquo; when user input is required. These hover states needed to balance clarity and brevity—giving users enough insight into what the agent is doing while remaining glanceable and unobtrusive. Designing this system required translating complex agent communication into a compact interface that could both show progress and allow users to quickly unblock an agent when needed.
+          And sometimes you need to unblock an agent fast, without losing context. The hover card lets you do that. You see the problem, you fix it, you move on. The system stays together.
         </CaseStudyParagraph>
-        <FigurePanel caption="Taskbar presence and observability of agent activities" src="/images/projects/agents-fig02.jpg" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Taskbar icon with hover card revealing agent progress, status, and intervention points" src="/images/projects/agents-fig02.jpg" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="observability" label="Observability without authorship">
-        <CaseStudyHeading>Designing for an ecosystem you don{"'"}t control</CaseStudyHeading>
+        <CaseStudyHeading>The OS can{"'"}t control what providers promise</CaseStudyHeading>
         <CaseStudyParagraph>
-          Agents on the taskbar look simple — an icon, a badge, a hover card. But the data powering those surfaces comes from agent providers through a streaming API, and the OS does not control what providers send, how often they send it, or whether what they send is accurate. The OS is making a trust promise to the user on behalf of a provider it cannot fully verify. When the badge says &ldquo;active,&rdquo; it is relaying a claim, not confirming a fact.
+          The taskbar badge looks simple. Icon. Status. Progress. But the data comes through an API from providers you don{"'"}t employ and can{"'"}t fully monitor. When the badge says {"'"}active,{"'"} the OS is passing along a claim, not verifying a fact. That{"'"}s the core problem. The OS makes a promise to users on behalf of providers it can{"'"}t govern.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          The design had to account for every way that contract could break: a provider that streams rich step-by-step narration versus one that sends a single &ldquo;running&rdquo; state and goes silent, a provider that stops sending updates entirely with no error and no completion, a provider that reports &ldquo;done&rdquo; when the output is wrong, and error states the OS can surface but cannot resolve. Each of these demanded a different response from the hover card and badge system — progressive status narration when detail is available, recency signals when it is not, timeout thresholds that escalate silence into visible uncertainty, and error messages that always answer whose problem it is and what the user can do right now.
+          Everything breaks somewhere. One provider sends rich step-by-step updates. Another sends one "running" message and then nothing. Someone reports "done" but the work is garbage. Someone stops sending data entirely. No completion signal. No error. Just silence. Each of these needs a different response from the badge and hover card. Progressive detail when you have it. Recency signals when you don't. Timeouts that turn silence into visible uncertainty. Errors that say whose fault it is and what to do about it.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          These failure modes reshaped the surface from a status display into a trust negotiation layer between the user and an ecosystem of providers with varying reliability. The badge system moved from four clean states to a model that accounts for confidence in the state itself — not just &ldquo;what is the agent doing&rdquo; but &ldquo;how certain are we that this information is current.&rdquo; For completed tasks, we designed the transition to encourage verification rather than blind trust, surfacing output inline with a clear review path. For high-stakes actions, the agent cannot reach completion without explicit user approval — a contractual requirement of the API where providers declare risk level and the OS enforces the appropriate confirmation model.
+          The badge went from four clean states to a confidence model. Not just "what is the agent doing" but "how sure are we the information is fresh." For finished work, we force verification, not blind trust. The output surfaces inline so you can review it immediately. For high-risk actions, the agent can't finish without explicit approval. That's a contract built into the API. Providers declare the risk level. The OS enforces the right confirmation flow.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          This is the part of agent design that does not appear in demos. The real system has to hold up when the agent is slow, silent, wrong, or broken, and the OS has to communicate all of that without eroding the user{"'"}s willingness to delegate in the first place.
+          This never shows up in product demos. But it's where the design lives. The system has to hold when the agent's slow, silent, wrong, or completely broken. And the OS has to be honest about all of that without making people stop trusting delegation.
         </CaseStudyParagraph>
-        <DiagramPlaceholder label="Badge confidence state model — provider communication failure modes" />
+        <DiagramPlaceholder label="Badge states: confident, uncertain, error; mapping provider reliability signals" />
       </CaseStudySection>
 
       <CaseStudySection id="platform-constraints" label="Platform Constraints">
-        <CaseStudyHeading>Designing for a platform built to last</CaseStudyHeading>
+        <CaseStudyHeading>Windows ships once. Agents ship constantly.</CaseStudyHeading>
         <CaseStudyParagraph>
-          A major constraint of designing for Windows is the release cadence of the platform itself. Unlike web products that can iterate rapidly, changes to the Windows shell must be stable, backward compatible, and resilient across hundreds of millions of devices. This meant we had to be careful about introducing new system patterns that could quickly become outdated or break as agents evolved.
+          Windows updates quarterly. You can{"'"}t iterate freely like a web app. Every change goes to hundreds of millions of devices and has to stay working for years. So when you{"'"}re building a pattern that agents will use, you{"'"}re betting big. You can{"'"}t just redesign it next sprint if you guessed wrong.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          At the same time, partner teams across Microsoft were building their own agents and understandably wanted the same level of rich progress tracking and monitoring that exists within their individual apps. Our role at the OS level was different. Rather than reproducing each agent{"'"}s full experience, Windows needed to provide a consistent, glanceable layer that works across all agents. The focus was on communicating key signals such as activity, progress, and when attention is required, without changing the UX depending on which agent was running.
+          Meanwhile every product team at Microsoft is building agents and wants the same rich monitoring they get inside their apps. They pushed for detailed progress views, custom visualizations, team-specific features. But the OS can{"'"}t be all of that. It has to be a consistent surface that works identically whether you{"'"}re running a research agent or a calendar agent or something brand new. Activity. Progress. When you{"'"}re needed. That{"'"}s it. The same UX. No variation.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          This created an interesting design tension. We had to balance the needs of individual product teams with the responsibility of maintaining a durable system pattern for the platform. The goal was to create a flexible framework that could support many different agents while remaining simple, predictable, and stable enough to last across multiple generations of agent capabilities.
+          So we built a tense thing. Flexible enough to support agents we haven{"'"}t even imagined yet. Simple enough to stay stable across years. We had to tell teams {"'"}no{"'"} to custom experiences so we could promise users a predictable system.
         </CaseStudyParagraph>
-        <DiagramPlaceholder label="OS release cadence vs. agent evolution — platform stability tension" />
+        <DiagramPlaceholder label="Windows release cycle meets agent velocity: building flexibility into stability" />
       </CaseStudySection>
 
       <CaseStudySection id="invocation" label="Unified Invocation">
-        <CaseStudyHeading>Ask Copilot as a system-wide entry point</CaseStudyHeading>
+        <CaseStudyHeading>Ask Copilot becomes the starting point</CaseStudyHeading>
         <CaseStudyParagraph>
-          In parallel, we helped shape a unified invocation model through Ask Copilot on the taskbar. This composer merges Windows Search with Copilot, creating a single system-level entry point where users can ask questions, take actions, and launch agents from anywhere in the OS.
+          Ask Copilot is Windows Search plus Copilot. One place to type questions, run actions, launch anything. We built agents directly into it. Type @. Pick an agent. Send it work. Invoke it from the OS, not from inside some app. The agent keeps running after you close the chat.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          A key part of this work was integrating agents directly into the composer so users could invoke them without needing to open a specific app. We explored several interaction models for how agents might appear in this space, but ultimately aligned with patterns already used by Copilot providers. Using the familiar mention model, users can type the @ symbol to surface available agents and directly call one into the conversation. This approach preserved consistency with the broader Copilot ecosystem while making agent invocation fast and discoverable within Windows.
+          We explored different ways to show agents in the composer. Checkboxes. Cards. Panels. But we aligned with how Copilot already works. The @ mention pattern. It was already there. Users already knew it. Consistent with everything Copilot providers do. Agent invocation becomes fast and obvious inside Windows.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          This unified entry point reinforces a clear mental model. Agents are not confined to individual apps. They can be invoked from the system layer and continue running beyond the moment of interaction. With Ask Copilot serving as the point of invocation and the taskbar serving as the place where agents remain visible and monitored, users gain a predictable system for both starting and managing agent-driven workflows.
+          Now the system has a clear shape. Ask Copilot is where you start agents. The taskbar is where they live while running. Agents aren{"'"}t stuck inside individual apps anymore. They{"'"}re creatures of the OS itself. You invoke them from the system layer. They keep running. You monitor them from a consistent place.
         </CaseStudyParagraph>
-        <FigurePanel caption="Universal agent invocation from the taskbar" src="/images/projects/agents-fig03.png" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Ask Copilot: invoke any agent with the @ mention pattern" src="/images/projects/agents-fig03.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="iteration" label="Iteration">
-        <CaseStudyHeading>Cross-discipline collaboration shaped the details</CaseStudyHeading>
+        <CaseStudyHeading>The micro-interactions that make it work</CaseStudyHeading>
         <CaseStudyParagraph>
-          Much of the work happened in the small decisions that turn a concept into a reliable system behavior. To get there, we worked closely across design, engineering, and product to prototype interaction patterns directly in the shell and evaluate them under realistic conditions. This included testing how agents appeared across different system surfaces, how multiple agents behaved simultaneously, and how the UI responded as agents moved between states.
+          The real work was the tiny stuff. How does an agent signal it{"'"}s done? How does it ask for help without startling you? How do you unblock it while keeping context? We prototyped these in the actual shell with engineering and product alongside design. Tested multiple agents running at once. Watched how the UI changed as an agent moved between states.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          A large portion of the effort focused on defining the micro-interactions that communicate agent behavior clearly. We worked through questions like how an agent signals completion, how it asks for help without feeling alarming, and how a user can quickly unblock an agent without losing the surrounding context of the task. These interaction details required close coordination between disciplines because they combined system constraints, technical signals from agents, and user expectations. Getting them right was critical for building a system that feels dependable as agents become more common in everyday workflows.
+          Each micro-interaction had to balance three things at once: what the system could actually do, what the agent data could tell us, and what people expected to happen. Move one thing wrong and the whole system feels less trustworthy. We couldn{"'"}t shortcut the work. Every detail mattered. And every detail needed design, engineering, and product all talking the same language so we didn{"'"}t ship something that looked good but didn{"'"}t actually work.
         </CaseStudyParagraph>
-        <DiagramPlaceholder label="Micro-interaction details: completion signals, help requests, unblocking flows" />
+        <DiagramPlaceholder label="Micro-interactions: completion signals, hand-raises for help, fast unblocking flows" />
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
-        <FigurePanel caption="Agents on Windows taskbar, announced at Microsoft Build" src="/images/projects/agents-fig04.png" className="mb-8 max-w-2xl" />
-        <CaseStudyHeading>From opaque automation to collaborative assistance</CaseStudyHeading>
+        <FigurePanel caption="Agents on the Windows taskbar, announced at Microsoft Build" src="/images/projects/agents-fig04.png" className="mb-8 max-w-2xl" />
+        <CaseStudyHeading>From invisible to interruptible</CaseStudyHeading>
         <CaseStudyParagraph>
-          With these patterns in place, agents in Windows move from invisible automation to visible collaborators. When an agent is running, users can see it, understand its state, and return to it at any time. Activity does not disappear into hidden logs or isolated app experiences. Instead, it remains present in familiar system surfaces where users can quickly check progress, intervene if needed, or review completed work.
+          Agents aren{"'"}t hidden anymore. You see them running. You know what state they{"'"}re in. You can come back to them whenever you want. No buried logs. No isolated app experiences. The work lives in familiar places. You can check progress. Step in. Review what got done. The OS became visible.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          This visibility has direct implications for trust. When users can see automation working on their behalf, delegation becomes more comfortable. When they can pause, intervene, or stop an agent easily, they retain a sense of control over the system. The design goal was not just to make agents powerful, but to make them understandable and interruptible so users feel confident letting them operate.
+          And visibility builds trust. You watch automation work. You feel safer. You know you can stop it. Pause it. Fix it. Control matters. We didn{"'"}t just make agents powerful. We made them understandable and stoppable so people actually feel comfortable letting them work.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Introducing agents into Windows also represents an important shift for the platform itself. Rather than AI existing only within individual applications, Windows begins to act as the coordination layer where agents can be invoked, monitored, and managed across the system. This moves Windows beyond being a place where users simply launch tools to complete tasks. Instead, it becomes an environment where intelligent systems actively assist with and execute work on the user{"'"}s behalf.
+          This changes what Windows is. It{"'"}s not just the app launcher anymore. It{"'"}s the place where agents live. Where you invoke them. Where you watch them work. Windows becomes the coordination layer for all the intelligent work happening on your system. AI doesn{"'"}t live trapped in individual applications. It{"'"}s part of the OS itself.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          At the platform level, this work established foundational patterns that other teams can build on. By defining shared UX contracts for agent presence, progress signaling, and user intervention, we created a consistent framework that prevents fragmentation as more agents enter the ecosystem. These patterns are already influencing updates to the Windows design system and guiding how new agent experiences integrate across Microsoft products.
+          Other teams are already building on these patterns. We created shared contracts for how agents show up, report progress, ask for help. Consistent. Predictable. This prevents a hundred teams from inventing a hundred different ways to surface agent status. The design system is evolving. New products across Microsoft are using the same framework.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          More broadly, the work helps prepare Windows for a future where managing agents becomes a common part of everyday computing. Establishing these conventions early ensures that as agent capabilities grow, users can understand what is happening on their system and developers have a clear, scalable way to plug their agents into the OS.
+          As agents become normal, people need to understand what's happening on their system. Developers need a clear way to wire agents into Windows. These foundations do that. They scale.
         </CaseStudyParagraph>
         <CaseStudyList
           items={[
-            "Visibility unlocks trust. Agents should never feel hidden if they are acting for you.",
-            "Control builds confidence. Pause and stop affordances matter.",
-            "Integration must be seamless and predictable across the system.",
-            "Agents should feel like tools you choose to use, not black boxes you are expected to accept.",
+            "Visibility creates trust. Hidden agents breed distrust.",
+            "Pause and stop are not optional. Control is non-negotiable.",
+            "Predictability across the system. One model, everywhere.",
+            "Agents should feel chosen, not imposed.",
           ]}
         />
       </CaseStudySection>

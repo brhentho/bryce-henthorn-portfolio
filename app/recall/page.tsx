@@ -16,9 +16,9 @@ const specs = [
   { label: "Role", value: "Senior UX Designer" },
   { label: "Platform", value: "Windows / Copilot+ PCs" },
   { label: "Focus", value: "Semantic search and memory retrieval" },
-  { label: "Challenge", value: "Traditional search doesn't match human memory" },
-  { label: "Solution", value: "Visual memory cards with progressive disclosure controls" },
-  { label: "Impact", value: "Improved comprehension, trust, and task recovery" },
+  { label: "Challenge", value: "How people remember doesn't match how search works" },
+  { label: "Solution", value: "Memory cards that show why results appeared" },
+  { label: "Impact", value: "Higher relevance comprehension, stronger trust, better task recovery" },
 ]
 
 const navItems = [
@@ -79,7 +79,7 @@ const recallHero = (
 
           <AnimateIn delay={0.1}>
             <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance">
-              Semantic search for everything you{"'"}ve seen
+              Search by memory, not by filename
             </h1>
           </AnimateIn>
 
@@ -119,7 +119,7 @@ export default function RecallPage() {
   return (
     <CaseStudyLayout
       productName="Windows Recall"
-      title="Semantic search for everything you've seen"
+      title="Search by memory, not by filename"
       tags={["Trust + privacy", "Systems thinking", "Windows", "Senior Designer", "2024"]}
       heroContent={recallHero}
       specs={specs}
@@ -127,177 +127,171 @@ export default function RecallPage() {
       nextProject={{ name: "Agents in Windows", href: "/agents-in-windows" }}
     >
       <CaseStudySection id="context" label="Context">
-        <CaseStudyHeading>What if your computer could remember everything you{"'"}ve seen?</CaseStudyHeading>
+        <CaseStudyHeading>Where was that thing I saw last week?</CaseStudyHeading>
         <CaseStudyParagraph>
-          Recall began with the bold idea of solving an age-old problem: Where was that presentation I saw with the blue background?
+          The problem was simple and unsolved. You{"'"}d seen something on your computer: a presentation, a snippet of code, a reference in an email. But you couldn{"'"}t find it. You{"'"}d try different search terms, retrace your steps, open files one by one. Minutes wasted. Information you knew existed but couldn{"'"}t retrieve.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Recall was an on-device system that continuously captured what appeared on screen and made them searchable through semantic understanding. From the beginning, we knew the challenge was not only technical but also raises concerns about privacy and control. The design problem was to create a system that felt intelligent without feeling invasive. The feature would only succeed if users understood it, but more importantly, trusted it.
+          Recall aimed to capture everything appearing on screen and make it searchable through meaning rather than filenames. But solving that technically wasn{"'"}t the real challenge. We had to build something users actually trusted. On-device processing was non-negotiable from day one, privacy concerns were real and legitimate, and if people didn{"'"}t understand how the system worked, they wouldn{"'"}t use it no matter how smart it was.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          My role focused specifically on owning the semantic search experience: how users search their memories using only the clues that they remember.
+          I owned the search experience: the part where people describe what they remember, however incompletely, and the system shows them the right moment.
         </CaseStudyParagraph>
         <FigurePanel caption="Building a memory graph from everything you've seen on screen" src="/images/projects/Intro - 127.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="problem" label="Problem">
-        <CaseStudyHeading>Traditional search expects precision. Human memory does not.</CaseStudyHeading>
+        <CaseStudyHeading>Search wants precision. Memory offers fragments.</CaseStudyHeading>
         <CaseStudyParagraph>
-          Finding something you{"'"}ve already seen on your computer should be easy. In reality, it{"'"}s often frustrating.
+          File search is built on certainty. You give it a filename or keyword. It matches exactly. Done.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Traditional search systems are built around exact matches—file names, locations, keywords. But that{"'"}s not how people remember. When trying to recall something, users think in fragments: a chart they saw last week, a document with a specific layout, a sentence they vaguely remember reading. That mismatch forces users into a trial-and-error process of guessing keywords, opening files, and retracing steps.
+          But that{"'"}s not how memory works. You remember a chart, maybe the color was blue, maybe it was from an email or a browser. You remember reading a specific sentence but not where. A layout. A screenshot from last month. Nothing precise enough for traditional search to grab hold of. So users cycle through guesses, opening files, clicking through folders, retracing steps they barely remember. The retrieval process becomes longer than whatever they{"'"}re trying to find.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Recall introduced a new model: a memory layer that continuously captures what appears on screen and makes it searchable through semantic understanding. Under the hood, screenshots are processed on-device using OCR and text extraction to build an index of both visual and textual content across everything the user has seen.
+          Recall flipped this. Instead of requiring exact queries, it indexed everything the system could see and made it searchable through semantic understanding. The backend processed screenshots with OCR and text extraction to build a searchable layer across visual and textual content. That solved the technical problem. But it created a design one.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          This created a new design problem. If the system is indexing everything, how do you let users search it in a way that feels natural, not overwhelming? How do you translate a complex pipeline of screenshots, text extraction, and semantic matching into an experience that aligns with how people actually remember?
-        </CaseStudyParagraph>
-        <CaseStudyParagraph>
-          The goal was to close that gap. Instead of asking users to think like a system, the system needed to respond to how people think—letting them describe what they remember, even if it{"'"}s incomplete, and guiding them back to the right moment.
+          If you{"'"}re indexing everything, how do you let people search without overwhelming them? How do you surface the right moments without forcing users to articulate their memory like a database query? The system needed to think like a person, not force people to think like the system.
         </CaseStudyParagraph>
         <FigurePanel caption="Metadata extracted from Screen Understanding" src="/images/projects/0-2.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="card-design" label="Card Design">
-        <CaseStudyHeading>Designing cards to represent moments, not files</CaseStudyHeading>
+        <CaseStudyHeading>Cards as moments, not documents</CaseStudyHeading>
         <CaseStudyParagraph>
-          Each Recall result card contained several signals: a screenshot, associated application, timestamp, extracted text, and ranking data. Structuring that information was relatively straightforward from an information architecture perspective. The more subtle challenge was shaping how the card communicated what Recall actually was.
+          A Recall card needed to hold several pieces of information: a screenshot, app name, timestamp, extracted text, and relevance signals. The information architecture part was straightforward. The subtle part was what the card communicated about what Recall actually was.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Recall is not file search. It is memory search.
+          This is memory search, not file search.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          To reinforce that mental model, we anchored the design around the visual snapshot. The screenshot became the primary element, grounding the result in something the user had actually seen. Importantly, this wasn{"'"}t just a cropped asset or document preview—it often included the surrounding desktop context. That context helped users orient themselves in time. You might recognize a presentation you were working on in the background, a browser tab you had open, or the layout of your workspace from a specific moment. Those details made the memory feel real, not abstract.
+          We built around the screenshot as the primary anchor. Not a cropped asset preview, but the actual desktop as it appeared, often with surrounding applications, open browser tabs, other windows in the background. That context is what lodges in memory. You remember the presentation was on the left side. The spreadsheet was behind it. The email client was open in the corner. These details are what orient you in time and make the memory feel like something that actually happened, not a generic document result.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Supporting metadata such as the application, timestamp, and extracted text remained visible but secondary. This hierarchy shifted the experience away from document retrieval and toward revisiting moments in time.
+          App name, timestamp, and extracted text stayed visible but secondary. The hierarchy pushed away from "found document" and toward "revisited moment."
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Interaction design required equal care. Selecting a card could lead to two outcomes: opening the Recall memory view for deeper exploration or restoring the original window where the activity occurred. These paths needed to feel predictable and intentional. Any ambiguity about what would happen on click would quickly erode trust.
+          Click behavior mattered equally. A card could open the Recall viewer for closer inspection or restore the original application window from that moment. But if those outcomes felt ambiguous or switched unexpectedly, users would lose trust fast. Every interaction had to feel intentional.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          The final design makes browsing Recall feel closer to scanning a visual timeline than navigating a traditional search results page.
+          The result is something between a timeline and a search interface: visual enough to scan like memory works, structured enough to act predictably.
         </CaseStudyParagraph>
         <FigurePanel caption="Separating match results and contextual clues of match type" src="/images/projects/recall-fig04.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
 
       <CaseStudySection id="card-relevance" label="Why It Appeared">
-        <CaseStudyHeading>Helping users understand why a result appeared</CaseStudyHeading>
+        <CaseStudyHeading>AI-powered search has a trust problem</CaseStudyHeading>
         <CaseStudyParagraph>
-          AI-powered search introduces a different challenge: results are sometimes technically correct but contextually wrong.
+          Technically correct results can feel wrong. Search for "blue chart spreadsheet" and the system might return something from an unrelated app that simply had a blue element. Visually similar, semantically off. That's not a model failure. It's an inherent limitation of retrieval systems at scale.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          A query like "blue chart spreadsheet" might return a screenshot from an unrelated application that simply contained a blue element. Visually similar, but semantically irrelevant. This is an inherent limitation of AI retrieval systems.
+          We didn't try to eliminate every false positive at the model layer. Instead, we made results understandable.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Rather than attempting to eliminate every false positive at the model layer, we focused on making the results understandable at the interface layer.
+          Every card explained how it matched. Text matches were labeled as text matches. Visual matches were labeled as visual matches. Separating and showing these signals let users judge relevance themselves rather than trusting an opaque ranking.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Each result card communicates why it matched. Some results are matched through extracted text. Others are matched through visual similarity. By separating and labeling these signals, users can quickly judge relevance themselves.
+          A result that looked wrong stopped feeling mysterious once users understood the match type. "This appeared because the system found similar colors" is dismissable. "The system returned this and I don't know why" erodes trust. The interface had to close that gap between what the model sees and what the user intended.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          A visual match that looks incorrect becomes easy to dismiss when users understand that the system matched on appearance rather than meaning. The interface provides enough context for users to close the gap between the model{"'"}s interpretation and their own intent.
-        </CaseStudyParagraph>
-        <CaseStudyParagraph>
-          The system does not need to be perfect. It needs to be legible.
+          Perfection wasn't the goal. Legibility was.
         </CaseStudyParagraph>
         <DiagramPlaceholder label="Relevance transparency: visual vs. text match signal design" />
       </CaseStudySection>
 
       <CaseStudySection id="early-iteration" label="Early Iteration">
-        <CaseStudyHeading>When everything was merged, clarity suffered</CaseStudyHeading>
+        <CaseStudyHeading>Merged results killed clarity</CaseStudyHeading>
         <CaseStudyParagraph>
-          Our first result model blended text matches and visual matches into a single ranked list. In theory, this felt elegant. The system would simply determine the best match and display it at the top.
+          First version blended everything. Text matches and visual matches went into one ranked list. The system would find the strongest result and surface it. Clean, elegant, simple.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          In practice, this created confusion. Text matches were usually more precise and therefore dominated the ranking. Visual matches, which often aligned more closely with what users remembered, were pushed lower. Users struggled to understand why certain results appeared. Without a clear explanation of relevance, even correct results felt questionable.
+          Testing proved it didn{"'"}t work. Text matches were generally more precise, so they dominated the ranking. Visual matches, often closer to what people actually remembered, got buried lower. Users stared at results and couldn{"'"}t figure out why something appeared. Even correct results felt questionable.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Through usability testing, it became clear that relevance needed to be legible. Users did not just want accurate results. They wanted to understand why a result was being shown.
+          Users needed to understand the {"'"}why.{"'"} Not just the {"'"}what.{"'"}
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          We separated text-based matches and visual matches into distinct sections. This structural change made the system{"'"}s behavior easier to interpret. It reduced cognitive load and improved trust almost immediately. Instead of competing within one opaque ranking, each type of result had a clear place.
+          We split text and visual matches into separate sections. That single structural change (giving each match type its own space) made the system's logic transparent. Cognitive load dropped. Trust went up. No opaque ranking competing against itself. Each result type had a clear place and a clear explanation.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Even when the AI was technically correct, the experience felt opaque. Users could not tell why something appeared. That lack of explanation eroded confidence. The problem was no longer just ranking. It was legibility.
+          The AI was technically correct even in the first version. But opaque correctness erodes trust faster than transparent mistakes. The problem wasn{"'"}t the ranking. It was legibility.
         </CaseStudyParagraph>
         <FigurePanel caption="Recall search with merged results" src="/images/projects/recall-fig03.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
 
       <CaseStudySection id="performance" label="Performance">
-        <CaseStudyHeading>Fast enough to feel alive</CaseStudyHeading>
+        <CaseStudyHeading>Semantic search is expensive</CaseStudyHeading>
         <CaseStudyParagraph>
-          Recall relied on semantic embeddings and local indexing, both of which can be computationally intensive. While many queries returned instantly, there were moments—especially during initial indexing or under system load—where responses took longer.
+          Embedding indexing and local retrieval are computationally heavy. Most queries came back fast. Some didn't, especially during initial indexing or under load. Users had to wait.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Search needed to feel responsive, even when it wasn{"'"}t instantaneous. We designed a live-updating experience where results evolve with each keystroke, giving users a sense of momentum and intelligence as they type. Instead of waiting for a full query to resolve, the system continuously refines results in place.
+          We made waiting feel like progress. Results evolved live as users typed, each keystroke refining the results in real time. No waiting for a full query. Constant forward motion. That momentum, even if latency existed underneath, made the interface feel responsive.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          When latency did surface, the goal was to avoid it feeling like failure. Subtle motion and lightweight progress indicators signaled that the system was actively working, keeping the interface calm and composed rather than stalled or broken.
+          When latency did show up, we signaled that work was happening. Subtle motion. Lightweight progress indicators. The interface stayed calm and composed instead of looking stuck or broken.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Balancing performance and experience required tight iteration between design and engineering. We refined how and when queries were sent based on real typing behavior, finding a rhythm that avoided over-triggering expensive searches while still feeling responsive. As models improved, the scope expanded. When constraints appeared, we adapted. The final experience reflects that constant negotiation between ambition and feasibility.
+          Design and engineering iterated constantly. We tuned how aggressively the system sent queries based on actual typing patterns, found a balance that avoided expensive retriggering without sacrificing responsiveness. As models improved, we expanded what was possible. When constraints hit, we adapted. The final experience was pure negotiation between what we wanted and what the hardware could do.
         </CaseStudyParagraph>
         <FigurePanel caption="Live search performance and loading states" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="trust" label="Trust">
-        <CaseStudyHeading>Trust as a design constraint, not a feature</CaseStudyHeading>
+        <CaseStudyHeading>Privacy was the whole product</CaseStudyHeading>
         <CaseStudyParagraph>
-          Recall captures everything you see on your PC. That capability only works if users trust where that data lives, how it{"'"}s used, and what control they have over it.
+          Recall captures everything. Everything. That only works if people trust where the data sits, who can see it, and what control they actually have.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          From the start, on-device processing was a non-negotiable constraint. All capture, indexing, and retrieval happen locally—nothing leaves the device. This wasn{"'"}t just a technical decision, it directly shaped the experience. It limited how much computation we could do in real time, influenced how results were ranked, and required the interface to clearly communicate what the system could and could not know.
+          On-device processing wasn{"'"}t optional. All capture, all indexing, all retrieval happened locally. Nothing left the machine. That constraint shaped everything downstream. It limited how much computation we could do in real time. It influenced ranking. It forced the interface to be clear about what the system did and didn{"'"}t know about the user.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          After public scrutiny, the privacy model evolved significantly. Recall moved from opt-out to opt-in, and users gained controls to exclude specific apps and pause indexing entirely. These changes introduced new UX requirements. If a user excludes an app, its absence in results cannot feel like a bug. The system needs to explicitly communicate that certain content is outside its scope. If indexing is paused, the UI must reflect that results may be incomplete without creating confusion or alarm.
+          After public scrutiny, things changed. Recall flipped from opt-out to opt-in. Users got the ability to exclude apps and pause indexing. Those shifts created new design problems. If someone excludes an app, its absence in results can{"'"}t look like a system failure. When indexing pauses, the UI has to signal incompleteness without alarm. Boundaries need to be visible.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          We addressed this by making system boundaries visible in the interface. Result cards show clear source attribution and timestamps so users understand where each memory came from. When content is unavailable or excluded, the system communicates that state instead of failing silently. When sensitive information is detected, results are blurred and require Windows Hello authentication before access. These behaviors ensure that users can always interpret what they are seeing.
+          We made those boundaries tangible. Cards showed where results came from and when. Excluded content got explicit explanation instead of silent gaps. Sensitive data triggered blurring and Windows Hello. Users could always understand what they were looking at and why Recall chose to show or hide it.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          My role focused on translating platform-level privacy decisions into concrete interaction patterns. The search UI, result cards, and relevance explanations were all designed to answer a simple question: Why am I seeing this, and what is Recall not showing me? Trust was not handled through a single setting or permission screen. It was reinforced through consistent, visible signals in every interaction.
+          I translated privacy policy into interface patterns. The search box, the cards, the relevance labels, all designed to answer: Why am I seeing this, and what{"'"}s Recall hiding from me? Trust wasn{"'"}t a single setting. It lived in every interaction, every label, every moment the interface made a choice transparent.
         </CaseStudyParagraph>
         <FigurePanel caption="Recall privacy and trust controls" src="/images/projects/Windows Commercial_16x9_1920_1080.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="constraints" label="Constraints & Tradeoffs">
-        <CaseStudyHeading>Balancing intelligence with responsiveness</CaseStudyHeading>
+        <CaseStudyHeading>We killed RAG to keep search fast</CaseStudyHeading>
         <CaseStudyParagraph>
-          One area where platform constraints shaped the design was around how deeply Recall could reason across memories. Early in the project, we explored using retrieval-augmented generation (RAG) to synthesize results across multiple captured moments. The idea was compelling: instead of returning individual screenshots, Recall could answer higher-level questions by combining context from many memories.
+          Early on, we explored synthesis across memories. Retrieval-augmented generation could answer higher-level questions by stitching together context from many screenshots. Users could ask {"'"}What was I working on last Tuesday?{"'"} and the system would synthesize an answer instead of dumping screenshots at them.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          In practice, this approach introduced significant latency. Running retrieval and generation across large sets of memories created delays that conflicted with the performance expectations of system search. Recall needed to feel instantaneous. If users typed a query and waited several seconds for the system to "think," the experience quickly felt heavy and unreliable.
+          Latency killed it. Retrieving and generating across large memory sets created delays that broke the core expectation: search should feel instantaneous. A few seconds of waiting for the system to {"'"}think{"'"} and the whole thing felt slow and alien. That{"'"}s not how Windows Search behaves. That{"'"}s not how people expect system features to respond.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Because of these constraints, we shifted away from generation-first answers and focused on fast, legible retrieval. The interface emphasizes quickly surfacing relevant moments that users can scan and interpret themselves. By prioritizing speed and clarity over deeper synthesis, we ensured that Recall behaved like a native system capability rather than a slow AI feature layered on top.
+          We abandoned synthesis and focused on speed and legibility instead. Surface relevant moments. Let people interpret them. Prioritizing responsive retrieval over deeper reasoning meant Recall stayed a native capability instead of becoming a slow AI graft.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          This decision also reinforced an important design principle for the product: the system should help users rediscover context, not reinterpret their history for them.
+          And honestly, it was the right call design-wise. The system helps people rediscover what they saw. It doesn{"'"}t rewrite their history for them.
         </CaseStudyParagraph>
-        <FigurePanel caption="RAG synthesis vs. fast retrieval — latency and tradeoff" videoSrc="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="RAG synthesis vs. fast retrieval: latency and tradeoff" videoSrc="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
         <FigurePanel caption="Recall keynote presentation and system architecture" src="/images/projects/recall-fig06.png" className="mb-8 max-w-2xl" />
         <CaseStudyParagraph>
-          Separating visual and text-based matches had a measurable impact on usability. In studies, users were able to clearly explain why a result appeared and quickly determine whether it matched their intent. What initially felt like unpredictable AI behavior became something users could reason about and control. That shift from "mysterious" to "legible" significantly improved confidence when interacting with Recall.
+          Separating visual and text matches proved it wasn{"'"}t just philosophy. In testing, users could explain why each result appeared and quickly reject things that didn{"'"}t fit. Mysterious AI behavior became rational. That shift changed how people talked about the system. They stopped saying {"'"}I don{"'"}t understand why this happened{"'"} and started saying {"'"}This doesn{"'"}t match my intent.{"'"} The difference is control.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Participants also reported rediscovering information they assumed was lost, from code snippets seen briefly in documentation to documents they had opened weeks earlier and forgotten about. While the underlying technology enabled that capability, the clarity of the interface made it practical. Users could quickly evaluate results and navigate back to the exact moment they needed.
+          People recovered information they{"'"}d written off as lost. A code snippet they saw once in documentation. Files from months ago they{"'"}d forgotten existed. The underlying tech enabled that. The interface made it usable. Users could scan results and jump directly to the moment they needed without clicking through irrelevant noise.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          The impact of Recall extended beyond the feature itself. The project helped shape broader privacy and trust design guidelines within Windows, influencing how teams think about provenance, transparency, and user control when working with AI-generated or AI-retrieved content. It also informed engineering processes for handling sensitive data and communicating system behavior clearly within the interface.
+          The work rippled further. Privacy and trust patterns from Recall became reference points across Windows teams. How do you show provenance in an AI context? How do you let people understand and control AI-powered systems? How do you communicate system boundaries without alarming users? Those questions got answered in Recall{"'"}s design and stayed relevant as other features shipped.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          At the platform level, the search logic developed for Recall became a foundation for semantic search across Windows surfaces. The same principles of explaining relevance and separating match types informed updates to Windows Search and File Explorer, helping establish a consistent model for AI-assisted retrieval across the OS.
+          The search approach itself became foundational. Principles of relevance transparency and match-type separation showed up in Windows Search and File Explorer updates. That consistency meant users didn't have to learn different models for different surfaces.
         </CaseStudyParagraph>
         <CaseStudyCallout>
-          Recall ultimately demonstrated that advanced AI capabilities can be integrated into a core platform feature without feeling opaque or experimental. By prioritizing transparency, provenance, and predictable interaction patterns, the work helped define how Windows can introduce AI features that users understand and trust.
+          Recall proved that AI in core OS features doesn{"'"}t require opacity or experimental disclaimers. Clear transparency, visible provenance, predictable interactions. That combination is what lets people trust and use powerful capabilities without fear.
         </CaseStudyCallout>
       </CaseStudySection>
     </CaseStudyLayout>
