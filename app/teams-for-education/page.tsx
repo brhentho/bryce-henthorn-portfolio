@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import {
   CaseStudyLayout,
   CaseStudySection,
@@ -7,8 +8,13 @@ import {
   CaseStudyHeading,
   CaseStudyCallout,
 } from "@/components/case-study-layout"
+import { Container } from "@/components/container"
+import { AnimateIn } from "@/components/animate-in"
 import { FigurePanel, DiagramPlaceholder } from "@/components/figure-panel"
-import { projectImages } from "@/lib/images"
+import { MarketContextPanel } from "@/components/market-context-panel"
+import { CoCreationPanel } from "@/components/cocreation-panel"
+import { ResearchSynthesisTable } from "@/components/research-synthesis-table"
+import { TeacherReactionsPanel } from "@/components/teacher-reactions-panel"
 
 const specs = [
   { label: "Role", value: "Senior UX Designer" },
@@ -32,14 +38,83 @@ const navItems = [
   { id: "impact", label: "Impact" },
 ]
 
+const teamsHero = (
+  <section className="relative min-h-[85vh] flex items-center overflow-hidden" style={{ backgroundColor: "rgba(40,28,12,1)" }}>
+    {/* Layer 1: Full-bleed classroom background */}
+    <Image
+      src="/images/projects/u9563819146_Wide_shot_from_the_back_of_a_classroom_a_teacher__cf6ce048-b4b7-4f34-b4e2-bbf2b606112a_2.png"
+      alt=""
+      fill
+      className="object-cover"
+      style={{ filter: "blur(2px) brightness(0.3)" }}
+      aria-hidden="true"
+    />
+
+    {/* Layer 2: Warm amber gradient overlay */}
+    <div
+      className="absolute inset-0 bg-gradient-to-r from-[rgba(180,120,40,0.35)] via-[rgba(180,120,40,0.15)] to-transparent pointer-events-none"
+      aria-hidden="true"
+    />
+
+    {/* Layer 3: Bottom fade to site background */}
+    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0B0B0D] to-transparent pointer-events-none" aria-hidden="true" />
+
+    {/* Content: text left, floating UI right */}
+    <Container className="relative z-10 pt-20 md:pt-24 pb-16">
+      <div className="flex flex-col lg:grid lg:grid-cols-[2fr_3fr] lg:items-center gap-10 lg:gap-12">
+        {/* Left: text */}
+        <div className="min-w-0">
+          <AnimateIn delay={0.05}>
+            <p className="text-sm font-sans font-medium text-amber-400 mb-4 tracking-wide">
+              Teams for Education
+            </p>
+          </AnimateIn>
+
+          <AnimateIn delay={0.1}>
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance">
+              Modernizing online class for an authentic virtual experience
+            </h1>
+          </AnimateIn>
+
+          <AnimateIn delay={0.15}>
+            <div className="flex flex-wrap gap-2 mt-5">
+              {["UX Strategy", "Microsoft Teams Enterprise", "Senior Designer", "2020"].map((tag) => (
+                <span
+                  key={tag}
+                  className="text-[11px] font-sans font-medium text-foreground-tertiary bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-500/20"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </AnimateIn>
+        </div>
+
+        {/* Right: floating Teams UI */}
+        <AnimateIn delay={0.25} className="min-w-0">
+          <Image
+            src="/images/projects/teams-chat.png"
+            alt="Teams virtual tables interface showing breakout room groups with student avatars and teacher video"
+            width={1600}
+            height={900}
+            className="w-full h-auto rounded-xl border border-white/10"
+            style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.5), 0 0 60px rgba(180,120,40,0.1)" }}
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            priority
+          />
+        </AnimateIn>
+      </div>
+    </Container>
+  </section>
+)
+
 export default function TeamsForEducationPage() {
   return (
     <CaseStudyLayout
       productName="Teams for Education"
       title="Modernizing online class for an authentic virtual experience"
       tags={["UX Strategy", "Microsoft Teams Enterprise", "Senior Designer", "2020"]}
-      heroImage={projectImages["teams-for-education"].heroImage}
-      heroImageAlt={projectImages["teams-for-education"].alt}
+      heroContent={teamsHero}
       specs={specs}
       navItems={navItems}
       nextProject={{ name: "Windows Recall", href: "/recall" }}
@@ -58,7 +133,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           As a Senior UX Designer in the Microsoft Education organization, my role was to advocate for the education audience within the broader Teams ecosystem. I led UX research sessions with educators and students, facilitated cross-functional ideation and concept development workshops, and translated the insights into design solutions from early wireframes through high-fidelity prototypes. The goal was to demonstrate how Teams could move beyond basic video conferencing and better support the social dynamics that make classrooms effective learning environments.
         </CaseStudyParagraph>
-        <FigurePanel caption="Retention strategy reframe: from feature additions to classroom dynamics" src="/images/projects/teams-retention-strategy.png" className="mt-8 mb-4 max-w-2xl" />
+        <MarketContextPanel />
       </CaseStudySection>
 
       <CaseStudySection id="problem" label="Problem">
@@ -78,7 +153,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           Without spatial cues or group dynamics, teachers lost visibility into who was engaged and who was falling behind. Students lost the sense of belonging and safety that comes from smaller group interaction. The classroom became efficient for broadcasting, but ineffective for learning.
         </CaseStudyParagraph>
-        <FigurePanel caption="Co-design session with educators" src="/images/projects/teams-cocreation.png" className="mt-8 mb-4 max-w-2xl" />
+        <CoCreationPanel />
       </CaseStudySection>
 
       <CaseStudySection id="research" label="Research">
@@ -89,7 +164,7 @@ export default function TeamsForEducationPage() {
         <CaseStudyParagraph>
           Once we stepped back and looked at the data, a heartbreaking theme emerged. Students did not just miss content. They missed their friends. They missed social cues. They missed feeling seen. That emotional gap was the real problem.
         </CaseStudyParagraph>
-        <FigurePanel caption="Research synthesis: emotional themes across teachers and students" src="/images/projects/teams-research-synthesis.png" className="mt-8 mb-4 max-w-2xl" />
+        <ResearchSynthesisTable />
       </CaseStudySection>
 
       <CaseStudySection id="solution" label="Solution">
@@ -185,7 +260,7 @@ export default function TeamsForEducationPage() {
 
       <CaseStudySection id="impact" label="Impact">
         <CaseStudyHeading>Impact</CaseStudyHeading>
-        <FigurePanel caption="Teachers' reactions to the Class Homepage" src="/images/projects/teams-teacher-reactions.png" className="mb-8 max-w-2xl" />
+        <TeacherReactionsPanel />
         <CaseStudyParagraph>
           Through rigorous user testing, we found that the solution was not adding more features, but simplifying and extending the core experience.
         </CaseStudyParagraph>

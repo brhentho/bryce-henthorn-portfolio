@@ -127,8 +127,10 @@ export function FigurePanel({ caption, variant, src, videoSrc, className, aspect
     <figure className={cn("group", className)}>
       <div
         className={cn(
-          "relative overflow-hidden",
-          !(src || videoSrc) && "rounded-[var(--radius-card)] border border-border bg-surface-raised"
+          "relative overflow-hidden rounded-lg",
+          (src || videoSrc)
+            ? "border border-white/10 shadow-[0_2px_20px_rgba(0,0,0,0.4)]"
+            : "border border-border bg-surface-raised"
         )}
         style={{ aspectRatio: (src || videoSrc) ? undefined : aspectRatio }}
       >

@@ -31,6 +31,8 @@ interface CaseStudyLayoutProps {
   tags?: string[]
   heroImage?: string
   heroImageAlt?: string
+  /** Custom hero JSX — replaces the default hero section entirely when provided */
+  heroContent?: React.ReactNode
   specs: SpecItem[]
   navItems: NavItem[]
   nextProject?: { name: string; href: string }
@@ -44,6 +46,7 @@ export function CaseStudyLayout({
   tags,
   heroImage,
   heroImageAlt,
+  heroContent,
   specs,
   navItems,
   nextProject,
@@ -53,77 +56,79 @@ export function CaseStudyLayout({
     <PageTransition>
       <Nav />
       <main>
-        {/* Hero - 2 column: text left, image right */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
-          {/* Static dot grid background */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            aria-hidden="true"
-            style={{
-              backgroundImage: `radial-gradient(circle, rgba(240,240,243,0.12) 1.5px, transparent 1.5px)`,
-              backgroundSize: `${GRID_SPACING}px ${GRID_SPACING}px`,
-              backgroundPosition: `${GRID_SPACING / 2}px ${GRID_SPACING / 2}px`,
-            }}
-          />
+        {/* Hero — custom or default 2-column layout */}
+        {heroContent ? heroContent : (
+          <section className="relative min-h-screen flex items-center overflow-hidden">
+            {/* Static dot grid background */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              aria-hidden="true"
+              style={{
+                backgroundImage: `radial-gradient(circle, rgba(240,240,243,0.12) 1.5px, transparent 1.5px)`,
+                backgroundSize: `${GRID_SPACING}px ${GRID_SPACING}px`,
+                backgroundPosition: `${GRID_SPACING / 2}px ${GRID_SPACING / 2}px`,
+              }}
+            />
 
-          <Container className="relative z-10 pt-16 md:pt-20 pb-16 md:pb-20">
-            <div className="flex flex-col lg:grid lg:grid-cols-[2fr_3fr] lg:items-center gap-10 lg:gap-10 xl:gap-12">
-              {/* Left: Product name + Title + tags + subtitle */}
-              <div className="min-w-0">
-                <AnimateIn delay={0.05}>
-                  <p className="text-sm font-sans font-medium text-accent mb-4 tracking-wide">
-                    {productName}
-                  </p>
-                </AnimateIn>
-
-                <AnimateIn delay={0.1}>
-                  <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance">
-                    {title}
-                  </h1>
-                </AnimateIn>
-
-                {/* Tags row */}
-                {tags && tags.length > 0 && (
-                  <AnimateIn delay={0.15}>
-                    <div className="flex flex-wrap gap-2 mt-5">
-                      {tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-[11px] font-sans font-medium text-foreground-tertiary bg-surface-raised px-3 py-1.5 rounded-lg border border-border"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </AnimateIn>
-                )}
-
-                {subtitle && (
-                  <AnimateIn delay={0.2}>
-                    <p className="mt-6 text-base md:text-lg text-foreground-secondary leading-relaxed max-w-lg font-sans">
-                      {subtitle}
+            <Container className="relative z-10 pt-16 md:pt-20 pb-16 md:pb-20">
+              <div className="flex flex-col lg:grid lg:grid-cols-[2fr_3fr] lg:items-center gap-10 lg:gap-10 xl:gap-12">
+                {/* Left: Product name + Title + tags + subtitle */}
+                <div className="min-w-0">
+                  <AnimateIn delay={0.05}>
+                    <p className="text-sm font-sans font-medium text-accent mb-4 tracking-wide">
+                      {productName}
                     </p>
+                  </AnimateIn>
+
+                  <AnimateIn delay={0.1}>
+                    <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance">
+                      {title}
+                    </h1>
+                  </AnimateIn>
+
+                  {/* Tags row */}
+                  {tags && tags.length > 0 && (
+                    <AnimateIn delay={0.15}>
+                      <div className="flex flex-wrap gap-2 mt-5">
+                        {tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[11px] font-sans font-medium text-foreground-tertiary bg-surface-raised px-3 py-1.5 rounded-lg border border-border"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </AnimateIn>
+                  )}
+
+                  {subtitle && (
+                    <AnimateIn delay={0.2}>
+                      <p className="mt-6 text-base md:text-lg text-foreground-secondary leading-relaxed max-w-lg font-sans">
+                        {subtitle}
+                      </p>
+                    </AnimateIn>
+                  )}
+                </div>
+
+                {/* Right: Hero image — no card/border/bg, just the PNG floating naturally */}
+                {heroImage && (
+                  <AnimateIn delay={0.2} className="min-w-0">
+                    <Image
+                      src={heroImage}
+                      alt={heroImageAlt || title}
+                      width={1600}
+                      height={1000}
+                      className="w-full h-auto object-contain"
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      priority
+                    />
                   </AnimateIn>
                 )}
               </div>
-
-              {/* Right: Hero image — no card/border/bg, just the PNG floating naturally */}
-              {heroImage && (
-                <AnimateIn delay={0.2} className="min-w-0">
-                  <Image
-                    src={heroImage}
-                    alt={heroImageAlt || title}
-                    width={1600}
-                    height={1000}
-                    className="w-full h-auto object-contain"
-                    sizes="(max-width: 1024px) 100vw, 60vw"
-                    priority
-                  />
-                </AnimateIn>
-              )}
-            </div>
-          </Container>
-        </section>
+            </Container>
+          </section>
+        )}
 
         {/* Overview spec panel - full width centered */}
         <Container className="mt-16 md:mt-20">

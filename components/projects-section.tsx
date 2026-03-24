@@ -5,6 +5,7 @@ import { Section } from "@/components/section"
 import { SectionHeader } from "@/components/section-header"
 import { ProjectCard } from "@/components/project-card"
 import { AnimateIn } from "@/components/animate-in"
+import { projectImages } from "@/lib/images"
 
 // --- Placeholder visuals ---
 
@@ -161,7 +162,8 @@ export function ProjectsSection() {
               productName="Teams for Education"
               heading="Modernizing Online Classes for an Authentic Virtual Experience."
               href="/teams-for-education"
-              placeholder={<TeamsPlaceholder />}
+              cardImage={projectImages["teams-for-education"].cardImage}
+              imageAlt={projectImages["teams-for-education"].alt}
             />
           </AnimateIn>
           <AnimateIn delay={0.1}>
@@ -169,7 +171,8 @@ export function ProjectsSection() {
               productName="Windows Recall"
               heading="Designing Semantic Search for Everything You've Seen."
               href="/recall"
-              placeholder={<RecallPlaceholder />}
+              cardImage={projectImages["recall"].cardImage}
+              imageAlt={projectImages["recall"].alt}
             />
           </AnimateIn>
           <AnimateIn delay={0.2}>
@@ -177,7 +180,8 @@ export function ProjectsSection() {
               productName="Agents in Windows"
               heading="Solving Trust and Visibility for AI Agents in the Operating System."
               href="/agents-in-windows"
-              placeholder={<AgentsPlaceholder />}
+              cardImage={projectImages["agents-in-windows"].cardImage}
+              imageAlt={projectImages["agents-in-windows"].alt}
             />
           </AnimateIn>
         </div>

@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import {
   CaseStudyLayout,
   CaseStudySection,
@@ -7,8 +8,9 @@ import {
   CaseStudyHeading,
   CaseStudyCallout,
 } from "@/components/case-study-layout"
+import { Container } from "@/components/container"
+import { AnimateIn } from "@/components/animate-in"
 import { FigurePanel, DiagramPlaceholder } from "@/components/figure-panel"
-import { projectImages } from "@/lib/images"
 
 const specs = [
   { label: "Role", value: "Senior UX Designer" },
@@ -31,14 +33,95 @@ const navItems = [
   { id: "impact", label: "Impact" },
 ]
 
+const recallHero = (
+  <section className="relative min-h-[85vh] flex items-center overflow-hidden" style={{ backgroundColor: "#080a10" }}>
+    {/* Layer 1: Faint messy desk background */}
+    <Image
+      src="/images/projects/u9563819146_A_home_office_desk_with_a_computer_monitor_displa_9f40e7fb-6f59-42d7-ae72-2a94bf7af410_2.png"
+      alt=""
+      fill
+      className="object-cover opacity-[0.08]"
+      style={{ filter: "grayscale(0.8)" }}
+      aria-hidden="true"
+    />
+
+    {/* Layer 2: Blue radial glow behind right column */}
+    <div
+      className="absolute top-1/2 right-[20%] -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[120px] pointer-events-none"
+      style={{ background: "rgba(59,130,246,0.10)" }}
+      aria-hidden="true"
+    />
+
+    {/* Layer 3: Dim dot grid */}
+    <div
+      className="absolute inset-0 pointer-events-none"
+      aria-hidden="true"
+      style={{
+        backgroundImage: "radial-gradient(circle, rgba(240,240,243,0.06) 1.5px, transparent 1.5px)",
+        backgroundSize: "40px 40px",
+        backgroundPosition: "20px 20px",
+      }}
+    />
+
+    {/* Layer 4: Bottom fade */}
+    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0B0B0D] to-transparent pointer-events-none" aria-hidden="true" />
+
+    {/* Content: 2-column with blue accents */}
+    <Container className="relative z-10 pt-20 md:pt-24 pb-16">
+      <div className="flex flex-col lg:grid lg:grid-cols-[2fr_3fr] lg:items-center gap-10 lg:gap-12">
+        {/* Left: text */}
+        <div className="min-w-0">
+          <AnimateIn delay={0.05}>
+            <p className="text-sm font-sans font-medium text-blue-400 mb-4 tracking-wide">
+              Windows Recall
+            </p>
+          </AnimateIn>
+
+          <AnimateIn delay={0.1}>
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance">
+              Semantic search for everything you{"'"}ve seen
+            </h1>
+          </AnimateIn>
+
+          <AnimateIn delay={0.15}>
+            <div className="flex flex-wrap gap-2 mt-5">
+              {["Trust + privacy", "Systems thinking", "Windows", "Senior Designer", "2024"].map((tag) => (
+                <span
+                  key={tag}
+                  className="text-[11px] font-sans font-medium text-foreground-tertiary bg-blue-500/10 px-3 py-1.5 rounded-lg border border-blue-500/20"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </AnimateIn>
+        </div>
+
+        {/* Right: semantic exploded-view diagram */}
+        <AnimateIn delay={0.25} className="min-w-0">
+          <Image
+            src="/images/projects/recall-fig02.png"
+            alt="Semantic layer exploded view showing how Recall extracts meaning from screenshots through visual and text understanding"
+            width={1600}
+            height={900}
+            className="w-full h-auto rounded-xl border border-white/10"
+            style={{ boxShadow: "0 0 60px rgba(59,130,246,0.15), 0 4px 30px rgba(0,0,0,0.4)" }}
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            priority
+          />
+        </AnimateIn>
+      </div>
+    </Container>
+  </section>
+)
+
 export default function RecallPage() {
   return (
     <CaseStudyLayout
       productName="Windows Recall"
       title="Semantic search for everything you've seen"
       tags={["Trust + privacy", "Systems thinking", "Windows", "Senior Designer", "2024"]}
-      heroImage={projectImages["recall"].heroImage}
-      heroImageAlt={projectImages["recall"].alt}
+      heroContent={recallHero}
       specs={specs}
       navItems={navItems}
       nextProject={{ name: "Agents in Windows", href: "/agents-in-windows" }}
@@ -54,7 +137,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           My role focused specifically on owning the semantic search experience: how users search their memories using only the clues that they remember.
         </CaseStudyParagraph>
-        <FigurePanel caption="Recall sizzle overview" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig01-FojMNuJbZGndg7ATAFhxOZEypdzfDq.mp4" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Building a memory graph from everything you've seen on screen" src="/images/projects/Intro - 127.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="problem" label="Problem">
@@ -74,7 +157,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           The goal was to close that gap. Instead of asking users to think like a system, the system needed to respond to how people think—letting them describe what they remember, even if it{"'"}s incomplete, and guiding them back to the right moment.
         </CaseStudyParagraph>
-        <FigurePanel caption="Windows Intelligence Layer to extract memory data" src="/images/projects/recall-fig02.png" className="mt-8 mb-4 max-w-2xl" />
+        <FigurePanel caption="Metadata extracted from Screen Understanding" src="/images/projects/0-2.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="card-design" label="Card Design">
@@ -179,6 +262,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           My role focused on translating platform-level privacy decisions into concrete interaction patterns. The search UI, result cards, and relevance explanations were all designed to answer a simple question: Why am I seeing this, and what is Recall not showing me? Trust was not handled through a single setting or permission screen. It was reinforced through consistent, visible signals in every interaction.
         </CaseStudyParagraph>
+        <FigurePanel caption="Recall privacy and trust controls" src="/images/projects/Windows Commercial_16x9_1920_1080.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="constraints" label="Constraints & Tradeoffs">
@@ -195,7 +279,7 @@ export default function RecallPage() {
         <CaseStudyParagraph>
           This decision also reinforced an important design principle for the product: the system should help users rediscover context, not reinterpret their history for them.
         </CaseStudyParagraph>
-        <DiagramPlaceholder label="RAG synthesis vs. fast retrieval — latency and tradeoff diagram" />
+        <FigurePanel caption="RAG synthesis vs. fast retrieval — latency and tradeoff" videoSrc="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
