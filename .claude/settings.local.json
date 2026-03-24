@@ -42,7 +42,11 @@
       "Bash(curl -s http://localhost:3000)",
       "Bash(git checkout:*)",
       "Bash(git push:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(git pull:*)",
+      "Bash(ls -lh /Users/brycehenthorn/bryce-henthorn-portfolio/public/images/projects/shilpa_0603_03_1[1].mp4)",
+      "Bash(file /Users/brycehenthorn/bryce-henthorn-portfolio/public/images/projects/shilpa_0603_03_1[1].mp4)",
+      "Bash(xargs cat:*)"
     ]
   }
 }
