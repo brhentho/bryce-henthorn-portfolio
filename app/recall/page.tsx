@@ -33,8 +33,14 @@ const navItems = [
 
 const recallHero = (
   <CaseStudyHero
+    backgroundImage="/images/projects/Recall hero.png"
+    backgroundImageOpacity={0.55}
+    heroIcon="/images/projects/Recall icon.png"
+    heroIconAlt="Windows Recall"
+    gridSvg="/dot-grid-bg.svg"
+    gridOpacity={0.3}
     productName="Windows Recall"
-    title="Search by memory, not by filename"
+    title="Designing Semantic Search for Everything You've Seen."
     tags={["Trust + privacy", "Systems thinking", "Windows", "Senior Designer", "2024"]}
   />
 )
