@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import {
   CaseStudyLayout,
   CaseStudySection,
@@ -8,9 +7,8 @@ import {
   CaseStudyHeading,
   CaseStudyCallout,
 } from "@/components/case-study-layout"
-import { Container } from "@/components/container"
-import { AnimateIn } from "@/components/animate-in"
 import { FigurePanel, DiagramPlaceholder } from "@/components/figure-panel"
+import { CaseStudyHero } from "@/components/case-study-hero"
 
 const specs = [
   { label: "Role", value: "Senior UX Designer" },
@@ -34,85 +32,11 @@ const navItems = [
 ]
 
 const recallHero = (
-  <section className="relative min-h-[85vh] flex items-center overflow-hidden" style={{ backgroundColor: "#080a10" }}>
-    {/* Layer 1: Faint messy desk background */}
-    <Image
-      src="/images/projects/u9563819146_A_home_office_desk_with_a_computer_monitor_displa_9f40e7fb-6f59-42d7-ae72-2a94bf7af410_2.png"
-      alt=""
-      fill
-      className="object-cover opacity-[0.08]"
-      style={{ filter: "grayscale(0.8)" }}
-      aria-hidden="true"
-    />
-
-    {/* Layer 2: Blue radial glow behind right column */}
-    <div
-      className="absolute top-1/2 right-[20%] -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[120px] pointer-events-none"
-      style={{ background: "rgba(59,130,246,0.10)" }}
-      aria-hidden="true"
-    />
-
-    {/* Layer 3: Dim dot grid */}
-    <div
-      className="absolute inset-0 pointer-events-none"
-      aria-hidden="true"
-      style={{
-        backgroundImage: "radial-gradient(circle, rgba(240,240,243,0.06) 1.5px, transparent 1.5px)",
-        backgroundSize: "40px 40px",
-        backgroundPosition: "20px 20px",
-      }}
-    />
-
-    {/* Layer 4: Bottom fade */}
-    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0B0B0D] to-transparent pointer-events-none" aria-hidden="true" />
-
-    {/* Content: 2-column with blue accents */}
-    <Container className="relative z-10 pt-20 md:pt-24 pb-16">
-      <div className="flex flex-col lg:grid lg:grid-cols-[2fr_3fr] lg:items-center gap-10 lg:gap-12">
-        {/* Left: text */}
-        <div className="min-w-0">
-          <AnimateIn delay={0.05}>
-            <p className="text-sm font-sans font-medium text-blue-400 mb-4 tracking-wide">
-              Windows Recall
-            </p>
-          </AnimateIn>
-
-          <AnimateIn delay={0.1}>
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance">
-              Search by memory, not by filename
-            </h1>
-          </AnimateIn>
-
-          <AnimateIn delay={0.15}>
-            <div className="flex flex-wrap gap-2 mt-5">
-              {["Trust + privacy", "Systems thinking", "Windows", "Senior Designer", "2024"].map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[11px] font-sans font-medium text-foreground-tertiary bg-blue-500/10 px-3 py-1.5 rounded-lg border border-blue-500/20"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </AnimateIn>
-        </div>
-
-        {/* Right: semantic exploded-view diagram */}
-        <AnimateIn delay={0.25} className="min-w-0">
-          <Image
-            src="/images/projects/recall-fig02.png"
-            alt="Semantic layer exploded view showing how Recall extracts meaning from screenshots through visual and text understanding"
-            width={1600}
-            height={900}
-            className="w-full h-auto rounded-xl border border-white/10"
-            style={{ boxShadow: "0 0 60px rgba(59,130,246,0.15), 0 4px 30px rgba(0,0,0,0.4)" }}
-            sizes="(max-width: 1024px) 100vw, 60vw"
-            priority
-          />
-        </AnimateIn>
-      </div>
-    </Container>
-  </section>
+  <CaseStudyHero
+    productName="Windows Recall"
+    title="Search by memory, not by filename"
+    tags={["Trust + privacy", "Systems thinking", "Windows", "Senior Designer", "2024"]}
+  />
 )
 
 export default function RecallPage() {
