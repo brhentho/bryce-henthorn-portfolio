@@ -3,8 +3,20 @@ import { Container } from "@/components/container"
 import { AnimateIn } from "@/components/animate-in"
 
 interface CaseStudyHeroProps {
+  /** Floating wide image above text (Teams pattern) */
   heroImage?: string
   heroImageAlt?: string
+  /** Small icon displayed centered above the title (Recall pattern) */
+  heroIcon?: string
+  heroIconAlt?: string
+  /** Full-bleed background image behind grid and content */
+  backgroundImage?: string
+  /** Opacity for the background image. Default: 0.6 */
+  backgroundImageOpacity?: number
+  /** Grid SVG path. Default: "/grid-bg-neon.svg" */
+  gridSvg?: string
+  /** Grid opacity. Default: 0.1 */
+  gridOpacity?: number
   productName: string
   title: string
   tags?: string[]
@@ -13,10 +25,19 @@ interface CaseStudyHeroProps {
 export function CaseStudyHero({
   heroImage,
   heroImageAlt,
+  heroIcon,
+  heroIconAlt,
+  backgroundImage,
+  backgroundImageOpacity = 0.6,
+  gridSvg = "/grid-bg-neon.svg",
+  gridOpacity = 0.1,
   productName,
   title,
   tags,
 }: CaseStudyHeroProps) {
+  const hasTopSlot = !!(heroIcon || heroImage)
+  const baseDelay = hasTopSlot ? 0.15 : 0.05
+
   return (
     <section
       className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden"
@@ -25,15 +46,27 @@ export function CaseStudyHero({
         borderRadius: "14px",
       }}
     >
-      {/* Grid SVG — full-bleed, 10% opacity, mask-faded at top and bottom */}
+      {/* Background image — full-bleed, behind grid */}
+      {backgroundImage && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={backgroundImage}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          style={{ opacity: backgroundImageOpacity }}
+        />
+      )}
+
+      {/* Grid SVG — full-bleed, configurable opacity, mask-faded at top and bottom */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/grid-bg-neon.svg"
+        src={gridSvg}
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         style={{
-          opacity: 0.1,
+          opacity: gridOpacity,
           maskImage:
             "linear-gradient(to bottom, transparent 0px, black 80px, black calc(100% - 160px), transparent 100%)",
           WebkitMaskImage:
@@ -49,7 +82,21 @@ export function CaseStudyHero({
 
       {/* Centered content */}
       <Container className="relative z-10 pt-24 pb-16 flex flex-col items-center text-center">
-        {/* Hero image — omitted when not provided */}
+        {/* Hero icon — small centered icon above title (Recall pattern) */}
+        {heroIcon && (
+          <AnimateIn delay={0.05} className="mb-6">
+            <Image
+              src={heroIcon}
+              alt={heroIconAlt ?? ""}
+              width={64}
+              height={64}
+              className="w-16 h-16 object-contain mx-auto"
+              priority
+            />
+          </AnimateIn>
+        )}
+
+        {/* Hero image — wide floating image above text (Teams pattern) */}
         {heroImage && (
           <AnimateIn delay={0.05} className="w-full max-w-[640px] mb-10 md:mb-12">
             <Image
@@ -68,14 +115,14 @@ export function CaseStudyHero({
         )}
 
         {/* Product name */}
-        <AnimateIn delay={heroImage ? 0.1 : 0.05}>
+        <AnimateIn delay={baseDelay}>
           <p className="text-sm font-sans font-medium text-accent tracking-[0.15em] uppercase mb-3">
             {productName}
           </p>
         </AnimateIn>
 
         {/* Title */}
-        <AnimateIn delay={heroImage ? 0.15 : 0.1}>
+        <AnimateIn delay={baseDelay + 0.05}>
           <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance max-w-2xl mx-auto">
             {title}
           </h1>
@@ -83,7 +130,7 @@ export function CaseStudyHero({
 
         {/* Tags */}
         {tags && tags.length > 0 && (
-          <AnimateIn delay={heroImage ? 0.2 : 0.15}>
+          <AnimateIn delay={baseDelay + 0.1}>
             <div className="flex flex-wrap justify-center gap-2 mt-5">
               {tags.map((tag) => (
                 <span
