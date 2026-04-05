@@ -58,24 +58,21 @@ export default function TeamsForEducationPage() {
       nextProject={{ name: "Windows Recall", href: "/recall" }}
     >
       <CaseStudySection id="context" label="Context">
-        <CaseStudyHeading>School pivoted to Teams overnight</CaseStudyHeading>
+        <CaseStudyHeading>COVID brought millions of new students to online classrooms</CaseStudyHeading>
         <CaseStudyParagraph>
-          In 2020, Microsoft Teams became how millions of students and teachers showed up to school. Over 150 million students and educators were suddenly relying on it to run classrooms, collaborate, and stay connected. The initial mandate was simple: keep people engaged. Don{"'"}t let them leave.
+          At the height of the pandemic, Microsoft Teams became a lifeline for education, used by over 150 million students and educators worldwide. Growth was massive, but it was fragile. Our team was tasked with figuring out how to retain it. Educators were overwhelmed, students were quietly disengaging, and the initial surge was already showing signs of erosion.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          We assumed more features would fix retention. We could expand capabilities, optimize engagement metrics, ship faster. Then we started talking to teachers. The issue wasn{"'"}t missing tools. It was that classrooms had no structure anymore. Students couldn{"'"}t feel present in a sea of tiles. Teachers couldn{"'"}t tell who was actually paying attention. All the subtle architecture that makes classrooms work (where you sit, who you sit next to, eye contact, spatial awareness) evaporated online.
+          The initial ask was about growth metrics, specifically how to keep the numbers up. But through a rigorous design process loop of research, synthesis, and prototyping, we discovered that the real lever for retention wasn{"'"}t feature additions. It was solving the fundamental user problems that were causing disengagement.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          That forced a harder question: if the problem was structural, not tactical, could we fix it by adding features? No. We had to rebuild what school actually feels like inside a video conference tool.
-        </CaseStudyParagraph>
-        <CaseStudyParagraph>
-          I advocated within Microsoft Education to pivot the strategy. Instead of expanding Teams, we'd redesign it around the real shape of teaching. I led research sessions with teachers and students, ran ideation workshops across engineering and product, and pushed prototypes all the way to high-fidelity. The goal wasn't to make Teams fancier. It was to make it feel like a classroom again.
+          That reframing changed everything. Instead of optimizing for adoption metrics, we focused on what was actually breaking down in the virtual classroom experience. The retention strategy became inseparable from the user experience strategy. My role centered on leading that design process and shaping the interaction patterns that emerged from it.
         </CaseStudyParagraph>
         <MarketContextPanel />
       </CaseStudySection>
 
       <CaseStudySection id="problem" label="Problem">
-        <CaseStudyHeading>Engagement didn't decline. It vanished.</CaseStudyHeading>
+        <CaseStudyHeading>Engagement collapsed when classrooms went virtual</CaseStudyHeading>
         <CaseStudyParagraph>
           Teachers became operators, not educators. They managed attendance, read chat, spun up breakout rooms, debugged audio problems, and lectured all at once. Reading the room meant staring at a grid of boxes and guessing who was actually there.
         </CaseStudyParagraph>
@@ -92,63 +89,63 @@ export default function TeamsForEducationPage() {
       </CaseStudySection>
 
       <CaseStudySection id="research" label="Research">
-        <CaseStudyHeading>Research revealed what was actually broken</CaseStudyHeading>
+        <CaseStudyHeading>Designing from real classroom behavior</CaseStudyHeading>
         <CaseStudyParagraph>
-          I ran sessions with students and teachers, watching their actual days unfold in Teams. Where did energy drop? When did someone check out? These weren{"'"}t usability questions. They were about what it felt like to spend six hours a day in boxes on a screen.
+          Before designing anything, we ran extensive research with students, parents, and teachers to understand their daily experience inside Teams. I led several of these sessions to map the full day-in-the-life of both educators and students. We observed where engagement broke down, when energy dropped, and what felt emotionally uncomfortable in a virtual classroom. These sessions were not about usability tweaks. They were about understanding how it felt to spend six hours a day in small boxes on a screen.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          The data was clear: students didn't miss the content. They missed their classmates. They missed being seen. That gap was the real wound.
+          Once we stepped back and looked at the data, a heartbreaking theme emerged. Students did not just miss content. They missed their friends. They missed social cues. They missed feeling seen. That emotional gap was the real problem.
         </CaseStudyParagraph>
         <ResearchSynthesisTable />
       </CaseStudySection>
 
       <CaseStudySection id="solution" label="Solution">
-        <CaseStudyHeading>Small groups first</CaseStudyHeading>
+        <CaseStudyHeading>Reintroducing structure without turning Teams into a cartoon classroom</CaseStudyHeading>
         <CaseStudyParagraph>
-          We knew the answer: teachers needed to break the all-hands classroom into smaller groups. But how do you do that without making Teams feel like a kids{"'"} learning app? Early sketches ranged from functional (just rename the breakout rooms) to absurd (cartoonish desk illustrations with tiny avatars). We needed structure without gimmick.
+          We knew smaller group discussion was necessary, but the path was not obvious. Early concepts ranged from simple breakout lists to more literal digital classroom layouts. Recreating physical space inside a business tool initially felt risky. Over multiple iterations, though, the clarity of spatial grouping kept resurfacing as the most elegant option. The idea of consistent seating, visible neighbors, and stable group identity solved multiple engagement problems at once.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Through iteration, one pattern kept winning: visible seating. Give each student a fixed seat at a visible table. That simple move solved three problems at once. Teachers could see the whole classroom layout in one glance. Students knew exactly who their group was. Absence was visible, not hidden.
+          We explored how literal the idea of tables should be. One direction visualized full classroom maps with avatars sitting at drawn tables. It was playful but risked feeling gimmicky inside a professional enterprise tool. The opposite direction was purely functional, essentially renaming breakout channels.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          We designed persistent table cards in a grid. Students got assigned seats. Their avatars appeared in fixed spots. If Sarah was absent, her chair stayed empty. Teachers could take attendance in two seconds. Students knew their role in the group. No redoing assignments. No scrambling. No getting lost in the crowd.
+          We landed somewhere in between. We designed persistent table cards arranged in a grid. Students sat in fixed positions within these tables, with their avatars resting in consistent seats. If a student was absent, their seat remained empty. Teachers could take attendance visually in seconds. Students could see exactly who they were sitting next to.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Restrained. Professional. Real.
+          This approach restored spatial awareness without sacrificing clarity. It was structured enough to feel real, but restrained enough to feel native inside Teams.
         </CaseStudyParagraph>
         <FigurePanel caption="The spatial classroom view with virtual tables" src="/images/projects/teams-chat.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="iteration" label="Classroom Orchestration">
-        <CaseStudyHeading>Teachers needed to move around the room</CaseStudyHeading>
+        <CaseStudyHeading>Giving teachers the room back</CaseStudyHeading>
         <CaseStudyParagraph>
-          Tables were just a start. The real problem was that teachers couldn't see the room anymore.
+          Virtual tables were only part of the solution. The real breakthrough was enabling teachers to manage the room naturally.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          We built a view where teachers could see all groups at once, then flow between them. Check on one table. Jump to another. Spot who was struggling. Keep the whole classroom in mind. Like actually walking around the room, except you could be in three groups at once.
+          Teachers could start table discussions and monitor the classroom from a global view. From there, they could move fluidly between groups, almost like walking around a physical classroom. They could peek into discussions, support struggling tables, and maintain awareness of overall participation without losing context.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          Situational awareness. The thing that made real teaching work, now possible online.
+          This orchestration layer restored something subtle but powerful: situational awareness. Instead of fragmented breakout rooms, teachers had a cohesive classroom again.
         </CaseStudyParagraph>
         <FigurePanel caption="Whole class to table transition" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig06-2YDd5QkvxbZD2b8O44R0Nag6g14UhH.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="group-creation" label="Group Creation">
         <CaseStudyParagraph>
-          In old Teams, teachers made breakout rooms during class. Time burned. Students waited. The lesson lost momentum.
+          Previously, breakout rooms had to be created dynamically during the meeting. That meant instructional time was lost while groups were assigned and logistics were sorted out.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          With persistent tables, teachers prepped groups before class started. Assigned seats. Attached materials. Class began and students were already in their groups.
+          With virtual tables, teachers could set groups before class. They could assign students to consistent seats and attach materials or instructions to each table in advance. When class began, students entered their assigned groups immediately.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          No friction. No wasted minutes. Just teaching.
+          This made attendance easier, transitions smoother, and the start of class far more focused. Preparation moved outside the meeting, which allowed learning to begin without friction.
         </CaseStudyParagraph>
         <FigurePanel caption="The group creation and assignment flow" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
 
       <CaseStudySection id="student-view" label="Student View">
         <CaseStudyParagraph>
-          Students saw the same people every class. They had a fixed seat. Accountability shifted from the whole class to three people at their table. Speaking up became less terrifying when you're not performing for the crowd.
+          From the student perspective, the experience reinforced belonging. They saw familiar group members, recognized their seat, and felt accountable to the people around them. That subtle shift made participation feel manageable again.
         </CaseStudyParagraph>
         <FigurePanel caption="Student view of virtual tables" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
@@ -185,7 +182,6 @@ export default function TeamsForEducationPage() {
       </CaseStudySection>
 
       <CaseStudySection id="impact" label="Impact">
-        <CaseStudyHeading>What we proved</CaseStudyHeading>
         <TeacherReactionsPanel />
         <CaseStudyParagraph>
           Testing showed what mattered. Teachers moved between groups faster. They spotted struggling students quicker. And most important: students spoke up more often when they weren{"'"}t performing for thirty people.

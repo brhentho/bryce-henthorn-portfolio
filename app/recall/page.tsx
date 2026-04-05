@@ -65,7 +65,7 @@ export default function RecallPage() {
           Recall aimed to capture everything appearing on screen and make it searchable through meaning rather than filenames. But solving that technically wasn{"'"}t the real challenge. We had to build something users actually trusted. On-device processing was non-negotiable from day one, privacy concerns were real and legitimate, and if people didn{"'"}t understand how the system worked, they wouldn{"'"}t use it no matter how smart it was.
         </CaseStudyParagraph>
         <CaseStudyParagraph>
-          I owned the search experience: the part where people describe what they remember, however incompletely, and the system shows them the right moment.
+          My role focused specifically on the semantic search experience: how users search their memories, how results are ranked and displayed, and how relevance is communicated in a way that feels understandable and trustworthy.
         </CaseStudyParagraph>
         <FigurePanel caption="Building a memory graph from everything you've seen on screen" src="/images/projects/Intro - 127.png" className="mt-8 mb-4 max-w-2xl" />
       </CaseStudySection>
@@ -153,7 +153,7 @@ export default function RecallPage() {
 
 
       <CaseStudySection id="performance" label="Performance">
-        <CaseStudyHeading>Semantic search is expensive</CaseStudyHeading>
+        <CaseStudyHeading>Fast enough to feel alive</CaseStudyHeading>
         <CaseStudyParagraph>
           Embedding indexing and local retrieval are computationally heavy. Most queries came back fast. Some didn't, especially during initial indexing or under load. Users had to wait.
         </CaseStudyParagraph>
