@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import {
   CaseStudyLayout,
   CaseStudySection,
@@ -8,13 +7,12 @@ import {
   CaseStudyHeading,
   CaseStudyCallout,
 } from "@/components/case-study-layout"
-import { Container } from "@/components/container"
-import { AnimateIn } from "@/components/animate-in"
 import { FigurePanel, DiagramPlaceholder } from "@/components/figure-panel"
 import { MarketContextPanel } from "@/components/market-context-panel"
 import { CoCreationPanel } from "@/components/cocreation-panel"
 import { ResearchSynthesisTable } from "@/components/research-synthesis-table"
 import { TeacherReactionsPanel } from "@/components/teacher-reactions-panel"
+import { CaseStudyHero } from "@/components/case-study-hero"
 
 const specs = [
   { label: "Role", value: "Senior UX Designer" },
@@ -39,73 +37,13 @@ const navItems = [
 ]
 
 const teamsHero = (
-  <section className="relative min-h-[85vh] flex items-center overflow-hidden" style={{ backgroundColor: "rgba(40,28,12,1)" }}>
-    {/* Layer 1: Full-bleed classroom background */}
-    <Image
-      src="/images/projects/u9563819146_Wide_shot_from_the_back_of_a_classroom_a_teacher__cf6ce048-b4b7-4f34-b4e2-bbf2b606112a_2.png"
-      alt=""
-      fill
-      className="object-cover"
-      style={{ filter: "blur(2px) brightness(0.3)" }}
-      aria-hidden="true"
-    />
-
-    {/* Layer 2: Warm amber gradient overlay */}
-    <div
-      className="absolute inset-0 bg-gradient-to-r from-[rgba(180,120,40,0.35)] via-[rgba(180,120,40,0.15)] to-transparent pointer-events-none"
-      aria-hidden="true"
-    />
-
-    {/* Layer 3: Bottom fade to site background */}
-    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0B0B0D] to-transparent pointer-events-none" aria-hidden="true" />
-
-    {/* Content: text left, floating UI right */}
-    <Container className="relative z-10 pt-20 md:pt-24 pb-16">
-      <div className="flex flex-col lg:grid lg:grid-cols-[2fr_3fr] lg:items-center gap-10 lg:gap-12">
-        {/* Left: text */}
-        <div className="min-w-0">
-          <AnimateIn delay={0.05}>
-            <p className="text-sm font-sans font-medium text-amber-400 mb-4 tracking-wide">
-              Teams for Education
-            </p>
-          </AnimateIn>
-
-          <AnimateIn delay={0.1}>
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance">
-              Restoring classroom structure when school went virtual
-            </h1>
-          </AnimateIn>
-
-          <AnimateIn delay={0.15}>
-            <div className="flex flex-wrap gap-2 mt-5">
-              {["UX Strategy", "Microsoft Teams Enterprise", "Senior Designer", "2020"].map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[11px] font-sans font-medium text-foreground-tertiary bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-500/20"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </AnimateIn>
-        </div>
-
-        {/* Right: floating Teams UI */}
-        <AnimateIn delay={0.25} className="min-w-0">
-          <Image
-            src="/images/projects/teams-chat.png"
-            alt="Teams virtual tables interface showing breakout room groups with student avatars and teacher video"
-            width={1600}
-            height={900}
-            className="w-full h-auto rounded-xl border border-white/10"
-            style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.5), 0 0 60px rgba(180,120,40,0.1)" }}
-            sizes="(max-width: 1024px) 100vw, 60vw"
-            priority
-          />
-        </AnimateIn>
-      </div>
-    </Container>
-  </section>
+  <CaseStudyHero
+    heroImage="/images/projects/Teams hero kids.png"
+    heroImageAlt="Students in virtual Teams classrooms with persistent table groups"
+    productName="Teams for Education"
+    title="Modernizing Online Classes For An Authentic Virtual Experience"
+    tags={["UX Strategy", "Microsoft Teams Enterprise", "Senior Designer", "2020"]}
+  />
 )
 
 export default function TeamsForEducationPage() {
