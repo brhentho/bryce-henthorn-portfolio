@@ -35,6 +35,10 @@ const navItems = [
 
 const agentsHero = (
   <CaseStudyHero
+    backgroundImage="/Agents in Windows hero.png"
+    backgroundImageOpacity={0.75}
+    gridSvg="/grid-bg-windows.svg"
+    gridOpacity={0.12}
     productName="Agents in Windows"
     title="Making AI agents visible and interruptible in Windows"
     tags={["OS shell", "Systems thinking", "Ambient AI", "Senior Designer", "2025"]}
