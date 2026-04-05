@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import {
   CaseStudyLayout,
   CaseStudySection,
@@ -8,10 +7,9 @@ import {
   CaseStudyHeading,
   CaseStudyList,
 } from "@/components/case-study-layout"
-import { Container } from "@/components/container"
-import { AnimateIn } from "@/components/animate-in"
 import { FigurePanel, DiagramPlaceholder } from "@/components/figure-panel"
 import { AgentCapabilityViz } from "@/components/agent-capability-viz"
+import { CaseStudyHero } from "@/components/case-study-hero"
 
 
 const specs = [
@@ -36,70 +34,11 @@ const navItems = [
 ]
 
 const agentsHero = (
-  <section className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden">
-    {/* Layer 1: Faint Midjourney background */}
-    <Image
-      src="/images/projects/u9563819146_A_person_sitting_still_at_a_minimal_desk_in_a_dar_2624f994-e120-4fe5-87c2-bec4ab024660_2.png"
-      alt=""
-      fill
-      className="object-cover opacity-[0.06]"
-      style={{ filter: "grayscale(0.6)" }}
-      aria-hidden="true"
-    />
-
-    {/* Layer 2: Teal glow behind image area */}
-    <div
-      className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[120px] pointer-events-none"
-      style={{ background: "rgba(45,226,210,0.08)" }}
-      aria-hidden="true"
-    />
-
-    {/* Layer 3: Bottom fade to site background */}
-    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0B0B0D] to-transparent pointer-events-none" aria-hidden="true" />
-
-    {/* Content: centered text, then wide image */}
-    <Container className="relative z-10 pt-24 md:pt-28 pb-16">
-      <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
-        <AnimateIn delay={0.05}>
-          <p className="text-sm font-sans font-medium text-accent mb-4 tracking-wide">
-            Agents in Windows
-          </p>
-        </AnimateIn>
-
-        <AnimateIn delay={0.1}>
-          <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance">
-            Making AI agents visible and interruptible in Windows
-          </h1>
-        </AnimateIn>
-
-        <AnimateIn delay={0.15}>
-          <div className="flex flex-wrap justify-center gap-2 mt-5">
-            {["OS shell", "Systems thinking", "Ambient AI", "Senior Designer", "2025"].map((tag) => (
-              <span
-                key={tag}
-                className="text-[11px] font-sans font-medium text-foreground-tertiary bg-surface-raised px-3 py-1.5 rounded-lg border border-border"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </AnimateIn>
-      </div>
-
-      <AnimateIn delay={0.25}>
-        <Image
-          src="/images/projects/agents-fig02.jpg"
-          alt="Researcher agent hover card showing multi-step task progress with status indicators"
-          width={1400}
-          height={800}
-          className="w-full max-w-4xl mx-auto h-auto rounded-xl border border-white/10"
-          style={{ boxShadow: "0 0 80px rgba(45,226,210,0.12), 0 4px 30px rgba(0,0,0,0.4)" }}
-          sizes="(max-width: 768px) 100vw, 900px"
-          priority
-        />
-      </AnimateIn>
-    </Container>
-  </section>
+  <CaseStudyHero
+    productName="Agents in Windows"
+    title="Making AI agents visible and interruptible in Windows"
+    tags={["OS shell", "Systems thinking", "Ambient AI", "Senior Designer", "2025"]}
+  />
 )
 
 export default function AgentsInWindowsPage() {
