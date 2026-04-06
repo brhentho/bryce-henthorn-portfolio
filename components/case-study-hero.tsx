@@ -20,6 +20,8 @@ interface CaseStudyHeroProps {
   productName: string
   title: string
   tags?: string[]
+  /** Optional overlay layer rendered between background and content */
+  overlay?: React.ReactNode
 }
 
 export function CaseStudyHero({
@@ -34,6 +36,7 @@ export function CaseStudyHero({
   productName,
   title,
   tags,
+  overlay,
 }: CaseStudyHeroProps) {
   const hasTopSlot = !!(heroIcon || heroImage)
   const baseDelay = hasTopSlot ? 0.15 : 0.05
@@ -59,20 +62,25 @@ export function CaseStudyHero({
       )}
 
       {/* Grid SVG — full-bleed, configurable opacity, mask-faded at top and bottom */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={gridSvg}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        style={{
-          opacity: gridOpacity,
-          maskImage:
-            "linear-gradient(to bottom, transparent 0px, black 80px, black calc(100% - 160px), transparent 100%)",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, transparent 0px, black 80px, black calc(100% - 160px), transparent 100%)",
-        }}
-      />
+      {gridSvg && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={gridSvg}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          style={{
+            opacity: gridOpacity,
+            maskImage:
+              "linear-gradient(to bottom, transparent 0px, black 80px, black calc(100% - 160px), transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0px, black 80px, black calc(100% - 160px), transparent 100%)",
+          }}
+        />
+      )}
+
+      {/* Animation overlay layer */}
+      {overlay}
 
       {/* Bottom fade — blends into spec panel */}
       <div
@@ -123,7 +131,7 @@ export function CaseStudyHero({
 
         {/* Title */}
         <AnimateIn delay={baseDelay + 0.05}>
-          <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground text-balance max-w-2xl mx-auto">
+          <h1 className="font-heading text-2xl md:text-3xl lg:text-4xl font-semibold leading-[1.15] tracking-tight text-foreground text-balance max-w-2xl mx-auto">
             {title}
           </h1>
         </AnimateIn>

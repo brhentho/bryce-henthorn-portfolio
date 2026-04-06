@@ -10,6 +10,7 @@ import {
 import { FigurePanel, DiagramPlaceholder } from "@/components/figure-panel"
 import { AgentCapabilityViz } from "@/components/agent-capability-viz"
 import { CaseStudyHero } from "@/components/case-study-hero"
+import { AgentsDriftOverlay } from "@/components/agents/AgentsDriftOverlay"
 
 
 const specs = [
@@ -35,13 +36,12 @@ const navItems = [
 
 const agentsHero = (
   <CaseStudyHero
-    backgroundImage="/Agents in Windows hero.png"
-    backgroundImageOpacity={0.75}
     gridSvg="/grid-bg-windows.svg"
     gridOpacity={0.12}
     productName="Agents in Windows"
     title="Making AI agents visible and interruptible in Windows"
     tags={["OS shell", "Systems thinking", "Ambient AI", "Senior Designer", "2025"]}
+    overlay={<AgentsDriftOverlay />}
   />
 )
 

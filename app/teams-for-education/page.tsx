@@ -13,6 +13,7 @@ import { CoCreationPanel } from "@/components/cocreation-panel"
 import { ResearchSynthesisTable } from "@/components/research-synthesis-table"
 import { TeacherReactionsPanel } from "@/components/teacher-reactions-panel"
 import { CaseStudyHero } from "@/components/case-study-hero"
+import { AvatarGrid } from "@/components/teams-edu/AvatarGrid"
 
 const specs = [
   { label: "Role", value: "Senior UX Designer" },
@@ -36,6 +37,14 @@ const navItems = [
   { id: "impact", label: "Impact" },
 ]
 
+const teamsOverlay = (
+  <div className="absolute inset-x-0 bottom-8 z-[1] flex justify-center pointer-events-none">
+    <div className="w-full max-w-3xl px-6">
+      <AvatarGrid />
+    </div>
+  </div>
+)
+
 const teamsHero = (
   <CaseStudyHero
     heroImage="/images/projects/Teams hero kids.png"
@@ -43,6 +52,7 @@ const teamsHero = (
     productName="Teams for Education"
     title="Modernizing Online Classes For An Authentic Virtual Experience"
     tags={["UX Strategy", "Microsoft Teams Enterprise", "Senior Designer", "2020"]}
+    overlay={teamsOverlay}
   />
 )
 

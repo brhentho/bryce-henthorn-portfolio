@@ -7,8 +7,8 @@ import { Section } from "@/components/section"
 import { SectionHeader } from "@/components/section-header"
 import { AnimateIn } from "@/components/animate-in"
 import { PageTransition } from "@/components/page-transition"
-
-const GRID_SPACING = 40
+import { StaggeredHero } from "@/components/about/StaggeredHero"
+import { PulseGrid } from "@/components/recall/PulseGrid"
 
 const drawnToItems = [
   "Novel interaction paradigms with no existing mental model",
@@ -23,36 +23,32 @@ export default function AboutPage() {
     <PageTransition>
       <Nav />
       <main>
-        {/* Hero - single column, no portrait, with static dot grid */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
-          {/* Static dot grid background */}
+        {/* Hero - centered text with animated pulse grid */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Radial gradient for depth */}
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0"
             aria-hidden="true"
             style={{
-              backgroundImage: `radial-gradient(circle, rgba(240,240,243,0.12) 1.5px, transparent 1.5px)`,
-              backgroundSize: `${GRID_SPACING}px ${GRID_SPACING}px`,
-              backgroundPosition: `${GRID_SPACING / 2}px ${GRID_SPACING / 2}px`,
+              background:
+                "radial-gradient(ellipse at 58% 43%, rgba(28,28,33,1) 0%, rgba(11,11,13,1) 100%)",
             }}
           />
 
+          {/* Animated pulse grid background */}
+          <PulseGrid />
+
           <Container className="relative z-10 py-32 md:py-0">
-            <div className="max-w-2xl">
-              <AnimateIn delay={0.1}>
-                <h1 className="font-heading text-2xl md:text-3xl lg:text-[2.5rem] font-bold leading-[1.4] tracking-tight text-foreground">
-                  Serial problem solver.
-                  <br />
-                  Fixated on optimizing systems.
-                  <br />
-                  Obsessed with structure and flow.
-                  <br />
-                  Unapologetic technology geek.
-                  <br />
-                  <span className="text-accent">
-                    So naturally, I fell in love with UX design.
-                  </span>
-                </h1>
-              </AnimateIn>
+            <div className="max-w-2xl mx-auto text-center">
+              <StaggeredHero
+                lines={[
+                  { text: "Serial problem solver." },
+                  { text: "Fixated on optimizing systems." },
+                  { text: "Obsessed with structure and flow." },
+                  { text: "Unapologetic technology geek." },
+                  { text: "So naturally, I fell in love with UX design.", accent: true },
+                ]}
+              />
             </div>
           </Container>
         </section>
