@@ -1,18 +1,12 @@
 import type { Metadata, Viewport } from "next"
-import { Poppins, Open_Sans } from "next/font/google"
+import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
-})
-
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-open-sans",
+  weight: ["300", "400", "500"],
+  variable: "--font-inter",
 })
 
 export const metadata: Metadata = {
@@ -47,8 +41,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${openSans.variable} bg-background`}>
-      <body className="font-sans antialiased bg-background text-foreground min-h-screen">
+    <html lang="en" className={inter.variable}>
+      <body className="antialiased min-h-screen" style={{ background: '#06060A', color: '#fff' }}>
+        <div className="noise" aria-hidden="true" />
         {children}
         <Analytics />
       </body>
