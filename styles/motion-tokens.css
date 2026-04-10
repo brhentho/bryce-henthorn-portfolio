@@ -1,0 +1,30 @@
+/* ─── Motion Design Tokens ─── */
+
+:root {
+  /* Easing */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-decel: cubic-bezier(0, 0, 0.2, 1);
+
+  /* Durations */
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 800ms;
+  --duration-ambient: 3000ms;
+
+  /* Glow colors (Agent State System) */
+  --glow-blue: rgba(91, 155, 245, 0.4);
+  --glow-cyan: rgba(89, 202, 234, 0.3);
+  --glow-green: rgba(131, 231, 148, 0.28);
+  --glow-purple: rgba(182, 94, 220, 0.4);
+  --glow-amber: rgba(255, 184, 0, 0.3);
+
+  /* Motion scale — set to 0 when prefers-reduced-motion */
+  --motion-scale: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-scale: 0;
+  }
+}

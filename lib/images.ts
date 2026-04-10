@@ -11,19 +11,19 @@ export interface ProjectImages {
  */
 export const projectImages: Record<string, ProjectImages> = {
   "teams-for-education": {
-    cardImage: "/images/projects/teams-card-real.png",
+    cardImage: "/images/projects/Teams for EDU project card.png",
     heroImage: "/images/projects/teams-hero-real.png",
-    alt: "Teams for Education, virtual tables interface showing structured group collaboration",
+    alt: "A teacher at the front of a classroom, wide shot from the back showing spatial dynamics of in-person learning",
   },
   recall: {
-    cardImage: "/images/projects/recall-card-real.png",
+    cardImage: "/images/projects/Recall project card.png",
     heroImage: "/images/projects/recall-hero-real.png",
-    alt: "Windows Recall, semantic memory timeline showing visual search results and recalled content",
+    alt: "A home office desk with a computer monitor, representing the everyday context of digital memory",
   },
   "agents-in-windows": {
-    cardImage: "/images/projects/agents-card-real.png",
+    cardImage: "/images/projects/Agents project card.png",
     heroImage: "/images/projects/agents-hero-real.png",
-    alt: "Agents in Windows, Researcher agent showing multi-step task progress on the desktop",
+    alt: "A person sitting still at a minimal desk, AI agents working autonomously in the background",
   },
   "copilot-actions": {
     cardImage: "/images/projects/copilot-card-real.png",

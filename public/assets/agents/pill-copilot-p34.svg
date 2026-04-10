@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 16.114 13.1029" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="Polygon 34" d="M10.5389 2.66727C10.0242 1.07717 8.54333 -1.77948e-10 6.87201 0L5.59725 1.35701e-10C3.73434 3.34048e-10 2.13808 1.33243 1.80514 3.16534L0 13.1029L0.547854 11.2439C1.03094 9.60458 2.53585 8.47917 4.24483 8.47917H10.6735L13.4437 9.85565L16.114 8.47917H15.2236C13.5523 8.47916 12.0714 7.40199 11.5567 5.8119L10.5389 2.66727Z" fill="url(#paint0_radial_0_108)"/>
+<defs>
+<radialGradient id="paint0_radial_0_108" cx="0" cy="0" r="1" gradientTransform="matrix(-9.13182 -10.6928 -9.8594 8.96879 13.7676 13.1886)" gradientUnits="userSpaceOnUse">
+<stop offset="0.0955758" stop-color="#00AEFF"/>
+<stop offset="0.773185" stop-color="#2253CE"/>
+<stop offset="1" stop-color="#0736C4"/>
+</radialGradient>
+</defs>
+</svg>
