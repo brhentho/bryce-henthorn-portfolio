@@ -26,7 +26,6 @@ export default function AboutPage() {
         <AboutPhilosophy />
         <AboutTimeline />
         <AboutDrawnTo />
-        <AboutCTA />
       </main>
       <AboutFooter />
     </div>
@@ -292,59 +291,6 @@ function AboutDrawnTo() {
   )
 }
 
-/* ── 6. Closing CTA — Glass card ── */
-function AboutCTA() {
-  return (
-    <Section padding="py-16 md:py-24">
-      <Glow color="#5EC8B4" size="40%" top="50%" left="50%" opacity={0.04} pulse />
-
-      {/* Personal paragraph */}
-      <Grid12>
-        <div style={{ gridColumn: '2 / 8', marginBottom: '48px' }}>
-          <p className="t-body">
-            If you&apos;re building something complex where the interaction model still matters, the system needs to feel reliable, and you care more about being right than being first, let&apos;s talk.
-          </p>
-        </div>
-      </Grid12>
-
-      <Grid12>
-        <div style={{ gridColumn: '3 / 11' }}>
-          <GlassCard className="p-10 md:p-16 text-center">
-            <Glow color="#5EC8B4" size="80%" top="50%" left="50%" opacity={0.06} />
-            <div className="relative z-10">
-              <span className="t-label block mb-4">Drop a line</span>
-              <a
-                href="mailto:bhenthorn2757@gmail.com"
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm tracking-wide"
-                style={{
-                  border: '1px solid var(--w08)',
-                  color: 'var(--w60)',
-                  transition: 'all 400ms var(--expo)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#5EC8B4'
-                  e.currentTarget.style.color = '#5EC8B4'
-                  e.currentTarget.style.boxShadow = '0 0 30px rgba(94, 200, 180, 0.1)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--w08)'
-                  e.currentTarget.style.color = 'var(--w60)'
-                  e.currentTarget.style.boxShadow = 'none'
-                }}
-              >
-                bhenthorn2757@gmail.com
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M3 8h10M9 4l4 4-4 4" />
-                </svg>
-              </a>
-              <p className="t-mono mt-4" style={{ color: 'var(--w15)' }}>Seattle, WA</p>
-            </div>
-          </GlassCard>
-        </div>
-      </Grid12>
-    </Section>
-  )
-}
 
 function AboutFooter() {
   return (

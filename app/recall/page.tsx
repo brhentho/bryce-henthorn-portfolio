@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { NavEditorial } from '@/components/editorial/NavEditorial'
 import { Section } from '@/components/editorial/Section'
 import { Grid12 } from '@/components/editorial/Grid12'
@@ -82,47 +82,157 @@ function RecallHero() {
   )
 }
 
-/* ── 2. Context — Floating timestamp pills ── */
+/* ── 2. Context — Orbital grid illustration ── */
 function RecallContext() {
   return (
     <Section id="context" padding="py-24 md:py-32">
-      <Glow color="#A882FF" size="50%" top="30%" left="20%" opacity={0.04} />
-      <DotGrid mask />
+      <Glow color="#A882FF" size="40%" top="50%" left="70%" opacity={0.06} />
 
-      <Grid12>
+      <Grid12 className="items-center">
         <div style={{ gridColumn: '1 / 7' }}>
-          <span className="t-label block mb-4" style={{ color: '#A882FF', opacity: 0.5 }}>Context</span>
-          <h2 className="t-heading mb-6">Where was that thing I saw last week?</h2>
+          <h2 className="t-heading mb-6" style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.01em' }}>Where was that thing I saw last week?</h2>
           <p className="t-body mb-4">The problem was simple and unsolved. You&apos;d seen something on your computer: a presentation, a snippet of code, a reference in an email. But you couldn&apos;t find it. You&apos;d try different search terms, retrace your steps, open files one by one. Minutes wasted. Information you knew existed but couldn&apos;t retrieve.</p>
           <p className="t-body mb-4">Recall aimed to capture everything appearing on screen and make it searchable through meaning rather than filenames. But solving that technically wasn&apos;t the real challenge. We had to build something users actually trusted.</p>
           <p className="t-body">My role focused specifically on the semantic search experience: how users search their memories, how results are ranked and displayed, and how relevance is communicated in a way that feels understandable and trustworthy.</p>
         </div>
 
-        {/* Floating timestamp pills right */}
-        <div style={{ gridColumn: '7 / 13', position: 'relative', minHeight: '380px' }}>
-          {[
-            { label: 'July 16, 2024', top: '5%', right: '10%', delay: '0s' },
-            { label: 'Flight details: AA 4533', top: '22%', right: '25%', delay: '0.5s' },
-            { label: 'Acadia National Park', top: '40%', right: '5%', delay: '1s' },
-            { label: 'Code snippet — utils.ts', top: '58%', right: '20%', delay: '1.5s' },
-            { label: 'Budget spreadsheet', top: '75%', right: '8%', delay: '2s' },
-          ].map((pill, i) => (
-            <div
-              key={i}
-              className="absolute glass px-4 py-2"
-              style={{
-                top: pill.top,
-                right: pill.right,
-                animation: `float${i % 3} ${7 + i}s ease-in-out infinite`,
-                animationDelay: pill.delay,
-              }}
-            >
-              <span className="t-mono" style={{ color: 'var(--w25)', fontSize: '11px' }}>{pill.label}</span>
-            </div>
-          ))}
+        {/* Orbital grid illustration */}
+        <div style={{ gridColumn: '7 / 13', position: 'relative', minHeight: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <RecallOrbitalGrid />
         </div>
       </Grid12>
     </Section>
+  )
+}
+
+/* ── Orbital grid illustration for Context section ── */
+function RecallOrbitalGrid() {
+  const COLS = 9
+  const ROWS = 7
+  const CELL = 73
+  const gridW = COLS * CELL
+  const gridH = ROWS * CELL
+
+  /* Which cells get a subtle fill */
+  const filledCells = new Set(['0-6', '2-4', '2-6', '4-3'])
+
+  return (
+    <div style={{ position: 'relative', width: '100%', maxWidth: 520, aspectRatio: '874 / 740' }}>
+      {/* Radial mask container for the grid */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          maskImage: 'radial-gradient(ellipse 65% 55% at 50% 50%, black 15%, transparent 65%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 65% 55% at 50% 50%, black 15%, transparent 65%)',
+        }}
+      >
+        <svg width={gridW} height={gridH} viewBox={`0 0 ${gridW} ${gridH}`} style={{ width: '100%', height: '100%' }}>
+          {Array.from({ length: ROWS }, (_, r) =>
+            Array.from({ length: COLS }, (_, c) => {
+              const key = `${r}-${c}`
+              const filled = filledCells.has(key)
+              return (
+                <rect
+                  key={key}
+                  x={c * CELL}
+                  y={r * CELL}
+                  width={CELL}
+                  height={CELL}
+                  fill={filled ? 'rgba(255,255,255,0.08)' : 'none'}
+                  stroke="rgba(255,255,255,0.12)"
+                  strokeWidth={1}
+                />
+              )
+            })
+          )}
+        </svg>
+      </div>
+
+      {/* Orbital rings */}
+      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+        {/* Large outer orbit */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          width: '80%',
+          height: '50%',
+          transform: 'translate(-50%, -50%) rotate(-28deg)',
+          border: '1px solid rgba(168, 130, 255, 0.18)',
+          borderRadius: '50%',
+        }} />
+        {/* Medium orbit */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          width: '55%',
+          height: '42%',
+          transform: 'translate(-50%, -50%) rotate(45deg)',
+          border: '1px solid rgba(168, 130, 255, 0.14)',
+          borderRadius: '50%',
+        }} />
+        {/* Inner tight orbit */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          width: '35%',
+          height: '30%',
+          transform: 'translate(-50%, -50%) rotate(-90deg)',
+          border: '1px solid rgba(168, 130, 255, 0.20)',
+          borderRadius: '50%',
+        }} />
+        {/* Small accent orbit */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          width: '20%',
+          height: '15%',
+          transform: 'translate(-50%, -50%) rotate(47deg)',
+          border: '1px solid rgba(168, 130, 255, 0.12)',
+          borderRadius: '50%',
+        }} />
+        {/* Accent glow behind center */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          width: '40%',
+          height: '40%',
+          transform: 'translate(-50%, -50%)',
+          background: 'radial-gradient(circle, rgba(168, 130, 255, 0.20) 0%, transparent 70%)',
+          borderRadius: '50%',
+        }} />
+      </div>
+
+      {/* Recall app icon centered */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 80,
+        height: 80,
+        borderRadius: 20,
+        overflow: 'hidden',
+        boxShadow: '0 0 60px rgba(168, 130, 255, 0.3), 0 8px 32px rgba(0,0,0,0.5)',
+      }}>
+        <Image
+          src="/images/projects/Recall icon.png"
+          alt="Windows Recall icon"
+          width={80}
+          height={80}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      </div>
+    </div>
   )
 }
 
@@ -150,6 +260,12 @@ function RecallProblem() {
         <div style={{ gridColumn: '7 / 13' }}>
           <p className="t-body mb-4">Recall flipped this. Instead of requiring exact queries, it indexed everything the system could see and made it searchable through semantic understanding.</p>
           <p className="t-body">If you&apos;re indexing everything, how do you let people search without overwhelming them? The system needed to think like a person, not force people to think like the system.</p>
+        </div>
+      </Grid12>
+
+      <Grid12 className="mt-10">
+        <div style={{ gridColumn: '1 / 13' }}>
+          <p className="t-body">There was another layer to the ranking problem. The same memory could feel obviously correct or completely irrelevant depending on what the user was doing right now. A slide deck retrieved while preparing a presentation feels like exactly what you needed. The same slide deck surfaced while debugging code feels like noise. Relevance wasn&apos;t a fixed property of the result. It was shaped by the task. Static ranking couldn&apos;t account for that, which meant the interface had to give users enough context to make their own relevance judgment in the moment.</p>
         </div>
       </Grid12>
 
@@ -213,6 +329,8 @@ function RecallWhyAppeared() {
           <p className="t-body mb-4">We didn&apos;t try to eliminate every false positive at the model layer. Instead, we made results understandable.</p>
           <p className="t-body mb-4">Every card explained how it matched. Text matches were labeled as text matches. Visual matches were labeled as visual matches. Separating and showing these signals let users judge relevance themselves.</p>
           <p className="t-body">Perfection wasn&apos;t the goal. Legibility was.</p>
+          <p className="t-body mt-4">Separating match types solved one problem. But users still hit a deeper tension: cast a wide net and the results felt noisy and intrusive. Filter too aggressively and the thing they were looking for disappeared. We couldn&apos;t pick one mode for everyone. Instead we exposed lightweight controls that let users broaden or tighten retrieval scope themselves. The system still did the semantic heavy lifting. But the user decided how much to see. Optimization moved from the algorithm to the interaction.</p>
+          <p className="t-body mt-4">Memory search doesn&apos;t work like file search. People don&apos;t type a perfect query and expect one right answer. They start vague — &quot;that chart from last week&quot; — scan what surfaces, recognize something familiar, and refine from there. It&apos;s recognition-guided exploration, not retrieval. The interface had to support that loop: fast re-querying, results that updated fluidly, and enough context on each card to trigger recognition without requiring a click. Every round-trip through the loop had to feel effortless or users would give up and go dig through folders instead.</p>
         </div>
       </Grid12>
     </Section>

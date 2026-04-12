@@ -207,6 +207,7 @@ function TeamsSolution() {
         <div style={{ gridColumn: '1 / 8' }}>
           <p className="t-body mb-4">We landed somewhere in between. We designed persistent table cards arranged in a grid. Students sat in fixed positions within these tables, with their avatars resting in consistent seats.</p>
           <p className="t-body">This approach restored spatial awareness without sacrificing clarity. It was structured enough to feel real, but restrained enough to feel native inside Teams.</p>
+          <p className="t-body mt-4">There was a harder tension underneath the table design. Teachers needed moderation controls — the ability to mute, redirect, or flag — but heavy-handed moderation kills exactly the kind of organic peer discussion that makes small groups work. We designed moderation to be ambient rather than disruptive. Teachers could observe and intervene from the global view without pulling students out of context or signaling to the whole group that someone was being corrected. Control stayed with the teacher. The conversation stayed with the students.</p>
         </div>
       </Grid12>
 
@@ -232,6 +233,7 @@ function TeamsOrchestration() {
           <p className="t-body mb-4">Virtual tables were only part of the solution. The real breakthrough was enabling teachers to manage the room naturally.</p>
           <p className="t-body mb-4">Teachers could start table discussions and monitor the classroom from a global view. From there, they could move fluidly between groups, almost like walking around a physical classroom.</p>
           <p className="t-body">This orchestration layer restored something subtle but powerful: situational awareness. Instead of fragmented breakout rooms, teachers had a cohesive classroom again.</p>
+          <p className="t-body mt-4">Discussions don&apos;t pause when someone steps away. A student drops off for a minute, reconnects late, or gets moved between tables. They land in a conversation that&apos;s already moving. The system needed to handle that without making the returning student feel lost or forcing the group to restart. We designed re-entry to surface enough context — recent discussion activity, shared materials, who&apos;s currently talking — so a student could orient and join without interrupting the flow already happening.</p>
         </div>
 
         <div style={{ gridColumn: '6 / 13', display: 'flex', flexDirection: 'column', gap: '32px' }}>
@@ -262,6 +264,7 @@ function TeamsGroupCreation() {
           <p className="t-body mb-4">Previously, breakout rooms had to be created dynamically during the meeting. That meant instructional time was lost while groups were assigned and logistics were sorted out.</p>
           <p className="t-body mb-4">With virtual tables, teachers could set groups before class. They could assign students to consistent seats and attach materials or instructions to each table in advance. When class began, students entered their assigned groups immediately.</p>
           <p className="t-body">This made attendance easier, transitions smoother, and the start of class far more focused. Preparation moved outside the meeting, which allowed learning to begin without friction.</p>
+          <p className="t-body mt-4">Persistence went beyond seating assignments. Discussion threads, shared materials, and group context carried forward between class sessions so the next meeting didn&apos;t start cold. Students returned to a table that remembered where they left off. Teachers didn&apos;t have to re-establish groups or redistribute resources every session. That continuity turned virtual tables from a single-meeting feature into a classroom structure that accumulated meaning over time.</p>
         </div>
       </Grid12>
     </Section>

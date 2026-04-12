@@ -110,8 +110,8 @@ function AgentsHero() {
 function AgentsContext() {
   return (
     <Section id="context" padding="py-24 md:py-32">
-      <Glow color="#5EA6F5" size="50%" top="30%" left="20%" opacity={0.04} />
-      <DotGrid mask />
+      <Glow color="#5EA6F5" size="60%" top="-20%" left="30%" opacity={0.05} />
+      <Glow color="#5EA6F5" size="35%" top="-25%" left="20%" opacity={0.04} />
 
       <Grid12>
         {/* Text left: cols 1-6 */}
@@ -134,25 +134,75 @@ function AgentsContext() {
           </div>
         </div>
 
-        {/* Right: 3 floating capability cards cols 7-12 */}
-        <div style={{ gridColumn: '7 / 13', position: 'relative', minHeight: '400px' }}>
-          <div className="absolute" style={{ top: '0%', right: '5%', animation: 'float0 7s ease-in-out infinite' }}>
-            <GlassCard className="p-5" style={{ maxWidth: '220px' }}>
-              <span className="t-label block mb-2" style={{ color: '#5EA6F5', opacity: 0.5 }}>Capability</span>
-              <p className="t-body">Agents pin to the taskbar like apps — visible and interruptible</p>
-            </GlassCard>
-          </div>
-          <div className="absolute" style={{ top: '35%', left: '0%', animation: 'float1 8s ease-in-out infinite' }}>
-            <GlassCard className="p-5" style={{ maxWidth: '200px' }}>
-              <span className="t-label block mb-2" style={{ color: '#5EA6F5', opacity: 0.5 }}>Capability</span>
-              <p className="t-body">Real-time progress and status through hover cards</p>
-            </GlassCard>
-          </div>
-          <div className="absolute" style={{ top: '68%', right: '10%', animation: 'float2 9s ease-in-out infinite' }}>
-            <GlassCard className="p-5" style={{ maxWidth: '210px' }}>
-              <span className="t-label block mb-2" style={{ color: '#5EA6F5', opacity: 0.5 }}>Capability</span>
-              <p className="t-body">System-wide invocation through Ask Copilot</p>
-            </GlassCard>
+        {/* Right: Desktop illustration with taskbar + agent cards */}
+        <div style={{ gridColumn: '7 / 13', position: 'relative' }}>
+          <div
+            style={{
+              position: 'relative',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '20px',
+              overflow: 'hidden',
+              background: 'radial-gradient(ellipse at 60% 10%, rgba(11,13,20,1) 0%, rgba(8,9,14,1) 100%)',
+              aspectRatio: '863 / 769',
+            }}
+          >
+            {/* Taskbar strip */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '10%',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '68%',
+                height: '9.5%',
+                borderRadius: '8px',
+                background: 'rgba(32,32,32,0.4)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '4px',
+              }}
+            >
+              {[0, 1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  style={{
+                    width: '32px',
+                    height: '32px',
+                    borderRadius: '6px',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    background: 'linear-gradient(180deg, rgba(217,217,217,0.03) 0%, rgba(190,187,187,0.03) 100%)',
+                    opacity: 0.5,
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Agent card 1 — upper left */}
+            <AgentTaskCard top="28%" left="7%" />
+
+            {/* Agent card 2 — lower right */}
+            <AgentTaskCard top="56%" left="47%" />
+
+            {/* Decorative connection line 1 */}
+            <svg
+              style={{ position: 'absolute', top: '15%', left: '25%', width: '36%', height: '15%', opacity: 0.15 }}
+              viewBox="0 0 308 87"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              <path d="M0 87 C80 87, 120 0, 308 0" stroke="#5EA6F5" strokeWidth="1.5" />
+            </svg>
+
+            {/* Decorative connection line 2 */}
+            <svg
+              style={{ position: 'absolute', top: '62%', left: '13%', width: '20%', height: '14%', opacity: 0.15, transform: 'scaleY(-1)' }}
+              viewBox="0 0 169 106"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              <path d="M0 106 C40 106, 80 0, 169 0" stroke="#5EA6F5" strokeWidth="1.5" />
+            </svg>
           </div>
         </div>
       </Grid12>
@@ -191,16 +241,93 @@ function AgentsProblem() {
         </div>
       </Grid12>
 
-      {/* Before / After diagrams */}
+      {/* Before / After isometric diagrams */}
       <Grid12 className="mt-12">
         <div style={{ gridColumn: '1 / 7' }}>
-          <Placeholder type="diag" label="Before: Chaotic — agents scattered across apps, chats, notifications" minHeight="280px" />
+          <IsometricContainer>
+            {['Agent 1', 'Agent 2', 'Agent 3', 'Windows'].map((label, i) => (
+              <IsometricSlot key={label} index={i} label={label} />
+            ))}
+          </IsometricContainer>
         </div>
         <div style={{ gridColumn: '7 / 13' }}>
-          <Placeholder type="diag" label="After: Orchestrated — agents visible and managed from the taskbar" minHeight="280px" />
+          <IsometricContainer>
+            {/* Agent 1 grouped — small stacked icons on the taskbar */}
+            <div style={{ position: 'absolute', bottom: '18%', left: '8%' }}>
+              {[0, 1, 2, 3].map((j) => (
+                <div
+                  key={j}
+                  style={{
+                    position: 'absolute',
+                    bottom: `${j * 20}px`,
+                    left: `${j * 16}px`,
+                    width: '24px',
+                    height: '32px',
+                    transform: 'rotate(30deg) scaleY(0.87) skewX(30deg)',
+                    background: 'linear-gradient(180deg, #0d0d16, #06060a)',
+                    border: '1px solid rgba(255,255,255,0.25)',
+                    borderRadius: '6px',
+                    opacity: 0.9,
+                    backdropFilter: 'blur(15px)',
+                  }}
+                />
+              ))}
+              {/* Tick line */}
+              <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.25)', margin: '6px auto 0', marginLeft: '30px' }} />
+              <div style={{ textAlign: 'center', marginTop: '4px', whiteSpace: 'nowrap', marginLeft: '6px' }}>
+                <span className="t-mono" style={{ fontSize: '11px', color: 'var(--w40)' }}>Agent 1</span>
+              </div>
+            </div>
+            {['Agent 1', 'Agent 2', 'Agent 3'].map((label, i) => (
+              <IsometricSlot key={label + i} index={i + 1} label={label} />
+            ))}
+          </IsometricContainer>
         </div>
       </Grid12>
     </Section>
+  )
+}
+
+/* ── Isometric diagram helpers ── */
+function IsometricContainer({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        border: '1px solid rgba(255,255,255,0.2)',
+        borderRadius: '20px',
+        overflow: 'hidden',
+        background: 'radial-gradient(ellipse at 60% 10%, rgba(11,13,20,1) 0%, rgba(8,9,14,1) 100%)',
+        aspectRatio: '756 / 475',
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+function IsometricSlot({ index, label }: { index: number; label: string }) {
+  const leftPct = 8 + index * 18
+  return (
+    <div style={{ position: 'absolute', bottom: '18%', left: `${leftPct}%` }}>
+      <div
+        style={{
+          width: '140px',
+          height: '180px',
+          transform: 'rotate(30deg) scaleY(0.87) skewX(30deg)',
+          background: 'linear-gradient(180deg, #0d0d16, #06060a)',
+          border: '1px solid rgba(255,255,255,0.25)',
+          borderRadius: '10px',
+          opacity: 0.9,
+          backdropFilter: 'blur(15px)',
+        }}
+      />
+      {/* Tick line */}
+      <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.25)', margin: '6px auto 0' }} />
+      <div style={{ textAlign: 'center', marginTop: '4px', whiteSpace: 'nowrap' }}>
+        <span className="t-mono" style={{ fontSize: '11px', color: 'var(--w40)' }}>{label}</span>
+      </div>
+    </div>
   )
 }
 
@@ -464,8 +591,9 @@ function AgentsIteration() {
           { title: 'Completion signals', desc: 'How does an agent signal it\'s done? Subtle badge shift, not a disruptive notification.', icon: 'pulse' },
           { title: 'Hand-raises', desc: 'How does it ask for help without startling you? Amber badge state with inline resolution.', icon: 'progress' },
           { title: 'Fast unblocking', desc: 'How do you unblock it while keeping context? Hover card shows problem, you fix it, move on.', icon: 'toggle' },
+          { title: 'Output retrieval', desc: 'Where did the work actually go? Agents finish and outputs scatter — buried in app history, lost in a chat transcript, saved somewhere you forgot. The OS treats retrieval as its job. Completed work surfaces inline with the agent that made it, so you can find it, act on it, and move on.', icon: 'pulse' },
         ].map((card, i) => (
-          <div key={i} style={{ gridColumn: `${1 + i * 4} / ${5 + i * 4}` }}>
+          <div key={i} style={{ gridColumn: `${1 + i * 3} / ${4 + i * 3}` }}>
             <GlassCard hover className="p-6 h-full">
               {/* Micro-animation indicator */}
               <div className="mb-4 flex items-center gap-3">
@@ -576,6 +704,78 @@ function AgentsFooter() {
         <a href="mailto:bhenthorn2757@gmail.com" className="text-xs" style={{ color: 'var(--w25)' }}>bhenthorn2757@gmail.com</a>
       </div>
     </footer>
+  )
+}
+
+/* ── Agent task card for context illustration ── */
+function AgentTaskCard({ top, left }: { top: string; left: string }) {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        top,
+        left,
+        width: '41%',
+        borderRadius: '12px',
+        opacity: 0.7,
+        overflow: 'hidden',
+      }}
+    >
+      {/* Card chrome */}
+      <div
+        style={{
+          background: 'rgba(32,32,32,0.96)',
+          border: '1px solid rgba(0,0,0,0.2)',
+          borderRadius: '8px',
+          padding: '12px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px',
+        }}
+      >
+        {/* Title placeholders */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <div style={{ width: '48%', height: '14px', borderRadius: '3px', background: 'linear-gradient(180deg, rgba(217,217,217,0.07) 0%, rgba(190,187,187,0.07) 100%)', opacity: 0.5 }} />
+          <div style={{ width: '68%', height: '10px', borderRadius: '3px', background: 'linear-gradient(180deg, rgba(217,217,217,0.07) 0%, rgba(190,187,187,0.07) 100%)', opacity: 0.5 }} />
+        </div>
+
+        {/* Checklist items */}
+        <div
+          style={{
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            borderRadius: '12px',
+            padding: '8px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '4px',
+          }}
+        >
+          {[0.68, 0.76, 0.54, 0.72].map((w, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', height: '18px' }}>
+              <div style={{ width: '12px', height: '12px', borderRadius: '3px', border: '1px solid rgba(255,255,255,0.15)', flexShrink: 0 }} />
+              <div style={{ width: `${w * 100}%`, height: '10px', borderRadius: '3px', background: 'linear-gradient(180deg, rgba(217,217,217,0.07) 0%, rgba(190,187,187,0.07) 100%)', opacity: 0.5 }} />
+            </div>
+          ))}
+        </div>
+
+        {/* Action bar */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>
+          {[0, 1].map((i) => (
+            <div
+              key={i}
+              style={{
+                width: '72px',
+                height: '24px',
+                borderRadius: '3px',
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.09)',
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
   )
 }
 

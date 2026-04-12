@@ -27,7 +27,6 @@ export default function HomePage() {
         <FeaturedCard />
         <CardPair />
         <PhilosophyStrip />
-        <ContactCTA />
       </main>
       <HomeFooter />
     </>
@@ -405,47 +404,6 @@ function PhilosophyStrip() {
   )
 }
 
-/* ── 5. Contact CTA ── */
-function ContactCTA() {
-  return (
-    <Section padding="py-16 md:py-24">
-      <Glow color="#5EC8B4" size="40%" top="50%" left="50%" opacity={0.04} pulse />
-
-      <Grid12>
-        <div style={{ gridColumn: '3 / 11' }}>
-          <GlassCard className="p-10 md:p-16 text-center">
-            <span className="t-label block mb-4">Get in touch</span>
-            <h2 className="t-heading mb-4">Let&apos;s build something together</h2>
-            <p className="t-body mb-8 mx-auto" style={{ maxWidth: '480px' }}>
-              I&apos;m always interested in discussing design systems, AI interaction patterns, and new opportunities.
-            </p>
-            <a
-              href="mailto:bhenthorn2757@gmail.com"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm tracking-wide"
-              style={{
-                border: '1px solid var(--w08)',
-                color: 'var(--w60)',
-                transition: 'all 400ms var(--expo)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#5EC8B4'
-                e.currentTarget.style.color = '#5EC8B4'
-                e.currentTarget.style.boxShadow = '0 0 30px rgba(94, 200, 180, 0.1)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--w08)'
-                e.currentTarget.style.color = 'var(--w60)'
-                e.currentTarget.style.boxShadow = 'none'
-              }}
-            >
-              bhenthorn2757@gmail.com
-            </a>
-          </GlassCard>
-        </div>
-      </Grid12>
-    </Section>
-  )
-}
 
 /* ── Footer ── */
 function HomeFooter() {
