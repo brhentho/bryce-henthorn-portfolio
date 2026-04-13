@@ -13,6 +13,7 @@ import { PerspectiveGrid } from '@/components/atmosphere/PerspectiveGrid'
 import { EdgeLine } from '@/components/atmosphere/EdgeLine'
 import { Vignette } from '@/components/atmosphere/Vignette'
 import { Placeholder } from '@/components/placeholder/Placeholder'
+import { SectionNav } from '@/components/editorial/SectionNav'
 
 /* ═══════════════════════════════════════════════════════════════
    AGENTS IN WINDOWS
@@ -23,6 +24,18 @@ export default function AgentsInWindowsPage() {
   return (
     <div style={{ '--a': '#5EA6F5' } as React.CSSProperties}>
       <NavEditorial />
+      <SectionNav sections={[
+        { id: 'hero', label: 'Hero' },
+        { id: 'context', label: 'Context' },
+        { id: 'problem', label: 'Problem' },
+        { id: 'process', label: 'Process' },
+        { id: 'taskbar', label: 'Taskbar' },
+        { id: 'observability', label: 'Observability' },
+        { id: 'platform-constraints', label: 'Constraints' },
+        { id: 'invocation', label: 'Invocation' },
+        { id: 'iteration', label: 'Iteration' },
+        { id: 'impact', label: 'Impact' },
+      ]} />
       <main>
         <AgentsHero />
         <AgentsContext />
@@ -51,7 +64,7 @@ function AgentsHero() {
   const tr = 'opacity 1s var(--expo), transform 1s var(--expo)'
 
   return (
-    <section className="relative min-h-screen flex items-end overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-end overflow-hidden">
       <Image
         src="/images/heroes/AgentsInWindowsHero.jpg"
         alt=""
@@ -655,6 +668,18 @@ function AgentsImpact() {
           <p className="t-body">
             As agents become normal, people need to understand what&apos;s happening on their system. Developers need a clear way to wire agents into Windows. These foundations do that. They scale.
           </p>
+        </div>
+      </Grid12>
+
+      <Grid12 className="mt-12">
+        <div style={{ gridColumn: '1 / 13' }}>
+          <Image
+            src="/image 2065417070.png"
+            alt="Agents in Windows impact — visible, interruptible agent interactions"
+            width={1400}
+            height={800}
+            style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
+          />
         </div>
       </Grid12>
 

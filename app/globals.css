@@ -181,6 +181,11 @@
   pointer-events: none;
 }
 
+/* Section dot nav — hide on mobile */
+@media (max-width: 767px) {
+  .section-nav { display: none !important; }
+}
+
 /* Dot grid texture */
 .dot-grid {
   position: absolute;

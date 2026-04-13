@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { NavEditorial } from '@/components/editorial/NavEditorial'
 import { Section } from '@/components/editorial/Section'
 import { Grid12 } from '@/components/editorial/Grid12'
@@ -12,6 +12,7 @@ import { DotGrid } from '@/components/atmosphere/DotGrid'
 import { EdgeLine } from '@/components/atmosphere/EdgeLine'
 import { Vignette } from '@/components/atmosphere/Vignette'
 import { Placeholder } from '@/components/placeholder/Placeholder'
+import { SectionNav } from '@/components/editorial/SectionNav'
 
 /* ═══════════════════════════════════════════════════════════════
    WINDOWS RECALL
@@ -22,9 +23,23 @@ export default function RecallPage() {
   return (
     <div style={{ '--a': '#A882FF' } as React.CSSProperties}>
       <NavEditorial />
+      <SectionNav sections={[
+        { id: 'hero', label: 'Hero' },
+        { id: 'context', label: 'Context' },
+        { id: 'system-diagram', label: 'System' },
+        { id: 'problem', label: 'Problem' },
+        { id: 'card-design', label: 'Card Design' },
+        { id: 'card-relevance', label: 'Why It Appeared' },
+        { id: 'early-iteration', label: 'Iteration' },
+        { id: 'performance', label: 'Performance' },
+        { id: 'trust', label: 'Trust' },
+        { id: 'constraints', label: 'Constraints' },
+        { id: 'impact', label: 'Impact' },
+      ]} />
       <main>
         <RecallHero />
         <RecallContext />
+        <RecallSystemDiagram />
         <RecallProblem />
         <RecallCardDesign />
         <RecallWhyAppeared />
@@ -50,7 +65,7 @@ function RecallHero() {
   const tr = 'opacity 1s var(--expo), transform 1s var(--expo)'
 
   return (
-    <section className="relative min-h-screen flex items-end overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-end overflow-hidden">
       <Image src="/images/heroes/Recallhero.jpg" alt="" fill priority className="object-cover" style={{ opacity: show ? 1 : 0, transition: 'opacity 1.2s var(--expo)' }} />
       <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(6,6,10,0.8) 0%, rgba(6,6,10,0.15) 35%, rgba(6,6,10,0.85) 100%)' }} />
       <Glow color="#A882FF" size="50%" top="40%" left="35%" opacity={0.05} />
@@ -84,12 +99,42 @@ function RecallHero() {
 
 /* ── 2. Context — Orbital grid illustration ── */
 function RecallContext() {
+  const ref = useRef<HTMLElement>(null)
+  const [step, setStep] = useState(0) // 0=hidden, 1=text in, 2=grid in, 3=icon in
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) { setStep(3); return }
+
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        setStep(1)                          // text fades in
+        setTimeout(() => setStep(2), 500)   // grid fades in after text
+        setTimeout(() => setStep(3), 900)   // icon grows in after grid starts
+        obs.disconnect()
+      }
+    }, { threshold: 0.15 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  const tr = 'opacity 0.8s var(--expo), transform 0.8s var(--expo)'
+
   return (
-    <Section id="context" padding="py-24 md:py-32">
+    <section ref={ref} id="context" className="relative py-24 md:py-32">
       <Glow color="#A882FF" size="40%" top="50%" left="70%" opacity={0.06} />
 
       <Grid12 className="items-center">
-        <div style={{ gridColumn: '1 / 7' }}>
+        <div
+          style={{
+            gridColumn: '1 / 7',
+            opacity: step >= 1 ? 1 : 0,
+            transform: step >= 1 ? 'translateY(0)' : 'translateY(24px)',
+            transition: tr,
+          }}
+        >
           <h2 className="t-heading mb-6" style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.01em' }}>Where was that thing I saw last week?</h2>
           <p className="t-body mb-4">The problem was simple and unsolved. You&apos;d seen something on your computer: a presentation, a snippet of code, a reference in an email. But you couldn&apos;t find it. You&apos;d try different search terms, retrace your steps, open files one by one. Minutes wasted. Information you knew existed but couldn&apos;t retrieve.</p>
           <p className="t-body mb-4">Recall aimed to capture everything appearing on screen and make it searchable through meaning rather than filenames. But solving that technically wasn&apos;t the real challenge. We had to build something users actually trusted.</p>
@@ -98,7 +143,48 @@ function RecallContext() {
 
         {/* Orbital grid illustration */}
         <div style={{ gridColumn: '7 / 13', position: 'relative', minHeight: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <RecallOrbitalGrid />
+          <RecallOrbitalGrid gridVisible={step >= 2} iconVisible={step >= 3} />
+        </div>
+      </Grid12>
+    </section>
+  )
+}
+
+/* ── 2b. System Diagram — Textured background ── */
+function RecallSystemDiagram() {
+  return (
+    <Section id="system-diagram" padding="py-24 md:py-32">
+      {/* Halftone dot texture background */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            inset: '-15% -10%',
+            opacity: 0.2,
+            maskImage: 'radial-gradient(ellipse 80% 70% at 65% 55%, black 10%, transparent 70%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 65% 55%, black 10%, transparent 70%)',
+          }}
+        >
+          <Image
+            src="/images/recall-texture.png"
+            alt=""
+            fill
+            style={{ objectFit: 'cover', pointerEvents: 'none' }}
+          />
+        </div>
+      </div>
+
+      <Grid12>
+        <div style={{ gridColumn: '1 / 13' }}>
+          <h2 className="t-heading mb-12" style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.01em' }}>System diagram section</h2>
+          <Placeholder type="diag" label="System architecture diagram — capture → index → embed → retrieve → display" minHeight="500px" />
         </div>
       </Grid12>
     </Section>
@@ -106,7 +192,7 @@ function RecallContext() {
 }
 
 /* ── Orbital grid illustration for Context section ── */
-function RecallOrbitalGrid() {
+function RecallOrbitalGrid({ gridVisible, iconVisible }: { gridVisible: boolean; iconVisible: boolean }) {
   const COLS = 9
   const ROWS = 7
   const CELL = 73
@@ -127,6 +213,8 @@ function RecallOrbitalGrid() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          opacity: gridVisible ? 1 : 0,
+          transition: 'opacity 0.8s ease-out',
           maskImage: 'radial-gradient(ellipse 65% 55% at 50% 50%, black 15%, transparent 65%)',
           WebkitMaskImage: 'radial-gradient(ellipse 65% 55% at 50% 50%, black 15%, transparent 65%)',
         }}
@@ -154,7 +242,7 @@ function RecallOrbitalGrid() {
       </div>
 
       {/* Orbital rings */}
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: gridVisible ? 1 : 0, transition: 'opacity 0.8s ease-out' }}>
         {/* Large outer orbit */}
         <div style={{
           position: 'absolute',
@@ -217,19 +305,20 @@ function RecallOrbitalGrid() {
         position: 'absolute',
         top: '50%',
         left: '50%',
-        transform: 'translate(-50%, -50%)',
+        transform: iconVisible ? 'translate(-50%, -50%) scale(1)' : 'translate(-50%, -50%) scale(0.4)',
+        opacity: iconVisible ? 1 : 0,
+        transition: 'opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1)',
         width: 80,
         height: 80,
-        borderRadius: 20,
-        overflow: 'hidden',
-        boxShadow: '0 0 60px rgba(168, 130, 255, 0.3), 0 8px 32px rgba(0,0,0,0.5)',
+        filter: 'drop-shadow(0 0 40px rgba(168, 130, 255, 0.3)) drop-shadow(0 8px 24px rgba(0,0,0,0.4))',
       }}>
-        <Image
-          src="/images/projects/Recall icon.png"
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/projects/Recall_Icon.svg"
           alt="Windows Recall icon"
           width={80}
           height={80}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{ width: '100%', height: '100%' }}
         />
       </div>
     </div>
@@ -270,13 +359,17 @@ function RecallProblem() {
       </Grid12>
 
       <Grid12 className="mt-12">
-        <div style={{ gridColumn: '1 / 7' }}>
-          <Placeholder type="diag" label="Traditional file search — filenames, folders, exact keywords" minHeight="280px" />
-        </div>
-        <div style={{ gridColumn: '7 / 13' }}>
-          <Placeholder type="diag" label="Memory search — natural language, semantic, contextual results" minHeight="280px" />
+        <div style={{ gridColumn: '1 / 13' }}>
+          <Image
+            src="/images/Recall search box.png"
+            alt="Recall search interface"
+            width={1400}
+            height={800}
+            style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
+          />
         </div>
       </Grid12>
+
     </Section>
   )
 }
@@ -297,10 +390,14 @@ function RecallCardDesign() {
           <p className="t-body">The result is something between a timeline and a search interface: visual enough to scan like memory works, structured enough to act predictably.</p>
         </div>
 
-        <div style={{ gridColumn: '6 / 13', display: 'flex', flexDirection: 'column', gap: '32px' }}>
-          <Placeholder type="diag" label="Card anatomy: screenshot, app name, timestamp, relevance score, source" minHeight="300px" />
-          <Placeholder type="diag" label="Relevance scoring: query → feature extraction → comparison → score" minHeight="260px" />
-          <Placeholder type="ui" label="Card grid layout — responsive result grid" minHeight="280px" />
+        <div style={{ gridColumn: '6 / 13' }}>
+          <Image
+            src="/images/projects/image 2065417573.png"
+            alt="Recall card design showing screenshot-based memory cards"
+            width={1400}
+            height={900}
+            style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
+          />
         </div>
       </Grid12>
     </Section>
@@ -483,6 +580,18 @@ function RecallImpact() {
           <p className="t-body mb-4">People recovered information they&apos;d written off as lost. A code snippet they saw once in documentation. Files from months ago they&apos;d forgotten existed.</p>
           <p className="t-body mb-4">The work rippled further. Privacy and trust patterns from Recall became reference points across Windows teams.</p>
           <p className="t-body">The search approach itself became foundational. Principles of relevance transparency and match-type separation showed up in Windows Search and File Explorer updates.</p>
+        </div>
+      </Grid12>
+
+      <Grid12 className="mt-12">
+        <div style={{ gridColumn: '1 / 13' }}>
+          <Image
+            src="/image 2065417615.png"
+            alt="Recall impact — search transparency and match-type separation in practice"
+            width={1400}
+            height={800}
+            style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
+          />
         </div>
       </Grid12>
 

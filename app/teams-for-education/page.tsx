@@ -12,6 +12,7 @@ import { DotGrid } from '@/components/atmosphere/DotGrid'
 import { EdgeLine } from '@/components/atmosphere/EdgeLine'
 import { Vignette } from '@/components/atmosphere/Vignette'
 import { Placeholder } from '@/components/placeholder/Placeholder'
+import { SectionNav } from '@/components/editorial/SectionNav'
 
 /* ═══════════════════════════════════════════════════════════════
    TEAMS FOR EDUCATION
@@ -23,6 +24,19 @@ export default function TeamsForEducationPage() {
   return (
     <div style={{ '--a': '#6C63FF', '--a2': '#FF8B6A' } as React.CSSProperties}>
       <NavEditorial />
+      <SectionNav sections={[
+        { id: 'hero', label: 'Hero' },
+        { id: 'context', label: 'Context' },
+        { id: 'problem', label: 'Problem' },
+        { id: 'research', label: 'Research' },
+        { id: 'solution', label: 'Solution' },
+        { id: 'iteration', label: 'Orchestration' },
+        { id: 'group-creation', label: 'Group Creation' },
+        { id: 'student-view', label: 'Student View' },
+        { id: 'bandwidth', label: 'Bandwidth' },
+        { id: 'constraints', label: 'Constraints' },
+        { id: 'impact', label: 'Impact' },
+      ]} />
       <main>
         <TeamsHero />
         <TeamsContext />
@@ -52,7 +66,7 @@ function TeamsHero() {
   const tr = 'opacity 1s var(--expo), transform 1s var(--expo)'
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <Image src="/images/heroes/TeamsProjectHero.jpg" alt="" fill priority className="object-cover" style={{ opacity: show ? 1 : 0, transition: 'opacity 1.2s var(--expo)' }} />
       <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(6,6,10,0.85) 0%, rgba(6,6,10,0.3) 40%, rgba(6,6,10,0.85) 100%)' }} />
       <Glow color="#6C63FF" size="45%" top="35%" left="35%" opacity={0.05} />
