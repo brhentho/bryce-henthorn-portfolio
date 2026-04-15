@@ -2,16 +2,15 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { NavEditorial } from '@/components/editorial/NavEditorial'
 import { Section } from '@/components/editorial/Section'
 import { Grid12 } from '@/components/editorial/Grid12'
 import { GlassCard } from '@/components/editorial/GlassCard'
 import { Glow } from '@/components/atmosphere/Glow'
-import { DotGrid } from '@/components/atmosphere/DotGrid'
-import { PerspectiveGrid } from '@/components/atmosphere/PerspectiveGrid'
 import { EdgeLine } from '@/components/atmosphere/EdgeLine'
 import { Placeholder } from '@/components/placeholder/Placeholder'
+import { HeroAnimation } from '@/components/motion/hero-morph/HeroAnimation'
 
 /* ═══════════════════════════════════════════════════════════════
    HOMEPAGE
@@ -23,138 +22,12 @@ export default function HomePage() {
     <>
       <NavEditorial />
       <main>
-        <HomeHero />
+        <HeroAnimation />
         <FeaturedCard />
         <CardPair />
         <PhilosophyStrip />
       </main>
       <HomeFooter />
-    </>
-  )
-}
-
-/* ── 1. Hero ── */
-function HomeHero() {
-  const [show, setShow] = useState(false)
-
-  useEffect(() => {
-    const t = setTimeout(() => setShow(true), 100)
-    return () => clearTimeout(t)
-  }, [])
-
-  const t = 'opacity 1s var(--expo), transform 1s var(--expo)'
-
-  return (
-    <section className="relative min-h-screen flex items-end overflow-hidden">
-      {/* Background hero image */}
-      <Image
-        src="/images/heroes/HomeHeroRender.jpg"
-        alt=""
-        fill
-        priority
-        className="object-cover"
-        style={{
-          opacity: show ? 1 : 0,
-          transition: 'opacity 1.2s var(--expo)',
-        }}
-      />
-
-      {/* Gradient overlay: top 40% dark, middle 15%, bottom 85% */}
-      <div
-        className="absolute inset-0"
-        aria-hidden="true"
-        style={{
-          background:
-            'linear-gradient(180deg, rgba(6,6,10,0.85) 0%, rgba(6,6,10,0.15) 40%, rgba(6,6,10,0.85) 100%)',
-        }}
-      />
-
-      {/* Atmosphere */}
-      <Glow color="#5EA6F5" size="50%" top="30%" left="20%" opacity={0.04} />
-      <Glow color="#A882FF" size="40%" top="50%" left="70%" opacity={0.03} />
-      <Glow color="#6C63FF" size="45%" top="70%" left="45%" opacity={0.03} />
-      <PerspectiveGrid />
-
-      {/* Corner brackets */}
-      <CornerBrackets show={show} />
-
-      {/* Content — bottom-left aligned */}
-      <div className="relative z-10 w-full" style={{ padding: 'var(--pad)', paddingBottom: '80px' }}>
-        <div style={{ maxWidth: '720px' }}>
-          <h1
-            className="t-display"
-            style={{
-              opacity: show ? 1 : 0,
-              transform: show ? 'translateY(0)' : 'translateY(24px)',
-              transition: t,
-              transitionDelay: '0.2s',
-            }}
-          >
-            Designing trust between people and AI agents at OS scale
-          </h1>
-
-          <p
-            className="t-body mt-6"
-            style={{
-              maxWidth: '480px',
-              opacity: show ? 1 : 0,
-              transform: show ? 'translateY(0)' : 'translateY(24px)',
-              transition: t,
-              transitionDelay: '0.4s',
-            }}
-          >
-            Senior Product Designer at Microsoft, leading AI-native experiences across Windows.
-          </p>
-        </div>
-
-        {/* Scroll indicator */}
-        <div
-          className="mt-16 flex items-center gap-4"
-          style={{
-            opacity: show ? 1 : 0,
-            transition: 'opacity 1s var(--expo)',
-            transitionDelay: '0.8s',
-          }}
-        >
-          <div style={{ width: '48px', height: '1px', background: 'var(--w15)' }} />
-          <span className="t-label">Scroll</span>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function CornerBrackets({ show }: { show: boolean }) {
-  const style = (
-    top?: string,
-    right?: string,
-    bottom?: string,
-    left?: string,
-    borderSides: string[] = []
-  ): React.CSSProperties => ({
-    position: 'absolute',
-    width: '24px',
-    height: '24px',
-    top,
-    right,
-    bottom,
-    left,
-    borderColor: 'var(--w08)',
-    borderWidth: 0,
-    ...Object.fromEntries(borderSides.map((s) => [`border${s}Width`, '1px'])),
-    opacity: show ? 1 : 0,
-    transition: 'opacity 0.6s var(--expo)',
-    transitionDelay: '0.6s',
-    zIndex: 10,
-    pointerEvents: 'none' as const,
-  })
-
-  return (
-    <>
-      <div style={style('20px', undefined, undefined, '20px', ['Top', 'Left'])} />
-      <div style={style('20px', '20px', undefined, undefined, ['Top', 'Right'])} />
-      <div style={style(undefined, undefined, '20px', '20px', ['Bottom', 'Left'])} />
-      <div style={style(undefined, '20px', '20px', undefined, ['Bottom', 'Right'])} />
     </>
   )
 }
