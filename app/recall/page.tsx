@@ -151,7 +151,62 @@ function RecallContext() {
 }
 
 /* ── 2b. System Diagram — Textured background ── */
+function SystemIcon({ type }: { type: 'capture' | 'ocr' | 'meaning' | 'search' }) {
+  const icons = {
+    capture: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 11V5a1 1 0 011-1h6M21 4h6a1 1 0 011 1v6M28 21v6a1 1 0 01-1 1h-6M11 28H5a1 1 0 01-1-1v-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    ocr: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 4H9a2 2 0 00-2 2v20a2 2 0 002 2h14a2 2 0 002-2V10l-6-6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M19 4v6h6M12 16h8M12 20h8M12 24h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    meaning: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 16c0-3.3 2.7-6 6-6M16 10V4M12 6l4-2 4 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M22 16c0 3.3-2.7 6-6 6M16 22v6M20 26l-4 2-4-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="16" cy="16" r="2" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
+    ),
+    search: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 8h10M7 13h6M7 18h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <rect x="4" y="4" width="18" height="24" rx="2" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="23" cy="21" r="4" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M26 24l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+  }
+  return <div style={{ color: '#60CDFF', marginBottom: '12px' }}>{icons[type]}</div>
+}
+
 function RecallSystemDiagram() {
+  const features = [
+    {
+      icon: 'capture' as const,
+      title: 'Screenshot Capture',
+      desc: 'Continuously monitors and captures the screen at intervals, saving raw visual snapshots as the source material that enters the processing pipeline.',
+    },
+    {
+      icon: 'ocr' as const,
+      title: 'OCR processing',
+      desc: 'Converts raw image input into structured text by straightening and denoising the image, identifying characters through optical recognition, and reconstructing the output into formatted, flowing text.',
+    },
+    {
+      icon: 'meaning' as const,
+      title: 'Meaning analysis',
+      desc: 'Interprets raw extracted text by running meaning analysis to identify concepts and intent, then maps those concepts to semantic vectors for downstream understanding.',
+    },
+    {
+      icon: 'search' as const,
+      title: 'Search & Index Service',
+      desc: 'Stores enriched content in a semantic index and retrieves it by matching the meaning of a query against similarity scores — finding the right files even when the exact words don\u2019t match.',
+    },
+  ]
+
   return (
     <Section id="system-diagram" padding="py-24 md:py-32">
       {/* Halftone dot texture background */}
@@ -182,9 +237,34 @@ function RecallSystemDiagram() {
       </div>
 
       <Grid12>
-        <div style={{ gridColumn: '1 / 13' }}>
-          <h2 className="t-heading mb-12" style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.01em' }}>System diagram section</h2>
-          <Placeholder type="diag" label="System architecture diagram — capture → index → embed → retrieve → display" minHeight="500px" />
+        <div style={{ gridColumn: '1 / 7' }}>
+          <h2 className="t-heading mb-12" style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.01em' }}>
+            On demand intelligence
+          </h2>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px 40px' }}>
+            {features.map((f) => (
+              <div key={f.title}>
+                <SystemIcon type={f.icon} />
+                <h3 style={{ fontFamily: "'Poppins', sans-serif", fontSize: '18px', fontWeight: 400, color: '#fff', letterSpacing: '-0.01em', marginBottom: '8px' }}>
+                  {f.title}
+                </h3>
+                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: '14px', fontWeight: 400, lineHeight: 1.7, color: 'rgba(255,255,255,0.45)', letterSpacing: '-0.01em' }}>
+                  {f.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ gridColumn: '7 / 13', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <Image
+            src="/images/recall-system-diagram.png"
+            alt="Isometric system architecture diagram showing the Recall data pipeline layers"
+            width={482}
+            height={742}
+            style={{ width: '100%', maxWidth: '482px', height: 'auto' }}
+          />
         </div>
       </Grid12>
     </Section>
@@ -470,99 +550,103 @@ function RecallIteration() {
   )
 }
 
-/* ── 7. Performance — Full-width cinematic ── */
+/* ── 7. Performance — Light theme with video ── */
 function RecallPerformance() {
   return (
-    <Section id="performance" padding="py-24 md:py-32">
-      <EdgeLine position="top" />
-      <Glow color="#A882FF" size="60%" top="40%" left="50%" opacity={0.04} />
+    <section id="performance" style={{ background: '#f0f0f0', color: '#1a1a1a' }}>
+      <div style={{ padding: '96px var(--pad) 80px', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
+        <Grid12>
+          <div style={{ gridColumn: '2 / 12', marginBottom: '48px' }}>
+            <span className="t-label block mb-4" style={{ color: '#7B5FBF', opacity: 0.7 }}>Performance</span>
+            <h2 className="t-heading mb-6" style={{ color: '#1a1a1a' }}>Fast enough to feel alive</h2>
+            <p className="t-body mb-4" style={{ color: '#444' }}>Embedding indexing and local retrieval are computationally heavy. Most queries came back fast. Some didn&apos;t. Users had to wait.</p>
+            <p className="t-body mb-4" style={{ color: '#444' }}>We made waiting feel like progress. Results evolved live as users typed, each keystroke refining the results in real time. No waiting for a full query. Constant forward motion.</p>
+            <p className="t-body" style={{ color: '#444' }}>Design and engineering iterated constantly. We tuned how aggressively the system sent queries based on actual typing patterns, found a balance that avoided expensive retriggering without sacrificing responsiveness.</p>
+          </div>
+        </Grid12>
 
-      <Grid12>
-        <div style={{ gridColumn: '2 / 12', marginBottom: '48px' }}>
-          <span className="t-label block mb-4" style={{ color: '#A882FF', opacity: 0.5 }}>Performance</span>
-          <h2 className="t-heading mb-6">Fast enough to feel alive</h2>
-          <p className="t-body mb-4">Embedding indexing and local retrieval are computationally heavy. Most queries came back fast. Some didn&apos;t. Users had to wait.</p>
-          <p className="t-body mb-4">We made waiting feel like progress. Results evolved live as users typed, each keystroke refining the results in real time. No waiting for a full query. Constant forward motion.</p>
-          <p className="t-body">Design and engineering iterated constantly. We tuned how aggressively the system sent queries based on actual typing patterns, found a balance that avoided expensive retriggering without sacrificing responsiveness.</p>
+        <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', borderRadius: '12px', overflow: 'hidden' }}>
+          <video autoPlay loop muted playsInline style={{ width: '100%', display: 'block' }}>
+            <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4" type="video/mp4" />
+          </video>
         </div>
-      </Grid12>
-
-      {/* Full-width search interaction */}
-      <div style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
-        <Placeholder type="ui" label="Full search interaction: type query → results animate in → select result → detail view" minHeight="360px" />
       </div>
-    </Section>
+    </section>
   )
 }
 
-/* ── 8. Trust — 2×2 privacy grid ── */
+/* ── 8. Trust — Light theme privacy grid ── */
 function RecallTrust() {
   return (
-    <Section id="trust" padding="py-24 md:py-32">
-      <Glow color="#A882FF" size="50%" top="30%" left="40%" opacity={0.03} />
-      <DotGrid mask />
-
-      <Grid12>
-        <div style={{ gridColumn: '1 / 13', marginBottom: '32px' }}>
-          <span className="t-label block mb-4" style={{ color: '#A882FF', opacity: 0.5 }}>Trust</span>
-          <h2 className="t-heading mb-6">Privacy was the whole product</h2>
-          <p className="t-body mb-4" style={{ maxWidth: '700px' }}>Recall captures everything. That only works if people trust where the data sits, who can see it, and what control they actually have.</p>
-          <p className="t-body" style={{ maxWidth: '700px' }}>On-device processing wasn&apos;t optional. All capture, all indexing, all retrieval happened locally. Nothing left the machine.</p>
-        </div>
-      </Grid12>
-
-      {/* 2×2 privacy cards */}
-      <Grid12>
-        {[
-          { title: 'Data storage', desc: 'Everything stays on-device. No cloud processing, no external servers. Local indexing, local retrieval.' },
-          { title: 'User control', desc: 'Opt-in by default. Exclude apps, pause indexing, delete any memory. Full user agency.' },
-          { title: 'Transparency', desc: 'Every card shows provenance. Match types labeled. System boundaries visible, never hidden.' },
-          { title: 'Deletion', desc: 'Delete individual memories or wipe everything. No hidden caches. What you delete is gone.' },
-        ].map((card, i) => (
-          <div key={i} style={{ gridColumn: i < 2 ? `${1 + i * 6} / ${7 + i * 6}` : `${1 + (i - 2) * 6} / ${7 + (i - 2) * 6}`, marginTop: i >= 2 ? 'var(--grid-gap)' : undefined }}>
-            <GlassCard hover className="p-6" accentBorder="rgba(168, 130, 255, 0.12)">
-              <h3 className="t-subhead mb-2" style={{ fontSize: 'clamp(16px, 1.6vw, 20px)' }}>{card.title}</h3>
-              <p className="t-body">{card.desc}</p>
-            </GlassCard>
+    <section id="trust" style={{ background: '#f0f0f0', color: '#1a1a1a' }}>
+      <div style={{ padding: '96px var(--pad) 80px', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
+        <Grid12>
+          <div style={{ gridColumn: '1 / 13', marginBottom: '32px' }}>
+            <span className="t-label block mb-4" style={{ color: '#7B5FBF', opacity: 0.7 }}>Trust</span>
+            <h2 className="t-heading mb-6" style={{ color: '#1a1a1a' }}>Privacy was the whole product</h2>
+            <p className="t-body mb-4" style={{ maxWidth: '700px', color: '#444' }}>Recall captures everything. That only works if people trust where the data sits, who can see it, and what control they actually have.</p>
+            <p className="t-body" style={{ maxWidth: '700px', color: '#444' }}>On-device processing wasn&apos;t optional. All capture, all indexing, all retrieval happened locally. Nothing left the machine.</p>
           </div>
-        ))}
-      </Grid12>
+        </Grid12>
 
-      <Grid12 className="mt-10">
-        <div style={{ gridColumn: '1 / 8' }}>
-          <p className="t-body mb-4">After public scrutiny, things changed. Recall flipped from opt-out to opt-in. Users got the ability to exclude apps and pause indexing.</p>
-          <p className="t-body">We made those boundaries tangible. Cards showed where results came from and when. Excluded content got explicit explanation instead of silent gaps. Trust wasn&apos;t a single setting. It lived in every interaction.</p>
-        </div>
-      </Grid12>
-    </Section>
+        {/* 2×2 privacy cards */}
+        <Grid12>
+          {[
+            { title: 'Data storage', desc: 'Everything stays on-device. No cloud processing, no external servers. Local indexing, local retrieval.' },
+            { title: 'User control', desc: 'Opt-in by default. Exclude apps, pause indexing, delete any memory. Full user agency.' },
+            { title: 'Transparency', desc: 'Every card shows provenance. Match types labeled. System boundaries visible, never hidden.' },
+            { title: 'Deletion', desc: 'Delete individual memories or wipe everything. No hidden caches. What you delete is gone.' },
+          ].map((card, i) => (
+            <div key={i} style={{ gridColumn: i < 2 ? `${1 + i * 6} / ${7 + i * 6}` : `${1 + (i - 2) * 6} / ${7 + (i - 2) * 6}`, marginTop: i >= 2 ? '24px' : undefined }}>
+              <div className="p-6" style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.06)' }}>
+                <h3 className="t-subhead mb-2" style={{ fontSize: 'clamp(16px, 1.6vw, 20px)', color: '#1a1a1a' }}>{card.title}</h3>
+                <p className="t-body" style={{ color: '#444' }}>{card.desc}</p>
+              </div>
+            </div>
+          ))}
+        </Grid12>
+
+        <Grid12 className="mt-10">
+          <div style={{ gridColumn: '1 / 8' }}>
+            <p className="t-body mb-4" style={{ color: '#444' }}>After public scrutiny, things changed. Recall flipped from opt-out to opt-in. Users got the ability to exclude apps and pause indexing.</p>
+            <p className="t-body" style={{ color: '#444' }}>We made those boundaries tangible. Cards showed where results came from and when. Excluded content got explicit explanation instead of silent gaps. Trust wasn&apos;t a single setting. It lived in every interaction.</p>
+          </div>
+        </Grid12>
+      </div>
+    </section>
   )
 }
 
-/* ── 9. Constraints — Compact stat band ── */
+/* ── 9. Constraints — Light theme with video ── */
 function RecallConstraints() {
   return (
-    <Section id="constraints" padding="py-24 md:py-32">
-      <EdgeLine position="top" />
-      <Glow color="#A882FF" size="40%" top="50%" left="50%" opacity={0.03} />
-
-      <div className="text-center mb-12">
-        <p className="t-display" style={{ fontSize: 'clamp(32px, 5vw, 72px)', fontWeight: 300, color: 'var(--w75)' }}>
-          RAG killed for speed
-        </p>
-        <p className="t-label mt-4">Synthesis abandoned to keep search instantaneous</p>
-      </div>
-
-      <Grid12>
-        <div style={{ gridColumn: '2 / 10' }}>
-          <span className="t-label block mb-4" style={{ color: '#A882FF', opacity: 0.5 }}>Constraints &amp; Tradeoffs</span>
-          <h2 className="t-heading mb-6">We killed RAG to keep search fast</h2>
-          <p className="t-body mb-4">Early on, we explored synthesis across memories. Retrieval-augmented generation could answer higher-level questions by stitching together context from many screenshots.</p>
-          <p className="t-body mb-4">Latency killed it. Retrieving and generating across large memory sets created delays that broke the core expectation: search should feel instantaneous.</p>
-          <p className="t-body mb-4">We abandoned synthesis and focused on speed and legibility instead. Surface relevant moments. Let people interpret them.</p>
-          <p className="t-body">And honestly, it was the right call design-wise. The system helps people rediscover what they saw. It doesn&apos;t rewrite their history for them.</p>
+    <section id="constraints" style={{ background: '#f0f0f0', color: '#1a1a1a' }}>
+      <div style={{ padding: '96px var(--pad) 96px', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
+        <div className="text-center mb-12">
+          <p className="t-display" style={{ fontSize: 'clamp(32px, 5vw, 72px)', fontWeight: 300, color: '#333' }}>
+            RAG killed for speed
+          </p>
+          <p className="t-label mt-4" style={{ color: '#666' }}>Synthesis abandoned to keep search instantaneous</p>
         </div>
-      </Grid12>
-    </Section>
+
+        <Grid12>
+          <div style={{ gridColumn: '2 / 10' }}>
+            <span className="t-label block mb-4" style={{ color: '#7B5FBF', opacity: 0.7 }}>Constraints &amp; Tradeoffs</span>
+            <h2 className="t-heading mb-6" style={{ color: '#1a1a1a' }}>We killed RAG to keep search fast</h2>
+            <p className="t-body mb-4" style={{ color: '#444' }}>Early on, we explored synthesis across memories. Retrieval-augmented generation could answer higher-level questions by stitching together context from many screenshots.</p>
+            <p className="t-body mb-4" style={{ color: '#444' }}>Latency killed it. Retrieving and generating across large memory sets created delays that broke the core expectation: search should feel instantaneous.</p>
+            <p className="t-body mb-4" style={{ color: '#444' }}>We abandoned synthesis and focused on speed and legibility instead. Surface relevant moments. Let people interpret them.</p>
+            <p className="t-body" style={{ color: '#444' }}>And honestly, it was the right call design-wise. The system helps people rediscover what they saw. It doesn&apos;t rewrite their history for them.</p>
+          </div>
+        </Grid12>
+
+        <div style={{ maxWidth: 'var(--max-w)', margin: '48px auto 0', borderRadius: '12px', overflow: 'hidden' }}>
+          <video autoPlay loop muted playsInline style={{ width: '100%', display: 'block' }}>
+            <source src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
   )
 }
 
