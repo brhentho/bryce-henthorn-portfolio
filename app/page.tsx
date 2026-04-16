@@ -9,7 +9,6 @@ import { Grid12 } from '@/components/editorial/Grid12'
 import { GlassCard } from '@/components/editorial/GlassCard'
 import { Glow } from '@/components/atmosphere/Glow'
 import { EdgeLine } from '@/components/atmosphere/EdgeLine'
-import { Placeholder } from '@/components/placeholder/Placeholder'
 import { HeroAnimation } from '@/components/motion/hero-morph/HeroAnimation'
 
 /* ═══════════════════════════════════════════════════════════════
@@ -65,44 +64,25 @@ function FeaturedCard() {
             className="group"
           >
             <div
-              className="relative overflow-hidden"
-              style={{ minHeight: '480px' }}
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
             >
-              {/* Hero image */}
-              <Image
-                src="/images/heroes/AgentsInWindowsHero.jpg"
-                alt="Agents in Windows case study"
-                fill
-                className="object-cover"
-                style={{
-                  opacity: 0.6,
-                  transition: 'transform 600ms var(--expo), opacity 600ms var(--expo)',
-                  transform: hovered ? 'scale(1.02)' : 'scale(1)',
-                }}
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: 'linear-gradient(180deg, transparent 30%, rgba(6,6,10,0.9) 100%)',
-                }}
-              />
-
-              {/* Floating taskbar placeholder */}
-              <div
-                className="absolute"
-                style={{
-                  top: '10%',
-                  right: '8%',
-                  animation: 'float0 7s ease-in-out infinite',
-                }}
-              >
-                <Placeholder type="ui" label="Taskbar UI" minHeight="80px" className="w-[200px]" />
+              {/* Image container */}
+              <div className="relative overflow-hidden" style={{ height: '400px' }}>
+                <Image
+                  src="/images/projects/Agents project card.png"
+                  alt="Agents in Windows case study"
+                  fill
+                  className="object-cover"
+                  style={{
+                    transition: 'transform 600ms var(--expo)',
+                    transform: hovered ? 'scale(1.02)' : 'scale(1)',
+                  }}
+                />
               </div>
 
               {/* Card info */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+              <div className="p-8 md:p-12">
                 <span className="t-label" style={{ color: '#5EA6F5', opacity: 0.6 }}>
                   Agents in Windows
                 </span>
@@ -163,14 +143,14 @@ function CardPair() {
       >
         <ProjectCardSmall
           href="/recall"
-          image="/images/heroes/Recallhero.jpg"
+          image="/images/projects/Recall project card.png"
           label="Windows Recall"
           heading="Designing Semantic Search for Everything You've Seen."
           accentColor="#A882FF"
         />
         <ProjectCardSmall
           href="/teams-for-education"
-          image="/images/heroes/TeamsProjectHero.jpg"
+          image="/images/projects/Teams for EDU project card.png"
           label="Teams for Education"
           heading="Modernizing Online Classes for an Authentic Virtual Experience."
           accentColor="#6C63FF"
@@ -199,30 +179,25 @@ function ProjectCardSmall({
     <Link href={href} className="block">
       <GlassCard hover className="group">
         <div
-          className="relative overflow-hidden"
-          style={{ minHeight: '340px' }}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
-          <Image
-            src={image}
-            alt={`${label} case study`}
-            fill
-            className="object-cover"
-            style={{
-              opacity: 0.5,
-              transition: 'transform 600ms var(--expo)',
-              transform: hovered ? 'scale(1.02)' : 'scale(1)',
-            }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: 'linear-gradient(180deg, transparent 20%, rgba(6,6,10,0.9) 100%)',
-            }}
-          />
+          {/* Image container */}
+          <div className="relative overflow-hidden" style={{ height: '240px' }}>
+            <Image
+              src={image}
+              alt={`${label} case study`}
+              fill
+              className="object-cover"
+              style={{
+                transition: 'transform 600ms var(--expo)',
+                transform: hovered ? 'scale(1.02)' : 'scale(1)',
+              }}
+            />
+          </div>
 
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+          {/* Card info */}
+          <div className="p-6 md:p-8">
             <span className="t-label" style={{ color: accentColor, opacity: 0.6 }}>
               {label}
             </span>
