@@ -10,7 +10,6 @@ import { GlassCard } from '@/components/editorial/GlassCard'
 import { Glow } from '@/components/atmosphere/Glow'
 import { DotGrid } from '@/components/atmosphere/DotGrid'
 import { EdgeLine } from '@/components/atmosphere/EdgeLine'
-import { Vignette } from '@/components/atmosphere/Vignette'
 import { Placeholder } from '@/components/placeholder/Placeholder'
 import { SectionNav } from '@/components/editorial/SectionNav'
 
@@ -59,40 +58,249 @@ function fade(show: boolean, delay: string, tr: string): React.CSSProperties {
 }
 
 /* ── 1. Hero ── */
+
+/* Pill icon types used in the hero background */
+function PillIconTag() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h10M3 10h10M6 3v10M10 3v10" stroke="white" strokeWidth="1" strokeLinecap="round" />
+    </svg>
+  )
+}
+function PillIconPin() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 8.5a2 2 0 100-4 2 2 0 000 4z" stroke="#96d1fd" strokeWidth="1" />
+      <path d="M8 14s-4.5-3.5-4.5-7A4.5 4.5 0 0112.5 7c0 3.5-4.5 7-4.5 7z" stroke="#96d1fd" strokeWidth="1" />
+    </svg>
+  )
+}
+function PillIconCalendar() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="3" width="12" height="11" rx="1.5" stroke="#96d1fd" strokeWidth="1" />
+      <path d="M2 6.5h12M5 2v2M11 2v2" stroke="#96d1fd" strokeWidth="1" strokeLinecap="round" />
+    </svg>
+  )
+}
+function PillIconMail() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="#ea4335" strokeWidth="1" />
+      <path d="M1.5 4.5L8 9l6.5-4.5" stroke="#ea4335" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+function PillIconAvatar() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="8" cy="6" r="2.5" stroke="white" strokeWidth="1" />
+      <path d="M3.5 14c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5" stroke="white" strokeWidth="1" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+type HeroPill = {
+  label: string
+  icon: 'tag' | 'pin' | 'calendar' | 'mail' | 'avatar'
+  top: string
+  left: string
+}
+
+const heroPills: HeroPill[] = [
+  { label: 'Seaside Hotel', icon: 'tag', top: '14%', left: '7%' },
+  { label: 'July 22, 2024', icon: 'calendar', top: '21%', left: '22%' },
+  { label: 'Flight details: AA 4533', icon: 'mail', top: '18%', left: '40%' },
+  { label: 'Acadia national park', icon: 'tag', top: '12%', left: '67%' },
+  { label: 'Lobstering Tour', icon: 'tag', top: '20%', left: '83%' },
+  { label: 'The Front Room reservations', icon: 'mail', top: '38%', left: '13%' },
+  { label: 'Historic Portland Walking tour', icon: 'tag', top: '35%', left: '73%' },
+  { label: 'Granite Beach Park', icon: 'pin', top: '50%', left: '84%' },
+  { label: 'Confirmation 25564', icon: 'tag', top: '68%', left: '15%' },
+  { label: 'OpenTable', icon: 'mail', top: '80%', left: '34%' },
+  { label: 'Janice', icon: 'avatar', top: '81%', left: '55%' },
+  { label: 'Fw: Reservation Reminder', icon: 'mail', top: '72%', left: '72%' },
+  { label: 'Preal Cafe', icon: 'pin', top: '80%', left: '88%' },
+]
+
+const pillIcons = {
+  tag: <PillIconTag />,
+  pin: <PillIconPin />,
+  calendar: <PillIconCalendar />,
+  mail: <PillIconMail />,
+  avatar: <PillIconAvatar />,
+}
+
+/* The grid that appears behind hero text */
+function HeroGrid({ className, style }: { className?: string; style?: React.CSSProperties }) {
+  const COLS = 9
+  const ROWS = 7
+  const CELL = 118
+  const gridW = COLS * CELL
+  const gridH = ROWS * CELL
+  const filledCells = new Set(['0-6', '2-4', '2-6', '4-3'])
+
+  return (
+    <div
+      aria-hidden="true"
+      className={className}
+      style={{
+        position: 'absolute',
+        overflow: 'hidden',
+        maskImage: 'radial-gradient(ellipse 75% 55% at 50% 50%, black 10%, transparent 65%)',
+        WebkitMaskImage: 'radial-gradient(ellipse 75% 55% at 50% 50%, black 10%, transparent 65%)',
+        ...style,
+      }}
+    >
+      {/* Glow ellipse */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        width: '55%',
+        height: '55%',
+        transform: 'translate(-50%, -50%)',
+        background: 'radial-gradient(ellipse, rgba(89,202,234,0.08) 0%, transparent 70%)',
+        borderRadius: '50%',
+        pointerEvents: 'none',
+      }} />
+      <svg
+        viewBox={`0 0 ${gridW} ${gridH}`}
+        style={{ width: '100%', height: '100%', display: 'block' }}
+        preserveAspectRatio="xMidYMid meet"
+      >
+        {Array.from({ length: ROWS }, (_, r) =>
+          Array.from({ length: COLS }, (_, c) => {
+            const key = `${r}-${c}`
+            const filled = filledCells.has(key)
+            return (
+              <rect
+                key={key}
+                x={c * CELL + 0.75}
+                y={r * CELL + 0.75}
+                width={CELL - 1.5}
+                height={CELL - 1.5}
+                fill={filled ? 'rgba(255,255,255,0.06)' : 'none'}
+                stroke="rgba(255,255,255,0.08)"
+                strokeWidth={1.5}
+              />
+            )
+          })
+        )}
+      </svg>
+    </div>
+  )
+}
+
 function RecallHero() {
   const [show, setShow] = useState(false)
   useEffect(() => { const t = setTimeout(() => setShow(true), 100); return () => clearTimeout(t) }, [])
   const tr = 'opacity 1s var(--expo), transform 1s var(--expo)'
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-end overflow-hidden">
-      <Image src="/images/heroes/Recallhero.jpg" alt="" fill priority className="object-cover" style={{ opacity: show ? 1 : 0, transition: 'opacity 1.2s var(--expo)' }} />
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(6,6,10,0.8) 0%, rgba(6,6,10,0.15) 35%, rgba(6,6,10,0.85) 100%)' }} />
-      <Glow color="#A882FF" size="50%" top="40%" left="35%" opacity={0.05} />
-      <Vignette />
+    <section id="hero" className="relative overflow-hidden" style={{ background: '#0b0b0d', height: '100vh', minHeight: '700px' }}>
+      {/* Top grid */}
+      <HeroGrid style={{
+        top: '-8%',
+        left: '5%',
+        width: '90%',
+        height: '65%',
+        opacity: show ? 1 : 0,
+        transition: 'opacity 1.2s var(--expo)',
+        transitionDelay: '0.2s',
+      }} />
 
-      <div className="absolute top-24 left-0 z-10" style={{ padding: '0 var(--pad)' }}>
-        <div className="flex flex-wrap gap-2" style={{ opacity: show ? 1 : 0, transition: 'opacity 0.8s var(--expo)', transitionDelay: '0.3s' }}>
-          {['Trust + privacy', 'Systems thinking', 'Windows', 'Senior Designer', '2024'].map((tag) => (
-            <span key={tag} className="t-mono px-3 py-1 rounded-full" style={{ border: '1px solid var(--w06)', color: 'var(--w20)' }}>{tag}</span>
-          ))}
+      {/* Bottom grid */}
+      <HeroGrid style={{
+        bottom: '-20%',
+        left: '3%',
+        width: '90%',
+        height: '65%',
+        opacity: show ? 1 : 0,
+        transition: 'opacity 1.2s var(--expo)',
+        transitionDelay: '0.4s',
+      }} />
+
+      {/* Floating pills */}
+      {heroPills.map((pill, i) => (
+        <div
+          key={pill.label}
+          style={{
+            position: 'absolute',
+            top: pill.top,
+            left: pill.left,
+            zIndex: 5,
+            opacity: show ? 1 : 0,
+            transform: show ? 'translateY(0)' : 'translateY(12px)',
+            transition: 'opacity 0.8s var(--expo), transform 0.8s var(--expo)',
+            transitionDelay: `${0.4 + i * 0.06}s`,
+          }}
+        >
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '7px 18px',
+            background: 'rgba(0,0,0,0.5)',
+            backdropFilter: 'blur(6px)',
+            WebkitBackdropFilter: 'blur(6px)',
+            border: '1px solid rgba(255,255,255,0.2)',
+            borderRadius: '24px',
+            boxShadow: '0 4px 8px rgba(0,0,0,0.15)',
+            whiteSpace: 'nowrap',
+          }}>
+            {pillIcons[pill.icon]}
+            <span style={{ fontSize: '12px', color: 'white', fontFamily: 'var(--font-sans, sans-serif)', lineHeight: '16px' }}>
+              {pill.label}
+            </span>
+          </div>
         </div>
-        <div className="mt-3 t-label" style={{ opacity: show ? 1 : 0, transition: 'opacity 0.8s var(--expo)', transitionDelay: '0.4s', color: 'var(--w25)' }}>
-          Senior UX Designer &middot; Windows / Copilot+ PCs
-        </div>
+      ))}
+
+      {/* Center text */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        textAlign: 'center',
+        zIndex: 10,
+        width: '100%',
+        maxWidth: '1000px',
+        padding: '0 var(--pad)',
+      }}>
+        <span className="t-label" style={{
+          fontSize: '14px',
+          letterSpacing: '0.1em',
+          color: '#59caea',
+          display: 'block',
+          marginBottom: '16px',
+          ...fade(show, '0.2s', tr),
+        }}>
+          Windows Recall
+        </span>
+        <h1 className="t-display" style={{
+          fontSize: 'clamp(32px, 4vw, 52px)',
+          fontWeight: 500,
+          color: 'white',
+          letterSpacing: '-0.01em',
+          ...fade(show, '0.35s', tr),
+        }}>
+          Designing Semantic Search for Everything You&apos;ve Seen.
+        </h1>
       </div>
 
-      <div className="relative z-10 w-full" style={{ padding: 'var(--pad)', paddingBottom: '80px' }}>
-        <div style={{ maxWidth: '700px' }}>
-          <span className="t-label block mb-3" style={{ color: '#A882FF', opacity: 0.6, ...fade(show, '0.2s', tr) }}>Windows Recall</span>
-          <h1 className="t-display" style={fade(show, '0.3s', tr)}>Designing Semantic Search for Everything You&apos;ve Seen.</h1>
-        </div>
-      </div>
-
-      <div className="absolute bottom-0 right-0 z-10 text-right" style={{ padding: 'var(--pad)', paddingBottom: '80px', opacity: show ? 1 : 0, transition: 'opacity 0.8s var(--expo)', transitionDelay: '0.5s' }}>
-        <span className="t-mono block" style={{ color: 'var(--w12)' }}>Semantic search and</span>
-        <span className="t-mono block" style={{ color: 'var(--w12)' }}>memory retrieval</span>
-      </div>
+      {/* Bottom vignette fade to page bg */}
+      <div aria-hidden="true" style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: '120px',
+        background: 'linear-gradient(to bottom, transparent, var(--bg))',
+        zIndex: 8,
+        pointerEvents: 'none',
+      }} />
     </section>
   )
 }
@@ -135,7 +343,7 @@ function RecallContext() {
             transition: tr,
           }}
         >
-          <h2 className="t-heading mb-6" style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.01em' }}>Where was that thing I saw last week?</h2>
+          <h2 className="t-heading mb-6">Where was that thing I saw last week?</h2>
           <p className="t-body mb-4">The problem was simple and unsolved. You&apos;d seen something on your computer: a presentation, a snippet of code, a reference in an email. But you couldn&apos;t find it. You&apos;d try different search terms, retrace your steps, open files one by one. Minutes wasted. Information you knew existed but couldn&apos;t retrieve.</p>
           <p className="t-body mb-4">Recall aimed to capture everything appearing on screen and make it searchable through meaning rather than filenames. But solving that technically wasn&apos;t the real challenge. We had to build something users actually trusted.</p>
           <p className="t-body">My role focused specifically on the semantic search experience: how users search their memories, how results are ranked and displayed, and how relevance is communicated in a way that feels understandable and trustworthy.</p>
@@ -222,7 +430,7 @@ function RecallSystemDiagram() {
           style={{
             position: 'absolute',
             inset: '-15% -10%',
-            opacity: 0.2,
+            opacity: 0.03,
             maskImage: 'radial-gradient(ellipse 80% 70% at 65% 55%, black 10%, transparent 70%)',
             WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 65% 55%, black 10%, transparent 70%)',
           }}
@@ -238,18 +446,21 @@ function RecallSystemDiagram() {
 
       <Grid12>
         <div style={{ gridColumn: '1 / 7' }}>
-          <h2 className="t-heading mb-12" style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.01em' }}>
+          <h2 className="t-heading mb-4">
             On demand intelligence
           </h2>
+          <p className="t-body mb-12" style={{ maxWidth: '540px', color: 'rgba(255,255,255,0.5)' }}>
+            A local intelligence layer built for screen capture and on-device indexing — processing everything you see into searchable, semantically rich memory without ever leaving your machine.
+          </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px 40px' }}>
             {features.map((f) => (
               <div key={f.title}>
                 <SystemIcon type={f.icon} />
-                <h3 style={{ fontFamily: "'Poppins', sans-serif", fontSize: '18px', fontWeight: 400, color: '#fff', letterSpacing: '-0.01em', marginBottom: '8px' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: 400, color: '#fff', letterSpacing: '-0.01em', marginBottom: '8px' }}>
                   {f.title}
                 </h3>
-                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: '14px', fontWeight: 400, lineHeight: 1.7, color: 'rgba(255,255,255,0.45)', letterSpacing: '-0.01em' }}>
+                <p className="t-body" style={{ fontSize: '14px' }}>
                   {f.desc}
                 </p>
               </div>
@@ -321,64 +532,20 @@ function RecallOrbitalGrid({ gridVisible, iconVisible }: { gridVisible: boolean;
         </svg>
       </div>
 
-      {/* Orbital rings */}
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: gridVisible ? 1 : 0, transition: 'opacity 0.8s ease-out' }}>
-        {/* Large outer orbit */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          width: '80%',
-          height: '50%',
-          transform: 'translate(-50%, -50%) rotate(-28deg)',
-          border: '1px solid rgba(168, 130, 255, 0.18)',
-          borderRadius: '50%',
-        }} />
-        {/* Medium orbit */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          width: '55%',
-          height: '42%',
-          transform: 'translate(-50%, -50%) rotate(45deg)',
-          border: '1px solid rgba(168, 130, 255, 0.14)',
-          borderRadius: '50%',
-        }} />
-        {/* Inner tight orbit */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          width: '35%',
-          height: '30%',
-          transform: 'translate(-50%, -50%) rotate(-90deg)',
-          border: '1px solid rgba(168, 130, 255, 0.20)',
-          borderRadius: '50%',
-        }} />
-        {/* Small accent orbit */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          width: '20%',
-          height: '15%',
-          transform: 'translate(-50%, -50%) rotate(47deg)',
-          border: '1px solid rgba(168, 130, 255, 0.12)',
-          borderRadius: '50%',
-        }} />
-        {/* Accent glow behind center */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          width: '40%',
-          height: '40%',
-          transform: 'translate(-50%, -50%)',
-          background: 'radial-gradient(circle, rgba(168, 130, 255, 0.20) 0%, transparent 70%)',
-          borderRadius: '50%',
-        }} />
-      </div>
+      {/* Subtle glow behind center icon */}
+      <div aria-hidden="true" style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        width: '40%',
+        height: '40%',
+        transform: 'translate(-50%, -50%)',
+        background: 'radial-gradient(circle, rgba(168, 130, 255, 0.20) 0%, transparent 70%)',
+        borderRadius: '50%',
+        opacity: gridVisible ? 1 : 0,
+        transition: 'opacity 0.8s ease-out',
+        pointerEvents: 'none',
+      }} />
 
       {/* Recall app icon centered */}
       <div style={{
@@ -454,28 +621,25 @@ function RecallProblem() {
   )
 }
 
-/* ── 4. Card Design — Pin + scroll ── */
+/* ── 4. Card Design ── */
 function RecallCardDesign() {
   return (
     <Section id="card-design" padding="py-24 md:py-32">
-      <Glow color="#A882FF" size="50%" top="50%" left="70%" opacity={0.04} />
-
-      <Grid12>
-        <div style={{ gridColumn: '1 / 6', position: 'sticky', top: '120px', alignSelf: 'start' }}>
-          <span className="t-label block mb-4" style={{ color: '#A882FF', opacity: 0.5 }}>Card Design</span>
-          <h2 className="t-heading mb-6">Cards as moments, not documents</h2>
-          <p className="t-body mb-4">A Recall card needed to hold several pieces of information: a screenshot, app name, timestamp, extracted text, and relevance signals.</p>
-          <p className="t-body mb-4">We built around the screenshot as the primary anchor. Not a cropped asset preview, but the actual desktop as it appeared. That context is what lodges in memory.</p>
-          <p className="t-body mb-4">App name, timestamp, and extracted text stayed visible but secondary. The hierarchy pushed away from &quot;found document&quot; and toward &quot;revisited moment.&quot;</p>
-          <p className="t-body">The result is something between a timeline and a search interface: visual enough to scan like memory works, structured enough to act predictably.</p>
+      <Grid12 className="items-center">
+        <div style={{ gridColumn: '1 / 6' }}>
+          <h2 className="t-heading mb-6" style={{ fontSize: 'clamp(32px, 3.5vw, 48px)', letterSpacing: '-0.01em' }}>Cards as moments, not documents</h2>
+          <p className="t-body mb-4" style={{ fontSize: '16px' }}>A Recall card needed to hold several pieces of information: a screenshot, app name, timestamp, extracted text, and relevance signals.</p>
+          <p className="t-body mb-4" style={{ fontSize: '16px' }}>We built around the screenshot as the primary anchor. Not a cropped asset preview, but the actual desktop as it appeared. That context is what lodges in memory.</p>
+          <p className="t-body mb-4" style={{ fontSize: '16px' }}>App name, timestamp, and extracted text stayed visible but secondary. The hierarchy pushed away from &quot;found document&quot; and toward &quot;revisited moment.&quot;</p>
+          <p className="t-body" style={{ fontSize: '16px' }}>The result is something between a timeline and a search interface: visual enough to scan like memory works, structured enough to act predictably.</p>
         </div>
 
         <div style={{ gridColumn: '6 / 13' }}>
           <Image
-            src="/images/projects/image 2065417573.png"
+            src="/assets/image 2065417628.png"
             alt="Recall card design showing screenshot-based memory cards"
             width={1400}
-            height={900}
+            height={800}
             style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
           />
         </div>
@@ -492,10 +656,16 @@ function RecallWhyAppeared() {
       <Glow color="#A882FF" size="45%" top="40%" left="30%" opacity={0.03} />
       <DotGrid mask />
 
-      <Grid12>
-        {/* Diagram LEFT */}
+      <Grid12 className="items-center">
+        {/* Image LEFT */}
         <div style={{ gridColumn: '1 / 7' }}>
-          <Placeholder type="diag" label="Match transparency: highlighted terms, source context, confidence breakdown" minHeight="400px" />
+          <Image
+            src="/assets/agents/image 2065417629.png"
+            alt="Match transparency: highlighted terms, source context, confidence breakdown"
+            width={1400}
+            height={800}
+            style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
+          />
         </div>
 
         {/* Text RIGHT */}
@@ -521,7 +691,7 @@ function RecallIteration() {
       <Glow color="#A882FF" size="50%" top="50%" left="50%" opacity={0.03} />
 
       <Grid12>
-        <div style={{ gridColumn: '1 / 13', marginBottom: '32px' }}>
+        <div style={{ gridColumn: '1 / 8', marginBottom: '32px' }}>
           <span className="t-label block mb-4" style={{ color: '#A882FF', opacity: 0.5 }}>Early Iteration</span>
           <h2 className="t-heading mb-6">Merged results killed clarity</h2>
         </div>
@@ -550,103 +720,110 @@ function RecallIteration() {
   )
 }
 
-/* ── 7. Performance — Light theme with video ── */
+/* ── 7. Performance ── */
 function RecallPerformance() {
   return (
-    <section id="performance" style={{ background: '#f0f0f0', color: '#1a1a1a' }}>
-      <div style={{ padding: '96px var(--pad) 80px', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
-        <Grid12>
-          <div style={{ gridColumn: '2 / 12', marginBottom: '48px' }}>
-            <span className="t-label block mb-4" style={{ color: '#7B5FBF', opacity: 0.7 }}>Performance</span>
-            <h2 className="t-heading mb-6" style={{ color: '#1a1a1a' }}>Fast enough to feel alive</h2>
-            <p className="t-body mb-4" style={{ color: '#444' }}>Embedding indexing and local retrieval are computationally heavy. Most queries came back fast. Some didn&apos;t. Users had to wait.</p>
-            <p className="t-body mb-4" style={{ color: '#444' }}>We made waiting feel like progress. Results evolved live as users typed, each keystroke refining the results in real time. No waiting for a full query. Constant forward motion.</p>
-            <p className="t-body" style={{ color: '#444' }}>Design and engineering iterated constantly. We tuned how aggressively the system sent queries based on actual typing patterns, found a balance that avoided expensive retriggering without sacrificing responsiveness.</p>
-          </div>
-        </Grid12>
-
-        <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', borderRadius: '12px', overflow: 'hidden' }}>
-          <video autoPlay loop muted playsInline style={{ width: '100%', display: 'block' }}>
-            <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4" type="video/mp4" />
-          </video>
+    <Section id="performance" padding="py-24 md:py-32">
+      <Grid12 className="mb-12">
+        <div style={{ gridColumn: '1 / 7' }}>
+          <span className="t-label block mb-4" style={{ color: '#A882FF', opacity: 0.5 }}>Performance</span>
+          <h2 className="t-heading">Fast enough to feel alive</h2>
         </div>
+        <div style={{ gridColumn: '8 / 13', alignSelf: 'start' }}>
+          <p className="t-body mb-4">Embedding indexing and local retrieval are computationally heavy. Most queries came back fast. Some didn&apos;t. Users had to wait.</p>
+          <p className="t-body mb-4">We made waiting feel like progress. Results evolved live as users typed, each keystroke refining the results in real time. No waiting for a full query. Constant forward motion.</p>
+          <p className="t-body">Design and engineering iterated constantly. We tuned how aggressively the system sent queries based on actual typing patterns, found a balance that avoided expensive retriggering without sacrificing responsiveness.</p>
+        </div>
+      </Grid12>
+
+      <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
+        <video autoPlay loop muted playsInline style={{ width: '100%', display: 'block' }}>
+          <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4" type="video/mp4" />
+        </video>
       </div>
-    </section>
+    </Section>
   )
 }
 
-/* ── 8. Trust — Light theme privacy grid ── */
+/* ── 8. Trust ── */
 function RecallTrust() {
   return (
-    <section id="trust" style={{ background: '#f0f0f0', color: '#1a1a1a' }}>
-      <div style={{ padding: '96px var(--pad) 80px', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
-        <Grid12>
-          <div style={{ gridColumn: '1 / 13', marginBottom: '32px' }}>
-            <span className="t-label block mb-4" style={{ color: '#7B5FBF', opacity: 0.7 }}>Trust</span>
-            <h2 className="t-heading mb-6" style={{ color: '#1a1a1a' }}>Privacy was the whole product</h2>
-            <p className="t-body mb-4" style={{ maxWidth: '700px', color: '#444' }}>Recall captures everything. That only works if people trust where the data sits, who can see it, and what control they actually have.</p>
-            <p className="t-body" style={{ maxWidth: '700px', color: '#444' }}>On-device processing wasn&apos;t optional. All capture, all indexing, all retrieval happened locally. Nothing left the machine.</p>
-          </div>
-        </Grid12>
+    <Section id="trust" padding="py-24 md:py-32">
+      <EdgeLine position="top" />
 
-        {/* 2×2 privacy cards */}
-        <Grid12>
+      <Grid12 className="mb-12">
+        {/* Left: title + body + closing text */}
+        <div style={{ gridColumn: '1 / 7' }}>
+          <span className="t-label block mb-4" style={{ color: '#A882FF', opacity: 0.5 }}>Trust</span>
+          <h2 className="t-heading mb-6">Privacy was the whole product</h2>
+          <p className="t-body mb-4">Recall captures everything. That only works if people trust where the data sits, who can see it, and what control they actually have.</p>
+          <p className="t-body mb-6">On-device processing wasn&apos;t optional. All capture, all indexing, all retrieval happened locally. Nothing left the machine.</p>
+          <p className="t-body mb-4">After public scrutiny, things changed. Recall flipped from opt-out to opt-in. Users got the ability to exclude apps and pause indexing.</p>
+          <p className="t-body">We made those boundaries tangible. Cards showed where results came from and when. Excluded content got explicit explanation instead of silent gaps. Trust wasn&apos;t a single setting. It lived in every interaction.</p>
+        </div>
+
+        {/* Right: 4 stacked cards */}
+        <div style={{ gridColumn: '7 / 13', display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {[
             { title: 'Data storage', desc: 'Everything stays on-device. No cloud processing, no external servers. Local indexing, local retrieval.' },
             { title: 'User control', desc: 'Opt-in by default. Exclude apps, pause indexing, delete any memory. Full user agency.' },
             { title: 'Transparency', desc: 'Every card shows provenance. Match types labeled. System boundaries visible, never hidden.' },
             { title: 'Deletion', desc: 'Delete individual memories or wipe everything. No hidden caches. What you delete is gone.' },
           ].map((card, i) => (
-            <div key={i} style={{ gridColumn: i < 2 ? `${1 + i * 6} / ${7 + i * 6}` : `${1 + (i - 2) * 6} / ${7 + (i - 2) * 6}`, marginTop: i >= 2 ? '24px' : undefined }}>
-              <div className="p-6" style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.06)' }}>
-                <h3 className="t-subhead mb-2" style={{ fontSize: 'clamp(16px, 1.6vw, 20px)', color: '#1a1a1a' }}>{card.title}</h3>
-                <p className="t-body" style={{ color: '#444' }}>{card.desc}</p>
-              </div>
+            <div key={i} className="p-5" style={{ background: 'var(--w04)', borderRadius: '12px', border: '1px solid var(--w06)' }}>
+              <h3 style={{ fontSize: '15px', fontWeight: 500, color: 'var(--w88)', marginBottom: '4px' }}>{card.title}</h3>
+              <p className="t-body">{card.desc}</p>
             </div>
           ))}
-        </Grid12>
+        </div>
+      </Grid12>
 
-        <Grid12 className="mt-10">
-          <div style={{ gridColumn: '1 / 8' }}>
-            <p className="t-body mb-4" style={{ color: '#444' }}>After public scrutiny, things changed. Recall flipped from opt-out to opt-in. Users got the ability to exclude apps and pause indexing.</p>
-            <p className="t-body" style={{ color: '#444' }}>We made those boundaries tangible. Cards showed where results came from and when. Excluded content got explicit explanation instead of silent gaps. Trust wasn&apos;t a single setting. It lived in every interaction.</p>
-          </div>
-        </Grid12>
+      {/* Side-by-side images */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+        <Image
+          src="/assets/agents/Snapshot View.png"
+          alt="Recall snapshot view showing privacy controls"
+          width={1920}
+          height={1080}
+          style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
+        />
+        <Image
+          src="/assets/agents/Windows Commercial_16x9_1920_1080.png"
+          alt="Windows Recall commercial privacy showcase"
+          width={1920}
+          height={1080}
+          style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
+        />
       </div>
-    </section>
+    </Section>
   )
 }
 
-/* ── 9. Constraints — Light theme with video ── */
+/* ── 9. Constraints ── */
 function RecallConstraints() {
   return (
-    <section id="constraints" style={{ background: '#f0f0f0', color: '#1a1a1a' }}>
-      <div style={{ padding: '96px var(--pad) 96px', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
-        <div className="text-center mb-12">
-          <p className="t-display" style={{ fontSize: 'clamp(32px, 5vw, 72px)', fontWeight: 300, color: '#333' }}>
-            RAG killed for speed
-          </p>
-          <p className="t-label mt-4" style={{ color: '#666' }}>Synthesis abandoned to keep search instantaneous</p>
-        </div>
+    <Section id="constraints" padding="py-24 md:py-32">
+      <EdgeLine position="top" />
 
-        <Grid12>
-          <div style={{ gridColumn: '2 / 10' }}>
-            <span className="t-label block mb-4" style={{ color: '#7B5FBF', opacity: 0.7 }}>Constraints &amp; Tradeoffs</span>
-            <h2 className="t-heading mb-6" style={{ color: '#1a1a1a' }}>We killed RAG to keep search fast</h2>
-            <p className="t-body mb-4" style={{ color: '#444' }}>Early on, we explored synthesis across memories. Retrieval-augmented generation could answer higher-level questions by stitching together context from many screenshots.</p>
-            <p className="t-body mb-4" style={{ color: '#444' }}>Latency killed it. Retrieving and generating across large memory sets created delays that broke the core expectation: search should feel instantaneous.</p>
-            <p className="t-body mb-4" style={{ color: '#444' }}>We abandoned synthesis and focused on speed and legibility instead. Surface relevant moments. Let people interpret them.</p>
-            <p className="t-body" style={{ color: '#444' }}>And honestly, it was the right call design-wise. The system helps people rediscover what they saw. It doesn&apos;t rewrite their history for them.</p>
-          </div>
-        </Grid12>
-
-        <div style={{ maxWidth: 'var(--max-w)', margin: '48px auto 0', borderRadius: '12px', overflow: 'hidden' }}>
-          <video autoPlay loop muted playsInline style={{ width: '100%', display: 'block' }}>
-            <source src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4" type="video/mp4" />
-          </video>
+      <Grid12>
+        <div style={{ gridColumn: '1 / 6' }}>
+          <span className="t-label block mb-4" style={{ color: '#A882FF', opacity: 0.5 }}>Constraints &amp; Tradeoffs</span>
+          <h2 className="t-heading">We killed RAG to keep search fast</h2>
         </div>
+        <div style={{ gridColumn: '7 / 13', alignSelf: 'start' }}>
+          <p className="t-body mb-4">Early on, we explored synthesis across memories. Retrieval-augmented generation could answer higher-level questions by stitching together context from many screenshots.</p>
+          <p className="t-body mb-4">Latency killed it. Retrieving and generating across large memory sets created delays that broke the core expectation: search should feel instantaneous.</p>
+          <p className="t-body mb-4">We abandoned synthesis and focused on speed and legibility instead. Surface relevant moments. Let people interpret them.</p>
+          <p className="t-body">And honestly, it was the right call design-wise. The system helps people rediscover what they saw. It doesn&apos;t rewrite their history for them.</p>
+        </div>
+      </Grid12>
+
+      <div style={{ marginTop: '48px', borderRadius: '12px', overflow: 'hidden' }}>
+        <video autoPlay loop muted playsInline style={{ width: '100%', display: 'block' }}>
+          <source src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4" type="video/mp4" />
+        </video>
       </div>
-    </section>
+    </Section>
   )
 }
 

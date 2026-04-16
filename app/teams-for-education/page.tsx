@@ -1,8 +1,6 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 import { NavEditorial } from '@/components/editorial/NavEditorial'
 import { Section } from '@/components/editorial/Section'
 import { Grid12 } from '@/components/editorial/Grid12'
@@ -10,9 +8,10 @@ import { GlassCard } from '@/components/editorial/GlassCard'
 import { Glow } from '@/components/atmosphere/Glow'
 import { DotGrid } from '@/components/atmosphere/DotGrid'
 import { EdgeLine } from '@/components/atmosphere/EdgeLine'
-import { Vignette } from '@/components/atmosphere/Vignette'
 import { Placeholder } from '@/components/placeholder/Placeholder'
+import { FigurePanel } from '@/components/figure-panel'
 import { SectionNav } from '@/components/editorial/SectionNav'
+import { TeamsHero } from '@/components/teams/TeamsHero'
 
 /* ═══════════════════════════════════════════════════════════════
    TEAMS FOR EDUCATION
@@ -55,99 +54,166 @@ export default function TeamsForEducationPage() {
   )
 }
 
-function fade(show: boolean, delay: string, tr: string): React.CSSProperties {
-  return { opacity: show ? 1 : 0, transform: show ? 'translateY(0)' : 'translateY(24px)', transition: tr, transitionDelay: delay }
-}
-
-/* ── 1. Hero — CENTERED (breaks pattern) ── */
-function TeamsHero() {
-  const [show, setShow] = useState(false)
-  useEffect(() => { const t = setTimeout(() => setShow(true), 100); return () => clearTimeout(t) }, [])
-  const tr = 'opacity 1s var(--expo), transform 1s var(--expo)'
-
-  return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <Image src="/images/heroes/TeamsProjectHero.jpg" alt="" fill priority className="object-cover" style={{ opacity: show ? 1 : 0, transition: 'opacity 1.2s var(--expo)' }} />
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(6,6,10,0.85) 0%, rgba(6,6,10,0.3) 40%, rgba(6,6,10,0.85) 100%)' }} />
-      <Glow color="#6C63FF" size="45%" top="35%" left="35%" opacity={0.05} />
-      <Glow color="#FF8B6A" size="40%" top="55%" left="65%" opacity={0.04} />
-      <Vignette />
-
-      <div className="relative z-10 text-center" style={{ padding: 'var(--pad)', maxWidth: '800px' }}>
-        <div className="flex flex-wrap justify-center gap-2 mb-6" style={{ opacity: show ? 1 : 0, transition: 'opacity 0.8s var(--expo)', transitionDelay: '0.2s' }}>
-          {['UX Strategy', 'Microsoft Teams', 'Senior Designer', '2020'].map((tag) => (
-            <span key={tag} className="t-mono px-3 py-1 rounded-full" style={{ border: '1px solid var(--w06)', color: 'var(--w20)' }}>{tag}</span>
-          ))}
-        </div>
-        <span className="t-label block mb-3" style={{ color: '#6C63FF', opacity: 0.6, ...fade(show, '0.2s', tr) }}>Teams for Education</span>
-        <h1 className="t-display" style={fade(show, '0.3s', tr)}>Modernizing Online Classes For An Authentic Virtual Experience</h1>
-      </div>
-    </section>
-  )
-}
-
-/* ── 2. Context — Big stat opener + two-column ── */
+/* ── 2. Context — Gradient stat + single-column narrative ── */
 function TeamsContext() {
   return (
+    <div
+      style={{
+        background:
+          'radial-gradient(ellipse at 50% 100%, rgba(54,36,67,1) 0%, rgba(30,21,38,1) 30%, rgba(18,13,24,1) 55%, rgba(6,6,10,1) 85%)',
+      }}
+    >
     <Section id="context" padding="py-24 md:py-32">
-      <Glow color="#6C63FF" size="40%" top="20%" left="50%" opacity={0.03} />
+      <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 var(--pad)' }}>
+        <Grid12>
+          {/* Left — giant stat */}
+          <div style={{ gridColumn: '1 / 5', alignSelf: 'start' }}>
+            <p
+              className="font-medium"
+              style={{
+                fontSize: 'clamp(72px, 10vw, 144px)',
+                lineHeight: 1,
+                letterSpacing: '-1.4px',
+                backgroundImage:
+                  'linear-gradient(227deg, #fff 20%, #BC71EE 34%, #fff 96%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              150M+
+            </p>
+            <p className="t-body mt-3" style={{ color: 'var(--w75)' }}>
+              Students and educators on Teams during the pandemic
+            </p>
+          </div>
 
-      {/* Big stat */}
-      <div className="text-center mb-16">
-        <span className="t-display" style={{ fontSize: 'clamp(64px, 10vw, 140px)', fontWeight: 300, color: 'var(--w88)' }}>
-          150M<span style={{ color: '#6C63FF', opacity: 0.5 }}>+</span>
-        </span>
-        <p className="t-label mt-3">Students and educators on Teams during the pandemic</p>
+          {/* Right — heading + body */}
+          <div style={{ gridColumn: '6 / 13' }}>
+            <h2
+              className="t-heading mb-10"
+              style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', letterSpacing: '-0.48px' }}
+            >
+              COVID brought millions of new students to online classrooms
+            </h2>
+
+            <div style={{ maxWidth: '807px' }}>
+              <p className="t-body mb-4">
+                At the height of the pandemic, Microsoft Teams became a lifeline for education, used by over 150 million students and educators worldwide. Growth was massive, but it was fragile. Our team was tasked with figuring out how to retain it.
+              </p>
+              <p className="t-body mb-4">
+                The initial ask was about growth metrics, specifically how to keep the numbers up. But through a rigorous design process loop of research, synthesis, and prototyping, we discovered that the real lever for retention wasn&apos;t feature additions.
+              </p>
+              <p className="t-body mb-4">
+                That reframing changed everything. Instead of optimizing for adoption metrics, we focused on what was actually breaking down in the virtual classroom experience.
+              </p>
+              <p className="t-body">
+                The retention strategy became inseparable from the user experience strategy. My role centered on leading that design process and shaping the interaction patterns that emerged from it.
+              </p>
+            </div>
+          </div>
+        </Grid12>
       </div>
-
-      <Grid12>
-        <div style={{ gridColumn: '1 / 13', marginBottom: '32px' }}>
-          <span className="t-label block mb-4" style={{ color: '#6C63FF', opacity: 0.5 }}>Context</span>
-          <h2 className="t-heading">COVID brought millions of new students to online classrooms</h2>
-        </div>
-      </Grid12>
-
-      <Grid12>
-        <div style={{ gridColumn: '1 / 7' }}>
-          <p className="t-body mb-4">At the height of the pandemic, Microsoft Teams became a lifeline for education, used by over 150 million students and educators worldwide. Growth was massive, but it was fragile. Our team was tasked with figuring out how to retain it.</p>
-          <p className="t-body">The initial ask was about growth metrics, specifically how to keep the numbers up. But through a rigorous design process loop of research, synthesis, and prototyping, we discovered that the real lever for retention wasn&apos;t feature additions.</p>
-        </div>
-        <div style={{ gridColumn: '7 / 13' }}>
-          <p className="t-body mb-4">That reframing changed everything. Instead of optimizing for adoption metrics, we focused on what was actually breaking down in the virtual classroom experience.</p>
-          <p className="t-body">The retention strategy became inseparable from the user experience strategy. My role centered on leading that design process and shaping the interaction patterns that emerged from it.</p>
-        </div>
-      </Grid12>
     </Section>
+    </div>
   )
 }
 
-/* ── 3. Problem — Narrative + atmospheric images ── */
+/* ── 3. Problem — Heading + two-col narrative + quote cards ── */
+const STUDENT_QUOTES = [
+  {
+    quote: '"I\'m not that good in math so when we go back to in-person learning I\'m looking forward to group discussions"',
+    name: '- Phillip, grade 12',
+  },
+  {
+    quote: '"When I\'m at home I don\'t feel like I\'m in class. I\'m looking forward to having the feeling that I\'m in school and I\'m in class and having that dynamic with teachers to talk to them after class or just have a physical connection rather than through a screen."',
+    name: '- Liana, grade 12',
+  },
+  {
+    quote: '"Most of my teachers randomly put us in breakout rooms and sometimes it\'s a really quiet room. But for me it\'s less awkward to break that silence than try to break a silence of over 30 kids in a class because I would rather talk to a group of 5 kids than 30 people. When you\'re in smaller breakout rooms it\'s easier. ',
+    emphasisEnd: 'It\'s just a bigger audience thing for me',
+    name: '- Karen, grade 12',
+  },
+  {
+    quote: '"I\'m looking forward to going back to in person learning for the group activities, I liked working with my peers. For virtual group classes, it just felt good to see my friends and we can actually talk and stuff like that."',
+    name: '- Khalia, grade 12',
+  },
+] as const
+
 function TeamsProblem() {
   return (
     <Section id="problem" padding="py-24 md:py-32">
-      <EdgeLine position="top" />
-      <Glow color="#FF8B6A" size="45%" top="40%" left="60%" opacity={0.03} />
-      <DotGrid mask />
+      {/* Heading — full width */}
+      <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 var(--pad)' }}>
+        <h2
+          className="t-heading mb-6"
+          style={{ fontSize: 'clamp(24px, 2.5vw, 32px)', letterSpacing: '-0.32px' }}
+        >
+          Engagement collapsed when classrooms went virtual
+        </h2>
 
-      <Grid12>
-        <div style={{ gridColumn: '2 / 10', marginBottom: '48px' }}>
-          <span className="t-label block mb-4" style={{ color: '#FF8B6A', opacity: 0.5 }}>Problem</span>
-          <h2 className="t-heading mb-6">Engagement collapsed when classrooms went virtual</h2>
-          <p className="t-body mb-4">Teachers became operators, not educators. They managed attendance, read chat, spun up breakout rooms, debugged audio problems, and lectured all at once. Reading the room meant staring at a grid of boxes and guessing who was actually there.</p>
-          <p className="t-body mb-4">Students retreated. Raising your hand meant speaking to thirty people at once, into dead silence, with no response. There were no whispered questions to a neighbor. No one to nudge you back into focus. So most just turned off their cameras.</p>
-          <p className="t-body mb-4">In person, schools have architecture. Small groups, seating arrangements, a teacher moving through the room. Learning happens in conversation. Online, it collapsed into broadcast.</p>
-          <p className="t-body">Teachers couldn&apos;t see who was falling behind. Students couldn&apos;t feel like part of a group. The system worked for lecturing. It failed at learning.</p>
+        {/* Two-column body */}
+        <div
+          style={{
+            display: 'flex',
+            gap: '59px',
+            flexWrap: 'wrap',
+            marginBottom: '48px',
+          }}
+        >
+          <div style={{ flex: '1 1 420px', maxWidth: '642px' }}>
+            <p className="t-body-lg mb-3" style={{ letterSpacing: '-0.18px' }}>
+              Teachers became operators, not educators. They managed attendance, read chat, spun up breakout rooms, debugged audio problems, and lectured all at once. Reading the room meant staring at a grid of boxes and guessing who was actually there.
+            </p>
+            <p className="t-body-lg" style={{ letterSpacing: '-0.18px' }}>
+              Students retreated. Raising your hand meant speaking to thirty people at once, into dead silence, with no response. There were no whispered questions to a neighbor. No one to nudge you back into focus. So most just turned off their cameras.
+            </p>
+          </div>
+          <div style={{ flex: '1 1 420px', maxWidth: '697px' }}>
+            <p className="t-body-lg mb-3" style={{ letterSpacing: '-0.18px' }}>
+              In person, schools have architecture. Small groups, seating arrangements, a teacher moving through the room. Learning happens in conversation. Online, it collapsed into broadcast.
+            </p>
+            <p className="t-body-lg" style={{ letterSpacing: '-0.18px' }}>
+              Teachers couldn&apos;t see who was falling behind. Students couldn&apos;t feel like part of a group. The system worked for lecturing. It failed at learning.
+            </p>
+          </div>
         </div>
-      </Grid12>
 
-      <Grid12>
-        <div style={{ gridColumn: '1 / 7' }}>
-          <Placeholder type="img" label="Physical classroom — students at tables, teacher moving through the room" minHeight="280px" />
+        {/* Quote cards */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '34px',
+          }}
+        >
+          {STUDENT_QUOTES.map((q, i) => (
+            <div
+              key={i}
+              style={{
+                background: 'rgba(0,0,0,0.1)',
+                borderRadius: '16px',
+                padding: '24px',
+                boxShadow: '0 2px 5px 2px rgba(59,59,59,0.25)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '27px',
+              }}
+            >
+              <p style={{ fontSize: '14px', lineHeight: '20px', color: '#94A3B8' }}>
+                {q.quote}
+                {'emphasisEnd' in q && (
+                  <em style={{ fontWeight: 700 }}>{q.emphasisEnd}</em>
+                )}
+                {'emphasisEnd' in q && '"'}
+              </p>
+              <p style={{ fontSize: '14px', lineHeight: '20px', color: '#fff', fontWeight: 600 }}>
+                {q.name}
+              </p>
+            </div>
+          ))}
         </div>
-        <div style={{ gridColumn: '7 / 13' }}>
-          <Placeholder type="img" label="Virtual classroom — grid of boxes, no spatial awareness" minHeight="280px" />
-        </div>
-      </Grid12>
+      </div>
     </Section>
   )
 }
@@ -171,11 +237,13 @@ function TeamsResearch() {
         </div>
       </Grid12>
 
-      <Grid12>
-        <div style={{ gridColumn: '1 / 13', marginBottom: '32px' }}>
-          <h2 className="t-heading mb-6">Designing from real classroom behavior</h2>
-          <p className="t-body mb-4" style={{ maxWidth: '700px' }}>Before designing anything, we ran extensive research with students, parents, and teachers to understand their daily experience inside Teams. I led several of these sessions to map the full day-in-the-life of both educators and students.</p>
-          <p className="t-body" style={{ maxWidth: '700px' }}>We observed where engagement broke down, when energy dropped, and what felt emotionally uncomfortable in a virtual classroom. These sessions were not about usability tweaks. They were about understanding how it felt to spend six hours a day in small boxes on a screen.</p>
+      <Grid12 className="mb-8">
+        <div style={{ gridColumn: '1 / 6' }}>
+          <h2 className="t-heading">Designing from real classroom behavior</h2>
+        </div>
+        <div style={{ gridColumn: '7 / 13', alignSelf: 'start' }}>
+          <p className="t-body mb-4">Before designing anything, we ran extensive research with students, parents, and teachers to understand their daily experience inside Teams. I led several of these sessions to map the full day-in-the-life of both educators and students.</p>
+          <p className="t-body">We observed where engagement broke down, when energy dropped, and what felt emotionally uncomfortable in a virtual classroom. These sessions were not about usability tweaks. They were about understanding how it felt to spend six hours a day in small boxes on a screen.</p>
         </div>
       </Grid12>
 
@@ -240,21 +308,22 @@ function TeamsOrchestration() {
       <Glow color="#6C63FF" size="50%" top="50%" left="30%" opacity={0.04} />
       <DotGrid mask />
 
-      <Grid12>
-        <div style={{ gridColumn: '1 / 6', position: 'sticky', top: '120px', alignSelf: 'start' }}>
+      <Grid12 className="mb-12">
+        <div style={{ gridColumn: '1 / 6' }}>
           <span className="t-label block mb-4" style={{ color: '#6C63FF', opacity: 0.5 }}>Classroom Orchestration</span>
-          <h2 className="t-heading mb-6">Giving teachers the room back</h2>
+          <h2 className="t-heading">Giving teachers the room back</h2>
+        </div>
+        <div style={{ gridColumn: '7 / 13', alignSelf: 'start' }}>
           <p className="t-body mb-4">Virtual tables were only part of the solution. The real breakthrough was enabling teachers to manage the room naturally.</p>
           <p className="t-body mb-4">Teachers could start table discussions and monitor the classroom from a global view. From there, they could move fluidly between groups, almost like walking around a physical classroom.</p>
           <p className="t-body">This orchestration layer restored something subtle but powerful: situational awareness. Instead of fragmented breakout rooms, teachers had a cohesive classroom again.</p>
           <p className="t-body mt-4">Discussions don&apos;t pause when someone steps away. A student drops off for a minute, reconnects late, or gets moved between tables. They land in a conversation that&apos;s already moving. The system needed to handle that without making the returning student feel lost or forcing the group to restart. We designed re-entry to surface enough context — recent discussion activity, shared materials, who&apos;s currently talking — so a student could orient and join without interrupting the flow already happening.</p>
         </div>
-
-        <div style={{ gridColumn: '6 / 13', display: 'flex', flexDirection: 'column', gap: '32px' }}>
-          <Placeholder type="ui" label="Teacher's global view — all tables at once, status indicators per group" minHeight="340px" />
-          <Placeholder type="ui" label="Table-level view — video tiles, shared workspace, chat" minHeight="300px" />
-        </div>
       </Grid12>
+
+      <div style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
+        <FigurePanel caption="Student view of their virtual table" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig06-2YDd5QkvxbZD2b8O44R0Nag6g14UhH.mov" />
+      </div>
     </Section>
   )
 }
@@ -269,7 +338,7 @@ function TeamsGroupCreation() {
       <Grid12>
         {/* Visual LEFT */}
         <div style={{ gridColumn: '1 / 7' }}>
-          <Placeholder type="ui" label="Group creation — drag-and-drop interface for assigning students to tables" minHeight="400px" />
+          <FigurePanel caption="Whole class to table transitions" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov" />
         </div>
 
         {/* Text RIGHT */}
@@ -301,7 +370,7 @@ function TeamsStudentView() {
       </Grid12>
 
       <div style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
-        <Placeholder type="ui" label="Student device mockup — the student's perspective of their table" minHeight="360px" />
+        <FigurePanel caption="Group creation and assignment flow" videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov" />
       </div>
     </Section>
   )
@@ -314,9 +383,11 @@ function TeamsBandwidth() {
       <EdgeLine position="top" />
 
       <Grid12>
-        <div style={{ gridColumn: '2 / 10' }}>
+        <div style={{ gridColumn: '1 / 7' }}>
           <span className="t-label block mb-4" style={{ color: '#FF8B6A', opacity: 0.5 }}>Bandwidth Constraints</span>
-          <h2 className="t-heading mb-6">Not all home internet is equal</h2>
+          <h2 className="t-heading">Not all home internet is equal</h2>
+        </div>
+        <div style={{ gridColumn: '8 / 13', alignSelf: 'start' }}>
           <p className="t-body mb-4">Many students were using shared home networks. Older devices. Spotty connections. When teachers handed out materials mid-lesson, students with slow internet got left behind while files loaded.</p>
           <p className="t-body mb-4">Persistent tables fixed this structurally. Teachers attached materials to each table before class. Students could open files as soon as they sat down, not when the teacher shared them.</p>
           <p className="t-body">Small change. Huge impact. Teaching time didn&apos;t pause for tech problems.</p>

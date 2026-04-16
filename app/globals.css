@@ -354,29 +354,39 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.7;
-  color: var(--w45);
+  color: var(--w60);
 }
 
 .t-body-lg {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.75;
-  color: var(--w45);
+  line-height: 1.7;
+  color: var(--w60);
 }
 
 .t-label {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--w15);
+  color: var(--w25);
 }
 
 .t-mono {
   font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.08em;
-  color: var(--w12);
+  color: var(--w20);
 }
+
+.t-caption {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--w45);
+}
+
+.t-measure { max-width: 680px; }
+.t-measure-wide { max-width: 780px; }
 
 /* ═══════════════════════════════════════════════════════════════
    NAV
@@ -467,6 +477,16 @@
 @keyframes cursor-blink {
   0%, 100% { opacity: 1; }
   50%      { opacity: 0; }
+}
+
+@keyframes teamsEmojiFloat {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 /* ═══════════════════════════════════════════════════════════════
