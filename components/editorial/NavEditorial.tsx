@@ -51,7 +51,7 @@ export function NavEditorial() {
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex flex-col justify-center items-center w-11 h-11 -mr-2 md:hidden"
+          className="flex flex-col justify-center items-center w-11 h-11 -mr-2 lg:hidden"
           aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={mobileOpen}
           style={{ display: undefined }}
@@ -76,7 +76,7 @@ export function NavEditorial() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-[99] flex flex-col items-center justify-center gap-8 md:hidden"
+          className="fixed inset-0 z-[99] flex flex-col items-center justify-center gap-8 lg:hidden"
           style={{ background: 'rgba(6, 6, 10, 0.95)', backdropFilter: 'blur(24px)' }}
         >
           {links.map((link) => (

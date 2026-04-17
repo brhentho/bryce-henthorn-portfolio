@@ -20,10 +20,10 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  const links = [
+  const links: Array<{ label: string; href: string; external?: boolean }> = [
     { label: "Work", href: "/#projects" },
     { label: "About", href: "/about" },
-{ label: "Contact", href: "mailto:bhenthorn2757@gmail.com" },
+    { label: "Contact", href: "mailto:bhenthorn2757@gmail.com" },
   ]
 
   return (

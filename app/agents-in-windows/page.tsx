@@ -247,19 +247,21 @@ function AgentsTaskbar() {
 
         {/* Right: video cols 7-12 */}
         <div style={{ gridColumn: '7 / 13' }}>
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              width: '100%',
-              borderRadius: '16px',
-              border: '1px solid rgba(255,255,255,0.1)',
-              display: 'block',
-            }}
-            src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Taskbar.mp4"
-          />
+          <div style={{
+            aspectRatio: '16 / 9',
+            borderRadius: '16px',
+            border: '1px solid rgba(255,255,255,0.1)',
+            overflow: 'hidden',
+          }}>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Taskbar.mp4"
+            />
+          </div>
         </div>
       </Grid12>
     </Section>
@@ -336,19 +338,21 @@ function AgentsInvocation() {
 
         {/* Right: video cols 7-13 */}
         <div style={{ gridColumn: '6 / 13' }}>
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              width: '100%',
-              borderRadius: '20px',
-              border: '1px solid rgba(255,255,255,0.1)',
-              display: 'block',
-            }}
-            src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Composer.mp4"
-          />
+          <div style={{
+            aspectRatio: '16 / 9',
+            borderRadius: '20px',
+            border: '1px solid rgba(255,255,255,0.1)',
+            overflow: 'hidden',
+          }}>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Composer.mp4"
+            />
+          </div>
         </div>
       </Grid12>
     </Section>

@@ -736,8 +736,8 @@ function RecallPerformance() {
         </div>
       </Grid12>
 
-      <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
-        <video autoPlay loop muted playsInline style={{ width: '100%', display: 'block' }}>
+      <div style={{ aspectRatio: '16 / 9', borderRadius: '12px', overflow: 'hidden' }}>
+        <video autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}>
           <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4" type="video/mp4" />
         </video>
       </div>
@@ -818,8 +818,8 @@ function RecallConstraints() {
         </div>
       </Grid12>
 
-      <div style={{ marginTop: '48px', borderRadius: '12px', overflow: 'hidden' }}>
-        <video autoPlay loop muted playsInline style={{ width: '100%', display: 'block' }}>
+      <div style={{ marginTop: '48px', aspectRatio: '16 / 9', borderRadius: '12px', overflow: 'hidden' }}>
+        <video autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}>
           <source src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4" type="video/mp4" />
         </video>
       </div>
