@@ -8,7 +8,7 @@ import { GlassCard } from '@/components/editorial/GlassCard'
 import { Glow } from '@/components/atmosphere/Glow'
 import { DotGrid } from '@/components/atmosphere/DotGrid'
 import { EdgeLine } from '@/components/atmosphere/EdgeLine'
-import { Placeholder } from '@/components/placeholder/Placeholder'
+import Image from 'next/image'
 import { FigurePanel } from '@/components/figure-panel'
 import { SectionNav } from '@/components/editorial/SectionNav'
 import { TeamsHero } from '@/components/teams/TeamsHero'
@@ -225,8 +225,8 @@ function TeamsResearch() {
       <Glow color="#6C63FF" size="50%" top="30%" left="40%" opacity={0.04} />
 
       {/* Centered large quote */}
-      <Grid12>
-        <div style={{ gridColumn: '3 / 11', textAlign: 'center', marginBottom: '64px' }}>
+      <Grid12 className="mb-16">
+        <div style={{ gridColumn: '3 / 11', textAlign: 'center' }}>
           <span className="t-label block mb-6" style={{ color: '#6C63FF', opacity: 0.5 }}>Research</span>
           <p className="t-subhead" style={{ color: 'var(--w75)', fontStyle: 'italic' }}>
             &ldquo;They missed belonging.&rdquo;
@@ -247,9 +247,17 @@ function TeamsResearch() {
         </div>
       </Grid12>
 
-      {/* Research timeline */}
-      <div style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
-        <Placeholder type="diag" label="Research timeline: interviews → synthesis → insights → design principles" minHeight="200px" />
+      {/* Co-design session with educators */}
+      <div style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', marginLeft: 'auto', marginRight: 'auto' }}>
+        <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--w06)' }}>
+          <Image
+            src="/images/projects/teams-cocreation.png"
+            alt="Co-design session with educators — mapping the tools needed for a successful virtual class"
+            width={1600}
+            height={900}
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
+        </div>
       </div>
     </Section>
   )
@@ -262,8 +270,8 @@ function TeamsSolution() {
       <EdgeLine position="top" />
       <Glow color="#6C63FF" size="50%" top="50%" left="50%" opacity={0.03} />
 
-      <Grid12>
-        <div style={{ gridColumn: '1 / 13', marginBottom: '48px' }}>
+      <Grid12 className="mb-12">
+        <div style={{ gridColumn: '1 / 13' }}>
           <span className="t-label block mb-4" style={{ color: '#6C63FF', opacity: 0.5 }}>Solution</span>
           <h2 className="t-heading">Reintroducing structure without turning Teams into a cartoon classroom</h2>
         </div>
@@ -293,9 +301,17 @@ function TeamsSolution() {
         </div>
       </Grid12>
 
-      {/* Full-width UI */}
-      <div style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', margin: '48px auto 0' }}>
-        <Placeholder type="ui" label="Virtual tables concept — top-down classroom view with grouped student tables" minHeight="360px" />
+      {/* Virtual tables concept — Teams UI */}
+      <div style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', marginLeft: 'auto', marginRight: 'auto', marginTop: '48px' }}>
+        <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--w06)' }}>
+          <Image
+            src="/images/projects/teams-fig02.png"
+            alt="Virtual tables concept — Teams classroom with students grouped at named tables"
+            width={1600}
+            height={900}
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
+        </div>
       </div>
     </Section>
   )
@@ -360,8 +376,8 @@ function TeamsStudentView() {
     <Section id="student-view" padding="py-24 md:py-32">
       <Glow color="#6C63FF" size="50%" top="50%" left="50%" opacity={0.03} />
 
-      <Grid12>
-        <div style={{ gridColumn: '3 / 11', textAlign: 'center', marginBottom: '48px' }}>
+      <Grid12 className="mb-12">
+        <div style={{ gridColumn: '3 / 11', textAlign: 'center' }}>
           <span className="t-label block mb-4" style={{ color: '#6C63FF', opacity: 0.5 }}>Student View</span>
           <p className="t-body" style={{ maxWidth: '500px', margin: '0 auto' }}>
             From the student perspective, the experience reinforced belonging. They saw familiar group members, recognized their seat, and felt accountable to the people around them. That subtle shift made participation feel manageable again.
@@ -426,8 +442,8 @@ function TeamsImpact() {
       <Glow color="#6C63FF" size="45%" top="30%" left="35%" opacity={0.04} />
       <Glow color="#FF8B6A" size="40%" top="60%" left="65%" opacity={0.03} />
 
-      <Grid12>
-        <div style={{ gridColumn: '2 / 8', marginBottom: '48px' }}>
+      <Grid12 className="mb-12">
+        <div style={{ gridColumn: '2 / 8' }}>
           <span className="t-label block mb-4" style={{ color: '#6C63FF', opacity: 0.5 }}>Impact</span>
           <p className="t-body mb-4">Testing showed what mattered. Teachers moved between groups faster. They spotted struggling students quicker. And most important: students spoke up more often when they weren&apos;t performing for thirty people.</p>
           <p className="t-body mb-4">The full virtual tables concept didn&apos;t ship exactly as designed. But the patterns lived on. Persistent class context. Structured groups. Clearer visibility into participation.</p>

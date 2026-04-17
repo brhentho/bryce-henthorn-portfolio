@@ -117,7 +117,7 @@ export function TeamsHero() {
       </div>
 
       {/* ── Centered content ── */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-[800px]">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 w-full max-w-[800px]">
         {/* Avatar grid */}
         <div
           className="mb-10"
@@ -131,14 +131,12 @@ export function TeamsHero() {
           }}
         >
           {/* Row 1 */}
-          <div className="flex justify-center gap-[33px] mb-[28px]">
+          <div className="teams-avatar-row flex justify-center mb-[28px]">
             {ROW_1.map((avatar, i) => (
               <div
                 key={i}
-                className="relative rounded-full overflow-hidden shrink-0"
+                className="teams-avatar relative rounded-full overflow-hidden shrink-0"
                 style={{
-                  width: 50,
-                  height: 50,
                   boxShadow: "0 3.6px 4.4px rgba(94,94,94,0.15)",
                 }}
               >
@@ -161,14 +159,12 @@ export function TeamsHero() {
           </div>
 
           {/* Row 2 — offset to center between row 1 */}
-          <div className="flex justify-center gap-[33px]">
+          <div className="teams-avatar-row flex justify-center">
             {ROW_2.map((avatar, i) => (
               <div
                 key={i}
-                className="relative rounded-full overflow-hidden shrink-0"
+                className="teams-avatar relative rounded-full overflow-hidden shrink-0"
                 style={{
-                  width: 50,
-                  height: 50,
                   boxShadow: "0 3.6px 4.4px rgba(94,94,94,0.15)",
                 }}
               >

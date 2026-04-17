@@ -259,7 +259,7 @@ function PhilosophyStrip() {
         </div>
 
         {/* Through-line right: cols 8–12 */}
-        <div style={{ gridColumn: '8 / 12' }} className="mt-10 md:mt-0">
+        <div style={{ gridColumn: '8 / 12' }}>
           <span className="t-label block mb-6" style={{ color: 'var(--w45)' }}>Through-line</span>
           <p className="t-body" style={{ color: 'var(--w75)' }}>
             Across Agents in Windows, Recall, and Teams for Education, the same job shows up: make the invisible visible, the automatic interruptible, the AI auditable. I design systems before surfaces — structure and behavior come first, complexity unfolds on demand, and transparency, predictability, and user control are never features but foundations.

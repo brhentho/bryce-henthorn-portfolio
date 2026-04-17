@@ -9,7 +9,6 @@ import { GlassCard } from '@/components/editorial/GlassCard'
 import { Glow } from '@/components/atmosphere/Glow'
 import { DotGrid } from '@/components/atmosphere/DotGrid'
 import { EdgeLine } from '@/components/atmosphere/EdgeLine'
-import { Placeholder } from '@/components/placeholder/Placeholder'
 
 /* ═══════════════════════════════════════════════════════════════
    ABOUT
@@ -95,9 +94,36 @@ function AboutPortrait() {
       <Glow color="#5EC8B4" size="40%" top="30%" left="20%" opacity={0.03} />
 
       <Grid12>
-        {/* Portrait placeholder left: cols 1-5 */}
+        {/* Profile card left: cols 1-5 */}
         <div style={{ gridColumn: '1 / 6' }}>
-          <Placeholder type="img" label="Portrait — editorial photo or abstract workspace" aspectRatio="3/4" />
+          <GlassCard className="p-8">
+            <Glow color="#5EC8B4" size="70%" top="40%" left="50%" opacity={0.06} />
+            <div className="relative z-10 flex flex-col gap-8">
+              <div>
+                <span className="t-label block mb-2" style={{ color: '#5EC8B4', opacity: 0.6 }}>Currently</span>
+                <p className="text-sm" style={{ color: 'var(--w88)', lineHeight: 1.5 }}>Senior Product Designer</p>
+                <p className="text-sm" style={{ color: 'var(--w45)' }}>Microsoft · Windows</p>
+              </div>
+              <div>
+                <span className="t-label block mb-2" style={{ color: '#5EC8B4', opacity: 0.6 }}>Focus</span>
+                <p className="text-sm" style={{ color: 'var(--w75)', lineHeight: 1.5 }}>AI-native experiences, agent orchestration, OS-level interaction models.</p>
+              </div>
+              <div>
+                <span className="t-label block mb-2" style={{ color: '#5EC8B4', opacity: 0.6 }}>Based</span>
+                <p className="text-sm" style={{ color: 'var(--w75)' }}>Seattle, WA</p>
+              </div>
+              <div>
+                <span className="t-label block mb-2" style={{ color: '#5EC8B4', opacity: 0.6 }}>Reach</span>
+                <a
+                  href="mailto:bhenthorn2757@gmail.com"
+                  className="text-sm"
+                  style={{ color: 'var(--w88)', textDecoration: 'underline', textDecorationColor: 'rgba(94,200,180,0.4)', textUnderlineOffset: '4px' }}
+                >
+                  bhenthorn2757@gmail.com
+                </a>
+              </div>
+            </div>
+          </GlassCard>
         </div>
 
         {/* Bio text right: cols 6-12 */}

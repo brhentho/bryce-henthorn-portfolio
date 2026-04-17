@@ -180,7 +180,10 @@
   gap: 0 var(--grid-gap);
   padding: 0 var(--pad);
   max-width: var(--max-w);
-  margin: 0 auto;
+  /* Use individual margin properties so Tailwind margin utilities
+     aren't clobbered by the margin shorthand. */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -528,6 +531,9 @@
 
 /* Below desktop: grid collapses to stacked, nav collapses to hamburger */
 @media (max-width: 1023px) {
+  div.g12 {
+    row-gap: 32px !important;
+  }
   .g12 > * {
     grid-column: 1 / -1 !important;
   }
@@ -537,6 +543,30 @@
   .editorial-nav-links {
     display: none;
   }
+  .recall-trust-images {
+    grid-template-columns: 1fr !important;
+  }
+  .recall-trust-principles {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .recall-trust-principles {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-pill-desktop-only {
+    display: none !important;
+  }
+}
+
+/* Teams hero — responsive avatar sizing */
+.teams-avatar-row {
+  gap: clamp(8px, 4vw, 33px);
+}
+.teams-avatar {
+  width: clamp(32px, 9vw, 50px);
+  height: clamp(32px, 9vw, 50px);
 }
 
 /* Tablet: bump body type for readability at wider measures */
