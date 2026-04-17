@@ -97,9 +97,9 @@ function AgentsProblem() {
       <Glow color="#5EA6F5" size="45%" top="20%" left="60%" opacity={0.03} />
 
       {/* Centered provocation */}
-      <Grid12>
-        <div style={{ gridColumn: '2 / 12', textAlign: 'center', marginBottom: '64px' }}>
-          <p className="t-subhead" style={{ color: 'var(--w88)', maxWidth: '884px', margin: '0 auto', fontSize: 'clamp(32px, 4vw, 48px)', lineHeight: 1.2 }}>
+      <Grid12 className="mb-16">
+        <div style={{ gridColumn: '2 / 12', textAlign: 'center' }}>
+          <p className="t-subhead" style={{ color: 'var(--w88)', maxWidth: '884px', marginLeft: 'auto', marginRight: 'auto', fontSize: 'clamp(32px, 4vw, 48px)', lineHeight: 1.2 }}>
             People don&apos;t fear automation. They fear not knowing
           </p>
         </div>
@@ -247,19 +247,28 @@ function AgentsTaskbar() {
 
         {/* Right: video cols 7-12 */}
         <div style={{ gridColumn: '7 / 13' }}>
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              width: '100%',
-              borderRadius: '16px',
-              border: '1px solid rgba(255,255,255,0.1)',
-              display: 'block',
-            }}
-            src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Taskbar.mp4"
-          />
+          <div style={{
+            aspectRatio: '16 / 9',
+            borderRadius: '16px',
+            border: '1px solid rgba(255,255,255,0.1)',
+            overflow: 'hidden',
+          }}>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
+                transform: 'scale(1.55)',
+                transformOrigin: '62% 100%',
+              }}
+              src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Taskbar.mp4"
+            />
+          </div>
         </div>
       </Grid12>
     </Section>
@@ -336,19 +345,28 @@ function AgentsInvocation() {
 
         {/* Right: video cols 7-13 */}
         <div style={{ gridColumn: '6 / 13' }}>
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              width: '100%',
-              borderRadius: '20px',
-              border: '1px solid rgba(255,255,255,0.1)',
-              display: 'block',
-            }}
-            src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Composer.mp4"
-          />
+          <div style={{
+            aspectRatio: '16 / 9',
+            borderRadius: '20px',
+            border: '1px solid rgba(255,255,255,0.1)',
+            overflow: 'hidden',
+          }}>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
+                transform: 'scale(1.55)',
+                transformOrigin: '50% 100%',
+              }}
+              src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Composer.mp4"
+            />
+          </div>
         </div>
       </Grid12>
     </Section>

@@ -68,12 +68,12 @@ function FeaturedCard() {
               onMouseLeave={() => setHovered(false)}
             >
               {/* Image container */}
-              <div className="relative overflow-hidden" style={{ height: '400px' }}>
+              <div className="relative overflow-hidden aspect-[16/9] md:aspect-auto md:h-[400px]">
                 <Image
                   src="/images/projects/Agents project card.png"
                   alt="Agents in Windows case study"
                   fill
-                  className="object-cover"
+                  className="object-cover object-[85%_center] md:object-center"
                   style={{
                     transition: 'transform 600ms var(--expo)',
                     transform: hovered ? 'scale(1.02)' : 'scale(1)',
@@ -82,11 +82,19 @@ function FeaturedCard() {
               </div>
 
               {/* Card info */}
-              <div className="p-8 md:p-12">
+              <div className="p-6 md:p-12">
                 <span className="t-label" style={{ color: '#5EA6F5', opacity: 0.6 }}>
                   Agents in Windows
                 </span>
-                <h3 className="t-heading mt-2" style={{ maxWidth: '600px' }}>
+                <h3
+                  className="mt-2"
+                  style={{
+                    fontSize: 'clamp(18px, 4.5vw, 44px)',
+                    lineHeight: 1.2,
+                    letterSpacing: '-0.01em',
+                    maxWidth: '600px',
+                  }}
+                >
                   Solving Trust and Visibility for AI Agents in the Operating System.
                 </h3>
 
@@ -137,7 +145,6 @@ function CardPair() {
           maxWidth: 'var(--max-w)',
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
           gap: 'var(--grid-gap)',
         }}
       >
@@ -183,12 +190,12 @@ function ProjectCardSmall({
           onMouseLeave={() => setHovered(false)}
         >
           {/* Image container */}
-          <div className="relative overflow-hidden" style={{ height: '240px' }}>
+          <div className="relative overflow-hidden aspect-[16/10] md:aspect-auto md:h-[240px]">
             <Image
               src={image}
               alt={`${label} case study`}
               fill
-              className="object-cover"
+              className="object-cover object-center"
               style={{
                 transition: 'transform 600ms var(--expo)',
                 transform: hovered ? 'scale(1.02)' : 'scale(1)',
@@ -197,11 +204,20 @@ function ProjectCardSmall({
           </div>
 
           {/* Card info */}
-          <div className="p-6 md:p-8">
+          <div className="p-5 md:p-8">
             <span className="t-label" style={{ color: accentColor, opacity: 0.6 }}>
               {label}
             </span>
-            <h3 className="t-subhead mt-2">{heading}</h3>
+            <h3
+              className="mt-2"
+              style={{
+                fontSize: 'clamp(15px, 3.8vw, 32px)',
+                lineHeight: 1.22,
+                letterSpacing: '-0.005em',
+              }}
+            >
+              {heading}
+            </h3>
 
             <div
               className="flex items-center gap-2 mt-3"
@@ -234,17 +250,19 @@ function PhilosophyStrip() {
       <Glow color="#5EA6F5" size="40%" top="50%" left="50%" opacity={0.02} />
 
       <Grid12>
-        {/* Quote left: cols 2–7 */}
+        {/* Thesis left: cols 2–7 */}
         <div style={{ gridColumn: '2 / 7' }}>
-          <p className="t-subhead" style={{ color: 'var(--w75)' }}>
-            Senior Product Designer with 10+ years of experience. I specialize in agent orchestration systems, OS-level interaction models, and trustworthy human–AI workflows at enterprise scale.
+          <span className="t-label block mb-6" style={{ color: 'var(--w45)' }}>Thesis</span>
+          <p className="t-subhead" style={{ color: 'var(--w88)' }}>
+            When software runs on your behalf without being asked, interface design stops being about features and starts being about agreements — what the system promises, what it shows, and what it lets you stop.
           </p>
         </div>
 
-        {/* Supporting text right: cols 8–12 */}
+        {/* Through-line right: cols 8–12 */}
         <div style={{ gridColumn: '8 / 12' }}>
-          <p className="t-body">
-            I design systems before surfaces. Structure and behavior come first, complexity unfolds on demand, and transparency, predictability, and user control are never features but foundations. A systems thinker with deep cross-functional leadership across shell, platform, and M365 ecosystems.
+          <span className="t-label block mb-6" style={{ color: 'var(--w45)' }}>Through-line</span>
+          <p className="t-body" style={{ color: 'var(--w75)' }}>
+            Across Agents in Windows, Recall, and Teams for Education, the same job shows up: make the invisible visible, the automatic interruptible, the AI auditable. I design systems before surfaces — structure and behavior come first, complexity unfolds on demand, and transparency, predictability, and user control are never features but foundations.
           </p>
         </div>
       </Grid12>

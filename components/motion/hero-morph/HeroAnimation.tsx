@@ -66,25 +66,37 @@ export function HeroAnimation() {
       <div
         className="relative z-10 w-full"
         style={{
-          pointerEvents: "none",
           padding: "var(--pad)",
           paddingBottom: "80px",
         }}
       >
-        <div style={{ maxWidth: "70%" }}>
+        <div style={{ maxWidth: "clamp(320px, 72vw, 900px)" }}>
           <h1
             className="t-display"
             style={{
-              fontSize: "48px",
-              lineHeight: "1.3",
+              lineHeight: 1.08,
+              letterSpacing: "-0.01em",
               opacity: show ? 1 : 0,
               transform: show ? "translateY(0)" : "translateY(24px)",
               transition,
               transitionDelay: "0.2s",
             }}
           >
-            Product Designer with 10+ years of experience. I specialize in agent orchestration systems, OS-level interaction models, and trustworthy human–AI workflows at enterprise scale. <span style={{ opacity: 0.6, fontWeight: 400 }}>Currently leading AI-native experiences across Windows.</span>
+            Designing the trust layer for ambient computing.
           </h1>
+          <p
+            className="t-body-lg mt-6"
+            style={{
+              color: "var(--w60)",
+              maxWidth: "640px",
+              opacity: show ? 1 : 0,
+              transform: show ? "translateY(0)" : "translateY(16px)",
+              transition,
+              transitionDelay: "0.45s",
+            }}
+          >
+            Senior Product Designer, 10+ years. Currently leading AI-native experiences across Windows.
+          </p>
         </div>
 
         {/* Scroll indicator */}

@@ -11,9 +11,19 @@
   /* ── Core ── */
   --bg: #06060A;
   --expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --pad: clamp(32px, 5vw, 80px);
+  /* Fluid padding tuned for four tiers:
+     mobile   ~24px @ 375
+     tablet   ~48px @ 800
+     desktop  ~80px @ 1280
+     large    ~112px @ 1600+ */
+  --pad: clamp(24px, 6vw, 112px);
   --max-w: 1400px;
-  --grid-gap: 24px;
+  --grid-gap: clamp(16px, 2vw, 32px);
+
+  /* ── Breakpoint tokens (reference only \u2014 use in @media) ──
+     --bp-tablet: 768px
+     --bp-desktop: 1024px
+     --bp-large: 1440px */
 
   /* ── White Opacity Scale ── */
   --w88: rgba(255, 255, 255, 0.88);
@@ -31,6 +41,21 @@
   --w04: rgba(255, 255, 255, 0.04);
   --w03: rgba(255, 255, 255, 0.03);
   --w025: rgba(255, 255, 255, 0.025);
+
+  /* ── Semantic aliases (prefer these in new code) ──
+     Text                                   Border
+     --text-primary   → body copy           --border-hairline → separators
+     --text-secondary → supporting copy     --border-subtle   → card edges
+     --text-tertiary  → captions/labels     --border-strong   → hover/focus
+     --text-quiet     → disabled/decorative
+  */
+  --text-primary: var(--w88);
+  --text-secondary: var(--w60);
+  --text-tertiary: var(--w45);
+  --text-quiet: var(--w25);
+  --border-hairline: var(--w04);
+  --border-subtle: var(--w06);
+  --border-strong: var(--w15);
 
   /* ── Per-Page Accent (set on page wrapper) ── */
   --a: #5EC8B4;
@@ -155,7 +180,10 @@
   gap: 0 var(--grid-gap);
   padding: 0 var(--pad);
   max-width: var(--max-w);
-  margin: 0 auto;
+  /* Use individual margin properties so Tailwind margin utilities
+     aren't clobbered by the margin shorthand. */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -490,10 +518,22 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — Four tiers: mobile / tablet / desktop / large-desktop
+   - mobile    : <768px     (stacked, tight padding)
+   - tablet    : 768–1023px (stacked, wider padding, larger body type)
+   - desktop   : 1024–1439px (12-col grid, standard padding)
+   - large     : ≥1440px    (12-col grid, generous padding; content capped at 1400)
    ═══════════════════════════════════════════════════════════════ */
 
-@media (max-width: 900px) {
+.card-pair {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Below desktop: grid collapses to stacked, nav collapses to hamburger */
+@media (max-width: 1023px) {
+  div.g12 {
+    row-gap: 32px !important;
+  }
   .g12 > * {
     grid-column: 1 / -1 !important;
   }
@@ -502,5 +542,39 @@
   }
   .editorial-nav-links {
     display: none;
+  }
+  .recall-trust-images {
+    grid-template-columns: 1fr !important;
+  }
+  .recall-trust-principles {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .recall-trust-principles {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-pill-desktop-only {
+    display: none !important;
+  }
+}
+
+/* Teams hero — responsive avatar sizing */
+.teams-avatar-row {
+  gap: clamp(8px, 4vw, 33px);
+}
+.teams-avatar {
+  width: clamp(32px, 9vw, 50px);
+  height: clamp(32px, 9vw, 50px);
+}
+
+/* Tablet: bump body type for readability at wider measures */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .t-body {
+    font-size: 16px;
+  }
+  .t-body-lg {
+    font-size: 19px;
   }
 }

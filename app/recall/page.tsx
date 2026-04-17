@@ -29,7 +29,6 @@ export default function RecallPage() {
         { id: 'problem', label: 'Problem' },
         { id: 'card-design', label: 'Card Design' },
         { id: 'card-relevance', label: 'Why It Appeared' },
-        { id: 'early-iteration', label: 'Iteration' },
         { id: 'performance', label: 'Performance' },
         { id: 'trust', label: 'Trust' },
         { id: 'constraints', label: 'Constraints' },
@@ -42,7 +41,8 @@ export default function RecallPage() {
         <RecallProblem />
         <RecallCardDesign />
         <RecallWhyAppeared />
-        <RecallIteration />
+        {/* Temporarily hidden — needs before/after visuals */}
+        {/* <RecallIteration /> */}
         <RecallPerformance />
         <RecallTrust />
         <RecallConstraints />
@@ -105,22 +105,23 @@ type HeroPill = {
   icon: 'tag' | 'pin' | 'calendar' | 'mail' | 'avatar'
   top: string
   left: string
+  desktopOnly?: boolean
 }
 
 const heroPills: HeroPill[] = [
   { label: 'Seaside Hotel', icon: 'tag', top: '14%', left: '7%' },
   { label: 'July 22, 2024', icon: 'calendar', top: '21%', left: '22%' },
   { label: 'Flight details: AA 4533', icon: 'mail', top: '18%', left: '40%' },
-  { label: 'Acadia national park', icon: 'tag', top: '12%', left: '67%' },
-  { label: 'Lobstering Tour', icon: 'tag', top: '20%', left: '83%' },
+  { label: 'Acadia national park', icon: 'tag', top: '12%', left: '67%', desktopOnly: true },
+  { label: 'Lobstering Tour', icon: 'tag', top: '20%', left: '83%', desktopOnly: true },
   { label: 'The Front Room reservations', icon: 'mail', top: '38%', left: '13%' },
-  { label: 'Historic Portland Walking tour', icon: 'tag', top: '35%', left: '73%' },
-  { label: 'Granite Beach Park', icon: 'pin', top: '50%', left: '84%' },
+  { label: 'Historic Portland Walking tour', icon: 'tag', top: '35%', left: '73%', desktopOnly: true },
+  { label: 'Granite Beach Park', icon: 'pin', top: '50%', left: '84%', desktopOnly: true },
   { label: 'Confirmation 25564', icon: 'tag', top: '68%', left: '15%' },
-  { label: 'OpenTable', icon: 'mail', top: '80%', left: '34%' },
+  { label: 'OpenTable', icon: 'mail', top: '80%', left: '34%', desktopOnly: true },
   { label: 'Janice', icon: 'avatar', top: '81%', left: '55%' },
-  { label: 'Fw: Reservation Reminder', icon: 'mail', top: '72%', left: '72%' },
-  { label: 'Preal Cafe', icon: 'pin', top: '80%', left: '88%' },
+  { label: 'Fw: Reservation Reminder', icon: 'mail', top: '72%', left: '72%', desktopOnly: true },
+  { label: 'Preal Cafe', icon: 'pin', top: '80%', left: '88%', desktopOnly: true },
 ]
 
 const pillIcons = {
@@ -225,6 +226,7 @@ function RecallHero() {
       {heroPills.map((pill, i) => (
         <div
           key={pill.label}
+          className={pill.desktopOnly ? 'hero-pill-desktop-only' : undefined}
           style={{
             position: 'absolute',
             top: pill.top,
@@ -579,10 +581,10 @@ function RecallProblem() {
       <EdgeLine position="top" />
       <Glow color="#A882FF" size="45%" top="20%" left="60%" opacity={0.03} />
 
-      <Grid12>
-        <div style={{ gridColumn: '2 / 12', textAlign: 'center', marginBottom: '64px' }}>
+      <Grid12 className="mb-16">
+        <div style={{ gridColumn: '2 / 12', textAlign: 'center' }}>
           <span className="t-label block mb-4" style={{ color: '#A882FF', opacity: 0.5 }}>Problem</span>
-          <p className="t-subhead" style={{ color: 'var(--w75)', maxWidth: '600px', margin: '0 auto' }}>
+          <p className="t-subhead" style={{ color: 'var(--w75)', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
             Search wants precision. Memory offers fragments.
           </p>
         </div>
@@ -736,10 +738,12 @@ function RecallPerformance() {
         </div>
       </Grid12>
 
-      <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
-        <video autoPlay loop muted playsInline style={{ width: '100%', display: 'block' }}>
-          <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4" type="video/mp4" />
-        </video>
+      <div style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', marginLeft: 'auto', marginRight: 'auto', marginTop: '64px' }}>
+        <div style={{ aspectRatio: '16 / 9', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--w06)' }}>
+          <video autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}>
+            <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
     </Section>
   )
@@ -751,50 +755,72 @@ function RecallTrust() {
     <Section id="trust" padding="py-24 md:py-32">
       <EdgeLine position="top" />
 
+      {/* Heading + lede */}
       <Grid12 className="mb-12">
-        {/* Left: title + body + closing text */}
         <div style={{ gridColumn: '1 / 7' }}>
           <span className="t-label block mb-4" style={{ color: '#A882FF', opacity: 0.5 }}>Trust</span>
           <h2 className="t-heading mb-6">Privacy was the whole product</h2>
-          <p className="t-body mb-4">Recall captures everything. That only works if people trust where the data sits, who can see it, and what control they actually have.</p>
-          <p className="t-body mb-6">On-device processing wasn&apos;t optional. All capture, all indexing, all retrieval happened locally. Nothing left the machine.</p>
-          <p className="t-body mb-4">After public scrutiny, things changed. Recall flipped from opt-out to opt-in. Users got the ability to exclude apps and pause indexing.</p>
-          <p className="t-body">We made those boundaries tangible. Cards showed where results came from and when. Excluded content got explicit explanation instead of silent gaps. Trust wasn&apos;t a single setting. It lived in every interaction.</p>
         </div>
-
-        {/* Right: 4 stacked cards */}
-        <div style={{ gridColumn: '7 / 13', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {[
-            { title: 'Data storage', desc: 'Everything stays on-device. No cloud processing, no external servers. Local indexing, local retrieval.' },
-            { title: 'User control', desc: 'Opt-in by default. Exclude apps, pause indexing, delete any memory. Full user agency.' },
-            { title: 'Transparency', desc: 'Every card shows provenance. Match types labeled. System boundaries visible, never hidden.' },
-            { title: 'Deletion', desc: 'Delete individual memories or wipe everything. No hidden caches. What you delete is gone.' },
-          ].map((card, i) => (
-            <div key={i} className="p-5" style={{ background: 'var(--w04)', borderRadius: '12px', border: '1px solid var(--w06)' }}>
-              <h3 style={{ fontSize: '15px', fontWeight: 500, color: 'var(--w88)', marginBottom: '4px' }}>{card.title}</h3>
-              <p className="t-body">{card.desc}</p>
-            </div>
-          ))}
+        <div style={{ gridColumn: '7 / 13', alignSelf: 'end' }}>
+          <p className="t-body-lg" style={{ color: 'var(--w75)' }}>
+            Recall captures everything. That only works if people trust where the data sits, who can see it, and what control they actually have.
+          </p>
         </div>
       </Grid12>
 
-      {/* Side-by-side images */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-        <Image
-          src="/assets/agents/Snapshot View.png"
-          alt="Recall snapshot view showing privacy controls"
-          width={1920}
-          height={1080}
-          style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
-        />
-        <Image
-          src="/assets/agents/Windows Commercial_16x9_1920_1080.png"
-          alt="Windows Recall commercial privacy showcase"
-          width={1920}
-          height={1080}
-          style={{ width: '100%', height: 'auto', borderRadius: '12px' }}
-        />
+      {/* Narrative body */}
+      <Grid12 className="mb-16">
+        <div style={{ gridColumn: '1 / 7' }}>
+          <p className="t-body mb-4">On-device processing wasn&apos;t optional. All capture, all indexing, all retrieval happened locally. Nothing left the machine.</p>
+          <p className="t-body mb-4">After public scrutiny, things changed. Recall flipped from opt-out to opt-in. Users got the ability to exclude apps and pause indexing.</p>
+        </div>
+        <div style={{ gridColumn: '7 / 13' }}>
+          <p className="t-body">We made those boundaries tangible. Cards showed where results came from and when. Excluded content got explicit explanation instead of silent gaps. Trust wasn&apos;t a single setting. It lived in every interaction.</p>
+        </div>
+      </Grid12>
+
+      {/* Side-by-side images — contained */}
+      <div style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', marginLeft: 'auto', marginRight: 'auto' }}>
+        <div className="recall-trust-images" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--grid-gap)' }}>
+          <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--w06)' }}>
+            <Image
+              src="/assets/agents/Snapshot View.png"
+              alt="Recall snapshot view showing privacy controls"
+              width={1920}
+              height={1080}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
+          </div>
+          <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--w06)' }}>
+            <Image
+              src="/assets/agents/Windows Commercial_16x9_1920_1080.png"
+              alt="Windows Recall commercial privacy showcase"
+              width={1920}
+              height={1080}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
+          </div>
+        </div>
       </div>
+
+      {/* Four principles as a summary row */}
+      <Grid12 className="mt-16">
+        <div style={{ gridColumn: '1 / 13' }}>
+          <div className="recall-trust-principles" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--grid-gap)' }}>
+            {[
+              { title: 'Data storage', desc: 'Everything stays on-device. Local indexing, local retrieval.' },
+              { title: 'User control', desc: 'Opt-in by default. Exclude apps, pause indexing, delete any memory.' },
+              { title: 'Transparency', desc: 'Every card shows provenance. System boundaries visible, never hidden.' },
+              { title: 'Deletion', desc: 'Delete individual memories or wipe everything. No hidden caches.' },
+            ].map((card, i) => (
+              <div key={i} style={{ borderTop: '1px solid var(--w12)', paddingTop: '16px' }}>
+                <h3 className="t-label block mb-3" style={{ color: '#A882FF', opacity: 0.7 }}>{card.title}</h3>
+                <p className="t-body" style={{ color: 'var(--w60)' }}>{card.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Grid12>
     </Section>
   )
 }
@@ -818,10 +844,12 @@ function RecallConstraints() {
         </div>
       </Grid12>
 
-      <div style={{ marginTop: '48px', borderRadius: '12px', overflow: 'hidden' }}>
-        <video autoPlay loop muted playsInline style={{ width: '100%', display: 'block' }}>
-          <source src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4" type="video/mp4" />
-        </video>
+      <div style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', marginLeft: 'auto', marginRight: 'auto', marginTop: '64px' }}>
+        <div style={{ aspectRatio: '16 / 9', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--w06)' }}>
+          <video autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}>
+            <source src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
     </Section>
   )
