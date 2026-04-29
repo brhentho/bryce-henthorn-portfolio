@@ -33,7 +33,6 @@ export default function TeamsForEducationPage() {
         { id: 'group-creation', label: 'Group Creation' },
         { id: 'student-view', label: 'Student View' },
         { id: 'bandwidth', label: 'Bandwidth' },
-        { id: 'constraints', label: 'Constraints' },
         { id: 'impact', label: 'Impact' },
       ]} />
       <main>
@@ -46,7 +45,6 @@ export default function TeamsForEducationPage() {
         <TeamsGroupCreation />
         <TeamsStudentView />
         <TeamsBandwidth />
-        <TeamsConstraints />
         <TeamsImpact />
       </main>
       <TeamsFooter />
@@ -64,15 +62,14 @@ function TeamsContext() {
       }}
     >
     <Section id="context" padding="py-24 md:py-32">
-      <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 var(--pad)' }}>
         <Grid12>
           {/* Left — giant stat */}
-          <div style={{ gridColumn: '1 / 5', alignSelf: 'start' }}>
+          <div style={{ gridColumn: '1 / 6', alignSelf: 'start', overflow: 'visible' }}>
             <p
               className="font-medium"
               style={{
-                fontSize: 'clamp(72px, 10vw, 144px)',
-                lineHeight: 1,
+                fontSize: 'clamp(72px, 9vw, 132px)',
+                lineHeight: 1.15,
                 letterSpacing: '-1.4px',
                 backgroundImage:
                   'linear-gradient(227deg, #fff 20%, #BC71EE 34%, #fff 96%)',
@@ -89,7 +86,7 @@ function TeamsContext() {
           </div>
 
           {/* Right — heading + body */}
-          <div style={{ gridColumn: '6 / 13' }}>
+          <div style={{ gridColumn: '7 / 13' }}>
             <h2
               className="t-heading mb-10"
               style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', letterSpacing: '-0.48px' }}
@@ -113,7 +110,6 @@ function TeamsContext() {
             </div>
           </div>
         </Grid12>
-      </div>
     </Section>
     </div>
   )
@@ -142,7 +138,7 @@ const STUDENT_QUOTES = [
 
 function TeamsProblem() {
   return (
-    <Section id="problem" padding="py-24 md:py-32">
+    <Section id="problem" padding="py-24 md:py-32" className="sec-bleed">
       {/* Heading — full width */}
       <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 var(--pad)' }}>
         <h2
@@ -179,38 +175,28 @@ function TeamsProblem() {
           </div>
         </div>
 
-        {/* Quote cards */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '34px',
-          }}
-        >
+        {/* Quote cards — full-bleed row with edge fade */}
+      </div>
+      <div className="quote-bleed" style={{ marginTop: '48px' }}>
+        <div className="quote-bleed-inner">
           {STUDENT_QUOTES.map((q, i) => (
-            <div
+            <GlassCard
               key={i}
-              style={{
-                background: 'rgba(0,0,0,0.1)',
-                borderRadius: '16px',
-                padding: '24px',
-                boxShadow: '0 2px 5px 2px rgba(59,59,59,0.25)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '27px',
-              }}
+              className="glass-beam p-6"
             >
-              <p style={{ fontSize: '14px', lineHeight: '20px', color: '#94A3B8' }}>
-                {q.quote}
-                {'emphasisEnd' in q && (
-                  <em style={{ fontWeight: 700 }}>{q.emphasisEnd}</em>
-                )}
-                {'emphasisEnd' in q && '"'}
-              </p>
-              <p style={{ fontSize: '14px', lineHeight: '20px', color: '#fff', fontWeight: 600 }}>
-                {q.name}
-              </p>
-            </div>
+              <div style={{ minWidth: '280px', maxWidth: '320px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <p style={{ fontSize: '14px', lineHeight: '20px', color: '#94A3B8' }}>
+                  {q.quote}
+                  {'emphasisEnd' in q && (
+                    <em style={{ fontWeight: 700 }}>{q.emphasisEnd}</em>
+                  )}
+                  {'emphasisEnd' in q && '"'}
+                </p>
+                <p style={{ fontSize: '14px', lineHeight: '20px', color: '#fff', fontWeight: 600 }}>
+                  {q.name}
+                </p>
+              </div>
+            </GlassCard>
           ))}
         </div>
       </div>
@@ -224,21 +210,9 @@ function TeamsResearch() {
     <Section id="research" padding="py-24 md:py-32">
       <Glow color="#6C63FF" size="50%" top="30%" left="40%" opacity={0.04} />
 
-      {/* Centered large quote */}
-      <Grid12 className="mb-16">
-        <div style={{ gridColumn: '3 / 11', textAlign: 'center' }}>
-          <span className="t-label block mb-6" style={{ color: '#6C63FF', opacity: 0.5 }}>Research</span>
-          <p className="t-subhead" style={{ color: 'var(--w75)', fontStyle: 'italic' }}>
-            &ldquo;They missed belonging.&rdquo;
-          </p>
-          <p className="t-body mt-4" style={{ maxWidth: '500px', margin: '0 auto' }}>
-            Students did not just miss content. They missed their friends. They missed social cues. They missed feeling seen.
-          </p>
-        </div>
-      </Grid12>
-
       <Grid12 className="mb-8">
         <div style={{ gridColumn: '1 / 6' }}>
+          <span className="t-label block mb-6" style={{ color: '#6C63FF', opacity: 0.5 }}>Research</span>
           <h2 className="t-heading">Designing from real classroom behavior</h2>
         </div>
         <div style={{ gridColumn: '7 / 13', alignSelf: 'start' }}>
@@ -271,33 +245,15 @@ function TeamsSolution() {
       <Glow color="#6C63FF" size="50%" top="50%" left="50%" opacity={0.03} />
 
       <Grid12 className="mb-12">
-        <div style={{ gridColumn: '1 / 13' }}>
-          <span className="t-label block mb-4" style={{ color: '#6C63FF', opacity: 0.5 }}>Solution</span>
+        <div style={{ gridColumn: '1 / 6' }}>
+          <span className="t-label block mb-4" style={{ color: 'var(--w50)' }}>Solution</span>
           <h2 className="t-heading">Reintroducing structure without turning Teams into a cartoon classroom</h2>
         </div>
-      </Grid12>
-
-      {/* Three approach cards */}
-      <Grid12>
-        {[
-          { title: 'Too literal', desc: 'Full classroom maps with avatars at drawn tables. Playful but gimmicky inside an enterprise tool.', accent: '#FF8B6A' },
-          { title: 'Too abstract', desc: 'Purely functional: renamed breakout channels. Lost the spatial awareness that made the concept work.', accent: '#6C63FF' },
-          { title: 'Virtual tables', desc: 'Persistent table cards in a grid. Fixed seats, visible neighbors, stable group identity. The winner.', accent: '#6C63FF' },
-        ].map((d, i) => (
-          <div key={i} style={{ gridColumn: `${1 + i * 4} / ${5 + i * 4}` }}>
-            <GlassCard hover className="p-6 h-full" accentBorder={i === 2 ? 'rgba(108, 99, 255, 0.15)' : undefined}>
-              <span className="t-label block mb-3" style={{ color: d.accent, opacity: 0.4 }}>{d.title}</span>
-              <p className="t-body">{d.desc}</p>
-            </GlassCard>
-          </div>
-        ))}
-      </Grid12>
-
-      <Grid12 className="mt-10">
-        <div style={{ gridColumn: '1 / 8' }}>
-          <p className="t-body mb-4">We landed somewhere in between. We designed persistent table cards arranged in a grid. Students sat in fixed positions within these tables, with their avatars resting in consistent seats.</p>
-          <p className="t-body">This approach restored spatial awareness without sacrificing clarity. It was structured enough to feel real, but restrained enough to feel native inside Teams.</p>
-          <p className="t-body mt-4">There was a harder tension underneath the table design. Teachers needed moderation controls — the ability to mute, redirect, or flag — but heavy-handed moderation kills exactly the kind of organic peer discussion that makes small groups work. We designed moderation to be ambient rather than disruptive. Teachers could observe and intervene from the global view without pulling students out of context or signaling to the whole group that someone was being corrected. Control stayed with the teacher. The conversation stayed with the students.</p>
+        <div style={{ gridColumn: '7 / 13', alignSelf: 'start' }}>
+          <p className="t-body mb-4">We explored three directions. The first was too literal — full classroom maps with avatars at drawn tables. It was playful but felt gimmicky inside an enterprise tool. The second was too abstract — purely functional renamed breakout channels that lost the spatial awareness that made the concept work.</p>
+          <p className="t-body mb-4">The third struck the right balance: virtual tables. Persistent table cards in a grid with fixed seats, visible neighbors, and stable group identity.</p>
+          <p className="t-body mb-4">We designed persistent table cards arranged in a grid. Students sat in fixed positions within these tables, with their avatars resting in consistent seats. This approach restored spatial awareness without sacrificing clarity. It was structured enough to feel real, but restrained enough to feel native inside Teams.</p>
+          <p className="t-body">There was a harder tension underneath the table design. Teachers needed moderation controls — the ability to mute, redirect, or flag — but heavy-handed moderation kills exactly the kind of organic peer discussion that makes small groups work. We designed moderation to be ambient rather than disruptive. Teachers could observe and intervene from the global view without pulling students out of context or signaling to the whole group that someone was being corrected. Control stayed with the teacher. The conversation stayed with the students.</p>
         </div>
       </Grid12>
 
@@ -392,18 +348,18 @@ function TeamsStudentView() {
   )
 }
 
-/* ── 9. Bandwidth — TEXT ONLY, compact ── */
+/* ── 9. Bandwidth — Two-column layout ── */
 function TeamsBandwidth() {
   return (
-    <Section id="bandwidth" padding="py-16 md:py-24">
+    <Section id="bandwidth" padding="py-24 md:py-32">
       <EdgeLine position="top" />
 
       <Grid12>
-        <div style={{ gridColumn: '1 / 7' }}>
-          <span className="t-label block mb-4" style={{ color: '#FF8B6A', opacity: 0.5 }}>Bandwidth Constraints</span>
+        <div style={{ gridColumn: '1 / 6' }}>
+          <span className="t-label block mb-4" style={{ color: 'var(--w50)' }}>Bandwidth Constraints</span>
           <h2 className="t-heading">Not all home internet is equal</h2>
         </div>
-        <div style={{ gridColumn: '8 / 13', alignSelf: 'start' }}>
+        <div style={{ gridColumn: '7 / 13', alignSelf: 'start' }}>
           <p className="t-body mb-4">Many students were using shared home networks. Older devices. Spotty connections. When teachers handed out materials mid-lesson, students with slow internet got left behind while files loaded.</p>
           <p className="t-body mb-4">Persistent tables fixed this structurally. Teachers attached materials to each table before class. Students could open files as soon as they sat down, not when the teacher shared them.</p>
           <p className="t-body">Small change. Huge impact. Teaching time didn&apos;t pause for tech problems.</p>
@@ -413,64 +369,22 @@ function TeamsBandwidth() {
   )
 }
 
-/* ── 10. Constraints — Narrative-driven, NO stat band ── */
-function TeamsConstraints() {
-  return (
-    <Section id="constraints" padding="py-24 md:py-32">
-      <Glow color="#6C63FF" size="40%" top="40%" left="50%" opacity={0.03} />
-      <DotGrid mask />
-
-      <Grid12>
-        <div style={{ gridColumn: '2 / 10' }}>
-          <span className="t-label block mb-4" style={{ color: '#6C63FF', opacity: 0.5 }}>Constraints &amp; Tradeoffs</span>
-          <h2 className="t-heading mb-6">The platform fought what we were building</h2>
-          <p className="t-body mb-4">In a real classroom, a teacher gives an assignment and moves around the room. They hear conversations. They see confusion. They step in when needed. It&apos;s fluid, responsive, whole-class awareness.</p>
-          <p className="t-body mb-4">Old Teams breakout rooms broke that. Once students were in separate rooms, the classroom fragmented. Teachers had to enter each room to see what was happening. No global awareness.</p>
-          <p className="t-body mb-4">The platform&apos;s architecture for breakout rooms didn&apos;t support what we needed. It was designed for synchronous meetings, not persistent classroom structure. We had to fight the infrastructure to make the persistent tables work.</p>
-          <p className="t-body">The design solution was straightforward: give teachers a whole-class view that showed all groups at once. They could see activity across the room, drop into a group to guide, and return to the full view without fragmentation.</p>
-        </div>
-      </Grid12>
-    </Section>
-  )
-}
-
-/* ── 11. Impact — Dual-tone gradient + qualitative stats ── */
+/* ── 10. Impact ── */
 function TeamsImpact() {
   return (
     <Section id="impact" padding="py-24 md:py-32">
       <EdgeLine position="top" />
-      <Glow color="#6C63FF" size="45%" top="30%" left="35%" opacity={0.04} />
-      <Glow color="#FF8B6A" size="40%" top="60%" left="65%" opacity={0.03} />
 
       <Grid12 className="mb-12">
-        <div style={{ gridColumn: '2 / 8' }}>
-          <span className="t-label block mb-4" style={{ color: '#6C63FF', opacity: 0.5 }}>Impact</span>
+        <div style={{ gridColumn: '1 / 6' }}>
+          <span className="t-label block mb-4" style={{ color: 'var(--w50)' }}>Impact</span>
+          <h2 className="t-heading">What we learned</h2>
+        </div>
+        <div style={{ gridColumn: '7 / 13', alignSelf: 'start' }}>
           <p className="t-body mb-4">Testing showed what mattered. Teachers moved between groups faster. They spotted struggling students quicker. And most important: students spoke up more often when they weren&apos;t performing for thirty people.</p>
           <p className="t-body mb-4">The full virtual tables concept didn&apos;t ship exactly as designed. But the patterns lived on. Persistent class context. Structured groups. Clearer visibility into participation.</p>
           <p className="t-body mb-4">The work stretched beyond education too. How small groups get visibility in enterprise meetings. How structured participation scales when you have more than thirty people in a call.</p>
           <p className="t-body">Retention turned out to be simple. It doesn&apos;t come from more features. It comes from the same thing physical classrooms are built on: structure. Social connection. Being seen.</p>
-        </div>
-      </Grid12>
-
-      {/* Dual-tone glass card with qualitative stats */}
-      <Grid12>
-        <div style={{ gridColumn: '3 / 11' }}>
-          <GlassCard className="p-8 md:p-10">
-            <Glow color="#6C63FF" size="60%" top="30%" left="30%" opacity={0.06} />
-            <Glow color="#FF8B6A" size="50%" top="70%" left="70%" opacity={0.05} />
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              {[
-                { stat: 'Faster', label: 'group transitions' },
-                { stat: 'Quicker', label: 'identification of struggling students' },
-                { stat: 'More', label: 'student participation in small groups' },
-              ].map((item, i) => (
-                <div key={i}>
-                  <span className="t-heading block" style={{ color: i % 2 === 0 ? '#6C63FF' : '#FF8B6A', opacity: 0.7 }}>{item.stat}</span>
-                  <span className="t-body block mt-2">{item.label}</span>
-                </div>
-              ))}
-            </div>
-          </GlassCard>
         </div>
       </Grid12>
 

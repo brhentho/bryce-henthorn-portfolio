@@ -295,6 +295,72 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   FULL-BLEED QUOTE STRIP
+   ═══════════════════════════════════════════════════════════════ */
+
+.quote-bleed {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 80px,
+    black calc(100% - 60px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 80px,
+    black calc(100% - 60px),
+    transparent 100%
+  );
+}
+
+.quote-bleed-inner {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+/* Allow bleed to escape the section overflow clip */
+.sec-bleed {
+  overflow: visible;
+}
+
+/* ── Light-beam border sweep ── */
+
+@property --beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.glass-beam {
+  position: relative;
+}
+
+.glass-beam::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--beam-angle), transparent 0%, rgba(255,255,255,0.08) 8%, transparent 16%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+  animation: beam-rotate 8s linear infinite;
+}
+
+@keyframes beam-rotate {
+  to { --beam-angle: 360deg; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
    SCROLL REVEAL
    ═══════════════════════════════════════════════════════════════ */
 
@@ -548,6 +614,17 @@
   }
   .recall-trust-principles {
     grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .quote-bleed {
+    width: auto;
+    margin-left: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+    padding: 0 var(--pad);
+  }
+  .quote-bleed-inner {
+    flex-direction: column;
+    padding: 0;
   }
 }
 
