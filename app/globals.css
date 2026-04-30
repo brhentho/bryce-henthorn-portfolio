@@ -295,6 +295,78 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   ABOUT PORTRAIT — editorial photo treatment
+   Desaturated by default, blooms back to full saturation on hover.
+   Teal hairline at the bottom echoes the experience-timeline rule.
+   ═══════════════════════════════════════════════════════════════ */
+
+.portrait-figure {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid var(--w06);
+  background: var(--w025);
+  isolation: isolate;
+  margin: 0;
+}
+
+.portrait-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(0.7) brightness(0.92) contrast(1.03);
+  transform: scale(1);
+  transition:
+    filter 900ms var(--expo),
+    transform 1400ms var(--expo);
+  will-change: filter, transform;
+}
+
+.portrait-figure:hover img,
+.portrait-figure:focus-within img {
+  filter: saturate(1) brightness(1) contrast(1);
+  transform: scale(1.02);
+}
+
+/* Inner highlight matching the .glass family */
+.portrait-figure::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Teal accent hairline along the bottom edge */
+.portrait-figure::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(94, 200, 180, 0.55) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-figure img {
+    transition: none;
+  }
+  .portrait-figure:hover img,
+  .portrait-figure:focus-within img {
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
    FULL-BLEED QUOTE STRIP
    ═══════════════════════════════════════════════════════════════ */
 

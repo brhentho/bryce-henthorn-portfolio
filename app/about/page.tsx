@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { NavEditorial } from '@/components/editorial/NavEditorial'
@@ -9,6 +10,7 @@ import { GlassCard } from '@/components/editorial/GlassCard'
 import { Glow } from '@/components/atmosphere/Glow'
 import { DotGrid } from '@/components/atmosphere/DotGrid'
 import { EdgeLine } from '@/components/atmosphere/EdgeLine'
+import { AnimateIn } from '@/components/animate-in'
 
 /* ═══════════════════════════════════════════════════════════════
    ABOUT
@@ -51,7 +53,7 @@ function AboutHero() {
       <Glow color="#5EC8B4" size="50%" top="50%" left="50%" opacity={0.04} />
 
       <div className="relative z-10 w-full" style={{ padding: 'var(--pad)' }}>
-        <div style={{ maxWidth: '900px', gridColumn: '1 / 11' }}>
+        <div style={{ maxWidth: 'var(--max-w)' }}>
           {lines.map((line, i) => (
             <h1
               key={i}
@@ -63,6 +65,8 @@ function AboutHero() {
                 transition: 'opacity 1s var(--expo), transform 1s var(--expo)',
                 transitionDelay: `${0.1 + i * 0.08}s`,
                 marginBottom: i < lines.length - 1 ? '4px' : '0',
+                fontSize: 'clamp(18px, 3.4vw, 50px)',
+                whiteSpace: 'nowrap',
               }}
             >
               {line.text}
@@ -94,36 +98,23 @@ function AboutPortrait() {
       <Glow color="#5EC8B4" size="40%" top="30%" left="20%" opacity={0.03} />
 
       <Grid12>
-        {/* Profile card left: cols 1-5 */}
+        {/* Portrait left: cols 1-5 */}
         <div style={{ gridColumn: '1 / 6' }}>
-          <GlassCard className="p-8">
-            <Glow color="#5EC8B4" size="70%" top="40%" left="50%" opacity={0.06} />
-            <div className="relative z-10 flex flex-col gap-8">
-              <div>
-                <span className="t-label block mb-2" style={{ color: '#5EC8B4', opacity: 0.6 }}>Currently</span>
-                <p className="text-sm" style={{ color: 'var(--w88)', lineHeight: 1.5 }}>Senior Product Designer</p>
-                <p className="text-sm" style={{ color: 'var(--w45)' }}>Microsoft · Windows</p>
-              </div>
-              <div>
-                <span className="t-label block mb-2" style={{ color: '#5EC8B4', opacity: 0.6 }}>Focus</span>
-                <p className="text-sm" style={{ color: 'var(--w75)', lineHeight: 1.5 }}>AI-native experiences, agent orchestration, OS-level interaction models.</p>
-              </div>
-              <div>
-                <span className="t-label block mb-2" style={{ color: '#5EC8B4', opacity: 0.6 }}>Based</span>
-                <p className="text-sm" style={{ color: 'var(--w75)' }}>Seattle, WA</p>
-              </div>
-              <div>
-                <span className="t-label block mb-2" style={{ color: '#5EC8B4', opacity: 0.6 }}>Reach</span>
-                <a
-                  href="mailto:bhenthorn2757@gmail.com"
-                  className="text-sm"
-                  style={{ color: 'var(--w88)', textDecoration: 'underline', textDecorationColor: 'rgba(94,200,180,0.4)', textUnderlineOffset: '4px' }}
-                >
-                  bhenthorn2757@gmail.com
-                </a>
-              </div>
+          <AnimateIn delay={0.05}>
+            <div className="relative">
+              <Glow color="#5EC8B4" size="120%" top="50%" left="50%" opacity={0.07} />
+              <figure className="portrait-figure">
+                <Image
+                  src="/images/bryce-portrait.jpg"
+                  alt="Bryce Henthorn at altitude on a hike, smiling toward the camera with a green valley and clouds behind"
+                  width={1200}
+                  height={1200}
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  priority={false}
+                />
+              </figure>
             </div>
-          </GlassCard>
+          </AnimateIn>
         </div>
 
         {/* Bio text right: cols 6-12 */}
