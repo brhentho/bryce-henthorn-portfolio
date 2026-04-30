@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Inter, Inter_Tight } from "next/font/google"
+import { Inter, Inter_Tight, Open_Sans, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
@@ -11,8 +11,20 @@ const inter = Inter({
 
 const interTight = Inter_Tight({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   variable: "--font-inter-tight",
+})
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-open-sans",
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-jetbrains-mono",
 })
 
 export const metadata: Metadata = {
@@ -47,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${interTight.variable}`}>
+    <html lang="en" className={`${inter.variable} ${interTight.variable} ${openSans.variable} ${jetbrainsMono.variable}`}>
       <body className="antialiased min-h-screen" style={{ background: '#06060A', color: '#fff' }}>
         <div className="noise" aria-hidden="true" />
         {children}
