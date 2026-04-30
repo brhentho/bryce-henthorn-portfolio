@@ -54,7 +54,7 @@ export function ProgressIndicator({ className }: Props) {
         className,
       )}
     >
-      § {pad(current)} / {pad(total)}
+      § <span className="text-[color:var(--accent-trace)]">{pad(current)}</span> / {pad(total)}
     </div>
   )
 }

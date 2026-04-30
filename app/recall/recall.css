@@ -26,6 +26,7 @@
   --accent-signal:    #8FB079;
   --accent-alert:     #D49B3D;
   --accent-warning:   #A86060;
+  --accent-trace:     #B8551E;
 
   /* Semantic aliases used by components */
   --bg: var(--ink);
@@ -35,6 +36,29 @@
   color: var(--fg);
   font-family: var(--font-body), system-ui, sans-serif;
   min-height: 100vh;
+  position: relative;
+}
+
+/* ── Per-mode grain ──
+   Two SVG-noise overlays scoped to .manual. Site-wide .noise stays untouched.
+   DARK: fine film-grain via overlay (subtle shimmer on the ink).
+   PAPER: coarser fractal noise via multiply (paper-fiber feel on the cream).
+*/
+.manual::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+}
+
+.manual[data-mode="paper"]::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.085;
+  mix-blend-mode: multiply;
 }
 
 .manual[data-mode="paper"] {

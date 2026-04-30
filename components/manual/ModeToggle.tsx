@@ -32,7 +32,7 @@ export function ModeToggle({ mode, onChange, className }: Props) {
     >
       <span
         className={cn(
-          mode === "dark" ? "underline underline-offset-[0.25em] decoration-[color:var(--text-primary)] text-[color:var(--text-primary)]" : "",
+          mode === "dark" ? "underline underline-offset-[0.25em] decoration-[color:var(--accent-trace)] decoration-[1.5px] text-[color:var(--text-primary)]" : "",
         )}
       >
         DARK
@@ -40,7 +40,7 @@ export function ModeToggle({ mode, onChange, className }: Props) {
       <span aria-hidden="true" className="text-[color:var(--text-tertiary)]">/</span>
       <span
         className={cn(
-          mode === "paper" ? "underline underline-offset-[0.25em] decoration-[color:var(--text-primary)] text-[color:var(--text-primary)]" : "",
+          mode === "paper" ? "underline underline-offset-[0.25em] decoration-[color:var(--accent-trace)] decoration-[1.5px] text-[color:var(--text-primary)]" : "",
         )}
       >
         PAPER
