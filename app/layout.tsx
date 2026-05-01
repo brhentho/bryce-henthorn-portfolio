@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next"
 import { Inter, Inter_Tight, Open_Sans, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
+import "./recall/recall.css"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0F0F10",
+  themeColor: "#0B0B0D",
 }
 
 export default function RootLayout({
@@ -60,22 +60,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${inter.variable} ${interTight.variable} ${openSans.variable} ${jetbrainsMono.variable}`}
-    >
-      <body className="antialiased">
-        <ThemeProvider
-          attribute="data-mode"
-          defaultTheme="dark"
-          themes={["dark", "paper"]}
-          enableSystem={false}
-          storageKey="manual-mode"
-        >
-          {children}
-          <Analytics />
-        </ThemeProvider>
+    <html lang="en" className={`${inter.variable} ${interTight.variable} ${openSans.variable} ${jetbrainsMono.variable}`}>
+      <body className="antialiased min-h-screen" style={{ background: '#06060A', color: '#fff' }}>
+        <div className="noise" aria-hidden="true" />
+        {children}
+        <Analytics />
       </body>
     </html>
   )
