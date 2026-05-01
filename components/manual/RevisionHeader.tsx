@@ -18,7 +18,7 @@ export function RevisionHeader({ rev, date, name, doc, className }: Props) {
   return (
     <header
       className={cn(
-        "border-b border-[color:var(--rule)] py-3",
+        "manual-revision-header border-b border-[color:var(--rule)] py-3",
         className,
       )}
     >

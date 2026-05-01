@@ -1,5 +1,4 @@
 import Image from "next/image"
-import Link from "next/link"
 import { ManualShell } from "./recall/ManualShell"
 import {
   RevisionHeader,
@@ -8,6 +7,7 @@ import {
   Figure,
   Margin,
   CursorBlink,
+  ViewTransitionLink,
 } from "@/components/manual"
 
 const PROJECTS = [
@@ -72,7 +72,7 @@ export default function HomePage() {
           <SectionLabel number="01" label="Selected Work" title="Case studies" />
           <div className="space-y-10 lg:space-y-16 mt-10">
             {PROJECTS.map((p) => (
-              <Link
+              <ViewTransitionLink
                 key={p.href}
                 href={p.href}
                 className="block group focus:outline focus:outline-1 focus:outline-[color:var(--accent-trace)]"
@@ -118,7 +118,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 </article>
-              </Link>
+              </ViewTransitionLink>
             ))}
           </div>
         </section>
