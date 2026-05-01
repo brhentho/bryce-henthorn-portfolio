@@ -8,6 +8,8 @@ import {
   Telemetry,
   Margin,
   CursorBlink,
+  ManualNav,
+  ManualFooter,
 } from "@/components/manual"
 
 const AGENT_STATES = [
@@ -22,6 +24,7 @@ export default function AgentsInWindowsPage() {
   return (
     <ManualShell>
       <RevisionHeader rev="2.4" date="April 2026" name="Bryce Henthorn" doc="Agents in Windows" />
+      <ManualNav />
 
       <main className="container">
         {/* ── Hero ── */}
@@ -409,21 +412,8 @@ export default function AgentsInWindowsPage() {
           </div>
         </section>
 
-        <footer className="border-t border-[color:var(--rule)] py-8 mt-16 flex flex-wrap items-baseline justify-between gap-4">
-          <p className="t-mono-caption text-[color:var(--text-tertiary)]">
-            END OF DOCUMENT &middot; REV. 2.4
-          </p>
-          <p className="t-mono-caption">
-            <span className="text-[color:var(--text-tertiary)]">NEXT &rarr; </span>
-            <a
-              href="/recall"
-              className="text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] underline-offset-[0.25em]"
-            >
-              Windows Recall
-            </a>
-          </p>
-        </footer>
       </main>
+      <ManualFooter rev="2.4" />
     </ManualShell>
   )
 }

@@ -8,6 +8,8 @@ import {
   Margin,
   CursorBlink,
   ViewTransitionLink,
+  ManualNav,
+  ManualFooter,
 } from "@/components/manual"
 
 const PROJECTS = [
@@ -41,6 +43,7 @@ export default function HomePage() {
   return (
     <ManualShell>
       <RevisionHeader rev="2.4" date="April 2026" name="Bryce Henthorn" doc="Portfolio" />
+      <ManualNav />
 
       <main className="container">
         {/* ── Hero ── */}
@@ -163,18 +166,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        <footer className="border-t border-[color:var(--rule)] py-8 mt-16 flex flex-wrap items-baseline justify-between gap-4">
-          <p className="t-mono-caption text-[color:var(--text-tertiary)]">
-            BRYCE HENTHORN &middot; SEATTLE, WA &middot; REV. 2.4
-          </p>
-          <a
-            href="mailto:bhenthorn2757@gmail.com"
-            className="t-mono-caption text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] underline-offset-[0.25em]"
-          >
-            bhenthorn2757@gmail.com
-          </a>
-        </footer>
       </main>
+      <ManualFooter rev="2.4" />
     </ManualShell>
   )
 }

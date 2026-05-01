@@ -253,21 +253,21 @@
 }
 
 ::view-transition-old(root) {
-  animation: manual-redact-out 200ms cubic-bezier(0.2, 0.65, 0.3, 1) forwards;
+  animation: manual-page-fade-out 220ms cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 
 ::view-transition-new(root) {
-  animation: manual-reveal-in 240ms cubic-bezier(0.2, 0.65, 0.3, 1) 160ms backwards;
+  animation: manual-page-fade-in 320ms cubic-bezier(0, 0, 0.2, 1) 100ms backwards;
 }
 
-@keyframes manual-redact-out {
-  from { clip-path: inset(0 0 0 0); }
-  to   { clip-path: inset(0 100% 0 0); }
+@keyframes manual-page-fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-6px); }
 }
 
-@keyframes manual-reveal-in {
-  from { clip-path: inset(0 0 0 100%); }
-  to   { clip-path: inset(0 0 0 0); }
+@keyframes manual-page-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* RevisionHeader persists across the swap — same view-transition-name on both

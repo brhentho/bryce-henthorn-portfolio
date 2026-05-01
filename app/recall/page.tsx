@@ -8,6 +8,8 @@ import {
   Margin,
   StateDiagram,
   CursorBlink,
+  ManualNav,
+  ManualFooter,
 } from "@/components/manual"
 import { HeroSchematic } from "./svg/HeroSchematic"
 import { Fig1_1 } from "./svg/Fig1_1"
@@ -20,6 +22,7 @@ export default function RecallPage() {
   return (
     <ManualShell>
       <RevisionHeader rev="2.3" date="April 2026" name="Bryce Henthorn" doc="Recall" />
+      <ManualNav />
 
       <main className="container">
         {/* ── Hero ── */}
@@ -147,12 +150,8 @@ export default function RecallPage() {
           </div>
         </section>
 
-        <footer className="border-t border-[color:var(--rule)] py-8 mt-16">
-          <p className="t-mono-caption text-[color:var(--text-tertiary)]">
-            END OF DOCUMENT · REV. 2.3
-          </p>
-        </footer>
       </main>
+      <ManualFooter rev="2.3" />
     </ManualShell>
   )
 }

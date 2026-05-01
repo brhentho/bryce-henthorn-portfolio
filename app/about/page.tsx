@@ -7,12 +7,15 @@ import {
   Telemetry,
   Margin,
   CursorBlink,
+  ManualNav,
+  ManualFooter,
 } from "@/components/manual"
 
 export default function AboutPage() {
   return (
     <ManualShell>
       <RevisionHeader rev="2.4" date="April 2026" name="Bryce Henthorn" doc="About" />
+      <ManualNav />
 
       <main className="container">
         {/* ── Hero ── */}
@@ -218,18 +221,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <footer className="border-t border-[color:var(--rule)] py-8 mt-16">
-          <p className="t-mono-caption text-[color:var(--text-tertiary)]">
-            END OF DOCUMENT &middot; REV. 2.4 &middot;{" "}
-            <a
-              href="mailto:bhenthorn2757@gmail.com"
-              className="underline decoration-[color:var(--rule-strong)] underline-offset-[0.25em]"
-            >
-              bhenthorn2757@gmail.com
-            </a>
-          </p>
-        </footer>
       </main>
+      <ManualFooter rev="2.4" />
     </ManualShell>
   )
 }
