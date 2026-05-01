@@ -7,6 +7,7 @@ import {
   Telemetry,
   Margin,
   StateDiagram,
+  CursorBlink,
 } from "@/components/manual"
 import { HeroSchematic } from "./svg/HeroSchematic"
 import { Fig1_1 } from "./svg/Fig1_1"
@@ -24,7 +25,7 @@ export default function RecallPage() {
         {/* ── Hero ── */}
         <section data-section id="hero" className="pt-12 lg:pt-24 pb-16">
           <p className="t-mono-label mb-6">§ 00 / OVERVIEW</p>
-          <h1 className="t-display-xl max-w-[18ch]">Making AI memory legible</h1>
+          <h1 className="t-display-xl max-w-[18ch]">Making AI memory legible<CursorBlink /></h1>
           <p className="t-body lede mt-6 max-w-[60ch] text-[color:var(--text-secondary)]">
             [TK 2-sentence subhead]
           </p>

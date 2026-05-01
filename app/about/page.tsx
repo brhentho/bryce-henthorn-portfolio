@@ -6,6 +6,7 @@ import {
   Figure,
   Telemetry,
   Margin,
+  CursorBlink,
 } from "@/components/manual"
 
 export default function AboutPage() {
@@ -17,7 +18,7 @@ export default function AboutPage() {
         {/* ── Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <p className="t-mono-label mb-6">§ 00 / OVERVIEW</p>
-          <h1 className="t-display-xl">Bryce Henthorn</h1>
+          <h1 className="t-display-xl">Bryce Henthorn<CursorBlink /></h1>
           <p className="t-body lede mt-6 max-w-[60ch] text-[color:var(--text-secondary)]">
             Senior Product Designer working on AI experiences inside Windows at Microsoft.
           </p>

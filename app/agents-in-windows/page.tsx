@@ -7,6 +7,7 @@ import {
   Figure,
   Telemetry,
   Margin,
+  CursorBlink,
 } from "@/components/manual"
 
 const AGENT_STATES = [
@@ -26,7 +27,7 @@ export default function AgentsInWindowsPage() {
         {/* ── Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <p className="t-mono-label mb-6">§ 00 / OVERVIEW</p>
-          <h1 className="t-display-xl max-w-[20ch]">Agents in Windows</h1>
+          <h1 className="t-display-xl max-w-[20ch]">Agents in Windows<CursorBlink /></h1>
           <p className="t-body lede mt-6 max-w-[60ch] text-[color:var(--text-secondary)]">
             Windows had to become the place where agents actually live — visible,
             manageable, trustworthy. The OS as the coordination layer for every

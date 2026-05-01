@@ -7,6 +7,7 @@ import {
   Figure,
   Telemetry,
   Margin,
+  CursorBlink,
 } from "@/components/manual"
 
 const STUDENT_QUOTES = [
@@ -41,7 +42,7 @@ export default function TeamsForEducationPage() {
         {/* ── Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <p className="t-mono-label mb-6">§ 00 / OVERVIEW</p>
-          <h1 className="t-display-xl max-w-[20ch]">Teams for Education</h1>
+          <h1 className="t-display-xl max-w-[20ch]">Teams for Education<CursorBlink /></h1>
           <p className="t-body lede mt-6 max-w-[60ch] text-[color:var(--text-secondary)]">
             COVID brought millions of new students to online classrooms. Teams scaled.
             Engagement collapsed. We rebuilt the virtual classroom around structure
