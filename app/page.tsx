@@ -46,10 +46,8 @@ export default function HomePage() {
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <p className="t-mono-label mb-6">§ 00 / OVERVIEW</p>
           <h1 className="t-display-xl">Bryce Henthorn</h1>
-          <p className="t-h2 mt-6 max-w-[28ch] text-[color:var(--text-secondary)]">
+          <p className="t-body lede mt-6 max-w-[60ch] text-[color:var(--text-secondary)]">
             Senior Product Designer working on AI experiences inside Windows at Microsoft.
-          </p>
-          <p className="t-body mt-6 max-w-[60ch]">
             I design at the intersection of operating systems, agents, and enterprise
             workflows — the messy, high-stakes problems that show up when software stops
             being a tool and starts acting on your behalf.

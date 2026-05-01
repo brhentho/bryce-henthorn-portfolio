@@ -17,15 +17,19 @@ export default function AboutPage() {
         {/* ── Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <p className="t-mono-label mb-6">§ 00 / OVERVIEW</p>
-          <h1 className="t-display-l">
-            Serial problem solver.<br />
-            Fixated on optimizing systems.<br />
-            Obsessed with structure and flow.<br />
-            Unapologetic technology geek.<br />
-            <span className="text-[color:var(--accent-trace)]">
-              So naturally, I fell in love with UX design.
-            </span>
-          </h1>
+          <h1 className="t-display-xl">Bryce Henthorn</h1>
+          <p className="t-body lede mt-6 max-w-[60ch] text-[color:var(--text-secondary)]">
+            Senior Product Designer working on AI experiences inside Windows at Microsoft.
+          </p>
+          <Figure
+            number="0.1"
+            caption="At altitude on a hike, smiling toward the camera with a green valley and clouds behind"
+            src="/images/bryce-portrait.jpg"
+            alt="Bryce Henthorn at altitude on a hike, smiling toward the camera with a green valley and clouds behind"
+            width={1200}
+            height={1200}
+            priority
+          />
         </section>
 
         {/* ── Spec sheet ── */}
@@ -45,6 +49,11 @@ export default function AboutPage() {
           <SectionLabel number="01" label="Bio" title="Want a bit more?" />
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
+              <p className="t-display-l">
+                Serial problem solver. Fixated on optimizing systems. Obsessed with
+                structure and flow. Unapologetic technology geek. So naturally, I fell in
+                love with UX design.
+              </p>
               <p className="t-body">
                 I&apos;m a product designer working on AI experiences inside Windows at
                 Microsoft. My job sits at a strange and exciting intersection: operating
@@ -67,14 +76,6 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <Figure
-            number="1.1"
-            caption="At altitude on a hike, smiling toward the camera with a green valley and clouds behind"
-            src="/images/bryce-portrait.jpg"
-            alt="Bryce Henthorn at altitude on a hike, smiling toward the camera with a green valley and clouds behind"
-            width={1200}
-            height={1200}
-          />
         </section>
 
         {/* ── 02 Philosophy ── */}
