@@ -1,23 +1,26 @@
 "use client"
 
+import { useEffect, useState } from "react"
+import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 
-type Mode = "dark" | "paper"
+export function ModeToggle({ className }: { className?: string }) {
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
-type Props = {
-  mode: Mode
-  onChange: (next: Mode) => void
-  className?: string
-}
+  // next-themes guidance: avoid hydration mismatch by only rendering theme-aware
+  // markup after mount. SSR + first paint use the default (dark) styling.
+  useEffect(() => setMounted(true), [])
 
-export function ModeToggle({ mode, onChange, className }: Props) {
-  const next: Mode = mode === "dark" ? "paper" : "dark"
+  const mode: "dark" | "paper" = mounted && resolvedTheme === "paper" ? "paper" : "dark"
+  const next: "dark" | "paper" = mode === "dark" ? "paper" : "dark"
+
   return (
     <button
       type="button"
       aria-pressed={mode === "paper"}
       aria-label={`Switch to ${next} mode`}
-      onClick={() => onChange(next)}
+      onClick={() => setTheme(next)}
       className={cn(
         "t-mono-label",
         "fixed top-5 right-6 z-40",
@@ -32,7 +35,9 @@ export function ModeToggle({ mode, onChange, className }: Props) {
     >
       <span
         className={cn(
-          mode === "dark" ? "underline underline-offset-[0.25em] decoration-[color:var(--accent-trace)] decoration-[1.5px] text-[color:var(--text-primary)]" : "",
+          mode === "dark"
+            ? "underline underline-offset-[0.25em] decoration-[color:var(--accent-trace)] decoration-[1.5px] text-[color:var(--text-primary)]"
+            : "",
         )}
       >
         DARK
@@ -40,7 +45,9 @@ export function ModeToggle({ mode, onChange, className }: Props) {
       <span aria-hidden="true" className="text-[color:var(--text-tertiary)]">/</span>
       <span
         className={cn(
-          mode === "paper" ? "underline underline-offset-[0.25em] decoration-[color:var(--accent-trace)] decoration-[1.5px] text-[color:var(--text-primary)]" : "",
+          mode === "paper"
+            ? "underline underline-offset-[0.25em] decoration-[color:var(--accent-trace)] decoration-[1.5px] text-[color:var(--text-primary)]"
+            : "",
         )}
       >
         PAPER
