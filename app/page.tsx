@@ -94,20 +94,26 @@ export default function HomePage() {
                         <span className="t-mono-caption text-[color:var(--text-tertiary)]">
                           {p.years}
                         </span>
-                        <span className="t-mono-label group-hover:text-[color:var(--accent-trace)] transition-colors">
-                          READ &rarr;
+                        <span className="t-mono-label group-hover:text-[color:var(--accent-trace)] transition-colors inline-flex items-baseline gap-[0.3em]">
+                          READ
+                          <span
+                            aria-hidden="true"
+                            className="inline-block transition-transform duration-200 ease-out group-hover:translate-x-[3px]"
+                          >
+                            &rarr;
+                          </span>
                         </span>
                       </div>
                     </div>
 
                     {/* Right: case-study thumbnail */}
-                    <div className="relative aspect-[16/10] lg:aspect-auto bg-[color:var(--bg)]">
+                    <div className="relative aspect-[16/10] lg:aspect-auto bg-[color:var(--bg)] overflow-hidden">
                       <Image
                         src={p.image}
                         alt={`${p.title} case study`}
                         fill
                         sizes="(min-width: 1024px) 60vw, 100vw"
-                        className="object-cover"
+                        className="object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.02]"
                       />
                     </div>
                   </div>

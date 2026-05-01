@@ -1,5 +1,8 @@
+"use client"
+
 import type { ReactNode } from "react"
 import Image from "next/image"
+import { useRef, useState } from "react"
 import { cn } from "@/lib/utils"
 import { RegistrationMark } from "./RegistrationMark"
 import { Crossref } from "./Crossref"
@@ -29,10 +32,28 @@ export function Figure({
   children,
   className,
 }: Props) {
+  const frameRef = useRef<HTMLDivElement>(null)
+  const [active, setActive] = useState(false)
+
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!frameRef.current) return
+    const rect = frameRef.current.getBoundingClientRect()
+    frameRef.current.style.setProperty("--cx", `${e.clientX - rect.left}px`)
+    frameRef.current.style.setProperty("--cy", `${e.clientY - rect.top}px`)
+    if (!active) setActive(true)
+  }
+  const handleLeave = () => setActive(false)
+
   const altText = alt ?? caption ?? `Figure ${number}`
   return (
     <figure className={cn("my-10 lg:my-14", className)}>
-      <div className="relative border border-[color:var(--rule)]">
+      <div
+        ref={frameRef}
+        className="manual-figure-frame relative border border-[color:var(--rule)]"
+        data-cursor-active={active ? "true" : "false"}
+        onMouseMove={handleMove}
+        onMouseLeave={handleLeave}
+      >
         <RegistrationMark
           className="absolute -top-[6px] -left-[6px]"
           aria-hidden="true"
@@ -40,6 +61,19 @@ export function Figure({
         <div className="absolute top-2 left-3 z-10">
           <span className="t-mono-label bg-[color:var(--bg)] px-1">FIG. {number}</span>
         </div>
+        <svg
+          aria-hidden="true"
+          className="manual-figure-crosshair"
+          width={14}
+          height={14}
+          viewBox="0 0 14 14"
+          fill="none"
+          stroke="currentColor"
+        >
+          <circle cx="7" cy="7" r="2" strokeWidth="0.75" />
+          <line x1="7" y1="0" x2="7" y2="14" strokeWidth="0.75" />
+          <line x1="0" y1="7" x2="14" y2="7" strokeWidth="0.75" />
+        </svg>
         <div className="relative w-full bg-[color:var(--bg)]">
           {src ? (
             <Image
