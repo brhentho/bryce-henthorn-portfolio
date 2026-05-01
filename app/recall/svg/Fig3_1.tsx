@@ -7,7 +7,7 @@ export function Fig3_1() {
       height="auto"
       fill="none"
       strokeWidth={1}
-      className="block w-full"
+      className="manual-schematic block w-full"
       role="img"
       aria-label="Before and after split: merged versus separated layout"
     >

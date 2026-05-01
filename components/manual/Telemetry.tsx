@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { TelemetryValue } from "./TelemetryValue"
 
 type Item = {
   value: string
@@ -34,7 +35,7 @@ export function Telemetry({ items, className }: Props) {
               fontVariantNumeric: "tabular-nums",
             }}
           >
-            {item.value}
+            <TelemetryValue target={item.value} />
           </div>
           <div className="t-mono-label text-[color:var(--text-secondary)]">{item.unit}</div>
           <div className="t-mono-caption text-[color:var(--text-tertiary)]">{item.label}</div>

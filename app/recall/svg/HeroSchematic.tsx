@@ -11,7 +11,7 @@ export function HeroSchematic() {
       fill="none"
       stroke="currentColor"
       strokeWidth={1}
-      className="block w-full text-[color:var(--rule-strong)]"
+      className="manual-schematic block w-full text-[color:var(--rule-strong)]"
       role="img"
       aria-label="Placeholder hero schematic"
     >

@@ -24,7 +24,7 @@ export function Fig2_2() {
       height="auto"
       fill="none"
       strokeWidth={1}
-      className="block w-full"
+      className="manual-schematic block w-full"
       role="img"
       aria-label="Grid of four rejected concept directions"
     >
