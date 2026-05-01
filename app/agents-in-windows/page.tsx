@@ -35,7 +35,7 @@ export default function AgentsInWindowsPage() {
         </section>
 
         {/* ── Spec sheet ── */}
-        <section data-section id="spec" className="py-8">
+        <section data-section data-reveal id="spec" className="py-8">
           <SpecSheet
             rows={[
               { label: "ROLE",     value: "Lead designer, agent visibility & orchestration" },
@@ -49,7 +49,7 @@ export default function AgentsInWindowsPage() {
         </section>
 
         {/* ── 01 Context ── */}
-        <section data-section id="context" className="py-12 lg:py-20">
+        <section data-section data-reveal id="context" className="py-12 lg:py-20">
           <SectionLabel
             number="01"
             label="Context"
@@ -95,7 +95,7 @@ export default function AgentsInWindowsPage() {
         </section>
 
         {/* ── 02 Problem ── */}
-        <section data-section id="problem" className="py-12 lg:py-20">
+        <section data-section data-reveal id="problem" className="py-12 lg:py-20">
           <SectionLabel
             number="02"
             label="Problem"
@@ -140,7 +140,7 @@ export default function AgentsInWindowsPage() {
         </section>
 
         {/* ── 03 Process ── */}
-        <section data-section id="process" className="py-12 lg:py-20">
+        <section data-section data-reveal id="process" className="py-12 lg:py-20">
           <SectionLabel
             number="03"
             label="Process"
@@ -184,7 +184,7 @@ export default function AgentsInWindowsPage() {
         </section>
 
         {/* ── 04 Taskbar ── */}
-        <section data-section id="taskbar" className="py-12 lg:py-20">
+        <section data-section data-reveal id="taskbar" className="py-12 lg:py-20">
           <SectionLabel
             number="04"
             label="Taskbar"
@@ -224,7 +224,7 @@ export default function AgentsInWindowsPage() {
         </section>
 
         {/* ── 05 Constraints ── */}
-        <section data-section id="constraints" className="py-12 lg:py-20">
+        <section data-section data-reveal id="constraints" className="py-12 lg:py-20">
           <SectionLabel
             number="05"
             label="Constraints"
@@ -270,7 +270,7 @@ export default function AgentsInWindowsPage() {
         </section>
 
         {/* ── 06 Invocation ── */}
-        <section data-section id="invocation" className="py-12 lg:py-20">
+        <section data-section data-reveal id="invocation" className="py-12 lg:py-20">
           <SectionLabel
             number="06"
             label="Invocation"
@@ -309,7 +309,7 @@ export default function AgentsInWindowsPage() {
         </section>
 
         {/* ── 07 Iteration ── */}
-        <section data-section id="iteration" className="py-12 lg:py-20">
+        <section data-section data-reveal id="iteration" className="py-12 lg:py-20">
           <SectionLabel
             number="07"
             label="Iteration"
@@ -350,7 +350,7 @@ export default function AgentsInWindowsPage() {
         </section>
 
         {/* ── 08 Impact ── */}
-        <section data-section id="impact" className="py-12 lg:py-20">
+        <section data-section data-reveal id="impact" className="py-12 lg:py-20">
           <SectionLabel
             number="08"
             label="Impact"

@@ -33,7 +33,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── Spec sheet ── */}
-        <section data-section id="spec" className="py-8">
+        <section data-section data-reveal id="spec" className="py-8">
           <SpecSheet
             rows={[
               { label: "ROLE",    value: "Senior Product Designer, Microsoft" },
@@ -45,7 +45,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── 01 Bio ── */}
-        <section data-section id="bio" className="py-12 lg:py-20">
+        <section data-section data-reveal id="bio" className="py-12 lg:py-20">
           <SectionLabel number="01" label="Bio" title="Want a bit more?" />
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
@@ -79,7 +79,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── 02 Philosophy ── */}
-        <section data-section id="philosophy" className="py-12 lg:py-20">
+        <section data-section data-reveal id="philosophy" className="py-12 lg:py-20">
           <SectionLabel
             number="02"
             label="Philosophy"
@@ -125,7 +125,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── 03 Experience ── */}
-        <section data-section id="experience" className="py-12 lg:py-20">
+        <section data-section data-reveal id="experience" className="py-12 lg:py-20">
           <SectionLabel
             number="03"
             label="Experience"
@@ -198,7 +198,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── 04 Drawn to ── */}
-        <section data-section id="drawn-to" className="py-12 lg:py-20">
+        <section data-section data-reveal id="drawn-to" className="py-12 lg:py-20">
           <SectionLabel number="04" label="Drawn To" title="What I&rsquo;m drawn to" />
           <div className="mt-12 space-y-4">
             <Telemetry

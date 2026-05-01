@@ -123,16 +123,77 @@
   }
 }
 
-/* ── Reduced-motion gate ── */
-@media (prefers-reduced-motion: reduce) {
-  .manual [data-anim] {
-    animation: none !important;
-  }
-}
-
 /* ── Section divider hairline ── */
 .manual hr.rule {
   border: 0;
   border-top: 1px solid var(--rule);
   margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MOTION — Batch 1: Reveal & rhythm
+   - Sections marked [data-reveal] start hidden, fade + lift on first
+     viewport entry (toggled by ScrollRevealController).
+   - First section (no [data-reveal]) staggers its children on page load.
+   - Hairlines under SectionLabel draw left→right when their section reveals.
+   ═══════════════════════════════════════════════════════════════ */
+
+.manual [data-reveal] {
+  transition:
+    opacity 600ms cubic-bezier(0.2, 0.65, 0.3, 1),
+    transform 600ms cubic-bezier(0.2, 0.65, 0.3, 1);
+  will-change: opacity, transform;
+}
+.manual [data-reveal]:not([data-revealed="true"]) {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.manual [data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hairline draw-in inside any revealed section */
+.manual [data-reveal] hr.rule {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 800ms cubic-bezier(0.2, 0.65, 0.3, 1) 200ms;
+}
+.manual [data-reveal][data-revealed="true"] hr.rule {
+  transform: scaleX(1);
+}
+
+/* Hero (first section, no [data-reveal]) — stagger its direct children on load */
+.manual section[data-section]:not([data-reveal]) > * {
+  animation: manual-hero-in 600ms cubic-bezier(0.2, 0.65, 0.3, 1) backwards;
+}
+.manual section[data-section]:not([data-reveal]) > *:nth-child(1) { animation-delay: 0ms; }
+.manual section[data-section]:not([data-reveal]) > *:nth-child(2) { animation-delay: 120ms; }
+.manual section[data-section]:not([data-reveal]) > *:nth-child(3) { animation-delay: 240ms; }
+.manual section[data-section]:not([data-reveal]) > *:nth-child(n+4) { animation-delay: 360ms; }
+
+@keyframes manual-hero-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Reduced-motion gate ── */
+@media (prefers-reduced-motion: reduce) {
+  .manual [data-anim] {
+    animation: none !important;
+  }
+  .manual [data-reveal],
+  .manual [data-reveal] hr.rule {
+    transition: none !important;
+  }
+  .manual [data-reveal]:not([data-revealed="true"]) {
+    opacity: 1;
+    transform: none;
+  }
+  .manual [data-reveal]:not([data-revealed="true"]) hr.rule {
+    transform: scaleX(1);
+  }
+  .manual section[data-section]:not([data-reveal]) > * {
+    animation: none !important;
+  }
 }

@@ -55,7 +55,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Spec sheet ── */}
-        <section data-section id="spec" className="py-8">
+        <section data-section data-reveal id="spec" className="py-8">
           <SpecSheet
             rows={[
               { label: "ROLE",    value: "Senior Product Designer, Microsoft" },
@@ -67,7 +67,7 @@ export default function HomePage() {
         </section>
 
         {/* ── 01 Selected Work ── */}
-        <section data-section id="work" className="py-12 lg:py-20">
+        <section data-section data-reveal id="work" className="py-12 lg:py-20">
           <SectionLabel number="01" label="Selected Work" title="Case studies" />
           <div className="space-y-10 lg:space-y-16 mt-10">
             {PROJECTS.map((p) => (
@@ -117,7 +117,7 @@ export default function HomePage() {
         </section>
 
         {/* ── 02 Thesis ── */}
-        <section data-section id="thesis" className="py-12 lg:py-20">
+        <section data-section data-reveal id="thesis" className="py-12 lg:py-20">
           <SectionLabel number="02" label="Thesis" title="What I design for" />
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
@@ -141,7 +141,7 @@ export default function HomePage() {
         </section>
 
         {/* ── 03 Index ── */}
-        <section data-section id="index" className="py-12 lg:py-20">
+        <section data-section data-reveal id="index" className="py-12 lg:py-20">
           <SectionLabel number="03" label="Index" title="Elsewhere" />
           <div className="mt-10">
             <SpecSheet

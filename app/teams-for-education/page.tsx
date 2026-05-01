@@ -50,7 +50,7 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── Spec sheet ── */}
-        <section data-section id="spec" className="py-8">
+        <section data-section data-reveal id="spec" className="py-8">
           <SpecSheet
             rows={[
               { label: "ROLE",     value: "Lead interaction designer, virtual classroom" },
@@ -64,7 +64,7 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 01 Context ── */}
-        <section data-section id="context" className="py-12 lg:py-20">
+        <section data-section data-reveal id="context" className="py-12 lg:py-20">
           <SectionLabel
             number="01"
             label="Context"
@@ -108,7 +108,7 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 02 Problem ── */}
-        <section data-section id="problem" className="py-12 lg:py-20">
+        <section data-section data-reveal id="problem" className="py-12 lg:py-20">
           <SectionLabel
             number="02"
             label="Problem"
@@ -163,7 +163,7 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 03 Research ── */}
-        <section data-section id="research" className="py-12 lg:py-20">
+        <section data-section data-reveal id="research" className="py-12 lg:py-20">
           <SectionLabel
             number="03"
             label="Research"
@@ -196,7 +196,7 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 04 Solution ── */}
-        <section data-section id="solution" className="py-12 lg:py-20">
+        <section data-section data-reveal id="solution" className="py-12 lg:py-20">
           <SectionLabel
             number="04"
             label="Solution"
@@ -248,7 +248,7 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 05 Orchestration ── */}
-        <section data-section id="orchestration" className="py-12 lg:py-20">
+        <section data-section data-reveal id="orchestration" className="py-12 lg:py-20">
           <SectionLabel
             number="05"
             label="Orchestration"
@@ -295,7 +295,7 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 06 Group Creation ── */}
-        <section data-section id="group-creation" className="py-12 lg:py-20">
+        <section data-section data-reveal id="group-creation" className="py-12 lg:py-20">
           <SectionLabel
             number="06"
             label="Group Creation"
@@ -343,7 +343,7 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 07 Student View ── */}
-        <section data-section id="student-view" className="py-12 lg:py-20">
+        <section data-section data-reveal id="student-view" className="py-12 lg:py-20">
           <SectionLabel
             number="07"
             label="Student View"
@@ -372,7 +372,7 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 08 Bandwidth ── */}
-        <section data-section id="bandwidth" className="py-12 lg:py-20">
+        <section data-section data-reveal id="bandwidth" className="py-12 lg:py-20">
           <SectionLabel
             number="08"
             label="Bandwidth"
@@ -399,7 +399,7 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 09 Impact ── */}
-        <section data-section id="impact" className="py-12 lg:py-20">
+        <section data-section data-reveal id="impact" className="py-12 lg:py-20">
           <SectionLabel
             number="09"
             label="Impact"

@@ -37,7 +37,7 @@ export default function RecallPage() {
         </section>
 
         {/* ── Spec sheet ── */}
-        <section data-section id="spec" className="py-8">
+        <section data-section data-reveal id="spec" className="py-8">
           <SpecSheet
             rows={[
               { label: "ROLE",     value: "Senior UX/Product Designer" },
@@ -51,7 +51,7 @@ export default function RecallPage() {
         </section>
 
         {/* ── 01 Problem ── */}
-        <section data-section id="problem" className="py-12 lg:py-20">
+        <section data-section data-reveal id="problem" className="py-12 lg:py-20">
           <SectionLabel number="01" label="Problem" title="[TK problem title]" />
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
@@ -66,7 +66,7 @@ export default function RecallPage() {
         </section>
 
         {/* ── 02 Methodology ── */}
-        <section data-section id="methodology" className="py-12 lg:py-20">
+        <section data-section data-reveal id="methodology" className="py-12 lg:py-20">
           <SectionLabel number="02" label="Methodology" title="[TK methodology title]" />
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
@@ -86,7 +86,7 @@ export default function RecallPage() {
         </section>
 
         {/* ── 03 Solution ── */}
-        <section data-section id="solution" className="py-12 lg:py-20">
+        <section data-section data-reveal id="solution" className="py-12 lg:py-20">
           <SectionLabel number="03" label="Solution" title="[TK solution title]" />
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
@@ -118,7 +118,7 @@ export default function RecallPage() {
         </section>
 
         {/* ── 04 Impact ── */}
-        <section data-section id="impact" className="py-12 lg:py-20">
+        <section data-section data-reveal id="impact" className="py-12 lg:py-20">
           <SectionLabel number="04" label="Impact" title="[TK impact title]" />
           <div className="mt-10 space-y-6 max-w-[68ch]">
             <p className="t-body">[TK impact paragraph]</p>
@@ -135,7 +135,7 @@ export default function RecallPage() {
         </section>
 
         {/* ── 05 Reflection ── */}
-        <section data-section id="reflection" className="py-12 lg:py-20">
+        <section data-section data-reveal id="reflection" className="py-12 lg:py-20">
           <SectionLabel number="05" label="Reflection" title="[TK reflection title]" />
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">

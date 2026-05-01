@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react"
 import { ModeToggle } from "@/components/manual/ModeToggle"
 import { ProgressIndicator } from "@/components/manual/ProgressIndicator"
+import { ScrollRevealController } from "@/components/manual/ScrollRevealController"
 
 type Mode = "dark" | "paper"
 const STORAGE_KEY = "recall-manual-mode"
@@ -48,6 +49,7 @@ export function ManualShell({ children }: Props) {
     <div className="manual" data-mode={mode}>
       <ModeToggle mode={mode} onChange={setMode} />
       <ProgressIndicator />
+      <ScrollRevealController />
       {children}
     </div>
   )
