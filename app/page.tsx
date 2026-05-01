@@ -1,322 +1,175 @@
-'use client'
+import Image from "next/image"
+import Link from "next/link"
+import { ManualShell } from "./recall/ManualShell"
+import {
+  RevisionHeader,
+  SectionLabel,
+  SpecSheet,
+  Figure,
+  Margin,
+} from "@/components/manual"
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { useState } from 'react'
-import { NavEditorial } from '@/components/editorial/NavEditorial'
-import { Section } from '@/components/editorial/Section'
-import { Grid12 } from '@/components/editorial/Grid12'
-import { GlassCard } from '@/components/editorial/GlassCard'
-import { Glow } from '@/components/atmosphere/Glow'
-import { EdgeLine } from '@/components/atmosphere/EdgeLine'
-import { HeroAnimation } from '@/components/motion/hero-morph/HeroAnimation'
-
-/* ═══════════════════════════════════════════════════════════════
-   HOMEPAGE
-   Multi-color ambient — no single --a
-   ═══════════════════════════════════════════════════════════════ */
+const PROJECTS = [
+  {
+    href: "/agents-in-windows",
+    number: "01",
+    title: "Agents in Windows",
+    tagline: "Solving trust and visibility for AI agents in the operating system",
+    image: "/images/projects/Agents project card.png",
+    years: "2025 –",
+  },
+  {
+    href: "/recall",
+    number: "02",
+    title: "Windows Recall",
+    tagline: "Designing semantic search for everything you’ve seen",
+    image: "/images/projects/Recall project card.png",
+    years: "2023 – 2025",
+  },
+  {
+    href: "/teams-for-education",
+    number: "03",
+    title: "Teams for Education",
+    tagline: "Modernizing online classes for an authentic virtual experience",
+    image: "/images/projects/Teams for EDU project card.png",
+    years: "2020 – 2021",
+  },
+]
 
 export default function HomePage() {
   return (
-    <>
-      <NavEditorial />
-      <main>
-        <HeroAnimation />
-        <FeaturedCard />
-        <CardPair />
-        <PhilosophyStrip />
-      </main>
-      <HomeFooter />
-    </>
-  )
-}
+    <ManualShell>
+      <RevisionHeader rev="2.4" date="April 2026" name="Bryce Henthorn" doc="Portfolio" />
 
-/* ── 2. Featured Card (Agents) ── */
-function FeaturedCard() {
-  const [hovered, setHovered] = useState(false)
+      <main className="container">
+        {/* ── Hero ── */}
+        <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
+          <p className="t-mono-label mb-6">§ 00 / OVERVIEW</p>
+          <h1 className="t-display-xl">Bryce Henthorn</h1>
+          <p className="t-h2 mt-6 max-w-[28ch] text-[color:var(--text-secondary)]">
+            Senior Product Designer working on AI experiences inside Windows at Microsoft.
+          </p>
+          <p className="t-body mt-6 max-w-[60ch]">
+            I design at the intersection of operating systems, agents, and enterprise
+            workflows — the messy, high-stakes problems that show up when software stops
+            being a tool and starts acting on your behalf.
+          </p>
+        </section>
 
-  return (
-    <Section id="projects" padding="py-16 md:py-24">
-      <Glow color="#5EA6F5" size="60%" top="50%" left="50%" opacity={0.03} />
+        {/* ── Spec sheet ── */}
+        <section data-section id="spec" className="py-8">
+          <SpecSheet
+            rows={[
+              { label: "ROLE",    value: "Senior Product Designer, Microsoft" },
+              { label: "FOCUS",   value: "AI experiences inside Windows — Agents, Recall, Teams" },
+              { label: "BASED",   value: "Seattle, WA" },
+              { label: "CONTACT", value: "bhenthorn2757@gmail.com" },
+            ]}
+          />
+        </section>
 
-      {/* Section label row */}
-      <div
-        className="flex items-center gap-3 mb-8"
-        style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', margin: '0 auto 32px' }}
-      >
-        <div
-          style={{
-            width: '6px',
-            height: '6px',
-            borderRadius: '50%',
-            background: 'var(--w15)',
-          }}
-        />
-        <span className="t-label">Selected work</span>
-        <div style={{ flex: 1, height: '1px', background: 'var(--w06)' }} />
-      </div>
+        {/* ── 01 Selected Work ── */}
+        <section data-section id="work" className="py-12 lg:py-20">
+          <SectionLabel number="01" label="Selected Work" title="Case studies" />
+          <div className="space-y-10 lg:space-y-16 mt-10">
+            {PROJECTS.map((p) => (
+              <Link
+                key={p.href}
+                href={p.href}
+                className="block group focus:outline focus:outline-1 focus:outline-[color:var(--accent-trace)]"
+              >
+                <article className="border border-[color:var(--rule)] group-hover:border-[color:var(--rule-strong)] transition-colors">
+                  <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr]">
+                    {/* Left: TOC-style metadata */}
+                    <div className="p-6 lg:p-10 flex flex-col justify-between gap-8 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)]">
+                      <div>
+                        <p className="t-mono-label">§ {p.number}</p>
+                        <h3 className="t-h1 mt-3 text-[color:var(--text-primary)]">
+                          {p.title}
+                        </h3>
+                        <p className="t-body mt-4 text-[color:var(--text-secondary)]">
+                          {p.tagline}
+                        </p>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-4">
+                        <span className="t-mono-caption text-[color:var(--text-tertiary)]">
+                          {p.years}
+                        </span>
+                        <span className="t-mono-label group-hover:text-[color:var(--accent-trace)] transition-colors">
+                          READ &rarr;
+                        </span>
+                      </div>
+                    </div>
 
-      {/* Full-width Agents card */}
-      <div style={{ padding: '0 var(--pad)', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
-        <Link href="/agents-in-windows" className="block">
-          <GlassCard
-            hover
-            className="group"
-          >
-            <div
-              onMouseEnter={() => setHovered(true)}
-              onMouseLeave={() => setHovered(false)}
-            >
-              {/* Image container */}
-              <div className="relative overflow-hidden aspect-[16/9] md:aspect-auto md:h-[400px]">
-                <Image
-                  src="/images/projects/Agents project card.png"
-                  alt="Agents in Windows case study"
-                  fill
-                  className="object-cover object-[85%_center] md:object-center"
-                  style={{
-                    transition: 'transform 600ms var(--expo)',
-                    transform: hovered ? 'scale(1.02)' : 'scale(1)',
-                  }}
-                />
-              </div>
+                    {/* Right: case-study thumbnail */}
+                    <div className="relative aspect-[16/10] lg:aspect-auto bg-[color:var(--bg)]">
+                      <Image
+                        src={p.image}
+                        alt={`${p.title} case study`}
+                        fill
+                        sizes="(min-width: 1024px) 60vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                </article>
+              </Link>
+            ))}
+          </div>
+        </section>
 
-              {/* Card info */}
-              <div className="p-6 md:p-12">
-                <span className="t-label" style={{ color: '#5EA6F5', opacity: 0.6 }}>
-                  Agents in Windows
-                </span>
-                <h3
-                  className="mt-2"
-                  style={{
-                    fontSize: 'clamp(18px, 4.5vw, 44px)',
-                    lineHeight: 1.2,
-                    letterSpacing: '-0.01em',
-                    maxWidth: '600px',
-                  }}
-                >
-                  Solving Trust and Visibility for AI Agents in the Operating System.
-                </h3>
-
-                {/* Hover arrow */}
-                <div
-                  className="flex items-center gap-2 mt-4"
-                  style={{
-                    opacity: hovered ? 1 : 0,
-                    transform: hovered ? 'translateX(0)' : 'translateX(-8px)',
-                    transition: 'all 400ms var(--expo)',
-                  }}
-                >
-                  <span className="t-label" style={{ color: 'var(--w45)' }}>
-                    View case study
-                  </span>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    style={{ color: 'var(--w45)' }}
-                  >
-                    <path d="M3 8h10M9 4l4 4-4 4" />
-                  </svg>
-                </div>
-              </div>
+        {/* ── 02 Thesis ── */}
+        <section data-section id="thesis" className="py-12 lg:py-20">
+          <SectionLabel number="02" label="Thesis" title="What I design for" />
+          <div className="section-grid mt-10">
+            <div className="space-y-6 max-w-[68ch]">
+              <p className="t-body">
+                When software runs on your behalf without being asked, interface design
+                stops being about features and starts being about agreements — what the
+                system promises, what it shows, and what it lets you stop.
+              </p>
+              <p className="t-body">
+                Across Agents in Windows, Recall, and Teams for Education, the same job
+                shows up: make the invisible visible, the automatic interruptible, the AI
+                auditable. I design systems before surfaces — structure and behavior come
+                first, complexity unfolds on demand, and transparency, predictability, and
+                user control are never features but foundations.
+              </p>
             </div>
-          </GlassCard>
-        </Link>
-      </div>
-    </Section>
-  )
-}
+            <Margin anchor="2-pull">
+              Make the invisible visible. The automatic interruptible. The AI auditable.
+            </Margin>
+          </div>
+        </section>
 
-/* ── 3. Card Pair (Recall + Teams) ── */
-function CardPair() {
-  return (
-    <Section padding="pb-16 md:pb-24 pt-0">
-      <Glow color="#A882FF" size="50%" top="30%" left="25%" opacity={0.03} />
-      <Glow color="#6C63FF" size="50%" top="60%" left="75%" opacity={0.03} />
-
-      <div
-        className="card-pair"
-        style={{
-          padding: '0 var(--pad)',
-          maxWidth: 'var(--max-w)',
-          margin: '0 auto',
-          display: 'grid',
-          gap: 'var(--grid-gap)',
-        }}
-      >
-        <ProjectCardSmall
-          href="/recall"
-          image="/images/projects/Recall project card.png"
-          label="Windows Recall"
-          heading="Designing Semantic Search for Everything You've Seen."
-          accentColor="#A882FF"
-        />
-        <ProjectCardSmall
-          href="/teams-for-education"
-          image="/images/projects/Teams for EDU project card.png"
-          label="Teams for Education"
-          heading="Modernizing Online Classes for an Authentic Virtual Experience."
-          accentColor="#6C63FF"
-        />
-      </div>
-    </Section>
-  )
-}
-
-function ProjectCardSmall({
-  href,
-  image,
-  label,
-  heading,
-  accentColor,
-}: {
-  href: string
-  image: string
-  label: string
-  heading: string
-  accentColor: string
-}) {
-  const [hovered, setHovered] = useState(false)
-
-  return (
-    <Link href={href} className="block">
-      <GlassCard hover className="group">
-        <div
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
-          {/* Image container */}
-          <div className="relative overflow-hidden aspect-[16/10] md:aspect-auto md:h-[240px]">
-            <Image
-              src={image}
-              alt={`${label} case study`}
-              fill
-              className="object-cover object-center"
-              style={{
-                transition: 'transform 600ms var(--expo)',
-                transform: hovered ? 'scale(1.02)' : 'scale(1)',
-              }}
+        {/* ── 03 Index ── */}
+        <section data-section id="index" className="py-12 lg:py-20">
+          <SectionLabel number="03" label="Index" title="Elsewhere" />
+          <div className="mt-10">
+            <SpecSheet
+              rows={[
+                { label: "ABOUT",   value: "/about" },
+                { label: "EMAIL",   value: "bhenthorn2757@gmail.com" },
+                { label: "RECALL",  value: "/recall — Windows 11" },
+                { label: "AGENTS",  value: "/agents-in-windows — Windows 11" },
+                { label: "TEAMS",   value: "/teams-for-education — Microsoft Teams" },
+              ]}
             />
           </div>
+        </section>
 
-          {/* Card info */}
-          <div className="p-5 md:p-8">
-            <span className="t-label" style={{ color: accentColor, opacity: 0.6 }}>
-              {label}
-            </span>
-            <h3
-              className="mt-2"
-              style={{
-                fontSize: 'clamp(15px, 3.8vw, 32px)',
-                lineHeight: 1.22,
-                letterSpacing: '-0.005em',
-              }}
-            >
-              {heading}
-            </h3>
-
-            <div
-              className="flex items-center gap-2 mt-3"
-              style={{
-                opacity: hovered ? 1 : 0,
-                transform: hovered ? 'translateX(0)' : 'translateX(-8px)',
-                transition: 'all 400ms var(--expo)',
-              }}
-            >
-              <span className="t-label" style={{ color: 'var(--w45)' }}>
-                View case study
-              </span>
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ color: 'var(--w45)' }}>
-                <path d="M3 8h10M9 4l4 4-4 4" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </GlassCard>
-    </Link>
-  )
-}
-
-/* ── 4. Philosophy Strip ── */
-function PhilosophyStrip() {
-  return (
-    <Section padding="py-20 md:py-32">
-      <EdgeLine position="top" />
-      <EdgeLine position="bottom" />
-      <Glow color="#5EA6F5" size="40%" top="50%" left="50%" opacity={0.02} />
-
-      <Grid12>
-        {/* Thesis left: cols 2–7 */}
-        <div style={{ gridColumn: '2 / 7' }}>
-          <span className="t-label block mb-6" style={{ color: 'var(--w45)' }}>Thesis</span>
-          <p className="t-subhead" style={{ color: 'var(--w88)' }}>
-            When software runs on your behalf without being asked, interface design stops being about features and starts being about agreements — what the system promises, what it shows, and what it lets you stop.
+        <footer className="border-t border-[color:var(--rule)] py-8 mt-16 flex flex-wrap items-baseline justify-between gap-4">
+          <p className="t-mono-caption text-[color:var(--text-tertiary)]">
+            BRYCE HENTHORN &middot; SEATTLE, WA &middot; REV. 2.4
           </p>
-        </div>
-
-        {/* Through-line right: cols 8–12 */}
-        <div style={{ gridColumn: '8 / 12' }}>
-          <span className="t-label block mb-6" style={{ color: 'var(--w45)' }}>Through-line</span>
-          <p className="t-body" style={{ color: 'var(--w75)' }}>
-            Across Agents in Windows, Recall, and Teams for Education, the same job shows up: make the invisible visible, the automatic interruptible, the AI auditable. I design systems before surfaces — structure and behavior come first, complexity unfolds on demand, and transparency, predictability, and user control are never features but foundations.
-          </p>
-        </div>
-      </Grid12>
-    </Section>
-  )
-}
-
-
-/* ── Footer ── */
-function HomeFooter() {
-  return (
-    <footer
-      className="relative"
-      style={{
-        padding: '48px var(--pad)',
-        borderTop: '1px solid var(--w04)',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 'var(--max-w)',
-          margin: '0 auto',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '16px',
-        }}
-      >
-        <div>
-          <span className="block text-sm" style={{ color: 'var(--w25)', fontWeight: 500 }}>
-            Bryce Henthorn
-          </span>
-          <span className="block text-xs mt-1" style={{ color: 'var(--w15)' }}>
-            Seattle, WA
-          </span>
-        </div>
-        <div className="flex items-center gap-6">
           <a
             href="mailto:bhenthorn2757@gmail.com"
-            className="text-xs"
-            style={{ color: 'var(--w25)', transition: 'color 300ms' }}
+            className="t-mono-caption text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] underline-offset-[0.25em]"
           >
             bhenthorn2757@gmail.com
           </a>
-          <Link
-            href="/about"
-            className="text-xs"
-            style={{ color: 'var(--w25)', transition: 'color 300ms' }}
-          >
-            About
-          </Link>
-        </div>
-      </div>
-    </footer>
+        </footer>
+      </main>
+    </ManualShell>
   )
 }

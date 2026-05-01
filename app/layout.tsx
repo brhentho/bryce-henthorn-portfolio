@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Inter, Inter_Tight, Open_Sans, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
+import "./recall/recall.css"
 
 const inter = Inter({
   subsets: ["latin"],
