@@ -21,7 +21,7 @@ Text content for `/recall` is now in place. The case study now runs in 9 section
 
 ## Verification (before pushing)
 
-- [ ] `pnpm dev` — visit `/recall`, toggle DARK / PAPER, check the right-rail counter advances `01 / 11` … `11 / 11`, check NowReading chip updates per section, check resize at 1024px, check `prefers-reduced-motion`.
+- [ ] `pnpm dev` — visit `/recall`, check the right-rail counter advances `01 / 11` … `11 / 11`, check NowReading chip updates per section, check resize at 1024px, check `prefers-reduced-motion`.
 - [ ] `pnpm storybook` — Mode toggle works in stories.
 - [ ] `pnpm build` — no TypeScript errors. ✅ (verified)
 - [ ] `git diff main -- app components` — only planned paths changed.

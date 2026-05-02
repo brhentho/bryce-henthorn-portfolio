@@ -8,15 +8,14 @@ If this aesthetic lands on `/recall`, it gets ported to the other case studies a
 
 ## Token system
 
-Tokens live in `app/recall/recall.css` under `.manual { … }` and `.manual[data-mode="paper"] { … }`. Components read them via CSS custom properties — never hard-code colour or font.
+Tokens live in `app/recall/recall.css` under `.manual { … }`. Components read them via CSS custom properties — never hard-code colour or font. The system is dark-only.
 
-### Material tokens (constant across modes)
+### Material
 | Token | Value |
 |---|---|
 | `--ink` | `#0F0F10` |
-| `--paper` | `#F5F1E8` |
 
-### Dark mode (default)
+### Surface
 | Token | Value |
 |---|---|
 | `--rule` | `#2A2A2C` |
@@ -27,18 +26,7 @@ Tokens live in `app/recall/recall.css` under `.manual { … }` and `.manual[data
 | `--bg` | `var(--ink)` |
 | `--fg` | `var(--text-primary)` |
 
-### Paper mode
-| Token | Value |
-|---|---|
-| `--rule` | `#C8C4B8` |
-| `--rule-strong` | `#8A867C` |
-| `--text-primary` | `#0F0F10` |
-| `--text-secondary` | `#4A4945` |
-| `--text-tertiary` | `#6E6C68` |
-| `--bg` | `var(--paper)` |
-| `--fg` | `var(--text-primary)` |
-
-### Accents (unchanged across modes)
+### Accents
 | Token | Value | Use |
 |---|---|---|
 | `--accent-schematic` | `#6B8FB8` | active geometry in diagrams, focal points |
@@ -77,11 +65,11 @@ All components are in `components/manual/`. Import from the barrel: `import { Fi
 | `Margin` | `children, anchor?` | Right-margin aside on ≥1024px (CSS grid right-column area), inline `<aside>` below. |
 | `StateDiagram` | `states: {label}[], duration?` | Animated SVG sequence. Pauses on `prefers-reduced-motion`. |
 | `ProgressIndicator` | `className?` | Fixed top-right `§ NN / TT`, scroll-tracked. Desktop only. `aria-hidden`. |
-| `ModeToggle` | `mode, onChange` | DARK / PAPER button. `aria-pressed`. |
+| `CoverPlate` | `number, total, title, ambient?` | Internal chapter divider — full-framed plate, ~60vh, with corner registration marks. |
 
 ## Usage
 
-The `/recall` page wraps all content in `ManualShell` (a client island that owns the mode state and persists it to `localStorage["recall-manual-mode"]`):
+The `/recall` page wraps all content in `ManualShell`, which mounts the `.manual` scope plus the orientation chrome (`ProgressIndicator`, `NowReading`) and the scroll-reveal controller:
 
 ```tsx
 import { ManualShell } from "./ManualShell"
@@ -118,13 +106,12 @@ Every scrollable section needs `data-section` so `ProgressIndicator` can track p
 pnpm storybook
 ```
 
-Stories live next to each component as `*.stories.tsx`. The Storybook toolbar has a Mode globalType — toggle between `dark` and `paper` to validate every component in both modes without leaving Storybook.
+Stories live next to each component as `*.stories.tsx`. Every story renders inside the `.manual` scope automatically via the global decorator.
 
 ## Accessibility
 
 - Headings (`SectionLabel`) emit real `<h2>`. No styled divs.
 - `ProgressIndicator` is `aria-hidden` — purely decorative orientation.
-- `ModeToggle` uses `aria-pressed`.
 - `Figure` falls back to `caption` for `alt` when no `alt` is provided.
 - `StateDiagram` honours `prefers-reduced-motion`.
 - `Margin` reflows inline below 1024px — never visually hidden.

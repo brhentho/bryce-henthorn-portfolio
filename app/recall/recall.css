@@ -10,18 +10,17 @@
   --font-body:    var(--font-open-sans);
   --font-mono:    var(--font-jetbrains-mono);
 
-  /* Material tokens (constant across modes) */
-  --ink:   #0F0F10;
-  --paper: #F5F1E8;
+  /* Material */
+  --ink: #0F0F10;
 
-  /* Dark mode (default) */
+  /* Surface tokens */
   --rule:        #2A2A2C;
   --rule-strong: #3F3F42;
   --text-primary:   #F5F1E8;
   --text-secondary: #A8A6A0;
   --text-tertiary:  #6E6C68;
 
-  /* Accents (cooler against cream, but unchanged across modes) */
+  /* Accents */
   --accent-schematic: #6B8FB8;
   --accent-signal:    #8FB079;
   --accent-alert:     #D49B3D;
@@ -39,51 +38,19 @@
   position: relative;
 }
 
-/* ── Per-mode grain ──
-   Two SVG-noise overlays scoped to .manual. Site-wide .noise stays untouched.
-   DARK: fine film-grain via overlay (subtle shimmer on the ink).
-   PAPER: coarser fractal noise via multiply (paper-fiber feel on the cream).
+/* ── Film grain ──
+   Single SVG-noise overlay scoped to .manual (site-wide .noise untouched).
+   Fine film-grain via overlay blend, subtle shimmer on the ink.
 */
-.manual::before,
-.manual::after {
+.manual::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  transition: opacity 240ms ease;
-}
-
-/* Dark grain — visible in dark mode, faded out in paper mode. */
-.manual::before {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   opacity: 0.045;
   mix-blend-mode: overlay;
-}
-
-/* Paper grain — visible in paper mode, hidden in dark mode. */
-.manual::after {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  opacity: 0;
-  mix-blend-mode: multiply;
-}
-
-.manual[data-mode="paper"]::before {
-  opacity: 0;
-}
-
-.manual[data-mode="paper"]::after {
-  opacity: 0.085;
-}
-
-.manual[data-mode="paper"] {
-  --rule:        #C8C4B8;
-  --rule-strong: #8A867C;
-  --text-primary:   #0F0F10;
-  --text-secondary: #4A4945;
-  --text-tertiary:  #6E6C68;
-  --bg: var(--paper);
-  --fg: var(--text-primary);
 }
 
 /* ── Type scale ── exact rem values from brief */

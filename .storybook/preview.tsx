@@ -4,29 +4,12 @@ import "../app/globals.css"
 import "../app/recall/recall.css"
 
 const preview: Preview = {
-  globalTypes: {
-    mode: {
-      name: "Mode",
-      defaultValue: "dark",
-      toolbar: {
-        title: "Mode",
-        items: [
-          { value: "dark",  title: "Dark" },
-          { value: "paper", title: "Paper" },
-        ],
-        dynamicTitle: true,
-      },
-    },
-  },
   decorators: [
-    (Story, ctx) => {
-      const mode = (ctx.globals.mode as "dark" | "paper") ?? "dark"
-      return (
-        <div className="manual" data-mode={mode} style={{ padding: 32, minHeight: "100vh" }}>
-          <Story />
-        </div>
-      )
-    },
+    (Story) => (
+      <div className="manual" style={{ padding: 32, minHeight: "100vh" }}>
+        <Story />
+      </div>
+    ),
   ],
   parameters: {
     layout: "fullscreen",

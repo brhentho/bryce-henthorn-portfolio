@@ -1,54 +1,20 @@
-"use client"
-
-import { useEffect, useState, type ReactNode } from "react"
-import { ModeToggle } from "@/components/manual/ModeToggle"
+import type { ReactNode } from "react"
 import { ProgressIndicator } from "@/components/manual/ProgressIndicator"
 import { ScrollRevealController } from "@/components/manual/ScrollRevealController"
 import { NowReading } from "@/components/manual/NowReading"
-
-type Mode = "dark" | "paper"
-const STORAGE_KEY = "recall-manual-mode"
 
 type Props = {
   children: ReactNode
 }
 
 /**
- * Client island for the operator-manual case study. Owns the data-mode
- * attribute on the .manual wrapper and persists it in localStorage.
- *
- * SSR renders dark; localStorage is read post-mount via useEffect to avoid
- * hydration mismatches. Acceptable trade-off: a single render in dark mode
- * before swapping to paper for users with that preference stored.
+ * Wrapper for operator-manual pages. Mounts the .manual scope plus the
+ * orientation chrome (ProgressIndicator, NowReading) and the scroll-reveal
+ * controller. Dark-only — there is no longer a paper mode.
  */
 export function ManualShell({ children }: Props) {
-  const [mode, setMode] = useState<Mode>("dark")
-  const [hydrated, setHydrated] = useState(false)
-
-  useEffect(() => {
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY)
-      if (stored === "dark" || stored === "paper") {
-        setMode(stored)
-      }
-    } catch {
-      // localStorage unavailable; stay on default
-    }
-    setHydrated(true)
-  }, [])
-
-  useEffect(() => {
-    if (!hydrated) return
-    try {
-      window.localStorage.setItem(STORAGE_KEY, mode)
-    } catch {
-      // ignore quota / privacy-mode errors
-    }
-  }, [mode, hydrated])
-
   return (
-    <div className="manual" data-mode={mode}>
-      <ModeToggle mode={mode} onChange={setMode} />
+    <div className="manual">
       <ProgressIndicator />
       <NowReading />
       <ScrollRevealController />
