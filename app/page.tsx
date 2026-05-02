@@ -136,6 +136,15 @@ export default function HomePage() {
                 stops being about features and starts being about agreements — what the
                 system promises, what it shows, and what it lets you stop.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 03 Through-line ── */}
+        <section data-section data-reveal id="through-line" className="py-12 lg:py-20">
+          <SectionLabel number="03" label="Through-line" title="The same job, three projects" />
+          <div className="section-grid mt-10">
+            <div className="space-y-6 max-w-[68ch]">
               <p className="t-body">
                 Across Agents in Windows, Recall, and Teams for Education, the same job
                 shows up: make the invisible visible, the automatic interruptible, the AI
@@ -144,15 +153,15 @@ export default function HomePage() {
                 user control are never features but foundations.
               </p>
             </div>
-            <Margin anchor="2-pull">
+            <Margin anchor="3-pull">
               Make the invisible visible. The automatic interruptible. The AI auditable.
             </Margin>
           </div>
         </section>
 
-        {/* ── 03 Index ── */}
+        {/* ── 04 Index ── */}
         <section data-section data-reveal id="index" className="py-12 lg:py-20">
-          <SectionLabel number="03" label="Index" title="Elsewhere" />
+          <SectionLabel number="04" label="Index" title="Elsewhere" />
           <div className="mt-10">
             <SpecSheet
               rows={[

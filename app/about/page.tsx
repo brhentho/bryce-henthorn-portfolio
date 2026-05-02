@@ -53,11 +53,15 @@ export default function AboutPage() {
           <SectionLabel number="01" label="Bio" title="Want a bit more?" />
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
-              <p className="t-display-l">
-                Serial problem solver. Fixated on optimizing systems. Obsessed with
-                structure and flow. Unapologetic technology geek. So naturally, I fell in
-                love with UX design.
-              </p>
+              <div className="space-y-3">
+                <p className="t-display-l">Serial problem solver.</p>
+                <p className="t-display-l">Fixated on optimizing systems.</p>
+                <p className="t-display-l">Obsessed with structure and flow.</p>
+                <p className="t-display-l">Unapologetic technology geek.</p>
+                <p className="t-display-l">
+                  So naturally, I fell in love with UX design.
+                </p>
+              </div>
               <p className="t-body">
                 I&apos;m a product designer working on AI experiences inside Windows at
                 Microsoft. My job sits at a strange and exciting intersection: operating

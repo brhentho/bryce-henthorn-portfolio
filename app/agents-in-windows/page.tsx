@@ -14,7 +14,7 @@ import {
 
 const AGENT_STATES = [
   { src: "/assets/agents/Running agent.svg",          label: "RUNNING" },
-  { src: "/assets/agents/Needs attention agent.svg",  label: "ATTENTION" },
+  { src: "/assets/agents/Needs attention agent.svg",  label: "NEEDS ATTENTION" },
   { src: "/assets/agents/Completed agent.svg",        label: "COMPLETED" },
   { src: "/assets/agents/Failed agent.svg",           label: "FAILED" },
   { src: "/assets/agents/Paused agent.svg",           label: "PAUSED" },
