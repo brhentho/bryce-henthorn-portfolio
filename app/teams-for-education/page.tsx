@@ -10,6 +10,7 @@ import {
   CursorBlink,
   ManualNav,
   ManualFooter,
+  CoverPlate,
 } from "@/components/manual"
 
 const STUDENT_QUOTES = [
@@ -143,9 +144,6 @@ export default function TeamsForEducationPage() {
                 learning.
               </p>
             </div>
-            <Margin anchor="2-pull">
-              The system worked for lecturing. It failed at learning.
-            </Margin>
           </div>
 
           <h3 className="t-mono-label mt-16 mb-6">FIELD INTERVIEWS &middot; STUDENT VOICES</h3>
@@ -166,15 +164,41 @@ export default function TeamsForEducationPage() {
           </div>
         </section>
 
-        {/* ── 03 Research ── */}
+        {/* ── Interlude (§2.11) — promoted from § 02 Margin ── */}
+        <aside
+          data-reveal
+          id="problem-interlude"
+          aria-labelledby="problem-interlude-quote"
+          className="my-12 lg:my-20 py-16 lg:py-24 border-y border-[color:var(--rule)]"
+        >
+          <p className="t-mono-label mb-8 text-[color:var(--text-tertiary)]">
+            INTERLUDE
+          </p>
+          <blockquote className="max-w-[68ch]">
+            <p
+              id="problem-interlude-quote"
+              className="t-display-l text-[color:var(--text-primary)]"
+            >
+              The system worked for lecturing. It failed at learning.
+            </p>
+            <footer className="t-mono-caption mt-8 text-[color:var(--text-tertiary)]">
+              Cf. § 02 / PROBLEM
+            </footer>
+          </blockquote>
+        </aside>
+
+        {/* ── Cover Plate (§2.10) — chapter divider into Research ── */}
+        <CoverPlate number="03" total="09" title="Research" />
+
+        {/* ── 03 Research ── Annotated Split Plate (§2.4) ── */}
         <section data-section data-reveal id="research" className="py-12 lg:py-20">
           <SectionLabel
             number="03"
             label="Research"
             title="Designing from real classroom behavior"
           />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+          <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
+            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
               <p className="t-body">
                 Before designing anything, we ran extensive research with students,
                 parents, and teachers to understand their daily experience inside Teams.
@@ -188,15 +212,18 @@ export default function TeamsForEducationPage() {
                 spend six hours a day in small boxes on a screen.
               </p>
             </div>
+            <div className="p-6 lg:p-10 flex items-start">
+              <Figure
+                number="3.1"
+                caption="Co-design session with educators — mapping the tools needed for a successful virtual class"
+                src="/images/projects/teams-cocreation.png"
+                alt="Co-design session with educators"
+                width={1600}
+                height={900}
+                className="my-0"
+              />
+            </div>
           </div>
-          <Figure
-            number="3.1"
-            caption="Co-design session with educators — mapping the tools needed for a successful virtual class"
-            src="/images/projects/teams-cocreation.png"
-            alt="Co-design session with educators"
-            width={1600}
-            height={900}
-          />
         </section>
 
         {/* ── 04 Solution ── */}
@@ -251,41 +278,34 @@ export default function TeamsForEducationPage() {
           />
         </section>
 
-        {/* ── 05 Orchestration ── */}
+        {/* ── 05 Orchestration ── Full-bleed Atmospheric Plate (§2.8) ── */}
         <section data-section data-reveal id="orchestration" className="py-12 lg:py-20">
           <SectionLabel
             number="05"
             label="Orchestration"
             title="Giving teachers the room back"
           />
+
+          {/* Tight 2-paragraph body above */}
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
               <p className="t-body">
-                Virtual tables were only part of the solution. The real breakthrough was
-                enabling teachers to manage the room naturally.
+                Virtual tables were only part of the solution. Teachers could start table
+                discussions and monitor the classroom from a global view, moving fluidly
+                between groups almost like walking around a physical classroom. The
+                orchestration layer restored situational awareness — a cohesive classroom
+                again instead of fragmented breakout rooms.
               </p>
               <p className="t-body">
-                Teachers could start table discussions and monitor the classroom from a
-                global view. From there, they could move fluidly between groups, almost
-                like walking around a physical classroom.
-              </p>
-              <p className="t-body">
-                This orchestration layer restored something subtle but powerful:
-                situational awareness. Instead of fragmented breakout rooms, teachers had
-                a cohesive classroom again.
-              </p>
-              <p className="t-body">
-                Discussions don&apos;t pause when someone steps away. A student drops off
-                for a minute, reconnects late, or gets moved between tables. They land in
-                a conversation that&apos;s already moving. The system needed to handle
-                that without making the returning student feel lost or forcing the group
-                to restart. We designed re-entry to surface enough context — recent
-                discussion activity, shared materials, who&apos;s currently talking — so a
-                student could orient and join without interrupting the flow already
-                happening.
+                Discussions don&apos;t pause when someone steps away. We designed
+                re-entry to surface enough context — recent activity, shared materials,
+                who&apos;s talking — so a student could orient and join without
+                interrupting the flow already happening.
               </p>
             </div>
           </div>
+
+          {/* Full-bleed video — the demo carries the argument */}
           <Figure number="5.1" caption="Student view of their virtual table">
             <video
               autoPlay
@@ -298,15 +318,15 @@ export default function TeamsForEducationPage() {
           </Figure>
         </section>
 
-        {/* ── 06 Group Creation ── */}
+        {/* ── 06 Group Creation ── Annotated Split Plate (§2.4) ── */}
         <section data-section data-reveal id="group-creation" className="py-12 lg:py-20">
           <SectionLabel
             number="06"
             label="Group Creation"
             title="Preparation moves outside the meeting"
           />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+          <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
+            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
               <p className="t-body">
                 Previously, breakout rooms had to be created dynamically during the
                 meeting. That meant instructional time was lost while groups were assigned
@@ -333,74 +353,104 @@ export default function TeamsForEducationPage() {
                 that accumulated meaning over time.
               </p>
             </div>
+            <div className="p-6 lg:p-10 flex items-start">
+              <Figure
+                number="6.1"
+                caption="Whole class to table transitions"
+                className="my-0"
+              >
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="block w-full h-auto"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov"
+                />
+              </Figure>
+            </div>
           </div>
-          <Figure number="6.1" caption="Whole class to table transitions">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="block w-full h-auto"
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov"
-            />
-          </Figure>
         </section>
 
-        {/* ── 07 Student View ── */}
+        {/* ── 07 Student View ── Pull-quote Interlude (§2.11) + small inline figure ── */}
         <section data-section data-reveal id="student-view" className="py-12 lg:py-20">
           <SectionLabel
             number="07"
             label="Student View"
             title="Reinforcing belonging"
           />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
-              <p className="t-body">
-                From the student perspective, the experience reinforced belonging. They
-                saw familiar group members, recognized their seat, and felt accountable to
-                the people around them. That subtle shift made participation feel
-                manageable again.
+
+          {/* Pull-quote — compresses the section's single-paragraph body */}
+          <div className="mt-10 lg:mt-14 py-12 lg:py-20 border-y border-[color:var(--rule)]">
+            <blockquote className="max-w-[68ch]">
+              <p className="t-display-l text-[color:var(--text-primary)]">
+                Familiar group members. A recognized seat. Accountability to the people
+                around them.
               </p>
-            </div>
+              <footer className="t-mono-caption mt-8 text-[color:var(--text-tertiary)]">
+                Cf. § 07 / STUDENT VIEW
+              </footer>
+            </blockquote>
           </div>
-          <Figure number="7.1" caption="Group creation and assignment flow">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="block w-full h-auto"
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov"
-            />
-          </Figure>
+
+          {/* Small inline framed figure beneath — not full-bleed */}
+          <div className="mt-10 lg:mt-14 max-w-[80ch]">
+            <Figure
+              number="7.1"
+              caption="Group creation and assignment flow"
+              className="my-0"
+            >
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="block w-full h-auto"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov"
+              />
+            </Figure>
+          </div>
         </section>
 
-        {/* ── 08 Bandwidth ── */}
+        {/* ── 08 Bandwidth ── Strip Break callout (§2.9) ── */}
         <section data-section data-reveal id="bandwidth" className="py-12 lg:py-20">
           <SectionLabel
             number="08"
             label="Bandwidth"
             title="Not all home internet is equal"
           />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
-              <p className="t-body">
-                Many students were using shared home networks. Older devices. Spotty
-                connections. When teachers handed out materials mid-lesson, students with
-                slow internet got left behind while files loaded.
-              </p>
-              <p className="t-body">
-                Persistent tables fixed this structurally. Teachers attached materials to
-                each table before class. Students could open files as soon as they sat
-                down, not when the teacher shared them.
-              </p>
-              <p className="t-body">
-                Small change. Huge impact. Teaching time didn&apos;t pause for tech
-                problems.
-              </p>
+
+          {/* One-sentence callout */}
+          <p className="mt-10 t-body max-w-[80ch] text-[color:var(--text-secondary)]">
+            Persistent tables fixed bandwidth structurally — materials attached before
+            class loaded as students sat down, so teaching time didn&apos;t pause for
+            tech problems.
+          </p>
+
+          {/* Strip Break — three qualitative stat columns (Q7 recommendation) */}
+          <div className="mt-10 lg:mt-14 border-y border-[color:var(--rule)]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[color:var(--rule)]">
+              <div className="px-6 py-7 text-center">
+                <p className="t-mono-label text-[color:var(--text-secondary)]">
+                  OLDER DEVICES
+                </p>
+              </div>
+              <div className="px-6 py-7 text-center">
+                <p className="t-mono-label text-[color:var(--text-secondary)]">
+                  SHARED HOME NETWORKS
+                </p>
+              </div>
+              <div className="px-6 py-7 text-center">
+                <p className="t-mono-label text-[color:var(--text-secondary)]">
+                  TIME LOST TO LOADING
+                </p>
+              </div>
             </div>
           </div>
         </section>
+
+        {/* ── Cover Plate (§2.10) — closing chapter divider into Impact ── */}
+        <CoverPlate number="09" total="09" title="Impact" />
 
         {/* ── 09 Impact ── */}
         <section data-section data-reveal id="impact" className="py-12 lg:py-20">
