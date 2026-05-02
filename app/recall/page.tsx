@@ -10,6 +10,7 @@ import {
   CursorBlink,
   ManualNav,
   ManualFooter,
+  CoverPlate,
 } from "@/components/manual"
 import { HeroSchematic } from "./svg/HeroSchematic"
 import { Fig1_1 } from "./svg/Fig1_1"
@@ -142,7 +143,10 @@ export default function RecallPage() {
           </div>
         </section>
 
-        {/* ── 02 System ── */}
+        {/* ── Cover Plate (§2.10) — chapter divider into System ── */}
+        <CoverPlate number="02" total="09" title="System" />
+
+        {/* ── 02 System ── Stage Rail Plate (§2.5) ── */}
         <section data-section data-reveal id="system" className="py-12 lg:py-20">
           <SectionLabel
             number="02"
@@ -159,32 +163,46 @@ export default function RecallPage() {
             </div>
           </div>
 
-          <h3 className="t-mono-label mt-12 mb-6">RECALL QUERY LIFECYCLE</h3>
-          <StateDiagram
-            states={[
-              { label: "CAPTURE" },
-              { label: "OCR" },
-              { label: "INDEX" },
-              { label: "QUERY" },
-              { label: "RESULT" },
-            ]}
-            duration={6000}
-          />
-
-          <div className="mt-12">
-            <SpecSheet rows={PIPELINE_STAGES} />
+          <p className="t-mono-label mt-12 mb-6 text-[color:var(--text-tertiary)]">
+            RECALL QUERY LIFECYCLE
+          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-[16rem_1fr] gap-8 lg:gap-10 items-start border-t border-[color:var(--rule)] pt-8">
+            <ol className="space-y-6 lg:pr-8 lg:border-r lg:border-[color:var(--rule)]">
+              {PIPELINE_STAGES.map((s) => (
+                <li key={s.label} className="space-y-1.5">
+                  <p className="t-mono-label text-[color:var(--text-secondary)]">
+                    {s.label}
+                  </p>
+                  <p className="t-mono-caption text-[color:var(--text-tertiary)] leading-relaxed">
+                    {s.value}
+                  </p>
+                </li>
+              ))}
+            </ol>
+            <StateDiagram
+              className="my-0"
+              states={[
+                { label: "CAPTURE" },
+                { label: "OCR" },
+                { label: "INDEX" },
+                { label: "QUERY" },
+                { label: "RESULT" },
+              ]}
+              duration={6000}
+            />
           </div>
         </section>
 
-        {/* ── 03 Problem ── */}
+        {/* ── 03 Problem ── Annotated Split Plate (§2.4) ── */}
         <section data-section data-reveal id="problem" className="py-12 lg:py-20">
           <SectionLabel
             number="03"
             label="Problem"
             title="Search wants precision. Memory offers fragments."
           />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+          <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
+            {/* Body lane */}
+            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
               <p className="t-body">
                 File search is built on certainty. You give it a filename or keyword. It
                 matches exactly. Done.
@@ -215,20 +233,43 @@ export default function RecallPage() {
                 users enough context to make their own relevance judgment in the moment.
               </p>
             </div>
-            <Margin anchor="3-pull">
-              Relevance wasn&rsquo;t a fixed property of the result. It was shaped by the
-              task.
-            </Margin>
+            {/* Figure lane */}
+            <div className="p-6 lg:p-10 flex items-start">
+              <Figure
+                number="3.1"
+                caption="Search vs. recall — where exact-match retrieval breaks and where semantic memory takes over"
+              >
+                <Fig1_1 />
+              </Figure>
+            </div>
           </div>
-          <Figure
-            number="3.1"
-            caption="Search vs. recall — where exact-match retrieval breaks and where semantic memory takes over"
-          >
-            <Fig1_1 />
-          </Figure>
         </section>
 
-        {/* ── 04 Cards ── */}
+        {/* ── Interlude (§2.11) — promoted from § 03 Margin ── */}
+        <aside
+          data-reveal
+          id="problem-interlude"
+          aria-labelledby="problem-interlude-quote"
+          className="my-12 lg:my-20 py-16 lg:py-24 border-y border-[color:var(--rule)]"
+        >
+          <p className="t-mono-label mb-8 text-[color:var(--text-tertiary)]">
+            INTERLUDE
+          </p>
+          <blockquote className="max-w-[68ch]">
+            <p
+              id="problem-interlude-quote"
+              className="t-display-l text-[color:var(--text-primary)]"
+            >
+              Relevance wasn&rsquo;t a fixed property of the result. It was shaped
+              by the task.
+            </p>
+            <footer className="t-mono-caption mt-8 text-[color:var(--text-tertiary)]">
+              Cf. § 03 / PROBLEM
+            </footer>
+          </blockquote>
+        </aside>
+
+        {/* ── 04 Cards ── Two-up Comparison Plate (§2.6) ── */}
         <section data-section data-reveal id="cards" className="py-12 lg:py-20">
           <SectionLabel
             number="04"
@@ -258,18 +299,22 @@ export default function RecallPage() {
               </p>
             </div>
           </div>
-          <Figure
-            number="4.1"
-            caption="Card hierarchy — screenshot as the primary anchor, metadata in subordinate roles"
-          >
-            <Fig2_1 />
-          </Figure>
-          <Figure
-            number="4.2"
-            caption="Before / after — moving the visual anchor up, the metadata down"
-          >
-            <Fig3_1 />
-          </Figure>
+
+          <div className="mt-10 lg:mt-14">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Figure number="4.1" className="my-0">
+                <Fig2_1 />
+              </Figure>
+              <Figure number="4.2" className="my-0">
+                <Fig3_1 />
+              </Figure>
+            </div>
+            <div className="mt-3 pt-3 border-t border-[color:var(--rule)]">
+              <p className="t-mono-caption text-[color:var(--text-secondary)]">
+                FIG. 4.1 / 4.2 — Card hierarchy and the metadata flip
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* ── 05 Transparency ── */}
@@ -336,32 +381,53 @@ export default function RecallPage() {
           </Figure>
         </section>
 
-        {/* ── 06 Performance ── */}
+        {/* ── 06 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}
         <section data-section data-reveal id="performance" className="py-12 lg:py-20">
           <SectionLabel
             number="06"
             label="Performance"
             title="Fast enough to feel alive"
           />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
-              <p className="t-body">
-                Embedding indexing and local retrieval are computationally heavy. Most
-                queries came back fast. Some didn&apos;t. Users had to wait.
+
+          {/* Pull-quote — the section's compressed lede */}
+          <div className="mt-10 lg:mt-14 py-12 lg:py-20 border-y border-[color:var(--rule)]">
+            <blockquote className="max-w-[68ch]">
+              <p className="t-display-l text-[color:var(--text-primary)]">
+                We made waiting feel like progress.
               </p>
-              <p className="t-body">
-                We made waiting feel like progress. Results evolved live as users typed,
-                each keystroke refining the results in real time. No waiting for a full
-                query. Constant forward motion.
-              </p>
-              <p className="t-body">
-                Design and engineering iterated constantly. We tuned how aggressively the
-                system sent queries based on actual typing patterns, found a balance that
-                avoided expensive retriggering without sacrificing responsiveness.
-              </p>
+            </blockquote>
+          </div>
+
+          {/* One-line caption beneath the quote */}
+          <p className="mt-6 t-body-sm max-w-[68ch] text-[color:var(--text-secondary)]">
+            Embedding indexing is computationally heavy — we tuned retrigger cadence
+            so results refine per keystroke without ever blocking the user.
+          </p>
+
+          {/* Strip Break — three labeled metric chips */}
+          <div className="mt-10 lg:mt-14 border-y border-[color:var(--rule)]">
+            <div className="grid grid-cols-3 divide-x divide-[color:var(--rule)]">
+              <div className="px-6 py-7 text-center">
+                <p className="t-mono-label text-[color:var(--text-secondary)]">
+                  PER KEYSTROKE
+                </p>
+              </div>
+              <div className="px-6 py-7 text-center">
+                <p className="t-mono-label text-[color:var(--text-secondary)]">
+                  200MS WINDOW
+                </p>
+              </div>
+              <div className="px-6 py-7 text-center">
+                <p className="t-mono-label text-[color:var(--text-secondary)]">
+                  NO BLOCKING WAIT
+                </p>
+              </div>
             </div>
           </div>
         </section>
+
+        {/* ── Cover Plate (§2.10) — privacy chapter divider ── */}
+        <CoverPlate number="07" total="09" title="Trust" />
 
         {/* ── 07 Trust ── */}
         <section data-section data-reveal id="trust" className="py-12 lg:py-20">
@@ -396,38 +462,33 @@ export default function RecallPage() {
           </div>
         </section>
 
-        {/* ── 08 Constraints ── */}
+        {/* ── 08 Constraints ── Pull-quote Interlude (§2.11) ── */}
         <section data-section data-reveal id="constraints" className="py-12 lg:py-20">
           <SectionLabel
             number="08"
             label="Constraints"
             title="We killed RAG to keep search fast"
           />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
-              <p className="t-body">
-                Early on, we explored synthesis across memories. Retrieval-augmented
-                generation could answer higher-level questions by stitching together
-                context from many screenshots.
+
+          {/* Single short setup paragraph */}
+          <p className="mt-10 t-body max-w-[68ch]">
+            Early on we explored RAG synthesis across screenshots, but latency broke
+            the core expectation that search should feel instantaneous. We abandoned
+            synthesis for speed and legibility — surface relevant moments, let people
+            interpret them.
+          </p>
+
+          {/* Pull-quote — promoted from § 08 Margin */}
+          <div className="mt-10 lg:mt-14 py-12 lg:py-20 border-y border-[color:var(--rule)]">
+            <blockquote className="max-w-[68ch]">
+              <p className="t-display-l text-[color:var(--text-primary)]">
+                The system helps people rediscover what they saw. It doesn&rsquo;t
+                rewrite their history for them.
               </p>
-              <p className="t-body">
-                Latency killed it. Retrieving and generating across large memory sets
-                created delays that broke the core expectation: search should feel
-                instantaneous.
-              </p>
-              <p className="t-body">
-                We abandoned synthesis and focused on speed and legibility instead.
-                Surface relevant moments. Let people interpret them.
-              </p>
-              <p className="t-body">
-                And honestly, it was the right call design-wise. The system helps people
-                rediscover what they saw. It doesn&apos;t rewrite their history for them.
-              </p>
-            </div>
-            <Margin anchor="8-pull">
-              The system helps people rediscover what they saw. It doesn&rsquo;t rewrite
-              their history for them.
-            </Margin>
+              <footer className="t-mono-caption mt-8 text-[color:var(--text-tertiary)]">
+                Cf. § 08 / CONSTRAINTS
+              </footer>
+            </blockquote>
           </div>
         </section>
 
