@@ -15,9 +15,10 @@ import {
 import { HeroSchematic } from "./svg/HeroSchematic"
 import { Fig1_1 } from "./svg/Fig1_1"
 import { Fig2_1 } from "./svg/Fig2_1"
-import { Fig2_2 } from "./svg/Fig2_2"
 import { Fig3_1 } from "./svg/Fig3_1"
 import { Fig3_2 } from "./svg/Fig3_2"
+import { Fig5_1 } from "./svg/Fig5_1"
+import { Fig9_1 } from "./svg/Fig9_1"
 
 const PIPELINE_STAGES = [
   {
@@ -371,7 +372,7 @@ export default function RecallPage() {
             caption="Match-type signals — text matches and visual matches labeled separately on every card"
             cf={{ section: "03", href: "#problem" }}
           >
-            <Fig2_2 />
+            <Fig5_1 />
           </Figure>
           <Figure
             number="5.2"
@@ -492,15 +493,15 @@ export default function RecallPage() {
           </div>
         </section>
 
-        {/* ── 09 Impact ── */}
+        {/* ── 09 Impact ── Annotated Split Plate (§2.4) + Strip Break Telemetry (§2.9) ── */}
         <section data-section data-reveal id="impact" className="py-12 lg:py-20">
           <SectionLabel
             number="09"
             label="Impact"
             title="From rediscovery to reference pattern"
           />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+          <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
+            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
               <p className="t-body">
                 Separating visual and text matches proved it wasn&apos;t just philosophy.
                 In testing, users could explain why each result appeared and quickly
@@ -521,12 +522,21 @@ export default function RecallPage() {
                 transparency and match-type separation showed up in Windows Search and
                 File Explorer updates.
               </p>
+              <Margin anchor="9-pull" className="my-0">
+                Recall proved that AI in core OS features doesn&rsquo;t require opacity or
+                experimental disclaimers. Clear transparency, visible provenance,
+                predictable interactions.
+              </Margin>
             </div>
-            <Margin anchor="9-pull">
-              Recall proved that AI in core OS features doesn&rsquo;t require opacity or
-              experimental disclaimers. Clear transparency, visible provenance,
-              predictable interactions.
-            </Margin>
+            <div className="p-6 lg:p-10 flex items-start">
+              <Figure
+                number="9.1"
+                caption="Pattern propagation — Recall search principles adopted across Windows Search and File Explorer"
+                className="my-0"
+              >
+                <Fig9_1 />
+              </Figure>
+            </div>
           </div>
           <div className="mt-12">
             <Telemetry

@@ -12,6 +12,8 @@ import {
   ManualFooter,
   CoverPlate,
 } from "@/components/manual"
+import { HeroSchematic } from "./svg/HeroSchematic"
+import { Fig4_1 } from "./svg/Fig4_1"
 
 const STUDENT_QUOTES = [
   {
@@ -52,6 +54,12 @@ export default function TeamsForEducationPage() {
             Engagement collapsed. We rebuilt the virtual classroom around structure
             instead of features.
           </p>
+          <Figure
+            number="0.1"
+            caption="Hero schematic — top-down virtual classroom in a 3×2 grid, six tables with persistent seats"
+          >
+            <HeroSchematic />
+          </Figure>
         </section>
 
         {/* ── Spec sheet ── */}
@@ -270,12 +278,10 @@ export default function TeamsForEducationPage() {
           </div>
           <Figure
             number="4.1"
-            caption="Virtual tables concept — Teams classroom with students grouped at named tables"
-            src="/images/projects/teams-fig02.png"
-            alt="Virtual tables concept in Teams"
-            width={1600}
-            height={900}
-          />
+            caption="Anatomy of a virtual table card — fixed seat, persistent materials slot, ambient moderation hook"
+          >
+            <Fig4_1 />
+          </Figure>
         </section>
 
         {/* ── 05 Orchestration ── Full-bleed Atmospheric Plate (§2.8) ── */}
