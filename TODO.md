@@ -1,74 +1,27 @@
 # Recall — Operator Manual TODO
 
-Every `[TK]` placeholder in `app/recall/page.tsx`, organised by section. Fill these in — don't restructure unless the layout itself needs to change. Line refs are approximate (line numbers will drift as you write).
-
 Branch: `feature/recall-operator-manual`
 
-## § 00 / Overview · Hero
-
-- [ ] **page.tsx ~24** — `<h1>` is set to `Making AI memory legible` (placeholder). Confirm or replace.
-- [ ] **page.tsx ~26** — 2-sentence hero subhead/lede.
-- [ ] **page.tsx ~32** — Hero figure caption (`<Figure number="0.1" caption="…">`).
-- [ ] **Replace** the `<HeroSchematic />` placeholder with a real image once Midjourney render is ready: swap to `<Figure src="/images/recall/hero-schematic.png" alt="…" />`.
-
-## Spec sheet
-
-- [ ] **page.tsx ~46** — `TIMELINE` value.
-- [ ] **page.tsx ~47** — `TEAM` value.
-- [ ] (Other rows pre-filled from the existing `/recall` page; confirm `ROLE`, `PLATFORM`, `MY FOCUS`, `STATUS`.)
-
-## § 01 / Problem
-
-- [ ] **page.tsx ~54** — Section title (`<SectionLabel title="…">`).
-- [ ] **page.tsx ~57** — Problem paragraph 1.
-- [ ] **page.tsx ~58** — Problem paragraph 2.
-- [ ] **page.tsx ~60** — Marginalia: original framing assumption.
-- [ ] **page.tsx ~63** — Fig 1.1 caption.
-
-## § 02 / Methodology
-
-- [ ] **page.tsx ~70** — Section title.
-- [ ] **page.tsx ~73** — Methodology paragraph 1.
-- [ ] **page.tsx ~74** — Methodology paragraph 2.
-- [ ] **page.tsx ~78** — Fig 2.1 (research synthesis) caption.
-- [ ] **page.tsx ~82** — Fig 2.2 (rejected concepts) caption.
-- [ ] **page.tsx ~84** — Marginalia: rejected-direction note.
-
-## § 03 / Solution
-
-- [ ] **page.tsx ~91** — Section title.
-- [ ] **page.tsx ~94** — Solution paragraph 1.
-- [ ] **page.tsx ~95** — Solution paragraph 2.
-- [ ] **page.tsx ~99** — Fig 3.1 (before/after) caption.
-- [ ] **page.tsx ~102** — Fig 3.2 (confidence indicators) caption.
-- [ ] **page.tsx ~117** — Marginalia: contested decision (`I argued for…`).
-
-## § 04 / Impact
-
-- [ ] **page.tsx ~123** — Section title.
-- [ ] **page.tsx ~125** — Impact paragraph.
-- [ ] **page.tsx ~129** — Telemetry: `DEVICES` value (Windows 11 24H2).
-- [ ] **page.tsx ~130** — Telemetry: `TEAMS` value.
-
-## § 05 / Reflection
-
-- [ ] **page.tsx ~140** — Section title.
-- [ ] **page.tsx ~143** — Reflection paragraph 1.
-- [ ] **page.tsx ~144** — Reflection paragraph 2.
-- [ ] **page.tsx ~146** — Marginalia: what I'd change.
+Text content for `/recall` is now in place. The case study now runs in 9 sections (Overview, Context, System, Problem, Cards, Transparency, Performance, Trust, Constraints, Impact), with prose lifted and adapted from `main`. All 6 SVG figure placeholders remain in place pending real assets.
 
 ## Visuals (replace placeholder SVGs with real assets when ready)
 
-- [ ] `app/recall/svg/HeroSchematic.tsx` → swap to image via `<Figure src="/images/recall/hero-schematic.png" />`.
-- [ ] `app/recall/svg/Fig1_1.tsx` → search vs. recall final illustration.
-- [ ] `app/recall/svg/Fig2_1.tsx` → research synthesis.
-- [ ] `app/recall/svg/Fig2_2.tsx` → rejected concepts grid.
-- [ ] `app/recall/svg/Fig3_1.tsx` → before/after.
-- [ ] `app/recall/svg/Fig3_2.tsx` → confidence indicator system.
+- [ ] `app/recall/svg/HeroSchematic.tsx` → swap to image via `<Figure src="/images/recall/hero-schematic.png" />` (Figure 0.1).
+- [ ] `app/recall/svg/Fig1_1.tsx` → search vs. recall final illustration (Figure 3.1, § 03 Problem).
+- [ ] `app/recall/svg/Fig2_1.tsx` → card hierarchy illustration (Figure 4.1, § 04 Cards).
+- [ ] `app/recall/svg/Fig3_1.tsx` → before/after card layout (Figure 4.2, § 04 Cards).
+- [ ] `app/recall/svg/Fig2_2.tsx` → match-type signals (Figure 5.1, § 05 Transparency).
+- [ ] `app/recall/svg/Fig3_2.tsx` → confidence indicator system (Figure 5.2, § 05 Transparency).
 
-## Verification (run before merging)
+## Content review
 
-- [ ] `pnpm dev` — visit `/recall`, toggle DARK / PAPER, check resize at 1024px, check `prefers-reduced-motion`.
-- [ ] `pnpm storybook` — toolbar Mode toggle works in every story.
-- [ ] `pnpm build` — no TypeScript errors.
-- [ ] `git diff main -- app components package.json` — only planned paths changed.
+- [ ] Hero h1 (`Designing semantic search for everything you've seen`) and 2-sentence lede — confirm or revise.
+- [ ] Spec sheet — confirm `TIMELINE = 2023 – 2025` and `TEAM = Cross-functional team of design, research, and ML engineering`.
+- [ ] § 09 Impact Telemetry values (`Copilot+ DEVICES`, `2 TEAMS`, `2 YEARS`) — confirm or replace with sharper numbers.
+
+## Verification (before pushing)
+
+- [ ] `pnpm dev` — visit `/recall`, toggle DARK / PAPER, check the right-rail counter advances `01 / 11` … `11 / 11`, check NowReading chip updates per section, check resize at 1024px, check `prefers-reduced-motion`.
+- [ ] `pnpm storybook` — Mode toggle works in stories.
+- [ ] `pnpm build` — no TypeScript errors. ✅ (verified)
+- [ ] `git diff main -- app components` — only planned paths changed.
