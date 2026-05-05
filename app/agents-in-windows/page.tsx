@@ -6,7 +6,6 @@ import {
   Figure,
   Telemetry,
   Margin,
-  CursorBlink,
   TopBar,
   ManualFooter,
   CoverPlate,
@@ -28,20 +27,17 @@ export default function AgentsInWindowsPage() {
       <main className="container">
         {/* ── Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
-          <p className="t-mono-label mb-6">§ 00 / OVERVIEW</p>
-          <h1 className="t-display-xl max-w-[20ch]">Agents in Windows<CursorBlink /></h1>
-          <p className="t-body lede mt-6 max-w-[60ch] text-[color:var(--text-secondary)]">
-            Windows had to become the place where agents actually live — visible,
-            manageable, trustworthy. The OS as the coordination layer for every
-            intelligent thing happening on your system.
-          </p>
+          <p className="t-mono-label mb-10">§ 00 / AGENTS IN WINDOWS</p>
+          <h1 className="t-display-xl max-w-[20ch]">
+            Making AI agents visible and interruptible in Windows.
+          </h1>
           <Figure
             number="0.1"
-            caption="Hero schematic — agents distributed across the Windows shell"
-            src="/assets/Agents in Windows Fractal.png"
-            alt="Fractal pattern of agents distributed across the Windows shell"
-            width={1600}
-            height={900}
+            caption="Researcher agent surfacing inside the Windows shell — desktop scene with grid, telemetry overlay, and taskbar entry."
+            src="/images/agents/hero-demo.png"
+            alt="Windows desktop with a Researcher agent panel showing a checklist of in-progress sub-tasks"
+            width={1024}
+            height={427}
             priority
           />
         </section>
