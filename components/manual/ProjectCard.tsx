@@ -24,12 +24,12 @@ export function ProjectCard({ href, eyebrow, title, years, art, artClassName }: 
       href={href}
       className="block group focus:outline focus:outline-1 focus:outline-[color:var(--accent-trace)]"
     >
-      <article className="border border-[color:var(--rule)] group-hover:border-[color:var(--rule-strong)] transition-colors">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr]">
+      <article className="border border-[color:var(--rule)] group-hover:border-[color:var(--rule-strong)] transition-colors lg:aspect-[1120/496]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] h-full">
           <div className="p-6 lg:p-10 flex flex-col justify-between gap-8 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)]">
             <div>
               <p className="t-mono-label">{eyebrow}</p>
-              <h3 className="t-h2 mt-4 text-[color:var(--text-primary)]">
+              <h3 className="t-h1 mt-4 text-[color:var(--text-primary)]">
                 {title}
               </h3>
             </div>

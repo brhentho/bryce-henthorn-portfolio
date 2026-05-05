@@ -14,21 +14,21 @@ const PROJECTS = [
     href: "/agents-in-windows",
     eyebrow: "AGENTS IN WINDOWS",
     title: "Making AI agents visible and interruptible in Windows.",
-    image: "/images/projects/Agents project card.png",
+    image: "/images/cards/agents-art.png",
     years: "2025 –",
   },
   {
     href: "/recall",
     eyebrow: "WINDOWS RECALL",
     title: "Designing semantic search for everything you’ve seen.",
-    image: "/images/projects/Recall project card.png",
+    image: "/images/cards/recall-art.png",
     years: "2023 – 2025",
   },
   {
     href: "/teams-for-education",
     eyebrow: "TEAMS FOR EDUCATION",
     title: "Modernizing Online Classes for an Authentic Virtual Experience.",
-    image: "/images/projects/Teams for EDU project card.png",
+    image: "/images/cards/teams-art.png",
     years: "2020 – 2021",
   },
 ]
@@ -67,7 +67,7 @@ export default function HomePage() {
                     alt={`${p.eyebrow} case study`}
                     fill
                     sizes="(min-width: 1024px) 60vw, 100vw"
-                    className="object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.02]"
+                    className="object-cover object-center transition-transform duration-[600ms] ease-out group-hover:scale-[1.02]"
                   />
                 }
               />
