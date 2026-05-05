@@ -48,7 +48,10 @@ export default function HomePage() {
           <h1 className="t-display-l max-w-[28ch] lg:max-w-none text-[color:var(--text-primary)]">
             Product Designer with 10+ years of experience currently working on AI experiences at Microsoft.
           </h1>
-          <p className="t-display-l max-w-[28ch] lg:max-w-none mt-3 text-[color:var(--text-secondary)]">
+          <p
+            className="t-display-l max-w-[28ch] lg:max-w-none mt-3"
+            style={{ color: "var(--text-tertiary)" }}
+          >
             I design at the intersection of operating systems, agents, and enterprise workflows
           </p>
         </section>
