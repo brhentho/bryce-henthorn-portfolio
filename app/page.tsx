@@ -1,14 +1,13 @@
 import Image from "next/image"
 import { ManualShell } from "./recall/ManualShell"
 import {
-  RevisionHeader,
   SectionLabel,
   SpecSheet,
   Figure,
   Margin,
   CursorBlink,
   ViewTransitionLink,
-  ManualNav,
+  TopBar,
   ManualFooter,
 } from "@/components/manual"
 
@@ -42,8 +41,7 @@ const PROJECTS = [
 export default function HomePage() {
   return (
     <ManualShell>
-      <RevisionHeader rev="2.4" date="April 2026" name="Bryce Henthorn" doc="Portfolio" />
-      <ManualNav />
+      <TopBar />
 
       <main className="container">
         {/* ── Hero ── */}

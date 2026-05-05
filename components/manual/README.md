@@ -57,28 +57,27 @@ All components are in `components/manual/`. Import from the barrel: `import { Fi
 |---|---|---|
 | `RegistrationMark` | `size?, className?` | Decorative 12×12 SVG crosshair. Used in figure corners and chrome. `aria-hidden`. |
 | `Crossref` | `section, href, label?` | Inline mono `§ N.N` link. |
-| `RevisionHeader` | `rev, date, name, doc` | Top-of-page mono row with hairline rule. |
+| `TopBar` | `(no props)` | Combined site header: identifier (`BRYCE HENTHORN`) · nav · inline `§ NN / TT`. Replaces the legacy `RevisionHeader` + `ManualNav` + fixed `ProgressIndicator`. |
 | `SectionLabel` | `number, label, title, id?` | Mono small-caps eyebrow above a real `<h2>`. |
 | `SpecSheet` | `rows: {label,value}[]` | Label/value grid with hairline rules between rows. |
 | `Figure` | `number, caption?, cf?, src?, alt?, width?, height?, priority?, children?` | Wraps img/video/svg/children with figure number, mono caption, optional cross-reference. |
 | `Telemetry` | `items: {value,unit,label}[]` | Instrument-style readout. Tabular numerals. |
 | `Margin` | `children, anchor?` | Right-margin aside on ≥1024px (CSS grid right-column area), inline `<aside>` below. |
 | `StateDiagram` | `states: {label}[], duration?` | Animated SVG sequence. Pauses on `prefers-reduced-motion`. |
-| `ProgressIndicator` | `className?` | Fixed top-right `§ NN / TT`, scroll-tracked. Desktop only. `aria-hidden`. |
 | `CoverPlate` | `number, total, title, ambient?` | Internal chapter divider — full-framed plate, ~60vh, with corner registration marks. |
 
 ## Usage
 
-The `/recall` page wraps all content in `ManualShell`, which mounts the `.manual` scope plus the orientation chrome (`ProgressIndicator`, `NowReading`) and the scroll-reveal controller:
+Every page wraps content in `ManualShell` (which mounts the `.manual` scope plus `NowReading` and the scroll-reveal controller) and renders `<TopBar />` as the first child:
 
 ```tsx
 import { ManualShell } from "./ManualShell"
-import { RevisionHeader, SectionLabel, SpecSheet, Figure, Telemetry, Margin } from "@/components/manual"
+import { TopBar, SectionLabel, SpecSheet, Figure, Telemetry, Margin, ManualFooter } from "@/components/manual"
 
 export default function Page() {
   return (
     <ManualShell>
-      <RevisionHeader rev="2.3" date="April 2026" name="Bryce Henthorn" doc="Recall" />
+      <TopBar />
       <main className="container">
         <section data-section id="hero">
           <h1 className="t-display-xl">Making AI memory legible</h1>
@@ -93,12 +92,13 @@ export default function Page() {
           <Figure number="1.1" caption="Search vs. recall" src="/images/recall/fig-1-1.png" />
         </section>
       </main>
+      <ManualFooter />
     </ManualShell>
   )
 }
 ```
 
-Every scrollable section needs `data-section` so `ProgressIndicator` can track position via `IntersectionObserver`.
+Every scrollable section needs `data-section` so `TopBar`'s inline `§ NN / TT` indicator can track position via `IntersectionObserver`.
 
 ## Storybook
 
@@ -111,7 +111,7 @@ Stories live next to each component as `*.stories.tsx`. Every story renders insi
 ## Accessibility
 
 - Headings (`SectionLabel`) emit real `<h2>`. No styled divs.
-- `ProgressIndicator` is `aria-hidden` — purely decorative orientation.
+- `TopBar`'s inline `§ NN / TT` indicator is `aria-hidden` — purely decorative orientation.
 - `Figure` falls back to `caption` for `alt` when no `alt` is provided.
 - `StateDiagram` honours `prefers-reduced-motion`.
 - `Margin` reflows inline below 1024px — never visually hidden.

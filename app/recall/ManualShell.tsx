@@ -1,5 +1,4 @@
 import type { ReactNode } from "react"
-import { ProgressIndicator } from "@/components/manual/ProgressIndicator"
 import { ScrollRevealController } from "@/components/manual/ScrollRevealController"
 import { NowReading } from "@/components/manual/NowReading"
 
@@ -8,14 +7,13 @@ type Props = {
 }
 
 /**
- * Wrapper for operator-manual pages. Mounts the .manual scope plus the
- * orientation chrome (ProgressIndicator, NowReading) and the scroll-reveal
- * controller. Dark-only — there is no longer a paper mode.
+ * Wrapper for operator-manual pages. Mounts the .manual scope plus NowReading
+ * and the scroll-reveal controller. The § NN / TT counter now lives inline in
+ * TopBar, so the fixed-position ProgressIndicator is no longer mounted here.
  */
 export function ManualShell({ children }: Props) {
   return (
     <div className="manual">
-      <ProgressIndicator />
       <NowReading />
       <ScrollRevealController />
       {children}

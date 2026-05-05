@@ -1,6 +1,5 @@
 import { ManualShell } from "./ManualShell"
 import {
-  RevisionHeader,
   SectionLabel,
   SpecSheet,
   Figure,
@@ -8,7 +7,7 @@ import {
   Margin,
   StateDiagram,
   CursorBlink,
-  ManualNav,
+  TopBar,
   ManualFooter,
   CoverPlate,
 } from "@/components/manual"
@@ -74,8 +73,7 @@ const TRUST_PRINCIPLES = [
 export default function RecallPage() {
   return (
     <ManualShell>
-      <RevisionHeader rev="2.4" date="April 2026" name="Bryce Henthorn" doc="Recall" />
-      <ManualNav />
+      <TopBar />
 
       <main className="container">
         {/* ── 00 Overview / Hero ── */}

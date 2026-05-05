@@ -29,7 +29,7 @@ Do not propose changes to:
 - Typography tokens (`t-display-xl`, `t-h1`, `t-body`, `t-mono-label`, `t-mono-caption`, `lede`)
 - Color tokens (`--bg`, `--text-primary/secondary/tertiary`, `--rule`, `--rule-strong`, accent)
 - Spacing scale or container widths
-- The `RevisionHeader` / `ManualNav` / page-header pattern (eyebrow `§ XX / SECTION_LABEL` → headline → lead → framed `Fig 0.1`)
+- The `TopBar` / page-header pattern (eyebrow `§ XX / SECTION_LABEL` → headline → lead → framed `Fig 0.1`). `TopBar` is the single combined site header — identifier · nav · inline `§ NN / TT` indicator. The legacy `RevisionHeader` + `ManualNav` + fixed `ProgressIndicator` triple was retired in May 2026.
 - The `Figure` frame chrome (corner `RegistrationMark`, `FIG. X.Y` label, hairline border)
 
 If a layout move would require a new token, stop and ask — don't introduce one silently.

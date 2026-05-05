@@ -1,21 +1,19 @@
 import { ManualShell } from "../recall/ManualShell"
 import {
-  RevisionHeader,
   SectionLabel,
   SpecSheet,
   Figure,
   Telemetry,
   Margin,
   CursorBlink,
-  ManualNav,
+  TopBar,
   ManualFooter,
 } from "@/components/manual"
 
 export default function AboutPage() {
   return (
     <ManualShell>
-      <RevisionHeader rev="2.4" date="April 2026" name="Bryce Henthorn" doc="About" />
-      <ManualNav />
+      <TopBar />
 
       <main className="container">
         {/* ── Hero ── */}

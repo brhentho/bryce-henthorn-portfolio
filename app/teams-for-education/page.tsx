@@ -1,14 +1,13 @@
 import Image from "next/image"
 import { ManualShell } from "../recall/ManualShell"
 import {
-  RevisionHeader,
   SectionLabel,
   SpecSheet,
   Figure,
   Telemetry,
   Margin,
   CursorBlink,
-  ManualNav,
+  TopBar,
   ManualFooter,
   CoverPlate,
 } from "@/components/manual"
@@ -41,8 +40,7 @@ const STUDENT_QUOTES = [
 export default function TeamsForEducationPage() {
   return (
     <ManualShell>
-      <RevisionHeader rev="2.4" date="April 2026" name="Bryce Henthorn" doc="Teams for Education" />
-      <ManualNav />
+      <TopBar />
 
       <main className="container">
         {/* ── Hero ── */}

@@ -1,14 +1,13 @@
 import Image from "next/image"
 import { ManualShell } from "../recall/ManualShell"
 import {
-  RevisionHeader,
   SectionLabel,
   SpecSheet,
   Figure,
   Telemetry,
   Margin,
   CursorBlink,
-  ManualNav,
+  TopBar,
   ManualFooter,
   CoverPlate,
 } from "@/components/manual"
@@ -24,8 +23,7 @@ const AGENT_STATES = [
 export default function AgentsInWindowsPage() {
   return (
     <ManualShell>
-      <RevisionHeader rev="2.4" date="April 2026" name="Bryce Henthorn" doc="Agents in Windows" />
-      <ManualNav />
+      <TopBar />
 
       <main className="container">
         {/* ── Hero ── */}
