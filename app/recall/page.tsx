@@ -149,23 +149,14 @@ export default function RecallPage() {
             label="System"
             title="On demand intelligence"
           />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
-              <p className="t-body lede text-[color:var(--text-secondary)]">
-                A local intelligence layer built for screen capture and on-device
-                indexing — processing everything you see into searchable, semantically
-                rich memory without ever leaving your machine.
-              </p>
-            </div>
-          </div>
 
-          <p className="t-mono-label mt-12 mb-6 text-[color:var(--text-tertiary)]">
+          <p className="t-mono-label mt-10 lg:mt-14 text-[color:var(--text-tertiary)]">
             RECALL QUERY LIFECYCLE
           </p>
-          <div className="grid grid-cols-1 lg:grid-cols-[16rem_1fr] gap-8 lg:gap-10 items-start border-t border-[color:var(--rule)] pt-8">
-            <ol className="space-y-6 lg:pr-8 lg:border-r lg:border-[color:var(--rule)]">
+          <div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr] gap-10 lg:gap-16 items-start mt-8 lg:mt-12">
+            <ol className="flex flex-col gap-10 lg:gap-14">
               {PIPELINE_STAGES.map((s) => (
-                <li key={s.label} className="space-y-1.5">
+                <li key={s.label} className="flex flex-col gap-2">
                   <p className="t-mono-label text-[color:var(--text-secondary)]">
                     {s.label}
                   </p>
@@ -175,15 +166,16 @@ export default function RecallPage() {
                 </li>
               ))}
             </ol>
-            <Figure
-              number="2.1"
-              caption="Recall query lifecycle — vertical pipeline from screenshot capture through semantic retrieval"
-              src="/images/recall/system-query-lifecycle.png"
-              alt="Vertical stack of four pipeline stages: screenshot capture, OCR, meaning analysis, search & index"
-              width={482}
-              height={741}
-              className="my-0"
-            />
+            <div className="flex items-center justify-center">
+              <Image
+                src="/images/recall/system-query-lifecycle.png"
+                alt="Isometric exploded view of the Recall query lifecycle — four stages stacked from Search & Index Service down to Screenshot Capture"
+                width={482}
+                height={741}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-auto max-w-[520px]"
+              />
+            </div>
           </div>
         </section>
 
