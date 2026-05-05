@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { ManualShell } from "./ManualShell"
 import {
   SectionLabel,
@@ -9,7 +10,6 @@ import {
   ManualFooter,
   CoverPlate,
 } from "@/components/manual"
-import { Placeholder } from "@/components/placeholder/Placeholder"
 import { Fig1_1 } from "./svg/Fig1_1"
 import { Fig9_1 } from "./svg/Fig9_1"
 
@@ -75,13 +75,12 @@ export default function RecallPage() {
           <Figure
             number="0.1"
             caption="Recall on the Windows desktop — semantic search surfaced as moments, not documents"
-          >
-            <Placeholder
-              type="img"
-              label="HERO — Recall app on desktop"
-              aspectRatio="16/9"
-            />
-          </Figure>
+            src="/images/recall/hero-demo.png"
+            alt="Recall app on a Windows desktop, search results page with multiple match cards"
+            width={1024}
+            height={405}
+            priority
+          />
         </section>
 
         {/* ── Spec sheet ── */}
@@ -131,14 +130,12 @@ export default function RecallPage() {
               <Figure
                 number="1.1"
                 caption="Memory grid — captured cells across days; only some are recoverable through filename or keyword"
+                src="/images/recall/context-memory-grid.png"
+                alt="Recall mark on a faint capture grid, deep gradient background"
+                width={675}
+                height={526}
                 className="my-0"
-              >
-                <Placeholder
-                  type="diag"
-                  label="DIAG — Memory grid (captured cells, sparse highlights)"
-                  aspectRatio="3/4"
-                />
-              </Figure>
+              />
             </div>
           </div>
         </section>
@@ -182,14 +179,12 @@ export default function RecallPage() {
             <Figure
               number="2.1"
               caption="Recall query lifecycle — vertical pipeline from screenshot capture through semantic retrieval"
+              src="/images/recall/system-query-lifecycle.png"
+              alt="Vertical stack of four pipeline stages: screenshot capture, OCR, meaning analysis, search & index"
+              width={482}
+              height={741}
               className="my-0"
-            >
-              <Placeholder
-                type="diag"
-                label="DIAG — Query lifecycle (vertical pipeline)"
-                aspectRatio="481/741"
-              />
-            </Figure>
+            />
           </div>
         </section>
 
@@ -291,14 +286,12 @@ export default function RecallPage() {
             <Figure
               number="4.1"
               caption="Card hierarchy — screenshot anchored, metadata secondary"
+              src="/images/recall/cards-card-hierarchy.png"
+              alt="Six Recall cards in a 3-by-2 grid — each anchored on a desktop screenshot with timestamp and app metadata secondary"
+              width={1653}
+              height={869}
               className="my-0"
-            >
-              <Placeholder
-                type="img"
-                label="UI — Recall card (moment-first hierarchy)"
-                aspectRatio="1653/869"
-              />
-            </Figure>
+            />
           </div>
         </section>
 
@@ -334,14 +327,12 @@ export default function RecallPage() {
           <Figure
             number="5.1"
             caption="Card grid — text and visual match signals separated on every card"
+            src="/images/recall/transparency-card-grid.png"
+            alt="Recall search results for the query 'Catering' — match cards labeled with source app and match-type signals"
+            width={1120}
+            height={702}
             cf={{ section: "03", href: "#problem" }}
-          >
-            <Placeholder
-              type="img"
-              label="UI — Card grid (match-type signals)"
-              aspectRatio="1120/702"
-            />
-          </Figure>
+          />
         </section>
 
         {/* ── 06 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}
