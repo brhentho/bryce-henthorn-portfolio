@@ -2,7 +2,6 @@ import Image from "next/image"
 import { ManualShell } from "./recall/ManualShell"
 import {
   SectionLabel,
-  SpecSheet,
   Margin,
   TopBar,
   ManualFooter,
@@ -86,41 +85,9 @@ export default function HomePage() {
                 system promises, what it shows, and what it lets you stop.
               </p>
             </div>
-          </div>
-        </section>
-
-        {/* ── 03 Through-line ── */}
-        <section data-section data-reveal id="through-line" className="py-12 lg:py-20">
-          <SectionLabel number="03" label="Through-line" title="The same job, three projects" />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
-              <p className="t-body">
-                Across Agents in Windows, Recall, and Teams for Education, the same job
-                shows up: make the invisible visible, the automatic interruptible, the AI
-                auditable. I design systems before surfaces — structure and behavior come
-                first, complexity unfolds on demand, and transparency, predictability, and
-                user control are never features but foundations.
-              </p>
-            </div>
-            <Margin anchor="3-pull">
+            <Margin anchor="2-pull">
               Make the invisible visible. The automatic interruptible. The AI auditable.
             </Margin>
-          </div>
-        </section>
-
-        {/* ── 04 Index ── */}
-        <section data-section data-reveal id="index" className="py-12 lg:py-20">
-          <SectionLabel number="04" label="Index" title="Elsewhere" />
-          <div className="mt-10">
-            <SpecSheet
-              rows={[
-                { label: "ABOUT",   value: "/about" },
-                { label: "EMAIL",   value: "bhenthorn2757@gmail.com" },
-                { label: "RECALL",  value: "/recall — Windows 11" },
-                { label: "AGENTS",  value: "/agents-in-windows — Windows 11" },
-                { label: "TEAMS",   value: "/teams-for-education — Microsoft Teams" },
-              ]}
-            />
           </div>
         </section>
 
