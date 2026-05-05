@@ -11,7 +11,6 @@ import {
   CoverPlate,
 } from "@/components/manual"
 import { HeroSchematic } from "./svg/HeroSchematic"
-import { Fig4_1 } from "./svg/Fig4_1"
 
 const STUDENT_QUOTES = [
   {
@@ -50,10 +49,13 @@ export default function TeamsForEducationPage() {
           </h1>
           <Figure
             number="0.1"
-            caption="Hero schematic — top-down virtual classroom in a 3×2 grid, six tables with persistent seats"
-          >
-            <HeroSchematic />
-          </Figure>
+            caption="Microsoft Teams classroom view — students grouped at virtual tables with the moderation panel surfacing on the right"
+            src="/images/teams/hero-demo.png"
+            alt="Microsoft Teams classroom view — virtual tables of students with avatars and chat moderation panel"
+            width={1024}
+            height={405}
+            priority
+          />
         </section>
 
         {/* ── Spec sheet ── */}
@@ -272,9 +274,9 @@ export default function TeamsForEducationPage() {
           </div>
           <Figure
             number="4.1"
-            caption="Anatomy of a virtual table card — fixed seat, persistent materials slot, ambient moderation hook"
+            caption="Top-down virtual classroom in a 3×2 grid, six tables with persistent seats"
           >
-            <Fig4_1 />
+            <HeroSchematic />
           </Figure>
         </section>
 
@@ -413,12 +415,12 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── Cover Plate (§2.10) — closing chapter divider into Impact ── */}
-        <CoverPlate number="08" total="08" title="Impact" />
+        <CoverPlate number="09" total="09" title="Impact" />
 
-        {/* ── 08 Impact ── */}
+        {/* ── 09 Impact ── (§08 deliberately skipped to mirror Figma) ── */}
         <section data-section data-reveal id="impact" className="py-12 lg:py-20">
           <SectionLabel
-            number="08"
+            number="09"
             label="Impact"
             title="What we learned"
           />
@@ -445,7 +447,7 @@ export default function TeamsForEducationPage() {
                 structure. Social connection. Being seen.
               </p>
             </div>
-            <Margin anchor="8-pull">
+            <Margin anchor="9-pull">
               Retention doesn&rsquo;t come from more features. It comes from structure.
             </Margin>
           </div>
