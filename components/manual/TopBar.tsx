@@ -6,7 +6,7 @@ import { ViewTransitionLink } from "./ViewTransitionLink"
 import { cn } from "@/lib/utils"
 
 const NAV_ITEMS: { href: string; label: string }[] = [
-  { href: "/",                      label: "HOME" },
+  { href: "/",                      label: "WORK" },
   { href: "/recall",                label: "RECALL" },
   { href: "/agents-in-windows",     label: "AGENTS" },
   { href: "/teams-for-education",   label: "TEAMS" },
@@ -57,9 +57,13 @@ export function TopBar() {
   return (
     <header className="border-b border-[color:var(--rule)]">
       <div className="container py-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-        <span className="t-mono-label text-[color:var(--text-primary)] whitespace-nowrap">
+        <ViewTransitionLink
+          href="/"
+          aria-label="Bryce Henthorn — home"
+          className="t-mono-label text-[color:var(--text-primary)] whitespace-nowrap transition-colors duration-200 hover:text-[color:var(--text-secondary)]"
+        >
           BRYCE HENTHORN
-        </span>
+        </ViewTransitionLink>
 
         <nav
           aria-label="Site"

@@ -1,7 +1,7 @@
 import { ViewTransitionLink } from "./ViewTransitionLink"
 
 const INDEX_ITEMS: { href: string; label: string }[] = [
-  { href: "/",                      label: "Home" },
+  { href: "/",                      label: "Work" },
   { href: "/recall",                label: "Windows Recall" },
   { href: "/agents-in-windows",     label: "Agents in Windows" },
   { href: "/teams-for-education",   label: "Teams for Education" },

@@ -39,12 +39,16 @@ export default function HomePage() {
 
       <main className="container">
         {/* ── 00 Hero ── */}
-        <section data-section id="overview" className="pt-16 lg:pt-32 pb-24 lg:pb-32">
+        <section
+          data-section
+          id="overview"
+          className="pt-16 lg:pt-24 pb-16 lg:pb-24 min-h-[calc(100vh-9rem)] flex flex-col justify-center"
+        >
           <p className="t-mono-label mb-10">§ 00 / BRYCE HENTHORN</p>
-          <h1 className="t-h1 max-w-[44ch] text-[color:var(--text-primary)]">
+          <h1 className="t-display-l max-w-[28ch] lg:max-w-none text-[color:var(--text-primary)]">
             Product Designer with 10+ years of experience currently working on AI experiences at Microsoft.
           </h1>
-          <p className="t-h1 max-w-[44ch] mt-2 text-[color:var(--text-secondary)]">
+          <p className="t-display-l max-w-[28ch] lg:max-w-none mt-3 text-[color:var(--text-secondary)]">
             I design at the intersection of operating systems, agents, and enterprise workflows
           </p>
         </section>

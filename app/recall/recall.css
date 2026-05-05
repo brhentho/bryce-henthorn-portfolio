@@ -95,7 +95,6 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
-  padding-block: clamp(48px, 8vw, 112px);
 }
 @media (min-width: 1024px) {
   .manual .section-grid {
