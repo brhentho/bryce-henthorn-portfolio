@@ -6,7 +6,6 @@ import {
   Telemetry,
   Margin,
   StateDiagram,
-  CursorBlink,
   TopBar,
   ManualFooter,
   CoverPlate,
@@ -78,16 +77,10 @@ export default function RecallPage() {
       <main className="container">
         {/* ── 00 Overview / Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
-          <p className="t-mono-label mb-6">§ 00 / OVERVIEW</p>
+          <p className="t-mono-label mb-10">§ 00 / WINDOWS RECALL</p>
           <h1 className="t-display-xl max-w-[18ch]">
-            Designing semantic search for everything you&apos;ve seen<CursorBlink />
+            Designing semantic search for everything you&apos;ve seen.
           </h1>
-          <p className="t-body lede mt-6 max-w-[60ch] text-[color:var(--text-secondary)]">
-            Recall captures everything appearing on screen and makes it searchable
-            through meaning rather than filenames. I led the semantic search experience
-            — how users find their memories, how relevance gets communicated, and how
-            trust gets earned at every step.
-          </p>
           <Figure
             number="0.1"
             caption="System schematic — local capture, on-device indexing, semantic retrieval"
