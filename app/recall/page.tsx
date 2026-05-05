@@ -104,8 +104,8 @@ export default function RecallPage() {
             label="Context"
             title="Where was that thing I saw last week?"
           />
-          <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
+          <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="flex flex-col gap-6 max-w-[60ch]">
               <p className="t-body">
                 The problem was simple and unsolved. You&apos;d seen something on your
                 computer: a presentation, a snippet of code, a reference in an email. But
@@ -126,15 +126,14 @@ export default function RecallPage() {
                 trustworthy.
               </p>
             </div>
-            <div className="p-6 lg:p-10 flex items-start">
-              <Figure
-                number="1.1"
-                caption="Memory grid — captured cells across days; only some are recoverable through filename or keyword"
+            <div className="flex items-center justify-center">
+              <Image
                 src="/images/recall/context-memory-grid.png"
-                alt="Recall mark on a faint capture grid, deep gradient background"
+                alt="Recall mark on a faint capture grid"
                 width={675}
                 height={526}
-                className="my-0"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-auto max-w-[600px]"
               />
             </div>
           </div>
