@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { ManualShell } from "./recall/ManualShell"
 import {
   SectionLabel,
@@ -13,22 +12,28 @@ const PROJECTS = [
     href: "/agents-in-windows",
     eyebrow: "AGENTS IN WINDOWS",
     title: "Making AI agents visible and interruptible in Windows.",
-    image: "/images/cards/agents-art.png",
+    bgSrc: "/images/cards/agents-bg.png",
+    artSrc: "/images/cards/agents-art.png",
+    artAlt: "Researcher agent panel surfacing a Trends in Smart Appliances brief with a sub-task checklist",
     years: "2025 –",
   },
   {
     href: "/recall",
     eyebrow: "WINDOWS RECALL",
     title: "Designing semantic search for everything you’ve seen.",
-    image: "/images/cards/recall-art.png",
+    bgSrc: "/images/cards/recall-bg.png",
+    artSrc: "/images/cards/recall-art.png",
+    artAlt: "Recall search bar querying ‘Presentation with a red barn’ over a captured presentation slide",
     years: "2023 – 2025",
   },
   {
     href: "/teams-for-education",
     eyebrow: "TEAMS FOR EDUCATION",
     title: "Modernizing Online Classes for an Authentic Virtual Experience.",
-    image: "/images/cards/teams-art.png",
-    years: "2020 – 2021",
+    bgSrc: "/images/cards/teams-bg.png",
+    artSrc: "/images/cards/teams-art.png",
+    artAlt: "Five circular student avatars arranged in a constellation across a Teams classroom",
+    years: "2021 – 2022",
   },
 ]
 
@@ -67,15 +72,9 @@ export default function HomePage() {
                 eyebrow={p.eyebrow}
                 title={p.title}
                 years={p.years}
-                art={
-                  <Image
-                    src={p.image}
-                    alt={`${p.eyebrow} case study`}
-                    fill
-                    sizes="(min-width: 1024px) 60vw, 100vw"
-                    className="object-cover object-center transition-transform duration-[600ms] ease-out group-hover:scale-[1.02]"
-                  />
-                }
+                bgSrc={p.bgSrc}
+                artSrc={p.artSrc}
+                artAlt={p.artAlt}
               />
             ))}
           </div>
