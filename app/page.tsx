@@ -3,9 +3,7 @@ import { ManualShell } from "./recall/ManualShell"
 import {
   SectionLabel,
   SpecSheet,
-  Figure,
   Margin,
-  CursorBlink,
   ViewTransitionLink,
   TopBar,
   ManualFooter,
@@ -44,28 +42,15 @@ export default function HomePage() {
       <TopBar />
 
       <main className="container">
-        {/* ── Hero ── */}
-        <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
-          <p className="t-mono-label mb-6">§ 00 / OVERVIEW</p>
-          <h1 className="t-display-xl">Bryce Henthorn<CursorBlink /></h1>
-          <p className="t-body lede mt-6 max-w-[60ch] text-[color:var(--text-secondary)]">
-            Senior Product Designer working on AI experiences inside Windows at Microsoft.
-            I design at the intersection of operating systems, agents, and enterprise
-            workflows — the messy, high-stakes problems that show up when software stops
-            being a tool and starts acting on your behalf.
+        {/* ── 00 Hero ── */}
+        <section data-section id="overview" className="pt-16 lg:pt-32 pb-24 lg:pb-32">
+          <p className="t-mono-label mb-10">§ 00 / BRYCE HENTHORN</p>
+          <h1 className="t-h1 max-w-[44ch] text-[color:var(--text-primary)]">
+            Product Designer with 10+ years of experience currently working on AI experiences at Microsoft.
+          </h1>
+          <p className="t-h1 max-w-[44ch] mt-2 text-[color:var(--text-secondary)]">
+            I design at the intersection of operating systems, agents, and enterprise workflows
           </p>
-        </section>
-
-        {/* ── Spec sheet ── */}
-        <section data-section data-reveal id="spec" className="py-8">
-          <SpecSheet
-            rows={[
-              { label: "ROLE",    value: "Senior Product Designer, Microsoft" },
-              { label: "FOCUS",   value: "AI experiences inside Windows — Agents, Recall, Teams" },
-              { label: "BASED",   value: "Seattle, WA" },
-              { label: "CONTACT", value: "bhenthorn2757@gmail.com" },
-            ]}
-          />
         </section>
 
         {/* ── 01 Selected Work ── */}
