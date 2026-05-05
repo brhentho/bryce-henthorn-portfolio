@@ -186,41 +186,38 @@ export default function AgentsInWindowsPage() {
           <p className="t-mono-label mt-12 mb-6 text-[color:var(--text-tertiary)]">
             TASKBAR EVOLUTION — KEYFRAMES
           </p>
-          <div className="grid grid-cols-1 lg:grid-cols-[12rem_1fr] gap-8 lg:gap-10 items-start border-t border-[color:var(--rule)] pt-8">
-            <ol className="space-y-6 lg:pr-8 lg:border-r lg:border-[color:var(--rule)]">
-              {["Empty pin", "Active state", "Hover-card expanded"].map((label, i) => (
-                <li key={label} className="space-y-1.5">
-                  <p className="t-mono-label text-[color:var(--text-secondary)]">
-                    {String(i + 1).padStart(2, "0")} · KEYFRAME
-                  </p>
-                  <p className="t-mono-caption text-[color:var(--text-tertiary)] leading-relaxed">
-                    {label}
-                  </p>
-                </li>
-              ))}
-            </ol>
-            <div className="space-y-4">
-              {[
-                "/assets/Frame 2147238301.png",
-                "/assets/Frame 2147238302.png",
-                "/assets/Frame 2147238303.png",
-              ].map((src, i) => (
-                <Figure
-                  key={src}
-                  number={`3.${i + 1}`}
-                  src={src}
-                  alt={`Taskbar evolution keyframe ${i + 1}`}
-                  width={1302}
-                  height={314}
-                  className="my-0"
-                />
-              ))}
-              <p className="t-mono-caption text-[color:var(--text-secondary)] mt-3 pt-3 border-t border-[color:var(--rule)]">
-                FIG. 3.1 / 3.2 / 3.3 — Taskbar pin → state visible → hover-card
-                expansion.
-              </p>
-            </div>
+          <ol className="grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-2 border-t border-[color:var(--rule)] pt-6">
+            {["Empty pin", "Active state", "Hover-card expanded"].map((label, i) => (
+              <li key={label} className="space-y-1.5">
+                <p className="t-mono-label text-[color:var(--text-secondary)]">
+                  {String(i + 1).padStart(2, "0")} · KEYFRAME
+                </p>
+                <p className="t-mono-caption text-[color:var(--text-tertiary)] leading-relaxed">
+                  {label}
+                </p>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-4">
+            {[
+              "/assets/Frame 2147238301.png",
+              "/assets/Frame 2147238302.png",
+              "/assets/Frame 2147238303.png",
+            ].map((src, i) => (
+              <Figure
+                key={src}
+                number={`3.${i + 1}`}
+                src={src}
+                alt={`Taskbar evolution keyframe ${i + 1}`}
+                width={1302}
+                height={314}
+                className="my-0"
+              />
+            ))}
           </div>
+          <p className="t-mono-caption text-[color:var(--text-secondary)] mt-4 pt-3 border-t border-[color:var(--rule)]">
+            FIG. 3.1 / 3.2 / 3.3 — Taskbar pin → state visible → hover-card expansion.
+          </p>
         </section>
 
         {/* ── 04 Taskbar ── Annotated Split Plate (§2.4) ── */}
@@ -269,7 +266,21 @@ export default function AgentsInWindowsPage() {
           </div>
         </section>
 
-        {/* ── 05 Constraints ── Pull-quote Interlude (§2.11) + Body Column (§2.3) ── */}
+        {/* ── Pull-quote Interlude (§2.11) — transition from Taskbar into Constraints ── */}
+        <section
+          data-reveal
+          aria-label="Constraints pull-quote"
+          className="my-12 lg:my-20 py-16 lg:py-24 border-y border-[color:var(--rule)]"
+        >
+          <blockquote className="max-w-[68ch]">
+            <p className="t-display-l text-[color:var(--text-primary)]">
+              We had to tell teams &lsquo;no&rsquo; to custom experiences so we could
+              promise users a predictable system.
+            </p>
+          </blockquote>
+        </section>
+
+        {/* ── 05 Constraints ── Body Column (§2.3) ── */}
         <section data-section data-reveal id="constraints" className="py-12 lg:py-20">
           <SectionLabel
             number="05"
@@ -277,20 +288,6 @@ export default function AgentsInWindowsPage() {
             title="Windows ships once. Agents ship constantly."
           />
 
-          {/* Pull-quote — promoted from § 05 Margin */}
-          <div className="mt-10 lg:mt-14 py-12 lg:py-20 border-y border-[color:var(--rule)]">
-            <blockquote className="max-w-[68ch]">
-              <p className="t-display-l text-[color:var(--text-primary)]">
-                We had to tell teams &lsquo;no&rsquo; to custom experiences so we could
-                promise users a predictable system.
-              </p>
-              <footer className="t-mono-caption mt-8 text-[color:var(--text-tertiary)]">
-                Cf. § 05 / CONSTRAINTS
-              </footer>
-            </blockquote>
-          </div>
-
-          {/* Body — let the long argument breathe */}
           <div className="section-grid mt-10 lg:mt-14">
             <div className="space-y-6 max-w-[68ch]">
               <p className="t-body">
