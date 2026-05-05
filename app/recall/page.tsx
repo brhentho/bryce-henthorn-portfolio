@@ -5,44 +5,35 @@ import {
   Figure,
   Telemetry,
   Margin,
-  StateDiagram,
   TopBar,
   ManualFooter,
   CoverPlate,
 } from "@/components/manual"
-import { HeroSchematic } from "./svg/HeroSchematic"
+import { Placeholder } from "@/components/placeholder/Placeholder"
 import { Fig1_1 } from "./svg/Fig1_1"
-import { Fig2_1 } from "./svg/Fig2_1"
-import { Fig3_1 } from "./svg/Fig3_1"
-import { Fig3_2 } from "./svg/Fig3_2"
-import { Fig5_1 } from "./svg/Fig5_1"
 import { Fig9_1 } from "./svg/Fig9_1"
 
+// Listed in descending order to match the Figma stack (04 at top → 01 at bottom).
 const PIPELINE_STAGES = [
   {
-    label: "01 · CAPTURE",
+    label: "04 · SEARCH & INDEX SERVICE",
     value:
-      "Continuously samples the screen at intervals, saving raw visual snapshots as the source material that enters the processing pipeline.",
+      "Stores enriched content in a semantic index and retrieves it by matching the meaning of a query against similarity scores — finding the right files even when the exact words don't match.",
   },
   {
-    label: "02 · OCR",
+    label: "03 · MEANING ANALYSIS",
     value:
-      "Straightens and denoises each image, identifies characters through optical recognition, and reconstructs the output into formatted, flowing text.",
+      "Interprets raw extracted text by running meaning analysis to identify concepts and intent, then maps those concepts to semantic vectors for downstream understanding.",
   },
   {
-    label: "03 · INDEX",
+    label: "02 · OCR PROCESSING",
     value:
-      "Runs meaning analysis on the extracted text to identify concepts and intent, then maps those concepts to semantic vectors for downstream understanding.",
+      "Converts raw image input into structured text by straightening and denoising the image, identifying characters through optical recognition, and reconstructing the output into formatted, flowing text.",
   },
   {
-    label: "04 · QUERY",
+    label: "01 · SCREENSHOT CAPTURE",
     value:
-      "Matches the meaning of a query against the semantic index using similarity scores — finding the right files even when the exact words don't match.",
-  },
-  {
-    label: "05 · RESULT",
-    value:
-      "Returns ranked moments to the user, with provenance and match-type signals — text matches, visual matches, or both — surfaced on every card.",
+      "Continuously monitors and captures the screen at intervals, saving raw visual snapshots as the source material that enters the processing pipeline.",
   },
 ]
 
@@ -79,13 +70,17 @@ export default function RecallPage() {
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <p className="t-mono-label mb-10">§ 00 / WINDOWS RECALL</p>
           <h1 className="t-display-xl max-w-[18ch]">
-            Designing semantic search for everything you&apos;ve seen.
+            Designing semantic search for everything you&apos;ve seen
           </h1>
           <Figure
             number="0.1"
-            caption="System schematic — local capture, on-device indexing, semantic retrieval"
+            caption="Recall on the Windows desktop — semantic search surfaced as moments, not documents"
           >
-            <HeroSchematic />
+            <Placeholder
+              type="img"
+              label="HERO — Recall app on desktop"
+              aspectRatio="16/9"
+            />
           </Figure>
         </section>
 
@@ -110,8 +105,8 @@ export default function RecallPage() {
             label="Context"
             title="Where was that thing I saw last week?"
           />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+          <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
+            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
               <p className="t-body">
                 The problem was simple and unsolved. You&apos;d seen something on your
                 computer: a presentation, a snippet of code, a reference in an email. But
@@ -131,6 +126,19 @@ export default function RecallPage() {
                 relevance is communicated in a way that feels understandable and
                 trustworthy.
               </p>
+            </div>
+            <div className="p-6 lg:p-10 flex items-start">
+              <Figure
+                number="1.1"
+                caption="Memory grid — captured cells across days; only some are recoverable through filename or keyword"
+                className="my-0"
+              >
+                <Placeholder
+                  type="diag"
+                  label="DIAG — Memory grid (captured cells, sparse highlights)"
+                  aspectRatio="3/4"
+                />
+              </Figure>
             </div>
           </div>
         </section>
@@ -171,17 +179,17 @@ export default function RecallPage() {
                 </li>
               ))}
             </ol>
-            <StateDiagram
+            <Figure
+              number="2.1"
+              caption="Recall query lifecycle — vertical pipeline from screenshot capture through semantic retrieval"
               className="my-0"
-              states={[
-                { label: "CAPTURE" },
-                { label: "OCR" },
-                { label: "INDEX" },
-                { label: "QUERY" },
-                { label: "RESULT" },
-              ]}
-              duration={6000}
-            />
+            >
+              <Placeholder
+                type="diag"
+                label="DIAG — Query lifecycle (vertical pipeline)"
+                aspectRatio="481/741"
+              />
+            </Figure>
           </div>
         </section>
 
@@ -213,16 +221,6 @@ export default function RecallPage() {
                 If you&apos;re indexing everything, how do you let people search without
                 overwhelming them? The system needed to think like a person, not force
                 people to think like the system.
-              </p>
-              <p className="t-body">
-                There was another layer to the ranking problem. The same memory could
-                feel obviously correct or completely irrelevant depending on what the
-                user was doing right now. A slide deck retrieved while preparing a
-                presentation feels like exactly what you needed. The same slide deck
-                surfaced while debugging code feels like noise. Relevance wasn&apos;t a
-                fixed property of the result. It was shaped by the task. Static ranking
-                couldn&apos;t account for that, which meant the interface had to give
-                users enough context to make their own relevance judgment in the moment.
               </p>
             </div>
             {/* Figure lane */}
@@ -268,7 +266,7 @@ export default function RecallPage() {
             label="Cards"
             title="Cards as moments, not documents"
           />
-          <div className="section-grid mt-10">
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1fr_649px] gap-6 lg:gap-10 items-start">
             <div className="space-y-6 max-w-[68ch]">
               <p className="t-body">
                 A Recall card needed to hold several pieces of information: a screenshot,
@@ -290,22 +288,17 @@ export default function RecallPage() {
                 predictably.
               </p>
             </div>
-          </div>
-
-          <div className="mt-10 lg:mt-14">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Figure number="4.1" className="my-0">
-                <Fig2_1 />
-              </Figure>
-              <Figure number="4.2" className="my-0">
-                <Fig3_1 />
-              </Figure>
-            </div>
-            <div className="mt-3 pt-3 border-t border-[color:var(--rule)]">
-              <p className="t-mono-caption text-[color:var(--text-secondary)]">
-                FIG. 4.1 / 4.2 — Card hierarchy and the metadata flip
-              </p>
-            </div>
+            <Figure
+              number="4.1"
+              caption="Card hierarchy — screenshot anchored, metadata secondary"
+              className="my-0"
+            >
+              <Placeholder
+                type="img"
+                label="UI — Recall card (moment-first hierarchy)"
+                aspectRatio="1653/869"
+              />
+            </Figure>
           </div>
         </section>
 
@@ -333,26 +326,6 @@ export default function RecallPage() {
                 showing these signals let users judge relevance themselves.
               </p>
               <p className="t-body">Perfection wasn&apos;t the goal. Legibility was.</p>
-              <p className="t-body">
-                Separating match types solved one problem. But users still hit a deeper
-                tension: cast a wide net and the results felt noisy and intrusive. Filter
-                too aggressively and the thing they were looking for disappeared. We
-                couldn&apos;t pick one mode for everyone. Instead we exposed lightweight
-                controls that let users broaden or tighten retrieval scope themselves.
-                The system still did the semantic heavy lifting. But the user decided how
-                much to see. Optimization moved from the algorithm to the interaction.
-              </p>
-              <p className="t-body">
-                Memory search doesn&apos;t work like file search. People don&apos;t type
-                a perfect query and expect one right answer. They start vague —
-                &ldquo;that chart from last week&rdquo; — scan what surfaces, recognize
-                something familiar, and refine from there. It&apos;s recognition-guided
-                exploration, not retrieval. The interface had to support that loop: fast
-                re-querying, results that updated fluidly, and enough context on each
-                card to trigger recognition without requiring a click. Every round-trip
-                through the loop had to feel effortless or users would give up and go dig
-                through folders instead.
-              </p>
             </div>
             <Margin anchor="5-pull">
               Perfection wasn&rsquo;t the goal. Legibility was.
@@ -360,16 +333,14 @@ export default function RecallPage() {
           </div>
           <Figure
             number="5.1"
-            caption="Match-type signals — text matches and visual matches labeled separately on every card"
+            caption="Card grid — text and visual match signals separated on every card"
             cf={{ section: "03", href: "#problem" }}
           >
-            <Fig5_1 />
-          </Figure>
-          <Figure
-            number="5.2"
-            caption="Confidence indicators — letting users judge relevance themselves rather than hiding it inside the model"
-          >
-            <Fig3_2 />
+            <Placeholder
+              type="img"
+              label="UI — Card grid (match-type signals)"
+              aspectRatio="1120/702"
+            />
           </Figure>
         </section>
 
