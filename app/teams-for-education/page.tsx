@@ -412,50 +412,13 @@ export default function TeamsForEducationPage() {
           </div>
         </section>
 
-        {/* ── 08 Bandwidth ── Strip Break callout (§2.9) ── */}
-        <section data-section data-reveal id="bandwidth" className="py-12 lg:py-20">
-          <SectionLabel
-            number="08"
-            label="Bandwidth"
-            title="Not all home internet is equal"
-          />
-
-          {/* One-sentence callout */}
-          <p className="mt-10 t-body max-w-[80ch] text-[color:var(--text-secondary)]">
-            Persistent tables fixed bandwidth structurally — materials attached before
-            class loaded as students sat down, so teaching time didn&apos;t pause for
-            tech problems.
-          </p>
-
-          {/* Strip Break — three qualitative stat columns (Q7 recommendation) */}
-          <div className="mt-10 lg:mt-14 border-y border-[color:var(--rule)]">
-            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[color:var(--rule)]">
-              <div className="px-6 py-7 text-center">
-                <p className="t-mono-label text-[color:var(--text-secondary)]">
-                  OLDER DEVICES
-                </p>
-              </div>
-              <div className="px-6 py-7 text-center">
-                <p className="t-mono-label text-[color:var(--text-secondary)]">
-                  SHARED HOME NETWORKS
-                </p>
-              </div>
-              <div className="px-6 py-7 text-center">
-                <p className="t-mono-label text-[color:var(--text-secondary)]">
-                  TIME LOST TO LOADING
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ── Cover Plate (§2.10) — closing chapter divider into Impact ── */}
-        <CoverPlate number="09" total="09" title="Impact" />
+        <CoverPlate number="08" total="08" title="Impact" />
 
-        {/* ── 09 Impact ── */}
+        {/* ── 08 Impact ── */}
         <section data-section data-reveal id="impact" className="py-12 lg:py-20">
           <SectionLabel
-            number="09"
+            number="08"
             label="Impact"
             title="What we learned"
           />
@@ -482,7 +445,7 @@ export default function TeamsForEducationPage() {
                 structure. Social connection. Being seen.
               </p>
             </div>
-            <Margin anchor="9-pull">
+            <Margin anchor="8-pull">
               Retention doesn&rsquo;t come from more features. It comes from structure.
             </Margin>
           </div>
