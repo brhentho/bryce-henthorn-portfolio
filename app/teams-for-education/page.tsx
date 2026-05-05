@@ -6,7 +6,6 @@ import {
   Figure,
   Telemetry,
   Margin,
-  CursorBlink,
   TopBar,
   ManualFooter,
   CoverPlate,
@@ -45,13 +44,10 @@ export default function TeamsForEducationPage() {
       <main className="container">
         {/* ── Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
-          <p className="t-mono-label mb-6">§ 00 / OVERVIEW</p>
-          <h1 className="t-display-xl max-w-[20ch]">Teams for Education<CursorBlink /></h1>
-          <p className="t-body lede mt-6 max-w-[60ch] text-[color:var(--text-secondary)]">
-            COVID brought millions of new students to online classrooms. Teams scaled.
-            Engagement collapsed. We rebuilt the virtual classroom around structure
-            instead of features.
-          </p>
+          <p className="t-mono-label mb-10">§ 00 / TEAMS FOR EDUCATION</p>
+          <h1 className="t-display-xl max-w-[24ch]">
+            Modernizing online classes for an authentic virtual experience.
+          </h1>
           <Figure
             number="0.1"
             caption="Hero schematic — top-down virtual classroom in a 3×2 grid, six tables with persistent seats"
