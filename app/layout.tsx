@@ -127,6 +127,7 @@ export default function RootLayout({
           `,
           }}
         />
+        <div className="page-glow" aria-hidden="true" />
         <div className="noise" aria-hidden="true" />
         {children}
         <Analytics />

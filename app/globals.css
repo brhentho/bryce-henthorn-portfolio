@@ -220,6 +220,26 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
    ATMOSPHERE — Decorative layers
    ═══════════════════════════════════════════════════════════════ */
 
+/* Top-of-page radial glow — soft warm halo behind the navbar / hero.
+   Fixed so it stays anchored at the top while the page scrolls. */
+.page-glow {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 1800px);
+  height: 720px;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(
+      ellipse 55% 60% at 50% 0%,
+      rgba(245, 241, 232, 0.14) 0%,
+      rgba(245, 241, 232, 0.06) 30%,
+      transparent 70%
+    );
+}
+
 /* Noise overlay — fixed, site-wide. Matches the design-tool spec:
    white noise, 0.5×0.5 noise size, ~50% density, 12% opacity. */
 .noise {

@@ -49,7 +49,12 @@ export default function HomePage() {
           id="overview"
           className="pt-16 lg:pt-24 pb-16 lg:pb-24 min-h-[calc(100vh-9rem)] flex flex-col justify-center"
         >
-          <p className="t-mono-label mb-10">§ 00 / BRYCE HENTHORN</p>
+          <p
+            className="t-mono-label"
+            style={{ marginBottom: "clamp(3rem, 8vh, 6rem)" }}
+          >
+            § 00 / BRYCE HENTHORN
+          </p>
           <h1 className="t-display-l max-w-[28ch] lg:max-w-none text-[color:var(--text-primary)]">
             Product Designer with 10+ years of experience currently working on AI experiences at Microsoft.
           </h1>
