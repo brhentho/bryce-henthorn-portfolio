@@ -174,7 +174,7 @@ export default function HomePage() {
         </section>
 
       </main>
-      <ManualFooter rev="2.4" />
+      <ManualFooter />
     </ManualShell>
   )
 }

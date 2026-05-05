@@ -224,7 +224,7 @@ export default function AboutPage() {
         </section>
 
       </main>
-      <ManualFooter rev="2.4" />
+      <ManualFooter />
     </ManualShell>
   )
 }

@@ -493,7 +493,7 @@ export default function TeamsForEducationPage() {
         </section>
 
       </main>
-      <ManualFooter rev="2.4" />
+      <ManualFooter />
     </ManualShell>
   )
 }

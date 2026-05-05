@@ -8,15 +8,14 @@ const INDEX_ITEMS: { href: string; label: string }[] = [
   { href: "/about",                 label: "About" },
 ]
 
-type Props = {
-  rev?: string
-}
+const linkClass =
+  "t-body-sm inline-block text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] decoration-[0.5px] underline-offset-[0.25em] transition-all duration-[160ms] hover:decoration-[color:var(--accent-trace)] hover:decoration-[1.5px]"
 
 /**
- * Site-wide footer. Three columns: author/contact, document index, metadata.
- * Mono labels per column; hairline rule on top, end-of-document line at bottom.
+ * Site-wide footer. Three columns: author, document index, contact.
+ * Hairline rule on top.
  */
-export function ManualFooter({ rev = "2.4" }: Props) {
+export function ManualFooter() {
   return (
     <footer className="border-t border-[color:var(--rule)] mt-16">
       <div className="container py-12 grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10">
@@ -28,14 +27,7 @@ export function ManualFooter({ rev = "2.4" }: Props) {
             <p className="t-body-sm text-[color:var(--text-secondary)]">
               Senior Product Designer, Microsoft
             </p>
-            <p className="t-body-sm text-[color:var(--text-secondary)]">Seattle, WA</p>
           </div>
-          <a
-            href="mailto:bhenthorn2757@gmail.com"
-            className="t-body-sm inline-block text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] decoration-[0.5px] underline-offset-[0.25em] transition-all duration-[160ms] hover:decoration-[color:var(--accent-trace)] hover:decoration-[1.5px]"
-          >
-            bhenthorn2757@gmail.com
-          </a>
         </div>
 
         {/* Index */}
@@ -44,10 +36,7 @@ export function ManualFooter({ rev = "2.4" }: Props) {
           <ul className="space-y-1.5">
             {INDEX_ITEMS.map((item) => (
               <li key={item.href}>
-                <ViewTransitionLink
-                  href={item.href}
-                  className="t-body-sm text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] decoration-[0.5px] underline-offset-[0.25em] transition-all duration-[160ms] hover:decoration-[color:var(--accent-trace)] hover:decoration-[1.5px]"
-                >
+                <ViewTransitionLink href={item.href} className={linkClass}>
                   {item.label}
                 </ViewTransitionLink>
               </li>
@@ -55,18 +44,18 @@ export function ManualFooter({ rev = "2.4" }: Props) {
           </ul>
         </div>
 
-        {/* Document */}
+        {/* Contact */}
         <div className="space-y-3">
-          <p className="t-mono-label">DOCUMENT</p>
+          <p className="t-mono-label">CONTACT</p>
           <div className="space-y-1">
-            <p className="t-body-sm text-[color:var(--text-secondary)]">REV. {rev}</p>
-            <p className="t-body-sm text-[color:var(--text-secondary)]">
-              &copy; 2026 Bryce Henthorn
-            </p>
+            <a href="tel:+13609272833" className={linkClass}>
+              360.927.2833
+            </a>
+            <a href="mailto:bhenthorn2757@gmail.com" className={`${linkClass} block`}>
+              bhenthorn2757@gmail.com
+            </a>
+            <p className="t-body-sm text-[color:var(--text-secondary)]">Seattle, WA</p>
           </div>
-          <p className="t-mono-caption text-[color:var(--text-tertiary)] mt-6">
-            END OF DOCUMENT
-          </p>
         </div>
       </div>
     </footer>

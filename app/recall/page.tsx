@@ -547,7 +547,7 @@ export default function RecallPage() {
           </div>
         </section>
       </main>
-      <ManualFooter rev="2.4" />
+      <ManualFooter />
     </ManualShell>
   )
 }
