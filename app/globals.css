@@ -170,6 +170,36 @@
   color: rgba(255, 255, 255, 0.95);
 }
 
+/* Force-reveal all scroll-triggered animations during Figma capture */
+html.figma-capture-mode {
+  scroll-behavior: auto !important;
+}
+html.figma-capture-mode * {
+  animation-play-state: running !important;
+  animation-delay: 0s !important;
+  animation-duration: 0.001s !important;
+  transition: none !important;
+  visibility: visible !important;
+}
+html.figma-capture-mode [data-reveal],
+html.figma-capture-mode [data-reveal]:not([data-revealed="true"]),
+html.figma-capture-mode .manual [data-reveal],
+html.figma-capture-mode .manual [data-reveal]:not([data-revealed="true"]),
+html.figma-capture-mode .sec,
+html.figma-capture-mode .sec:not(.vis) {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+html.figma-capture-mode [data-reveal] hr.rule,
+html.figma-capture-mode .manual [data-reveal] hr.rule {
+  transform: scaleX(1) !important;
+}
+html.figma-capture-mode [data-reveal] svg.manual-schematic,
+html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
+  clip-path: inset(0 0 0 0) !important;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    12-COLUMN GRID
    ═══════════════════════════════════════════════════════════════ */
