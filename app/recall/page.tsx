@@ -10,7 +10,6 @@ import {
   ManualFooter,
   CoverPlate,
 } from "@/components/manual"
-import { Fig9_1 } from "./svg/Fig9_1"
 
 // Listed in descending order to match the Figma stack (04 at top → 01 at bottom).
 const PIPELINE_STAGES = [
@@ -454,6 +453,27 @@ export default function RecallPage() {
               </p>
             </div>
           </div>
+
+          {/* Privacy controls in practice — sensitive content + delete snapshot */}
+          <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
+            <Image
+              src="/images/recall/trust-sensitive-content.png"
+              alt="Recall card menu showing sensitive content (a credit-card snapshot from Fidelity) with a Delete snapshot action"
+              width={279}
+              height={196}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="w-full h-auto"
+            />
+            <Image
+              src="/images/recall/trust-delete-snapshot.png"
+              alt="Snapshot removed confirmation modal — option to update Recall capture settings to block specific apps and websites"
+              width={362}
+              height={279}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="w-full h-auto"
+            />
+          </div>
+
           <div className="mt-12">
             <SpecSheet rows={TRUST_PRINCIPLES} />
           </div>
@@ -474,6 +494,18 @@ export default function RecallPage() {
             synthesis for speed and legibility — surface relevant moments, let people
             interpret them.
           </p>
+
+          {/* Cropped video — RAG synthesis vs. fast retrieval, latency tradeoff */}
+          <div className="mt-10 lg:mt-14 relative w-full aspect-[16/9] max-h-[520px] overflow-hidden border border-[color:var(--rule)] bg-[color:var(--ink)]">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4"
+            />
+          </div>
 
           {/* Pull-quote — promoted from § 08 Margin */}
           <div className="mt-10 lg:mt-14 py-12 lg:py-20 border-y border-[color:var(--rule)]">
@@ -525,13 +557,14 @@ export default function RecallPage() {
               </Margin>
             </div>
             <div className="p-6 lg:p-10 flex items-start">
-              <Figure
-                number="10.1"
-                caption="Pattern propagation — Recall search principles adopted across Windows Search and File Explorer"
-                className="my-0"
-              >
-                <Fig9_1 />
-              </Figure>
+              <Image
+                src="/images/recall/impact-keynote.png"
+                alt="Recall introduced on stage at Build — system architecture diagram (Screen Region Detector, Optical Character Recognition, Parser, Text Encoder, Image Encoder) framing the Recall pill"
+                width={358}
+                height={210}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-auto"
+              />
             </div>
           </div>
           <div className="mt-12">
