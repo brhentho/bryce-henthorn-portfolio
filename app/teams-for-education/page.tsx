@@ -163,7 +163,9 @@ export default function TeamsForEducationPage() {
             </div>
           </div>
 
-          <h3 className="t-mono-label mt-24 mb-6">FIELD INTERVIEWS &middot; STUDENT VOICES</h3>
+          <div className="mt-24 mb-6">
+            <h3 className="t-mono-label">FIELD INTERVIEWS &middot; STUDENT VOICES</h3>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 border-t border-[color:var(--rule)] pt-6">
             {STUDENT_QUOTES.map((q) => (
               <blockquote
