@@ -40,7 +40,7 @@ export default function AgentsInWindowsPage() {
           />
           <Figure
             number="0.1"
-            caption="Researcher agent surfacing inside the Windows shell — desktop scene with grid, telemetry overlay, and taskbar entry."
+            caption="Researcher agent surfacing inside the Windows shell. Desktop scene with grid, telemetry overlay, and taskbar entry."
           >
             <div className="relative w-full overflow-hidden aspect-[16/9] sm:aspect-[2/1] lg:aspect-[1120/442]">
               <Image
@@ -60,7 +60,7 @@ export default function AgentsInWindowsPage() {
           <SpecSheet
             rows={[
               { label: "ROLE",     value: "Lead designer, agent visibility & orchestration" },
-              { label: "PLATFORM", value: "Windows 11 — Shell, Taskbar, Ask Copilot" },
+              { label: "PLATFORM", value: "Windows 11: Shell, Taskbar, Ask Copilot" },
               { label: "TIMELINE", value: "2025 – Present" },
               { label: "TEAM",     value: "3 engineering partner teams across Microsoft" },
               { label: "MY FOCUS", value: "OS-level agent surface, taskbar states, invocation system" },
@@ -146,7 +146,7 @@ export default function AgentsInWindowsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
             <Figure
               number="2.1"
-              caption="Fragmentation across apps — Windows has no insight into what is running within each window."
+              caption="Fragmentation across apps. Windows has no insight into what is running within each window."
               src="/images/agents/problem-fragmentation.png"
               alt="Fragmented agent experience across multiple windows"
               width={1464}
@@ -154,7 +154,7 @@ export default function AgentsInWindowsPage() {
             />
             <Figure
               number="2.2"
-              caption="Windows extends for agent observability — consistent patterns for monitoring and management."
+              caption="Windows extends for agent observability. Consistent patterns for monitoring and management."
               src="/images/agents/problem-observability.png"
               alt="Windows with unified agent observability"
               width={1464}
@@ -193,7 +193,7 @@ export default function AgentsInWindowsPage() {
           </div>
 
           <p className="t-mono-label mt-12 mb-6 text-[color:var(--text-tertiary)]">
-            TASKBAR EVOLUTION — KEYFRAMES
+            TASKBAR EVOLUTION / KEYFRAMES
           </p>
           <ol className="grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-2 border-t border-[color:var(--rule)] pt-6">
             {["Empty pin", "Active state", "Hover-card expanded"].map((label, i) => (
@@ -225,7 +225,7 @@ export default function AgentsInWindowsPage() {
             ))}
           </div>
           <p className="t-mono-caption text-[color:var(--text-secondary)] mt-4 pt-3 border-t border-[color:var(--rule)]">
-            FIG. 3.1 / 3.2 / 3.3 — Taskbar pin → state visible → hover-card expansion.
+            FIG. 3.1 / 3.2 / 3.3. Taskbar pin → state visible → hover-card expansion.
           </p>
         </section>
 
@@ -259,7 +259,7 @@ export default function AgentsInWindowsPage() {
             <div className="p-6 lg:p-10 flex items-start">
               <Figure
                 number="4.1"
-                caption="Taskbar agent — hover-card expansion in motion"
+                caption="Taskbar agent. Hover-card expansion in motion."
                 className="my-0"
               >
                 <video
@@ -342,7 +342,7 @@ export default function AgentsInWindowsPage() {
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
               <p className="t-body">
-                Ask Copilot is Windows Search plus Copilot — one place to type questions,
+                Ask Copilot is Windows Search plus Copilot. One place to type questions,
                 run actions, launch anything. We built agents directly into it. Type @,
                 pick an agent, send it work. Invoke it from the OS, not from inside some
                 app; the agent keeps running after you close the chat.
@@ -350,13 +350,13 @@ export default function AgentsInWindowsPage() {
               <p className="t-body">
                 Now the system has a clear shape. Ask Copilot is where you start agents;
                 the taskbar is where they live while running. Agents aren&apos;t stuck
-                inside individual apps anymore — they&apos;re creatures of the OS itself.
+                inside individual apps anymore. They&apos;re creatures of the OS itself.
               </p>
             </div>
           </div>
 
           {/* Full-bleed video — the demo is the argument */}
-          <Figure number="6.1" caption="Ask Copilot composer — invoking an agent with @">
+          <Figure number="6.1" caption="Ask Copilot composer. Invoking an agent with @">
             <video
               autoPlay
               loop
@@ -398,7 +398,7 @@ export default function AgentsInWindowsPage() {
               ))}
             </div>
             <p className="t-mono-caption text-[color:var(--text-tertiary)] px-4 py-3 border-t border-[color:var(--rule)]">
-              FIG. 7.1 — Visual lexicon: five agent states across the taskbar surface.
+              FIG. 7.1. Visual lexicon: five agent states across the taskbar surface.
             </p>
           </div>
 
@@ -466,7 +466,7 @@ export default function AgentsInWindowsPage() {
             <div className="p-6 lg:p-10 flex items-start">
               <Figure
                 number="8.1"
-                caption="Agents in Windows on stage — visible, interruptible interactions"
+                caption="Agents in Windows on stage. Visible, interruptible interactions."
                 src="/images/agents/impact-stage.png"
                 alt="Agents in Windows presented on stage"
                 width={1661}

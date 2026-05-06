@@ -17,7 +17,7 @@ const PIPELINE_STAGES = [
   {
     label: "04 · SEARCH & INDEX SERVICE",
     value:
-      "Stores enriched content in a semantic index and retrieves it by matching the meaning of a query against similarity scores — finding the right files even when the exact words don't match.",
+      "Stores enriched content in a semantic index and retrieves it by matching the meaning of a query against similarity scores, finding the right files even when the exact words don't match.",
   },
   {
     label: "03 · MEANING ANALYSIS",
@@ -79,7 +79,7 @@ export default function RecallPage() {
           />
           <Figure
             number="0.1"
-            caption="Recall on the Windows desktop — semantic search surfaced as moments, not documents"
+            caption="Recall on the Windows desktop. Semantic search surfaced as moments, not documents."
           >
             <div className="relative w-full overflow-hidden aspect-[16/9] sm:aspect-[2/1] lg:aspect-[1120/442]">
               <Image
@@ -102,7 +102,7 @@ export default function RecallPage() {
               { label: "PLATFORM", value: "Windows 11 (Copilot+ PCs)" },
               { label: "TIMELINE", value: "2023 – 2025" },
               { label: "TEAM",     value: "Cross-functional team of design, research, and ML engineering" },
-              { label: "MY FOCUS", value: "Semantic search experience — ranking, relevance, and trust" },
+              { label: "MY FOCUS", value: "Semantic search experience: ranking, relevance, and trust" },
               { label: "STATUS",   value: "Shipped at Build 2024; reshaped post-launch around privacy" },
             ]}
           />
@@ -140,7 +140,7 @@ export default function RecallPage() {
             <div className="flex items-center justify-center">
               <Image
                 src="/images/recall/context-recall-icon.png"
-                alt="Recall mark — a glowing blue rotating-arrow glyph centered on a faint capture grid"
+                alt="Recall mark. A glowing blue rotating-arrow glyph centered on a faint capture grid."
                 width={880}
                 height={821}
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -183,7 +183,7 @@ export default function RecallPage() {
             <div className="flex items-center justify-center">
               <Image
                 src="/images/recall/system-query-lifecycle.png"
-                alt="Isometric exploded view of the Recall query lifecycle — four stages stacked from Search & Index Service down to Screenshot Capture"
+                alt="Isometric exploded view of the Recall query lifecycle. Four stages stacked from Search & Index Service down to Screenshot Capture."
                 width={482}
                 height={741}
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -227,7 +227,7 @@ export default function RecallPage() {
             <div className="p-6 lg:p-10 flex items-center justify-center">
               <Image
                 src="/images/recall/problem-opentable.png"
-                alt="Gmail showing an OpenTable reservation confirmation, with extracted Recall chips below — reservation, The Front Room, July 16 2023, OpenTable, Menu, Confirmation 25564, Portland ME"
+                alt="Gmail showing an OpenTable reservation confirmation, with extracted Recall chips below: reservation, The Front Room, July 16 2023, OpenTable, Menu, Confirmation 25564, Portland ME"
                 width={486}
                 height={538}
                 sizes="(min-width: 1024px) 40vw, 100vw"
@@ -292,7 +292,7 @@ export default function RecallPage() {
             </div>
             <Image
               src="/images/recall/cards-card-hierarchy.png"
-              alt="Six Recall cards in a 3-by-2 grid — each anchored on a desktop screenshot with timestamp and app metadata secondary"
+              alt="Six Recall cards in a 3-by-2 grid. Each anchored on a desktop screenshot with timestamp and app metadata secondary."
               width={1653}
               height={869}
               sizes="(min-width: 1024px) 649px, 100vw"
@@ -332,7 +332,7 @@ export default function RecallPage() {
           </div>
           <Image
             src="/images/recall/transparency-card-grid.png"
-            alt="Recall search results for the query 'Catering' — match cards labeled with source app and match-type signals"
+            alt="Recall search results for the query 'Catering'. Match cards labeled with source app and match-type signals."
             width={1120}
             height={702}
             sizes="100vw"
@@ -370,7 +370,7 @@ export default function RecallPage() {
           <div className="mt-10 lg:mt-14">
             <Image
               src="/images/recall/clarity-results-grid.png"
-              alt="Recall search results for ‘Presentation with a red barn’ — visual matches separated into a 4×3 grid of close-match cards with source domains and timestamps"
+              alt="Recall search results for ‘Presentation with a red barn’. Visual matches separated into a 4×3 grid of close-match cards with source domains and timestamps."
               width={1024}
               height={550}
               sizes="100vw"
@@ -398,8 +398,8 @@ export default function RecallPage() {
 
           {/* One-line caption beneath the quote */}
           <p className="mt-6 t-body-sm max-w-[68ch] text-[color:var(--text-secondary)]">
-            Embedding indexing is computationally heavy — we tuned retrigger cadence
-            so results refine per keystroke without ever blocking the user.
+            Embedding indexing is computationally heavy, so we tuned retrigger cadence
+            to refine results per keystroke without ever blocking the user.
           </p>
 
           {/* Cropped video — per-keystroke retrigger feel */}
@@ -480,7 +480,7 @@ export default function RecallPage() {
             />
             <Image
               src="/images/recall/trust-delete-snapshot.png"
-              alt="Snapshot removed confirmation modal — option to update Recall capture settings to block specific apps and websites"
+              alt="Snapshot removed confirmation modal with an option to update Recall capture settings to block specific apps and websites"
               width={362}
               height={279}
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -505,7 +505,7 @@ export default function RecallPage() {
           <p className="mt-10 t-body max-w-[68ch]">
             Early on we explored RAG synthesis across screenshots, but latency broke
             the core expectation that search should feel instantaneous. We abandoned
-            synthesis for speed and legibility — surface relevant moments, let people
+            synthesis for speed and legibility. Surface relevant moments, let people
             interpret them.
           </p>
 
@@ -573,7 +573,7 @@ export default function RecallPage() {
             <div className="p-6 lg:p-10 flex items-start">
               <Image
                 src="/images/recall/impact-keynote.png"
-                alt="Recall introduced on stage at Build — system architecture diagram (Screen Region Detector, Optical Character Recognition, Parser, Text Encoder, Image Encoder) framing the Recall pill"
+                alt="Recall introduced on stage at Build. System architecture diagram (Screen Region Detector, Optical Character Recognition, Parser, Text Encoder, Image Encoder) framing the Recall pill."
                 width={358}
                 height={210}
                 sizes="(min-width: 1024px) 50vw, 100vw"

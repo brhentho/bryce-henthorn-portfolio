@@ -93,9 +93,10 @@ export default function HomePage() {
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
               <p className="t-body">
-                When software runs on your behalf without being asked, interface design
-                stops being about features and starts being about agreements — what the
-                system promises, what it shows, and what it lets you stop.
+                When software starts running on your behalf without being asked, the
+                design problem isn&apos;t really about features anymore. It&apos;s about
+                the agreement. What the system promises, what it lets you see, and what
+                it lets you stop.
               </p>
             </div>
             <Margin anchor="2-pull">

@@ -56,12 +56,12 @@ export default function TeamsForEducationPage() {
           />
           <Figure
             number="0.1"
-            caption="Microsoft Teams classroom view — students grouped at virtual tables with the moderation panel surfacing on the right"
+            caption="Microsoft Teams classroom view. Students grouped at virtual tables with the moderation panel surfacing on the right."
           >
             <div className="relative w-full overflow-hidden aspect-[16/9] sm:aspect-[2/1] lg:aspect-[1120/442]">
               <Image
                 src="/images/teams/hero-demo.png"
-                alt="Microsoft Teams classroom view — virtual tables of students with avatars and chat moderation panel"
+                alt="Microsoft Teams classroom view. Virtual tables of students with avatars and chat moderation panel."
                 fill
                 priority
                 sizes="(min-width: 1280px) 1024px, 100vw"
@@ -174,7 +174,7 @@ export default function TeamsForEducationPage() {
                   &ldquo;{q.quote}&rdquo;
                 </p>
                 <footer className="t-mono-label mt-3 text-[color:var(--text-tertiary)]">
-                  &mdash; {q.name}
+                  {q.name}
                 </footer>
               </blockquote>
             ))}
@@ -232,7 +232,7 @@ export default function TeamsForEducationPage() {
             <div className="p-6 lg:p-10 flex items-start">
               <Figure
                 number="3.1"
-                caption="Co-design session with educators — mapping the tools needed for a successful virtual class"
+                caption="Co-design session with educators. Mapping the tools needed for a successful virtual class."
                 src="/images/projects/teams-cocreation.png"
                 alt="Co-design session with educators"
                 width={1600}
@@ -253,9 +253,9 @@ export default function TeamsForEducationPage() {
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
               <p className="t-body">
-                We explored three directions. The first was too literal — full classroom
+                We explored three directions. The first was too literal: full classroom
                 maps with avatars at drawn tables. It was playful but felt gimmicky inside
-                an enterprise tool. The second was too abstract — purely functional
+                an enterprise tool. The second was too abstract: purely functional
                 renamed breakout channels that lost the spatial awareness that made the
                 concept work.
               </p>
@@ -272,7 +272,7 @@ export default function TeamsForEducationPage() {
               </p>
               <p className="t-body">
                 There was a harder tension underneath the table design. Teachers needed
-                moderation controls — the ability to mute, redirect, or flag — but
+                moderation controls (the ability to mute, redirect, or flag), but
                 heavy-handed moderation kills exactly the kind of organic peer discussion
                 that makes small groups work. We designed moderation to be ambient rather
                 than disruptive. Teachers could observe and intervene from the global view
@@ -308,13 +308,13 @@ export default function TeamsForEducationPage() {
                 Virtual tables were only part of the solution. Teachers could start table
                 discussions and monitor the classroom from a global view, moving fluidly
                 between groups almost like walking around a physical classroom. The
-                orchestration layer restored situational awareness — a cohesive classroom
-                again instead of fragmented breakout rooms.
+                orchestration layer restored situational awareness, giving them a
+                cohesive classroom instead of fragmented breakout rooms.
               </p>
               <p className="t-body">
                 Discussions don&apos;t pause when someone steps away. We designed
-                re-entry to surface enough context — recent activity, shared materials,
-                who&apos;s talking — so a student could orient and join without
+                re-entry to surface enough context (recent activity, shared materials,
+                who&apos;s talking) so a student could orient and join without
                 interrupting the flow already happening.
               </p>
             </div>
@@ -466,7 +466,7 @@ export default function TeamsForEducationPage() {
             <div className="flex items-start lg:pl-4">
               <Image
                 src="/images/teams/impact-tweets.png"
-                alt="Four educator tweets reacting to the new Class Home Page in Microsoft Teams — Kim Landtroop, Ellis J, Megan Townes, Madeline Cooney"
+                alt="Four educator tweets reacting to the new Class Home Page in Microsoft Teams. Kim Landtroop, Ellis J, Megan Townes, Madeline Cooney."
                 width={530}
                 height={612}
                 sizes="(min-width: 1024px) 50vw, 100vw"

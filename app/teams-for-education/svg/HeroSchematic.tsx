@@ -19,7 +19,7 @@ export function HeroSchematic() {
       strokeWidth={1}
       className="manual-schematic block w-full text-[color:var(--rule-strong)]"
       role="img"
-      aria-label="Top-down virtual classroom — 6 tables in a 3x2 grid"
+      aria-label="Top-down virtual classroom: 6 tables in a 3x2 grid"
     >
       {/* outer frame */}
       <rect x="40" y="40" width="1520" height="820" stroke="var(--rule-strong)" />

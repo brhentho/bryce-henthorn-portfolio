@@ -59,7 +59,7 @@ export function TopBar() {
       <div className="container py-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <ViewTransitionLink
           href="/"
-          aria-label="Bryce Henthorn — home"
+          aria-label="Bryce Henthorn, home"
           className="t-mono-label text-[color:var(--text-primary)] whitespace-nowrap transition-colors duration-200 hover:text-[color:var(--text-secondary)]"
         >
           BRYCE HENTHORN
