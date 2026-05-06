@@ -1,6 +1,7 @@
 "use client"
 
 import type { CSSProperties, ReactNode } from "react"
+import { cn } from "@/lib/utils"
 
 type Line = {
   text: string
@@ -49,9 +50,10 @@ export function HeroIntro({
   let runningWord = 0
   const renderedLines = lines.map((line, idx) => {
     const Tag = line.as ?? (idx === 0 ? "h1" : "p")
+    const balance = Tag === "h1" || Tag === "h2" ? "text-balance" : ""
     const parts = line.text.split(/(\s+)/)
     return (
-      <Tag key={idx} className={line.className} style={line.style}>
+      <Tag key={idx} className={cn(balance, line.className)} style={line.style}>
         {parts.map((part, i) => {
           if (/^\s+$/.test(part)) return part
           const delay = linesStart + runningWord * wordStep
