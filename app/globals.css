@@ -777,3 +777,83 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
     font-size: 19px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO INTRO — typewriter eyebrow + word-fade body lines
+   ═══════════════════════════════════════════════════════════════ */
+
+@keyframes hero-char-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes hero-word-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes hero-caret-blink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.hero-intro-eyebrow {
+  /* keep layout stable while characters are still hidden */
+  white-space: pre-wrap;
+}
+
+.hero-intro-char {
+  display: inline-block;
+  white-space: pre;
+  opacity: 0;
+  animation: hero-char-in 60ms linear forwards;
+}
+
+.hero-intro-caret {
+  display: inline-block;
+  width: 0.5ch;
+  height: 0.95em;
+  margin-left: 0.18em;
+  vertical-align: -0.08em;
+  background: currentColor;
+  opacity: 0;
+  /* iteration count is overridden via inline style so the caret
+     blinks for exactly the typewriter + reveal duration, then stops. */
+  animation-name: hero-caret-blink;
+  animation-duration: 720ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 4;
+}
+
+.hero-intro-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(6px);
+  filter: blur(4px);
+  animation: hero-word-in 700ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  /* allow long titles to wrap at the natural word boundaries */
+  white-space: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-intro-char,
+  .hero-intro-word {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .hero-intro-caret {
+    display: none !important;
+  }
+}
+

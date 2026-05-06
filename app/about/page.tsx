@@ -5,6 +5,7 @@ import {
   Figure,
   TopBar,
   ManualFooter,
+  HeroIntro,
 } from "@/components/manual"
 
 const MANIFESTO = [
@@ -50,14 +51,16 @@ export default function AboutPage() {
       <main className="container">
         {/* ── 00 Hero — manifesto ── */}
         <section data-section id="overview" className="pt-16 lg:pt-32 pb-16 lg:pb-24">
-          <p className="t-mono-label mb-10">§ 00 / ABOUT</p>
-          <div className="space-y-3 lg:space-y-4">
-            {MANIFESTO.map((line) => (
-              <p key={line} className="t-display-xl text-[color:var(--text-primary)]">
-                {line}
-              </p>
-            ))}
-          </div>
+          <HeroIntro
+            eyebrow="§ 00 / ABOUT"
+            eyebrowClassName="t-mono-label mb-10"
+            linesWrapperClassName="space-y-3 lg:space-y-4"
+            lines={MANIFESTO.map((line) => ({
+              text: line,
+              className: "t-display-xl text-[color:var(--text-primary)]",
+              as: "p",
+            }))}
+          />
         </section>
 
         {/* ── 01 Bio — Annotated Split (body left, portrait right) ── */}

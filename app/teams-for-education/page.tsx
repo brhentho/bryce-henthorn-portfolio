@@ -9,6 +9,7 @@ import {
   TopBar,
   ManualFooter,
   CoverPlate,
+  HeroIntro,
 } from "@/components/manual"
 import { HeroSchematic } from "./svg/HeroSchematic"
 
@@ -43,10 +44,16 @@ export default function TeamsForEducationPage() {
       <main className="container">
         {/* ── Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
-          <p className="t-mono-label mb-10">§ 00 / TEAMS FOR EDUCATION</p>
-          <h1 className="t-display-xl max-w-[24ch]">
-            Modernizing online classes for an authentic virtual experience.
-          </h1>
+          <HeroIntro
+            eyebrow="§ 00 / TEAMS FOR EDUCATION"
+            eyebrowClassName="t-mono-label mb-10"
+            lines={[
+              {
+                text: "Modernizing online classes for an authentic virtual experience.",
+                className: "t-display-xl max-w-[24ch]",
+              },
+            ]}
+          />
           <Figure
             number="0.1"
             caption="Microsoft Teams classroom view — students grouped at virtual tables with the moderation panel surfacing on the right"

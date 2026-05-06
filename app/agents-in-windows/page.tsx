@@ -9,6 +9,7 @@ import {
   TopBar,
   ManualFooter,
   CoverPlate,
+  HeroIntro,
 } from "@/components/manual"
 
 const AGENT_STATES = [
@@ -27,10 +28,16 @@ export default function AgentsInWindowsPage() {
       <main className="container">
         {/* ── Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
-          <p className="t-mono-label mb-10">§ 00 / AGENTS IN WINDOWS</p>
-          <h1 className="t-display-xl max-w-[20ch]">
-            Making AI agents visible and interruptible in Windows.
-          </h1>
+          <HeroIntro
+            eyebrow="§ 00 / AGENTS IN WINDOWS"
+            eyebrowClassName="t-mono-label mb-10"
+            lines={[
+              {
+                text: "Making AI agents visible and interruptible in Windows.",
+                className: "t-display-xl max-w-[20ch]",
+              },
+            ]}
+          />
           <Figure
             number="0.1"
             caption="Researcher agent surfacing inside the Windows shell — desktop scene with grid, telemetry overlay, and taskbar entry."

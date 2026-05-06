@@ -9,6 +9,7 @@ import {
   TopBar,
   ManualFooter,
   CoverPlate,
+  HeroIntro,
 } from "@/components/manual"
 
 // Listed in descending order to match the Figma stack (04 at top → 01 at bottom).
@@ -66,10 +67,16 @@ export default function RecallPage() {
       <main className="container">
         {/* ── 00 Overview / Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
-          <p className="t-mono-label mb-10">§ 00 / WINDOWS RECALL</p>
-          <h1 className="t-display-xl max-w-[18ch]">
-            Designing semantic search for everything you&apos;ve seen
-          </h1>
+          <HeroIntro
+            eyebrow="§ 00 / WINDOWS RECALL"
+            eyebrowClassName="t-mono-label mb-10"
+            lines={[
+              {
+                text: "Designing semantic search for everything you’ve seen",
+                className: "t-display-xl max-w-[18ch]",
+              },
+            ]}
+          />
           <Figure
             number="0.1"
             caption="Recall on the Windows desktop — semantic search surfaced as moments, not documents"

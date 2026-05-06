@@ -5,6 +5,7 @@ import {
   TopBar,
   ManualFooter,
   ProjectCard,
+  HeroIntro,
 } from "@/components/manual"
 
 const PROJECTS = [
@@ -49,21 +50,22 @@ export default function HomePage() {
           id="overview"
           className="pt-16 lg:pt-24 pb-16 lg:pb-24 min-h-[calc(100vh-9rem)] flex flex-col justify-center"
         >
-          <p
-            className="t-mono-label"
-            style={{ marginBottom: "clamp(3rem, 8vh, 6rem)" }}
-          >
-            § 00 / BRYCE HENTHORN
-          </p>
-          <h1 className="t-display-l max-w-[28ch] lg:max-w-none text-[color:var(--text-primary)]">
-            Product Designer with 10+ years of experience currently working on AI experiences at Microsoft.
-          </h1>
-          <p
-            className="t-display-l max-w-[28ch] lg:max-w-none mt-3"
-            style={{ color: "var(--text-tertiary)" }}
-          >
-            I design at the intersection of operating systems, agents, and enterprise workflows
-          </p>
+          <HeroIntro
+            eyebrow="§ 00 / BRYCE HENTHORN"
+            eyebrowStyle={{ marginBottom: "clamp(3rem, 8vh, 6rem)" }}
+            lines={[
+              {
+                text: "Product Designer with 10+ years of experience currently working on AI experiences at Microsoft.",
+                className: "t-display-l max-w-[28ch] lg:max-w-none text-[color:var(--text-primary)]",
+              },
+              {
+                text: "I design at the intersection of operating systems, agents, and enterprise workflows",
+                className: "t-display-l max-w-[28ch] lg:max-w-none mt-3",
+                style: { color: "var(--text-tertiary)" },
+                as: "p",
+              },
+            ]}
+          />
         </section>
 
         {/* ── 01 Selected Work ── */}
