@@ -67,15 +67,19 @@ export function AuditTrail({
     >
       {/* Clip mask — fixed-width, fixed-height window. Width is locked
           so short and long lines anchor to the same left edge — no
-          horizontal jumping between lines. Height crops the slide-up
-          exit. */}
+          horizontal jumping between lines. Width caps at the viewport
+          (with 16px breathing margin on each side) so the mask doesn't
+          shrink-flex on narrow screens, which would left-anchor the
+          lines visually. Font also scales down on narrow viewports so
+          long lines like "INITIALIZING REASONING..." don't crowd the
+          right edge. Height crops the slide-up exit. */}
       <div
         style={{
           position: "relative",
-          width: "40ch",
+          width: "min(40ch, calc(100vw - 32px))",
           height: "1.4em",
           overflow: "hidden",
-          fontSize: 22,
+          fontSize: "clamp(16px, 4.5vw, 22px)",
           letterSpacing: "0.06em",
           color: "rgba(255,255,255,0.62)",
           fontWeight: 500,
