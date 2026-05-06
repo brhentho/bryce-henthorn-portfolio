@@ -57,12 +57,18 @@ export default function TeamsForEducationPage() {
           <Figure
             number="0.1"
             caption="Microsoft Teams classroom view — students grouped at virtual tables with the moderation panel surfacing on the right"
-            src="/images/teams/hero-demo.png"
-            alt="Microsoft Teams classroom view — virtual tables of students with avatars and chat moderation panel"
-            width={1024}
-            height={405}
-            priority
-          />
+          >
+            <div className="relative w-full overflow-hidden aspect-[16/9] sm:aspect-[2/1] lg:aspect-[1120/442]">
+              <Image
+                src="/images/teams/hero-demo.png"
+                alt="Microsoft Teams classroom view — virtual tables of students with avatars and chat moderation panel"
+                fill
+                priority
+                sizes="(min-width: 1280px) 1024px, 100vw"
+                className="object-cover object-bottom"
+              />
+            </div>
+          </Figure>
         </section>
 
         {/* ── Spec sheet ── */}

@@ -41,12 +41,18 @@ export default function AgentsInWindowsPage() {
           <Figure
             number="0.1"
             caption="Researcher agent surfacing inside the Windows shell — desktop scene with grid, telemetry overlay, and taskbar entry."
-            src="/images/agents/hero-demo.png"
-            alt="Windows desktop with a Researcher agent panel showing a checklist of in-progress sub-tasks"
-            width={1024}
-            height={427}
-            priority
-          />
+          >
+            <div className="relative w-full overflow-hidden aspect-[16/9] sm:aspect-[2/1] lg:aspect-[1120/442]">
+              <Image
+                src="/images/agents/hero-demo.png"
+                alt="Windows desktop with a Researcher agent panel showing a checklist of in-progress sub-tasks"
+                fill
+                priority
+                sizes="(min-width: 1280px) 1024px, 100vw"
+                className="object-cover object-bottom"
+              />
+            </div>
+          </Figure>
         </section>
 
         {/* ── Spec sheet ── */}

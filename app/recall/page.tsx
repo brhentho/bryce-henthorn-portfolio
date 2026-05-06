@@ -80,12 +80,18 @@ export default function RecallPage() {
           <Figure
             number="0.1"
             caption="Recall on the Windows desktop — semantic search surfaced as moments, not documents"
-            src="/images/recall/hero-demo.png"
-            alt="Recall app on a Windows desktop, search results page with multiple match cards"
-            width={1024}
-            height={405}
-            priority
-          />
+          >
+            <div className="relative w-full overflow-hidden aspect-[16/9] sm:aspect-[2/1] lg:aspect-[1120/442]">
+              <Image
+                src="/images/recall/hero-demo.png"
+                alt="Recall app on a Windows desktop, search results page with multiple match cards"
+                fill
+                priority
+                sizes="(min-width: 1280px) 1024px, 100vw"
+                className="object-cover object-bottom"
+              />
+            </div>
+          </Figure>
         </section>
 
         {/* ── Spec sheet ── */}
@@ -284,14 +290,13 @@ export default function RecallPage() {
                 predictably.
               </p>
             </div>
-            <Figure
-              number="4.1"
-              caption="Card hierarchy — screenshot anchored, metadata secondary"
+            <Image
               src="/images/recall/cards-card-hierarchy.png"
               alt="Six Recall cards in a 3-by-2 grid — each anchored on a desktop screenshot with timestamp and app metadata secondary"
               width={1653}
               height={869}
-              className="my-0"
+              sizes="(min-width: 1024px) 649px, 100vw"
+              className="w-full h-auto"
             />
           </div>
         </section>
