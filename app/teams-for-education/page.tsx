@@ -424,8 +424,8 @@ export default function TeamsForEducationPage() {
             label="Impact"
             title="What we learned"
           />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+          <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+            <div className="flex flex-col gap-6 max-w-[68ch]">
               <p className="t-body">
                 Testing showed what mattered. Teachers moved between groups faster. They
                 spotted struggling students quicker. And most important: students spoke up
@@ -446,10 +446,20 @@ export default function TeamsForEducationPage() {
                 features. It comes from the same thing physical classrooms are built on:
                 structure. Social connection. Being seen.
               </p>
+              <aside className="t-mono-marginalia border-l border-[color:var(--rule)] pl-4 mt-2 max-w-prose">
+                Retention doesn&rsquo;t come from more features. It comes from structure.
+              </aside>
             </div>
-            <Margin anchor="9-pull">
-              Retention doesn&rsquo;t come from more features. It comes from structure.
-            </Margin>
+            <div className="flex items-start lg:pl-4">
+              <Image
+                src="/images/teams/impact-tweets.png"
+                alt="Four educator tweets reacting to the new Class Home Page in Microsoft Teams — Kim Landtroop, Ellis J, Megan Townes, Madeline Cooney"
+                width={530}
+                height={612}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-auto"
+              />
+            </div>
           </div>
         </section>
 
