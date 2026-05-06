@@ -397,14 +397,14 @@ export default function RecallPage() {
             to refine results per keystroke without ever blocking the user.
           </p>
 
-          {/* Top-pinned video — per-keystroke retrigger feel, no horizontal crop */}
-          <div className="mt-10 lg:mt-14 relative w-full aspect-[16/9] max-h-[520px] overflow-hidden border border-[color:var(--rule)] bg-[color:var(--ink)]">
+          {/* Top-pinned video — fills full section width, bottom crops */}
+          <div className="mt-10 lg:mt-14 relative w-full aspect-[16/9] max-h-[520px] overflow-hidden bg-[color:var(--ink)]">
             <video
               autoPlay
               loop
               muted
               playsInline
-              className="absolute inset-0 w-full h-full object-contain object-top"
+              className="absolute inset-0 w-full h-full object-cover object-top"
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4"
             />
           </div>
@@ -441,7 +441,8 @@ export default function RecallPage() {
             label="Trust"
             title="Privacy was the whole product"
           />
-          <div className="section-grid mt-10">
+          {/* Body left, privacy screenshots stacked right */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 lg:gap-14 mt-10 items-start">
             <div className="flex flex-col gap-6 max-w-[68ch]">
               <p className="t-body lede text-[color:var(--text-secondary)]">
                 Recall captures everything. That only works if people trust where the
@@ -461,26 +462,24 @@ export default function RecallPage() {
                 gaps. Trust wasn&apos;t a single setting. It lived in every interaction.
               </p>
             </div>
-          </div>
-
-          {/* Privacy controls in practice — sensitive content + delete snapshot */}
-          <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
-            <Image
-              src="/images/recall/trust-sensitive-content.png"
-              alt="Recall card menu showing sensitive content (a credit-card snapshot from Fidelity) with a Delete snapshot action"
-              width={1030}
-              height={722}
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="w-full h-auto"
-            />
-            <Image
-              src="/images/recall/trust-delete-snapshot.png"
-              alt="Snapshot removed confirmation modal with an option to update Recall capture settings to block specific apps and websites"
-              width={1820}
-              height={1464}
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="w-full h-auto"
-            />
+            <div className="flex flex-col gap-6">
+              <Image
+                src="/images/recall/trust-sensitive-content.png"
+                alt="Recall card menu showing sensitive content (a credit-card snapshot from Fidelity) with a Delete snapshot action"
+                width={1030}
+                height={722}
+                sizes="(min-width: 1024px) 360px, 100vw"
+                className="w-full h-auto"
+              />
+              <Image
+                src="/images/recall/trust-delete-snapshot.png"
+                alt="Snapshot removed confirmation modal with an option to update Recall capture settings to block specific apps and websites"
+                width={1820}
+                height={1464}
+                sizes="(min-width: 1024px) 360px, 100vw"
+                className="w-full h-auto"
+              />
+            </div>
           </div>
 
           <div className="mt-12">
@@ -496,24 +495,25 @@ export default function RecallPage() {
             title="We killed RAG to keep search fast"
           />
 
-          {/* Single short setup paragraph */}
-          <p className="mt-10 t-body max-w-[68ch]">
-            Early on we explored RAG synthesis across screenshots, but latency broke
-            the core expectation that search should feel instantaneous. We abandoned
-            synthesis for speed and legibility. Surface relevant moments, let people
-            interpret them.
-          </p>
-
-          {/* Full-size video — RAG synthesis vs. fast retrieval, no cropping */}
-          <div className="mt-10 lg:mt-14 relative w-full border border-[color:var(--rule)] bg-[color:var(--ink)]">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="block w-full h-auto"
-              src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4"
-            />
+          {/* Side-by-side: video left, body right — opposite of §08 above */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-14 mt-10 items-start">
+            {/* Full-size video — RAG synthesis vs. fast retrieval, no cropping */}
+            <div className="relative w-full border border-[color:var(--rule)] bg-[color:var(--ink)]">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="block w-full h-auto"
+                src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4"
+              />
+            </div>
+            <p className="t-body max-w-[68ch]">
+              Early on we explored RAG synthesis across screenshots, but latency broke
+              the core expectation that search should feel instantaneous. We abandoned
+              synthesis for speed and legibility. Surface relevant moments, let people
+              interpret them.
+            </p>
           </div>
 
           {/* Pull-quote — promoted from § 08 Margin */}
