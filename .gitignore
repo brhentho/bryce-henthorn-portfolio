@@ -8,3 +8,8 @@ node_modules/
 .next/
 .env*.local
 .DS_Store
+
+# Build artifacts and local logs
+tsconfig.tsbuildinfo
+dev.log
+.playwright-mcp/
