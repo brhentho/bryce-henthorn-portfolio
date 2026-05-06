@@ -18,6 +18,7 @@ type Props = {
   priority?: boolean
   children?: ReactNode
   className?: string
+  frameless?: boolean
 }
 
 export function Figure({
@@ -31,6 +32,7 @@ export function Figure({
   priority,
   children,
   className,
+  frameless,
 }: Props) {
   const frameRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(false)
@@ -49,7 +51,10 @@ export function Figure({
     <figure className={cn("my-10 lg:my-14", className)}>
       <div
         ref={frameRef}
-        className="manual-figure-frame relative border border-[color:var(--rule)]"
+        className={cn(
+          "manual-figure-frame relative",
+          !frameless && "border border-[color:var(--rule)]",
+        )}
         data-cursor-active={active ? "true" : "false"}
         onMouseMove={handleMove}
         onMouseLeave={handleLeave}
