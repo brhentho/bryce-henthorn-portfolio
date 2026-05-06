@@ -330,14 +330,13 @@ export default function RecallPage() {
               Perfection wasn&rsquo;t the goal. Legibility was.
             </Margin>
           </div>
-          <Figure
-            number="5.1"
-            caption="Card grid — text and visual match signals separated on every card"
+          <Image
             src="/images/recall/transparency-card-grid.png"
             alt="Recall search results for the query 'Catering' — match cards labeled with source app and match-type signals"
             width={1120}
             height={702}
-            cf={{ section: "03", href: "#problem" }}
+            sizes="100vw"
+            className="w-full h-auto mt-10 lg:mt-14"
           />
         </section>
 
