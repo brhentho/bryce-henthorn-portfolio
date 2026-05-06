@@ -133,12 +133,12 @@ export default function RecallPage() {
             </div>
             <div className="flex items-center justify-center">
               <Image
-                src="/images/recall/context-memory-grid.png"
-                alt="Recall mark on a faint capture grid"
-                width={675}
-                height={526}
+                src="/images/recall/context-recall-icon.png"
+                alt="Recall mark — a glowing blue rotating-arrow glyph centered on a faint capture grid"
+                width={880}
+                height={821}
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-auto max-w-[600px]"
+                className="w-full h-auto max-w-[560px]"
               />
             </div>
           </div>
@@ -155,10 +155,10 @@ export default function RecallPage() {
             title="On demand intelligence"
           />
 
-          <p className="t-mono-label mt-10 lg:mt-14 text-[color:var(--text-tertiary)]">
+          <p className="t-mono-label mt-14 lg:mt-20 text-[color:var(--text-tertiary)]">
             RECALL QUERY LIFECYCLE
           </p>
-          <div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr] gap-10 lg:gap-16 items-start mt-8 lg:mt-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr] gap-10 lg:gap-16 items-start mt-4 lg:mt-6">
             <ol className="flex flex-col gap-10 lg:gap-14">
               {PIPELINE_STAGES.map((s) => (
                 <li key={s.label} className="flex flex-col gap-2">
