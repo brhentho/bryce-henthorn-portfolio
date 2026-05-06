@@ -163,7 +163,7 @@ export default function TeamsForEducationPage() {
             </div>
           </div>
 
-          <h3 className="t-mono-label mt-16 mb-6">FIELD INTERVIEWS &middot; STUDENT VOICES</h3>
+          <h3 className="t-mono-label mt-24 mb-6">FIELD INTERVIEWS &middot; STUDENT VOICES</h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 border-t border-[color:var(--rule)] pt-6">
             {STUDENT_QUOTES.map((q) => (
               <blockquote
@@ -237,7 +237,7 @@ export default function TeamsForEducationPage() {
                 alt="Co-design session with educators"
                 width={1600}
                 height={900}
-                className="my-0"
+                className="my-0 lg:my-0"
               />
             </div>
           </div>
@@ -340,8 +340,8 @@ export default function TeamsForEducationPage() {
             label="Group Creation"
             title="Preparation moves outside the meeting"
           />
-          <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 items-start gap-x-8 lg:gap-x-12 gap-y-10">
+            <div className="space-y-6 max-w-[68ch]">
               <p className="t-body">
                 Previously, breakout rooms had to be created dynamically during the
                 meeting. That meant instructional time was lost while groups were assigned
@@ -368,11 +368,11 @@ export default function TeamsForEducationPage() {
                 that accumulated meaning over time.
               </p>
             </div>
-            <div className="p-6 lg:p-10 flex items-start">
+            <div>
               <Figure
                 number="6.1"
                 caption="Whole class to table transitions"
-                className="my-0"
+                className="my-0 lg:my-0"
               >
                 <video
                   autoPlay
@@ -387,7 +387,17 @@ export default function TeamsForEducationPage() {
           </div>
         </section>
 
-        {/* ── 07 Student View ── Pull-quote Interlude (§2.11) + small inline figure ── */}
+        {/* ── Pull-quote Interlude (§2.11) — transition into Student View ── */}
+        <div className="my-12 lg:my-20 py-12 lg:py-20 border-y border-[color:var(--rule)]">
+          <blockquote className="max-w-[68ch]">
+            <p className="t-display-l text-[color:var(--text-primary)]">
+              Familiar group members. A recognized seat. Accountability to the people
+              around them.
+            </p>
+          </blockquote>
+        </div>
+
+        {/* ── 07 Student View ── small inline figure ── */}
         <section data-section data-reveal id="student-view" className="py-12 lg:py-20">
           <SectionLabel
             number="07"
@@ -395,25 +405,12 @@ export default function TeamsForEducationPage() {
             title="Reinforcing belonging"
           />
 
-          {/* Pull-quote — compresses the section's single-paragraph body */}
-          <div className="mt-10 lg:mt-14 py-12 lg:py-20 border-y border-[color:var(--rule)]">
-            <blockquote className="max-w-[68ch]">
-              <p className="t-display-l text-[color:var(--text-primary)]">
-                Familiar group members. A recognized seat. Accountability to the people
-                around them.
-              </p>
-              <footer className="t-mono-caption mt-8 text-[color:var(--text-tertiary)]">
-                Cf. § 07 / STUDENT VIEW
-              </footer>
-            </blockquote>
-          </div>
-
           {/* Small inline framed figure beneath — not full-bleed */}
           <div className="mt-10 lg:mt-14 max-w-[80ch]">
             <Figure
               number="7.1"
               caption="Group creation and assignment flow"
-              className="my-0"
+              className="my-0 lg:my-0"
             >
               <video
                 autoPlay
