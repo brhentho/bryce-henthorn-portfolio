@@ -495,25 +495,24 @@ export default function RecallPage() {
             title="We killed RAG to keep search fast"
           />
 
-          {/* Side-by-side: video left, body right — opposite of §08 above */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-14 mt-10 items-start">
-            {/* Full-size video — RAG synthesis vs. fast retrieval, no cropping */}
-            <div className="relative w-full border border-[color:var(--rule)] bg-[color:var(--ink)]">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="block w-full h-auto"
-                src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4"
-              />
-            </div>
-            <p className="t-body max-w-[68ch]">
-              Early on we explored RAG synthesis across screenshots, but latency broke
-              the core expectation that search should feel instantaneous. We abandoned
-              synthesis for speed and legibility. Surface relevant moments, let people
-              interpret them.
-            </p>
+          {/* Single short setup paragraph */}
+          <p className="mt-10 t-body max-w-[68ch]">
+            Early on we explored RAG synthesis across screenshots, but latency broke
+            the core expectation that search should feel instantaneous. We abandoned
+            synthesis for speed and legibility. Surface relevant moments, let people
+            interpret them.
+          </p>
+
+          {/* Full-size video — RAG synthesis vs. fast retrieval, no cropping */}
+          <div className="mt-10 lg:mt-14 relative w-full border border-[color:var(--rule)] bg-[color:var(--ink)]">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="block w-full h-auto"
+              src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4"
+            />
           </div>
 
           {/* Pull-quote — promoted from § 08 Margin */}
@@ -523,9 +522,6 @@ export default function RecallPage() {
                 The system helps people rediscover what they saw. It doesn&rsquo;t
                 rewrite their history for them.
               </p>
-              <footer className="t-mono-caption mt-8 text-[color:var(--text-tertiary)]">
-                Cf. § 09 / CONSTRAINTS
-              </footer>
             </blockquote>
           </div>
         </section>
