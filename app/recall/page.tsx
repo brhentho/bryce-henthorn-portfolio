@@ -327,10 +327,49 @@ export default function RecallPage() {
           />
         </section>
 
-        {/* ── 06 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}
-        <section data-section data-reveal id="performance" className="py-12 lg:py-20">
+        {/* ── 06 Cards (continued) ── Body + full-width Figure ── */}
+        <section data-section data-reveal id="clarity" className="py-12 lg:py-20">
           <SectionLabel
             number="06"
+            label="Cards"
+            title="Merged results killed clarity"
+          />
+          <div className="mt-10 lg:mt-14 flex flex-col gap-6 max-w-[68ch]">
+            <p className="t-body">
+              First version blended everything. Text matches and visual matches went
+              into one ranked list. Clean, elegant, simple.
+            </p>
+            <p className="t-body">
+              Testing proved it didn&apos;t work. Text matches dominated the ranking.
+              Visual matches got buried. Users couldn&apos;t figure out why something
+              appeared.
+            </p>
+            <p className="t-body">
+              We split text and visual matches into separate sections. That single
+              structural change made the system&apos;s logic transparent. Cognitive load
+              dropped. Trust went up.
+            </p>
+            <p className="t-body">
+              The AI was technically correct even in the first version. But opaque
+              correctness erodes trust faster than transparent mistakes.
+            </p>
+          </div>
+          <div className="mt-10 lg:mt-14">
+            <Image
+              src="/images/recall/clarity-results-grid.png"
+              alt="Recall search results for ‘Presentation with a red barn’ — visual matches separated into a 4×3 grid of close-match cards with source domains and timestamps"
+              width={1024}
+              height={550}
+              sizes="100vw"
+              className="w-full h-auto"
+            />
+          </div>
+        </section>
+
+        {/* ── 07 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}
+        <section data-section data-reveal id="performance" className="py-12 lg:py-20">
+          <SectionLabel
+            number="07"
             label="Performance"
             title="Fast enough to feel alive"
           />
@@ -385,12 +424,12 @@ export default function RecallPage() {
         </section>
 
         {/* ── Cover Plate (§2.10) — privacy chapter divider ── */}
-        <CoverPlate number="07" total="09" title="Trust" />
+        <CoverPlate number="08" total="10" title="Trust" />
 
-        {/* ── 07 Trust ── */}
+        {/* ── 08 Trust ── */}
         <section data-section data-reveal id="trust" className="py-12 lg:py-20">
           <SectionLabel
-            number="07"
+            number="08"
             label="Trust"
             title="Privacy was the whole product"
           />
@@ -420,10 +459,10 @@ export default function RecallPage() {
           </div>
         </section>
 
-        {/* ── 08 Constraints ── Pull-quote Interlude (§2.11) ── */}
+        {/* ── 09 Constraints ── Pull-quote Interlude (§2.11) ── */}
         <section data-section data-reveal id="constraints" className="py-12 lg:py-20">
           <SectionLabel
-            number="08"
+            number="09"
             label="Constraints"
             title="We killed RAG to keep search fast"
           />
@@ -444,16 +483,16 @@ export default function RecallPage() {
                 rewrite their history for them.
               </p>
               <footer className="t-mono-caption mt-8 text-[color:var(--text-tertiary)]">
-                Cf. § 08 / CONSTRAINTS
+                Cf. § 09 / CONSTRAINTS
               </footer>
             </blockquote>
           </div>
         </section>
 
-        {/* ── 09 Impact ── Annotated Split Plate (§2.4) + Strip Break Telemetry (§2.9) ── */}
+        {/* ── 10 Impact ── Annotated Split Plate (§2.4) + Strip Break Telemetry (§2.9) ── */}
         <section data-section data-reveal id="impact" className="py-12 lg:py-20">
           <SectionLabel
-            number="09"
+            number="10"
             label="Impact"
             title="From rediscovery to reference pattern"
           />
@@ -479,7 +518,7 @@ export default function RecallPage() {
                 transparency and match-type separation showed up in Windows Search and
                 File Explorer updates.
               </p>
-              <Margin anchor="9-pull" className="my-0">
+              <Margin anchor="10-pull" className="my-0">
                 Recall proved that AI in core OS features doesn&rsquo;t require opacity or
                 experimental disclaimers. Clear transparency, visible provenance,
                 predictable interactions.
@@ -487,7 +526,7 @@ export default function RecallPage() {
             </div>
             <div className="p-6 lg:p-10 flex items-start">
               <Figure
-                number="9.1"
+                number="10.1"
                 caption="Pattern propagation — Recall search principles adopted across Windows Search and File Explorer"
                 className="my-0"
               >
