@@ -83,6 +83,11 @@
   text-underline-offset: 0.2em;
 }
 
+/* Card "READ →" affordance — primary white at rest, accent on group hover.
+   Lifted out of the t-mono-label color rule so it reads as a button. */
+.manual .read-button { color: var(--text-primary); }
+.manual .group:hover .read-button { color: var(--accent-trace); }
+
 /* ── Layout container ── */
 .manual .container {
   max-width: 1280px;

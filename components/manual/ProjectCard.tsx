@@ -50,7 +50,7 @@ export function ProjectCard({
           <div className="flex flex-col justify-between min-w-0 flex-1 lg:basis-[60%] lg:max-w-[60%]">
             <div className="flex-1 flex flex-col justify-center min-h-[220px] lg:min-h-0">
               <p className="t-mono-label">{eyebrow}</p>
-              <h3 className="t-h1 mt-4 text-[color:var(--text-primary)]">
+              <h3 className="t-h1 mt-8 text-[color:var(--text-primary)]">
                 {title}
               </h3>
             </div>
@@ -58,7 +58,7 @@ export function ProjectCard({
               <span className="t-mono-caption text-[color:var(--text-tertiary)]">
                 {years}
               </span>
-              <span className="t-mono-label group-hover:text-[color:var(--accent-trace)] transition-colors inline-flex items-baseline gap-[0.3em]">
+              <span className="t-mono-label read-button transition-colors inline-flex items-baseline gap-[0.3em]">
                 READ
                 <span
                   aria-hidden="true"
