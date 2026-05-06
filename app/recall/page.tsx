@@ -155,7 +155,10 @@ export default function RecallPage() {
             title="On demand intelligence"
           />
 
-          <p className="t-mono-label mt-14 lg:mt-20 text-[color:var(--text-tertiary)]">
+          <p
+            className="t-mono-label text-[color:var(--text-tertiary)]"
+            style={{ marginTop: "clamp(48px, 5vw, 64px)" }}
+          >
             RECALL QUERY LIFECYCLE
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr] gap-10 lg:gap-16 items-start mt-4 lg:mt-6">
