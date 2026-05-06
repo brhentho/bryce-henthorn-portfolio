@@ -7,6 +7,7 @@ import {
   ProjectCard,
   HeroIntro,
 } from "@/components/manual"
+import { BootSequence } from "@/components/boot-sequence/BootSequence"
 
 const PROJECTS = [
   {
@@ -40,8 +41,12 @@ const PROJECTS = [
 
 export default function HomePage() {
   return (
-    <ManualShell>
-      <TopBar />
+    <>
+      {/* Once-per-session intro — fixed-position overlay; pointer-events
+          pass through so the homepage stays interactive during the 7s. */}
+      <BootSequence />
+      <ManualShell>
+        <TopBar />
 
       <main className="container">
         {/* ── 00 Hero ── */}
@@ -105,8 +110,9 @@ export default function HomePage() {
           </div>
         </section>
 
-      </main>
-      <ManualFooter />
-    </ManualShell>
+        </main>
+        <ManualFooter />
+      </ManualShell>
+    </>
   )
 }

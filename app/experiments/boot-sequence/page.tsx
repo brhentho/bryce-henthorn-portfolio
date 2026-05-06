@@ -2,7 +2,7 @@
 
 import { Suspense, useState } from "react"
 import { useSearchParams } from "next/navigation"
-import { BootSequence } from "./BootSequence"
+import { BootSequence } from "@/components/boot-sequence/BootSequence"
 import { FakeHero } from "./FakeHero"
 
 function Inner() {
