@@ -50,7 +50,10 @@ export function ProjectCard({
           <div className="flex flex-col justify-between min-w-0 flex-1 lg:basis-[60%] lg:max-w-[60%]">
             <div className="flex-1 flex flex-col justify-center min-h-[220px] lg:min-h-0">
               <p className="t-mono-label">{eyebrow}</p>
-              <h3 className="t-h1 mt-8 text-[color:var(--text-primary)]">
+              <h3
+                className="t-h1 text-[color:var(--text-primary)]"
+                style={{ marginTop: "48px" }}
+              >
                 {title}
               </h3>
             </div>
