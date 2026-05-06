@@ -350,6 +350,18 @@ export default function RecallPage() {
             so results refine per keystroke without ever blocking the user.
           </p>
 
+          {/* Cropped video — per-keystroke retrigger feel */}
+          <div className="mt-10 lg:mt-14 relative w-full aspect-[16/9] max-h-[520px] overflow-hidden border border-[color:var(--rule)] bg-[color:var(--ink)]">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4"
+            />
+          </div>
+
           {/* Strip Break — three labeled metric chips */}
           <div className="mt-10 lg:mt-14 border-y border-[color:var(--rule)]">
             <div className="grid grid-cols-3 divide-x divide-[color:var(--rule)]">
