@@ -244,9 +244,6 @@ export default function RecallPage() {
           aria-labelledby="problem-interlude-quote"
           className="my-12 lg:my-20 py-16 lg:py-24 border-y border-[color:var(--rule)]"
         >
-          <p className="t-mono-label mb-8 text-[color:var(--text-tertiary)]">
-            INTERLUDE
-          </p>
           <blockquote className="max-w-[68ch]">
             <p
               id="problem-interlude-quote"
@@ -255,9 +252,6 @@ export default function RecallPage() {
               Relevance wasn&rsquo;t a fixed property of the result. It was shaped
               by the task.
             </p>
-            <footer className="t-mono-caption mt-8 text-[color:var(--text-tertiary)]">
-              Cf. § 03 / PROBLEM
-            </footer>
           </blockquote>
         </aside>
 
@@ -268,7 +262,15 @@ export default function RecallPage() {
             label="Cards"
             title="Cards as moments, not documents"
           />
-          <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1fr_649px] gap-6 lg:gap-10 items-start">
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-[649px_1fr] gap-6 lg:gap-10 items-start">
+            <Image
+              src="/images/recall/cards-card-hierarchy.png"
+              alt="Six Recall cards in a 3-by-2 grid. Each anchored on a desktop screenshot with timestamp and app metadata secondary."
+              width={3056}
+              height={1606}
+              sizes="(min-width: 1024px) 649px, 100vw"
+              className="w-full h-auto"
+            />
             <div className="flex flex-col gap-6 max-w-[68ch]">
               <p className="t-body">
                 A Recall card needed to hold several pieces of information: a screenshot,
@@ -290,14 +292,6 @@ export default function RecallPage() {
                 predictably.
               </p>
             </div>
-            <Image
-              src="/images/recall/cards-card-hierarchy.png"
-              alt="Six Recall cards in a 3-by-2 grid. Each anchored on a desktop screenshot with timestamp and app metadata secondary."
-              width={1653}
-              height={869}
-              sizes="(min-width: 1024px) 649px, 100vw"
-              className="w-full h-auto"
-            />
           </div>
         </section>
 
@@ -333,8 +327,8 @@ export default function RecallPage() {
           <Image
             src="/images/recall/transparency-card-grid.png"
             alt="Recall search results for the query 'Catering'. Match cards labeled with source app and match-type signals."
-            width={1120}
-            height={702}
+            width={1641}
+            height={881}
             sizes="100vw"
             className="w-full h-auto mt-10 lg:mt-14"
           />
@@ -381,14 +375,8 @@ export default function RecallPage() {
 
         {/* ── 07 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}
         <section data-section data-reveal id="performance" className="py-12 lg:py-20">
-          <SectionLabel
-            number="07"
-            label="Performance"
-            title="Fast enough to feel alive"
-          />
-
-          {/* Pull-quote — the section's compressed lede */}
-          <div className="mt-10 lg:mt-14 py-12 lg:py-20 border-y border-[color:var(--rule)]">
+          {/* Pull-quote — promoted above the SectionLabel as a section lede */}
+          <div className="py-12 lg:py-20 border-y border-[color:var(--rule)]">
             <blockquote className="max-w-[68ch]">
               <p className="t-display-l text-[color:var(--text-primary)]">
                 We made waiting feel like progress.
@@ -396,20 +384,27 @@ export default function RecallPage() {
             </blockquote>
           </div>
 
-          {/* One-line caption beneath the quote */}
+          <SectionLabel
+            number="07"
+            label="Performance"
+            title="Fast enough to feel alive"
+            className="mt-10 lg:mt-14"
+          />
+
+          {/* One-line caption beneath the heading */}
           <p className="mt-6 t-body-sm max-w-[68ch] text-[color:var(--text-secondary)]">
             Embedding indexing is computationally heavy, so we tuned retrigger cadence
             to refine results per keystroke without ever blocking the user.
           </p>
 
-          {/* Cropped video — per-keystroke retrigger feel */}
+          {/* Top-pinned video — per-keystroke retrigger feel, no horizontal crop */}
           <div className="mt-10 lg:mt-14 relative w-full aspect-[16/9] max-h-[520px] overflow-hidden border border-[color:var(--rule)] bg-[color:var(--ink)]">
             <video
               autoPlay
               loop
               muted
               playsInline
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-contain object-top"
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4"
             />
           </div>
@@ -473,16 +468,16 @@ export default function RecallPage() {
             <Image
               src="/images/recall/trust-sensitive-content.png"
               alt="Recall card menu showing sensitive content (a credit-card snapshot from Fidelity) with a Delete snapshot action"
-              width={279}
-              height={196}
+              width={1030}
+              height={722}
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="w-full h-auto"
             />
             <Image
               src="/images/recall/trust-delete-snapshot.png"
               alt="Snapshot removed confirmation modal with an option to update Recall capture settings to block specific apps and websites"
-              width={362}
-              height={279}
+              width={1820}
+              height={1464}
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="w-full h-auto"
             />
@@ -509,14 +504,14 @@ export default function RecallPage() {
             interpret them.
           </p>
 
-          {/* Cropped video — RAG synthesis vs. fast retrieval, latency tradeoff */}
-          <div className="mt-10 lg:mt-14 relative w-full aspect-[16/9] max-h-[520px] overflow-hidden border border-[color:var(--rule)] bg-[color:var(--ink)]">
+          {/* Full-size video — RAG synthesis vs. fast retrieval, no cropping */}
+          <div className="mt-10 lg:mt-14 relative w-full border border-[color:var(--rule)] bg-[color:var(--ink)]">
             <video
               autoPlay
               loop
               muted
               playsInline
-              className="absolute inset-0 w-full h-full object-cover"
+              className="block w-full h-auto"
               src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4"
             />
           </div>
@@ -571,13 +566,14 @@ export default function RecallPage() {
               </Margin>
             </div>
             <div className="p-6 lg:p-10 flex items-start">
-              <Image
+              <Figure
+                number="10.1"
+                caption="Recall announcement"
                 src="/images/recall/impact-keynote.png"
                 alt="Recall introduced on stage at Build. System architecture diagram (Screen Region Detector, Optical Character Recognition, Parser, Text Encoder, Image Encoder) framing the Recall pill."
                 width={358}
                 height={210}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-auto"
+                className="my-0 w-full"
               />
             </div>
           </div>
