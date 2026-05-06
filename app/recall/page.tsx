@@ -10,7 +10,6 @@ import {
   ManualFooter,
   CoverPlate,
 } from "@/components/manual"
-import { Fig1_1 } from "./svg/Fig1_1"
 import { Fig9_1 } from "./svg/Fig9_1"
 
 // Listed in descending order to match the Figma stack (04 at top → 01 at bottom).
@@ -188,7 +187,7 @@ export default function RecallPage() {
           />
           <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
             {/* Body lane */}
-            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
+            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] flex flex-col gap-6">
               <p className="t-body">
                 File search is built on certainty. You give it a filename or keyword. It
                 matches exactly. Done.
@@ -210,13 +209,15 @@ export default function RecallPage() {
               </p>
             </div>
             {/* Figure lane */}
-            <div className="p-6 lg:p-10 flex items-start">
-              <Figure
-                number="3.1"
-                caption="Search vs. recall — where exact-match retrieval breaks and where semantic memory takes over"
-              >
-                <Fig1_1 />
-              </Figure>
+            <div className="p-6 lg:p-10 flex items-center justify-center">
+              <Image
+                src="/images/recall/problem-opentable.png"
+                alt="Gmail showing an OpenTable reservation confirmation, with extracted Recall chips below — reservation, The Front Room, July 16 2023, OpenTable, Menu, Confirmation 25564, Portland ME"
+                width={486}
+                height={538}
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="w-full h-auto max-w-[480px]"
+              />
             </div>
           </div>
         </section>
@@ -253,7 +254,7 @@ export default function RecallPage() {
             title="Cards as moments, not documents"
           />
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1fr_649px] gap-6 lg:gap-10 items-start">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="flex flex-col gap-6 max-w-[68ch]">
               <p className="t-body">
                 A Recall card needed to hold several pieces of information: a screenshot,
                 app name, timestamp, extracted text, and relevance signals.
@@ -294,7 +295,7 @@ export default function RecallPage() {
             title="AI-powered search has a trust problem"
           />
           <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="flex flex-col gap-6 max-w-[68ch]">
               <p className="t-body">
                 Technically correct results can feel wrong. Search for &ldquo;blue chart
                 spreadsheet&rdquo; and the system might return something from an
@@ -382,7 +383,7 @@ export default function RecallPage() {
             title="Privacy was the whole product"
           />
           <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="flex flex-col gap-6 max-w-[68ch]">
               <p className="t-body lede text-[color:var(--text-secondary)]">
                 Recall captures everything. That only works if people trust where the
                 data sits, who can see it, and what control they actually have.
@@ -445,7 +446,7 @@ export default function RecallPage() {
             title="From rediscovery to reference pattern"
           />
           <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
+            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] flex flex-col gap-6">
               <p className="t-body">
                 Separating visual and text matches proved it wasn&apos;t just philosophy.
                 In testing, users could explain why each result appeared and quickly
