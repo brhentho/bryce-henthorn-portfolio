@@ -14,7 +14,7 @@ export function SectionLabel({ number, label, title, id, className }: Props) {
       <div className="t-mono-label text-[color:var(--text-tertiary)]">
         § {number} / {label.toUpperCase()}
       </div>
-      <h2 className="t-h1 text-[color:var(--text-primary)]">{title}</h2>
+      <h2 className="t-h1 text-balance text-[color:var(--text-primary)]">{title}</h2>
       <hr className="rule mt-2" />
     </div>
   )
