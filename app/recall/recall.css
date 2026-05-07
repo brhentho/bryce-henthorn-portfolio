@@ -306,28 +306,29 @@
   navigation: auto;
 }
 
-/* Old root lifts up + fades. New root is revealed by a single accent
-   hairline that drops from y=0 to y=100% — a printer-feed wipe in
-   keeping with the operator-manual idiom. */
+/* Hide all transition mechanics behind an ink curtain: old fades to 0,
+   then new fades in from 0 with a delay so a frame of pure ink sits
+   between them. The route change + scrollTo(0,0) happen during the ink
+   window so no scroll motion is ever visible to the user. */
+::view-transition {
+  background: var(--bg, #06060A);
+}
+
 ::view-transition-old(root) {
-  animation: manual-page-lift-out 200ms cubic-bezier(0.4, 0, 1, 1) forwards;
+  animation: manual-page-fade-to-ink 220ms linear forwards;
 }
 
 ::view-transition-new(root) {
-  animation: manual-page-print-in 340ms linear forwards;
+  animation: manual-page-fade-from-ink 280ms linear 220ms forwards;
 }
 
-@keyframes manual-page-lift-out {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(-8px); }
+@keyframes manual-page-fade-to-ink {
+  to { opacity: 0; }
 }
 
-@keyframes manual-page-print-in {
-  /* `clip-path` runs the printer-feed top→bottom; `opacity` + `transform`
-     settle the new content in once the wipe completes. */
-  0%   { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(2px); }
-  35%  { opacity: 0.7; }
-  100% { opacity: 1; clip-path: inset(0 0 0 0); transform: translateY(0); }
+@keyframes manual-page-fade-from-ink {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* RevisionHeader persists across the swap — same view-transition-name on both
