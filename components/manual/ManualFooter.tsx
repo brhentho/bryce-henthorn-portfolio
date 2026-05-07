@@ -61,6 +61,11 @@ export function ManualFooter() {
           </div>
         </div>
       </div>
+      <div className="container pb-8 pt-2 border-t border-[color:var(--rule)]">
+        <p className="t-mono-caption text-[color:var(--text-tertiary)]">
+          © 2026 Bryce Henthorn. All rights reserved.
+        </p>
+      </div>
     </footer>
   )
 }

@@ -1,7 +1,6 @@
 import { ManualShell } from "../recall/ManualShell"
 import {
   SectionLabel,
-  SpecSheet,
   Figure,
   TopBar,
   ManualFooter,
@@ -98,7 +97,7 @@ export default function AboutPage() {
               width={1200}
               height={1200}
               priority
-              className="my-0 aspect-square"
+              className="my-0 lg:my-0 aspect-square"
             />
           </div>
         </section>
@@ -143,12 +142,22 @@ export default function AboutPage() {
           </dl>
 
           <h3 className="t-mono-label mt-12 mb-6">PRIOR</h3>
-          <SpecSheet
-            rows={[
+          <dl className="border-y border-[color:var(--rule)]">
+            {[
               { label: "AMAZON",    value: "Contract" },
               { label: "NORDSTROM", value: "Contract" },
-            ]}
-          />
+            ].map((item, i, arr) => (
+              <div
+                key={item.label}
+                className={`grid grid-cols-[110px_1fr] sm:grid-cols-[160px_1fr] items-baseline gap-x-6 py-4 ${
+                  i < arr.length - 1 ? "border-b border-[color:var(--rule)]" : ""
+                }`}
+              >
+                <dt className="t-mono-label">{item.label}</dt>
+                <dd className="t-body text-[color:var(--text-primary)]">{item.value}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         {/* ── 03 Philosophy — two-column body ── */}

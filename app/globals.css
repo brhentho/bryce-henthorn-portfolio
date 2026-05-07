@@ -62,6 +62,7 @@
   --a2: transparent;
 
   /* ── Motion ── */
+  --ease-operator: cubic-bezier(0.5, 0, 0.1, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-decel: cubic-bezier(0, 0, 0.2, 1);
@@ -162,6 +163,18 @@
     color: #fff;
     background: var(--bg);
     overflow-x: hidden;
+  }
+
+  /* High-contrast keyboard focus — applies site-wide. Uses the teal ring
+     token in :root and the operator-manual burnt-orange where it overrides
+     --ring (see manual surface). */
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 }
 
@@ -654,7 +667,7 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
   text-transform: uppercase;
   color: var(--w25);
   text-decoration: none;
-  transition: color 300ms;
+  transition: color 300ms var(--ease-operator);
 }
 
 .editorial-nav-links a:hover {

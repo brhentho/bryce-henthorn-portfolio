@@ -77,7 +77,7 @@ export default function AgentsInWindowsPage() {
             title="Windows needed a place for agents to live"
           />
           <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
+            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] [&>p+p]:mt-8!">
               <p className="t-body">
                 Microsoft is betting on agents as the next layer of computing. Not
                 replacements for humans, but tools that handle routine work so people can
@@ -126,7 +126,7 @@ export default function AgentsInWindowsPage() {
             title="People don&rsquo;t fear automation. They fear not knowing."
           />
           <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="[&>p+p]:mt-8! max-w-[68ch]">
               <p className="t-body">
                 Agents scattered everywhere. Inside apps, buried in chat history, coming
                 through notifications. Users had no idea where their work actually was or
@@ -174,7 +174,7 @@ export default function AgentsInWindowsPage() {
             title="Anchoring to what users already know"
           />
           <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="[&>p+p]:mt-8! max-w-[68ch]">
               <p className="t-body">
                 We tested three directions. Keep agents inside the apps that spawn them.
                 Pin them independently like applications. Or create a dedicated agent
@@ -192,52 +192,49 @@ export default function AgentsInWindowsPage() {
             </div>
           </div>
 
-          <p className="t-mono-label mt-12 mb-6 text-[color:var(--text-tertiary)]">
+          <p className="t-mono-label mt-20! lg:mt-28! mb-8! text-[color:var(--text-tertiary)]">
             TASKBAR EVOLUTION / KEYFRAMES
           </p>
-          <ol className="grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-2 border-t border-[color:var(--rule)] pt-6">
-            {["Empty pin", "Active state", "Hover-card expanded"].map((label, i) => (
-              <li key={label} className="space-y-1.5">
-                <p className="t-mono-label text-[color:var(--text-secondary)]">
-                  {String(i + 1).padStart(2, "0")} · KEYFRAME
-                </p>
-                <p className="t-mono-caption text-[color:var(--text-tertiary)] leading-relaxed">
-                  {label}
-                </p>
+          <ol className="grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-10 border-t border-[color:var(--rule)] pt-6">
+            {[
+              { label: "Empty pin",           src: "/assets/Frame 2147238301.png" },
+              { label: "Active state",        src: "/assets/Frame 2147238302.png" },
+              { label: "Hover-card expanded", src: "/assets/Frame 2147238303.png" },
+            ].map((kf, i) => (
+              <li key={kf.label} className="space-y-4">
+                <div className="space-y-1.5">
+                  <p className="t-mono-label text-[color:var(--text-secondary)]">
+                    {String(i + 1).padStart(2, "0")} · KEYFRAME
+                  </p>
+                  <p className="t-mono-caption text-[color:var(--text-tertiary)] leading-relaxed">
+                    {kf.label}
+                  </p>
+                </div>
+                <Figure
+                  number={`3.${i + 1}`}
+                  src={kf.src}
+                  alt={`Taskbar evolution keyframe ${i + 1}`}
+                  width={1302}
+                  height={314}
+                  className="my-0"
+                />
               </li>
             ))}
           </ol>
-          <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-4">
-            {[
-              "/assets/Frame 2147238301.png",
-              "/assets/Frame 2147238302.png",
-              "/assets/Frame 2147238303.png",
-            ].map((src, i) => (
-              <Figure
-                key={src}
-                number={`3.${i + 1}`}
-                src={src}
-                alt={`Taskbar evolution keyframe ${i + 1}`}
-                width={1302}
-                height={314}
-                className="my-0"
-              />
-            ))}
-          </div>
-          <p className="t-mono-caption text-[color:var(--text-secondary)] mt-4 pt-3 border-t border-[color:var(--rule)]">
+          <p className="t-mono-caption text-[color:var(--text-secondary)] mt-4! pt-3 border-t border-[color:var(--rule)]">
             FIG. 3.1 / 3.2 / 3.3. Taskbar pin → state visible → hover-card expansion.
           </p>
         </section>
 
-        {/* ── 04 Taskbar ── Annotated Split Plate (§2.4) ── */}
+        {/* ── 04 Taskbar ── Body column + square-cropped video ── */}
         <section data-section data-reveal id="taskbar" className="py-12 lg:py-20">
           <SectionLabel
             number="04"
             label="Taskbar"
             title="The taskbar becomes a window into agent work"
           />
-          <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
+          <div className="section-grid mt-10">
+            <div className="[&>p+p]:mt-8! max-w-[68ch]">
               <p className="t-body">
                 Agents pin to the taskbar just like apps do. Invoke one and it appears as
                 an icon. Familiar. Clear that something&apos;s working. The metaphor
@@ -256,23 +253,25 @@ export default function AgentsInWindowsPage() {
                 on. The system stays together.
               </p>
             </div>
-            <div className="p-6 lg:p-10 flex items-start">
-              <Figure
-                number="4.1"
-                caption="Taskbar agent. Hover-card expansion in motion."
-                className="my-0"
-              >
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="block w-full h-auto"
-                  src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Taskbar.mp4"
-                />
-              </Figure>
-            </div>
           </div>
+          <Figure
+            number="4.1"
+            frameless
+            caption="Taskbar agent. Hover-card expansion in motion."
+            className="mx-auto max-w-2xl lg:max-w-3xl"
+          >
+            <div className="relative aspect-square overflow-hidden">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectPosition: "50% 100%" }}
+                src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Taskbar.mp4"
+              />
+            </div>
+          </Figure>
         </section>
 
         {/* ── Pull-quote Interlude (§2.11) — transition from Taskbar into Constraints ── */}
@@ -298,7 +297,7 @@ export default function AgentsInWindowsPage() {
           />
 
           <div className="section-grid mt-10 lg:mt-14">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="[&>p+p]:mt-8! max-w-[68ch]">
               <p className="t-body">
                 Windows updates quarterly. You can&apos;t iterate freely like a web app.
                 Every change goes to hundreds of millions of devices and has to stay
@@ -322,6 +321,7 @@ export default function AgentsInWindowsPage() {
           </div>
           <Figure
             number="5.1"
+            frameless
             caption="Windows desktop showing multiple agent interactions across the system"
             src="/images/agents/constraints-desktop.png"
             alt="Windows desktop showing multiple agent interactions across the system"
@@ -340,7 +340,7 @@ export default function AgentsInWindowsPage() {
 
           {/* Tight 2-paragraph body above */}
           <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="[&>p+p]:mt-8! max-w-[68ch]">
               <p className="t-body">
                 Ask Copilot is Windows Search plus Copilot. One place to type questions,
                 run actions, launch anything. We built agents directly into it. Type @,
@@ -378,7 +378,7 @@ export default function AgentsInWindowsPage() {
 
           {/* Body — frames the strip break that follows */}
           <div className="section-grid mt-10 lg:mt-14">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="[&>p+p]:mt-8! max-w-[68ch]">
               <p className="t-body">
                 The real work was the tiny stuff. We prototyped these in the actual shell
                 with engineering and product alongside design. Tested multiple agents
@@ -424,15 +424,15 @@ export default function AgentsInWindowsPage() {
         {/* ── Cover Plate (§2.10) — closing chapter divider into Impact ── */}
         <CoverPlate number="08" total="08" title="Impact" />
 
-        {/* ── 08 Impact ── Annotated Split Plate (§2.4) + Strip Break Telemetry (§2.9) ── */}
+        {/* ── 08 Impact ── Body column + full-bleed figure + Telemetry ── */}
         <section data-section data-reveal id="impact" className="py-12 lg:py-20">
           <SectionLabel
             number="08"
             label="Impact"
             title="From invisible to interruptible"
           />
-          <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
+          <div className="section-grid mt-10">
+            <div className="[&>p+p]:mt-8! max-w-[68ch]">
               <p className="t-body">
                 Agents aren&apos;t hidden anymore. You see them running. You know what
                 state they&apos;re in. You can come back to them whenever you want. No
@@ -463,18 +463,15 @@ export default function AgentsInWindowsPage() {
                 These foundations do that. They scale.
               </p>
             </div>
-            <div className="p-6 lg:p-10 flex items-start">
-              <Figure
-                number="8.1"
-                caption="Agents in Windows on stage. Visible, interruptible interactions."
-                src="/images/agents/impact-stage.png"
-                alt="Agents in Windows presented on stage"
-                width={1661}
-                height={935}
-                className="my-0"
-              />
-            </div>
           </div>
+          <Figure
+            number="8.1"
+            caption="Agents in Windows on stage. Visible, interruptible interactions."
+            src="/images/agents/impact-stage.png"
+            alt="Agents in Windows presented on stage"
+            width={1661}
+            height={935}
+          />
           <div className="mt-12">
             <Telemetry
               items={[

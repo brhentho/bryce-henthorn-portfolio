@@ -97,7 +97,7 @@ export function TopBar() {
   const pad = (n: number) => String(n).padStart(2, "0")
 
   return (
-    <header className="relative z-20 bg-[#06060A] border-b border-[color:var(--rule)]">
+    <header className="sticky top-0 z-50 bg-[#06060A]/80 backdrop-blur-md border-b border-[color:var(--rule)]">
       <div className="container py-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <ViewTransitionLink
           href="/"

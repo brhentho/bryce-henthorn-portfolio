@@ -20,37 +20,6 @@ export function HeroSchematic() {
       role="img"
       aria-label="Top-down virtual classroom: 6 tables in a 3x2 grid"
     >
-      {/* outer frame */}
-      <rect x="40" y="40" width="1520" height="820" stroke="var(--rule-strong)" />
-
-      {/* corner registration marks */}
-      {[
-        [40, 40],
-        [1560, 40],
-        [40, 860],
-        [1560, 860],
-      ].map(([cx, cy], i) => (
-        <g key={i}>
-          <circle cx={cx} cy={cy} r={6} stroke="var(--rule-strong)" />
-          <line
-            x1={cx - 12}
-            y1={cy}
-            x2={cx + 12}
-            y2={cy}
-            stroke="var(--rule-strong)"
-            strokeWidth={0.5}
-          />
-          <line
-            x1={cx}
-            y1={cy - 12}
-            x2={cx}
-            y2={cy + 12}
-            stroke="var(--rule-strong)"
-            strokeWidth={0.5}
-          />
-        </g>
-      ))}
-
       {/* faint reference grid */}
       <g stroke="var(--rule)" strokeWidth={0.5} strokeDasharray="2 6">
         <line x1="800" y1="80" x2="800" y2="820" />
@@ -193,18 +162,6 @@ export function HeroSchematic() {
         </text>
       </g>
 
-      {/* internal FIG label — matches Recall HeroSchematic pattern */}
-      <text
-        x={80}
-        y={120}
-        fontFamily="var(--font-mono)"
-        fontSize="11"
-        fontWeight={500}
-        letterSpacing="1.4"
-        fill="var(--text-tertiary)"
-      >
-        FIG. 0.1 / VIRTUAL CLASSROOM TOP-DOWN
-      </text>
     </svg>
   )
 }

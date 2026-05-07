@@ -6,6 +6,7 @@ import {
   ProjectCard,
   HeroIntro,
 } from "@/components/manual"
+import { BootSequence } from "@/components/boot-sequence/BootSequence"
 
 const PROJECTS = [
   {
@@ -39,17 +40,21 @@ const PROJECTS = [
 
 export default function HomePage() {
   return (
-    <ManualShell>
-      <TopBar />
+    <>
+      {/* Once-per-session intro — fixed-position overlay; pointer-events
+          pass through so the homepage stays interactive during the 7s. */}
+      <BootSequence />
+      <ManualShell>
+        <TopBar />
 
-      <main className="container">
-        {/* ── 00 Hero ── */}
-        <section
-          data-section
-          id="overview"
-          className="pt-16 lg:pt-24 pb-16 lg:pb-24 min-h-[calc(100vh-9rem)] flex flex-col justify-center"
-        >
-          <HeroIntro
+        <main className="container">
+          {/* ── 00 Hero ── */}
+          <section
+            data-section
+            id="overview"
+            className="pt-16 lg:pt-24 pb-16 lg:pb-24 min-h-[calc(100vh-9rem)] flex flex-col justify-center"
+          >
+            <HeroIntro
             eyebrow="§ 00 / BRYCE HENTHORN"
             eyebrowStyle={{ marginBottom: "clamp(3rem, 8vh, 6rem)" }}
             lines={[
@@ -104,8 +109,9 @@ export default function HomePage() {
           </div>
         </section>
 
-      </main>
-      <ManualFooter />
-    </ManualShell>
+        </main>
+        <ManualFooter />
+      </ManualShell>
+    </>
   )
 }
