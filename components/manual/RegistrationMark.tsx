@@ -15,7 +15,7 @@ export function RegistrationMark({ size = 12, className }: Props) {
       stroke="currentColor"
       strokeWidth={0.75}
       aria-hidden="true"
-      className={cn("text-[color:var(--rule-strong)]", className)}
+      className={cn("manual-registration-mark text-[color:var(--rule-strong)]", className)}
     >
       <circle cx="6" cy="6" r="3" />
       <line x1="6" y1="0" x2="6" y2="12" />

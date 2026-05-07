@@ -234,7 +234,9 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
    ═══════════════════════════════════════════════════════════════ */
 
 /* Top-of-page radial glow — soft warm halo behind the navbar / hero.
-   Fixed so it stays anchored at the top while the page scrolls. */
+   Fixed so it stays anchored at the top while the page scrolls. The
+   ambient breathe keeps the halo gently alive so the page reads as
+   live even when the user isn't interacting. */
 .page-glow {
   position: fixed;
   top: 0;
@@ -251,6 +253,16 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
       rgba(245, 241, 232, 0.06) 30%,
       transparent 70%
     );
+  animation: page-glow-breathe var(--duration-ambient, 3000ms) ease-in-out infinite alternate;
+}
+
+@keyframes page-glow-breathe {
+  0%   { opacity: 0.55; }
+  100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-glow { animation: none; opacity: 1; }
 }
 
 /* Noise overlay — fixed, site-wide. Matches the design-tool spec:

@@ -15,7 +15,12 @@ function parseTarget(
   return { num, suffix: m[2], decimals }
 }
 
-const easeOut = (t: number) => 1 - Math.pow(1 - t, 3)
+// `--expo` from motion-tokens.css: cubic-bezier(0.16, 1, 0.3, 1).
+// Approximation good enough for a numeric tween — fast race, soft settle.
+const expoOut = (t: number) => {
+  if (t >= 1) return 1
+  return 1 - Math.pow(2, -10 * t)
+}
 
 type Props = {
   target: string
@@ -25,12 +30,13 @@ type Props = {
 /**
  * Renders a numeric Telemetry value that ticks up from 0 → target on first
  * viewport entry. SSR renders the parsed target so first paint is correct;
- * on client mount, IntersectionObserver triggers a 1200ms ease-out count-up.
+ * on client mount, IntersectionObserver triggers an 1800ms expo-out count-up
+ * — fast race then a clear settle, instrument-style.
  *
  * Non-numeric targets ("Q", "[TK]") render statically with no animation.
  * Honors prefers-reduced-motion.
  */
-export function TelemetryValue({ target, duration = 1200 }: Props) {
+export function TelemetryValue({ target, duration = 2400 }: Props) {
   const parsed = parseTarget(target)
   const [display, setDisplay] = useState<string>(target)
   const ref = useRef<HTMLSpanElement>(null)
@@ -62,7 +68,7 @@ export function TelemetryValue({ target, duration = 1200 }: Props) {
           const tick = (now: number) => {
             const elapsed = now - startTime
             const t = Math.min(1, elapsed / duration)
-            const eased = easeOut(t)
+            const eased = expoOut(t)
             const current = parsed.num * eased
             setDisplay(current.toFixed(parsed.decimals) + parsed.suffix)
             if (t < 1) raf = requestAnimationFrame(tick)

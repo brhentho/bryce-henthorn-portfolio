@@ -1,14 +1,55 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 import { ViewTransitionLink } from "./ViewTransitionLink"
 import { cn } from "@/lib/utils"
 
+/** Tweens an integer value across `duration` ms — reads as a register
+ *  counter rolling through intermediate digits, not a key-flip. */
+function useTickingNumber(target: number, duration = 420) {
+  const [display, setDisplay] = useState(target)
+  const lastRef = useRef(target)
+
+  useEffect(() => {
+    const start = lastRef.current
+    if (start === target) {
+      setDisplay(target)
+      return
+    }
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      lastRef.current = target
+      setDisplay(target)
+      return
+    }
+    const startTime = performance.now()
+    let raf = 0
+    const tick = (now: number) => {
+      const elapsed = now - startTime
+      const t = Math.min(1, elapsed / duration)
+      const value = Math.round(start + (target - start) * t)
+      setDisplay(value)
+      if (t < 1) {
+        raf = requestAnimationFrame(tick)
+      } else {
+        lastRef.current = target
+        setDisplay(target)
+      }
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [target, duration])
+
+  return display
+}
+
 const NAV_ITEMS: { href: string; label: string }[] = [
   { href: "/",                      label: "WORK" },
-  { href: "/recall",                label: "RECALL" },
   { href: "/agents-in-windows",     label: "AGENTS" },
+  { href: "/recall",                label: "RECALL" },
   { href: "/teams-for-education",   label: "TEAMS" },
   { href: "/about",                 label: "ABOUT" },
 ]
@@ -52,6 +93,7 @@ export function TopBar() {
     return () => observer.disconnect()
   }, [pathname])
 
+  const displayedCurrent = useTickingNumber(current)
   const pad = (n: number) => String(n).padStart(2, "0")
 
   return (
@@ -80,13 +122,19 @@ export function TopBar() {
                   href={item.href}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "t-mono-label px-2 py-1 transition-colors duration-200",
+                    "t-mono-label px-2 py-1 transition-colors duration-200 relative",
                     isActive
-                      ? "text-[color:var(--text-primary)] underline underline-offset-[0.25em] decoration-[color:var(--accent-trace)] decoration-[1.5px]"
+                      ? "text-[color:var(--text-primary)]"
                       : "text-[color:var(--text-tertiary)] hover:text-[color:var(--text-primary)]",
                   )}
                 >
                   {item.label}
+                  {isActive && (
+                    <span
+                      aria-hidden="true"
+                      className="manual-nav-underline"
+                    />
+                  )}
                 </ViewTransitionLink>
                 {i < NAV_ITEMS.length - 1 && (
                   <span
@@ -108,11 +156,8 @@ export function TopBar() {
           {total > 0 ? (
             <>
               §{" "}
-              <span
-                key={current}
-                className="manual-counter-digit text-[color:var(--text-primary)]"
-              >
-                {pad(current)}
+              <span className="manual-counter-digit text-[color:var(--text-primary)]">
+                {pad(displayedCurrent)}
               </span>{" "}
               / {pad(total)}
             </>

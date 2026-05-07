@@ -29,7 +29,7 @@ export function Telemetry({ items, className }: Props) {
             className="font-[number:600] text-[color:var(--text-primary)]"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.25rem, 4vw, 3.5rem)",
+              fontSize: "clamp(1.875rem, 5vw, 3.5rem)",
               lineHeight: 1,
               letterSpacing: "-0.02em",
               fontVariantNumeric: "tabular-nums",
