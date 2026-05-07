@@ -169,21 +169,69 @@
    - ProgressIndicator current digit flips when it changes (key swap).
    ═══════════════════════════════════════════════════════════════ */
 
+/* Plotter line-draw — schematic primitives appear to draw stroke-by-stroke
+   over a left-to-right reveal. The clip-path provides the wipe envelope;
+   the stroke-dashoffset transition draws each primitive within it. Linear
+   easing reads as a mechanical pen, not a UI ease. */
 .manual [data-reveal] svg.manual-schematic {
   clip-path: inset(0 100% 0 0);
-  transition: clip-path 1200ms cubic-bezier(0.2, 0.65, 0.3, 1) 200ms;
+  transition: clip-path 1500ms linear 200ms;
 }
 .manual [data-reveal][data-revealed="true"] svg.manual-schematic {
   clip-path: inset(0 0 0 0);
 }
 
+.manual [data-reveal] svg.manual-schematic line,
+.manual [data-reveal] svg.manual-schematic rect,
+.manual [data-reveal] svg.manual-schematic circle,
+.manual [data-reveal] svg.manual-schematic path,
+.manual [data-reveal] svg.manual-schematic ellipse,
+.manual [data-reveal] svg.manual-schematic polyline,
+.manual [data-reveal] svg.manual-schematic polygon {
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  transition: stroke-dashoffset 1500ms linear 200ms;
+}
+.manual [data-reveal][data-revealed="true"] svg.manual-schematic line,
+.manual [data-reveal][data-revealed="true"] svg.manual-schematic rect,
+.manual [data-reveal][data-revealed="true"] svg.manual-schematic circle,
+.manual [data-reveal][data-revealed="true"] svg.manual-schematic path,
+.manual [data-reveal][data-revealed="true"] svg.manual-schematic ellipse,
+.manual [data-reveal][data-revealed="true"] svg.manual-schematic polyline,
+.manual [data-reveal][data-revealed="true"] svg.manual-schematic polygon {
+  stroke-dashoffset: 0;
+}
+
 .manual .manual-counter-digit {
   display: inline-block;
-  animation: manual-counter-flip 280ms cubic-bezier(0.2, 0.65, 0.3, 1) backwards;
 }
-@keyframes manual-counter-flip {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
+
+/* Active nav underline — `transform: scaleX(0) → 1` from the left edge.
+   The span is freshly painted on every route change because its parent
+   `<a>` only renders when `isActive`; that paint triggers the once-only
+   animation, so each navigation draws the underline like a meter needle
+   settling. ─────────────────────────────────────────────────────────── */
+.manual-nav-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0.5rem;
+  right: 0.5rem;
+  height: 2.5px;
+  background: var(--accent-trace);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: manual-nav-underline-trace 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  border-radius: 1.5px;
+  pointer-events: none;
+}
+@keyframes manual-nav-underline-trace {
+  to { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .manual-nav-underline {
+    animation: none !important;
+    transform: scaleX(1);
+  }
 }
 
 /* ── NowReading chip — fade in label on change ── */
@@ -194,6 +242,38 @@
 @keyframes manual-now-reading-in {
   from { opacity: 0; transform: translateY(2px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── NowReading status LED — ambient pulse signals "site is live" ── */
+.manual-now-reading-led {
+  animation: led-blink 3000ms ease-in-out infinite;
+  transform-origin: center center;
+}
+@keyframes led-blink {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(1.18); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .manual-now-reading-led { animation: none; opacity: 1; transform: none; }
+}
+
+/* ── Figure registration mark — one-shot "engage" pulse on viewport entry.
+   Reads as the figure being indexed/inspected by the document the moment
+   it enters view. Only fires when the surrounding `[data-reveal]` flips
+   to `[data-revealed="true"]`. ─────────────────────────────────────── */
+.manual [data-reveal][data-revealed="true"] .manual-registration-mark {
+  animation: engage-pulse 700ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  transform-origin: center center;
+}
+@keyframes engage-pulse {
+  0%   { transform: scale(1);    opacity: 0.6; }
+  35%  { transform: scale(1.18); opacity: 1; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .manual [data-reveal][data-revealed="true"] .manual-registration-mark {
+    animation: none !important;
+  }
 }
 
 /* ── Figure cursor crosshair — tracks pointer inside Figure on (pointer: fine) ── */
@@ -223,22 +303,28 @@
   navigation: auto;
 }
 
+/* Old root lifts up + fades. New root is revealed by a single accent
+   hairline that drops from y=0 to y=100% — a printer-feed wipe in
+   keeping with the operator-manual idiom. */
 ::view-transition-old(root) {
-  animation: manual-page-fade-out 220ms cubic-bezier(0.4, 0, 1, 1) forwards;
+  animation: manual-page-lift-out 200ms cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 
 ::view-transition-new(root) {
-  animation: manual-page-fade-in 320ms cubic-bezier(0, 0, 0.2, 1) 100ms backwards;
+  animation: manual-page-print-in 340ms linear forwards;
 }
 
-@keyframes manual-page-fade-out {
+@keyframes manual-page-lift-out {
   from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 0; transform: translateY(-8px); }
 }
 
-@keyframes manual-page-fade-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes manual-page-print-in {
+  /* `clip-path` runs the printer-feed top→bottom; `opacity` + `transform`
+     settle the new content in once the wipe completes. */
+  0%   { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(2px); }
+  35%  { opacity: 0.7; }
+  100% { opacity: 1; clip-path: inset(0 0 0 0); transform: translateY(0); }
 }
 
 /* RevisionHeader persists across the swap — same view-transition-name on both
@@ -286,6 +372,17 @@
   }
   .manual [data-reveal]:not([data-revealed="true"]) svg.manual-schematic {
     clip-path: inset(0 0 0 0);
+  }
+  .manual [data-reveal] svg.manual-schematic line,
+  .manual [data-reveal] svg.manual-schematic rect,
+  .manual [data-reveal] svg.manual-schematic circle,
+  .manual [data-reveal] svg.manual-schematic path,
+  .manual [data-reveal] svg.manual-schematic ellipse,
+  .manual [data-reveal] svg.manual-schematic polyline,
+  .manual [data-reveal] svg.manual-schematic polygon {
+    stroke-dasharray: 0 !important;
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
   }
   .manual section[data-section]:not([data-reveal]) > * {
     animation: none !important;

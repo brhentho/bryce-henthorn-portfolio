@@ -52,17 +52,26 @@ export function NowReading() {
   return (
     <div
       aria-hidden="true"
-      className="fixed bottom-6 left-6 z-30 hidden lg:flex items-baseline gap-2 t-mono-caption pointer-events-none select-none"
+      className="fixed bottom-6 left-6 z-30 hidden lg:flex items-center gap-2 t-mono-caption pointer-events-none select-none"
       style={{
         opacity: label ? 1 : 0,
         transition: "opacity 200ms ease",
       }}
     >
-      <span className="text-[color:var(--text-tertiary)]">NOW READING ·</span>
+      <span
+        className="manual-now-reading-led inline-block rounded-full"
+        style={{
+          width: 6,
+          height: 6,
+          background: "var(--accent-trace)",
+          boxShadow: "0 0 6px color-mix(in srgb, var(--accent-trace) 60%, transparent)",
+        }}
+      />
+      <span className="text-[color:var(--text-tertiary)] leading-none">NOW READING ·</span>
       {label && (
         <span
           key={label}
-          className="manual-now-reading-text text-[color:var(--text-secondary)]"
+          className="manual-now-reading-text text-[color:var(--text-secondary)] leading-none"
         >
           {label}
         </span>
