@@ -13,7 +13,6 @@ export function HeroSchematic() {
     <svg
       viewBox="0 0 1600 900"
       width="100%"
-      height="auto"
       fill="none"
       stroke="currentColor"
       strokeWidth={1}

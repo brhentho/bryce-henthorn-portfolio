@@ -6,6 +6,7 @@ import {
   TopBar,
   ManualFooter,
   HeroIntro,
+  CoverPlate,
 } from "@/components/manual"
 
 const MANIFESTO = [
@@ -23,12 +24,12 @@ const MICROSOFT_ROLES: {
   active?: boolean
 }[] = [
   {
-    year: "2025 –",
+    year: "2025 – PRESENT",
     role: "Windows Agent Platform",
     desc: "Led agent visibility and orchestration design across Shell, Copilot, and M365 integration surfaces. 3 engineering partner teams.",
     active: true,
   },
-  { year: "2025 –", role: "Copilot Actions", active: true },
+  { year: "2025 – PRESENT", role: "Copilot Actions", active: true },
   {
     year: "2023 – 2025",
     role: "Windows Recall",
@@ -57,7 +58,7 @@ export default function AboutPage() {
             linesWrapperClassName="space-y-3 lg:space-y-4"
             lines={MANIFESTO.map((line) => ({
               text: line,
-              className: "t-display-xl text-[color:var(--text-primary)]",
+              className: "t-display-l text-[color:var(--text-primary)]",
               as: "p",
             }))}
           />
@@ -91,7 +92,7 @@ export default function AboutPage() {
             </div>
             <Figure
               number="1.1"
-              caption="At altitude on a hike, smiling toward the camera with a green valley and clouds behind"
+              caption="Field site, summer 2024."
               src="/images/bryce-portrait.jpg"
               alt="Bryce Henthorn at altitude on a hike, smiling toward the camera with a green valley and clouds behind"
               width={1200}
@@ -101,6 +102,9 @@ export default function AboutPage() {
             />
           </div>
         </section>
+
+        {/* ── Cover Plate (§2.10) — chapter divider into Experience ── */}
+        <CoverPlate number="02" total="04" title="Experience" />
 
         {/* ── 02 Experience — Microsoft DL + PRIOR ── */}
         <section data-section data-reveal id="experience" className="py-12 lg:py-20">

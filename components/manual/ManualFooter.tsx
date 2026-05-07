@@ -1,15 +1,18 @@
 import { ViewTransitionLink } from "./ViewTransitionLink"
 
 const INDEX_ITEMS: { href: string; label: string }[] = [
-  { href: "/",                      label: "Work" },
-  { href: "/recall",                label: "Windows Recall" },
-  { href: "/agents-in-windows",     label: "Agents in Windows" },
-  { href: "/teams-for-education",   label: "Teams for Education" },
-  { href: "/about",                 label: "About" },
+  { href: "/",                      label: "WORK" },
+  { href: "/recall",                label: "RECALL" },
+  { href: "/agents-in-windows",     label: "AGENTS" },
+  { href: "/teams-for-education",   label: "TEAMS" },
+  { href: "/about",                 label: "ABOUT" },
 ]
 
 const linkClass =
   "t-body-sm inline-block text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] decoration-[0.5px] underline-offset-[0.25em] transition-all duration-[160ms] hover:decoration-[color:var(--accent-trace)] hover:decoration-[1.5px]"
+
+const indexLinkClass =
+  "t-mono-label inline-block text-[color:var(--text-primary)] transition-colors duration-[160ms] hover:text-[color:var(--accent-trace)]"
 
 /**
  * Site-wide footer. Three columns: author, document index, contact.
@@ -24,7 +27,7 @@ export function ManualFooter() {
           <p className="t-mono-label">AUTHOR</p>
           <div className="space-y-1">
             <p className="t-body text-[color:var(--text-primary)]">Bryce Henthorn</p>
-            <p className="t-body-sm text-[color:var(--text-secondary)]">
+            <p className="t-mono-caption text-[color:var(--text-secondary)]">
               Senior Product Designer, Microsoft
             </p>
           </div>
@@ -36,7 +39,7 @@ export function ManualFooter() {
           <ul className="space-y-1.5">
             {INDEX_ITEMS.map((item) => (
               <li key={item.href}>
-                <ViewTransitionLink href={item.href} className={linkClass}>
+                <ViewTransitionLink href={item.href} className={indexLinkClass}>
                   {item.label}
                 </ViewTransitionLink>
               </li>

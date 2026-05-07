@@ -72,7 +72,7 @@ export default function RecallPage() {
             eyebrowClassName="t-mono-label mb-10"
             lines={[
               {
-                text: "Designing semantic search for everything you’ve seen",
+                text: "Designing semantic search for everything you’ve seen.",
                 className: "t-display-xl max-w-[18ch]",
               },
             ]}
@@ -167,8 +167,8 @@ export default function RecallPage() {
           >
             RECALL QUERY LIFECYCLE
           </p>
-          <div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr] gap-10 lg:gap-16 items-start mt-4 lg:mt-6">
-            <ol className="flex flex-col gap-10 lg:gap-14">
+          <div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr] gap-10 lg:gap-16 items-stretch mt-4 lg:mt-6">
+            <ol className="flex flex-col gap-10 lg:gap-0 lg:justify-between lg:py-8">
               {PIPELINE_STAGES.map((s) => (
                 <li key={s.label} className="flex flex-col gap-2">
                   <p className="t-mono-label text-[color:var(--text-secondary)]">
@@ -375,8 +375,14 @@ export default function RecallPage() {
 
         {/* ── 07 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}
         <section data-section data-reveal id="performance" className="py-12 lg:py-20">
-          {/* Pull-quote — promoted above the SectionLabel as a section lede */}
-          <div className="py-12 lg:py-20 border-y border-[color:var(--rule)]">
+          <SectionLabel
+            number="07"
+            label="Performance"
+            title="Fast enough to feel alive"
+          />
+
+          {/* Pull-quote — section lede beneath the SectionLabel */}
+          <div className="mt-10 lg:mt-14 py-12 lg:py-20 border-y border-[color:var(--rule)]">
             <blockquote className="max-w-[68ch]">
               <p className="t-display-l text-[color:var(--text-primary)]">
                 We made waiting feel like progress.
@@ -384,14 +390,7 @@ export default function RecallPage() {
             </blockquote>
           </div>
 
-          <SectionLabel
-            number="07"
-            label="Performance"
-            title="Fast enough to feel alive"
-            className="mt-10 lg:mt-14"
-          />
-
-          {/* One-line caption beneath the heading */}
+          {/* One-line caption beneath the pull-quote */}
           <p className="mt-6 t-body-sm max-w-[68ch] text-[color:var(--text-secondary)]">
             Embedding indexing is computationally heavy, so we tuned retrigger cadence
             to refine results per keystroke without ever blocking the user.
@@ -432,7 +431,7 @@ export default function RecallPage() {
         </section>
 
         {/* ── Cover Plate (§2.10) — privacy chapter divider ── */}
-        <CoverPlate number="08" total="10" title="Trust" />
+        <CoverPlate number="08" total="09" title="Trust" />
 
         {/* ── 08 Trust ── */}
         <section data-section data-reveal id="trust" className="py-12 lg:py-20">
@@ -453,8 +452,9 @@ export default function RecallPage() {
                 retrieval happened locally. Nothing left the machine.
               </p>
               <p className="t-body">
-                After public scrutiny, things changed. Recall flipped from opt-out to
-                opt-in. Users got the ability to exclude apps and pause indexing.
+                When public scrutiny hit, we made the call to flip Recall from opt-out
+                to opt-in, ship per-app exclusion, and give users a pause control. I
+                owned the IA for the new privacy surface.
               </p>
               <p className="t-body">
                 We made those boundaries tangible. Cards showed where results came from
@@ -576,9 +576,9 @@ export default function RecallPage() {
           <div className="mt-12">
             <Telemetry
               items={[
-                { value: "Copilot+", unit: "DEVICES", label: "Local intelligence required for on-device indexing" },
-                { value: "2",        unit: "TEAMS",   label: "Windows Search and File Explorer adopting the patterns" },
-                { value: "2",        unit: "YEARS",   label: "Shipping cycle, including privacy redesign" },
+                { value: "Copilot+", unit: "DEVICES",         label: "Local intelligence required for on-device indexing" },
+                { value: "WS + FE",  unit: "TEAMS ADOPTING",  label: "Windows Search and File Explorer adopting the patterns" },
+                { value: "2",        unit: "YEARS",           label: "Shipping cycle, including privacy redesign" },
               ]}
             />
           </div>

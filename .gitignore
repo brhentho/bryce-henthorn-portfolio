@@ -13,3 +13,7 @@ node_modules/
 tsconfig.tsbuildinfo
 dev.log
 .playwright-mcp/
+
+# Critique outputs (screenshots and animation frames)
+critique/captures/
+critique/animations/

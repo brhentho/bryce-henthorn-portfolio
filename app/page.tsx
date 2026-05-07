@@ -1,7 +1,6 @@
 import { ManualShell } from "./recall/ManualShell"
 import {
   SectionLabel,
-  Margin,
   TopBar,
   ManualFooter,
   ProjectCard,
@@ -30,7 +29,7 @@ const PROJECTS = [
   {
     href: "/teams-for-education",
     eyebrow: "TEAMS FOR EDUCATION",
-    title: "Modernizing Online Classes for an Authentic Virtual Experience.",
+    title: "Modernizing online classes for an authentic virtual experience.",
     bgSrc: "/images/cards/teams-bg.png",
     artSrc: "/images/cards/teams-art.png",
     artAlt: "Five circular student avatars arranged in a constellation across a Teams classroom",
@@ -59,9 +58,9 @@ export default function HomePage() {
                 className: "t-display-l max-w-[28ch] lg:max-w-none text-[color:var(--text-primary)]",
               },
               {
-                text: "I design at the intersection of operating systems, agents, and enterprise workflows",
+                text: "I design at the intersection of operating systems, agents, and enterprise workflows.",
                 className: "t-display-l max-w-[28ch] lg:max-w-none mt-3",
-                style: { color: "var(--text-tertiary)" },
+                style: { color: "var(--text-secondary)" },
                 as: "p",
               },
             ]}
@@ -92,16 +91,16 @@ export default function HomePage() {
           <SectionLabel number="02" label="Thesis" title="What I design for" />
           <div className="section-grid mt-10">
             <div className="space-y-6 max-w-[68ch]">
-              <p className="t-body">
+              <p className="t-display-l text-[color:var(--text-primary)]">
+                Make the invisible visible. The automatic interruptible. The AI auditable.
+              </p>
+              <p className="t-body text-[color:var(--text-secondary)]">
                 When software starts running on your behalf without being asked, the
-                design problem isn&apos;t really about features anymore. It&apos;s about
+                design problem isn&rsquo;t really about features anymore. It&rsquo;s about
                 the agreement. What the system promises, what it lets you see, and what
                 it lets you stop.
               </p>
             </div>
-            <Margin anchor="2-pull">
-              Make the invisible visible. The automatic interruptible. The AI auditable.
-            </Margin>
           </div>
         </section>
 

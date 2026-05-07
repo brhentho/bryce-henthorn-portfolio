@@ -30,10 +30,10 @@ export function ProjectCard({
   return (
     <ViewTransitionLink
       href={href}
-      className="block group focus:outline focus:outline-1 focus:outline-[color:var(--accent-trace)]"
+      className="block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[color:var(--accent-trace)]"
     >
-      <article className="relative border border-[color:var(--rule)] group-hover:border-[color:var(--rule-strong)] transition-colors lg:aspect-[1120/496] overflow-hidden bg-[color:var(--ink)]">
-        {/* Layer 1 — full-bleed background */}
+      <article className="relative border border-[color:var(--rule)] group-hover:border-[color:var(--text-tertiary)] transition-colors lg:aspect-[1120/496] overflow-hidden bg-[color:var(--ink)]">
+        {/* Layer 1 — full-bleed background, desaturated to operator-manual ink */}
         <Image
           src={bgSrc}
           alt=""
@@ -41,6 +41,7 @@ export function ProjectCard({
           aria-hidden="true"
           sizes="(min-width: 1024px) 1120px, 100vw"
           className="object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.01]"
+          style={{ mixBlendMode: "luminosity", opacity: 0.18 }}
           priority={false}
         />
 
@@ -73,14 +74,14 @@ export function ProjectCard({
             </div>
           </div>
 
-          {/* RIGHT — foreground art (40%). Hidden on mobile per existing pattern. */}
-          <div className="hidden lg:flex lg:basis-[40%] items-center justify-center">
-            <div className="relative w-full h-full max-h-full">
+          {/* RIGHT — foreground art (40% on lg, full-width on mobile). */}
+          <div className="flex lg:basis-[40%] items-center justify-center">
+            <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full max-h-full">
               <Image
                 src={artSrc}
                 alt={artAlt}
                 fill
-                sizes="(min-width: 1024px) 40vw, 0px"
+                sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-contain object-center"
               />
             </div>

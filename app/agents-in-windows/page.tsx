@@ -368,7 +368,7 @@ export default function AgentsInWindowsPage() {
           </Figure>
         </section>
 
-        {/* ── 07 Iteration ── Strip Break Lexicon (§2.9) + Body Column (§2.3) ── */}
+        {/* ── 07 Iteration ── Body Column (§2.3) + Strip Break Lexicon (§2.9) ── */}
         <section data-section data-reveal id="iteration" className="py-12 lg:py-20">
           <SectionLabel
             number="07"
@@ -376,7 +376,25 @@ export default function AgentsInWindowsPage() {
             title="The micro-interactions that make it work"
           />
 
-          {/* Strip Break — lexicon greets the reader */}
+          {/* Body — frames the strip break that follows */}
+          <div className="section-grid mt-10 lg:mt-14">
+            <div className="space-y-6 max-w-[68ch]">
+              <p className="t-body">
+                The real work was the tiny stuff. We prototyped these in the actual shell
+                with engineering and product alongside design. Tested multiple agents
+                running at once. Watched how the UI changed as an agent moved between
+                states.
+              </p>
+              <p className="t-body">
+                Each micro-interaction had to balance three things at once: what the
+                system could actually do, what the agent data could tell us, and what
+                people expected to happen. Move one thing wrong and the whole system feels
+                less trustworthy.
+              </p>
+            </div>
+          </div>
+
+          {/* Strip Break — lexicon below the body */}
           <div className="mt-10 lg:mt-14 border-y border-[color:var(--rule)]">
             <div className="grid grid-cols-5 divide-x divide-[color:var(--rule)]">
               {AGENT_STATES.map((s) => (
@@ -400,24 +418,6 @@ export default function AgentsInWindowsPage() {
             <p className="t-mono-caption text-[color:var(--text-tertiary)] px-4 py-3 border-t border-[color:var(--rule)]">
               FIG. 7.1. Visual lexicon: five agent states across the taskbar surface.
             </p>
-          </div>
-
-          {/* Body below */}
-          <div className="section-grid mt-10 lg:mt-14">
-            <div className="space-y-6 max-w-[68ch]">
-              <p className="t-body">
-                The real work was the tiny stuff. We prototyped these in the actual shell
-                with engineering and product alongside design. Tested multiple agents
-                running at once. Watched how the UI changed as an agent moved between
-                states.
-              </p>
-              <p className="t-body">
-                Each micro-interaction had to balance three things at once: what the
-                system could actually do, what the agent data could tell us, and what
-                people expected to happen. Move one thing wrong and the whole system feels
-                less trustworthy.
-              </p>
-            </div>
           </div>
         </section>
 
