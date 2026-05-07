@@ -58,7 +58,11 @@ export async function transitionTo(navigate: () => void): Promise<void> {
 
   if (prefersReduced) {
     navigate()
-    window.scrollTo(0, 0)
+    // `behavior: "instant"` overrides `html { scroll-behavior: smooth }`
+    // in globals.css — without it the scroll-to-top animates smoothly
+    // and the tail of that animation is still running when the ink
+    // overlay fades out, producing a visible scroll jump.
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" })
     return
   }
 
@@ -71,7 +75,11 @@ export async function transitionTo(navigate: () => void): Promise<void> {
     // 2. Hold at full ink while the route changes underneath.
     emit("holding")
     navigate()
-    window.scrollTo(0, 0)
+    // `behavior: "instant"` overrides `html { scroll-behavior: smooth }`
+    // in globals.css — without it the scroll-to-top animates smoothly
+    // and the tail of that animation is still running when the ink
+    // overlay fades out, producing a visible scroll jump.
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" })
     await wait(COMMIT_HOLD_MS)
 
     // 3. Fade ink out — the freshly committed page is revealed at top
