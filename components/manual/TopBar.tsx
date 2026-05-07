@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 
 /** Tweens an integer value across `duration` ms — reads as a register
  *  counter rolling through intermediate digits, not a key-flip. */
-function useTickingNumber(target: number, duration = 240) {
+function useTickingNumber(target: number, duration = 420) {
   const [display, setDisplay] = useState(target)
   const lastRef = useRef(target)
 

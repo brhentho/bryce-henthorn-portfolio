@@ -36,7 +36,7 @@ type Props = {
  * Non-numeric targets ("Q", "[TK]") render statically with no animation.
  * Honors prefers-reduced-motion.
  */
-export function TelemetryValue({ target, duration = 1800 }: Props) {
+export function TelemetryValue({ target, duration = 2400 }: Props) {
   const parsed = parseTarget(target)
   const [display, setDisplay] = useState<string>(target)
   const ref = useRef<HTMLSpanElement>(null)

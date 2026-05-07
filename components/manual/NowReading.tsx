@@ -61,10 +61,12 @@ export function NowReading() {
       <span
         className="manual-now-reading-led inline-block rounded-full"
         style={{
-          width: 6,
-          height: 6,
+          width: 9,
+          height: 9,
           background: "var(--accent-trace)",
-          boxShadow: "0 0 6px color-mix(in srgb, var(--accent-trace) 60%, transparent)",
+          boxShadow:
+            "0 0 12px color-mix(in srgb, var(--accent-trace) 80%, transparent), " +
+            "0 0 4px color-mix(in srgb, var(--accent-trace) 90%, transparent)",
         }}
       />
       <span className="text-[color:var(--text-tertiary)] leading-none">NOW READING ·</span>

@@ -91,22 +91,21 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── 02 Thesis ── */}
+        {/* ── 02 Thesis ── thesis statement is the section header */}
         <section data-section data-reveal id="thesis" className="py-12 lg:py-20">
-          <SectionLabel number="02" label="Thesis" title="What I design for" />
-          <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
-              <p className="t-display-l text-[color:var(--text-primary)]">
-                Make the invisible visible. The automatic interruptible. The AI auditable.
-              </p>
-              <p className="t-body text-[color:var(--text-secondary)]">
-                When software starts running on your behalf without being asked, the
-                design problem isn&rsquo;t really about features anymore. It&rsquo;s about
-                the agreement. What the system promises, what it lets you see, and what
-                it lets you stop.
-              </p>
-            </div>
+          <div className="flex flex-col gap-3">
+            <p className="t-mono-label text-[color:var(--text-tertiary)]">§ 02 / THESIS</p>
+            <h2 className="t-display-l text-[color:var(--text-primary)] max-w-[34ch]">
+              Make the invisible visible. The automatic interruptible. The AI auditable.
+            </h2>
+            <hr className="rule mt-2" />
           </div>
+          <p className="t-body text-[color:var(--text-secondary)] mt-10 max-w-[68ch]">
+            When software starts running on your behalf without being asked, the
+            design problem isn&rsquo;t really about features anymore. It&rsquo;s about
+            the agreement. What the system promises, what it lets you see, and what
+            it lets you stop.
+          </p>
         </section>
 
         </main>

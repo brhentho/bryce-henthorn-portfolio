@@ -216,11 +216,14 @@
   bottom: 0;
   left: 0.5rem;
   right: 0.5rem;
-  height: 2.5px;
+  height: 3px;
   background: var(--accent-trace);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--accent-trace) 50%, transparent);
   transform: scaleX(0);
   transform-origin: left center;
-  animation: manual-nav-underline-trace 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  /* Delay 120ms so the trace draws after the new page paint settles —
+     otherwise it completes during the view-transition and looks instant. */
+  animation: manual-nav-underline-trace 480ms cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
   border-radius: 1.5px;
   pointer-events: none;
 }
@@ -246,12 +249,12 @@
 
 /* ── NowReading status LED — ambient pulse signals "site is live" ── */
 .manual-now-reading-led {
-  animation: led-blink 3000ms ease-in-out infinite;
+  animation: led-blink 2800ms ease-in-out infinite;
   transform-origin: center center;
 }
 @keyframes led-blink {
-  0%, 100% { opacity: 1;   transform: scale(1); }
-  50%      { opacity: 0.4; transform: scale(1.18); }
+  0%, 100% { opacity: 1;    transform: scale(1); }
+  50%      { opacity: 0.35; transform: scale(1.25); }
 }
 @media (prefers-reduced-motion: reduce) {
   .manual-now-reading-led { animation: none; opacity: 1; transform: none; }
