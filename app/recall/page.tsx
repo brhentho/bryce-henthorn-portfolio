@@ -584,11 +584,7 @@ export default function RecallPage() {
           </div>
         </section>
       </main>
-      <NextProject
-        href="/teams-for-education"
-        eyebrow="TEAMS FOR EDUCATION"
-        title="Modernizing online classes for an authentic virtual experience."
-      />
+      <NextProject href="/teams-for-education" title="Teams for Education" />
       <ManualFooter />
     </ManualShell>
   )

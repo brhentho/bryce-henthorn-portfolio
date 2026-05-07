@@ -486,11 +486,7 @@ export default function AgentsInWindowsPage() {
         </section>
 
       </main>
-      <NextProject
-        href="/recall"
-        eyebrow="WINDOWS RECALL"
-        title="Designing semantic search for everything you’ve seen."
-      />
+      <NextProject href="/recall" title="Windows Recall" />
       <ManualFooter />
     </ManualShell>
   )

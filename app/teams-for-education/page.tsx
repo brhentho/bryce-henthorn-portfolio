@@ -478,11 +478,7 @@ export default function TeamsForEducationPage() {
         </section>
 
       </main>
-      <NextProject
-        href="/agents-in-windows"
-        eyebrow="AGENTS IN WINDOWS"
-        title="Making AI agents visible and interruptible in Windows."
-      />
+      <NextProject href="/agents-in-windows" title="Agents in Windows" />
       <ManualFooter />
     </ManualShell>
   )
