@@ -296,46 +296,11 @@
   }
 }
 
-/* ── View Transitions — redact/reveal sweep between routes ──
-   Modern browsers (Chrome 111+, Edge 111+, Safari 18+) honor the @view-transition
-   opt-in for same-document navigations. Next.js App Router needs a wrapper to
-   trigger startViewTransition on client-side pushState — see ViewTransitionLink.
-   ─────────────────────────────────────────────────────────────────────────── */
-
-@view-transition {
-  navigation: auto;
-}
-
-/* Hide all transition mechanics behind an ink curtain: old fades to 0,
-   then new fades in from 0 with a delay so a frame of pure ink sits
-   between them. The route change + scrollTo(0,0) happen during the ink
-   window so no scroll motion is ever visible to the user. */
-::view-transition {
-  background: var(--bg, #06060A);
-}
-
-::view-transition-old(root) {
-  animation: manual-page-fade-to-ink 220ms linear forwards;
-}
-
-::view-transition-new(root) {
-  animation: manual-page-fade-from-ink 280ms linear 220ms forwards;
-}
-
-@keyframes manual-page-fade-to-ink {
-  to { opacity: 0; }
-}
-
-@keyframes manual-page-fade-from-ink {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-/* RevisionHeader persists across the swap — same view-transition-name on both
-   sides, so the API morphs the element between old and new docs. */
-.manual-revision-header {
-  view-transition-name: rev-header;
-}
+/* Page-to-page navigation is handled imperatively by the overlay
+   coordinator in `lib/page-transition.ts` + `<PageTransitionOverlay>`,
+   not by the View Transitions API. The fade-to-ink → route-change →
+   fade-from-ink sequence runs in three discrete steps so no scroll or
+   crossfade ever leaks through. */
 
 /* ── Hero cursor blink — pipe at end of h1, blinks for ~6s, then fades out ── */
 .manual .manual-cursor-blink {
@@ -397,9 +362,5 @@
   }
   .manual .manual-cursor-blink {
     display: none !important;
-  }
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none !important;
   }
 }

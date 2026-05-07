@@ -3,6 +3,7 @@
 import Link, { type LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
 import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react"
+import { transitionTo } from "@/lib/page-transition"
 
 type Props = LinkProps &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> & {
@@ -10,20 +11,18 @@ type Props = LinkProps &
   }
 
 /**
- * Drop-in replacement for next/link that wraps client-side navigation in
- * `document.startViewTransition` so the @view-transition CSS in globals.css
- * (or recall.css) actually fires for App Router pushState navigations.
+ * Drop-in replacement for next/link that runs every same-origin
+ * navigation through the sequential ink-overlay transition (see
+ * `lib/page-transition.ts` and `<PageTransitionOverlay>`):
  *
- * Scroll handling: we set scrollTop=0 *before* startViewTransition so the
- * OLD snapshot is captured at the top of the page (no scroll motion is
- * visible because everything happens in one synchronous task before the
- * browser paints). We also pass `{ scroll: false }` to router.push so
- * Next's default scroll-to-top doesn't fire *after* the wipe and produce
- * a visible jump.
+ *   1. ink fades in (~280ms)
+ *   2. route push + scrollTo(0,0) happen behind the solid ink
+ *   3. ink fades out (~280ms) revealing the new page already at top
+ *   4. the new page's own animations (HeroIntro, scroll-reveal) fire
  *
- * Falls through to vanilla next/link behavior for browsers without the API,
- * for modified clicks (cmd/ctrl/shift, middle/right button), or when the
- * onClick handler calls preventDefault.
+ * Falls through to vanilla next/link for modified clicks
+ * (cmd/ctrl/shift, middle/right button) or when an upstream onClick
+ * calls preventDefault.
  */
 export function ViewTransitionLink({ onClick, href, children, ...rest }: Props) {
   const router = useRouter()
@@ -32,25 +31,15 @@ export function ViewTransitionLink({ onClick, href, children, ...rest }: Props) 
     if (onClick) onClick(e)
     if (e.defaultPrevented) return
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
-    if (typeof document === "undefined") return
-    const startVT = (document as Document & {
-      startViewTransition?: (cb: () => void) => unknown
-    }).startViewTransition
-    if (typeof startVT !== "function") return
+    if (typeof window === "undefined") return
 
     e.preventDefault()
     const target = typeof href === "string" ? href : href.toString()
 
-    // Reset scroll synchronously before any paint. The OLD VT snapshot
-    // is captured at scrollTop=0 — the user never sees the scroll jump
-    // because the browser hasn't repainted yet between this line and
-    // startViewTransition (both run in the same task).
-    const scrollNode = document.scrollingElement || document.documentElement
-    scrollNode.scrollTop = 0
-
-    startVT.call(document, () => {
+    void transitionTo(() => {
       // `scroll: false` keeps Next from re-scrolling after the route
-      // commits, which would otherwise produce a visible post-wipe jump.
+      // commits — the overlay coordinator handles scrollTo(0,0)
+      // explicitly during the holding phase.
       router.push(target, { scroll: false })
     })
   }
