@@ -10,6 +10,7 @@ import {
   ManualFooter,
   CoverPlate,
   HeroIntro,
+  NextProject,
 } from "@/components/manual"
 
 // Listed in descending order to match the Figma stack (04 at top → 01 at bottom).
@@ -68,8 +69,9 @@ export default function RecallPage() {
         {/* ── 00 Overview / Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <HeroIntro
+            static
             eyebrow="§ 00 / WINDOWS RECALL"
-            eyebrowClassName="t-mono-label mb-10"
+            eyebrowClassName="t-mono-label text-[color:var(--text-tertiary)] mb-10"
             lines={[
               {
                 text: "Designing semantic search for everything you’ve seen.",
@@ -116,7 +118,7 @@ export default function RecallPage() {
             title="Where was that thing I saw last week?"
           />
           <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div className="flex flex-col gap-6 max-w-[60ch]">
+            <div className="flex flex-col gap-4 max-w-[60ch]">
               <p className="t-body">
                 The problem was simple and unsolved. You&apos;d seen something on your
                 computer: a presentation, a snippet of code, a reference in an email. But
@@ -271,7 +273,7 @@ export default function RecallPage() {
               sizes="(min-width: 1024px) 649px, 100vw"
               className="w-full h-auto"
             />
-            <div className="flex flex-col gap-6 max-w-[68ch]">
+            <div className="flex flex-col gap-4 max-w-[68ch]">
               <p className="t-body">
                 A Recall card needed to hold several pieces of information: a screenshot,
                 app name, timestamp, extracted text, and relevance signals.
@@ -303,7 +305,7 @@ export default function RecallPage() {
             title="AI-powered search has a trust problem"
           />
           <div className="section-grid mt-10">
-            <div className="flex flex-col gap-6 max-w-[68ch]">
+            <div className="flex flex-col gap-4 max-w-[68ch]">
               <p className="t-body">
                 Technically correct results can feel wrong. Search for &ldquo;blue chart
                 spreadsheet&rdquo; and the system might return something from an
@@ -341,7 +343,7 @@ export default function RecallPage() {
             label="Cards"
             title="Merged results killed clarity"
           />
-          <div className="mt-10 lg:mt-14 flex flex-col gap-6 max-w-[68ch]">
+          <div className="mt-10 lg:mt-14 flex flex-col gap-4 max-w-[68ch]">
             <p className="t-body">
               First version blended everything. Text matches and visual matches went
               into one ranked list. Clean, elegant, simple.
@@ -375,23 +377,21 @@ export default function RecallPage() {
 
         {/* ── 07 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}
         <section data-section data-reveal id="performance" className="py-12 lg:py-20">
+          {/* Pull-quote — epigraph above the SectionLabel, sets up the section. */}
+          <blockquote className="max-w-[68ch] mb-12 lg:mb-16">
+            <p className="t-display-l text-[color:var(--text-primary)]">
+              We made waiting feel like progress.
+            </p>
+          </blockquote>
+
           <SectionLabel
             number="07"
             label="Performance"
             title="Fast enough to feel alive"
           />
 
-          {/* Pull-quote — section lede beneath the SectionLabel */}
-          <div className="mt-10 lg:mt-14 py-12 lg:py-20 border-y border-[color:var(--rule)]">
-            <blockquote className="max-w-[68ch]">
-              <p className="t-display-l text-[color:var(--text-primary)]">
-                We made waiting feel like progress.
-              </p>
-            </blockquote>
-          </div>
-
-          {/* One-line caption beneath the pull-quote */}
-          <p className="mt-6 t-body-sm max-w-[68ch] text-[color:var(--text-secondary)]">
+          {/* One-line caption beneath the SectionLabel rule */}
+          <p className="mt-8 t-body-sm max-w-[68ch] text-[color:var(--text-secondary)]">
             Embedding indexing is computationally heavy, so we tuned retrigger cadence
             to refine results per keystroke without ever blocking the user.
           </p>
@@ -442,7 +442,7 @@ export default function RecallPage() {
           />
           {/* Body left, privacy screenshots stacked right */}
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 lg:gap-14 mt-10 items-start">
-            <div className="flex flex-col gap-6 max-w-[68ch]">
+            <div className="flex flex-col gap-4 max-w-[68ch]">
               <p className="t-body lede text-[color:var(--text-secondary)]">
                 Recall captures everything. That only works if people trust where the
                 data sits, who can see it, and what control they actually have.
@@ -584,6 +584,11 @@ export default function RecallPage() {
           </div>
         </section>
       </main>
+      <NextProject
+        href="/teams-for-education"
+        eyebrow="TEAMS FOR EDUCATION"
+        title="Modernizing online classes for an authentic virtual experience."
+      />
       <ManualFooter />
     </ManualShell>
   )

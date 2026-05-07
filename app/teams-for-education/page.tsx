@@ -10,6 +10,7 @@ import {
   ManualFooter,
   CoverPlate,
   HeroIntro,
+  NextProject,
 } from "@/components/manual"
 import { HeroSchematic } from "./svg/HeroSchematic"
 
@@ -45,8 +46,9 @@ export default function TeamsForEducationPage() {
         {/* ── Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <HeroIntro
+            static
             eyebrow="§ 00 / TEAMS FOR EDUCATION"
-            eyebrowClassName="t-mono-label mb-10"
+            eyebrowClassName="t-mono-label text-[color:var(--text-tertiary)] mb-10"
             lines={[
               {
                 text: "Modernizing online classes for an authentic virtual experience.",
@@ -102,7 +104,7 @@ export default function TeamsForEducationPage() {
             />
           </div>
           <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 At the height of the pandemic, Microsoft Teams became a lifeline for
                 education, used by over 150 million students and educators worldwide.
@@ -137,7 +139,7 @@ export default function TeamsForEducationPage() {
             title="Engagement collapsed when classrooms went virtual"
           />
           <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 Teachers became operators, not educators. They managed attendance, read
                 chat, spun up breakout rooms, debugged audio problems, and lectured all at
@@ -217,7 +219,7 @@ export default function TeamsForEducationPage() {
             title="Designing from real classroom behavior"
           />
           <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] space-y-6">
+            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] [&>p+p]:mt-4!">
               <p className="t-body">
                 Before designing anything, we ran extensive research with students,
                 parents, and teachers to understand their daily experience inside Teams.
@@ -253,7 +255,7 @@ export default function TeamsForEducationPage() {
             title="Reintroducing structure without turning Teams into a cartoon classroom"
           />
           <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 We explored three directions. The first was too literal: full classroom
                 maps with avatars at drawn tables. It was playful but felt gimmicky inside
@@ -305,7 +307,7 @@ export default function TeamsForEducationPage() {
 
           {/* Tight 2-paragraph body above */}
           <div className="section-grid mt-10">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 Virtual tables were only part of the solution. Teachers could start table
                 discussions and monitor the classroom from a global view, moving fluidly
@@ -343,7 +345,7 @@ export default function TeamsForEducationPage() {
             title="Preparation moves outside the meeting"
           />
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 items-start gap-x-8 lg:gap-x-12 gap-y-10">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 Previously, breakout rooms had to be created dynamically during the
                 meeting. That meant instructional time was lost while groups were assigned
@@ -437,7 +439,7 @@ export default function TeamsForEducationPage() {
             title="What we learned"
           />
           <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
-            <div className="flex flex-col gap-6 max-w-[68ch]">
+            <div className="flex flex-col gap-4 max-w-[68ch]">
               <p className="t-body">
                 Testing showed what mattered. Teachers moved between groups faster. They
                 spotted struggling students quicker. And most important: students spoke up
@@ -476,6 +478,11 @@ export default function TeamsForEducationPage() {
         </section>
 
       </main>
+      <NextProject
+        href="/agents-in-windows"
+        eyebrow="AGENTS IN WINDOWS"
+        title="Making AI agents visible and interruptible in Windows."
+      />
       <ManualFooter />
     </ManualShell>
   )

@@ -48,8 +48,8 @@ function useTickingNumber(target: number, duration = 420) {
 
 const NAV_ITEMS: { href: string; label: string }[] = [
   { href: "/",                      label: "WORK" },
-  { href: "/recall",                label: "RECALL" },
   { href: "/agents-in-windows",     label: "AGENTS" },
+  { href: "/recall",                label: "RECALL" },
   { href: "/teams-for-education",   label: "TEAMS" },
   { href: "/about",                 label: "ABOUT" },
 ]

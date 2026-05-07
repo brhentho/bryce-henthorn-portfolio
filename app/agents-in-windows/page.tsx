@@ -10,6 +10,7 @@ import {
   ManualFooter,
   CoverPlate,
   HeroIntro,
+  NextProject,
 } from "@/components/manual"
 
 const AGENT_STATES = [
@@ -29,8 +30,9 @@ export default function AgentsInWindowsPage() {
         {/* ── Hero ── */}
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <HeroIntro
+            static
             eyebrow="§ 00 / AGENTS IN WINDOWS"
-            eyebrowClassName="t-mono-label mb-10"
+            eyebrowClassName="t-mono-label text-[color:var(--text-tertiary)] mb-10"
             lines={[
               {
                 text: "Making AI agents visible and interruptible in Windows.",
@@ -77,7 +79,7 @@ export default function AgentsInWindowsPage() {
             title="Windows needed a place for agents to live"
           />
           <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] [&>p+p]:mt-8!">
+            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] [&>p+p]:mt-4!">
               <p className="t-body">
                 Microsoft is betting on agents as the next layer of computing. Not
                 replacements for humans, but tools that handle routine work so people can
@@ -126,7 +128,7 @@ export default function AgentsInWindowsPage() {
             title="People don&rsquo;t fear automation. They fear not knowing."
           />
           <div className="section-grid mt-10">
-            <div className="[&>p+p]:mt-8! max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 Agents scattered everywhere. Inside apps, buried in chat history, coming
                 through notifications. Users had no idea where their work actually was or
@@ -174,7 +176,7 @@ export default function AgentsInWindowsPage() {
             title="Anchoring to what users already know"
           />
           <div className="section-grid mt-10">
-            <div className="[&>p+p]:mt-8! max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 We tested three directions. Keep agents inside the apps that spawn them.
                 Pin them independently like applications. Or create a dedicated agent
@@ -234,7 +236,7 @@ export default function AgentsInWindowsPage() {
             title="The taskbar becomes a window into agent work"
           />
           <div className="section-grid mt-10">
-            <div className="[&>p+p]:mt-8! max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 Agents pin to the taskbar just like apps do. Invoke one and it appears as
                 an icon. Familiar. Clear that something&apos;s working. The metaphor
@@ -297,7 +299,7 @@ export default function AgentsInWindowsPage() {
           />
 
           <div className="section-grid mt-10 lg:mt-14">
-            <div className="[&>p+p]:mt-8! max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 Windows updates quarterly. You can&apos;t iterate freely like a web app.
                 Every change goes to hundreds of millions of devices and has to stay
@@ -340,7 +342,7 @@ export default function AgentsInWindowsPage() {
 
           {/* Tight 2-paragraph body above */}
           <div className="section-grid mt-10">
-            <div className="[&>p+p]:mt-8! max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 Ask Copilot is Windows Search plus Copilot. One place to type questions,
                 run actions, launch anything. We built agents directly into it. Type @,
@@ -378,7 +380,7 @@ export default function AgentsInWindowsPage() {
 
           {/* Body — frames the strip break that follows */}
           <div className="section-grid mt-10 lg:mt-14">
-            <div className="[&>p+p]:mt-8! max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 The real work was the tiny stuff. We prototyped these in the actual shell
                 with engineering and product alongside design. Tested multiple agents
@@ -432,7 +434,7 @@ export default function AgentsInWindowsPage() {
             title="From invisible to interruptible"
           />
           <div className="section-grid mt-10">
-            <div className="[&>p+p]:mt-8! max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 Agents aren&apos;t hidden anymore. You see them running. You know what
                 state they&apos;re in. You can come back to them whenever you want. No
@@ -484,6 +486,11 @@ export default function AgentsInWindowsPage() {
         </section>
 
       </main>
+      <NextProject
+        href="/recall"
+        eyebrow="WINDOWS RECALL"
+        title="Designing semantic search for everything you’ve seen."
+      />
       <ManualFooter />
     </ManualShell>
   )

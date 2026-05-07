@@ -27,11 +27,20 @@ type Props = {
   linesWrapperClassName?: string
   /** Optional appended slot rendered after the animated lines settle. */
   trailing?: ReactNode
+  /**
+   * If true, render the eyebrow + lines statically — no typewriter, no
+   * word-fade, no caret. Use on case-study heroes where the SectionLabel /
+   * scroll-reveal motion is the only motion the page should announce.
+   */
+  static?: boolean
 }
 
 /**
  * Operator-manual hero intro: monospace eyebrow types in char-by-char with a
  * blinking caret, then each line reveals word-by-word with a fade-up-blur.
+ *
+ * Pass `static` to render plain markup with no per-char/per-word animation —
+ * lets the surrounding scroll-reveal handle motion instead.
  */
 export function HeroIntro({
   eyebrow,
@@ -43,7 +52,34 @@ export function HeroIntro({
   wordStep = 32,
   eyebrowGap = 220,
   linesWrapperClassName,
+  static: isStatic = false,
 }: Props) {
+  if (isStatic) {
+    const renderedLines = lines.map((line, idx) => {
+      const Tag = line.as ?? (idx === 0 ? "h1" : "p")
+      const balance = Tag === "h1" || Tag === "h2" ? "text-balance" : ""
+      return (
+        <Tag key={idx} className={cn(balance, line.className)} style={line.style}>
+          {line.text}
+        </Tag>
+      )
+    })
+    return (
+      <>
+        {eyebrow && (
+          <p className={eyebrowClassName} style={eyebrowStyle}>
+            {eyebrow}
+          </p>
+        )}
+        {linesWrapperClassName ? (
+          <div className={linesWrapperClassName}>{renderedLines}</div>
+        ) : (
+          renderedLines
+        )}
+      </>
+    )
+  }
+
   const eyebrowDuration = eyebrow ? eyebrow.length * charStep : 0
   const linesStart = startDelay + eyebrowDuration + eyebrowGap
 
@@ -89,7 +125,7 @@ export function HeroIntro({
               className="hero-intro-char"
               style={{ animationDelay: `${startDelay + i * charStep}ms` }}
             >
-              {ch === " " ? " " : ch}
+              {ch === " " ? " " : ch}
             </span>
           ))}
           <span

@@ -67,7 +67,7 @@ export default function AboutPage() {
         <section data-section data-reveal id="bio" className="py-12 lg:py-20">
           <SectionLabel number="01" label="Bio" title="Want a bit more?" />
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
-            <div className="space-y-6 max-w-[68ch]">
+            <div className="[&>p+p]:mt-4! max-w-[68ch]">
               <p className="t-body">
                 I&apos;m a product designer working on AI experiences inside Windows at
                 Microsoft. My job sits at a strange and exciting intersection: operating
@@ -168,7 +168,7 @@ export default function AboutPage() {
             title="Good design should feel inevitable in hindsight"
           />
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-            <div className="space-y-6">
+            <div className="[&>p+p]:mt-4!">
               <p className="t-body">
                 Design, for me, is structure. It&apos;s the quiet architecture that makes
                 complexity feel obvious. I care about progressive disclosure. I care about
@@ -187,7 +187,7 @@ export default function AboutPage() {
                 they stay in flow instead of fragmenting it.
               </p>
             </div>
-            <div className="space-y-6">
+            <div className="[&>p+p]:mt-4!">
               <p className="t-body">
                 I&apos;m ambitious about the impact of the work, but I&apos;m pretty
                 grounded about the craft. I still sweat alignment, hierarchy, edge cases,
