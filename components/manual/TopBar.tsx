@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useId, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 import { ViewTransitionLink } from "./ViewTransitionLink"
 import { cn } from "@/lib/utils"
@@ -65,6 +65,9 @@ export function TopBar() {
   const pathname = usePathname()
   const [current, setCurrent] = useState(1)
   const [total, setTotal] = useState(0)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null)
+  const menuId = useId()
 
   useEffect(() => {
     const sections = Array.from(
@@ -93,6 +96,30 @@ export function TopBar() {
     return () => observer.disconnect()
   }, [pathname])
 
+  // Close the drawer on route change so the new page is unobstructed.
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [pathname])
+
+  // Lock body scroll + close on Escape while drawer is open. Restore focus
+  // to the trigger so keyboard users land back where they were.
+  useEffect(() => {
+    if (!menuOpen) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }
+    window.addEventListener("keydown", onKey)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener("keydown", onKey)
+    }
+  }, [menuOpen])
+
   const displayedCurrent = useTickingNumber(current)
   const pad = (n: number) => String(n).padStart(2, "0")
 
@@ -107,9 +134,10 @@ export function TopBar() {
           BRYCE HENTHORN
         </ViewTransitionLink>
 
+        {/* Desktop / tablet nav — visible at md and up. */}
         <nav
           aria-label="Site"
-          className="flex flex-wrap items-baseline gap-x-1 gap-y-1"
+          className="hidden md:flex flex-wrap items-baseline gap-x-1 gap-y-1"
         >
           {NAV_ITEMS.map((item, i) => {
             const isActive =
@@ -149,6 +177,25 @@ export function TopBar() {
           })}
         </nav>
 
+        {/* Mobile menu trigger — three thin rules in JetBrains Mono.
+            Hidden at md and up. */}
+        <button
+          ref={menuButtonRef}
+          type="button"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
+          aria-controls={menuId}
+          onClick={() => setMenuOpen((v) => !v)}
+          className="md:hidden t-mono-label text-[color:var(--text-primary)] px-2 py-1 -mr-2 cursor-pointer transition-colors duration-200 hover:text-[color:var(--accent-trace)]"
+        >
+          <span aria-hidden="true" className="manual-mobile-menu-icon">
+            <span />
+            <span />
+            <span />
+          </span>
+          <span className="sr-only">{menuOpen ? "Close menu" : "Menu"}</span>
+        </button>
+
         <span
           aria-hidden="true"
           className="hidden lg:inline-block t-mono-caption text-[color:var(--text-tertiary)] whitespace-nowrap select-none"
@@ -165,6 +212,55 @@ export function TopBar() {
             <span className="opacity-0">§ 00 / 00</span>
           )}
         </span>
+      </div>
+
+      {/* Mobile drawer — full-viewport panel below the sticky bar.
+          Same JetBrains Mono small-caps treatment as desktop nav so it reads
+          as part of the same system, not a generic mobile menu. */}
+      <div
+        id={menuId}
+        data-state={menuOpen ? "open" : "closed"}
+        aria-hidden={!menuOpen}
+        className={cn(
+          "manual-mobile-drawer md:hidden",
+          menuOpen ? "pointer-events-auto" : "pointer-events-none",
+        )}
+      >
+        <nav
+          aria-label="Site (mobile)"
+          className="container pt-10 pb-12 flex flex-col gap-1"
+          // Keep tab order off the drawer when closed.
+          inert={!menuOpen}
+        >
+          <p
+            aria-hidden="true"
+            className="t-mono-label text-[color:var(--text-tertiary)] mb-6"
+          >
+            § INDEX
+          </p>
+          {NAV_ITEMS.map((item) => {
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(item.href + "/")
+            return (
+              <ViewTransitionLink
+                key={item.href}
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                onClick={() => setMenuOpen(false)}
+                className={cn(
+                  "t-mono-label py-3 border-b border-[color:var(--rule)] transition-colors duration-200",
+                  isActive
+                    ? "text-[color:var(--text-primary)]"
+                    : "text-[color:var(--text-tertiary)] hover:text-[color:var(--text-primary)]",
+                )}
+              >
+                {item.label}
+              </ViewTransitionLink>
+            )
+          })}
+        </nav>
       </div>
     </header>
   )
