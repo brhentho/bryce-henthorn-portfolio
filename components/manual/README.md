@@ -21,6 +21,7 @@ Tokens live in `app/recall/recall.css` under `.manual { … }`. Components read 
 | `--rule` | `#2A2A2C` |
 | `--rule-strong` | `#3F3F42` |
 | `--text-primary` | `#F5F1E8` |
+| `--text-body` | `color-mix(in srgb, var(--text-primary) 85%, var(--ink))` — body tier; sits between primary (headlines) and secondary (subtitles) |
 | `--text-secondary` | `#A8A6A0` |
 | `--text-tertiary` | `#6E6C68` |
 | `--bg` | `var(--ink)` |
@@ -38,8 +39,8 @@ Tokens live in `app/recall/recall.css` under `.manual { … }`. Components read 
 
 | Class | Family | Weight | Size | Line | Tracking |
 |---|---|---|---|---|---|
-| `t-display-xl` | Inter Tight | 600 | 4.5rem | 1.05 | -0.02em |
-| `t-display-l` | Inter Tight | 600 | 3rem | 1.10 | -0.015em |
+| `t-display-xl` | Inter Tight | 600 | `clamp(2.25rem, 7vw, 4.5rem)` | 1.05 | -0.02em |
+| `t-display-l` | Inter Tight | 600 | `clamp(2rem, 6vw, 3rem)` | 1.10 | -0.015em |
 | `t-h1` | Inter Tight | 600 | 2.25rem | 1.15 | -0.01em |
 | `t-h2` | Inter Tight | 500 | 1.625rem | 1.25 | -0.005em |
 | `t-h3` | Inter Tight | 500 | 1.25rem | 1.35 | — |
@@ -57,7 +58,7 @@ All components are in `components/manual/`. Import from the barrel: `import { Fi
 |---|---|---|
 | `RegistrationMark` | `size?, className?` | Decorative 12×12 SVG crosshair. Used in figure corners and chrome. `aria-hidden`. |
 | `Crossref` | `section, href, label?` | Inline mono `§ N.N` link. |
-| `TopBar` | `(no props)` | Combined site header: identifier (`BRYCE HENTHORN`) · nav · inline `§ NN / TT`. Replaces the legacy `RevisionHeader` + `ManualNav` + fixed `ProgressIndicator`. |
+| `TopBar` | `(no props)` | Combined site header: identifier (`BRYCE HENTHORN`) · nav · inline `§ NN / TT`. Replaces the legacy `RevisionHeader` + `ManualNav` + fixed `ProgressIndicator`. Below the `md` breakpoint the inline nav collapses to a three-rule menu trigger that opens a full-width drawer (200ms ease-out, body scroll-locked, Escape closes). |
 | `SectionLabel` | `number, label, title, id?` | Mono small-caps eyebrow above a real `<h2>`. |
 | `SpecSheet` | `rows: {label,value}[]` | Label/value grid with hairline rules between rows. |
 | `Figure` | `number, caption?, cf?, src?, alt?, width?, height?, priority?, children?` | Wraps img/video/svg/children with figure number, mono caption, optional cross-reference. |

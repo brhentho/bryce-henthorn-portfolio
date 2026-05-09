@@ -9,10 +9,16 @@ const INDEX_ITEMS: { href: string; label: string }[] = [
 ]
 
 const linkClass =
-  "t-body-sm inline-block text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] decoration-[0.5px] underline-offset-[0.25em] transition-all duration-[160ms] hover:decoration-[color:var(--accent-trace)] hover:decoration-[1.5px]"
+  "t-body-sm block text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] decoration-[0.5px] underline-offset-[0.25em] transition-all duration-[160ms] hover:decoration-[color:var(--accent-trace)] hover:decoration-[1.5px]"
 
 const indexLinkClass =
   "t-mono-label inline-block text-[color:var(--text-primary)] transition-colors duration-[160ms] hover:text-[color:var(--accent-trace)]"
+
+/* INDEX / AUTHOR / CONTACT section headers. Plain `<p>` — never a link.
+   Tracking + tertiary tone separates the header from the items beneath it
+   so the column reads as label → list, not as a flat stack of links. */
+const sectionHeaderClass =
+  "t-mono-label text-[color:var(--text-tertiary)] cursor-default select-none"
 
 /**
  * Site-wide footer. Three columns: author, document index, contact.
@@ -24,7 +30,7 @@ export function ManualFooter() {
       <div className="container py-12 grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10">
         {/* Author */}
         <div className="space-y-3">
-          <p className="t-mono-label">AUTHOR</p>
+          <p className={sectionHeaderClass}>AUTHOR</p>
           <div className="space-y-1">
             <p className="t-body text-[color:var(--text-primary)]">Bryce Henthorn</p>
             <p className="t-mono-caption text-[color:var(--text-secondary)]">
@@ -35,7 +41,7 @@ export function ManualFooter() {
 
         {/* Index */}
         <div className="space-y-3">
-          <p className="t-mono-label">INDEX</p>
+          <p className={sectionHeaderClass}>INDEX</p>
           <ul className="space-y-1.5">
             {INDEX_ITEMS.map((item) => (
               <li key={item.href}>
@@ -49,12 +55,12 @@ export function ManualFooter() {
 
         {/* Contact */}
         <div className="space-y-3">
-          <p className="t-mono-label">CONTACT</p>
+          <p className={sectionHeaderClass}>CONTACT</p>
           <div className="space-y-1">
             <a href="tel:+13609272833" className={linkClass}>
               360.927.2833
             </a>
-            <a href="mailto:bhenthorn2757@gmail.com" className={`${linkClass} block`}>
+            <a href="mailto:bhenthorn2757@gmail.com" className={linkClass}>
               bhenthorn2757@gmail.com
             </a>
             <p className="t-body-sm text-[color:var(--text-secondary)]">Seattle, WA</p>

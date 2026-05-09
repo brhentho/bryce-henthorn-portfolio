@@ -19,6 +19,10 @@
   --text-primary:   #F5F1E8;
   --text-secondary: #A8A6A0;
   --text-tertiary:  #6E6C68;
+  /* Body tier sits between primary (headlines) and secondary (subtitle/meta).
+     ~85% of primary blended onto ink — Linear-style softening so body copy
+     no longer competes with headlines. */
+  --text-body: color-mix(in srgb, var(--text-primary) 85%, var(--ink));
 
   /* Accents */
   --accent-schematic: #6B8FB8;
@@ -54,13 +58,15 @@
 }
 
 /* ── Type scale ── exact rem values from brief */
-.manual .t-display-xl { font-family: var(--font-display); font-weight: 600; font-size: 4.5rem;    line-height: 1.05; letter-spacing: -0.02em; }
-.manual .t-display-l  { font-family: var(--font-display); font-weight: 600; font-size: 3rem;      line-height: 1.10; letter-spacing: -0.015em; }
+/* Display tiers use clamp() so heroes scale fluidly down to mobile widths
+   without overflow. Floor and ceiling preserve the original desktop sizes. */
+.manual .t-display-xl { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.25rem, 7vw, 4.5rem); line-height: 1.05; letter-spacing: -0.02em; overflow-wrap: break-word; }
+.manual .t-display-l  { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 6vw, 3rem);      line-height: 1.10; letter-spacing: -0.015em; overflow-wrap: break-word; }
 .manual .t-h1         { font-family: var(--font-display); font-weight: 600; font-size: 2.25rem;   line-height: 1.15; letter-spacing: -0.01em; }
 .manual .t-h2         { font-family: var(--font-display); font-weight: 500; font-size: 1.625rem;  line-height: 1.25; letter-spacing: -0.005em; }
 .manual .t-h3         { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem;   line-height: 1.35; }
-.manual .t-body       { font-family: var(--font-body);    font-weight: 400; font-size: 1.0625rem; line-height: 1.65; letter-spacing: -0.005em; color: var(--text-primary); }
-.manual .t-body-sm    { font-family: var(--font-body);    font-weight: 400; font-size: 0.9375rem; line-height: 1.60; color: var(--text-primary); }
+.manual .t-body       { font-family: var(--font-body);    font-weight: 400; font-size: 1.0625rem; line-height: 1.65; letter-spacing: -0.005em; color: var(--text-body); }
+.manual .t-body-sm    { font-family: var(--font-body);    font-weight: 400; font-size: 0.9375rem; line-height: 1.60; color: var(--text-body); }
 .manual .t-mono-label      { font-family: var(--font-mono); font-weight: 500; font-size: 0.75rem;   line-height: 1.4;  letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); }
 .manual .t-mono-caption    { font-family: var(--font-mono); font-weight: 400; font-size: 0.8125rem; line-height: 1.55; color: var(--text-tertiary); }
 .manual .t-mono-marginalia { font-family: var(--font-mono); font-weight: 400; font-size: 0.75rem;   line-height: 1.5;  color: var(--text-tertiary); }
@@ -74,7 +80,7 @@
 
 .manual p {
   margin: 0;
-  color: var(--text-primary);
+  color: var(--text-body);
 }
 
 .manual a {
@@ -234,6 +240,62 @@
   .manual-nav-underline {
     animation: none !important;
     transform: scaleX(1);
+  }
+}
+
+/* ── Mobile menu trigger ── three thin horizontal rules. Replaces the
+   standard hamburger glyph; renders in any system font without depending
+   on a specific Unicode shape. ───────────────────────────────────────── */
+.manual-mobile-menu-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1.125rem;
+  height: 0.75rem;
+  vertical-align: -0.1em;
+}
+.manual-mobile-menu-icon > span {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+}
+
+/* ── Mobile nav drawer ── full-width panel that drops below the sticky
+   header. Restrained 200ms ease-out fade + 4px slide; no bounce. The drawer
+   sits on the manual surface (ink + grain) so it visually reads as the same
+   document, not a layered modal. ─────────────────────────────────────── */
+.manual-mobile-drawer {
+  position: fixed;
+  /* Header is ~52px tall (py-3 + line height); cover the entire space below. */
+  top: var(--manual-mobile-drawer-top, 52px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 49;
+  background: var(--ink);
+  border-top: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity 200ms ease-out,
+    transform 200ms ease-out,
+    visibility 0s linear 200ms;
+  visibility: hidden;
+  overflow-y: auto;
+}
+.manual-mobile-drawer[data-state="open"] {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  transition:
+    opacity 200ms ease-out,
+    transform 200ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .manual-mobile-drawer {
+    transition: none !important;
+    transform: none !important;
   }
 }
 
