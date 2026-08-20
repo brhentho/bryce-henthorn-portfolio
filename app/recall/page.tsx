@@ -70,8 +70,6 @@ export default function RecallPage() {
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <HeroIntro
             static
-            eyebrow="§ 00 / WINDOWS RECALL"
-            eyebrowClassName="t-mono-label text-[color:var(--text-tertiary)] mb-10"
             lines={[
               {
                 text: "Designing semantic search for everything you’ve seen.",
@@ -244,7 +242,7 @@ export default function RecallPage() {
           data-reveal
           id="problem-interlude"
           aria-labelledby="problem-interlude-quote"
-          className="my-12 lg:my-20 py-16 lg:py-24 border-y border-[color:var(--rule)]"
+          className="my-12 lg:my-20 py-16 lg:py-24"
         >
           <blockquote className="max-w-[68ch]">
             <p
@@ -443,7 +441,7 @@ export default function RecallPage() {
           {/* Body left, privacy screenshots stacked right */}
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 lg:gap-14 mt-10 items-start">
             <div className="flex flex-col gap-4 max-w-[68ch]">
-              <p className="t-body lede text-[color:var(--text-secondary)]">
+              <p className="t-body text-[color:var(--text-secondary)]">
                 Recall captures everything. That only works if people trust where the
                 data sits, who can see it, and what control they actually have.
               </p>

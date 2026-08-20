@@ -5,7 +5,6 @@ import {
   SpecSheet,
   Figure,
   Telemetry,
-  Margin,
   TopBar,
   ManualFooter,
   CoverPlate,
@@ -21,6 +20,24 @@ const AGENT_STATES = [
   { src: "/assets/agents/Paused agent.svg",           label: "PAUSED" },
 ]
 
+const TASKBAR_KEYFRAMES = [
+  {
+    label: "EMPTY PIN",
+    src: "/assets/Frame 2147238301.png",
+    alt: "Taskbar evolution keyframe 1 — agent pinned to the taskbar with no active work",
+  },
+  {
+    label: "ACTIVE STATE",
+    src: "/assets/Frame 2147238302.png",
+    alt: "Taskbar evolution keyframe 2 — pinned agent showing an in-progress state indicator",
+  },
+  {
+    label: "HOVER-CARD EXPANDED",
+    src: "/assets/Frame 2147238303.png",
+    alt: "Taskbar evolution keyframe 3 — hover card expanded from the taskbar icon showing step detail",
+  },
+]
+
 export default function AgentsInWindowsPage() {
   return (
     <ManualShell>
@@ -31,8 +48,6 @@ export default function AgentsInWindowsPage() {
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <HeroIntro
             static
-            eyebrow="§ 00 / AGENTS IN WINDOWS"
-            eyebrowClassName="t-mono-label text-[color:var(--text-tertiary)] mb-10"
             lines={[
               {
                 text: "Making AI agents visible and interruptible in Windows.",
@@ -78,8 +93,8 @@ export default function AgentsInWindowsPage() {
             label="Context"
             title="Windows needed a place for agents to live"
           />
-          <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] [&>p+p]:mt-4!">
+          <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start gap-x-20 gap-y-10">
+            <div className="[&>p+p]:mt-4!">
               <p className="t-body">
                 Microsoft is betting on agents as the next layer of computing. Not
                 replacements for humans, but tools that handle routine work so people can
@@ -106,7 +121,7 @@ export default function AgentsInWindowsPage() {
                 building a system stable enough to ship but flexible enough to evolve.
               </p>
             </div>
-            <div className="p-6 lg:p-10 flex items-start">
+            <div className="flex items-start">
               <Figure
                 number="1.1"
                 caption="Windows desktop with agent taskbar concept"
@@ -122,28 +137,27 @@ export default function AgentsInWindowsPage() {
 
         {/* ── 02 Problem ── */}
         <section data-section data-reveal id="problem" className="py-12 lg:py-20">
-          <SectionLabel
-            number="02"
-            label="Problem"
-            title="People don&rsquo;t fear automation. They fear not knowing."
-          />
-          <div className="section-grid mt-10">
-            <div className="[&>p+p]:mt-4! max-w-[68ch]">
-              <p className="t-body">
-                Agents scattered everywhere. Inside apps, buried in chat history, coming
-                through notifications. Users had no idea where their work actually was or
-                if anything was still running. Fragments. No coherent picture.
-              </p>
-              <p className="t-body">
-                Early interviews hit a consistent note. Users liked having help. What they
-                hated was surprises. They wanted to know what was happening, where it was
-                happening, when it&apos;d be done. They didn&apos;t distrust automation
-                itself. They distrusted invisibility.
-              </p>
-            </div>
-            <Margin anchor="2-pull">
-              &ldquo;They didn&rsquo;t distrust automation. They distrusted invisibility.&rdquo;
-            </Margin>
+          {/* Centered thesis headline — the one full-width statement on the
+              page. Body splits into two columns beneath it. */}
+          <div className="flex flex-col items-center gap-4 text-center">
+            <h2
+              className="t-display-l text-balance max-w-[24ch] text-[color:var(--text-primary)]"
+            >
+              People don&rsquo;t fear automation. They fear not knowing.
+            </h2>
+          </div>
+          <div className="mt-14 lg:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-6 items-start">
+            <p className="t-body">
+              Agents scattered everywhere. Inside apps, buried in chat history, coming
+              through notifications. Users had no idea where their work actually was or
+              if anything was still running. Fragments. No coherent picture.
+            </p>
+            <p className="t-body">
+              Early interviews hit a consistent note. Users liked having help. What they
+              hated was surprises. They wanted to know what was happening, where it was
+              happening, when it&apos;d be done. They didn&apos;t distrust automation
+              itself. They distrusted invisibility.
+            </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
             <Figure
@@ -175,57 +189,56 @@ export default function AgentsInWindowsPage() {
             label="Process"
             title="Anchoring to what users already know"
           />
-          <div className="section-grid mt-10">
-            <div className="[&>p+p]:mt-4! max-w-[68ch]">
-              <p className="t-body">
-                We tested three directions. Keep agents inside the apps that spawn them.
-                Pin them independently like applications. Or create a dedicated agent
-                workspace. Each had problems. Some felt bloated for something that barely
-                existed yet. Others made agents too cryptic about where they actually were
-                and how to get back to them.
-              </p>
-              <p className="t-body">
-                Agents are genuinely new, but they don&apos;t have to feel alien. We
-                pushed for a progressive approach. Build on something users already use
-                every day rather than forcing them to memorize a new system. We anchored
-                agents to the taskbar. Same place apps live. Same behaviors. But with new
-                states and signals that reflect how agents work.
+          <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start gap-x-20 gap-y-10">
+            <div>
+              <div className="[&>p+p]:mt-4!">
+                <p className="t-body">
+                  We tested three directions. Keep agents inside the apps that spawn them.
+                  Pin them independently like applications. Or create a dedicated agent
+                  workspace. Each had problems. Some felt bloated for something that barely
+                  existed yet. Others made agents too cryptic about where they actually were
+                  and how to get back to them.
+                </p>
+                <p className="t-body">
+                  Agents are genuinely new, but they don&apos;t have to feel alien. We
+                  pushed for a progressive approach. Build on something users already use
+                  every day rather than forcing them to memorize a new system. We anchored
+                  agents to the taskbar. Same place apps live. Same behaviors. But with new
+                  states and signals that reflect how agents work.
+                </p>
+              </div>
+              <p className="t-mono-caption mt-6 pt-4 border-t border-[color:var(--rule)] text-[color:var(--text-tertiary)]">
+                FIG. 3.1 / 3.2 / 3.3. Taskbar pin → state visible → hover-card expansion.
               </p>
             </div>
-          </div>
 
-          <p className="t-mono-label mt-20! lg:mt-28! mb-8! text-[color:var(--text-tertiary)]">
-            TASKBAR EVOLUTION / KEYFRAMES
-          </p>
-          <ol className="grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-10 border-t border-[color:var(--rule)] pt-6">
-            {[
-              { label: "Empty pin",           src: "/assets/Frame 2147238301.png" },
-              { label: "Active state",        src: "/assets/Frame 2147238302.png" },
-              { label: "Hover-card expanded", src: "/assets/Frame 2147238303.png" },
-            ].map((kf, i) => (
-              <li key={kf.label} className="space-y-4">
-                <div className="space-y-1.5">
-                  <p className="t-mono-label text-[color:var(--text-secondary)]">
-                    {String(i + 1).padStart(2, "0")} · KEYFRAME
-                  </p>
-                  <p className="t-mono-caption text-[color:var(--text-tertiary)] leading-relaxed">
-                    {kf.label}
-                  </p>
-                </div>
-                <Figure
-                  number={`3.${i + 1}`}
-                  src={kf.src}
-                  alt={`Taskbar evolution keyframe ${i + 1}`}
-                  width={1302}
-                  height={314}
-                  className="my-0"
-                />
-              </li>
-            ))}
-          </ol>
-          <p className="t-mono-caption text-[color:var(--text-secondary)] mt-4! pt-3 border-t border-[color:var(--rule)]">
-            FIG. 3.1 / 3.2 / 3.3. Taskbar pin → state visible → hover-card expansion.
-          </p>
+            {/* Keyframes stack vertically so the pin → state → hover-card
+                progression reads top-to-bottom against the body column. */}
+            <ol className="flex flex-col gap-7">
+              {TASKBAR_KEYFRAMES.map((kf, i) => (
+                <li key={kf.label}>
+                  <figure className="m-0">
+                    <div className="mb-2.5 flex items-baseline justify-between gap-4">
+                      <span className="t-mono-label text-[color:var(--text-secondary)]">
+                        {String(i + 1).padStart(2, "0")} · {kf.label}
+                      </span>
+                      <span className="t-mono-label">FIG. 3.{i + 1}</span>
+                    </div>
+                    <div className="border border-[color:var(--rule)]">
+                      <Image
+                        src={kf.src}
+                        alt={kf.alt}
+                        width={1302}
+                        height={314}
+                        sizes="(min-width: 1024px) 640px, 100vw"
+                        className="block w-full h-auto bg-[color:var(--ink)]"
+                      />
+                    </div>
+                  </figure>
+                </li>
+              ))}
+            </ol>
+          </div>
         </section>
 
         {/* ── 04 Taskbar ── Body column + square-cropped video ── */}
@@ -235,8 +248,8 @@ export default function AgentsInWindowsPage() {
             label="Taskbar"
             title="The taskbar becomes a window into agent work"
           />
-          <div className="section-grid mt-10">
-            <div className="[&>p+p]:mt-4! max-w-[68ch]">
+          <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-center gap-x-20 gap-y-10">
+            <div className="[&>p+p]:mt-4!">
               <p className="t-body">
                 Agents pin to the taskbar just like apps do. Invoke one and it appears as
                 an icon. Familiar. Clear that something&apos;s working. The metaphor
@@ -255,32 +268,32 @@ export default function AgentsInWindowsPage() {
                 on. The system stays together.
               </p>
             </div>
+            <Figure
+              number="4.1"
+              frameless
+              caption="Taskbar agent. Hover-card expansion in motion."
+              className="my-0"
+            >
+              <div className="relative aspect-square overflow-hidden border border-[color:var(--rule)]">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ objectPosition: "50% 100%" }}
+                  src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Taskbar.mp4"
+                />
+              </div>
+            </Figure>
           </div>
-          <Figure
-            number="4.1"
-            frameless
-            caption="Taskbar agent. Hover-card expansion in motion."
-            className="mx-auto max-w-2xl lg:max-w-3xl"
-          >
-            <div className="relative aspect-square overflow-hidden">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{ objectPosition: "50% 100%" }}
-                src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Taskbar.mp4"
-              />
-            </div>
-          </Figure>
         </section>
 
         {/* ── Pull-quote Interlude (§2.11) — transition from Taskbar into Constraints ── */}
         <section
           data-reveal
           aria-label="Constraints pull-quote"
-          className="my-12 lg:my-20 py-16 lg:py-24 border-y border-[color:var(--rule)]"
+          className="my-12 lg:my-20 py-16 lg:py-24"
         >
           <blockquote className="max-w-[68ch]">
             <p className="t-display-l text-[color:var(--text-primary)]">

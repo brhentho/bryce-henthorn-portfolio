@@ -19,6 +19,8 @@
   --text-primary:   #F5F1E8;
   --text-secondary: #A8A6A0;
   --text-tertiary:  #6E6C68;
+  /* Faintest legible tier — colophon / printer's-mark chrome only. */
+  --text-faint:     #55534F;
   /* Body tier sits between primary (headlines) and secondary (subtitle/meta).
      ~85% of primary blended onto ink — Linear-style softening so body copy
      no longer competes with headlines. */
@@ -40,6 +42,12 @@
   font-family: var(--font-body), system-ui, sans-serif;
   min-height: 100vh;
   position: relative;
+  /* Corner registration marks straddle their box by -6px. On the full-bleed
+     footer that overhang would push the document 6px wider than the viewport
+     and produce a horizontal scrollbar. `clip` (not `hidden`) suppresses it
+     without creating a scroll container, and leaves the vertical axis
+     visible so the marks still sit proud of the top edge. */
+  overflow-x: clip;
 }
 
 /* ── Film grain ──
@@ -70,6 +78,8 @@
 .manual .t-mono-label      { font-family: var(--font-mono); font-weight: 500; font-size: 0.75rem;   line-height: 1.4;  letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); }
 .manual .t-mono-caption    { font-family: var(--font-mono); font-weight: 400; font-size: 0.8125rem; line-height: 1.55; color: var(--text-tertiary); }
 .manual .t-mono-marginalia { font-family: var(--font-mono); font-weight: 400; font-size: 0.75rem;   line-height: 1.5;  color: var(--text-tertiary); }
+/* Colophon strip — the footer's © / imprint line. One tier below caption. */
+.manual .t-mono-colophon   { font-family: var(--font-mono); font-weight: 500; font-size: 0.6875rem; line-height: 1.55; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
 
 /* ── Headings inherit display family by default (semantic safety net) ── */
 .manual h1, .manual h2, .manual h3 {
@@ -93,6 +103,14 @@
    Lifted out of the t-mono-label color rule so it reads as a button. */
 .manual .read-button { color: var(--text-primary); }
 .manual .group:hover .read-button { color: var(--accent-trace); }
+
+/* ── Homepage project card ──
+   Two per-instance overrides that need to outrank the `.manual .t-*` type
+   rules they sit alongside. Both resolve to existing tokens — the card title
+   is the one place the display size is fluid rather than the fixed 2.25rem
+   of `t-h1`, because it has to hold inside a 46%-wide column on the card. */
+.manual .pcard-title { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.12; }
+.manual .pcard-dek   { color: var(--text-secondary); }
 
 /* ── Layout container ── */
 .manual .container {
@@ -208,41 +226,6 @@
   stroke-dashoffset: 0;
 }
 
-.manual .manual-counter-digit {
-  display: inline-block;
-}
-
-/* Active nav underline — `transform: scaleX(0) → 1` from the left edge.
-   The span is freshly painted on every route change because its parent
-   `<a>` only renders when `isActive`; that paint triggers the once-only
-   animation, so each navigation draws the underline like a meter needle
-   settling. ─────────────────────────────────────────────────────────── */
-.manual-nav-underline {
-  position: absolute;
-  bottom: 0;
-  left: 0.5rem;
-  right: 0.5rem;
-  height: 3px;
-  background: var(--accent-trace);
-  box-shadow: 0 0 6px color-mix(in srgb, var(--accent-trace) 50%, transparent);
-  transform: scaleX(0);
-  transform-origin: left center;
-  /* Delay 120ms so the trace draws after the new page paint settles —
-     otherwise it completes during the view-transition and looks instant. */
-  animation: manual-nav-underline-trace 480ms cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
-  border-radius: 1.5px;
-  pointer-events: none;
-}
-@keyframes manual-nav-underline-trace {
-  to { transform: scaleX(1); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .manual-nav-underline {
-    animation: none !important;
-    transform: scaleX(1);
-  }
-}
-
 /* ── Mobile menu trigger ── three thin horizontal rules. Replaces the
    standard hamburger glyph; renders in any system font without depending
    on a specific Unicode shape. ───────────────────────────────────────── */
@@ -297,29 +280,6 @@
     transition: none !important;
     transform: none !important;
   }
-}
-
-/* ── NowReading chip — fade in label on change ── */
-.manual .manual-now-reading-text {
-  display: inline-block;
-  animation: manual-now-reading-in 200ms ease backwards;
-}
-@keyframes manual-now-reading-in {
-  from { opacity: 0; transform: translateY(2px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ── NowReading status LED — ambient pulse signals "site is live" ── */
-.manual-now-reading-led {
-  animation: led-blink 2800ms ease-in-out infinite;
-  transform-origin: center center;
-}
-@keyframes led-blink {
-  0%, 100% { opacity: 1;    transform: scale(1); }
-  50%      { opacity: 0.35; transform: scale(1.25); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .manual-now-reading-led { animation: none; opacity: 1; transform: none; }
 }
 
 /* ── Figure registration mark — one-shot "engage" pulse on viewport entry.
@@ -416,10 +376,6 @@
     transition: none !important;
   }
   .manual section[data-section]:not([data-reveal]) > * {
-    animation: none !important;
-  }
-  .manual .manual-counter-digit,
-  .manual .manual-now-reading-text {
     animation: none !important;
   }
   .manual .manual-cursor-blink {

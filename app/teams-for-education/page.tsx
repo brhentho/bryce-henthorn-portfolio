@@ -47,8 +47,6 @@ export default function TeamsForEducationPage() {
         <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
           <HeroIntro
             static
-            eyebrow="§ 00 / TEAMS FOR EDUCATION"
-            eyebrowClassName="t-mono-label text-[color:var(--text-tertiary)] mb-10"
             lines={[
               {
                 text: "Modernizing online classes for an authentic virtual experience.",
@@ -190,7 +188,7 @@ export default function TeamsForEducationPage() {
           data-reveal
           id="problem-interlude"
           aria-labelledby="problem-interlude-quote"
-          className="my-12 lg:my-20 py-16 lg:py-24 border-y border-[color:var(--rule)]"
+          className="my-12 lg:my-20 py-16 lg:py-24"
         >
           <p className="t-mono-label mb-8 text-[color:var(--text-tertiary)]">
             INTERLUDE
@@ -202,9 +200,6 @@ export default function TeamsForEducationPage() {
             >
               The system worked for lecturing. It failed at learning.
             </p>
-            <footer className="t-mono-caption mt-8 text-[color:var(--text-tertiary)]">
-              Cf. § 02 / PROBLEM
-            </footer>
           </blockquote>
         </aside>
 

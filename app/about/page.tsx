@@ -52,8 +52,6 @@ export default function AboutPage() {
         {/* ── 00 Hero — manifesto ── */}
         <section data-section id="overview" className="pt-16 lg:pt-32 pb-16 lg:pb-24">
           <HeroIntro
-            eyebrow="§ 00 / ABOUT"
-            eyebrowClassName="t-mono-label mb-10"
             linesWrapperClassName="space-y-3 lg:space-y-4"
             lines={MANIFESTO.map((line) => ({
               text: line,
@@ -114,7 +112,7 @@ export default function AboutPage() {
           />
 
           <h3 className="t-mono-label mt-12 mb-6">MICROSOFT</h3>
-          <dl className="border-y border-[color:var(--rule)]">
+          <dl>
             {MICROSOFT_ROLES.map((item, i, arr) => (
               <div
                 key={`${item.role}-${i}`}
@@ -142,7 +140,7 @@ export default function AboutPage() {
           </dl>
 
           <h3 className="t-mono-label mt-12 mb-6">PRIOR</h3>
-          <dl className="border-y border-[color:var(--rule)]">
+          <dl>
             {[
               { label: "AMAZON",    value: "Contract" },
               { label: "NORDSTROM", value: "Contract" },

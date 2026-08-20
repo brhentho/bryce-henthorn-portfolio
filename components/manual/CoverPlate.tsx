@@ -3,10 +3,11 @@ import { cn } from "@/lib/utils"
 import { RegistrationMark } from "./RegistrationMark"
 
 type Props = {
-  /** The upcoming section's number (e.g., "07"). */
+  /** The upcoming section's number (e.g., "07"). Used for the heading id;
+   *  no longer rendered as a `§ NN / TT` line. */
   number: string
-  /** Total numbered chapters in the document (e.g., "09"). */
-  total: string
+  /** Retained for call-site compatibility — no longer rendered. */
+  total?: string
   /** Chapter title, repeated as the upcoming section's name. */
   title: string
   /** Optional ambient mark or schematic rendered under the title. */
@@ -17,19 +18,13 @@ type Props = {
 /**
  * Internal chapter divider (§2.10 in docs/layout-direction.md). Marks
  * transitions between major movements. Approximately 60vh, centered, with
- * pagination + registration marks at the four corners.
+ * registration marks at the four corners. The `§ NN / TT` pagination line
+ * was removed in the 2026 revision — the plate carries its title alone.
  *
- * Not a numbered section: deliberately omits data-section so the
- * ProgressIndicator and NowReading skip it. data-reveal participates in the
- * page's scroll-reveal sequence.
+ * Not a numbered section: deliberately omits data-section. data-reveal
+ * participates in the page's scroll-reveal sequence.
  */
-export function CoverPlate({
-  number,
-  total,
-  title,
-  ambient,
-  className,
-}: Props) {
+export function CoverPlate({ number, title, ambient, className }: Props) {
   return (
     <section
       data-reveal
@@ -58,9 +53,6 @@ export function CoverPlate({
         aria-hidden="true"
       />
 
-      <p className="t-mono-label text-[color:var(--text-tertiary)] mb-8">
-        § {number} / {total}
-      </p>
       <h2
         id={`cover-${number}-title`}
         className="t-display-l text-[color:var(--text-primary)]"
