@@ -1,4 +1,5 @@
 import { ViewTransitionLink } from "./ViewTransitionLink"
+import { RegistrationMark } from "./RegistrationMark"
 
 const INDEX_ITEMS: { href: string; label: string }[] = [
   { href: "/",                      label: "WORK" },
@@ -21,12 +22,16 @@ const sectionHeaderClass =
   "t-mono-label text-[color:var(--text-tertiary)] cursor-default select-none"
 
 /**
- * Site-wide footer. Three columns: author, document index, contact.
- * Hairline rule on top.
+ * Site-wide footer — the "registration grid" (design 1F). Three columns:
+ * author, document index, contact. Hairline rule on top with registration
+ * marks at the two upper corners, and an inner hairline above the colophon.
  */
 export function ManualFooter() {
   return (
-    <footer className="border-t border-[color:var(--rule)] mt-16">
+    <footer className="relative border-t border-[color:var(--rule)] mt-16">
+      <RegistrationMark className="absolute -top-1.5 -left-1.5" />
+      <RegistrationMark className="absolute -top-1.5 -right-1.5" />
+
       <div className="container py-12 grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10">
         {/* Author */}
         <div className="space-y-3">
@@ -67,10 +72,11 @@ export function ManualFooter() {
           </div>
         </div>
       </div>
-      <div className="container pb-8 pt-2 border-t border-[color:var(--rule)]">
-        <p className="t-mono-caption text-[color:var(--text-tertiary)]">
-          © 2026 Bryce Henthorn. All rights reserved.
-        </p>
+      <div className="border-t border-[color:var(--rule)]">
+        <div className="container py-2 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 t-mono-colophon">
+          <span>© 2026 Bryce Henthorn</span>
+          <span>Printed Seattle, WA</span>
+        </div>
       </div>
     </footer>
   )

@@ -3,88 +3,108 @@ import { ViewTransitionLink } from "./ViewTransitionLink"
 
 type Props = {
   href: string
+  /** Two-digit document index, e.g. "01". Rendered in --accent-trace. */
+  index: string
+  /** Project name, uppercased by the mono label style. */
   eyebrow: string
   title: string
-  years: string
-  bgSrc: string
-  artSrc: string
-  artAlt: string
+  /** One-line description under the title. */
+  dek: string
+  /** Bottom strip meta — "2025 – · WINDOWS 11 SHELL". */
+  meta: string
+  imgSrc: string
+  imgAlt: string
 }
 
 /**
- * Homepage project card. Lays the cosmic background image full-bleed under
- * a two-column grid: text (eyebrow / title / year + READ) on the left, the
- * project's foreground art (UI mockup, screenshot, avatar set) on the right.
- * Matches the Figma 1120×496 frame: 60/40 split, year & READ left-aligned
- * with a generous gap, art top-aligned in the right column.
+ * Homepage project card — "full takeover" (design 2C). The case-study's own
+ * hero screenshot fills the whole 1120×496 frame at full colour; a hard
+ * left-to-right scrim carries the text block over it, and a bottom strip
+ * holds the meta line and the READ affordance.
+ *
+ * Hover is a four-part move: the card lifts, its border warms to
+ * --rule-strong, the screenshot pushes in 3%, and a 2px accent trace wipes
+ * across the top edge. All of it is gated behind motion-safe.
  */
 export function ProjectCard({
   href,
+  index,
   eyebrow,
   title,
-  years,
-  bgSrc,
-  artSrc,
-  artAlt,
+  dek,
+  meta,
+  imgSrc,
+  imgAlt,
 }: Props) {
   return (
     <ViewTransitionLink
       href={href}
       className="block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[color:var(--accent-trace)]"
     >
-      <article className="relative border border-[color:var(--rule)] group-hover:border-[color:var(--text-tertiary)] transition-colors lg:aspect-[1120/496] overflow-hidden bg-[color:var(--ink)]">
-        {/* Layer 1 — full-bleed background, desaturated to operator-manual ink */}
+      <article
+        className={[
+          "relative overflow-hidden border border-[color:var(--rule)] bg-[#121213]",
+          "lg:aspect-[1120/496]",
+          "transition-[border-color,transform,box-shadow] duration-[400ms] ease-[cubic-bezier(0.2,0.65,0.3,1)]",
+          "group-hover:border-[color:var(--rule-strong)]",
+          "motion-safe:group-hover:-translate-y-1 motion-safe:group-hover:shadow-[0_32px_64px_rgba(0,0,0,0.5)]",
+        ].join(" ")}
+      >
+        {/* Layer 1 — the case study's own hero screenshot, full colour. */}
         <Image
-          src={bgSrc}
-          alt=""
+          src={imgSrc}
+          alt={imgAlt}
           fill
-          aria-hidden="true"
-          sizes="(min-width: 1024px) 1120px, 100vw"
-          className="object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.01]"
-          style={{ mixBlendMode: "luminosity", opacity: 0.18 }}
-          priority={false}
+          sizes="(min-width: 1280px) 1120px, 100vw"
+          className="object-cover object-bottom motion-safe:transition-transform motion-safe:duration-[800ms] motion-safe:ease-[cubic-bezier(0.2,0.65,0.3,1)] motion-safe:group-hover:scale-[1.03]"
         />
 
-        {/* Layer 2 — two-column content. Padding mirrors Figma: ~48px h, ~74px v on desktop. */}
-        <div className="relative h-full flex flex-col lg:flex-row p-6 sm:p-8 lg:px-12 lg:py-14 xl:py-[74px] gap-6 lg:gap-8">
-          {/* LEFT — text column (60%) */}
-          <div className="flex flex-col justify-between min-w-0 flex-1 lg:basis-[60%] lg:max-w-[60%]">
-            <div className="flex-1 flex flex-col justify-center min-h-[220px] lg:min-h-0">
-              <p className="t-mono-label">{eyebrow}</p>
-              <h3
-                className="t-h1 text-[color:var(--text-primary)]"
-                style={{ marginTop: "48px" }}
-              >
-                {title}
-              </h3>
-            </div>
-            <div className="flex items-baseline gap-x-[clamp(48px,12vw,180px)] mt-8 lg:mt-12">
-              <span className="t-mono-caption text-[color:var(--text-tertiary)]">
-                {years}
-              </span>
-              <span className="t-mono-label read-button transition-colors inline-flex items-baseline gap-[0.3em]">
-                READ
-                <span
-                  aria-hidden="true"
-                  className="inline-block transition-transform duration-200 ease-out group-hover:translate-x-[3px]"
-                >
-                  →
-                </span>
-              </span>
-            </div>
+        {/* Layer 2 — scrim. Deep enough on the left that the text block clears
+            4.5:1 over any frame of the screenshot beneath it. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(95deg, var(--ink) 30%, rgba(15,15,16,0.88) 52%, rgba(15,15,16,0.12) 80%)",
+          }}
+        />
+
+        {/* Layer 3 — accent trace, wipes left→right on hover. */}
+        <span
+          aria-hidden="true"
+          className="absolute top-0 left-0 right-0 h-[2px] origin-left scale-x-0 bg-[color:var(--accent-trace)] shadow-[0_0_8px_rgba(184,85,30,0.6)] motion-safe:transition-transform motion-safe:duration-[480ms] motion-safe:ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:group-hover:scale-x-100"
+        />
+
+        <div className="relative flex h-full flex-col">
+          <div className="flex min-h-0 flex-1 flex-col justify-center gap-6 p-6 sm:p-8 lg:px-12 lg:py-12 lg:max-w-[46%]">
+            <p className="t-mono-label">
+              <span className="text-[color:var(--accent-trace)]">{index}</span>{" "}
+              / {eyebrow}
+            </p>
+            <h3 className="t-h1 pcard-title text-balance text-[color:var(--text-primary)]">
+              {title}
+            </h3>
+            <p className="t-body-sm pcard-dek max-w-[44ch]">
+              {dek}
+            </p>
           </div>
 
-          {/* RIGHT — foreground art (40% on lg, full-width on mobile). */}
-          <div className="flex lg:basis-[40%] items-center justify-center">
-            <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full max-h-full">
-              <Image
-                src={artSrc}
-                alt={artAlt}
-                fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-contain object-center"
-              />
-            </div>
+          {/* Bottom meta strip — blurred plate so the meta line stays legible
+              over the brightest part of the screenshot. */}
+          <div className="flex items-baseline justify-between gap-x-6 border-t border-[rgba(63,63,66,0.6)] bg-[rgba(15,15,16,0.35)] px-6 py-3.5 backdrop-blur-[4px] sm:px-8 lg:px-12">
+            <span className="t-mono-caption text-[color:var(--text-secondary)]">
+              {meta}
+            </span>
+            <span className="t-mono-label read-button inline-flex shrink-0 items-baseline gap-[0.3em] transition-colors duration-200">
+              READ
+              <span
+                aria-hidden="true"
+                className="inline-block motion-safe:transition-transform motion-safe:duration-200 motion-safe:ease-out motion-safe:group-hover:translate-x-[3px]"
+              >
+                →
+              </span>
+            </span>
           </div>
         </div>
       </article>

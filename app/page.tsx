@@ -11,30 +11,36 @@ import { BootSequence } from "@/components/boot-sequence/BootSequence"
 const PROJECTS = [
   {
     href: "/agents-in-windows",
+    index: "01",
     eyebrow: "AGENTS IN WINDOWS",
     title: "Making AI agents visible and interruptible in Windows.",
-    bgSrc: "/images/cards/agents-bg.png",
-    artSrc: "/images/cards/agents-art.png",
-    artAlt: "Researcher agent panel surfacing a Trends in Smart Appliances brief with a sub-task checklist",
-    years: "2025 –",
+    dek: "An OS-level home for autonomous work — visible, stoppable, trustworthy.",
+    meta: "2025 – · WINDOWS 11 SHELL",
+    imgSrc: "/images/agents/hero-demo.png",
+    imgAlt:
+      "Windows desktop with a Researcher agent panel showing a checklist of in-progress sub-tasks",
   },
   {
     href: "/recall",
+    index: "02",
     eyebrow: "WINDOWS RECALL",
     title: "Designing semantic search for everything you’ve seen.",
-    bgSrc: "/images/cards/recall-bg.png",
-    artSrc: "/images/cards/recall-art.png",
-    artAlt: "Recall search bar querying ‘Presentation with a red barn’ over a captured presentation slide",
-    years: "2023 – 2025",
+    dek: "Search that works the way memory does — by meaning, not filename.",
+    meta: "2023 – 2025 · COPILOT+ PC",
+    imgSrc: "/images/recall/hero-demo.png",
+    imgAlt:
+      "Recall app on a Windows desktop, search results page with multiple match cards",
   },
   {
     href: "/teams-for-education",
+    index: "03",
     eyebrow: "TEAMS FOR EDUCATION",
     title: "Modernizing online classes for an authentic virtual experience.",
-    bgSrc: "/images/cards/teams-bg.png",
-    artSrc: "/images/cards/teams-art.png",
-    artAlt: "Five circular student avatars arranged in a constellation across a Teams classroom",
-    years: "2021 – 2022",
+    dek: "Virtual tables that gave classrooms back their structure.",
+    meta: "2021 – 2022 · MS TEAMS EDU",
+    imgSrc: "/images/teams/hero-demo.png",
+    imgAlt:
+      "Microsoft Teams classroom view. Virtual tables of students with avatars and chat moderation panel.",
   },
 ]
 
@@ -55,8 +61,6 @@ export default function HomePage() {
             className="pt-16 lg:pt-24 pb-16 lg:pb-24 min-h-[calc(100vh-9rem)] flex flex-col justify-center"
           >
             <HeroIntro
-            eyebrow="§ 00 / BRYCE HENTHORN"
-            eyebrowStyle={{ marginBottom: "clamp(3rem, 8vh, 6rem)" }}
             lines={[
               {
                 text: "Product Designer with 10+ years of experience currently working on AI experiences at Microsoft.",
@@ -77,16 +81,7 @@ export default function HomePage() {
           <SectionLabel number="01" label="Selected Work" title="Case studies" />
           <div className="space-y-10 lg:space-y-16 mt-10">
             {PROJECTS.map((p) => (
-              <ProjectCard
-                key={p.href}
-                href={p.href}
-                eyebrow={p.eyebrow}
-                title={p.title}
-                years={p.years}
-                bgSrc={p.bgSrc}
-                artSrc={p.artSrc}
-                artAlt={p.artAlt}
-              />
+              <ProjectCard key={p.href} {...p} />
             ))}
           </div>
         </section>
@@ -94,11 +89,9 @@ export default function HomePage() {
         {/* ── 02 Thesis ── thesis statement is the section header */}
         <section data-section data-reveal id="thesis" className="py-12 lg:py-20">
           <div className="flex flex-col gap-3">
-            <p className="t-mono-label text-[color:var(--text-tertiary)]">§ 02 / THESIS</p>
             <h2 className="t-display-l text-[color:var(--text-primary)] max-w-[34ch]">
               Make the invisible visible. The automatic interruptible. The AI auditable.
             </h2>
-            <hr className="rule mt-2" />
           </div>
           <p className="t-body text-[color:var(--text-secondary)] mt-10 max-w-[68ch]">
             When software starts running on your behalf without being asked, the

@@ -4,7 +4,7 @@
 
 A Next.js 16 + React 19 + Tailwind 4 portfolio for Bryce Henthorn (Senior Product Designer at Microsoft). Visual aesthetic is an **operator manual / technical document** treatment — near-black background with subtle noise, off-white text, single hot-orange accent, mono labels for chrome. The home page and three case studies (Recall, Agents in Windows, Teams for Education) read as chapters of one paginated document, not as separate microsites.
 
-The active development branch is `feature/recall-operator-manual`. Treat that branch as the source of truth — ignore any deployed or older version of the site you might encounter.
+This working copy is not a git repository. The current visual source of truth is the set of `.dc.html` design references (Home, Recall, Agents, Teams, About, plus a header/footer options sheet) produced in the August 2026 revision — ignore any deployed or older version of the site you might encounter. Where those files and this document disagree, the design files win and this document should be corrected.
 
 ## Required reading before touching case study pages
 
@@ -26,13 +26,27 @@ The layout-direction document is the spec. Do not modify §2 (the primitive voca
 ## Locked design — out of scope for redesign
 
 Do not propose changes to:
-- Typography tokens (`t-display-xl`, `t-h1`, `t-body`, `t-mono-label`, `t-mono-caption`, `lede`)
-- Color tokens (`--bg`, `--text-primary/secondary/tertiary`, `--rule`, `--rule-strong`, accent)
+- Typography tokens (`t-display-xl`, `t-display-l`, `t-h1`, `t-body`, `t-body-sm`, `t-mono-label`, `t-mono-caption`, `t-mono-marginalia`, `t-mono-colophon`)
+- Color tokens (`--ink`/`--bg`, `--text-primary/secondary/tertiary/body/faint`, `--rule`, `--rule-strong`, `--accent-*`)
 - Spacing scale or container widths
-- The `TopBar` / page-header pattern (eyebrow `§ XX / SECTION_LABEL` → headline → lead → framed `Fig 0.1`). `TopBar` is the single combined site header — identifier · nav · inline `§ NN / TT` indicator. The legacy `RevisionHeader` + `ManualNav` + fixed `ProgressIndicator` triple was retired in May 2026.
+- The page-header pattern: **headline → body**. Sections open directly on their `t-h1` heading with no eyebrow above it and no rule beneath it.
 - The `Figure` frame chrome (corner `RegistrationMark`, `FIG. X.Y` label, hairline border)
 
-If a layout move would require a new token, stop and ask — don't introduce one silently.
+All token definitions live in `app/recall/recall.css` under the `.manual` scope — **not** in `app/globals.css`, which carries an older, unrelated token set used only by dead components. If a layout move would require a new token, stop and ask — don't introduce one silently.
+
+### Retired in the August 2026 revision
+
+These were previously locked-in and are now gone. Do not reintroduce them:
+
+- **`§ NN / LABEL` section eyebrows.** `SectionLabel` renders the title alone; `number` and `label` survive as optional props purely to document document order at the call site.
+- **The rule under section headings.** `SectionLabel` no longer emits `<hr className="rule" />`.
+- **The `§ NN / TT` header counter.** `TopBar` is now the "index rail": crosshair + identifier on the left, a numbered index of the five pages on the right (`00 WORK` … `04 ABOUT`). The active entry's number is the strip's only `--accent-trace` element. The `[data-section]` IntersectionObserver that fed the counter went with it.
+- **The `NOW READING` chip.** `components/manual/NowReading.tsx` is deleted — it derived its label from the eyebrows. Retired alongside the earlier `RevisionHeader` + `ManualNav` + fixed `ProgressIndicator` triple.
+- **`CoverPlate`'s `§ NN / TT` pagination line.** The plate carries its title alone; `total` is now an unused optional prop.
+- **`SpecSheet` borders.** No frame, no per-row rules — rows separate on spacing alone. (The About page's Experience `<dl>` is a *data table*, §2.13, and deliberately keeps its per-row `border-b`.)
+- **The `lede` class.** It was never defined in CSS and is no longer referenced.
+
+Strip rules that frame a *pull-quote or a heading*. Keep rules that are *figure chrome* — the Recall latency strip, the Recall constraints closer, the Agents state lexicon, and the Teams field-interview grid all keep their framing because the designs show it.
 
 ## Standing behavioral rules
 
@@ -50,7 +64,7 @@ When restructuring or editing case study sections:
 
 6. **Cap the `Margin` primitive at one occurrence per two body sections.** Used everywhere it stops being marginalia.
 
-7. **One section's worth of changes per turn, then stop.** When restructuring, edit one section, show the diff, and wait for review before moving to the next. Do not batch-edit a whole page.
+7. **One section's worth of changes per turn, then stop.** When restructuring, edit one section, show the diff, and wait for review before moving to the next. Do not batch-edit a whole page. *Exception:* when implementing a design handoff that spans multiple pages, batch by phase (shared components → homepage → per-page) and stop for review between phases — confirm that framing with the user first.
 
 8. **Keep figure chrome on every plate that contains a figure.** Hairline borders, corner registration marks, `FIG. X.Y` numbering. "Full-bleed" in this codebase means edge-to-container, never edge-to-viewport without the frame.
 

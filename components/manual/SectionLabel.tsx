@@ -1,21 +1,25 @@
 import { cn } from "@/lib/utils"
 
 type Props = {
-  number: string
-  label: string
+  /** Retained for call-site compatibility — no longer rendered. */
+  number?: string
+  /** Retained for call-site compatibility — no longer rendered. */
+  label?: string
   title: string
   id?: string
   className?: string
 }
 
-export function SectionLabel({ number, label, title, id, className }: Props) {
+/**
+ * Section header. As of the 2026 revision the `§ NN / LABEL` eyebrow and the
+ * hairline rule under the heading are gone — sections open directly on their
+ * headline. `number` and `label` stay in the prop type so the ~37 existing call
+ * sites keep documenting where each section sits in the document order.
+ */
+export function SectionLabel({ title, id, className }: Props) {
   return (
     <div className={cn("flex flex-col gap-3", className)} id={id}>
-      <div className="t-mono-label text-[color:var(--text-tertiary)]">
-        § {number} / {label.toUpperCase()}
-      </div>
       <h2 className="t-h1 text-balance text-[color:var(--text-primary)]">{title}</h2>
-      <hr className="rule mt-2" />
     </div>
   )
 }

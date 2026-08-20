@@ -1,20 +1,19 @@
 import type { ReactNode } from "react"
 import { ScrollRevealController } from "@/components/manual/ScrollRevealController"
-import { NowReading } from "@/components/manual/NowReading"
 
 type Props = {
   children: ReactNode
 }
 
 /**
- * Wrapper for operator-manual pages. Mounts the .manual scope plus NowReading
- * and the scroll-reveal controller. The § NN / TT counter now lives inline in
- * TopBar, so the fixed-position ProgressIndicator is no longer mounted here.
+ * Wrapper for operator-manual pages. Mounts the .manual scope plus the
+ * scroll-reveal controller. The fixed ProgressIndicator, the inline
+ * § NN / TT counter, and the NOW READING chip were all retired in the 2026
+ * revision — page position is carried by the header's numbered index alone.
  */
 export function ManualShell({ children }: Props) {
   return (
     <div className="manual">
-      <NowReading />
       <ScrollRevealController />
       {children}
     </div>
