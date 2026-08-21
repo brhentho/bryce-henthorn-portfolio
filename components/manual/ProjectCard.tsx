@@ -10,6 +10,8 @@ type Props = {
   proof: string
   imgSrc: string
   imgAlt: string
+  imagePosition?: string
+  eager?: boolean
 }
 
 /**
@@ -28,16 +30,17 @@ export function ProjectCard({
   proof,
   imgSrc,
   imgAlt,
+  imagePosition = "center bottom",
+  eager = false,
 }: Props) {
   return (
     <ViewTransitionLink
       href={href}
-      aria-label={`${eyebrow}: ${title} ${proof}`}
       className="block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[color:var(--accent-trace)]"
     >
       <article
         className={[
-          "relative min-h-[360px] overflow-hidden border border-[color:var(--rule)] bg-[#121213] sm:min-h-[400px]",
+          "project-card relative min-h-[360px] overflow-hidden border border-[color:var(--rule)] bg-[#121213] sm:min-h-[400px]",
           "lg:aspect-[1120/496]",
           "transition-[border-color,transform,box-shadow] duration-[400ms] ease-[cubic-bezier(0.2,0.65,0.3,1)]",
           "group-hover:border-[color:var(--rule-strong)]",
@@ -50,18 +53,16 @@ export function ProjectCard({
           alt={imgAlt}
           fill
           sizes="(min-width: 1280px) 1120px, 100vw"
-          className="object-cover object-bottom motion-safe:transition-transform motion-safe:duration-[800ms] motion-safe:ease-[cubic-bezier(0.2,0.65,0.3,1)] motion-safe:group-hover:scale-[1.03]"
+          className="project-card-image object-cover motion-safe:transition-transform motion-safe:duration-[800ms] motion-safe:ease-[cubic-bezier(0.2,0.65,0.3,1)] motion-safe:group-hover:scale-[1.03]"
+          style={{ objectPosition: imagePosition }}
+          loading={eager ? "eager" : "lazy"}
         />
 
         {/* Layer 2 — scrim. Deep enough on the left that the text block clears
             4.5:1 over any frame of the screenshot beneath it. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(95deg, var(--ink) 30%, rgba(15,15,16,0.88) 52%, rgba(15,15,16,0.12) 80%)",
-          }}
+          className="project-card-scrim absolute inset-0"
         />
 
         {/* Layer 3 — accent trace, wipes left→right on hover. */}
@@ -71,7 +72,7 @@ export function ProjectCard({
         />
 
         <div className="relative flex h-full flex-col">
-          <div className="flex min-h-[360px] flex-1 flex-col justify-center gap-5 p-6 sm:min-h-[400px] sm:p-8 lg:min-h-0 lg:max-w-[52%] lg:px-12 lg:py-12">
+          <div className="project-card-content flex min-h-[360px] flex-1 flex-col justify-center gap-5 p-6 sm:min-h-[400px] sm:p-8 lg:min-h-0 lg:max-w-[52%] lg:px-12 lg:py-12">
             <p className="t-mono-label pcard-label">{eyebrow}</p>
             <h3 className="t-h1 pcard-title text-balance text-[color:var(--text-primary)]">
               {title}

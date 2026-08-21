@@ -107,6 +107,7 @@ export function HeroSchematic() {
 
               {/* table label */}
               <text
+                className="teams-table-label"
                 x={cx}
                 y={cy + tableH / 2 + 70}
                 textAnchor="middle"
@@ -149,6 +150,7 @@ export function HeroSchematic() {
           strokeWidth={0.5}
         />
         <text
+          className="teams-teacher-label"
           x={800}
           y={184}
           textAnchor="middle"

@@ -38,6 +38,50 @@ const STUDENT_QUOTES = [
   },
 ]
 
+const RESEARCH_STAGES = ["OBSERVE", "SYNTHESIZE", "PROTOTYPE"]
+
+function TeamsResearchAmbient() {
+  return (
+    <div
+      className="teams-research-ambient"
+      role="img"
+      aria-label="Classroom research loop: observe behavior, synthesize patterns, and prototype new structures."
+    >
+      {RESEARCH_STAGES.map((stage, index) => (
+        <span key={stage}>
+          <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+          <span>{stage}</span>
+        </span>
+      ))}
+    </div>
+  )
+}
+
+function TeamsImpactAmbient() {
+  return (
+    <div
+      className="teams-impact-ambient"
+      role="img"
+      aria-label="Classroom topology shifts from one broadcast audience to six stable small groups, increasing participation."
+    >
+      <div aria-hidden="true">
+        <span>01</span>
+        <span>WHOLE CLASS · 30+</span>
+      </div>
+      <div className="teams-impact-topology" aria-hidden="true">
+        {Array.from({ length: 6 }, (_, index) => (
+          <span key={index}>T{String(index + 1).padStart(2, "0")}</span>
+        ))}
+      </div>
+      <div aria-hidden="true">
+        <span>STABLE GROUPS</span>
+        <span>SMALLER AUDIENCE</span>
+        <span>MORE VOICES</span>
+      </div>
+    </div>
+  )
+}
+
 export default function TeamsForEducationPage() {
   return (
     <ManualShell>
@@ -45,7 +89,7 @@ export default function TeamsForEducationPage() {
 
       <main className="container">
         {/* ── Hero ── */}
-        <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
+        <section data-section id="overview" className="teams-hero pb-16 pt-12 lg:pt-24">
           <HeroIntro
             static
             lines={[
@@ -87,7 +131,12 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 01 Context ── */}
-        <section data-section data-reveal id="context" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="context"
+          className="teams-room teams-context-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="01"
             label="Context"
@@ -131,7 +180,12 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 02 Problem ── */}
-        <section data-section data-reveal id="problem" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="problem"
+          className="teams-room teams-problem-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="02"
             label="Problem"
@@ -205,10 +259,21 @@ export default function TeamsForEducationPage() {
         </aside>
 
         {/* ── Cover Plate (§2.10) — chapter divider into Research ── */}
-        <CoverPlate number="03" total="09" title="Research" />
+        <CoverPlate
+          number="03"
+          total="09"
+          title="Research"
+          ambient={<TeamsResearchAmbient />}
+          className="teams-research-cover"
+        />
 
         {/* ── 03 Research ── Annotated Split Plate (§2.4) ── */}
-        <section data-section data-reveal id="research" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="research"
+          className="teams-room teams-research-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="03"
             label="Research"
@@ -244,7 +309,12 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 04 Solution ── */}
-        <section data-section data-reveal id="solution" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="solution"
+          className="teams-room teams-solution-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="04"
             label="Solution"
@@ -294,7 +364,12 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 05 Orchestration ── Full-bleed Atmospheric Plate (§2.8) ── */}
-        <section data-section data-reveal id="orchestration" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="orchestration"
+          className="teams-room teams-orchestration-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="05"
             label="Orchestration"
@@ -330,7 +405,12 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── 06 Group Creation ── Annotated Split Plate (§2.4) ── */}
-        <section data-section data-reveal id="group-creation" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="group-creation"
+          className="teams-room teams-groups-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="06"
             label="Group Creation"
@@ -390,7 +470,12 @@ export default function TeamsForEducationPage() {
         </div>
 
         {/* ── 07 Student View ── small inline figure ── */}
-        <section data-section data-reveal id="student-view" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="student-view"
+          className="teams-room teams-student-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="07"
             label="Student View"
@@ -413,10 +498,21 @@ export default function TeamsForEducationPage() {
         </section>
 
         {/* ── Cover Plate (§2.10) — closing chapter divider into Impact ── */}
-        <CoverPlate number="09" total="09" title="Impact" />
+        <CoverPlate
+          number="09"
+          total="09"
+          title="Impact"
+          ambient={<TeamsImpactAmbient />}
+          className="teams-impact-cover"
+        />
 
         {/* ── 09 Impact ── (§08 deliberately skipped to mirror Figma) ── */}
-        <section data-section data-reveal id="impact" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="impact"
+          className="teams-room teams-impact-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="09"
             label="Impact"

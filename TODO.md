@@ -4,10 +4,6 @@ Branch: `feature/operator-manual-restructure`
 
 Text content for `/recall` is now in place. The case study runs in 9 numbered sections (Overview, Context, System, Problem, Cards, Transparency, Performance, Trust, Constraints, Impact), with prose lifted and adapted from `main`. All 6 SVG figure placeholders remain in place pending real assets.
 
-## Teams hero schematic (deferred)
-
-- [ ] `app/teams-for-education/svg/HeroSchematic.tsx` — design and ship the Figma-spec 6-table 3×2 classroom grid: top-down operator-manual rendering, hairline borders per table, persistent seat dots, optional teacher-pod marker. Style-match Recall's `HeroSchematic` (registration mark + stage labels). Punted from the case-study rebuild batch — current placeholder remains in `<Figure number="0.1" />`.
-
 ## Visuals (replace placeholder SVGs with real assets when ready)
 
 - [ ] `app/recall/svg/HeroSchematic.tsx` → swap to image via `<Figure src="/images/recall/hero-schematic.png" />` (Figure 0.1).
@@ -25,7 +21,7 @@ Text content for `/recall` is now in place. The case study runs in 9 numbered se
 
 ## Verification (before pushing)
 
-- [ ] `pnpm dev` — visit `/recall`, check the right-rail counter advances `01 / 11` … `11 / 11`, check NowReading chip updates per section, check resize at 1024px, check `prefers-reduced-motion`.
+- [ ] `pnpm dev` — visit every route, check the top-bar page index, responsive layouts at 1024px and mobile widths, and `prefers-reduced-motion`.
 - [ ] `pnpm storybook` — Mode toggle works in stories.
 - [ ] `pnpm build` — no TypeScript errors. ✅ (verified)
 - [ ] `git diff main -- app components` — only planned paths changed.
