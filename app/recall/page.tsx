@@ -61,6 +61,47 @@ const TRUST_PRINCIPLES = [
   },
 ]
 
+function RecallPipelineAmbient() {
+  return (
+    <div
+      className="recall-pipeline-ambient"
+      role="img"
+      aria-label="Recall pipeline: screen capture becomes text, meaning, and a searchable semantic index."
+    >
+      {["CAPTURE", "OCR", "MEANING", "INDEX"].map((stage, index) => (
+        <span key={stage}>
+          <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+          <span>{stage}</span>
+        </span>
+      ))}
+    </div>
+  )
+}
+
+function RecallTrustAmbient() {
+  return (
+    <div
+      className="recall-trust-ambient"
+      role="img"
+      aria-label="Recall trust boundary: capture and indexing stay on device under explicit user control."
+    >
+      <div aria-hidden="true">
+        <span>CAPTURE</span>
+        <span>INDEX</span>
+      </div>
+      <div className="recall-trust-boundary" aria-hidden="true">
+        <span>ON DEVICE</span>
+        <span>USER CONTROL</span>
+      </div>
+      <div aria-hidden="true">
+        <span>PAUSE</span>
+        <span>EXCLUDE</span>
+        <span>DELETE</span>
+      </div>
+    </div>
+  )
+}
+
 export default function RecallPage() {
   return (
     <ManualShell>
@@ -110,7 +151,12 @@ export default function RecallPage() {
         </section>
 
         {/* ── 01 Context ── */}
-        <section data-section data-reveal id="context" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="context"
+          className="recall-room recall-context-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="01"
             label="Context"
@@ -149,50 +195,68 @@ export default function RecallPage() {
         </section>
 
         {/* ── Cover Plate (§2.10) — chapter divider into System ── */}
-        <CoverPlate number="02" total="09" title="System" />
+        <CoverPlate
+          number="02"
+          total="09"
+          title="System"
+          ambient={<RecallPipelineAmbient />}
+          className="recall-system-cover"
+        />
 
         {/* ── 02 System ── Stage Rail Plate (§2.5) ── */}
-        <section data-section data-reveal id="system" className="py-12 lg:py-20">
-          <SectionLabel
-            number="02"
-            label="System"
-            title="On demand intelligence"
-          />
+        <section
+          data-section
+          data-reveal
+          id="system"
+          className="recall-room recall-system-room py-16 lg:py-24"
+        >
+          <div className="relative z-10">
+            <SectionLabel
+              number="02"
+              label="System"
+              title="On demand intelligence"
+            />
 
-          <p
-            className="t-mono-label text-[color:var(--text-tertiary)]"
-            style={{ marginTop: "clamp(48px, 5vw, 64px)" }}
-          >
-            RECALL QUERY LIFECYCLE
-          </p>
-          <div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr] gap-10 lg:gap-16 items-stretch mt-4 lg:mt-6">
-            <ol className="flex flex-col gap-10 lg:gap-0 lg:justify-between lg:py-8">
-              {PIPELINE_STAGES.map((s) => (
-                <li key={s.label} className="flex flex-col gap-2">
-                  <p className="t-mono-label text-[color:var(--text-secondary)]">
-                    {s.label}
-                  </p>
-                  <p className="t-mono-caption text-[color:var(--text-tertiary)] leading-relaxed">
-                    {s.value}
-                  </p>
-                </li>
-              ))}
-            </ol>
-            <div className="flex items-center justify-center">
-              <Image
-                src="/images/recall/system-query-lifecycle.png"
-                alt="Isometric exploded view of the Recall query lifecycle. Four stages stacked from Search & Index Service down to Screenshot Capture."
-                width={482}
-                height={741}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-auto max-w-[520px]"
-              />
+            <p
+              className="t-mono-label text-[color:var(--text-tertiary)]"
+              style={{ marginTop: "clamp(48px, 5vw, 64px)" }}
+            >
+              RECALL QUERY LIFECYCLE
+            </p>
+            <div className="mt-4 grid grid-cols-1 items-stretch gap-10 lg:mt-6 lg:grid-cols-[18rem_1fr] lg:gap-16">
+              <ol className="recall-system-rail flex flex-col gap-10 lg:justify-between lg:gap-0 lg:py-8">
+                {PIPELINE_STAGES.map((s) => (
+                  <li key={s.label} className="flex flex-col gap-2">
+                    <p className="t-mono-label text-[color:var(--text-secondary)]">
+                      {s.label}
+                    </p>
+                    <p className="t-mono-caption leading-relaxed text-[color:var(--text-tertiary)]">
+                      {s.value}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+              <div className="recall-system-figure flex items-center justify-center">
+                <Image
+                  src="/images/recall/system-query-lifecycle.png"
+                  alt="Isometric exploded view of the Recall query lifecycle. Four stages stacked from Search & Index Service down to Screenshot Capture."
+                  width={482}
+                  height={741}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="h-auto w-full max-w-[520px]"
+                />
+              </div>
             </div>
           </div>
         </section>
 
         {/* ── 03 Problem ── Annotated Split Plate (§2.4) ── */}
-        <section data-section data-reveal id="problem" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="problem"
+          className="recall-room recall-problem-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="03"
             label="Problem"
@@ -254,7 +318,12 @@ export default function RecallPage() {
         </aside>
 
         {/* ── 04 Cards ── Two-up Comparison Plate (§2.6) ── */}
-        <section data-section data-reveal id="cards" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="cards"
+          className="recall-room recall-cards-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="04"
             label="Cards"
@@ -309,7 +378,12 @@ export default function RecallPage() {
         </section>
 
         {/* ── 05 Transparency ── */}
-        <section data-section data-reveal id="transparency" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="transparency"
+          className="recall-room recall-transparency-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="05"
             label="Transparency"
@@ -347,7 +421,12 @@ export default function RecallPage() {
         </section>
 
         {/* ── 06 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}
-        <section data-section data-reveal id="performance" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="performance"
+          className="recall-room recall-performance-room py-16 lg:py-24"
+        >
           {/* Pull-quote — epigraph above the SectionLabel, sets up the section. */}
           <blockquote className="max-w-[68ch] mb-12 lg:mb-16">
             <p className="t-display-l text-[color:var(--text-primary)]">
@@ -402,57 +481,77 @@ export default function RecallPage() {
         </section>
 
         {/* ── Cover Plate (§2.10) — privacy chapter divider ── */}
-        <CoverPlate number="07" total="09" title="Trust" />
+        <CoverPlate
+          number="07"
+          total="09"
+          title="Trust"
+          ambient={<RecallTrustAmbient />}
+          className="recall-trust-cover"
+        />
 
         {/* ── 07 Trust ── */}
-        <section data-section data-reveal id="trust" className="py-12 lg:py-20">
-          <SectionLabel
-            number="07"
-            label="Trust"
-            title="Privacy was the whole product"
-          />
-          <div className="mt-10 flex flex-col gap-4 max-w-[68ch]">
-            <p className="t-body">
-              Recall only works if people trust where captured data sits and what control
-              they retain. Capture, indexing, and retrieval stayed on-device.
-            </p>
-            <p className="t-body">
-              After public scrutiny, we moved from opt-out to opt-in, added per-app
-              exclusion and pause controls, and made deletion boundaries explicit. I owned
-              the information architecture for that privacy surface.
-            </p>
-          </div>
-          <Figure
-            number="7.1"
-            caption="Deletion and capture settings form one recovery path: remove the moment, then prevent recurrence."
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-[color:var(--rule)]">
-              <Image
-                src="/images/recall/trust-sensitive-content.png"
-                alt="Recall card menu showing sensitive content (a credit-card snapshot from Fidelity) with a Delete snapshot action"
-                width={1030}
-                height={722}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-full object-contain bg-[color:var(--ink)]"
-              />
-              <Image
-                src="/images/recall/trust-delete-snapshot.png"
-                alt="Snapshot removed confirmation modal with an option to update Recall capture settings to block specific apps and websites"
-                width={1820}
-                height={1464}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-full object-contain bg-[color:var(--ink)]"
-              />
+        <section
+          data-section
+          data-reveal
+          id="trust"
+          className="recall-room recall-trust-room py-16 lg:py-24"
+        >
+          <div className="relative z-10">
+            <SectionLabel
+              number="07"
+              label="Trust"
+              title="Privacy was the whole product"
+            />
+            <div className="mt-10 flex max-w-[68ch] flex-col gap-4">
+              <p className="t-body">
+                Recall only works if people trust where captured data sits and what control
+                they retain. Capture, indexing, and retrieval stayed on-device.
+              </p>
+              <p className="t-body">
+                After public scrutiny, we moved from opt-out to opt-in, added per-app
+                exclusion and pause controls, and made deletion boundaries explicit. I owned
+                the information architecture for that privacy surface.
+              </p>
             </div>
-          </Figure>
+            <div className="recall-trust-figure">
+              <Figure
+                number="7.1"
+                caption="Deletion and capture settings form one recovery path: remove the moment, then prevent recurrence."
+              >
+                <div className="grid grid-cols-1 gap-px bg-[color:var(--rule)] lg:grid-cols-2">
+                  <Image
+                    src="/images/recall/trust-sensitive-content.png"
+                    alt="Recall card menu showing sensitive content (a credit-card snapshot from Fidelity) with a Delete snapshot action"
+                    width={1030}
+                    height={722}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="h-full w-full bg-[color:var(--ink)] object-contain"
+                  />
+                  <Image
+                    src="/images/recall/trust-delete-snapshot.png"
+                    alt="Snapshot removed confirmation modal with an option to update Recall capture settings to block specific apps and websites"
+                    width={1820}
+                    height={1464}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="h-full w-full bg-[color:var(--ink)] object-contain"
+                  />
+                </div>
+              </Figure>
+            </div>
 
-          <div className="mt-12">
-            <SpecSheet rows={TRUST_PRINCIPLES} />
+            <div className="recall-trust-principles mt-12">
+              <SpecSheet rows={TRUST_PRINCIPLES} />
+            </div>
           </div>
         </section>
 
         {/* ── 08 Constraints ── Pull-quote Interlude (§2.11) ── */}
-        <section data-section data-reveal id="constraints" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="constraints"
+          className="recall-room recall-constraints-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="08"
             label="Constraints"
@@ -478,7 +577,7 @@ export default function RecallPage() {
           </Figure>
 
           {/* Pull-quote — promoted from § 08 Margin */}
-          <div className="mt-10 lg:mt-14 py-12 lg:py-20 border-y border-[color:var(--rule)]">
+          <div className="mt-10 py-12 lg:mt-14 lg:py-20">
             <blockquote className="max-w-[68ch]">
               <p className="t-display-l text-[color:var(--text-primary)]">
                 The system helps people rediscover what they saw. It doesn&rsquo;t
@@ -489,42 +588,42 @@ export default function RecallPage() {
         </section>
 
         {/* ── 09 Impact ── Annotated Split Plate (§2.4) + Strip Break Telemetry (§2.9) ── */}
-        <section data-section data-reveal id="impact" className="py-12 lg:py-20">
+        <section
+          data-section
+          data-reveal
+          id="impact"
+          className="recall-room recall-impact-room py-16 lg:py-24"
+        >
           <SectionLabel
             number="09"
             label="Impact"
             title="From rediscovery to reference pattern"
           />
-          <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] flex flex-col gap-6">
-              <p className="t-body">
-                In testing, people could explain why each result appeared, reject what did
-                not fit, and recover information they had written off as lost. Visible
-                provenance turned mysterious AI behavior into something rational.
-              </p>
-              <p className="t-body">
-                The work shipped at Build 2024, then its privacy patterns, relevance
-                transparency, and match-type separation became reference points for Windows
-                Search and File Explorer.
-              </p>
-              <Margin anchor="9-pull" className="my-0">
-                Recall proved that AI in core OS features doesn&rsquo;t require opacity or
-                experimental disclaimers. Clear transparency, visible provenance,
-                predictable interactions.
-              </Margin>
-            </div>
-            <div className="p-6 lg:p-10 flex items-start">
-              <Figure
-                number="9.1"
-                caption="Recall announcement"
-                src="/images/recall/impact-keynote.png"
-                alt="Recall introduced on stage at Build. System architecture diagram (Screen Region Detector, Optical Character Recognition, Parser, Text Encoder, Image Encoder) framing the Recall pill."
-                width={358}
-                height={210}
-                className="my-0 w-full"
-              />
-            </div>
+          <div className="mt-10 max-w-[68ch] [&>p+p]:mt-4!">
+            <p className="t-body">
+              In testing, people could explain why each result appeared, reject what did
+              not fit, and recover information they had written off as lost. Visible
+              provenance turned mysterious AI behavior into something rational.
+            </p>
+            <p className="t-body">
+              The work shipped at Build 2024, then its privacy patterns, relevance
+              transparency, and match-type separation became reference points for Windows
+              Search and File Explorer.
+            </p>
+            <Margin anchor="9-pull" className="my-0">
+              Recall proved that AI in core OS features doesn&rsquo;t require opacity or
+              experimental disclaimers. Clear transparency, visible provenance,
+              predictable interactions.
+            </Margin>
           </div>
+          <Figure
+            number="9.1"
+            caption="Recall announcement"
+            src="/images/recall/impact-keynote.png"
+            alt="Recall introduced on stage at Build. System architecture diagram (Screen Region Detector, Optical Character Recognition, Parser, Text Encoder, Image Encoder) framing the Recall pill."
+            width={358}
+            height={210}
+          />
           <div className="mt-12">
             <Telemetry
               variant="quiet"

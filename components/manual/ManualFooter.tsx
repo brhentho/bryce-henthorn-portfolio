@@ -11,10 +11,10 @@ export function ManualFooter() {
       <div className="container grid grid-cols-1 gap-x-12 gap-y-8 py-10 md:grid-cols-2 lg:py-12">
         <div className="flex flex-col items-start">
           <p className="t-body text-[color:var(--text-primary)]">Bryce Henthorn</p>
-          <p className="t-mono-caption mt-1 text-[color:var(--text-secondary)]">
+          <p className="t-mono-caption manual-footer-meta mt-1">
             Senior Product Designer, Microsoft
           </p>
-          <p className="t-mono-colophon mt-6">© 2026</p>
+          <p className="t-mono-colophon manual-footer-meta mt-6">© 2026</p>
         </div>
 
         <div className="flex flex-col items-start md:items-end md:text-right">
@@ -24,7 +24,7 @@ export function ManualFooter() {
           <a href="tel:+13609272833" className={linkClass}>
             360.927.2833
           </a>
-          <p className="t-mono-caption mt-1 text-[color:var(--text-secondary)]">
+          <p className="t-mono-caption manual-footer-meta mt-1">
             Seattle, WA
           </p>
         </div>
