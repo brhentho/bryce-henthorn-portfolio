@@ -10,6 +10,35 @@ type Props = LinkProps &
     children: ReactNode
   }
 
+function focusDestinationHeading(previousLocation: string) {
+  const deadline = performance.now() + 2000
+
+  const attemptFocus = () => {
+    const currentLocation =
+      window.location.pathname + window.location.search + window.location.hash
+    const heading = document.querySelector<HTMLElement>("main h1, h1")
+
+    if (currentLocation !== previousLocation && heading) {
+      const hadTabIndex = heading.hasAttribute("tabindex")
+      if (!hadTabIndex) heading.tabIndex = -1
+      heading.focus({ preventScroll: true })
+
+      if (!hadTabIndex) {
+        heading.addEventListener(
+          "blur",
+          () => heading.removeAttribute("tabindex"),
+          { once: true },
+        )
+      }
+      return
+    }
+
+    if (performance.now() < deadline) requestAnimationFrame(attemptFocus)
+  }
+
+  requestAnimationFrame(attemptFocus)
+}
+
 /**
  * Drop-in replacement for next/link that runs every same-origin
  * navigation through the sequential ink-overlay transition (see
@@ -35,13 +64,15 @@ export function ViewTransitionLink({ onClick, href, children, ...rest }: Props) 
 
     e.preventDefault()
     const target = typeof href === "string" ? href : href.toString()
+    const previousLocation =
+      window.location.pathname + window.location.search + window.location.hash
 
     void transitionTo(() => {
       // `scroll: false` keeps Next from re-scrolling after the route
       // commits — the overlay coordinator handles scrollTo(0,0)
       // explicitly during the holding phase.
       router.push(target, { scroll: false })
-    })
+    }).then(() => focusDestinationHeading(previousLocation))
   }
 
   return (

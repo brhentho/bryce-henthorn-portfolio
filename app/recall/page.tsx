@@ -11,6 +11,7 @@ import {
   CoverPlate,
   HeroIntro,
   NextProject,
+  LoopingMedia,
 } from "@/components/manual"
 
 // Listed in descending order to match the Figma stack (04 at top → 01 at bottom).
@@ -118,26 +119,23 @@ export default function RecallPage() {
           <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="flex flex-col gap-4 max-w-[60ch]">
               <p className="t-body">
-                The problem was simple and unsolved. You&apos;d seen something on your
-                computer: a presentation, a snippet of code, a reference in an email. But
-                you couldn&apos;t find it. You&apos;d try different search terms, retrace
-                your steps, open files one by one. Minutes wasted. Information you knew
-                existed but couldn&apos;t retrieve.
+                You&apos;d seen a presentation, a snippet of code, or a reference in an
+                email, but filenames and exact keywords could not retrieve a half-remembered
+                moment. Recall aimed to make everything shown on screen searchable by
+                meaning instead.
               </p>
               <p className="t-body">
-                Recall aimed to capture everything appearing on screen and make it
-                searchable through meaning rather than filenames. But solving that
-                technically wasn&apos;t the real challenge. We had to build something
-                users actually trusted.
-              </p>
-              <p className="t-body">
-                My role focused specifically on the semantic search experience: how users
-                search their memories, how results are ranked and displayed, and how
-                relevance is communicated in a way that feels understandable and
-                trustworthy.
+                I led the semantic search experience: how people form queries, how results
+                are ranked and displayed, and how relevance is explained. The technical
+                system mattered, but the product only worked if people could understand and
+                trust what it returned.
               </p>
             </div>
-            <div className="flex items-center justify-center">
+            <Figure
+              number="1.1"
+              caption="Recall mark. Continuous capture resolved into a searchable moment."
+              className="my-0 lg:my-0"
+            >
               <Image
                 src="/images/recall/context-recall-icon.png"
                 alt="Recall mark. A glowing blue rotating-arrow glyph centered on a faint capture grid."
@@ -146,7 +144,7 @@ export default function RecallPage() {
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="w-full h-auto max-w-[560px]"
               />
-            </div>
+            </Figure>
           </div>
         </section>
 
@@ -262,36 +260,51 @@ export default function RecallPage() {
             label="Cards"
             title="Cards as moments, not documents"
           />
-          <div className="mt-10 grid grid-cols-1 lg:grid-cols-[649px_1fr] gap-6 lg:gap-10 items-start">
-            <Image
-              src="/images/recall/cards-card-hierarchy.png"
-              alt="Six Recall cards in a 3-by-2 grid. Each anchored on a desktop screenshot with timestamp and app metadata secondary."
-              width={3056}
-              height={1606}
-              sizes="(min-width: 1024px) 649px, 100vw"
-              className="w-full h-auto"
-            />
-            <div className="flex flex-col gap-4 max-w-[68ch]">
-              <p className="t-body">
-                A Recall card needed to hold several pieces of information: a screenshot,
-                app name, timestamp, extracted text, and relevance signals.
-              </p>
-              <p className="t-body">
-                We built around the screenshot as the primary anchor. Not a cropped asset
-                preview, but the actual desktop as it appeared. That context is what
-                lodges in memory.
-              </p>
-              <p className="t-body">
-                App name, timestamp, and extracted text stayed visible but secondary. The
-                hierarchy pushed away from &ldquo;found document&rdquo; and toward
-                &ldquo;revisited moment.&rdquo;
-              </p>
-              <p className="t-body">
-                The result is something between a timeline and a search interface:
-                visual enough to scan like memory works, structured enough to act
-                predictably.
-              </p>
-            </div>
+          <div className="mt-10 lg:mt-14 flex flex-col gap-4 max-w-[68ch]">
+            <p className="t-body">
+              We built around the screenshot as the primary anchor. Not a cropped asset
+              preview, but the actual desktop as it appeared. That context is what lodges
+              in memory.
+            </p>
+            <p className="t-body">
+              App name, timestamp, and extracted text stayed visible but secondary. The
+              hierarchy shifted the result from &ldquo;found document&rdquo; to
+              &ldquo;revisited moment&rdquo; while keeping the system predictable enough to
+              search.
+            </p>
+          </div>
+          <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+            <Figure number="4.1" className="my-0 lg:my-0">
+              <Image
+                src="/images/recall/cards-card-hierarchy.png"
+                alt="Six Recall cards in a 3-by-2 grid. Each is anchored on a desktop screenshot, with timestamp and app metadata secondary."
+                width={3056}
+                height={1606}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="block w-full h-auto"
+              />
+            </Figure>
+            <Figure number="4.2" className="my-0 lg:my-0">
+              <Image
+                src="/images/recall/clarity-results-grid.png"
+                alt="Recall search results for Presentation with a red barn, with visual matches separated into a grid of close-match cards."
+                width={1024}
+                height={550}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="block w-full h-auto"
+              />
+            </Figure>
+          </div>
+          <div className="mt-4 pt-3 border-t border-[color:var(--rule)]">
+            <p className="t-mono-caption text-[color:var(--text-secondary)]">
+              CARD HIERARCHY / SEPARATED RESULTS &middot; SCREENSHOT AS MEMORY ANCHOR,
+              METADATA AS PROVENANCE.
+            </p>
+            <p className="mt-2 t-body-sm max-w-[68ch] text-[color:var(--text-secondary)]">
+              Testing showed that one merged ranking buried visual matches, so we separated
+              text and visual results. Opaque correctness erodes trust faster than
+              transparent mistakes.
+            </p>
           </div>
         </section>
 
@@ -305,75 +318,35 @@ export default function RecallPage() {
           <div className="section-grid mt-10">
             <div className="flex flex-col gap-4 max-w-[68ch]">
               <p className="t-body">
-                Technically correct results can feel wrong. Search for &ldquo;blue chart
-                spreadsheet&rdquo; and the system might return something from an
-                unrelated app that simply had a blue element.
+                Technically correct results can still feel wrong. Rather than hide every
+                false positive at the model layer, we made each result explain itself.
               </p>
               <p className="t-body">
-                We didn&apos;t try to eliminate every false positive at the model layer.
-                Instead, we made results understandable.
+                Cards labeled text and visual matches explicitly, then showed source app
+                and time. Visible provenance let people judge relevance instead of asking
+                them to trust an opaque score.
               </p>
-              <p className="t-body">
-                Every card explained how it matched. Text matches were labeled as text
-                matches. Visual matches were labeled as visual matches. Separating and
-                showing these signals let users judge relevance themselves.
-              </p>
-              <p className="t-body">Perfection wasn&apos;t the goal. Legibility was.</p>
             </div>
             <Margin anchor="5-pull">
               Perfection wasn&rsquo;t the goal. Legibility was.
             </Margin>
           </div>
-          <Image
-            src="/images/recall/transparency-card-grid.png"
-            alt="Recall search results for the query 'Catering'. Match cards labeled with source app and match-type signals."
-            width={1641}
-            height={881}
-            sizes="100vw"
-            className="w-full h-auto mt-10 lg:mt-14"
-          />
-        </section>
-
-        {/* ── 06 Cards (continued) ── Body + full-width Figure ── */}
-        <section data-section data-reveal id="clarity" className="py-12 lg:py-20">
-          <SectionLabel
-            number="06"
-            label="Cards"
-            title="Merged results killed clarity"
-          />
-          <div className="mt-10 lg:mt-14 flex flex-col gap-4 max-w-[68ch]">
-            <p className="t-body">
-              First version blended everything. Text matches and visual matches went
-              into one ranked list. Clean, elegant, simple.
-            </p>
-            <p className="t-body">
-              Testing proved it didn&apos;t work. Text matches dominated the ranking.
-              Visual matches got buried. Users couldn&apos;t figure out why something
-              appeared.
-            </p>
-            <p className="t-body">
-              We split text and visual matches into separate sections. That single
-              structural change made the system&apos;s logic transparent. Cognitive load
-              dropped. Trust went up.
-            </p>
-            <p className="t-body">
-              The AI was technically correct even in the first version. But opaque
-              correctness erodes trust faster than transparent mistakes.
-            </p>
-          </div>
-          <div className="mt-10 lg:mt-14">
+          <Figure
+            number="5.1"
+            caption="Result cards expose source and match type so relevance can be judged, not assumed."
+          >
             <Image
-              src="/images/recall/clarity-results-grid.png"
-              alt="Recall search results for ‘Presentation with a red barn’. Visual matches separated into a 4×3 grid of close-match cards with source domains and timestamps."
-              width={1024}
-              height={550}
+              src="/images/recall/transparency-card-grid.png"
+              alt="Recall search results for the query Catering. Match cards are labeled with source app and match-type signals."
+              width={1641}
+              height={881}
               sizes="100vw"
               className="w-full h-auto"
             />
-          </div>
+          </Figure>
         </section>
 
-        {/* ── 07 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}
+        {/* ── 06 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}
         <section data-section data-reveal id="performance" className="py-12 lg:py-20">
           {/* Pull-quote — epigraph above the SectionLabel, sets up the section. */}
           <blockquote className="max-w-[68ch] mb-12 lg:mb-16">
@@ -383,7 +356,7 @@ export default function RecallPage() {
           </blockquote>
 
           <SectionLabel
-            number="07"
+            number="06"
             label="Performance"
             title="Fast enough to feel alive"
           />
@@ -394,17 +367,17 @@ export default function RecallPage() {
             to refine results per keystroke without ever blocking the user.
           </p>
 
-          {/* Top-pinned video — fills full section width, bottom crops */}
-          <div className="mt-10 lg:mt-14 relative w-full aspect-[16/9] max-h-[520px] overflow-hidden bg-[color:var(--ink)]">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover object-top"
+          <Figure
+            number="6.1"
+            caption="Semantic results refine with each keystroke without blocking input."
+          >
+            <LoopingMedia
+              className="w-full aspect-[16/9] max-h-[520px] overflow-hidden"
+              videoClassName="w-full h-full object-cover object-top"
+              label="Recall refining semantic search results as the query changes"
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4"
             />
-          </div>
+          </Figure>
 
           {/* Strip Break — three labeled metric chips */}
           <div className="mt-10 lg:mt-14 border-y border-[color:var(--rule)]">
@@ -429,66 +402,59 @@ export default function RecallPage() {
         </section>
 
         {/* ── Cover Plate (§2.10) — privacy chapter divider ── */}
-        <CoverPlate number="08" total="09" title="Trust" />
+        <CoverPlate number="07" total="09" title="Trust" />
 
-        {/* ── 08 Trust ── */}
+        {/* ── 07 Trust ── */}
         <section data-section data-reveal id="trust" className="py-12 lg:py-20">
           <SectionLabel
-            number="08"
+            number="07"
             label="Trust"
             title="Privacy was the whole product"
           />
-          {/* Body left, privacy screenshots stacked right */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 lg:gap-14 mt-10 items-start">
-            <div className="flex flex-col gap-4 max-w-[68ch]">
-              <p className="t-body text-[color:var(--text-secondary)]">
-                Recall captures everything. That only works if people trust where the
-                data sits, who can see it, and what control they actually have.
-              </p>
-              <p className="t-body">
-                On-device processing wasn&apos;t optional. All capture, all indexing, all
-                retrieval happened locally. Nothing left the machine.
-              </p>
-              <p className="t-body">
-                When public scrutiny hit, we made the call to flip Recall from opt-out
-                to opt-in, ship per-app exclusion, and give users a pause control. I
-                owned the IA for the new privacy surface.
-              </p>
-              <p className="t-body">
-                We made those boundaries tangible. Cards showed where results came from
-                and when. Excluded content got explicit explanation instead of silent
-                gaps. Trust wasn&apos;t a single setting. It lived in every interaction.
-              </p>
-            </div>
-            <div className="flex flex-col gap-6">
+          <div className="mt-10 flex flex-col gap-4 max-w-[68ch]">
+            <p className="t-body">
+              Recall only works if people trust where captured data sits and what control
+              they retain. Capture, indexing, and retrieval stayed on-device.
+            </p>
+            <p className="t-body">
+              After public scrutiny, we moved from opt-out to opt-in, added per-app
+              exclusion and pause controls, and made deletion boundaries explicit. I owned
+              the information architecture for that privacy surface.
+            </p>
+          </div>
+          <Figure
+            number="7.1"
+            caption="Deletion and capture settings form one recovery path: remove the moment, then prevent recurrence."
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-[color:var(--rule)]">
               <Image
                 src="/images/recall/trust-sensitive-content.png"
                 alt="Recall card menu showing sensitive content (a credit-card snapshot from Fidelity) with a Delete snapshot action"
                 width={1030}
                 height={722}
-                sizes="(min-width: 1024px) 360px, 100vw"
-                className="w-full h-auto"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-full object-contain bg-[color:var(--ink)]"
               />
               <Image
                 src="/images/recall/trust-delete-snapshot.png"
                 alt="Snapshot removed confirmation modal with an option to update Recall capture settings to block specific apps and websites"
                 width={1820}
                 height={1464}
-                sizes="(min-width: 1024px) 360px, 100vw"
-                className="w-full h-auto"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-full object-contain bg-[color:var(--ink)]"
               />
             </div>
-          </div>
+          </Figure>
 
           <div className="mt-12">
             <SpecSheet rows={TRUST_PRINCIPLES} />
           </div>
         </section>
 
-        {/* ── 09 Constraints ── Pull-quote Interlude (§2.11) ── */}
+        {/* ── 08 Constraints ── Pull-quote Interlude (§2.11) ── */}
         <section data-section data-reveal id="constraints" className="py-12 lg:py-20">
           <SectionLabel
-            number="09"
+            number="08"
             label="Constraints"
             title="We killed RAG to keep search fast"
           />
@@ -501,17 +467,15 @@ export default function RecallPage() {
             interpret them.
           </p>
 
-          {/* Full-size video — RAG synthesis vs. fast retrieval, no cropping */}
-          <div className="mt-10 lg:mt-14 relative w-full border border-[color:var(--rule)] bg-[color:var(--ink)]">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="block w-full h-auto"
+          <Figure
+            number="8.1"
+            caption="Fast retrieval preserved the direct relationship between a query and the moments it surfaced."
+          >
+            <LoopingMedia
+              label="Recall comparing synthesized answers with fast moment retrieval"
               src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4"
             />
-          </div>
+          </Figure>
 
           {/* Pull-quote — promoted from § 08 Margin */}
           <div className="mt-10 lg:mt-14 py-12 lg:py-20 border-y border-[color:var(--rule)]">
@@ -524,36 +488,26 @@ export default function RecallPage() {
           </div>
         </section>
 
-        {/* ── 10 Impact ── Annotated Split Plate (§2.4) + Strip Break Telemetry (§2.9) ── */}
+        {/* ── 09 Impact ── Annotated Split Plate (§2.4) + Strip Break Telemetry (§2.9) ── */}
         <section data-section data-reveal id="impact" className="py-12 lg:py-20">
           <SectionLabel
-            number="10"
+            number="09"
             label="Impact"
             title="From rediscovery to reference pattern"
           />
           <div className="mt-10 border border-[color:var(--rule)] grid grid-cols-1 lg:grid-cols-2 items-stretch">
             <div className="p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-[color:var(--rule)] flex flex-col gap-6">
               <p className="t-body">
-                Separating visual and text matches proved it wasn&apos;t just philosophy.
-                In testing, users could explain why each result appeared and quickly
-                reject things that didn&apos;t fit. Mysterious AI behavior became
-                rational.
+                In testing, people could explain why each result appeared, reject what did
+                not fit, and recover information they had written off as lost. Visible
+                provenance turned mysterious AI behavior into something rational.
               </p>
               <p className="t-body">
-                People recovered information they&apos;d written off as lost. A code
-                snippet they saw once in documentation. Files from months ago they&apos;d
-                forgotten existed.
+                The work shipped at Build 2024, then its privacy patterns, relevance
+                transparency, and match-type separation became reference points for Windows
+                Search and File Explorer.
               </p>
-              <p className="t-body">
-                The work rippled further. Privacy and trust patterns from Recall became
-                reference points across Windows teams.
-              </p>
-              <p className="t-body">
-                The search approach itself became foundational. Principles of relevance
-                transparency and match-type separation showed up in Windows Search and
-                File Explorer updates.
-              </p>
-              <Margin anchor="10-pull" className="my-0">
+              <Margin anchor="9-pull" className="my-0">
                 Recall proved that AI in core OS features doesn&rsquo;t require opacity or
                 experimental disclaimers. Clear transparency, visible provenance,
                 predictable interactions.
@@ -561,7 +515,7 @@ export default function RecallPage() {
             </div>
             <div className="p-6 lg:p-10 flex items-start">
               <Figure
-                number="10.1"
+                number="9.1"
                 caption="Recall announcement"
                 src="/images/recall/impact-keynote.png"
                 alt="Recall introduced on stage at Build. System architecture diagram (Screen Region Detector, Optical Character Recognition, Parser, Text Encoder, Image Encoder) framing the Recall pill."
@@ -573,6 +527,7 @@ export default function RecallPage() {
           </div>
           <div className="mt-12">
             <Telemetry
+              variant="quiet"
               items={[
                 { value: "Copilot+", unit: "DEVICES",         label: "Local intelligence required for on-device indexing" },
                 { value: "WS + FE",  unit: "TEAMS ADOPTING",  label: "Windows Search and File Explorer adopting the patterns" },

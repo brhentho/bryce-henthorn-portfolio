@@ -5,7 +5,6 @@ import {
   TopBar,
   ManualFooter,
   HeroIntro,
-  CoverPlate,
 } from "@/components/manual"
 
 const MANIFESTO = [
@@ -20,15 +19,13 @@ const MICROSOFT_ROLES: {
   year: string
   role: string
   desc?: string
-  active?: boolean
 }[] = [
   {
     year: "2025 – PRESENT",
     role: "Windows Agent Platform",
     desc: "Led agent visibility and orchestration design across Shell, Copilot, and M365 integration surfaces. 3 engineering partner teams.",
-    active: true,
   },
-  { year: "2025 – PRESENT", role: "Copilot Actions", active: true },
+  { year: "2025 – PRESENT", role: "Copilot Actions" },
   {
     year: "2023 – 2025",
     role: "Windows Recall",
@@ -53,10 +50,10 @@ export default function AboutPage() {
         <section data-section id="overview" className="pt-16 lg:pt-32 pb-16 lg:pb-24">
           <HeroIntro
             linesWrapperClassName="space-y-3 lg:space-y-4"
-            lines={MANIFESTO.map((line) => ({
+            lines={MANIFESTO.map((line, index) => ({
               text: line,
               className: "t-display-l text-[color:var(--text-primary)]",
-              as: "p",
+              as: index === 0 ? "h1" : "p",
             }))}
           />
         </section>
@@ -100,62 +97,79 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── Cover Plate (§2.10) — chapter divider into Experience ── */}
-        <CoverPlate number="02" total="04" title="Experience" />
-
-        {/* ── 02 Experience — Microsoft DL + PRIOR ── */}
-        <section data-section data-reveal id="experience" className="py-12 lg:py-20">
+        {/* ── 02 Experience — editorial career timeline ── */}
+        <section
+          data-section
+          data-reveal
+          id="experience"
+          className="py-16 lg:py-28"
+        >
           <SectionLabel
             number="02"
             label="Experience"
             title="Building systems at scale since 2018"
           />
 
-          <h3 className="t-mono-label mt-12 mb-6">MICROSOFT</h3>
-          <dl>
-            {MICROSOFT_ROLES.map((item, i, arr) => (
-              <div
-                key={`${item.role}-${i}`}
-                className={`grid grid-cols-[110px_1fr] sm:grid-cols-[160px_1fr] items-baseline gap-x-6 py-4 ${
-                  i < arr.length - 1 ? "border-b border-[color:var(--rule)]" : ""
-                }`}
-              >
-                <dt
-                  className={`t-mono-label ${
-                    item.active ? "text-[color:var(--accent-trace)]" : ""
-                  }`}
-                >
-                  {item.year}
-                </dt>
-                <dd>
-                  <p className="t-body text-[color:var(--text-primary)]">{item.role}</p>
-                  {item.desc && (
-                    <p className="t-body-sm mt-2 text-[color:var(--text-secondary)]">
-                      {item.desc}
-                    </p>
-                  )}
-                </dd>
+          <div className="mt-12 space-y-16 lg:mt-16 lg:space-y-20">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-[10rem_minmax(0,1fr)] lg:gap-12 xl:grid-cols-[12rem_minmax(0,1fr)]">
+              <div>
+                <h3 className="t-mono-label text-[color:var(--text-secondary)]">
+                  Microsoft
+                </h3>
+                <p className="t-mono-colophon mt-2">2018 – PRESENT</p>
               </div>
-            ))}
-          </dl>
 
-          <h3 className="t-mono-label mt-12 mb-6">PRIOR</h3>
-          <dl>
-            {[
-              { label: "AMAZON",    value: "Contract" },
-              { label: "NORDSTROM", value: "Contract" },
-            ].map((item, i, arr) => (
-              <div
-                key={item.label}
-                className={`grid grid-cols-[110px_1fr] sm:grid-cols-[160px_1fr] items-baseline gap-x-6 py-4 ${
-                  i < arr.length - 1 ? "border-b border-[color:var(--rule)]" : ""
-                }`}
-              >
-                <dt className="t-mono-label">{item.label}</dt>
-                <dd className="t-body text-[color:var(--text-primary)]">{item.value}</dd>
-              </div>
-            ))}
-          </dl>
+              <dl className="border-t border-[color:var(--rule-strong)]">
+                {MICROSOFT_ROLES.map((item, i) => (
+                  <div
+                    key={`${item.role}-${i}`}
+                    className={`grid grid-cols-1 gap-y-3 py-7 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-x-8 lg:grid-cols-[9rem_minmax(0,1fr)] lg:gap-x-10 lg:py-8 ${
+                      i > 0 ? "border-t border-[color:var(--rule)]" : ""
+                    }`}
+                  >
+                    <dt className="t-mono-caption pt-1 text-[color:var(--text-tertiary)]">
+                      {item.year}
+                    </dt>
+                    <dd className="min-w-0">
+                      <p className="t-h3 text-[color:var(--text-primary)]">
+                        {item.role}
+                      </p>
+                      {item.desc && (
+                        <p className="t-body-sm mt-3 max-w-[70ch] text-[color:var(--text-secondary)]">
+                          {item.desc}
+                        </p>
+                      )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-[10rem_minmax(0,1fr)] lg:gap-12 xl:grid-cols-[12rem_minmax(0,1fr)]">
+              <h3 className="t-mono-label text-[color:var(--text-secondary)]">
+                Prior
+              </h3>
+
+              <dl className="grid grid-cols-1 border-t border-[color:var(--rule-strong)] sm:grid-cols-2">
+                {[
+                  { label: "Amazon", value: "Contract" },
+                  { label: "Nordstrom", value: "Contract" },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="py-7 sm:py-8 sm:pr-8 sm:odd:border-r sm:odd:border-[color:var(--rule)] sm:even:pl-8"
+                  >
+                    <dt className="t-h3 text-[color:var(--text-primary)]">
+                      {item.label}
+                    </dt>
+                    <dd className="t-mono-caption mt-2 text-[color:var(--text-tertiary)]">
+                      {item.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
         </section>
 
         {/* ── 03 Philosophy — two-column body ── */}

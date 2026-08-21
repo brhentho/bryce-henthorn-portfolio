@@ -1,81 +1,32 @@
-import { ViewTransitionLink } from "./ViewTransitionLink"
-import { RegistrationMark } from "./RegistrationMark"
-
-const INDEX_ITEMS: { href: string; label: string }[] = [
-  { href: "/",                      label: "WORK" },
-  { href: "/agents-in-windows",     label: "AGENTS" },
-  { href: "/recall",                label: "RECALL" },
-  { href: "/teams-for-education",   label: "TEAMS" },
-  { href: "/about",                 label: "ABOUT" },
-]
-
 const linkClass =
-  "t-body-sm block text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] decoration-[0.5px] underline-offset-[0.25em] transition-all duration-[160ms] hover:decoration-[color:var(--accent-trace)] hover:decoration-[1.5px]"
-
-const indexLinkClass =
-  "t-mono-label inline-block text-[color:var(--text-primary)] transition-colors duration-[160ms] hover:text-[color:var(--accent-trace)]"
-
-/* INDEX / AUTHOR / CONTACT section headers. Plain `<p>` — never a link.
-   Tracking + tertiary tone separates the header from the items beneath it
-   so the column reads as label → list, not as a flat stack of links. */
-const sectionHeaderClass =
-  "t-mono-label text-[color:var(--text-tertiary)] cursor-default select-none"
+  "t-body-sm inline-flex min-h-11 max-w-full items-center [overflow-wrap:anywhere] text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] decoration-[0.5px] underline-offset-[0.25em] transition-[text-decoration-color] duration-[160ms] hover:decoration-[color:var(--text-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent-trace)]"
 
 /**
- * Site-wide footer — the "registration grid" (design 1F). Three columns:
- * author, document index, contact. Hairline rule on top with registration
- * marks at the two upper corners, and an inner hairline above the colophon.
+ * Compact site-wide footer. One hairline closes the document; author and
+ * contact information share a quiet two-column registration row.
  */
 export function ManualFooter() {
   return (
-    <footer className="relative border-t border-[color:var(--rule)] mt-16">
-      <RegistrationMark className="absolute -top-1.5 -left-1.5" />
-      <RegistrationMark className="absolute -top-1.5 -right-1.5" />
-
-      <div className="container py-12 grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10">
-        {/* Author */}
-        <div className="space-y-3">
-          <p className={sectionHeaderClass}>AUTHOR</p>
-          <div className="space-y-1">
-            <p className="t-body text-[color:var(--text-primary)]">Bryce Henthorn</p>
-            <p className="t-mono-caption text-[color:var(--text-secondary)]">
-              Senior Product Designer, Microsoft
-            </p>
-          </div>
+    <footer className="border-t border-[color:var(--rule)]">
+      <div className="container grid grid-cols-1 gap-x-12 gap-y-8 py-10 md:grid-cols-2 lg:py-12">
+        <div className="flex flex-col items-start">
+          <p className="t-body text-[color:var(--text-primary)]">Bryce Henthorn</p>
+          <p className="t-mono-caption mt-1 text-[color:var(--text-secondary)]">
+            Senior Product Designer, Microsoft
+          </p>
+          <p className="t-mono-colophon mt-6">© 2026</p>
         </div>
 
-        {/* Index */}
-        <div className="space-y-3">
-          <p className={sectionHeaderClass}>INDEX</p>
-          <ul className="space-y-1.5">
-            {INDEX_ITEMS.map((item) => (
-              <li key={item.href}>
-                <ViewTransitionLink href={item.href} className={indexLinkClass}>
-                  {item.label}
-                </ViewTransitionLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Contact */}
-        <div className="space-y-3">
-          <p className={sectionHeaderClass}>CONTACT</p>
-          <div className="space-y-1">
-            <a href="tel:+13609272833" className={linkClass}>
-              360.927.2833
-            </a>
-            <a href="mailto:bhenthorn2757@gmail.com" className={linkClass}>
-              bhenthorn2757@gmail.com
-            </a>
-            <p className="t-body-sm text-[color:var(--text-secondary)]">Seattle, WA</p>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-[color:var(--rule)]">
-        <div className="container py-2 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 t-mono-colophon">
-          <span>© 2026 Bryce Henthorn</span>
-          <span>Printed Seattle, WA</span>
+        <div className="flex flex-col items-start md:items-end md:text-right">
+          <a href="mailto:bhenthorn2757@gmail.com" className={linkClass}>
+            bhenthorn2757@gmail.com
+          </a>
+          <a href="tel:+13609272833" className={linkClass}>
+            360.927.2833
+          </a>
+          <p className="t-mono-caption mt-1 text-[color:var(--text-secondary)]">
+            Seattle, WA
+          </p>
         </div>
       </div>
     </footer>

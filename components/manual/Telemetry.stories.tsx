@@ -18,3 +18,14 @@ export const Default: Story = {
     ],
   },
 }
+
+export const Quiet: Story = {
+  args: {
+    variant: "quiet",
+    items: [
+      { value: "5", unit: "STATES", label: "Running, attention, completed, failed, paused" },
+      { value: "3", unit: "TEAMS", label: "Engineering partner teams" },
+      { value: "Q", unit: "CADENCE", label: "Quarterly OS shipping cycle" },
+    ],
+  },
+}

@@ -7,15 +7,8 @@ type Props = {
 }
 
 /**
- * Compact closing nav block at the foot of every case study. Pattern:
- *
- *   ────────────────────────────────────────
- *   NEXT PROJECT
- *   Agents in Windows                  READ →
- *   ────────────────────────────────────────
- *
- * Sits inside the manual `container`, just before `<ManualFooter />`. The
- * top hairline is the section divider; the footer below adds its own.
+ * Typographic handoff at the foot of every case study. Whitespace separates
+ * it from the story; the global footer supplies the closing document rule.
  */
 export function NextProject({ href, title }: Props) {
   return (
@@ -23,28 +16,24 @@ export function NextProject({ href, title }: Props) {
       data-section
       data-reveal
       aria-label="Next project"
-      className="border-t border-[color:var(--rule)]"
     >
       <ViewTransitionLink
         href={href}
         className="block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[color:var(--accent-trace)]"
       >
-        <div className="container py-6 lg:py-8">
-          <p className="t-mono-label text-[color:var(--text-tertiary)] mb-2">
+        <div className="container py-16 lg:py-24">
+          <p className="t-mono-label mb-4 text-[color:var(--text-secondary)]">
             NEXT PROJECT
           </p>
-          <div className="flex items-baseline justify-between gap-6">
-            <h2 className="t-h2 text-[color:var(--text-primary)]">{title}</h2>
-            <span className="t-mono-label read-button transition-colors inline-flex items-baseline gap-[0.4em] whitespace-nowrap shrink-0">
-              READ
-              <span
-                aria-hidden="true"
-                className="inline-block transition-transform duration-200 ease-out group-hover:translate-x-[4px]"
-              >
-                →
-              </span>
+          <h2 className="t-h1 flex max-w-full items-baseline gap-[0.45em] text-[color:var(--text-primary)] underline decoration-transparent decoration-[1px] underline-offset-[0.22em] transition-[text-decoration-color] duration-200 group-hover:decoration-[color:var(--rule-strong)]">
+            <span className="min-w-0 [overflow-wrap:anywhere]">{title}</span>
+            <span
+              aria-hidden="true"
+              className="inline-block shrink-0 text-[color:var(--text-secondary)] motion-safe:transition-transform motion-safe:duration-200 motion-safe:ease-out motion-safe:group-hover:translate-x-1"
+            >
+              →
             </span>
-          </div>
+          </h2>
         </div>
       </ViewTransitionLink>
     </section>

@@ -10,6 +10,7 @@ import {
   CoverPlate,
   HeroIntro,
   NextProject,
+  LoopingMedia,
 } from "@/components/manual"
 
 const AGENT_STATES = [
@@ -275,13 +276,11 @@ export default function AgentsInWindowsPage() {
               className="my-0"
             >
               <div className="relative aspect-square overflow-hidden border border-[color:var(--rule)]">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{ objectPosition: "50% 100%" }}
+                <LoopingMedia
+                  className="absolute inset-0"
+                  videoClassName="w-full h-full object-cover"
+                  videoStyle={{ objectPosition: "50% 100%" }}
+                  label="Taskbar agent hover card expanding to show progress"
                   src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Taskbar.mp4"
                 />
               </div>
@@ -372,12 +371,8 @@ export default function AgentsInWindowsPage() {
 
           {/* Full-bleed video — the demo is the argument */}
           <Figure number="6.1" caption="Ask Copilot composer. Invoking an agent with @">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="block w-full h-auto"
+            <LoopingMedia
+              label="Ask Copilot composer invoking an agent with the at sign"
               src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Composer.mp4"
             />
           </Figure>
@@ -489,6 +484,7 @@ export default function AgentsInWindowsPage() {
           />
           <div className="mt-12">
             <Telemetry
+              variant="quiet"
               items={[
                 { value: "5", unit: "STATES",   label: "Running, attention, completed, failed, paused" },
                 { value: "3", unit: "TEAMS",    label: "Engineering partner teams" },
