@@ -8,6 +8,8 @@ type Line = {
   className?: string
   style?: CSSProperties
   as?: "h1" | "p" | "h2"
+  emphasizeWords?: string[]
+  emphasisClassName?: string
 }
 
 type Props = {
@@ -35,6 +37,9 @@ type Props = {
   static?: boolean
 }
 
+const normalizeEmphasisWord = (word: string) =>
+  word.toLocaleLowerCase().replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "")
+
 /**
  * Operator-manual hero intro: monospace eyebrow types in char-by-char with a
  * blinking caret, then each line reveals word-by-word with a fade-up-blur.
@@ -54,13 +59,36 @@ export function HeroIntro({
   linesWrapperClassName,
   static: isStatic = false,
 }: Props) {
+  const renderStaticText = (line: Line) => {
+    if (!line.emphasizeWords?.length) return line.text
+
+    const emphasized = new Set(
+      line.emphasizeWords.map(normalizeEmphasisWord),
+    )
+
+    return line.text.split(/(\s+)/).map((part, index) => {
+      if (/^\s+$/.test(part)) return part
+      const className = emphasized.has(normalizeEmphasisWord(part))
+        ? line.emphasisClassName
+        : undefined
+
+      return className ? (
+        <span key={index} className={className}>
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    })
+  }
+
   if (isStatic) {
     const renderedLines = lines.map((line, idx) => {
       const Tag = line.as ?? (idx === 0 ? "h1" : "p")
       const balance = Tag === "h1" || Tag === "h2" ? "text-balance" : ""
       return (
         <Tag key={idx} className={cn(balance, line.className)} style={line.style}>
-          {line.text}
+          {renderStaticText(line)}
         </Tag>
       )
     })
@@ -88,6 +116,9 @@ export function HeroIntro({
     const Tag = line.as ?? (idx === 0 ? "h1" : "p")
     const balance = Tag === "h1" || Tag === "h2" ? "text-balance" : ""
     const parts = line.text.split(/(\s+)/)
+    const emphasized = new Set(
+      line.emphasizeWords?.map(normalizeEmphasisWord) ?? [],
+    )
     return (
       <Tag key={idx} className={cn(balance, line.className)} style={line.style}>
         {parts.map((part, i) => {
@@ -97,7 +128,11 @@ export function HeroIntro({
           return (
             <span
               key={i}
-              className="hero-intro-word"
+              className={cn(
+                "hero-intro-word",
+                emphasized.has(normalizeEmphasisWord(part)) &&
+                  line.emphasisClassName,
+              )}
               style={{ animationDelay: `${delay}ms` }}
             >
               {part}

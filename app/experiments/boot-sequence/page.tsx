@@ -13,7 +13,11 @@ function Inner() {
   return (
     <>
       <FakeHero />
-      <BootSequence key={replayKey} force={force || replayKey > 0} />
+      <BootSequence
+        key={replayKey}
+        force={force || replayKey > 0}
+        variant="cinematic"
+      />
       <button
         type="button"
         onClick={() => {

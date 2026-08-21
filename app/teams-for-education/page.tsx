@@ -11,6 +11,7 @@ import {
   CoverPlate,
   HeroIntro,
   NextProject,
+  LoopingMedia,
 } from "@/components/manual"
 import { HeroSchematic } from "./svg/HeroSchematic"
 
@@ -321,12 +322,8 @@ export default function TeamsForEducationPage() {
 
           {/* Full-bleed video — the demo carries the argument */}
           <Figure number="5.1" caption="Student view of their virtual table">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="block w-full h-auto"
+            <LoopingMedia
+              label="Student moving through a virtual classroom table"
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig06-2YDd5QkvxbZD2b8O44R0Nag6g14UhH.mov"
             />
           </Figure>
@@ -373,12 +370,8 @@ export default function TeamsForEducationPage() {
                 caption="Whole class to table transitions"
                 className="my-0 lg:my-0"
               >
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="block w-full h-auto"
+                <LoopingMedia
+                  label="Whole class transitioning into assigned virtual tables"
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov"
                 />
               </Figure>
@@ -411,12 +404,8 @@ export default function TeamsForEducationPage() {
               caption="Group creation and assignment flow"
               className="my-0 lg:my-0"
             >
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="block w-full h-auto"
+              <LoopingMedia
+                label="Teacher creating and assigning student groups"
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov"
               />
             </Figure>

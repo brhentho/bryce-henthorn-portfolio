@@ -6,6 +6,7 @@ import { AuditTrail } from "./AuditTrail"
 import { WelcomeText } from "./WelcomeText"
 
 const STORAGE_KEY = "boot-sequence-played"
+let documentBootStatus: "idle" | "playing" | "played" = "idle"
 
 const AUDIT_LINES = [
   "INITIALIZING REASONING...",
@@ -37,15 +38,25 @@ const BACKDROP_FADE_AT = WELCOME_END + BLACK_HOLD             // 5950
 const BACKDROP_FADE_DURATION = 1050                           // slow homepage reveal
 const EXIT_END = BACKDROP_FADE_AT + BACKDROP_FADE_DURATION    // 7000
 
+const AMBIENT_PER_LINE = 400
+const AMBIENT_LINES_END = AUDIT_LINES.length * AMBIENT_PER_LINE
+const AMBIENT_FADE_DURATION = 250
+const AMBIENT_END = AMBIENT_LINES_END + AMBIENT_FADE_DURATION
+
 const EASE_CALM: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 type Props = {
   /** When true, ignore the sessionStorage gate (sandbox replay). */
   force?: boolean
   onComplete?: () => void
+  variant?: "ambient" | "cinematic"
 }
 
-export function BootSequence({ force = false, onComplete }: Props) {
+export function BootSequence({
+  force = false,
+  onComplete,
+  variant = "ambient",
+}: Props) {
   const reduceMotion = useReducedMotion()
   const [shouldRender, setShouldRender] = useState<boolean | null>(null)
   const [hidden, setHidden] = useState(false)
@@ -57,7 +68,15 @@ export function BootSequence({ force = false, onComplete }: Props) {
       return
     }
     try {
-      if (sessionStorage.getItem(STORAGE_KEY) === "1") {
+      if (documentBootStatus === "playing") {
+        setShouldRender(true)
+        return
+      }
+      if (
+        documentBootStatus === "played" ||
+        sessionStorage.getItem(STORAGE_KEY) === "1"
+      ) {
+        documentBootStatus = "played"
         setShouldRender(false)
         onComplete?.()
         return
@@ -66,21 +85,31 @@ export function BootSequence({ force = false, onComplete }: Props) {
     } catch {
       // sessionStorage may throw in privacy mode — fall through and play.
     }
+    documentBootStatus = "playing"
     setShouldRender(true)
   }, [force, onComplete])
 
   // Schedule the unmount + onComplete fire.
   useEffect(() => {
     if (shouldRender !== true) return
-    const total = reduceMotion ? 800 : EXIT_END
+    const total = reduceMotion
+      ? variant === "ambient"
+        ? 0
+        : 800
+      : variant === "ambient"
+        ? AMBIENT_END
+        : EXIT_END
     const timer = window.setTimeout(() => {
+      documentBootStatus = "played"
       setHidden(true)
       onComplete?.()
     }, total + 50)
     return () => window.clearTimeout(timer)
-  }, [shouldRender, reduceMotion, onComplete])
+  }, [shouldRender, reduceMotion, onComplete, variant])
 
   if (shouldRender !== true || hidden) return null
+
+  if (reduceMotion && variant === "ambient") return null
 
   if (reduceMotion) {
     return (
@@ -96,6 +125,19 @@ export function BootSequence({ force = false, onComplete }: Props) {
           pointerEvents: "none",
           backgroundColor: "#000000",
         }}
+      />
+    )
+  }
+
+  if (variant === "ambient") {
+    return (
+      <AuditTrail
+        lines={AUDIT_LINES}
+        startDelay={0}
+        perLineDuration={AMBIENT_PER_LINE}
+        fadeOutAt={AMBIENT_LINES_END}
+        fadeOutDuration={AMBIENT_FADE_DURATION}
+        placement="lower-left"
       />
     )
   }

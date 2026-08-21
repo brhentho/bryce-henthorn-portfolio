@@ -1,6 +1,6 @@
 "use client"
 
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 
 type Props = {
@@ -13,21 +13,20 @@ type Props = {
   fadeOutAt: number
   /** ms — duration of the final fade-out */
   fadeOutDuration: number
+  placement?: "center" | "lower-left"
 }
 
-const EASE_CALM: [number, number, number, number] = [0.16, 1, 0.3, 1]
-const TRANSITION_DURATION = 0.15 // seconds — slide-up exit
-const TYPE_PER_CHAR = 20         // ms — typewriter cadence
+const TYPE_PER_CHAR = 20 // ms — typewriter cadence
 
-// Center-stage rolling text. New lines type in at center, hold briefly,
-// then slide up + clip when the next line begins. After the last line
-// settles, the whole component fades.
+// Rolling status text. Each line types in, swaps cleanly to the next,
+// then the whole component fades after the final line settles.
 export function AuditTrail({
   lines,
   startDelay,
   perLineDuration,
   fadeOutAt,
   fadeOutDuration,
+  placement = "center",
 }: Props) {
   const [activeLine, setActiveLine] = useState<number>(-1)
   const [fadeOut, setFadeOut] = useState(false)
@@ -47,71 +46,69 @@ export function AuditTrail({
   }, [lines, startDelay, perLineDuration, fadeOutAt])
 
   return (
-    <motion.div
+    <div
       aria-hidden="true"
-      animate={{ opacity: fadeOut ? 0 : 1 }}
-      transition={{
-        duration: fadeOutDuration / 1000,
-        ease: EASE_CALM,
-      }}
       style={{
         position: "fixed",
         inset: 0,
         zIndex: 65,
         pointerEvents: "none",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        alignItems: placement === "lower-left" ? "flex-end" : "center",
+        justifyContent: placement === "lower-left" ? "flex-start" : "center",
+        padding:
+          placement === "lower-left"
+            ? "0 clamp(24px, 5vw, 80px) 32px"
+            : undefined,
         fontFamily: "var(--font-mono)",
+        opacity: fadeOut ? 0 : 1,
+        transition: `opacity ${fadeOutDuration}ms cubic-bezier(0.16, 1, 0.3, 1)`,
       }}
     >
-      {/* Clip mask — fixed-width, fixed-height window. Width is locked
+      {/* Status plate — fixed-width, fixed-height window. Width is locked
           so short and long lines anchor to the same left edge — no
           horizontal jumping between lines. Width caps at the viewport
           (with 16px breathing margin on each side) so the mask doesn't
           shrink-flex on narrow screens, which would left-anchor the
           lines visually. Font also scales down on narrow viewports so
           long lines like "INITIALIZING REASONING..." don't crowd the
-          right edge. Height crops the slide-up exit. */}
+          right edge. */}
       <div
         style={{
           position: "relative",
           width: "min(40ch, calc(100vw - 32px))",
-          height: "1.4em",
+          height: placement === "lower-left" ? "calc(1.4em + 20px)" : "1.4em",
           overflow: "hidden",
           fontSize: "clamp(16px, 4.5vw, 22px)",
           letterSpacing: "0.06em",
           color: "rgba(255,255,255,0.62)",
           fontWeight: 500,
           lineHeight: 1.4,
+          background:
+            placement === "lower-left" ? "rgba(15,15,16,0.92)" : undefined,
+          border:
+            placement === "lower-left"
+              ? "1px solid rgba(63,63,66,0.8)"
+              : undefined,
         }}
       >
-        <AnimatePresence initial={false} mode="popLayout">
-          {activeLine >= 0 && !fadeOut && (
-            <motion.div
-              key={activeLine}
-              initial={{ y: "100%", opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: "-100%", opacity: 0 }}
-              transition={{
-                duration: TRANSITION_DURATION,
-                ease: EASE_CALM,
-              }}
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                alignItems: "center",
-                gap: "0.6em",
-                whiteSpace: "nowrap",
-              }}
-            >
-              <TypewriterLine text={lines[activeLine]} />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {activeLine >= 0 && !fadeOut && (
+          <div
+            key={activeLine}
+            style={{
+              position: "absolute",
+              inset: placement === "lower-left" ? "10px 12px" : 0,
+              display: "flex",
+              alignItems: "center",
+              gap: "0.6em",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <TypewriterLine text={lines[activeLine]} />
+          </div>
+        )}
       </div>
-    </motion.div>
+    </div>
   )
 }
 

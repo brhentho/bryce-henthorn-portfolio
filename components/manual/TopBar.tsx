@@ -7,23 +7,26 @@ import { RegistrationMark } from "./RegistrationMark"
 import { cn } from "@/lib/utils"
 
 const NAV_ITEMS: { href: string; index: string; label: string }[] = [
-  { href: "/",                    index: "00", label: "WORK" },
-  { href: "/agents-in-windows",   index: "01", label: "AGENTS" },
-  { href: "/recall",              index: "02", label: "RECALL" },
-  { href: "/teams-for-education", index: "03", label: "TEAMS" },
-  { href: "/about",               index: "04", label: "ABOUT" },
+  { href: "/",      index: "00", label: "WORK" },
+  { href: "/about", index: "01", label: "ABOUT" },
 ]
 
+const WORK_ROUTES = ["/", "/agents-in-windows", "/recall", "/teams-for-education"]
+
 function isCurrent(pathname: string, href: string) {
-  return href === "/"
-    ? pathname === "/"
-    : pathname === href || pathname.startsWith(href + "/")
+  if (href === "/") {
+    return WORK_ROUTES.some(
+      (route) => pathname === route || pathname.startsWith(route + "/"),
+    )
+  }
+  return pathname === href || pathname.startsWith(href + "/")
 }
 
 /**
  * Site header — the "index rail" (design 1B). Crosshair + identifier on the
- * left, a numbered index of the five pages on the right. The active entry's
- * number is the only --accent-trace element in the strip.
+ * left, with Work and About as the two global sections on the right. Case
+ * studies remain children of Work rather than peer-level destinations. The
+ * active entry's number is the only --accent-trace element in the strip.
  *
  * The former § NN / TT section counter (and its [data-section] observer) was
  * retired in the 2026 revision along with the in-page § eyebrows.
@@ -59,75 +62,79 @@ export function TopBar() {
   }, [menuOpen])
 
   return (
-    <header className="sticky top-0 z-50 bg-[#06060A]/80 backdrop-blur-md border-b border-[color:var(--rule)]">
-      <div className="container py-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-        <ViewTransitionLink
-          href="/"
-          aria-label="Bryce Henthorn, home"
-          className="t-mono-label inline-flex items-center gap-2.5 whitespace-nowrap text-[color:var(--text-primary)] transition-colors duration-200 hover:text-[color:var(--text-secondary)]"
-        >
-          <RegistrationMark className="text-[color:var(--accent-trace)]" />
-          BRYCE HENTHORN
-        </ViewTransitionLink>
+    <>
+      <header className="sticky top-0 z-50 bg-[#06060A]/80 backdrop-blur-md border-b border-[color:var(--rule)]">
+        <div className="container py-1 flex min-h-[52px] flex-wrap items-center justify-between gap-x-6 gap-y-1">
+          <ViewTransitionLink
+            href="/"
+            aria-label="Bryce Henthorn, home"
+            className="t-mono-label inline-flex min-h-11 items-center gap-2.5 whitespace-nowrap text-[color:var(--text-primary)] transition-colors duration-200 hover:text-[color:var(--text-secondary)]"
+          >
+            <RegistrationMark className="text-[color:var(--accent-trace)]" />
+            BRYCE HENTHORN
+          </ViewTransitionLink>
 
-        {/* Desktop / tablet index rail — visible at md and up. */}
-        <nav
-          aria-label="Site"
-          className="hidden md:flex flex-wrap items-baseline gap-x-7 gap-y-2"
-        >
-          {NAV_ITEMS.map((item) => {
-            const isActive = isCurrent(pathname, item.href)
-            return (
-              <ViewTransitionLink
-                key={item.href}
-                href={item.href}
-                aria-current={isActive ? "page" : undefined}
-                className={cn(
-                  "t-mono-label transition-colors duration-200",
-                  isActive
-                    ? "text-[color:var(--text-primary)]"
-                    : "text-[color:var(--text-tertiary)] hover:text-[color:var(--text-primary)]",
-                )}
-              >
-                <span
-                  aria-hidden="true"
-                  className={
+          {/* Desktop / tablet index rail — visible at md and up. */}
+          <nav
+            aria-label="Site"
+            className="hidden md:flex flex-wrap items-center gap-x-7 gap-y-1"
+          >
+            {NAV_ITEMS.map((item) => {
+              const isActive = isCurrent(pathname, item.href)
+              return (
+                <ViewTransitionLink
+                  key={item.href}
+                  href={item.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={cn(
+                    "t-mono-label inline-flex min-h-6 items-center transition-colors duration-200",
                     isActive
-                      ? "text-[color:var(--accent-trace)]"
-                      : "text-[color:var(--rule-strong)]"
-                  }
+                      ? "text-[color:var(--text-primary)]"
+                      : "text-[color:var(--text-tertiary)] hover:text-[color:var(--text-primary)]",
+                  )}
                 >
-                  {item.index}
-                </span>
-                &nbsp;{item.label}
-              </ViewTransitionLink>
-            )
-          })}
-        </nav>
+                  <span
+                    aria-hidden="true"
+                    className={
+                      isActive
+                        ? "text-[color:var(--accent-trace)]"
+                        : "text-[color:var(--rule-strong)]"
+                    }
+                  >
+                    {item.index}
+                  </span>
+                  &nbsp;{item.label}
+                </ViewTransitionLink>
+              )
+            })}
+          </nav>
 
-        {/* Mobile menu trigger — three thin rules in JetBrains Mono.
-            Hidden at md and up. */}
-        <button
-          ref={menuButtonRef}
-          type="button"
-          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-          aria-expanded={menuOpen}
-          aria-controls={menuId}
-          onClick={() => setMenuOpen((v) => !v)}
-          className="md:hidden t-mono-label text-[color:var(--text-primary)] px-2 py-1 -mr-2 cursor-pointer transition-colors duration-200 hover:text-[color:var(--accent-trace)]"
-        >
-          <span aria-hidden="true" className="manual-mobile-menu-icon">
-            <span />
-            <span />
-            <span />
-          </span>
-          <span className="sr-only">{menuOpen ? "Close menu" : "Menu"}</span>
-        </button>
-      </div>
+          {/* Mobile menu trigger — three thin rules in JetBrains Mono.
+              Hidden at md and up. */}
+          <button
+            ref={menuButtonRef}
+            type="button"
+            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={menuOpen}
+            aria-controls={menuId}
+            onClick={() => setMenuOpen((v) => !v)}
+            className="md:hidden t-mono-label inline-flex min-h-11 min-w-11 items-center justify-center text-[color:var(--text-primary)] -mr-3 cursor-pointer transition-colors duration-200 hover:text-[color:var(--accent-trace)]"
+          >
+            <span aria-hidden="true" className="manual-mobile-menu-icon">
+              <span />
+              <span />
+              <span />
+            </span>
+            <span className="sr-only">{menuOpen ? "Close menu" : "Menu"}</span>
+          </button>
+        </div>
+      </header>
 
       {/* Mobile drawer — full-viewport panel below the sticky bar.
           Same JetBrains Mono small-caps treatment as desktop nav so it reads
-          as part of the same system, not a generic mobile menu. */}
+          as part of the same system, not a generic mobile menu. It is a
+          sibling of the backdrop-filtered header so fixed positioning remains
+          viewport-relative. */}
       <div
         id={menuId}
         data-state={menuOpen ? "open" : "closed"}
@@ -174,6 +181,6 @@ export function TopBar() {
           })}
         </nav>
       </div>
-    </header>
+    </>
   )
 }
