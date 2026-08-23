@@ -71,10 +71,10 @@
 }
 
 /* ── Type scale ── exact rem values from brief */
-/* Display tiers use clamp() so heroes scale fluidly down to mobile widths
-   without overflow. Floor and ceiling preserve the original desktop sizes. */
-.manual .t-display-xl { font-family: var(--font-display); font-weight: 500; font-size: clamp(3.125rem, 8.2vw, 8.25rem); line-height: 0.86; letter-spacing: -0.065em; overflow-wrap: break-word; }
-.manual .t-display-l  { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.75rem, 6.8vw, 6.75rem); line-height: 0.9; letter-spacing: -0.055em; overflow-wrap: break-word; }
+/* Display tiers keep their original mobile floors while using calmer desktop
+   ceilings so long editorial statements remain inside the opening viewport. */
+.manual .t-display-xl { font-family: var(--font-display); font-weight: 500; font-size: clamp(3.125rem, 7.4vw, 7.5rem); line-height: 0.86; letter-spacing: -0.065em; overflow-wrap: break-word; }
+.manual .t-display-l  { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.75rem, 6vw, 6rem); line-height: 0.9; letter-spacing: -0.055em; overflow-wrap: break-word; }
 .manual .t-h1         { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.125rem, 4.5vw, 4.5rem); line-height: 0.95; letter-spacing: -0.045em; }
 .manual .t-h2         { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.75rem, 3vw, 3rem); line-height: 1; letter-spacing: -0.035em; }
 .manual .t-h3         { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem;   line-height: 1.35; }
