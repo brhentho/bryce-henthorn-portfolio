@@ -337,6 +337,7 @@ export default function AgentsInWindowsPage() {
         <section
           data-section
           data-reveal
+          data-reveal-role="frame-sequence"
           id="process"
           className="agents-room agents-process-room py-16 lg:py-24"
         >

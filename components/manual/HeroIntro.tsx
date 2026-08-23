@@ -42,7 +42,7 @@ const normalizeEmphasisWord = (word: string) =>
 
 /**
  * Operator-manual hero intro: monospace eyebrow types in char-by-char with a
- * blinking caret, then each line reveals word-by-word with a fade-up-blur.
+ * blinking caret, then each line reveals word-by-word with a short fade-up.
  *
  * Pass `static` to render plain markup with no per-char/per-word animation —
  * lets the surrounding scroll-reveal handle motion instead.
@@ -109,7 +109,8 @@ export function HeroIntro({
   }
 
   const eyebrowDuration = eyebrow ? eyebrow.length * charStep : 0
-  const linesStart = startDelay + eyebrowDuration + eyebrowGap
+  const linesStart =
+    startDelay + eyebrowDuration + (eyebrow ? eyebrowGap : 0)
 
   let runningWord = 0
   const renderedLines = lines.map((line, idx) => {

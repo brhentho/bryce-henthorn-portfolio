@@ -852,6 +852,31 @@
     );
 }
 
+.manual [data-reveal-role="frame-sequence"] .agents-process-sequence > li {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity var(--duration-enter) var(--ease-out-expo),
+    transform var(--duration-enter) var(--ease-out-expo);
+}
+
+.manual [data-reveal-role="frame-sequence"][data-revealed="true"] .agents-process-sequence > li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.manual [data-reveal-role="frame-sequence"][data-revealed="true"] .agents-process-sequence > li:nth-child(1) {
+  transition-delay: 80ms;
+}
+
+.manual [data-reveal-role="frame-sequence"][data-revealed="true"] .agents-process-sequence > li:nth-child(2) {
+  transition-delay: 160ms;
+}
+
+.manual [data-reveal-role="frame-sequence"][data-revealed="true"] .agents-process-sequence > li:nth-child(3) {
+  transition-delay: 240ms;
+}
+
 .manual .agents-state-lexicon {
   border-block: 1px solid var(--rule);
 }
@@ -1119,6 +1144,35 @@
   color: var(--text-secondary);
 }
 
+.manual .recall-system-cover .recall-pipeline-ambient > span {
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity var(--duration-normal-ui) var(--ease-out-expo),
+    transform var(--duration-normal-ui) var(--ease-out-expo);
+}
+
+.manual .recall-system-cover[data-revealed="true"] .recall-pipeline-ambient > span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.manual .recall-system-cover[data-revealed="true"] .recall-pipeline-ambient > span:nth-child(1) {
+  transition-delay: 240ms;
+}
+
+.manual .recall-system-cover[data-revealed="true"] .recall-pipeline-ambient > span:nth-child(2) {
+  transition-delay: 300ms;
+}
+
+.manual .recall-system-cover[data-revealed="true"] .recall-pipeline-ambient > span:nth-child(3) {
+  transition-delay: 360ms;
+}
+
+.manual .recall-system-cover[data-revealed="true"] .recall-pipeline-ambient > span:nth-child(4) {
+  transition-delay: 420ms;
+}
+
 .manual .recall-room {
   position: relative;
   isolation: isolate;
@@ -1223,10 +1277,18 @@
     color-mix(in srgb, var(--accent-schematic) 48%, var(--rule-strong)),
     var(--rule)
   );
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--duration-slow-ui) var(--ease-out-expo);
 }
 
 .manual .recall-system-rail li {
   position: relative;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity var(--duration-enter) var(--ease-out-expo),
+    transform var(--duration-enter) var(--ease-out-expo);
 }
 
 .manual .recall-system-rail li::before {
@@ -1249,6 +1311,11 @@
 
 .manual .recall-system-figure {
   position: relative;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity var(--duration-slow-ui) var(--ease-out-expo),
+    transform var(--duration-slow-ui) var(--ease-out-expo);
 }
 
 .manual .recall-system-figure::before {
@@ -1263,6 +1330,36 @@
   opacity: 0.16;
   mask-image: radial-gradient(ellipse at center, black 18%, transparent 72%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 18%, transparent 72%);
+}
+
+.manual [data-reveal-role="stage-rail"][data-revealed="true"] .recall-system-rail::before {
+  transform: scaleY(1);
+}
+
+.manual [data-reveal-role="stage-rail"][data-revealed="true"] .recall-system-rail li,
+.manual [data-reveal-role="stage-rail"][data-revealed="true"] .recall-system-figure {
+  opacity: 1;
+  transform: translate(0);
+}
+
+.manual [data-reveal-role="stage-rail"][data-revealed="true"] .recall-system-rail li:nth-child(1) {
+  transition-delay: 80ms;
+}
+
+.manual [data-reveal-role="stage-rail"][data-revealed="true"] .recall-system-rail li:nth-child(2) {
+  transition-delay: 150ms;
+}
+
+.manual [data-reveal-role="stage-rail"][data-revealed="true"] .recall-system-rail li:nth-child(3) {
+  transition-delay: 220ms;
+}
+
+.manual [data-reveal-role="stage-rail"][data-revealed="true"] .recall-system-rail li:nth-child(4) {
+  transition-delay: 290ms;
+}
+
+.manual [data-reveal-role="stage-rail"][data-revealed="true"] .recall-system-figure {
+  transition-delay: 260ms;
 }
 
 @media (max-width: 639px) {
@@ -1582,6 +1679,25 @@
   color: var(--text-secondary);
 }
 
+.manual [data-reveal] .teams-table-group,
+.manual [data-reveal] .teams-teacher-origin {
+  opacity: 0;
+  transition: opacity var(--duration-enter) var(--ease-out-expo);
+}
+
+.manual [data-reveal][data-revealed="true"] .teams-table-group,
+.manual [data-reveal][data-revealed="true"] .teams-teacher-origin {
+  opacity: 1;
+}
+
+.manual [data-reveal][data-revealed="true"] .teams-table-group {
+  transition-delay: calc(100ms + var(--table-index) * 55ms);
+}
+
+.manual [data-reveal][data-revealed="true"] .teams-teacher-origin {
+  transition-delay: 460ms;
+}
+
 @media (max-width: 639px) {
   .manual .teams-table-label,
   .manual .teams-teacher-label {
@@ -1632,14 +1748,65 @@
    ═══════════════════════════════════════════════════════════════ */
 
 .manual [data-reveal] {
+  --reveal-distance: 12px;
+  --reveal-duration: var(--duration-enter);
   transition:
-    opacity 600ms cubic-bezier(0.2, 0.65, 0.3, 1),
-    transform 600ms cubic-bezier(0.2, 0.65, 0.3, 1);
+    opacity var(--reveal-duration) var(--ease-out-expo),
+    transform var(--reveal-duration) var(--ease-out-expo);
   will-change: opacity, transform;
 }
-.manual [data-reveal]:not([data-revealed="true"]) {
+
+/* Reveal roles vary pacing without creating a client component per element.
+   The section remains the observed unit; descendants only choreograph when
+   the narrative benefits from a second beat. */
+.manual [data-reveal-role="cover"],
+.manual [data-reveal-role="statement"] {
+  --reveal-distance: 0px;
+  --reveal-duration: var(--duration-slow-ui);
+}
+
+.manual [data-reveal-role="handoff"] {
+  --reveal-distance: 8px;
+}
+
+.manual [data-reveal-role="catalog"] .project-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--duration-enter) var(--ease-out-expo),
+    transform var(--duration-enter) var(--ease-out-expo);
+}
+.manual [data-reveal-role="catalog"][data-revealed="true"] .project-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+.manual [data-reveal-role="catalog"] [data-project-card]:nth-child(2) .project-card {
+  transition-delay: 70ms;
+}
+.manual [data-reveal-role="catalog"] [data-project-card]:nth-child(3) .project-card {
+  transition-delay: 140ms;
+}
+
+.manual [data-reveal-role="cover"] > h2,
+.manual [data-reveal-role="cover"] > div {
   opacity: 0;
   transform: translateY(8px);
+  transition:
+    opacity var(--duration-enter) var(--ease-out-expo),
+    transform var(--duration-enter) var(--ease-out-expo);
+}
+.manual [data-reveal-role="cover"][data-revealed="true"] > h2,
+.manual [data-reveal-role="cover"][data-revealed="true"] > div {
+  opacity: 1;
+  transform: translateY(0);
+}
+.manual [data-reveal-role="cover"] > div {
+  transition-delay: var(--duration-fast-ui);
+}
+
+.manual [data-reveal]:not([data-revealed="true"]) {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
 }
 .manual [data-reveal][data-revealed="true"] {
   opacity: 1;
@@ -1650,7 +1817,9 @@
 .manual [data-reveal] hr.rule {
   transform-origin: left center;
   transform: scaleX(0);
-  transition: transform 800ms cubic-bezier(0.2, 0.65, 0.3, 1) 200ms;
+  transition:
+    transform var(--duration-slow-ui) var(--ease-out-expo)
+    var(--duration-fast-ui);
 }
 .manual [data-reveal][data-revealed="true"] hr.rule {
   transform: scaleX(1);
@@ -1658,7 +1827,7 @@
 
 /* Hero (first section, no [data-reveal]) — stagger its direct children on load */
 .manual section[data-section]:not([data-reveal]) > * {
-  animation: manual-hero-in 600ms cubic-bezier(0.2, 0.65, 0.3, 1) backwards;
+  animation: manual-hero-in var(--duration-enter) var(--ease-out-expo) backwards;
 }
 .manual section[data-section]:not([data-reveal]) > *:nth-child(1) { animation-delay: 0ms; }
 .manual section[data-section]:not([data-reveal]) > *:nth-child(2) { animation-delay: 120ms; }
@@ -1666,7 +1835,7 @@
 .manual section[data-section]:not([data-reveal]) > *:nth-child(n+4) { animation-delay: 360ms; }
 
 @keyframes manual-hero-in {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -1725,6 +1894,20 @@
   height: 1px;
   width: 100%;
   background: currentColor;
+  transform-origin: center;
+  transition:
+    opacity var(--duration-fast-ui) var(--ease-out-quad),
+    transform var(--duration-fast-ui) var(--ease-out-expo);
+}
+.manual-mobile-menu-trigger[data-state="open"] .manual-mobile-menu-icon > span:first-child {
+  transform: translateY(5.5px) rotate(45deg);
+}
+.manual-mobile-menu-trigger[data-state="open"] .manual-mobile-menu-icon > span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.manual-mobile-menu-trigger[data-state="open"] .manual-mobile-menu-icon > span:last-child {
+  transform: translateY(-5.5px) rotate(-45deg);
 }
 
 /* ── Mobile nav drawer ── full-width panel that drops below the sticky
@@ -1744,9 +1927,9 @@
   opacity: 0;
   transform: translateY(-4px);
   transition:
-    opacity 200ms ease-out,
-    transform 200ms ease-out,
-    visibility 0s linear 200ms;
+    opacity var(--duration-fast-ui) var(--ease-out-quad),
+    transform var(--duration-fast-ui) var(--ease-out-quad),
+    visibility 0s linear var(--duration-fast-ui);
   visibility: hidden;
   overflow-y: auto;
 }
@@ -1755,13 +1938,33 @@
   transform: translateY(0);
   visibility: visible;
   transition:
-    opacity 200ms ease-out,
-    transform 200ms ease-out;
+    opacity var(--duration-fast-ui) var(--ease-out-quad),
+    transform var(--duration-fast-ui) var(--ease-out-quad);
+}
+.manual-mobile-drawer nav > a {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    color var(--duration-fast-ui) var(--ease-out-quad),
+    opacity var(--duration-normal-ui) var(--ease-out-expo),
+    transform var(--duration-normal-ui) var(--ease-out-expo);
+}
+.manual-mobile-drawer[data-state="open"] nav > a {
+  opacity: 1;
+  transform: translateY(0);
+}
+.manual-mobile-drawer[data-state="open"] nav > a:nth-child(2) {
+  transition-delay: 50ms;
 }
 @media (prefers-reduced-motion: reduce) {
-  .manual-mobile-drawer {
+  .manual-mobile-drawer,
+  .manual-mobile-drawer nav > a,
+  .manual-mobile-menu-icon > span {
     transition: none !important;
     transform: none !important;
+  }
+  .manual-mobile-drawer nav > a {
+    opacity: 1;
   }
 }
 
@@ -1770,7 +1973,7 @@
    it enters view. Only fires when the surrounding `[data-reveal]` flips
    to `[data-revealed="true"]`. ─────────────────────────────────────── */
 .manual [data-reveal][data-revealed="true"] .manual-registration-mark {
-  animation: engage-pulse 700ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation: engage-pulse var(--duration-slow-ui) var(--ease-out-expo) backwards;
   transform-origin: center center;
 }
 @keyframes engage-pulse {
@@ -1793,7 +1996,7 @@
   top: calc(var(--cy, 50%) - 7px);
   color: var(--rule-strong);
   opacity: 0;
-  transition: opacity 120ms ease;
+  transition: opacity var(--duration-fast-ui) linear;
 }
 @media (hover: hover) and (pointer: fine) {
   .manual .manual-figure-frame[data-cursor-active="true"] .manual-figure-crosshair {
@@ -1840,6 +2043,23 @@
   .manual [data-reveal]:not([data-revealed="true"]) {
     opacity: 1;
     transform: none;
+  }
+  .manual [data-reveal-role="catalog"] .project-card,
+  .manual [data-reveal-role="cover"] > h2,
+  .manual [data-reveal-role="cover"] > div,
+  .manual .recall-system-cover .recall-pipeline-ambient > span,
+  .manual [data-reveal-role="stage-rail"] .recall-system-rail li,
+  .manual [data-reveal-role="stage-rail"] .recall-system-figure,
+  .manual [data-reveal-role="frame-sequence"] .agents-process-sequence > li,
+  .manual [data-reveal] .teams-table-group,
+  .manual [data-reveal] .teams-teacher-origin {
+    opacity: 1;
+    transform: none;
+    transition: none !important;
+  }
+  .manual [data-reveal-role="stage-rail"] .recall-system-rail::before {
+    transform: scaleY(1);
+    transition: none !important;
   }
   .manual [data-reveal]:not([data-revealed="true"]) hr.rule {
     transform: scaleX(1);

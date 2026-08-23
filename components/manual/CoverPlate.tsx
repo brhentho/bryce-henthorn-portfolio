@@ -28,6 +28,7 @@ export function CoverPlate({ number, title, ambient, className }: Props) {
   return (
     <section
       data-reveal
+      data-reveal-role="cover"
       aria-labelledby={`cover-${number}-title`}
       className={cn(
         "relative my-12 lg:my-20 min-h-[60vh] border border-[color:var(--rule)]",

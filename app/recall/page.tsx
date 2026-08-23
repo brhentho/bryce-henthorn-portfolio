@@ -207,6 +207,7 @@ export default function RecallPage() {
         <section
           data-section
           data-reveal
+          data-reveal-role="stage-rail"
           id="system"
           className="recall-room recall-system-room py-16 lg:py-24"
         >

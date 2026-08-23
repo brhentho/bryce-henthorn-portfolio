@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react"
+
 /**
  * Virtual classroom hero schematic — top-down rendering of a 6-table /
  * 30-seat virtual classroom in a 3x2 grid. Mirrors the operator-manual
@@ -35,7 +37,11 @@ export function HeroSchematic() {
           const seatR = 14
 
           return (
-            <g key={`${rowIdx}-${colIdx}`}>
+            <g
+              key={`${rowIdx}-${colIdx}`}
+              className="teams-table-group"
+              style={{ "--table-index": idx } as CSSProperties}
+            >
               {/* table card */}
               <rect
                 x={cx - tableW / 2}
@@ -125,7 +131,7 @@ export function HeroSchematic() {
       )}
 
       {/* teacher origin — accent dot at top center */}
-      <g>
+      <g className="teams-teacher-origin">
         <circle
           cx={800}
           cy={140}

@@ -15,8 +15,8 @@ function parseTarget(
   return { num, suffix: m[2], decimals }
 }
 
-// `--expo` from motion-tokens.css: cubic-bezier(0.16, 1, 0.3, 1).
-// Approximation good enough for a numeric tween — fast race, soft settle.
+// JavaScript approximation of the global Expo Out token. It gives numeric
+// tweens the same fast race and soft settle as the CSS motion system.
 const expoOut = (t: number) => {
   if (t >= 1) return 1
   return 1 - Math.pow(2, -10 * t)

@@ -67,6 +67,7 @@ export default function AboutPage() {
 
           <div className="about-hero-content">
             <HeroIntro
+              static
               linesWrapperClassName="space-y-3 lg:space-y-4"
               lines={MANIFESTO.map((line, index) => ({
                 text: line,

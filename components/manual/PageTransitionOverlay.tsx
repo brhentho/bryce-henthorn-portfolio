@@ -30,7 +30,9 @@ export function PageTransitionOverlay() {
         background: "var(--bg, #06060A)",
         opacity: opaque ? 1 : 0,
         pointerEvents: visible ? "auto" : "none",
-        transition: `opacity ${FADE_MS}ms linear`,
+        transition: `opacity ${FADE_MS}ms ${
+          opaque ? "var(--ease-in-expo)" : "var(--ease-out-expo)"
+        }`,
       }}
     />
   )

@@ -76,6 +76,7 @@ export default function HomePage() {
             <div className="home-hero-content">
               <div className="relative z-20">
                 <HeroIntro
+                  startDelay={420}
                   lines={[
                     {
                       text: "I turn complex systems into trustworthy experiences.",
@@ -100,6 +101,7 @@ export default function HomePage() {
           <section
             data-section
             data-reveal
+            data-reveal-role="catalog"
             id="work"
             className="home-room home-work-room py-16 lg:py-24"
           >
@@ -117,6 +119,7 @@ export default function HomePage() {
           <section
             data-section
             data-reveal
+            data-reveal-role="statement"
             id="thesis"
             className="home-room home-thesis-room py-16 lg:py-28"
           >

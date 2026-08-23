@@ -16,7 +16,7 @@
 
 export type TransitionState = "idle" | "fading-in" | "holding" | "fading-out"
 
-export const FADE_MS = 280
+export const FADE_MS = 300
 const COMMIT_HOLD_MS = 120 // give Next a beat to mount the new route at scroll-top
 
 let current: TransitionState = "idle"

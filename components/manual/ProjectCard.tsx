@@ -36,15 +36,17 @@ export function ProjectCard({
   return (
     <ViewTransitionLink
       href={href}
+      data-project-card
       className="block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[color:var(--accent-trace)]"
     >
       <article
         className={[
           "project-card relative min-h-[360px] overflow-hidden border border-[color:var(--rule)] bg-[#121213] sm:min-h-[400px]",
           "lg:aspect-[1120/496]",
-          "transition-[border-color,transform,box-shadow] duration-[400ms] ease-[cubic-bezier(0.2,0.65,0.3,1)]",
-          "group-hover:border-[color:var(--rule-strong)]",
+          "transition-[border-color,transform,box-shadow] duration-[var(--duration-normal-ui)] ease-[var(--ease-out-expo)]",
+          "group-hover:border-[color:var(--rule-strong)] group-focus-visible:border-[color:var(--rule-strong)]",
           "motion-safe:group-hover:-translate-y-1 motion-safe:group-hover:shadow-[0_32px_64px_rgba(0,0,0,0.5)]",
+          "motion-safe:group-focus-visible:-translate-y-1 motion-safe:group-focus-visible:shadow-[0_32px_64px_rgba(0,0,0,0.5)]",
         ].join(" ")}
       >
         {/* Layer 1 — the case study's own hero screenshot, full colour. */}
@@ -53,7 +55,7 @@ export function ProjectCard({
           alt={imgAlt}
           fill
           sizes="(min-width: 1280px) 1120px, 100vw"
-          className="project-card-image object-cover motion-safe:transition-transform motion-safe:duration-[800ms] motion-safe:ease-[cubic-bezier(0.2,0.65,0.3,1)] motion-safe:group-hover:scale-[1.03]"
+          className="project-card-image object-cover motion-safe:transition-transform motion-safe:duration-[var(--duration-slow-ui)] motion-safe:ease-[var(--ease-out-expo)] motion-safe:group-hover:scale-[1.03] motion-safe:group-focus-visible:scale-[1.03]"
           style={{ objectPosition: imagePosition }}
           loading={eager ? "eager" : "lazy"}
         />
@@ -68,7 +70,7 @@ export function ProjectCard({
         {/* Layer 3 — accent trace, wipes left→right on hover. */}
         <span
           aria-hidden="true"
-          className="absolute top-0 left-0 right-0 h-[2px] origin-left scale-x-0 bg-[color:var(--accent-trace)] shadow-[0_0_8px_rgba(184,85,30,0.6)] motion-safe:transition-transform motion-safe:duration-[480ms] motion-safe:ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:group-hover:scale-x-100"
+          className="absolute top-0 left-0 right-0 h-[2px] origin-left scale-x-0 bg-[color:var(--accent-trace)] shadow-[0_0_8px_rgba(184,85,30,0.6)] motion-safe:transition-transform motion-safe:duration-[var(--duration-enter)] motion-safe:ease-[var(--ease-out-expo)] motion-safe:group-hover:scale-x-100 motion-safe:group-focus-visible:scale-x-100"
         />
 
         <div className="relative flex h-full flex-col">

@@ -15,6 +15,7 @@ export function NextProject({ href, title }: Props) {
     <section
       data-section
       data-reveal
+      data-reveal-role="handoff"
       aria-label="Next project"
     >
       <ViewTransitionLink
@@ -25,11 +26,11 @@ export function NextProject({ href, title }: Props) {
           <p className="t-mono-label mb-4 text-[color:var(--text-secondary)]">
             NEXT PROJECT
           </p>
-          <h2 className="t-h1 flex max-w-full items-baseline gap-[0.45em] text-[color:var(--text-primary)] underline decoration-transparent decoration-[1px] underline-offset-[0.22em] transition-[text-decoration-color] duration-200 group-hover:decoration-[color:var(--rule-strong)]">
+          <h2 className="t-h1 flex max-w-full items-baseline gap-[0.45em] text-[color:var(--text-primary)] underline decoration-transparent decoration-[1px] underline-offset-[0.22em] transition-[text-decoration-color] duration-[var(--duration-fast-ui)] ease-[var(--ease-out-quad)] group-hover:decoration-[color:var(--rule-strong)] group-focus-visible:decoration-[color:var(--rule-strong)]">
             <span className="min-w-0 [overflow-wrap:anywhere]">{title}</span>
             <span
               aria-hidden="true"
-              className="inline-block shrink-0 text-[color:var(--text-secondary)] motion-safe:transition-transform motion-safe:duration-200 motion-safe:ease-out motion-safe:group-hover:translate-x-1"
+              className="inline-block shrink-0 text-[color:var(--text-secondary)] motion-safe:transition-transform motion-safe:duration-[var(--duration-fast-ui)] motion-safe:ease-[var(--ease-out-expo)] motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1"
             >
               →
             </span>
