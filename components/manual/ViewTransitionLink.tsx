@@ -10,6 +10,19 @@ type Props = LinkProps &
     children: ReactNode
   }
 
+const ROUTE_LABELS: Record<string, string> = {
+  "/": "WORK",
+  "/about": "ABOUT",
+  "/recall": "RECALL",
+  "/agents-in-windows": "AGENTS IN WINDOWS",
+  "/teams-for-education": "TEAMS FOR EDUCATION",
+}
+
+function getRouteLabel(target: string) {
+  const pathname = target.split(/[?#]/, 1)[0]
+  return ROUTE_LABELS[pathname] ?? "PORTFOLIO"
+}
+
 function focusDestinationHeading(previousLocation: string) {
   const deadline = performance.now() + 2000
 
@@ -20,16 +33,18 @@ function focusDestinationHeading(previousLocation: string) {
 
     if (currentLocation !== previousLocation && heading) {
       const hadTabIndex = heading.hasAttribute("tabindex")
+      heading.dataset.routeFocus = "true"
       if (!hadTabIndex) heading.tabIndex = -1
       heading.focus({ preventScroll: true })
 
-      if (!hadTabIndex) {
-        heading.addEventListener(
-          "blur",
-          () => heading.removeAttribute("tabindex"),
-          { once: true },
-        )
-      }
+      heading.addEventListener(
+        "blur",
+        () => {
+          delete heading.dataset.routeFocus
+          if (!hadTabIndex) heading.removeAttribute("tabindex")
+        },
+        { once: true },
+      )
       return
     }
 
@@ -41,13 +56,13 @@ function focusDestinationHeading(previousLocation: string) {
 
 /**
  * Drop-in replacement for next/link that runs every same-origin
- * navigation through the sequential ink-overlay transition (see
+ * navigation through the sequential editorial wipe (see
  * `lib/page-transition.ts` and `<PageTransitionOverlay>`):
  *
- *   1. ink fades in (~280ms)
+ *   1. ink wipes across the current page
  *   2. route push + scrollTo(0,0) happen behind the solid ink
- *   3. ink fades out (~280ms) revealing the new page already at top
- *   4. the new page's own animations (HeroIntro, scroll-reveal) fire
+ *   3. the wipe exits right only after the destination has committed
+ *   4. the new page's HeroIntro resolves as the wipe exposes it
  *
  * Falls through to vanilla next/link for modified clicks
  * (cmd/ctrl/shift, middle/right button) or when an upstream onClick
@@ -72,7 +87,7 @@ export function ViewTransitionLink({ onClick, href, children, ...rest }: Props) 
       // commits — the overlay coordinator handles scrollTo(0,0)
       // explicitly during the holding phase.
       router.push(target, { scroll: false })
-    }).then(() => focusDestinationHeading(previousLocation))
+    }, getRouteLabel(target)).then(() => focusDestinationHeading(previousLocation))
   }
 
   return (

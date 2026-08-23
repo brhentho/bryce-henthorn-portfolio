@@ -46,7 +46,8 @@ export function ChatBubble({ position, onDismiss }: ChatBubbleProps) {
         top: `calc(50% + ${position.y}px)`,
         transform: `translateX(-50%) translateY(${visible ? "-100%" : "-80%"})`,
         opacity: visible ? 1 : 0,
-        transition: "all 500ms var(--ease-decel)",
+        transition:
+          "opacity var(--duration-enter) var(--ease-out-expo), transform var(--duration-enter) var(--ease-out-expo)",
       }}
     >
       <div

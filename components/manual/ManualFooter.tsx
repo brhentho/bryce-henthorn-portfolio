@@ -1,5 +1,5 @@
 const linkClass =
-  "t-body-sm inline-flex min-h-11 max-w-full items-center [overflow-wrap:anywhere] text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] decoration-[0.5px] underline-offset-[0.25em] transition-[text-decoration-color] duration-[160ms] hover:decoration-[color:var(--text-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent-trace)]"
+  "t-body-sm inline-flex min-h-11 max-w-full items-center [overflow-wrap:anywhere] text-[color:var(--text-primary)] underline decoration-[color:var(--rule-strong)] decoration-[0.5px] underline-offset-[0.25em] transition-[color,text-decoration-color] duration-[var(--duration-fast-ui)] ease-[var(--ease-out-quad)] hover:text-[color:var(--text-secondary)] hover:decoration-[color:var(--text-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent-trace)]"
 
 /**
  * Compact site-wide footer. One hairline closes the document; author and

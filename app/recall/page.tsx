@@ -109,9 +109,12 @@ export default function RecallPage() {
 
       <main className="container">
         {/* ── 00 Overview / Hero ── */}
-        <section data-section id="overview" className="pt-12 lg:pt-24 pb-16">
+        <section data-section id="overview" className="editorial-hero pt-12 lg:pt-24 pb-16">
           <HeroIntro
-            static
+            eyebrow="CASE FILE / RECALL"
+            eyebrowClassName="t-mono-label editorial-hero-index"
+            startDelay={120}
+            wordStep={42}
             lines={[
               {
                 text: "Designing semantic search for everything you’ve seen.",
@@ -207,6 +210,7 @@ export default function RecallPage() {
         <section
           data-section
           data-reveal
+          data-reveal-role="stage-rail"
           id="system"
           className="recall-room recall-system-room py-16 lg:py-24"
         >

@@ -63,14 +63,14 @@ export function TopBar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-[#06060A]/80 backdrop-blur-md border-b border-[color:var(--rule)]">
+      <header className="sticky top-0 z-50 bg-[color:var(--ink)]/96 border-b border-[color:var(--rule)]">
         <div className="container py-1 flex min-h-[52px] flex-wrap items-center justify-between gap-x-6 gap-y-1">
           <ViewTransitionLink
             href="/"
             aria-label="Bryce Henthorn, home"
-            className="t-mono-label inline-flex min-h-11 items-center gap-2.5 whitespace-nowrap text-[color:var(--text-primary)] transition-colors duration-200 hover:text-[color:var(--text-secondary)]"
+            className="t-mono-label inline-flex min-h-11 items-center gap-2.5 whitespace-nowrap text-[color:var(--text-primary)] transition-colors duration-[var(--duration-fast-ui)] ease-[var(--ease-out-quad)] hover:text-[color:var(--text-secondary)]"
           >
-            <RegistrationMark className="text-[color:var(--accent-trace)]" />
+            <RegistrationMark className="text-[color:var(--rule-strong)]" />
             BRYCE HENTHORN
           </ViewTransitionLink>
 
@@ -87,7 +87,7 @@ export function TopBar() {
                   href={item.href}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "t-mono-label inline-flex min-h-6 items-center transition-colors duration-200",
+                    "t-mono-label inline-flex min-h-6 items-center transition-colors duration-[var(--duration-fast-ui)] ease-[var(--ease-out-quad)]",
                     isActive
                       ? "text-[color:var(--text-primary)]"
                       : "text-[color:var(--text-tertiary)] hover:text-[color:var(--text-primary)]",
@@ -95,11 +95,12 @@ export function TopBar() {
                 >
                   <span
                     aria-hidden="true"
-                    className={
+                    className={cn(
+                      "transition-colors duration-[var(--duration-fast-ui)] ease-[var(--ease-out-quad)]",
                       isActive
                         ? "text-[color:var(--accent-trace)]"
-                        : "text-[color:var(--rule-strong)]"
-                    }
+                        : "text-[color:var(--rule-strong)]",
+                    )}
                   >
                     {item.index}
                   </span>
@@ -117,8 +118,9 @@ export function TopBar() {
             aria-label={menuOpen ? "Close navigation" : "Open navigation"}
             aria-expanded={menuOpen}
             aria-controls={menuId}
+            data-state={menuOpen ? "open" : "closed"}
             onClick={() => setMenuOpen((v) => !v)}
-            className="md:hidden t-mono-label inline-flex min-h-11 min-w-11 items-center justify-center text-[color:var(--text-primary)] -mr-3 cursor-pointer transition-colors duration-200 hover:text-[color:var(--accent-trace)]"
+            className="manual-mobile-menu-trigger md:hidden t-mono-label inline-flex min-h-11 min-w-11 items-center justify-center text-[color:var(--text-primary)] -mr-3 cursor-pointer transition-colors duration-[var(--duration-fast-ui)] ease-[var(--ease-out-quad)] hover:text-[color:var(--accent-trace)]"
           >
             <span aria-hidden="true" className="manual-mobile-menu-icon">
               <span />
@@ -159,7 +161,7 @@ export function TopBar() {
                 aria-current={isActive ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
                 className={cn(
-                  "t-mono-label py-3 border-b border-[color:var(--rule)] transition-colors duration-200",
+                  "t-mono-label py-3 border-b border-[color:var(--rule)]",
                   isActive
                     ? "text-[color:var(--text-primary)]"
                     : "text-[color:var(--text-tertiary)] hover:text-[color:var(--text-primary)]",
@@ -167,11 +169,12 @@ export function TopBar() {
               >
                 <span
                   aria-hidden="true"
-                  className={
+                  className={cn(
+                    "transition-colors duration-[var(--duration-fast-ui)] ease-[var(--ease-out-quad)]",
                     isActive
                       ? "text-[color:var(--accent-trace)]"
-                      : "text-[color:var(--rule-strong)]"
-                  }
+                      : "text-[color:var(--rule-strong)]",
+                  )}
                 >
                   {item.index}
                 </span>

@@ -23,16 +23,31 @@ Before editing any of these files:
 
 The layout-direction document is the spec. Do not modify §2 (the primitive vocabulary) without raising it in chat first — extending the vocabulary affects all three case studies.
 
-## Locked design — out of scope for redesign
+## Canonical editorial visual system
 
-Do not propose changes to:
-- Typography tokens (`t-display-xl`, `t-display-l`, `t-h1`, `t-body`, `t-body-sm`, `t-mono-label`, `t-mono-caption`, `t-mono-marginalia`, `t-mono-colophon`)
-- Color tokens (`--ink`/`--bg`, `--text-primary/secondary/tertiary/body/faint`, `--rule`, `--rule-strong`, `--accent-*`)
-- Spacing scale or container widths
-- The page-header pattern: **headline → body**. Sections open directly on their `t-h1` heading with no eyebrow above it and no rule beneath it.
-- The `Figure` frame chrome (corner `RegistrationMark`, `FIG. X.Y` label, hairline border)
+The August 2026 token lock was intentionally superseded by the editorial
+visual-system revision. Preserve these roles across all production routes:
 
-All token definitions live in `app/recall/recall.css` under the `.manual` scope — **not** in `app/globals.css`, which carries an older, unrelated token set used only by dead components. If a layout move would require a new token, stop and ask — don't introduce one silently.
+- **Material:** `#0B0B0C` ink, `#E8E5DC` paper, paper-derived alpha rules, and
+  one `#FF4D00` state accent per visible viewport.
+- **Typography:** Inter Tight 500 for display, Inter 400 for body, and
+  JetBrains Mono for navigation, labels, captions, and system status.
+- **Display geometry:** oversized responsive type, tight negative tracking,
+  and approximately `0.84–0.95` line height.
+- **Hero motion:** stable words resolve left-to-right with clipping. Never
+  scramble glyphs or simulate a typewriter.
+- **Route motion:** destination-aware data-flow typography may bridge route
+  changes. Reduced motion navigates immediately.
+- **Chapter motion:** the mechanical aperture is reserved for `CoverPlate`.
+  Do not apply it to ordinary `Figure` components.
+- **Texture and chrome:** retain subtle paper texture, alpha rules,
+  registration marks, numbered figures, and the 13 layout primitives.
+
+Global material and motion aliases live in `app/globals.css`; production manual
+roles live under `.manual` in `app/recall/recall.css`. Keep the aliases aligned
+rather than introducing local color literals. Do not add signal sweeps,
+parallax, 3D tilt, cursor replacement, marquees, particles, or generic glow
+decoration.
 
 ### Retired in the August 2026 revision
 
@@ -40,7 +55,7 @@ These were previously locked-in and are now gone. Do not reintroduce them:
 
 - **`§ NN / LABEL` section eyebrows.** `SectionLabel` renders the title alone; `number` and `label` survive as optional props purely to document document order at the call site.
 - **The rule under section headings.** `SectionLabel` no longer emits `<hr className="rule" />`.
-- **The `§ NN / TT` header counter.** `TopBar` is now the "index rail": crosshair + identifier on the left, a numbered index of the five pages on the right (`00 WORK` … `04 ABOUT`). The active entry's number is the strip's only `--accent-trace` element. The `[data-section]` IntersectionObserver that fed the counter went with it.
+- **The `§ NN / TT` header counter.** `TopBar` is now the "index rail": crosshair + identifier on the left, with `00 WORK` and `01 ABOUT` as the two global sections on the right. Case studies remain children of Work. The active entry's number is the strip's only `--accent-trace` element. The `[data-section]` IntersectionObserver that fed the counter went with it.
 - **The `NOW READING` chip.** `components/manual/NowReading.tsx` is deleted — it derived its label from the eyebrows. Retired alongside the earlier `RevisionHeader` + `ManualNav` + fixed `ProgressIndicator` triple.
 - **`CoverPlate`'s `§ NN / TT` pagination line.** The plate carries its title alone; `total` is now an unused optional prop.
 - **`SpecSheet` borders.** No frame, no per-row rules — rows separate on spacing alone. (The About page's Experience `<dl>` is a *data table*, §2.13, and deliberately keeps its per-row `border-b`.)

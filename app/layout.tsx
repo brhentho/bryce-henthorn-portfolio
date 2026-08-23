@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Inter, Inter_Tight, Open_Sans, JetBrains_Mono } from "next/font/google"
+import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { PageTransitionOverlay } from "@/components/manual"
 import "./globals.css"
@@ -15,12 +15,6 @@ const interTight = Inter_Tight({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-inter-tight",
-})
-
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-open-sans",
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -52,7 +46,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0B0B0D",
+  themeColor: "#0B0B0C",
 }
 
 export default function RootLayout({
@@ -61,8 +55,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${interTight.variable} ${openSans.variable} ${jetbrainsMono.variable}`}>
-      <body className="antialiased min-h-screen" style={{ background: '#06060A', color: '#fff' }}>
+    <html lang="en" className={`${inter.variable} ${interTight.variable} ${jetbrainsMono.variable}`}>
+      <body className="antialiased min-h-screen">
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -62,7 +62,7 @@ export function AuditTrail({
             : undefined,
         fontFamily: "var(--font-mono)",
         opacity: fadeOut ? 0 : 1,
-        transition: `opacity ${fadeOutDuration}ms cubic-bezier(0.16, 1, 0.3, 1)`,
+        transition: `opacity ${fadeOutDuration}ms var(--ease-out-expo)`,
       }}
     >
       {/* Status plate — fixed-width, fixed-height window. Width is locked

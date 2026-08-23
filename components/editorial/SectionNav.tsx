@@ -80,7 +80,11 @@ export function SectionNav({ sections }: SectionNavProps) {
               boxShadow: isActive ? '0 0 8px color-mix(in srgb, var(--a) 30%, transparent)' : 'none',
               padding: 0,
               cursor: 'pointer',
-              transition: 'all 300ms var(--expo)',
+              transition: [
+                'border-color var(--duration-normal-ui) var(--ease-out-quad)',
+                'background-color var(--duration-normal-ui) var(--ease-out-quad)',
+                'box-shadow var(--duration-normal-ui) var(--ease-out-quad)',
+              ].join(', '),
             }}
           />
         )

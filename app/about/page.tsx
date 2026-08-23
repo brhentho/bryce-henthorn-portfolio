@@ -67,7 +67,11 @@ export default function AboutPage() {
 
           <div className="about-hero-content">
             <HeroIntro
-              linesWrapperClassName="space-y-3 lg:space-y-4"
+              eyebrow="PROFILE INDEX / 2026"
+              eyebrowClassName="t-mono-label editorial-hero-index"
+              startDelay={120}
+              wordStep={34}
+              linesWrapperClassName="space-y-1 lg:space-y-2"
               lines={MANIFESTO.map((line, index) => ({
                 text: line,
                 className:

@@ -13,6 +13,7 @@ type Props = {
   className?: string
   videoClassName?: string
   videoStyle?: CSSProperties
+  poster?: string
 }
 
 export function LoopingMedia({
@@ -21,12 +22,14 @@ export function LoopingMedia({
   className,
   videoClassName,
   videoStyle,
+  poster,
 }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const reduceMotion = useReducedMotion()
   const [inView, setInView] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [preference, setPreference] = useState<PlaybackPreference>("auto")
+  const [documentVisible, setDocumentVisible] = useState(true)
 
   useEffect(() => {
     const video = videoRef.current
@@ -41,12 +44,23 @@ export function LoopingMedia({
   }, [])
 
   useEffect(() => {
+    const syncVisibility = () => {
+      setDocumentVisible(document.visibilityState === "visible")
+    }
+    syncVisibility()
+    document.addEventListener("visibilitychange", syncVisibility)
+    return () => document.removeEventListener("visibilitychange", syncVisibility)
+  }, [])
+
+  useEffect(() => {
     const video = videoRef.current
     if (!video) return
 
     const wantsPlayback =
       inView &&
-      (preference === "playing" || (preference === "auto" && !reduceMotion))
+      documentVisible &&
+      (preference === "playing" ||
+        (preference === "auto" && reduceMotion === false))
 
     if (!wantsPlayback) {
       video.pause()
@@ -57,7 +71,7 @@ export function LoopingMedia({
       setPreference("paused")
       setIsPlaying(false)
     })
-  }, [inView, preference, reduceMotion])
+  }, [documentVisible, inView, preference, reduceMotion])
 
   const togglePlayback = () => {
     setPreference(isPlaying ? "paused" : "playing")
@@ -71,6 +85,7 @@ export function LoopingMedia({
         muted
         playsInline
         preload="metadata"
+        poster={poster}
         aria-label={label}
         className={cn("block w-full h-auto", videoClassName)}
         style={videoStyle}
@@ -87,7 +102,7 @@ export function LoopingMedia({
         type="button"
         aria-label={`${isPlaying ? "Pause" : "Play"} ${label}`}
         onClick={togglePlayback}
-        className="t-mono-label absolute bottom-3 right-3 z-20 inline-flex min-h-11 min-w-11 items-center justify-center border border-[color:var(--rule-strong)] bg-[color:var(--ink)] px-3 text-[color:var(--text-primary)] transition-colors duration-200 hover:text-[color:var(--accent-trace)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent-trace)]"
+        className="t-mono-label absolute bottom-3 right-3 z-20 inline-flex min-h-11 min-w-11 items-center justify-center border border-[color:var(--rule-strong)] bg-[color:var(--ink)] px-3 text-[color:var(--text-primary)] transition-[border-color,color] duration-[var(--duration-fast-ui)] ease-[var(--ease-out-quad)] hover:border-[color:var(--accent-trace)] hover:text-[color:var(--accent-trace)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent-trace)]"
       >
         {isPlaying ? "PAUSE" : "PLAY"}
       </button>
