@@ -133,6 +133,27 @@
   padding: clamp(24px, 6vw, 112px);
   color: var(--paper);
   font-family: var(--font-jetbrains-mono), monospace;
+  clip-path: inset(0 100% 0 0);
+  will-change: clip-path;
+}
+
+.route-transition[data-state="idle"] {
+  transition: none;
+}
+
+.route-transition[data-state="fading-in"] {
+  clip-path: inset(0);
+  transition: clip-path 360ms var(--ease-in-out-sine);
+}
+
+.route-transition[data-state="holding"] {
+  clip-path: inset(0);
+  transition: none;
+}
+
+.route-transition[data-state="fading-out"] {
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path 420ms var(--ease-in-out-sine);
 }
 
 .route-transition-chrome,
@@ -185,7 +206,7 @@
   font-weight: 500;
   line-height: 0.84;
   letter-spacing: -0.065em;
-  clip-path: inset(0 100% 0 0);
+  clip-path: inset(-0.18em 100% -0.24em 0);
   opacity: 0.35;
 }
 
@@ -193,9 +214,16 @@
   animation: route-title-resolve 480ms var(--ease-out-expo) 40ms both;
 }
 
+html[data-route-transition="fading-in"] .hero-intro-eyebrow-text,
+html[data-route-transition="fading-in"] .hero-intro-word,
+html[data-route-transition="holding"] .hero-intro-eyebrow-text,
+html[data-route-transition="holding"] .hero-intro-word {
+  animation-play-state: paused;
+}
+
 @keyframes route-title-resolve {
   to {
-    clip-path: inset(0);
+    clip-path: inset(-0.18em 0 -0.24em 0);
     opacity: 1;
   }
 }
@@ -286,6 +314,14 @@
   [tabindex]:focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
+  }
+
+  /* Route focus moves the virtual cursor to the new document heading. The
+     heading is not an interactive control, so keep that semantic focus move
+     without drawing a viewport-wide control outline around display type. */
+  [data-route-focus="true"]:focus,
+  main h1[tabindex="-1"]:focus {
+    outline: none;
     border-radius: 2px;
   }
 }
@@ -919,11 +955,11 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
 @keyframes hero-word-in {
   from {
     opacity: 0.35;
-    clip-path: inset(0 100% 0 0);
+    clip-path: inset(-0.18em 100% -0.24em 0);
   }
   to {
     opacity: 1;
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(-0.18em 0 -0.24em 0);
   }
 }
 
@@ -934,14 +970,14 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
 .hero-intro-eyebrow-text {
   display: inline-block;
   opacity: 0.35;
-  clip-path: inset(0 100% 0 0);
+  clip-path: inset(-0.18em 100% -0.24em 0);
   animation: hero-word-in var(--duration-enter) var(--ease-out-expo) forwards;
 }
 
 .hero-intro-word {
   display: inline-block;
   opacity: 0.35;
-  clip-path: inset(0 100% 0 0);
+  clip-path: inset(-0.18em 100% -0.24em 0);
   animation: hero-word-in var(--duration-enter) var(--ease-out-expo) forwards;
   /* allow long titles to wrap at the natural word boundaries */
   white-space: normal;

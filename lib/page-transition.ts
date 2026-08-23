@@ -3,15 +3,13 @@
 /**
  * Sequential page-to-page transition coordinator.
  *
- * Drives a 4-step sequence so the route change is fully hidden behind a
- * solid ink overlay — no scroll motion or snapshot crossfade ever visible:
+ * Drives a 4-step editorial wipe so the route change is fully hidden behind
+ * an ink field — no scroll motion or intermediate page frame is visible:
  *
- *   1. fading-in:   overlay opacity 0 → 1                     (FADE_MS)
- *   2. holding:     overlay at opacity 1; route push + scrollTo(0,0)
- *   3. fading-out:  overlay opacity 1 → 0                     (FADE_MS)
- *   4. idle:        overlay unmounted; page animations run normally
- *
- * Total wall-clock: ~2 × FADE_MS + a brief commit window.
+ *   1. fading-in:   ink wipes left → right over the current page
+ *   2. holding:     route commits behind the fully covered viewport
+ *   3. fading-out:  ink continues right, exposing the ready destination
+ *   4. idle:        overlay resets off-screen
  */
 
 export type TransitionState = "idle" | "fading-in" | "holding" | "fading-out"
@@ -21,12 +19,13 @@ export type TransitionListener = (
 ) => void
 
 /**
- * Kept deliberately short. This is a text-heavy portfolio, so navigation
- * should read as a deep link, not a presentation — the overlay exists to hide
- * the scroll jump, not to perform. 2 × 120 + 60 ≈ 300ms to readable.
+ * The hold is long enough for the status typography and the destination route
+ * to settle. The reveal never starts until Next has committed the new page.
  */
-export const FADE_MS = 140
-const COMMIT_HOLD_MS = 520
+export const WIPE_IN_MS = 360
+export const WIPE_OUT_MS = 420
+const MIN_HOLD_MS = 520
+const COMMIT_TIMEOUT_MS = 2000
 
 let current: TransitionState = "idle"
 let currentDestination: string | null = null
@@ -34,6 +33,13 @@ const listeners = new Set<TransitionListener>()
 
 function emit(next: TransitionState) {
   current = next
+  if (typeof document !== "undefined") {
+    if (next === "idle") {
+      delete document.documentElement.dataset.routeTransition
+    } else {
+      document.documentElement.dataset.routeTransition = next
+    }
+  }
   for (const fn of listeners) fn(next, currentDestination)
 }
 
@@ -82,24 +88,30 @@ export async function transitionTo(
   currentDestination = destination ?? null
   inFlight = true
   try {
-    // 1. Fade ink in.
+    // 1. Cover the current page with a left-to-right ink wipe.
     emit("fading-in")
-    await wait(FADE_MS)
+    await wait(WIPE_IN_MS)
 
-    // 2. Hold at full ink while the route changes underneath.
+    // 2. Hold at full ink until the destination has actually committed.
     emit("holding")
+    const previousLocation =
+      window.location.pathname + window.location.search + window.location.hash
     navigate()
     // `behavior: "instant"` overrides `html { scroll-behavior: smooth }`
     // in globals.css — without it the scroll-to-top animates smoothly
     // and the tail of that animation is still running when the ink
     // overlay fades out, producing a visible scroll jump.
     window.scrollTo({ top: 0, left: 0, behavior: "instant" })
-    await wait(COMMIT_HOLD_MS)
+    await Promise.all([
+      waitForDestinationCommit(previousLocation),
+      wait(MIN_HOLD_MS),
+    ])
 
-    // 3. Fade ink out — the freshly committed page is revealed at top
-    //    and its own scroll-reveal / HeroIntro animations fire naturally.
+    // 3. Continue the wipe off the right edge. Hero text is held at its
+    //    initial frame until this phase begins, so the destination resolves
+    //    as it is exposed rather than flashing before its intro.
     emit("fading-out")
-    await wait(FADE_MS)
+    await wait(WIPE_OUT_MS)
   } finally {
     emit("idle")
     currentDestination = null
@@ -109,4 +121,26 @@ export async function transitionTo(
 
 function wait(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+function waitForDestinationCommit(previousLocation: string): Promise<void> {
+  return new Promise((resolve) => {
+    const deadline = performance.now() + COMMIT_TIMEOUT_MS
+
+    const check = () => {
+      const currentLocation =
+        window.location.pathname + window.location.search + window.location.hash
+      const destinationReady =
+        currentLocation !== previousLocation && document.querySelector("main")
+
+      if (destinationReady || performance.now() >= deadline) {
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve()))
+        return
+      }
+
+      requestAnimationFrame(check)
+    }
+
+    requestAnimationFrame(check)
+  })
 }

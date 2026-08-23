@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import {
-  FADE_MS,
   subscribe,
   type TransitionState,
 } from "@/lib/page-transition"
@@ -27,8 +26,6 @@ export function PageTransitionOverlay() {
   )
 
   const visible = state !== "idle"
-  const opaque = state === "fading-in" || state === "holding"
-
   return (
     <div
       aria-hidden="true"
@@ -37,11 +34,7 @@ export function PageTransitionOverlay() {
       style={{
         zIndex: 9999,
         background: "var(--bg, #0B0B0C)",
-        opacity: opaque ? 1 : 0,
         pointerEvents: visible ? "auto" : "none",
-        transition: `opacity ${FADE_MS}ms ${
-          opaque ? "var(--ease-in-expo)" : "var(--ease-out-expo)"
-        }`,
       }}
     >
       <div className="route-transition-chrome">
