@@ -1822,18 +1822,6 @@
 }
 
 /* Hairline draw-in inside any revealed section */
-/* Draw the rule, don't fade it. At 700ms behind a 180ms delay the scaleX was
-   slow enough to read as an opacity change; at --duration-enter with no delay
-   the pen stroke is legible. */
-.manual [data-reveal] hr.rule {
-  transform-origin: left center;
-  transform: scaleX(0);
-  transition: transform var(--duration-enter) var(--ease-out-expo);
-}
-.manual [data-reveal][data-revealed="true"] hr.rule {
-  transform: scaleX(1);
-}
-
 /* Hero (first section, no [data-reveal]) — stagger its direct children on load */
 .manual section[data-section]:not([data-reveal]) > * {
   animation: manual-hero-in var(--duration-enter) var(--ease-out-expo) backwards;
@@ -2045,7 +2033,6 @@
     animation: none !important;
   }
   .manual [data-reveal],
-  .manual [data-reveal] hr.rule,
   .manual [data-reveal] svg.manual-schematic {
     transition: none !important;
   }
@@ -2069,9 +2056,6 @@
   .manual [data-reveal-role="stage-rail"] .recall-system-rail::before {
     transform: scaleY(1);
     transition: none !important;
-  }
-  .manual [data-reveal]:not([data-revealed="true"]) hr.rule {
-    transform: scaleX(1);
   }
   .manual [data-reveal]:not([data-revealed="true"]) svg.manual-schematic {
     clip-path: inset(0 0 0 0);

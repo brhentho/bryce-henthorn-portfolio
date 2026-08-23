@@ -218,10 +218,6 @@ html.figma-capture-mode .sec:not(.vis) {
   transform: none !important;
   clip-path: none !important;
 }
-html.figma-capture-mode [data-reveal] hr.rule,
-html.figma-capture-mode .manual [data-reveal] hr.rule {
-  transform: scaleX(1) !important;
-}
 html.figma-capture-mode [data-reveal] svg.manual-schematic,
 html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
   clip-path: inset(0 0 0 0) !important;
