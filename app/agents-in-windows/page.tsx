@@ -153,7 +153,7 @@ export default function AgentsInWindowsPage() {
         <section
           data-section
           id="overview"
-          className="agents-hero pb-16 pt-12 lg:pt-24"
+          className="agents-hero editorial-hero pb-16 pt-12 lg:pt-24"
         >
           <div className="agents-hero-atmosphere" aria-hidden="true">
             <DotGrid />
@@ -168,7 +168,10 @@ export default function AgentsInWindowsPage() {
 
           <div className="agents-hero-content">
             <HeroIntro
-              static
+              eyebrow="CASE FILE / AGENTS IN WINDOWS"
+              eyebrowClassName="t-mono-label editorial-hero-index"
+              startDelay={120}
+              wordStep={42}
               lines={[
                 {
                   text: "Making AI agents visible and interruptible in Windows.",

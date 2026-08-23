@@ -9,7 +9,7 @@
 
 :root {
   /* ── Core ── */
-  --bg: #06060A;
+  --bg: #0B0B0C;
   --expo: cubic-bezier(0.16, 1, 0.3, 1);
   /* Fluid padding tuned for four tiers:
      mobile   ~24px @ 375
@@ -49,16 +49,17 @@
      --text-tertiary  → captions/labels     --border-strong   → hover/focus
      --text-quiet     → disabled/decorative
   */
-  --text-primary: var(--w88);
-  --text-secondary: var(--w60);
-  --text-tertiary: var(--w45);
-  --text-quiet: var(--w25);
-  --border-hairline: var(--w04);
-  --border-subtle: var(--w06);
-  --border-strong: var(--w15);
+  --paper: #E8E5DC;
+  --text-primary: var(--paper);
+  --text-secondary: color-mix(in srgb, var(--paper) 62%, transparent);
+  --text-tertiary: color-mix(in srgb, var(--paper) 48%, transparent);
+  --text-quiet: color-mix(in srgb, var(--paper) 28%, transparent);
+  --border-hairline: color-mix(in srgb, var(--paper) 12%, transparent);
+  --border-subtle: color-mix(in srgb, var(--paper) 22%, transparent);
+  --border-strong: color-mix(in srgb, var(--paper) 48%, transparent);
 
   /* ── Per-Page Accent (set on page wrapper) ── */
-  --a: #5EC8B4;
+  --a: #FF4D00;
   --a2: transparent;
 
   /* ── Motion ── */
@@ -91,36 +92,133 @@
   --radius-card: 16px;
 
   /* ── shadcn compat ── */
-  --background: #06060A;
-  --foreground: rgba(255, 255, 255, 0.88);
-  --foreground-secondary: rgba(255, 255, 255, 0.45);
-  --foreground-tertiary: rgba(255, 255, 255, 0.25);
-  --surface: #0A0A0E;
-  --surface-raised: #111115;
-  --card: rgba(255, 255, 255, 0.025);
-  --card-foreground: rgba(255, 255, 255, 0.88);
-  --popover: #0A0A0E;
-  --popover-foreground: rgba(255, 255, 255, 0.88);
-  --primary: rgba(255, 255, 255, 0.88);
-  --primary-foreground: #06060A;
-  --secondary: #111115;
-  --secondary-foreground: rgba(255, 255, 255, 0.88);
-  --muted: #111115;
-  --muted-foreground: rgba(255, 255, 255, 0.35);
+  --background: var(--bg);
+  --foreground: var(--paper);
+  --foreground-secondary: var(--text-secondary);
+  --foreground-tertiary: var(--text-tertiary);
+  --surface: #101011;
+  --surface-raised: #151516;
+  --card: color-mix(in srgb, var(--paper) 2.5%, transparent);
+  --card-foreground: var(--paper);
+  --popover: #101011;
+  --popover-foreground: var(--paper);
+  --primary: var(--paper);
+  --primary-foreground: var(--bg);
+  --secondary: #151516;
+  --secondary-foreground: var(--paper);
+  --muted: #151516;
+  --muted-foreground: var(--text-tertiary);
   --accent: var(--a);
   --accent-dim: color-mix(in srgb, var(--a) 10%, transparent);
   --destructive: #ef4444;
   --destructive-foreground: rgba(255, 255, 255, 0.88);
-  --border: rgba(255, 255, 255, 0.06);
-  --border-divider: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.15);
-  --input: rgba(255, 255, 255, 0.06);
+  --border: var(--border-hairline);
+  --border-divider: var(--border-subtle);
+  --border-hover: var(--border-strong);
+  --input: var(--border-subtle);
   --ring: var(--a);
 }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
     --motion-scale: 0;
+  }
+}
+
+/* ── Destination-aware editorial route transition ── */
+.route-transition {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(24px, 6vw, 112px);
+  color: var(--paper);
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+.route-transition-chrome,
+.route-transition-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.625rem;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  color: var(--text-tertiary);
+}
+
+.route-transition-footer {
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.route-transition-status {
+  position: relative;
+  width: 5rem;
+  min-height: 1.4em;
+  text-align: right;
+}
+
+.route-transition-status > span {
+  position: absolute;
+  inset: 0 0 auto auto;
+  opacity: 0;
+}
+
+.route-transition[data-state="holding"] .route-transition-status > span:first-child {
+  animation: route-status-indexing 520ms linear both;
+}
+
+.route-transition[data-state="holding"] .route-transition-status > span:nth-child(2) {
+  animation: route-status-matched 520ms linear both;
+}
+
+.route-transition[data-state="holding"] .route-transition-status > span:last-child {
+  color: var(--a);
+  animation: route-status-ready 520ms linear both;
+}
+
+.route-transition-title {
+  max-width: 12ch;
+  margin: auto 0;
+  color: var(--paper);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(3.125rem, 10vw, 10rem);
+  font-weight: 500;
+  line-height: 0.84;
+  letter-spacing: -0.065em;
+  clip-path: inset(0 100% 0 0);
+  opacity: 0.35;
+}
+
+.route-transition[data-state="holding"] .route-transition-title {
+  animation: route-title-resolve 480ms var(--ease-out-expo) 40ms both;
+}
+
+@keyframes route-title-resolve {
+  to {
+    clip-path: inset(0);
+    opacity: 1;
+  }
+}
+
+@keyframes route-status-indexing {
+  0%, 27% { opacity: 1; }
+  31%, 100% { opacity: 0; }
+}
+
+@keyframes route-status-matched {
+  0%, 29% { opacity: 0; }
+  34%, 62% { opacity: 1; }
+  67%, 100% { opacity: 0; }
+}
+
+@keyframes route-status-ready {
+  0%, 64% { opacity: 0; }
+  70%, 100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-transition {
+    display: none;
   }
 }
 
@@ -174,7 +272,7 @@
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #fff;
+    color: var(--paper);
     background: var(--bg);
     overflow-x: hidden;
   }
@@ -193,8 +291,8 @@
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--a) 20%, transparent);
-  color: rgba(255, 255, 255, 0.95);
+  background: color-mix(in srgb, var(--a) 28%, transparent);
+  color: var(--paper);
 }
 
 /* Force-reveal all scroll-triggered animations during Figma capture */
@@ -815,76 +913,46 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   HERO INTRO — typewriter eyebrow + word-fade body lines
+   HERO INTRO — deterministic left-to-right editorial resolve
    ═══════════════════════════════════════════════════════════════ */
-
-@keyframes hero-char-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
 
 @keyframes hero-word-in {
   from {
-    opacity: 0;
-    transform: translateY(6px);
+    opacity: 0.35;
+    clip-path: inset(0 100% 0 0);
   }
   to {
     opacity: 1;
-    transform: none;
+    clip-path: inset(0 0 0 0);
   }
 }
 
-@keyframes hero-caret-blink {
-  0%, 49%   { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
 .hero-intro-eyebrow {
-  /* keep layout stable while characters are still hidden */
-  white-space: pre-wrap;
+  overflow: hidden;
 }
 
-.hero-intro-char {
+.hero-intro-eyebrow-text {
   display: inline-block;
-  white-space: pre;
-  opacity: 0;
-  animation: hero-char-in 60ms linear forwards;
-}
-
-.hero-intro-caret {
-  display: inline-block;
-  width: 0.5ch;
-  height: 0.95em;
-  margin-left: 0.18em;
-  vertical-align: -0.08em;
-  background: currentColor;
-  opacity: 0;
-  /* iteration count is overridden via inline style so the caret
-     blinks for exactly the typewriter + reveal duration, then stops. */
-  animation-name: hero-caret-blink;
-  animation-duration: 720ms;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 4;
+  opacity: 0.35;
+  clip-path: inset(0 100% 0 0);
+  animation: hero-word-in var(--duration-enter) var(--ease-out-expo) forwards;
 }
 
 .hero-intro-word {
   display: inline-block;
-  opacity: 0;
-  transform: translateY(6px);
+  opacity: 0.35;
+  clip-path: inset(0 100% 0 0);
   animation: hero-word-in var(--duration-enter) var(--ease-out-expo) forwards;
   /* allow long titles to wrap at the natural word boundaries */
   white-space: normal;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-intro-char,
+  .hero-intro-eyebrow-text,
   .hero-intro-word {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
-  }
-  .hero-intro-caret {
-    display: none !important;
+    clip-path: none !important;
   }
 }

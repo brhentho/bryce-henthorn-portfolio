@@ -76,6 +76,8 @@ export default function HomePage() {
             <div className="home-hero-content">
               <div className="relative z-20">
                 <HeroIntro
+                  eyebrow="PORTFOLIO INDEX / 2026"
+                  eyebrowClassName="t-mono-label editorial-hero-index"
                   startDelay={200}
                   wordStep={26}
                   lines={[

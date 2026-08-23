@@ -17,22 +17,16 @@ type Props = {
   eyebrowClassName?: string
   eyebrowStyle?: CSSProperties
   lines: Line[]
-  /** Initial pause before the eyebrow starts typing, in ms. */
+  /** Initial pause before the text starts resolving, in ms. */
   startDelay?: number
-  /** ms per character on the eyebrow. */
-  charStep?: number
   /** ms per word on the body lines. */
   wordStep?: number
-  /** ms gap between the eyebrow finishing and the lines starting. */
-  eyebrowGap?: number
   /** Optional className applied to a wrapping div around the body lines. */
   linesWrapperClassName?: string
   /** Optional appended slot rendered after the animated lines settle. */
   trailing?: ReactNode
   /**
-   * If true, render the eyebrow + lines statically — no typewriter, no
-   * word-fade, no caret. Use on case-study heroes where the SectionLabel /
-   * scroll-reveal motion is the only motion the page should announce.
+   * If true, render the eyebrow + lines statically.
    */
   static?: boolean
 }
@@ -41,11 +35,10 @@ const normalizeEmphasisWord = (word: string) =>
   word.toLocaleLowerCase().replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "")
 
 /**
- * Operator-manual hero intro: monospace eyebrow types in char-by-char with a
- * blinking caret, then each line reveals word-by-word with a short fade-up.
+ * Editorial hero intro: stable language resolves word-by-word from left to
+ * right. No random glyphs, typewriter simulation, or cursor theater.
  *
- * Pass `static` to render plain markup with no per-char/per-word animation —
- * lets the surrounding scroll-reveal handle motion instead.
+ * Pass `static` to render plain markup without the resolve animation.
  */
 export function HeroIntro({
   eyebrow,
@@ -53,9 +46,7 @@ export function HeroIntro({
   eyebrowStyle,
   lines,
   startDelay = 80,
-  charStep = 26,
   wordStep = 32,
-  eyebrowGap = 220,
   linesWrapperClassName,
   static: isStatic = false,
 }: Props) {
@@ -108,9 +99,7 @@ export function HeroIntro({
     )
   }
 
-  const eyebrowDuration = eyebrow ? eyebrow.length * charStep : 0
-  const linesStart =
-    startDelay + eyebrowDuration + (eyebrow ? eyebrowGap : 0)
+  const linesStart = startDelay + (eyebrow ? 220 : 0)
 
   let runningWord = 0
   const renderedLines = lines.map((line, idx) => {
@@ -144,10 +133,6 @@ export function HeroIntro({
     )
   })
 
-  const totalLinesDuration = runningWord * wordStep + 600
-  const caretLifetime = eyebrowDuration + eyebrowGap + totalLinesDuration
-  const blinkCount = Math.max(2, Math.ceil(caretLifetime / 720))
-
   return (
     <>
       {eyebrow && (
@@ -155,23 +140,12 @@ export function HeroIntro({
           className={`hero-intro-eyebrow ${eyebrowClassName}`}
           style={eyebrowStyle}
         >
-          {[...eyebrow].map((ch, i) => (
-            <span
-              key={i}
-              className="hero-intro-char"
-              style={{ animationDelay: `${startDelay + i * charStep}ms` }}
-            >
-              {ch === " " ? " " : ch}
-            </span>
-          ))}
           <span
-            className="hero-intro-caret"
-            aria-hidden="true"
-            style={{
-              animationDelay: `${startDelay}ms`,
-              animationIterationCount: blinkCount,
-            }}
-          />
+            className="hero-intro-eyebrow-text"
+            style={{ animationDelay: `${startDelay}ms` }}
+          >
+            {eyebrow}
+          </span>
         </p>
       )}
       {linesWrapperClassName ? (

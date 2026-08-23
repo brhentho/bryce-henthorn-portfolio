@@ -63,14 +63,14 @@ export function TopBar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-[#06060A]/80 backdrop-blur-md border-b border-[color:var(--rule)]">
+      <header className="sticky top-0 z-50 bg-[color:var(--ink)]/96 border-b border-[color:var(--rule)]">
         <div className="container py-1 flex min-h-[52px] flex-wrap items-center justify-between gap-x-6 gap-y-1">
           <ViewTransitionLink
             href="/"
             aria-label="Bryce Henthorn, home"
             className="t-mono-label inline-flex min-h-11 items-center gap-2.5 whitespace-nowrap text-[color:var(--text-primary)] transition-colors duration-[var(--duration-fast-ui)] ease-[var(--ease-out-quad)] hover:text-[color:var(--text-secondary)]"
           >
-            <RegistrationMark className="text-[color:var(--accent-trace)]" />
+            <RegistrationMark className="text-[color:var(--rule-strong)]" />
             BRYCE HENTHORN
           </ViewTransitionLink>
 

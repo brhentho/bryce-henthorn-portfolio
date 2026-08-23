@@ -15,26 +15,31 @@
  */
 
 export type TransitionState = "idle" | "fading-in" | "holding" | "fading-out"
+export type TransitionListener = (
+  state: TransitionState,
+  destination: string | null,
+) => void
 
 /**
  * Kept deliberately short. This is a text-heavy portfolio, so navigation
  * should read as a deep link, not a presentation — the overlay exists to hide
  * the scroll jump, not to perform. 2 × 120 + 60 ≈ 300ms to readable.
  */
-export const FADE_MS = 120
-const COMMIT_HOLD_MS = 60 // give Next a beat to mount the new route at scroll-top
+export const FADE_MS = 140
+const COMMIT_HOLD_MS = 520
 
 let current: TransitionState = "idle"
-const listeners = new Set<(state: TransitionState) => void>()
+let currentDestination: string | null = null
+const listeners = new Set<TransitionListener>()
 
 function emit(next: TransitionState) {
   current = next
-  for (const fn of listeners) fn(next)
+  for (const fn of listeners) fn(next, currentDestination)
 }
 
-export function subscribe(fn: (state: TransitionState) => void): () => void {
+export function subscribe(fn: TransitionListener): () => void {
   listeners.add(fn)
-  fn(current)
+  fn(current, currentDestination)
   return () => {
     listeners.delete(fn)
   }
@@ -50,7 +55,10 @@ let inFlight = false
  * Run the sequence. `navigate` is the actual route push (caller wires the
  * Next router so this module stays framework-agnostic).
  */
-export async function transitionTo(navigate: () => void): Promise<void> {
+export async function transitionTo(
+  navigate: () => void,
+  destination?: string,
+): Promise<void> {
   if (inFlight) return
   if (typeof window === "undefined") {
     navigate()
@@ -71,6 +79,7 @@ export async function transitionTo(navigate: () => void): Promise<void> {
     return
   }
 
+  currentDestination = destination ?? null
   inFlight = true
   try {
     // 1. Fade ink in.
@@ -93,6 +102,7 @@ export async function transitionTo(navigate: () => void): Promise<void> {
     await wait(FADE_MS)
   } finally {
     emit("idle")
+    currentDestination = null
     inFlight = false
   }
 }

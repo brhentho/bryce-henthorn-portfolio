@@ -1,7 +1,7 @@
 # Layout Direction — Operator-Manual Case Studies
 
-**Branch:** `feature/recall-operator-manual`
-**Scope:** Layout and narrative composition only. Visual tokens (typography, color, spacing) and the page-header pattern are locked and out of scope.
+**Branch:** `feature/editorial-visual-system`
+**Scope:** Layout and narrative composition using the shared editorial visual system. The 13 layout primitives remain stable; canonical typography, color, and motion roles are defined in `CLAUDE.md`.
 **Audience:** A future Claude/agent or designer extending case study pages without rereading the source files.
 
 ---
@@ -20,9 +20,9 @@ These are imperative, opinionated rules. Apply them in order; later rules tie-br
 
 5. **Punctuate, don't illustrate.** Every figure must add information the body cannot carry alone — a diagram of pipeline stages, a side-by-side of card hierarchy, a video of an interaction. Decorative figures break the document chrome. If a figure is only there because the section "needs one," cut it.
 
-6. **Place a Cover Plate between major movements.** Problem → Solution. Solution → Trust. Trust → Impact. A bare paginated card (`§ 0X / 11`, title, optional sub-figure) lets the reader catch their breath and reinforces the document-as-chrome promise. One per page minimum, three maximum.
+6. **Place a Cover Plate between major movements.** Problem → Solution. Solution → Trust. Trust → Impact. A bare chapter card (title and optional sub-figure) lets the reader catch their breath and reinforces the document-as-chrome promise. Its mechanical aperture is reserved for this boundary. One per page minimum, three maximum.
 
-7. **Push numbered structure into chrome.** The header eyebrow `§ XX / SECTION_LABEL` is locked. Augment it inside sections with internal pagination on cover plates (`03 / 08`), stage rails on pipeline sections, FIG. X.Y on every figure. Numbered structure is the operator-manual idiom; deploy it generously *inside* sections, never at the expense of the locked header.
+7. **Push numbered structure into chrome.** Page heroes use a mono document index, while section headings remain unnumbered in rendered output. Use stage rails on pipeline sections and `FIG. X.Y` on every figure. Numbered structure is the operator-manual idiom; deploy it where it communicates hierarchy rather than as decoration.
 
 8. **Let the grid stretch — break the 68-character body column when figure content earns it.** The default `section-grid` + `max-w-[68ch]` body is the right baseline, but at least every third section should leave that lane: an Annotated Split Plate, a marginalia rail, a bleed figure, or a comparison plate. Lock-step body columns make the page feel like a Medium post.
 
@@ -38,11 +38,11 @@ Named primitives an agent can deploy. Each entry: *purpose · proportions · exp
 
 These build on the existing manual primitives in `components/manual/` (`SectionLabel`, `SpecSheet`, `Figure`, `Telemetry`, `Margin`, `StateDiagram`, `RegistrationMark`, `Crossref`). Where a primitive already exists, the layout type composes it; where it doesn't, the layout type is realized with the existing `Figure` frame plus tailwind grid overrides.
 
-### 2.1 Hero Header — *locked*
+### 2.1 Hero Header — *shared editorial pattern*
 Purpose: Open every case study identically. Anchors the document framing.
-Proportions: Full container width, top-aligned. Eyebrow → headline (`t-display-xl`, `max-w-[18-22ch]`) → lead (`t-body lede`, `max-w-[60ch]`) → framed `Fig 0.1`.
-Content: `§ 00 / OVERVIEW`, headline, lead paragraph, hero schematic.
-Document-chrome contract: Already preserved by `RevisionHeader` + the ManualNav above and `Fig 0.1` corner registration marks.
+Proportions: Full container width, bottom-aligned within the first viewport. Document index → oversized headline (`t-display-xl`) → lead (`t-body`, `max-w-[60ch]`) → framed `Fig 0.1` where present.
+Content: Stable route index, headline, lead paragraph, and hero schematic or media when the case study has one.
+Document-chrome contract: `TopBar` anchors the global index; `HeroIntro` supplies deterministic left-to-right word resolution; `Fig 0.1` retains corner registration marks.
 
 ### 2.2 Spec Sheet Block
 Purpose: ROLE / PLATFORM / TIMELINE / TEAM / FOCUS / STATUS, immediately under hero. Also reusable mid-page for principle catalogs (Trust principles, pipeline stages).
@@ -137,7 +137,7 @@ What feels stacked: 01 Context (text-only), 06 Performance (text-only), 07 Trust
 #### Proposed sequence
 | § | Section | Layout type | Notes |
 |---|---|---|---|
-| 00 | Overview / Hero | **Hero Header** *(locked)* | Keep. `HeroSchematic` is Fig 0.1. |
+| 00 | Overview / Hero | **Hero Header** *(shared pattern)* | Keep. `HeroSchematic` is Fig 0.1. |
 | — | Spec | **Spec Sheet Block** | Keep as-is. |
 | 01 | Context | **Body Column with Running Margin** | Move the Margin rail into 03 (where it is currently); leave 01 as a clean body column with no margin quote. The plate should feel quiet on purpose — it's the lead-in. |
 | — | *(transition)* | **Cover Plate** | Insert between 01 and 02 — `§ 02 / 09 — System` — to mark the move from problem-framing into the system. |
@@ -183,7 +183,7 @@ What feels stacked: The hero is missing a figure entirely (`Fig 0.1` is absent f
 #### Proposed sequence
 | § | Section | Layout type | Notes |
 |---|---|---|---|
-| 00 | Overview / Hero | **Hero Header** *(locked)* — but **add Fig 0.1** | The hero needs a schematic. Use the existing `Agents in Windows Fractal.png` as Fig 0.1. *Also see open question Q3.* |
+| 00 | Overview / Hero | **Hero Header** *(shared pattern)* — but **add Fig 0.1** | The hero needs a schematic. Use the existing `Agents in Windows Fractal.png` as Fig 0.1. *Also see open question Q3.* |
 | — | Spec | **Spec Sheet Block** | Keep. |
 | 01 | Context | **Annotated Split Plate** | Body left (4 paragraphs), Fig 1.1 (`context-desktop.png`) right. Currently it's body then full-width figure stacked; move the figure into the right half. |
 | 02 | Problem | **Two-up Comparison Plate** | Already correct — Fig 2.1 fragmentation + Fig 2.2 observability under shared caption. Keep the Margin quote ("They didn't distrust automation. They distrusted invisibility."). |
@@ -225,7 +225,7 @@ What feels stacked: 05, 06, 07 are body-then-video, body-then-video, body-then-v
 #### Proposed sequence
 | § | Section | Layout type | Notes |
 |---|---|---|---|
-| 00 | Overview / Hero | **Hero Header** *(locked)* — but **add Fig 0.1** | Needs a hero schematic. *Also see open question Q5.* |
+| 00 | Overview / Hero | **Hero Header** *(shared pattern)* — but **add Fig 0.1** | Needs a hero schematic. *Also see open question Q5.* |
 | — | Spec | **Spec Sheet Block** | Keep. |
 | 01 | Context | **Strip Break (Telemetry)** + **Body Column** | Already inverts the pattern — keep the move, formalize it as a Strip Break above the body. The telemetry (150M+ users, 30+ per class, 6 hours/day) sets the scale before any prose. |
 | 02 | Problem | **Body Column with Running Margin** + **Two-up Comparison Plate (quotes)** | The 4 student-quote blocks stay as a 2x2 grid — that's already a Two-up variant. Move the Margin quote ("The system worked for lecturing. It failed at learning.") into a Pull-quote Interlude below the quotes (see next row). |
@@ -272,13 +272,13 @@ Things that would break the narrative feel. Do not do these.
 
 4. **Margin quotes everywhere.** Using the `Margin` primitive in every long body section. Used everywhere, it stops being marginalia and becomes a second body column. Cap at one Margin quote per two body sections, or promote the quote to a Pull-quote Interlude.
 
-5. **Centered hero / centered everything.** The Pinterest set has several fully centered SaaS heroes ("Where digital finance finds sanctuary online", "The system for modern product development"). Resist them — the locked header pattern is left-aligned with eyebrow / headline / lead, and centering anywhere on the case study breaks the document chrome. Center alignment is reserved exclusively for Cover Plates.
+5. **Centered hero / centered everything.** The Pinterest set has several fully centered SaaS heroes ("Where digital finance finds sanctuary online", "The system for modern product development"). Resist them — the shared hero pattern is left-aligned with document index / headline / lead, and centering anywhere on the case study breaks the document chrome. Center alignment is reserved exclusively for Cover Plates.
 
 6. **Full-bleed past the registration frame.** Edge-to-viewport images without a hairline-bordered frame and corner marks. Full-bleed in this document means edge-to-container, with the corner registration marks intact. The Wallety reference in the inspiration set is what we are NOT trying to look like.
 
 7. **Captions without numbers.** Every figure must have a `FIG. X.Y` number and a caption that names the relationship to the body. Captions like "Taskbar evolution — step 1 of 3" (current 03 Process) are a placeholder, not a caption — they describe sequence position but not what step 1 actually shows.
 
-8. **Hot-orange accent on more than one element per section.** The locked design uses a single accent. A figure label, a margin pull-quote, and an active stage indicator should never all light up at once. Reserve the accent for one anchor element per visible viewport at a time.
+8. **Hot-orange accent on more than one element per section.** The editorial system uses a single state accent. A figure label, a margin pull-quote, and an active stage indicator should never all light up at once. Reserve the accent for one anchor element per visible viewport at a time.
 
 ---
 
@@ -295,7 +295,6 @@ Places where the existing copy is too thin to support a non-stacked layout, or w
 | Q5 | Teams for Education | 00 Hero | Source has no Fig 0.1. The proposed SVG (top-down virtual-tables grid) doesn't exist yet. Confirm whether to commission this drawing or pull from existing imagery. |
 | Q6 | Teams for Education | 04 Solution | The proposed Exploded Diagram Plate needs four marginalia call-outs naming the anatomy of a virtual table card ("TABLE CARD / FIXED SEAT / PERSISTENT MATERIALS SLOT / MODERATION HOOK"). Source copy supports the first three; "moderation hook" is interpolated from the long paragraph about ambient teacher controls. Confirm the four labels and whether `teams-fig02.png` shows enough anatomy to support call-outs, or whether a new SVG of a single table is needed. |
 | Q7 | Teams for Education | 08 Bandwidth | The proposed Strip Break needs three labeled stat columns. Source copy is qualitative ("older devices, spotty connections, shared home networks") with no numbers. Either keep the columns qualitative ("OLDER DEVICES / SHARED HOME NETWORKS / TIME LOST TO LOADING") or source real numbers. **Recommendation: qualitative is fine — the strip is breaking rhythm, not telling a data story.** |
-| Q8 | All pages | Cover Plates | Cover Plate proposes internal pagination like "§ 03 / 09 — Process" inside a section. This requires deciding whether the page-level `§ XX / 11` indicator in the locked header refers to a *book of 11 chapters across the whole site* (then internal cover plates use `§ X / 11` too) or to a *per-page chapter count* (then cover plates use the local section count, e.g., `§ 03 / 09`). The current header on Recall reads "§ 01 / 11" — this implies the former. **Recommendation: confirm the 11 refers to the whole document (home + about + 3 case studies + sections), then make Cover Plates inherit the same numbering.** |
 
 ---
 

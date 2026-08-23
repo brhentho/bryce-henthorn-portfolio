@@ -10,6 +10,19 @@ type Props = LinkProps &
     children: ReactNode
   }
 
+const ROUTE_LABELS: Record<string, string> = {
+  "/": "WORK",
+  "/about": "ABOUT",
+  "/recall": "RECALL",
+  "/agents-in-windows": "AGENTS IN WINDOWS",
+  "/teams-for-education": "TEAMS FOR EDUCATION",
+}
+
+function getRouteLabel(target: string) {
+  const pathname = target.split(/[?#]/, 1)[0]
+  return ROUTE_LABELS[pathname] ?? "PORTFOLIO"
+}
+
 function focusDestinationHeading(previousLocation: string) {
   const deadline = performance.now() + 2000
 
@@ -72,7 +85,7 @@ export function ViewTransitionLink({ onClick, href, children, ...rest }: Props) 
       // commits — the overlay coordinator handles scrollTo(0,0)
       // explicitly during the holding phase.
       router.push(target, { scroll: false })
-    }).then(() => focusDestinationHeading(previousLocation))
+    }, getRouteLabel(target)).then(() => focusDestinationHeading(previousLocation))
   }
 
   return (

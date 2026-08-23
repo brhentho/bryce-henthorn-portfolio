@@ -48,7 +48,10 @@ export function ScrollRevealController() {
     const scan = () => {
       document
         .querySelectorAll<HTMLElement>(SELECTOR)
-        .forEach((el) => observer.observe(el))
+        .forEach((el) => {
+          el.setAttribute("data-reveal-pending", "true")
+          observer.observe(el)
+        })
     }
     scan()
 

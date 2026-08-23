@@ -89,9 +89,12 @@ export default function TeamsForEducationPage() {
 
       <main className="container">
         {/* ── Hero ── */}
-        <section data-section id="overview" className="teams-hero pb-16 pt-12 lg:pt-24">
+        <section data-section id="overview" className="teams-hero editorial-hero pb-16 pt-12 lg:pt-24">
           <HeroIntro
-            static
+            eyebrow="CASE FILE / TEAMS FOR EDUCATION"
+            eyebrowClassName="t-mono-label editorial-hero-index"
+            startDelay={120}
+            wordStep={42}
             lines={[
               {
                 text: "Modernizing online classes for an authentic virtual experience.",
