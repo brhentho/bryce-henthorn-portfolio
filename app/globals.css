@@ -876,7 +876,7 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
   display: inline-block;
   opacity: 0;
   transform: translateY(6px);
-  animation: hero-word-in var(--duration-slow-ui) var(--ease-out-expo) forwards;
+  animation: hero-word-in var(--duration-enter) var(--ease-out-expo) forwards;
   /* allow long titles to wrap at the natural word boundaries */
   white-space: normal;
 }

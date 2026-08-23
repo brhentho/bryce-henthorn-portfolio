@@ -76,7 +76,8 @@ export default function HomePage() {
             <div className="home-hero-content">
               <div className="relative z-20">
                 <HeroIntro
-                  startDelay={420}
+                  startDelay={200}
+                  wordStep={26}
                   lines={[
                     {
                       text: "I turn complex systems into trustworthy experiences.",

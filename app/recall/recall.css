@@ -1747,8 +1747,13 @@
    - Hairlines under SectionLabel draw left→right when their section reveals.
    ═══════════════════════════════════════════════════════════════ */
 
+/* The base reveal is opacity only. A section entering the viewport is not an
+   event — it is the reader arriving, and lifting every section to announce
+   that reads as a stutter-pop on a fast scroll (Recall has 11 of these,
+   Agents has 9). Sections that genuinely stage information opt into a lift
+   by overriding --reveal-distance in their role below. */
 .manual [data-reveal] {
-  --reveal-distance: 12px;
+  --reveal-distance: 0px;
   --reveal-duration: var(--duration-enter);
   transition:
     opacity var(--reveal-duration) var(--ease-out-expo),
@@ -1759,12 +1764,15 @@
 /* Reveal roles vary pacing without creating a client component per element.
    The section remains the observed unit; descendants only choreograph when
    the narrative benefits from a second beat. */
+/* Chapter plates and thesis statements hold longer. They are the page taking
+   a breath, so they resolve slower than a working section. */
 .manual [data-reveal-role="cover"],
 .manual [data-reveal-role="statement"] {
-  --reveal-distance: 0px;
   --reveal-duration: var(--duration-slow-ui);
 }
 
+/* The handoff keeps a lift. It is the one section that is genuinely arriving
+   rather than being scrolled to — it hands the reader to the next document. */
 .manual [data-reveal-role="handoff"] {
   --reveal-distance: 8px;
 }
@@ -1814,12 +1822,13 @@
 }
 
 /* Hairline draw-in inside any revealed section */
+/* Draw the rule, don't fade it. At 700ms behind a 180ms delay the scaleX was
+   slow enough to read as an opacity change; at --duration-enter with no delay
+   the pen stroke is legible. */
 .manual [data-reveal] hr.rule {
   transform-origin: left center;
   transform: scaleX(0);
-  transition:
-    transform var(--duration-slow-ui) var(--ease-out-expo)
-    var(--duration-fast-ui);
+  transition: transform var(--duration-enter) var(--ease-out-expo);
 }
 .manual [data-reveal][data-revealed="true"] hr.rule {
   transform: scaleX(1);

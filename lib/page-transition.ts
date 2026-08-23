@@ -16,8 +16,13 @@
 
 export type TransitionState = "idle" | "fading-in" | "holding" | "fading-out"
 
-export const FADE_MS = 300
-const COMMIT_HOLD_MS = 120 // give Next a beat to mount the new route at scroll-top
+/**
+ * Kept deliberately short. This is a text-heavy portfolio, so navigation
+ * should read as a deep link, not a presentation — the overlay exists to hide
+ * the scroll jump, not to perform. 2 × 120 + 60 ≈ 300ms to readable.
+ */
+export const FADE_MS = 120
+const COMMIT_HOLD_MS = 60 // give Next a beat to mount the new route at scroll-top
 
 let current: TransitionState = "idle"
 const listeners = new Set<(state: TransitionState) => void>()
