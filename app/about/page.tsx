@@ -71,7 +71,7 @@ export default function AboutPage() {
               eyebrowClassName="t-mono-label editorial-hero-index"
               startDelay={120}
               wordStep={34}
-              linesWrapperClassName="space-y-3 lg:space-y-4"
+              linesWrapperClassName="space-y-1 lg:space-y-2"
               lines={MANIFESTO.map((line, index) => ({
                 text: line,
                 className:
