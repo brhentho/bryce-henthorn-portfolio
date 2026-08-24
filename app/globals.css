@@ -207,7 +207,7 @@
 
 .route-transition-footer {
   padding-top: 14px;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--rule);
 }
 
 .route-transition-status {
@@ -232,7 +232,7 @@
 }
 
 .route-transition[data-state="holding"] .route-transition-status > span:last-child {
-  color: var(--a);
+  color: var(--accent-trace);
   animation: route-status-ready 520ms linear both;
 }
 
@@ -291,37 +291,14 @@ html[data-route-transition="holding"] .hero-intro-word {
 
 /* ── Tailwind v4 theme tokens ── */
 @theme inline {
+  /* Tailwind only needs what the remaining source actually uses.
+     --color-border and --color-ring are load-bearing: the
+     `* { @apply border-border outline-ring/50 }` rule in @layer base is a
+     compile-time dependency on them. --font-sans feeds preflight's
+     --default-font-family. Everything else went with components/ui. */
   --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
-  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-foreground-secondary: var(--foreground-secondary);
-  --color-foreground-tertiary: var(--foreground-tertiary);
-  --color-surface: var(--surface);
-  --color-surface-raised: var(--surface-raised);
-  --color-border: var(--border);
-  --color-border-divider: var(--border-divider);
-  --color-border-hover: var(--border-hover);
-  --color-accent: var(--accent);
-  --color-accent-dim: var(--accent-dim);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --color-border: var(--rule-hairline);
+  --color-ring:   var(--accent-trace);
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -344,9 +321,8 @@ html[data-route-transition="holding"] .hero-intro-word {
     overflow-x: hidden;
   }
 
-  /* High-contrast keyboard focus — applies site-wide. Uses the teal ring
-     token in :root and the operator-manual burnt-orange where it overrides
-     --ring (see manual surface). */
+  /* High-contrast keyboard focus — applies site-wide. --ring resolves to
+     --accent-trace, the burnt-orange state indicator. */
   a:focus-visible,
   button:focus-visible,
   [role="button"]:focus-visible,
@@ -366,7 +342,7 @@ html[data-route-transition="holding"] .hero-intro-word {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--a) 28%, transparent);
+  background: color-mix(in srgb, var(--accent-trace) 28%, transparent);
   color: var(--paper);
 }
 
