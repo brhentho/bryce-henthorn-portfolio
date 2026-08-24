@@ -31,6 +31,11 @@ type Props = {
   static?: boolean
 }
 
+type HeroMotionStyle = CSSProperties & {
+  "--hero-enter-delay": string
+  "--hero-exit-delay": string
+}
+
 const normalizeEmphasisWord = (word: string) =>
   word.toLocaleLowerCase().replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "")
 
@@ -100,6 +105,11 @@ export function HeroIntro({
   }
 
   const linesStart = startDelay + (eyebrow ? 220 : 0)
+  const wordCount = lines.reduce(
+    (count, line) =>
+      count + line.text.split(/(\s+)/).filter((part) => !/^\s+$/.test(part)).length,
+    0,
+  )
 
   let runningWord = 0
   const renderedLines = lines.map((line, idx) => {
@@ -113,7 +123,9 @@ export function HeroIntro({
       <Tag key={idx} className={cn(balance, line.className)} style={line.style}>
         {parts.map((part, i) => {
           if (/^\s+$/.test(part)) return part
-          const delay = linesStart + runningWord * wordStep
+          const wordIndex = runningWord
+          const enterDelay = linesStart + wordIndex * wordStep
+          const exitDelay = (wordCount - wordIndex - 1) * 10
           runningWord += 1
           return (
             <span
@@ -123,7 +135,12 @@ export function HeroIntro({
                 emphasized.has(normalizeEmphasisWord(part)) &&
                   line.emphasisClassName,
               )}
-              style={{ animationDelay: `${delay}ms` }}
+              style={
+                {
+                  "--hero-enter-delay": `${enterDelay}ms`,
+                  "--hero-exit-delay": `${exitDelay}ms`,
+                } as HeroMotionStyle
+              }
             >
               {part}
             </span>
@@ -142,7 +159,12 @@ export function HeroIntro({
         >
           <span
             className="hero-intro-eyebrow-text"
-            style={{ animationDelay: `${startDelay}ms` }}
+            style={
+              {
+                "--hero-enter-delay": `${startDelay}ms`,
+                "--hero-exit-delay": `${wordCount * 10}ms`,
+              } as HeroMotionStyle
+            }
           >
             {eyebrow}
           </span>

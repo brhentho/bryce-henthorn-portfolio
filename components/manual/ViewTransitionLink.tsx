@@ -10,19 +10,6 @@ type Props = LinkProps &
     children: ReactNode
   }
 
-const ROUTE_LABELS: Record<string, string> = {
-  "/": "WORK",
-  "/about": "ABOUT",
-  "/recall": "RECALL",
-  "/agents-in-windows": "AGENTS IN WINDOWS",
-  "/teams-for-education": "TEAMS FOR EDUCATION",
-}
-
-function getRouteLabel(target: string) {
-  const pathname = target.split(/[?#]/, 1)[0]
-  return ROUTE_LABELS[pathname] ?? "PORTFOLIO"
-}
-
 function focusDestinationHeading(previousLocation: string) {
   const deadline = performance.now() + 2000
 
@@ -56,13 +43,13 @@ function focusDestinationHeading(previousLocation: string) {
 
 /**
  * Drop-in replacement for next/link that runs every same-origin
- * navigation through the sequential editorial wipe (see
+ * navigation through the complementary data-flow transition (see
  * `lib/page-transition.ts` and `<PageTransitionOverlay>`):
  *
- *   1. ink wipes across the current page
+ *   1. the current HeroIntro resolves backward as the page fades to ink
  *   2. route push + scrollTo(0,0) happen behind the solid ink
- *   3. the wipe exits right only after the destination has committed
- *   4. the new page's HeroIntro resolves as the wipe exposes it
+ *   3. the ink shield disappears when the destination boundary mounts
+ *   4. the destination's existing HeroIntro runs unchanged
  *
  * Falls through to vanilla next/link for modified clicks
  * (cmd/ctrl/shift, middle/right button) or when an upstream onClick
@@ -77,17 +64,21 @@ export function ViewTransitionLink({ onClick, href, children, ...rest }: Props) 
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
     if (typeof window === "undefined") return
 
-    e.preventDefault()
     const target = typeof href === "string" ? href : href.toString()
+    const destination = new URL(target, window.location.href)
+    if (destination.pathname === window.location.pathname) return
+
+    e.preventDefault()
+    const destinationPathname = destination.pathname
     const previousLocation =
       window.location.pathname + window.location.search + window.location.hash
 
     void transitionTo(() => {
       // `scroll: false` keeps Next from re-scrolling after the route
       // commits — the overlay coordinator handles scrollTo(0,0)
-      // explicitly during the holding phase.
+      // explicitly while the ink shield is active.
       router.push(target, { scroll: false })
-    }, getRouteLabel(target)).then(() => focusDestinationHeading(previousLocation))
+    }, destinationPathname).then(() => focusDestinationHeading(previousLocation))
   }
 
   return (

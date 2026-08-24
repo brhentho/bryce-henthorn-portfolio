@@ -36,18 +36,50 @@ visual-system revision. Preserve these roles across all production routes:
   and approximately `0.84–0.95` line height.
 - **Hero motion:** stable words resolve left-to-right with clipping. Never
   scramble glyphs or simulate a typewriter.
-- **Route motion:** destination-aware data-flow typography may bridge route
-  changes. Reduced motion navigates immediately.
+- **Route motion:** hero typography resolves in reverse reading order on exit,
+  then the destination's existing left-to-right `HeroIntro` runs unchanged.
+  Reduced motion navigates immediately.
 - **Chapter motion:** the mechanical aperture is reserved for `CoverPlate`.
   Do not apply it to ordinary `Figure` components.
 - **Texture and chrome:** retain subtle paper texture, alpha rules,
   registration marks, numbered figures, and the 13 layout primitives.
 
-Global material and motion aliases live in `app/globals.css`; production manual
-roles live under `.manual` in `app/recall/recall.css`. Keep the aliases aligned
-rather than introducing local color literals. Do not add signal sweeps,
-parallax, 3D tilt, cursor replacement, marquees, particles, or generic glow
-decoration.
+### Where tokens live
+
+**Every design token is defined exactly once, in `:root` in `app/globals.css`.**
+`.manual` in `app/recall/recall.css` used to shadow a near-identical second set;
+that duplication is gone. `.manual` now carries layout declarations only and
+inherits its tokens like everything else. Never reintroduce a token definition
+there, and never introduce a local colour literal — if a value is worth using
+twice it is worth a token.
+
+The canonical names:
+
+- **Material** — `--ink` `#0B0B0C`, `--paper` `#E8E5DC`
+- **Rules** — `--rule-hairline` / `--rule` / `--rule-strong` (paper at 12 / 22 / 48%)
+- **Text** — `--text-primary` `--text-secondary` `--text-tertiary` `--text-faint`
+  `--text-body`
+- **Accents** — `--accent-trace` `#FF4D00` is the state indicator and the only
+  accent that may move; `--accent-schematic` `--accent-signal` `--accent-alert`
+  `--accent-warning` are for schematics and diagrams
+- **Aliases** — `--bg` `--fg` `--ring`, and `--font-display` / `--font-body` /
+  `--font-mono`
+- **Motion** — `--ease-out-expo` (entrances), `--ease-in-expo` (exits),
+  `--ease-in-out-sine` (mechanical apertures), `--ease-out-quad` (short UI state);
+  `--duration-fast-ui` 180ms, `--duration-normal-ui` 300ms, `--duration-enter`
+  500ms, `--duration-slow-ui` 700ms, `--duration-ambient` 3000ms
+
+The token block must stay reachable from OUTSIDE `.manual`: `PageTransitionOverlay`
+is a sibling of `{children}` in `app/layout.tsx`, and `::selection`, `body` and the
+global focus ring are outside it too. That is why the tokens sit at `:root`.
+
+`@theme inline` is deliberately down to three entries. `--color-border` and
+`--color-ring` are load-bearing — `* { @apply border-border outline-ring/50 }` in
+`@layer base` is a compile-time dependency on them, so removing either breaks the
+build. Note that `--color-border` is the 12% `--rule-hairline` tier, not `--rule`.
+
+Do not add signal sweeps, parallax, 3D tilt, cursor replacement, marquees,
+particles, or generic glow decoration.
 
 ### Retired in the August 2026 revision
 
@@ -90,6 +122,11 @@ When restructuring or editing case study sections:
 ## Stack notes
 
 - Next.js 16 App Router, React 19, Tailwind 4 (`@tailwindcss/postcss`), TypeScript 5.7
+- **Tailwind 4 writes movement to `translate` / `scale` / `rotate`, not to `transform`.** An
+  arbitrary transition list that names `transform` will silently fail to ease a `-translate-y-*`
+  or `scale-*` hover state — the state still applies, it just snaps. Name the real property
+  (`transition-[border-color,translate,box-shadow]`) or use `transition-transform`, which Tailwind
+  expands to `transform, translate, scale, rotate` for you.
 - Tokens live in the global CSS as CSS variables; class utilities (`t-display-xl`, etc.) are defined alongside Tailwind in the same stylesheet
 - shadcn/ui under `components/ui/` — case study pages do not consume these directly; they use the `components/manual/` primitives instead
 - Storybook is configured for the manual primitives (`components/manual/Figure.stories.tsx`, etc.) — keep stories current when changing primitives

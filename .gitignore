@@ -17,3 +17,8 @@ dev.log
 # Critique outputs (screenshots and animation frames)
 critique/captures/
 critique/animations/
+
+# Agent scratch dirs and local worktrees (never commit these)
+.a5c/
+.claude/worktrees/
+fixes/

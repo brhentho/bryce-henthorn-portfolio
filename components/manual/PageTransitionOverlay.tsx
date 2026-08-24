@@ -7,20 +7,17 @@ import {
 } from "@/lib/page-transition"
 
 /**
- * Full-screen ink overlay driven by the `transitionTo` coordinator.
- * Mounted once at the root layout level so a single instance covers
- * every route. Pointer events block only while a transition is in
- * flight to prevent double-clicks.
+ * Full-screen ink shield driven by the route coordinator. It carries no
+ * destination UI: the outgoing HeroIntro provides the exit and the existing
+ * destination HeroIntro provides the entrance.
  */
 export function PageTransitionOverlay() {
   const [state, setState] = useState<TransitionState>("idle")
-  const [destination, setDestination] = useState<string | null>(null)
 
   useEffect(
     () =>
-      subscribe((nextState, nextDestination) => {
+      subscribe((nextState) => {
         setState(nextState)
-        setDestination(nextDestination)
       }),
     [],
   )
@@ -36,20 +33,6 @@ export function PageTransitionOverlay() {
         background: "var(--bg, #0B0B0C)",
         pointerEvents: visible ? "auto" : "none",
       }}
-    >
-      <div className="route-transition-chrome">
-        <span>DOCUMENT INDEX</span>
-        <span className="route-transition-status">
-          <span>INDEXING</span>
-          <span>MATCHED</span>
-          <span>READY</span>
-        </span>
-      </div>
-      <p className="route-transition-title">{destination}</p>
-      <div className="route-transition-footer">
-        <span>BRYCE HENTHORN</span>
-        <span>HUMAN–AI SYSTEMS</span>
-      </div>
-    </div>
+    />
   )
 }

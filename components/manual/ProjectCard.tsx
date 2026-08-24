@@ -43,7 +43,9 @@ export function ProjectCard({
         className={[
           "project-card relative min-h-[360px] overflow-hidden border border-[color:var(--rule)] bg-[#121213] sm:min-h-[400px]",
           "lg:aspect-[1120/496]",
-          "transition-[border-color,transform,box-shadow] duration-[var(--duration-normal-ui)] ease-[var(--ease-out-expo)]",
+          // `translate`, not `transform`: Tailwind v4 compiles -translate-y-1 to the
+          // standalone translate property, so a transform-only list never eases the lift.
+          "transition-[border-color,translate,box-shadow] duration-[var(--duration-normal-ui)] ease-[var(--ease-out-expo)]",
           "group-hover:border-[color:var(--rule-strong)] group-focus-visible:border-[color:var(--rule-strong)]",
           "motion-safe:group-hover:-translate-y-1 motion-safe:group-hover:shadow-[0_32px_64px_rgba(0,0,0,0.5)]",
           "motion-safe:group-focus-visible:-translate-y-1 motion-safe:group-focus-visible:shadow-[0_32px_64px_rgba(0,0,0,0.5)]",
