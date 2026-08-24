@@ -5,40 +5,6 @@
    ═══════════════════════════════════════════════════════════════ */
 
 .manual {
-  /* Font aliases — root layout exposes the four next/font variables */
-  --font-display: var(--font-inter-tight);
-  --font-body:    var(--font-inter);
-  --font-mono:    var(--font-jetbrains-mono);
-
-  /* Material */
-  --ink: #0B0B0C;
-
-  /* Surface tokens */
-  --paper: #E8E5DC;
-  --rule:        color-mix(in srgb, var(--paper) 22%, transparent);
-  --rule-strong: color-mix(in srgb, var(--paper) 48%, transparent);
-  --text-primary:   var(--paper);
-  --text-secondary: color-mix(in srgb, var(--paper) 62%, transparent);
-  --text-tertiary:  color-mix(in srgb, var(--paper) 48%, transparent);
-  /* Faintest legible tier — colophon / printer's-mark chrome only. */
-  --text-faint:     color-mix(in srgb, var(--paper) 30%, transparent);
-  /* Body tier sits between primary (headlines) and secondary (subtitle/meta).
-     ~85% of primary blended onto ink — Linear-style softening so body copy
-     no longer competes with headlines. */
-  --text-body: color-mix(in srgb, var(--text-primary) 85%, var(--ink));
-
-  /* Accents */
-  --accent-schematic: #6B8FB8;
-  --accent-signal:    #8FB079;
-  --accent-alert:     #D49B3D;
-  --accent-warning:   #A86060;
-  --accent-trace:     #FF4D00;
-
-  /* Semantic aliases used by components */
-  --bg: var(--ink);
-  --fg: var(--text-primary);
-  --ring: var(--accent-trace);
-
   background:
     linear-gradient(color-mix(in srgb, var(--paper) 1.8%, transparent) 1px, transparent 1px),
     var(--bg);
