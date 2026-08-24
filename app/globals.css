@@ -9,8 +9,8 @@
 
 :root {
   /* ═══ Canonical design tokens ═══
-     One name per concept, defined once, here. These were previously declared
-     on .manual in recall.css and shadowed a near-identical :root set; they are
+     One name per concept, defined once, here. .manual in recall.css used to
+     shadow a near-identical set; these are the names that carried the traffic,
      hoisted so surfaces rendered OUTSIDE .manual — the route-transition
      overlay, ::selection, body, the focus ring — resolve the same values. */
 
@@ -52,116 +52,17 @@
   --fg:   var(--text-primary);
   --ring: var(--accent-trace);
 
-  /* ── Core ── */
-  --expo: cubic-bezier(0.16, 1, 0.3, 1);
-  /* Fluid padding tuned for four tiers:
-     mobile   ~24px @ 375
-     tablet   ~48px @ 800
-     desktop  ~80px @ 1280
-     large    ~112px @ 1600+ */
-  --pad: clamp(24px, 6vw, 112px);
-  --max-w: 1400px;
-  --grid-gap: clamp(16px, 2vw, 32px);
-
-  /* ── Breakpoint tokens (reference only \u2014 use in @media) ──
-     --bp-tablet: 768px
-     --bp-desktop: 1024px
-     --bp-large: 1440px */
-
-  /* ── White Opacity Scale ── */
-  --w88: rgba(255, 255, 255, 0.88);
-  --w75: rgba(255, 255, 255, 0.75);
-  --w60: rgba(255, 255, 255, 0.6);
-  --w45: rgba(255, 255, 255, 0.45);
-  --w35: rgba(255, 255, 255, 0.35);
-  --w30: rgba(255, 255, 255, 0.3);
-  --w25: rgba(255, 255, 255, 0.25);
-  --w20: rgba(255, 255, 255, 0.2);
-  --w15: rgba(255, 255, 255, 0.15);
-  --w12: rgba(255, 255, 255, 0.12);
-  --w08: rgba(255, 255, 255, 0.08);
-  --w06: rgba(255, 255, 255, 0.06);
-  --w04: rgba(255, 255, 255, 0.04);
-  --w03: rgba(255, 255, 255, 0.03);
-  --w025: rgba(255, 255, 255, 0.025);
-
-  /* ── Semantic aliases (prefer these in new code) ──
-     Text                                   Border
-     --text-primary   → body copy           --border-hairline → separators
-     --text-secondary → supporting copy     --border-subtle   → card edges
-     --text-tertiary  → captions/labels     --border-strong   → hover/focus
-     --text-quiet     → disabled/decorative
-  */
-  --text-quiet: color-mix(in srgb, var(--paper) 28%, transparent);
-  --border-hairline: color-mix(in srgb, var(--paper) 12%, transparent);
-  --border-subtle: color-mix(in srgb, var(--paper) 22%, transparent);
-  --border-strong: color-mix(in srgb, var(--paper) 48%, transparent);
-
-  /* ── Per-Page Accent (set on page wrapper) ── */
-  --a: #FF4D00;
-  --a2: transparent;
-
-  /* ── Motion ── */
-  /* Canonical editorial motion vocabulary. New motion should use these
-     intent-based tokens; the older aliases below remain for compatibility. */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-expo: cubic-bezier(0.7, 0, 0.84, 0);
+  /* ═══ Motion ═══
+     Intent-named easings and durations. Bespoke animation pulls from these
+     rather than hardcoding a curve or a millisecond value. */
+  --ease-out-expo:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
-  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --duration-instant: 100ms;
-  --duration-fast-ui: 180ms;
+  --ease-out-quad:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --duration-fast-ui:   180ms;
   --duration-normal-ui: 300ms;
-  --duration-enter: 500ms;
-  --duration-slow-ui: 700ms;
-  --duration-ambient-loop: 4000ms;
-
-  /* Compatibility aliases used by earlier bespoke animations. */
-  --ease-operator: cubic-bezier(0.5, 0, 0.1, 1);
-  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-decel: cubic-bezier(0, 0, 0.2, 1);
-  --duration-fast: 200ms;
-  --duration-normal: 400ms;
-  --duration-slow: 800ms;
-  --duration-ambient: 3000ms;
-  --motion-scale: 1;
-
-  /* ── Radius ── */
-  --radius: 0.75rem;
-  --radius-card: 16px;
-
-  /* ── shadcn compat ── */
-  --background: var(--bg);
-  --foreground: var(--paper);
-  --foreground-secondary: var(--text-secondary);
-  --foreground-tertiary: var(--text-tertiary);
-  --surface: #101011;
-  --surface-raised: #151516;
-  --card: color-mix(in srgb, var(--paper) 2.5%, transparent);
-  --card-foreground: var(--paper);
-  --popover: #101011;
-  --popover-foreground: var(--paper);
-  --primary: var(--paper);
-  --primary-foreground: var(--bg);
-  --secondary: #151516;
-  --secondary-foreground: var(--paper);
-  --muted: #151516;
-  --muted-foreground: var(--text-tertiary);
-  --accent: var(--a);
-  --accent-dim: color-mix(in srgb, var(--a) 10%, transparent);
-  --destructive: #ef4444;
-  --destructive-foreground: rgba(255, 255, 255, 0.88);
-  --border: var(--border-hairline);
-  --border-divider: var(--border-subtle);
-  --border-hover: var(--border-strong);
-  --input: var(--border-subtle);
-  --ring: var(--a);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --motion-scale: 0;
-  }
+  --duration-enter:     500ms;
+  --duration-slow-ui:   700ms;
+  --duration-ambient:   3000ms;
 }
 
 /* ── Destination-aware editorial route transition ── */
