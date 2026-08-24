@@ -121,6 +121,11 @@ When restructuring or editing case study sections:
 ## Stack notes
 
 - Next.js 16 App Router, React 19, Tailwind 4 (`@tailwindcss/postcss`), TypeScript 5.7
+- **Tailwind 4 writes movement to `translate` / `scale` / `rotate`, not to `transform`.** An
+  arbitrary transition list that names `transform` will silently fail to ease a `-translate-y-*`
+  or `scale-*` hover state — the state still applies, it just snaps. Name the real property
+  (`transition-[border-color,translate,box-shadow]`) or use `transition-transform`, which Tailwind
+  expands to `transform, translate, scale, rotate` for you.
 - Tokens live in the global CSS as CSS variables; class utilities (`t-display-xl`, etc.) are defined alongside Tailwind in the same stylesheet
 - shadcn/ui under `components/ui/` — case study pages do not consume these directly; they use the `components/manual/` primitives instead
 - Storybook is configured for the manual primitives (`components/manual/Figure.stories.tsx`, etc.) — keep stories current when changing primitives
