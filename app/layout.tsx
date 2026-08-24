@@ -77,9 +77,6 @@ export default function RootLayout({
                 document.querySelectorAll('[data-reveal]').forEach(function (el) {
                   el.setAttribute('data-revealed', 'true');
                 });
-                document.querySelectorAll('.sec').forEach(function (el) {
-                  el.classList.add('vis');
-                });
                 document.querySelectorAll('[style*="opacity: 0"], [style*="opacity:0"]').forEach(function (el) {
                   el.style.opacity = '1';
                   el.style.transform = 'none';

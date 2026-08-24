@@ -180,20 +180,6 @@
   opacity: 0.34;
 }
 
-.manual .perspective-grid {
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--text-primary) 3%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--text-primary) 3%, transparent) 1px, transparent 1px);
-}
-
-.manual .vignette {
-  background: radial-gradient(
-    ellipse 65% 55% at 50% 45%,
-    transparent 20%,
-    color-mix(in srgb, var(--ink) 88%, transparent) 100%
-  );
-}
-
 /* ── Homepage rooms ── */
 .manual .home-hero {
   position: relative;

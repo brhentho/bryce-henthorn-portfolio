@@ -345,9 +345,7 @@ html.figma-capture-mode * {
 html.figma-capture-mode [data-reveal],
 html.figma-capture-mode [data-reveal]:not([data-revealed="true"]),
 html.figma-capture-mode .manual [data-reveal],
-html.figma-capture-mode .manual [data-reveal]:not([data-revealed="true"]),
-html.figma-capture-mode .sec,
-html.figma-capture-mode .sec:not(.vis) {
+html.figma-capture-mode .manual [data-reveal]:not([data-revealed="true"]) {
   opacity: 1 !important;
   transform: none !important;
   clip-path: none !important;
@@ -360,18 +358,6 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
 /* ═══════════════════════════════════════════════════════════════
    12-COLUMN GRID
    ═══════════════════════════════════════════════════════════════ */
-
-.g12 {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 0 var(--grid-gap);
-  padding: 0 var(--pad);
-  max-width: var(--max-w);
-  /* Use individual margin properties so Tailwind margin utilities
-     aren't clobbered by the margin shorthand. */
-  margin-left: auto;
-  margin-right: auto;
-}
 
 /* ═══════════════════════════════════════════════════════════════
    ATMOSPHERE — Decorative layers
@@ -430,9 +416,6 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
 }
 
 /* Section dot nav — hide on mobile */
-@media (max-width: 767px) {
-  .section-nav { display: none !important; }
-}
 
 /* Dot grid texture */
 .dot-grid {
@@ -445,74 +428,14 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
 }
 
 /* Perspective grid — hero floor/horizon */
-.perspective-grid {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  background-size: 48px 48px;
-  transform: perspective(600px) rotateX(35deg);
-  transform-origin: center 70%;
-  mask-image: radial-gradient(ellipse 80% 50% at 50% 60%, black 10%, transparent 65%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 60%, black 10%, transparent 65%);
-}
 
 /* Vignette */
-.vignette {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse 65% 55% at 50% 45%, transparent 20%, rgba(6, 6, 10, 0.7) 100%);
-}
 
 /* Edge line — horizontal divider between sections */
-.edge-line {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  height: 1px;
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.04) 30%,
-    rgba(255, 255, 255, 0.06) 50%,
-    rgba(255, 255, 255, 0.04) 70%,
-    transparent
-  );
-}
 
 /* ═══════════════════════════════════════════════════════════════
    GLASS CARD
    ═══════════════════════════════════════════════════════════════ */
-
-.glass {
-  border-radius: var(--radius-card);
-  background: var(--w025);
-  border: 1px solid var(--w06);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  position: relative;
-  overflow: hidden;
-}
-
-.glass::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.glass-hover {
-  transition: border-color 300ms var(--expo), box-shadow 300ms var(--expo);
-}
-.glass-hover:hover {
-  border-color: var(--w12);
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.02);
-}
 
 /* ═══════════════════════════════════════════════════════════════
    ABOUT PORTRAIT — editorial photo treatment
@@ -520,359 +443,41 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
    Teal hairline at the bottom echoes the experience-timeline rule.
    ═══════════════════════════════════════════════════════════════ */
 
-.portrait-figure {
-  position: relative;
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  border: 1px solid var(--w06);
-  background: var(--w025);
-  isolation: isolate;
-  margin: 0;
-}
-
-.portrait-figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: saturate(0.7) brightness(0.92) contrast(1.03);
-  transform: scale(1);
-  transition:
-    filter 900ms var(--expo),
-    transform 1400ms var(--expo);
-  will-change: filter, transform;
-}
-
-.portrait-figure:hover img,
-.portrait-figure:focus-within img {
-  filter: saturate(1) brightness(1) contrast(1);
-  transform: scale(1.02);
-}
-
 /* Inner highlight matching the .glass family */
-.portrait-figure::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 45%);
-  pointer-events: none;
-  z-index: 1;
-}
 
 /* Teal accent hairline along the bottom edge */
-.portrait-figure::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(94, 200, 180, 0.55) 50%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 2;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .portrait-figure img {
-    transition: none;
-  }
-  .portrait-figure:hover img,
-  .portrait-figure:focus-within img {
-    transform: none;
-  }
-}
 
 /* ═══════════════════════════════════════════════════════════════
    FULL-BLEED QUOTE STRIP
    ═══════════════════════════════════════════════════════════════ */
 
-.quote-bleed {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 80px,
-    black calc(100% - 60px),
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 80px,
-    black calc(100% - 60px),
-    transparent 100%
-  );
-}
-
-.quote-bleed-inner {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-  padding: 0 40px;
-}
-
 /* Allow bleed to escape the section overflow clip */
-.sec-bleed {
-  overflow: visible;
-}
 
 /* ── Light-beam border sweep ── */
-
-@property --beam-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-.glass-beam {
-  position: relative;
-}
-
-.glass-beam::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: conic-gradient(from var(--beam-angle), transparent 0%, rgba(255,255,255,0.08) 8%, transparent 16%, transparent 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  padding: 1px;
-  pointer-events: none;
-  animation: beam-rotate 8s linear infinite;
-}
-
-@keyframes beam-rotate {
-  to { --beam-angle: 360deg; }
-}
 
 /* ═══════════════════════════════════════════════════════════════
    SCROLL REVEAL
    ═══════════════════════════════════════════════════════════════ */
 
-.sec {
-  position: relative;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 900ms var(--expo), transform 900ms var(--expo);
-}
-
-.sec.vis {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* ═══════════════════════════════════════════════════════════════
    PLACEHOLDER BLOCKS
    ═══════════════════════════════════════════════════════════════ */
-
-.ph {
-  border-radius: var(--radius-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.ph .ph-label {
-  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: var(--w15);
-  text-align: center;
-  padding: 12px;
-  z-index: 2;
-  text-transform: uppercase;
-}
-
-.ph-img {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0.005) 100%);
-  border: 1px dashed var(--w06);
-}
-
-.ph-diag {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--a) 2%, transparent) 0%, color-mix(in srgb, var(--a) 1%, transparent) 100%);
-  border: 1px dashed color-mix(in srgb, var(--a) 8%, transparent);
-}
-
-.ph-ui {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border: 1px dashed var(--w08);
-}
 
 /* ═══════════════════════════════════════════════════════════════
    TYPOGRAPHY HELPERS
    ═══════════════════════════════════════════════════════════════ */
 
-.t-display {
-  font-size: clamp(32px, 4.2vw, 64px);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  color: var(--w88);
-}
-
-.t-heading {
-  font-size: clamp(24px, 3vw, 44px);
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: var(--w88);
-}
-
-.t-subhead {
-  font-size: clamp(20px, 2.2vw, 32px);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.015em;
-  color: var(--w75);
-}
-
-.t-body {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--w60);
-}
-
-.t-body-lg {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--w60);
-}
-
-.t-label {
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--w25);
-}
-
-.t-mono {
-  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--w20);
-}
-
-.t-caption {
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--w45);
-}
-
-.t-measure { max-width: 680px; }
-.t-measure-wide { max-width: 780px; }
-
 /* ═══════════════════════════════════════════════════════════════
    NAV
    ═══════════════════════════════════════════════════════════════ */
-
-.editorial-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 20px var(--pad);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(180deg, rgba(6, 6, 10, 0.8) 0%, transparent 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.editorial-nav-name {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--w60);
-  letter-spacing: 0.02em;
-}
-
-.editorial-nav-links {
-  display: flex;
-  gap: 28px;
-}
-
-.editorial-nav-links a {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--w25);
-  text-decoration: none;
-  transition: color 300ms var(--ease-operator);
-}
-
-.editorial-nav-links a:hover {
-  color: var(--w60);
-}
 
 /* ═══════════════════════════════════════════════════════════════
    KEYFRAME ANIMATIONS
    ═══════════════════════════════════════════════════════════════ */
 
-@keyframes float0 {
-  0%, 100% { transform: translate(0, 0); }
-  50%      { transform: translate(4px, -6px); }
-}
-@keyframes float1 {
-  0%, 100% { transform: translate(0, 0); }
-  50%      { transform: translate(-5px, 4px); }
-}
-@keyframes float2 {
-  0%, 100% { transform: translate(0, 0); }
-  50%      { transform: translate(3px, 5px); }
-}
-
 @keyframes pulseGlow {
   0%, 100% { opacity: 0.5; transform: scale(1); }
   50%      { opacity: 0.8; transform: scale(1.05); }
-}
-
-@keyframes orbitalSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-@keyframes dashFlow {
-  from { stroke-dashoffset: 0; }
-  to   { stroke-dashoffset: -20; }
-}
-
-@keyframes lineGrow {
-  from { transform: scaleY(0); }
-  to   { transform: scaleY(1); }
-}
-
-@keyframes subtleShimmer {
-  0%, 100% { opacity: 0.03; }
-  50%      { opacity: 0.06; }
-}
-
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0; }
-}
-
-@keyframes teamsEmojiFloat {
-  0%   { transform: translateY(0); }
-  100% { transform: translateY(-10px); }
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -883,40 +488,13 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
    - large     : ≥1440px    (12-col grid, generous padding; content capped at 1400)
    ═══════════════════════════════════════════════════════════════ */
 
-.card-pair {
-  grid-template-columns: 1fr 1fr;
-}
-
 /* Below desktop: grid collapses to stacked, nav collapses to hamburger */
 @media (max-width: 1023px) {
-  div.g12 {
-    row-gap: 32px !important;
-  }
-  .g12 > * {
-    grid-column: 1 / -1 !important;
-  }
-  .card-pair {
-    grid-template-columns: 1fr;
-  }
-  .editorial-nav-links {
-    display: none;
-  }
   .recall-trust-images {
     grid-template-columns: 1fr !important;
   }
   .recall-trust-principles {
     grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .quote-bleed {
-    width: auto;
-    margin-left: 0;
-    -webkit-mask-image: none;
-    mask-image: none;
-    padding: 0 var(--pad);
-  }
-  .quote-bleed-inner {
-    flex-direction: column;
-    padding: 0;
   }
 }
 
@@ -924,29 +502,11 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
   .recall-trust-principles {
     grid-template-columns: 1fr !important;
   }
-  .hero-pill-desktop-only {
-    display: none !important;
-  }
 }
 
 /* Teams hero — responsive avatar sizing */
-.teams-avatar-row {
-  gap: clamp(8px, 4vw, 33px);
-}
-.teams-avatar {
-  width: clamp(32px, 9vw, 50px);
-  height: clamp(32px, 9vw, 50px);
-}
 
 /* Tablet: bump body type for readability at wider measures */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .t-body {
-    font-size: 16px;
-  }
-  .t-body-lg {
-    font-size: 19px;
-  }
-}
 
 /* ═══════════════════════════════════════════════════════════════
    HERO INTRO — deterministic left-to-right editorial resolve
