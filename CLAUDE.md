@@ -43,11 +43,42 @@ visual-system revision. Preserve these roles across all production routes:
 - **Texture and chrome:** retain subtle paper texture, alpha rules,
   registration marks, numbered figures, and the 13 layout primitives.
 
-Global material and motion aliases live in `app/globals.css`; production manual
-roles live under `.manual` in `app/recall/recall.css`. Keep the aliases aligned
-rather than introducing local color literals. Do not add signal sweeps,
-parallax, 3D tilt, cursor replacement, marquees, particles, or generic glow
-decoration.
+### Where tokens live
+
+**Every design token is defined exactly once, in `:root` in `app/globals.css`.**
+`.manual` in `app/recall/recall.css` used to shadow a near-identical second set;
+that duplication is gone. `.manual` now carries layout declarations only and
+inherits its tokens like everything else. Never reintroduce a token definition
+there, and never introduce a local colour literal — if a value is worth using
+twice it is worth a token.
+
+The canonical names:
+
+- **Material** — `--ink` `#0B0B0C`, `--paper` `#E8E5DC`
+- **Rules** — `--rule-hairline` / `--rule` / `--rule-strong` (paper at 12 / 22 / 48%)
+- **Text** — `--text-primary` `--text-secondary` `--text-tertiary` `--text-faint`
+  `--text-body`
+- **Accents** — `--accent-trace` `#FF4D00` is the state indicator and the only
+  accent that may move; `--accent-schematic` `--accent-signal` `--accent-alert`
+  `--accent-warning` are for schematics and diagrams
+- **Aliases** — `--bg` `--fg` `--ring`, and `--font-display` / `--font-body` /
+  `--font-mono`
+- **Motion** — `--ease-out-expo` (anything a person triggers),
+  `--ease-in-out-sine` (route transitions), `--ease-out-quad` (short UI state);
+  `--duration-fast-ui` 180ms, `--duration-normal-ui` 300ms, `--duration-enter`
+  500ms, `--duration-slow-ui` 700ms, `--duration-ambient` 3000ms
+
+The token block must stay reachable from OUTSIDE `.manual`: `PageTransitionOverlay`
+is a sibling of `{children}` in `app/layout.tsx`, and `::selection`, `body` and the
+global focus ring are outside it too. That is why the tokens sit at `:root`.
+
+`@theme inline` is deliberately down to three entries. `--color-border` and
+`--color-ring` are load-bearing — `* { @apply border-border outline-ring/50 }` in
+`@layer base` is a compile-time dependency on them, so removing either breaks the
+build. Note that `--color-border` is the 12% `--rule-hairline` tier, not `--rule`.
+
+Do not add signal sweeps, parallax, 3D tilt, cursor replacement, marquees,
+particles, or generic glow decoration.
 
 ### Retired in the August 2026 revision
 
