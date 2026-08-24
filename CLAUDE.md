@@ -36,8 +36,9 @@ visual-system revision. Preserve these roles across all production routes:
   and approximately `0.84–0.95` line height.
 - **Hero motion:** stable words resolve left-to-right with clipping. Never
   scramble glyphs or simulate a typewriter.
-- **Route motion:** destination-aware data-flow typography may bridge route
-  changes. Reduced motion navigates immediately.
+- **Route motion:** hero typography resolves in reverse reading order on exit,
+  then the destination's existing left-to-right `HeroIntro` runs unchanged.
+  Reduced motion navigates immediately.
 - **Chapter motion:** the mechanical aperture is reserved for `CoverPlate`.
   Do not apply it to ordinary `Figure` components.
 - **Texture and chrome:** retain subtle paper texture, alpha rules,
@@ -63,8 +64,8 @@ The canonical names:
   `--accent-warning` are for schematics and diagrams
 - **Aliases** — `--bg` `--fg` `--ring`, and `--font-display` / `--font-body` /
   `--font-mono`
-- **Motion** — `--ease-out-expo` (anything a person triggers),
-  `--ease-in-out-sine` (route transitions), `--ease-out-quad` (short UI state);
+- **Motion** — `--ease-out-expo` (entrances), `--ease-in-expo` (exits),
+  `--ease-in-out-sine` (mechanical apertures), `--ease-out-quad` (short UI state);
   `--duration-fast-ui` 180ms, `--duration-normal-ui` 300ms, `--duration-enter`
   500ms, `--duration-slow-ui` 700ms, `--duration-ambient` 3000ms
 

@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next"
 import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import { PageTransitionOverlay } from "@/components/manual"
+import {
+  PageTransitionOverlay,
+  RouteTransitionBoundary,
+} from "@/components/manual"
 import "./globals.css"
 import "./recall/recall.css"
 
@@ -121,7 +124,7 @@ export default function RootLayout({
         />
         <div className="page-glow" aria-hidden="true" />
         <div className="noise" aria-hidden="true" />
-        {children}
+        <RouteTransitionBoundary>{children}</RouteTransitionBoundary>
         <PageTransitionOverlay />
         <Analytics />
       </body>

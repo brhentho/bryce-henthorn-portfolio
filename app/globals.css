@@ -53,6 +53,7 @@
      Intent-named easings and durations. Bespoke animation pulls from these
      rather than hardcoding a curve or a millisecond value. */
   --ease-out-expo:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo:     cubic-bezier(0.7, 0, 0.84, 0);
   --ease-in-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
   --ease-out-quad:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --duration-fast-ui:   180ms;
@@ -62,123 +63,34 @@
   --duration-ambient:   3000ms;
 }
 
-/* ── Destination-aware editorial route transition ── */
+/* ── Complementary data-flow route transition ── */
 .route-transition {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: clamp(24px, 6vw, 112px);
-  color: var(--paper);
-  font-family: var(--font-jetbrains-mono), monospace;
-  clip-path: inset(0 100% 0 0);
-  will-change: clip-path;
-}
-
-.route-transition[data-state="idle"] {
-  transition: none;
-}
-
-.route-transition[data-state="fading-in"] {
-  clip-path: inset(0);
-  transition: clip-path 360ms var(--ease-in-out-sine);
-}
-
-.route-transition[data-state="holding"] {
-  clip-path: inset(0);
-  transition: none;
-}
-
-.route-transition[data-state="fading-out"] {
-  clip-path: inset(0 0 0 100%);
-  transition: clip-path 420ms var(--ease-in-out-sine);
-}
-
-.route-transition-chrome,
-.route-transition-footer {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.625rem;
-  line-height: 1.4;
-  letter-spacing: 0.14em;
-  color: var(--text-tertiary);
-}
-
-.route-transition-footer {
-  padding-top: 14px;
-  border-top: 1px solid var(--rule);
-}
-
-.route-transition-status {
-  position: relative;
-  width: 5rem;
-  min-height: 1.4em;
-  text-align: right;
-}
-
-.route-transition-status > span {
-  position: absolute;
-  inset: 0 0 auto auto;
   opacity: 0;
+  visibility: hidden;
+  will-change: opacity;
 }
 
-.route-transition[data-state="holding"] .route-transition-status > span:first-child {
-  animation: route-status-indexing 520ms linear both;
+html:not([data-route-transition]) .route-transition {
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
 }
 
-.route-transition[data-state="holding"] .route-transition-status > span:nth-child(2) {
-  animation: route-status-matched 520ms linear both;
+html[data-route-transition="exiting"] .route-transition {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--duration-enter) var(--ease-in-expo);
 }
 
-.route-transition[data-state="holding"] .route-transition-status > span:last-child {
-  color: var(--accent-trace);
-  animation: route-status-ready 520ms linear both;
+html[data-route-transition="waiting"] .route-transition {
+  opacity: 1;
+  visibility: visible;
+  transition: none;
 }
 
-.route-transition-title {
-  max-width: 12ch;
-  margin: auto 0;
-  color: var(--paper);
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(3.125rem, 10vw, 10rem);
-  font-weight: 500;
-  line-height: 0.84;
-  letter-spacing: -0.065em;
-  clip-path: inset(-0.18em 100% -0.24em 0);
-  opacity: 0.35;
-}
-
-.route-transition[data-state="holding"] .route-transition-title {
-  animation: route-title-resolve 480ms var(--ease-out-expo) 40ms both;
-}
-
-html[data-route-transition="fading-in"] .hero-intro-eyebrow-text,
-html[data-route-transition="fading-in"] .hero-intro-word,
-html[data-route-transition="holding"] .hero-intro-eyebrow-text,
-html[data-route-transition="holding"] .hero-intro-word {
+html[data-route-transition="waiting"] .hero-intro-eyebrow-text,
+html[data-route-transition="waiting"] .hero-intro-word {
   animation-play-state: paused;
-}
-
-@keyframes route-title-resolve {
-  to {
-    clip-path: inset(-0.18em 0 -0.24em 0);
-    opacity: 1;
-  }
-}
-
-@keyframes route-status-indexing {
-  0%, 27% { opacity: 1; }
-  31%, 100% { opacity: 0; }
-}
-
-@keyframes route-status-matched {
-  0%, 29% { opacity: 0; }
-  34%, 62% { opacity: 1; }
-  67%, 100% { opacity: 0; }
-}
-
-@keyframes route-status-ready {
-  0%, 64% { opacity: 0; }
-  70%, 100% { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -445,6 +357,7 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
   opacity: 0.35;
   clip-path: inset(-0.18em 100% -0.24em 0);
   animation: hero-word-in var(--duration-enter) var(--ease-out-expo) forwards;
+  animation-delay: var(--hero-enter-delay, 0ms);
 }
 
 .hero-intro-word {
@@ -452,6 +365,7 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
   opacity: 0.35;
   clip-path: inset(-0.18em 100% -0.24em 0);
   animation: hero-word-in var(--duration-enter) var(--ease-out-expo) forwards;
+  animation-delay: var(--hero-enter-delay, 0ms);
   /* allow long titles to wrap at the natural word boundaries */
   white-space: normal;
 }
