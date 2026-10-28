@@ -11,7 +11,7 @@ const NAV_ITEMS: { href: string; index: string; label: string }[] = [
   { href: "/about", index: "01", label: "ABOUT" },
 ]
 
-const WORK_ROUTES = ["/", "/agents-in-windows", "/recall", "/teams-for-education"]
+const WORK_ROUTES = ["/", "/copilot-actions", "/agents-in-windows", "/recall", "/teams-for-education"]
 
 function isCurrent(pathname: string, href: string) {
   if (href === "/") {

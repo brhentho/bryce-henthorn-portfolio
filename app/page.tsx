@@ -5,12 +5,23 @@ import {
   ManualFooter,
   ProjectCard,
   HeroIntro,
+  ViewTransitionLink,
 } from "@/components/manual"
 import { BootSequence } from "@/components/boot-sequence/BootSequence"
 import { DotGrid } from "@/components/atmosphere/DotGrid"
 import { Glow } from "@/components/atmosphere/Glow"
 
 const PROJECTS = [
+  {
+    href: "/copilot-actions",
+    eyebrow: "COPILOT ACTIONS",
+    title: "Delegating work. Keeping control.",
+    proof: "COMPUTER USE · INTERACTION DESIGN",
+    imgSrc: "/images/copilot-actions/announcement-app.png",
+    imgAlt: "Copilot Actions with a visible agent workspace, paused task, and Take control action",
+    imagePosition: "center center",
+    eager: true,
+  },
   {
     href: "/agents-in-windows",
     eyebrow: "AGENTS IN WINDOWS",
@@ -20,7 +31,7 @@ const PROJECTS = [
     imgAlt:
       "Windows desktop with a Researcher agent panel showing a checklist of in-progress sub-tasks",
     imagePosition: "center bottom",
-    eager: true,
+    eager: false,
   },
   {
     href: "/recall",
@@ -31,17 +42,6 @@ const PROJECTS = [
     imgAlt:
       "Recall app on a Windows desktop, search results page with multiple match cards",
     imagePosition: "25% bottom",
-    eager: false,
-  },
-  {
-    href: "/teams-for-education",
-    eyebrow: "TEAMS FOR EDUCATION",
-    title: "Modernizing online classes for an authentic virtual experience.",
-    proof: "DESIGN LEAD · 150M+ USERS",
-    imgSrc: "/images/teams/hero-demo.png",
-    imgAlt:
-      "Microsoft Teams classroom view. Virtual tables of students with avatars and chat moderation panel.",
-    imagePosition: "center bottom",
     eager: false,
   },
 ]
@@ -114,6 +114,12 @@ export default function HomePage() {
                 {PROJECTS.map((p) => (
                   <ProjectCard key={p.href} {...p} />
                 ))}
+              </div>
+              <div className="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-3 border-t border-[color:var(--rule)] pt-6">
+                <span className="t-mono-label">EARLIER WORK</span>
+                <ViewTransitionLink href="/teams-for-education" className="t-body-sm underline">
+                  Teams for Education <span aria-hidden="true">↗</span>
+                </ViewTransitionLink>
               </div>
             </div>
           </section>
