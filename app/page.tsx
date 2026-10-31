@@ -26,7 +26,7 @@ const PROJECTS = [
     href: "/recall",
     eyebrow: "WINDOWS RECALL",
     title: "Designing semantic search for everything you’ve seen.",
-    proof: "SEARCH DESIGN · BUILD 2024",
+    proof: "SEARCH DESIGN · RELEVANCE & PRIVACY",
     imgSrc: "/images/recall/hero-demo.png",
     imgAlt:
       "Recall app on a Windows desktop, search results page with multiple match cards",
@@ -37,7 +37,7 @@ const PROJECTS = [
     href: "/teams-for-education",
     eyebrow: "TEAMS FOR EDUCATION",
     title: "Modernizing online classes for an authentic virtual experience.",
-    proof: "DESIGN LEAD · 150M+ USERS",
+    proof: "DESIGN LEAD · CLASSROOM RESEARCH",
     imgSrc: "/images/teams/hero-demo.png",
     imgAlt:
       "Microsoft Teams classroom view. Virtual tables of students with avatars and chat moderation panel.",
@@ -60,7 +60,7 @@ export default function HomePage() {
           <section
             data-section
             id="overview"
-            className="home-hero min-h-[calc(100vh-9rem)] py-16 lg:py-24"
+            className="home-hero py-6 lg:py-8"
           >
             <div className="home-hero-atmosphere" aria-hidden="true">
               <DotGrid />
@@ -79,7 +79,7 @@ export default function HomePage() {
                   eyebrow="PORTFOLIO INDEX / 2026"
                   eyebrowClassName="t-mono-label editorial-hero-index"
                   startDelay={200}
-                  wordStep={26}
+                  wordStep={14}
                   lines={[
                     {
                       text: "I turn complex systems into trustworthy experiences.",
@@ -103,14 +103,12 @@ export default function HomePage() {
           {/* ── 01 Selected Work ── */}
           <section
             data-section
-            data-reveal
-            data-reveal-role="catalog"
             id="work"
-            className="home-room home-work-room py-16 lg:py-24"
+            className="home-room home-work-room pb-16 pt-4 lg:pb-24 lg:pt-6"
           >
             <div className="relative z-10">
               <SectionLabel number="01" label="Selected Work" title="Case studies" />
-              <div className="mt-10 space-y-10 lg:mt-14 lg:space-y-16">
+              <div className="mt-6 space-y-10 lg:mt-8 lg:space-y-12">
                 {PROJECTS.map((p) => (
                   <ProjectCard key={p.href} {...p} />
                 ))}

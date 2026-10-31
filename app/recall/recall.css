@@ -71,6 +71,74 @@
 }
 
 /* ── Homepage project card ── */
+.manual .agent-simulation { padding: 3rem clamp(1.25rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem); }
+.manual .simulation-intro { max-width: 76ch; }
+.manual .simulation-states { border: 0; padding: 0; min-width: 0; margin: 2rem 0; }
+.manual .simulation-state-buttons { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.manual .simulation-state-buttons button { display: flex; align-items: center; gap: .5rem; min-height: 48px; padding: .5rem .75rem; border: 1px solid var(--rule); background: var(--ink); cursor: pointer; }
+.manual .simulation-state-buttons button[aria-pressed="true"] { border-color: var(--paper); background: color-mix(in srgb, var(--paper) 8%, var(--ink)); }
+.manual .simulation-split { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 3vw, 3rem); }
+.manual .simulation-surface { min-width: 0; }
+.manual .simulation-card { border: 1px solid var(--rule-strong); padding: clamp(1rem, 2vw, 2rem); }
+.manual .simulation-card-heading { display: flex; align-items: center; gap: 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+.manual .simulation-status { margin-block: 1.5rem; min-height: 12rem; }
+.manual .simulation-steps { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+.manual .simulation-steps li { display: flex; gap: 1rem; align-items: baseline; padding: .75rem 0; border-top: 1px solid var(--rule-hairline); color: var(--text-secondary); }
+.manual .simulation-steps li[aria-current="step"] { color: var(--paper); }
+.manual .simulation-steps li[data-done="true"] { color: var(--accent-signal); }
+.manual .simulation-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.manual .simulation-actions button { font-family: var(--font-mono); font-size: .75rem; min-height: 44px; padding: .6rem .85rem; border: 1px solid var(--rule-strong); color: var(--paper); background: var(--ink); cursor: pointer; }
+.manual .simulation-actions button:hover:not(:disabled) { background: color-mix(in srgb, var(--paper) 8%, var(--ink)); }
+.manual .simulation-actions button:disabled { color: var(--text-tertiary); border-color: var(--rule-hairline); cursor: not-allowed; }
+.manual .simulation-contract { display: grid; gap: 1.25rem; margin-block: 2rem; }
+@media (max-width: 767px) { .manual .simulation-split { grid-template-columns: 1fr; } }
+
+.manual .project-card {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  overflow: hidden;
+  background: var(--ink);
+}
+.manual .project-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+.manual .project-card-media {
+  position: relative;
+  min-width: 0;
+  min-height: 320px;
+  border-left: 1px solid var(--rule-hairline);
+}
+.manual .project-card-read { color: var(--text-secondary); }
+.manual .project-card .pcard-title { display: block; overflow: visible; }
+.manual .case-brief { margin-block: 2.5rem; }
+.manual .case-brief-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 3rem;
+  max-width: 90ch;
+}
+.manual .case-brief-status { grid-column: 1 / -1; }
+.manual .case-jumps { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin-top: 2rem; }
+.manual .case-jumps a { color: var(--text-body); text-decoration: underline; text-underline-offset: 5px; }
+.manual [id] { scroll-margin-top: 5rem; }
+.manual .decision-table-wrap { margin-block: 2rem; overflow-x: auto; }
+.manual .decision-table { width: 100%; border-collapse: collapse; text-align: left; }
+.manual .decision-table caption { text-align: left; padding-block: 0 1rem; }
+.manual .decision-table th, .manual .decision-table td { padding: 1.25rem 1rem 1.25rem 0; vertical-align: top; border-bottom: 1px solid var(--rule); }
+.manual .decision-table th[scope="row"] { font-weight: 500; width: 24%; }
+.manual .decision-table td { min-width: 12rem; }
+.manual .evidence-note { margin-top: 2rem; max-width: 68ch; }
+.manual .evidence-note .t-mono-label { display: block; margin-bottom: .75rem; }
+@media (max-width: 767px) {
+  .manual .project-card { grid-template-columns: 1fr; }
+  .manual .project-card-media { min-height: 0; aspect-ratio: 16 / 10; border-left: 0; border-top: 1px solid var(--rule-hairline); }
+  .manual .case-brief-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
 .manual .pcard-title {
   display: -webkit-box;
   overflow: hidden;
@@ -113,7 +181,7 @@
 .manual .editorial-hero {
   display: grid;
   align-content: end;
-  min-height: calc(100svh - 52px);
+  min-height: 0;
 }
 
 .manual .editorial-hero > figure,
@@ -122,11 +190,11 @@
 }
 
 .manual .home-hero {
-  min-height: calc(100svh - 52px);
+  min-height: 0;
 }
 
 .manual .home-hero-content {
-  padding-block: clamp(3rem, 7vw, 7rem);
+  padding-block: 0;
 }
 
 /* ── Shared manual atmosphere ──
@@ -230,21 +298,6 @@
 }
 
 /* Project cards use one stable information lane; the imagery supplies variation. */
-.manual .project-card-scrim {
-  background:
-    linear-gradient(
-      90deg,
-      var(--ink) 0%,
-      color-mix(in srgb, var(--ink) 97%, transparent) 34%,
-      color-mix(in srgb, var(--ink) 82%, transparent) 52%,
-      color-mix(in srgb, var(--ink) 20%, transparent) 82%
-    ),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--ink) 12%, transparent),
-      color-mix(in srgb, var(--ink) 28%, transparent)
-    );
-}
 
 .manual .manual-footer-meta {
   color: var(--text-secondary);
@@ -270,6 +323,14 @@
 }
 
 /* ── About page rooms ── */
+.manual .about-opening-grid { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); align-items: center; gap: 3rem; }
+.manual .about-hero { min-height: 0; }
+.manual .about-evidence-rail { padding-top: 2rem; }
+@media (max-width: 1023px) {
+  .manual .about-opening-grid { grid-template-columns: 1fr; }
+  .manual .about-opening-grid .about-portrait-field { max-width: 24rem; }
+}
+
 .manual .about-hero {
   position: relative;
   display: flex;

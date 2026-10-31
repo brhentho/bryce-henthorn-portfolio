@@ -59,6 +59,8 @@
   --duration-fast-ui:   180ms;
   --duration-normal-ui: 300ms;
   --duration-enter:     500ms;
+  --duration-route:     200ms;
+  --duration-hero:      300ms;
   --duration-slow-ui:   700ms;
   --duration-ambient:   3000ms;
 }
@@ -79,7 +81,7 @@ html:not([data-route-transition]) .route-transition {
 html[data-route-transition="exiting"] .route-transition {
   opacity: 1;
   visibility: visible;
-  transition: opacity var(--duration-enter) var(--ease-in-expo);
+  transition: opacity var(--duration-route) var(--ease-in-expo);
 }
 
 html[data-route-transition="waiting"] .route-transition {
@@ -356,7 +358,7 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
   display: inline-block;
   opacity: 0.35;
   clip-path: inset(-0.18em 100% -0.24em 0);
-  animation: hero-word-in var(--duration-enter) var(--ease-out-expo) forwards;
+  animation: hero-word-in var(--duration-hero) var(--ease-out-expo) forwards;
   animation-delay: var(--hero-enter-delay, 0ms);
 }
 
@@ -364,7 +366,7 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
   display: inline-block;
   opacity: 0.35;
   clip-path: inset(-0.18em 100% -0.24em 0);
-  animation: hero-word-in var(--duration-enter) var(--ease-out-expo) forwards;
+  animation: hero-word-in var(--duration-hero) var(--ease-out-expo) forwards;
   animation-delay: var(--hero-enter-delay, 0ms);
   /* allow long titles to wrap at the natural word boundaries */
   white-space: normal;
@@ -379,3 +381,5 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
     clip-path: none !important;
   }
 }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

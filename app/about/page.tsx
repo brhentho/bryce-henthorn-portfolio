@@ -31,13 +31,13 @@ const MICROSOFT_ROLES: {
   {
     year: "2023 – 2025",
     role: "Windows Recall",
-    desc: "Designed semantic search experience for Copilot+ PCs. Shipped at Build 2024. Navigated privacy redesign after public launch.",
+    desc: "Designed semantic search experience for Copilot+ PCs. Announced at Build 2024. Subsequent privacy redesign.",
   },
   { year: "2022 – 2023", role: "File Explorer Modernization (Windows 11)" },
   {
     year: "2020 – 2021",
     role: "Teams for Education",
-    desc: "Led interaction design for virtual classroom experience serving 150M+ users. Reframed team strategy from growth metrics to engagement architecture.",
+    desc: "Led virtual-classroom interaction design and research within Teams for Education. Reframed a retention brief around participation and stable groups.",
   },
   { year: "2018 – 2020", role: "Microsoft Education" },
 ]
@@ -52,7 +52,7 @@ export default function AboutPage() {
         <section
           data-section
           id="overview"
-          className="about-hero min-h-[calc(100vh-9rem)] py-16 lg:py-24"
+          className="about-hero py-12 lg:py-16"
         >
           <div className="about-hero-atmosphere" aria-hidden="true">
             <DotGrid />
@@ -65,6 +65,7 @@ export default function AboutPage() {
             />
           </div>
 
+          <div className="about-opening-grid">
           <div className="about-hero-content">
             <HeroIntro
               eyebrow="PROFILE INDEX / 2026"
@@ -82,41 +83,6 @@ export default function AboutPage() {
               }))}
             />
           </div>
-        </section>
-
-        {/* ── 01 Bio — Annotated Split (body left, portrait right) ── */}
-        <section
-          data-section
-          data-reveal
-          id="bio"
-          className="about-room about-bio-room py-16 lg:py-24"
-        >
-          <div className="relative z-10">
-            <SectionLabel number="01" label="Bio" title="Want a bit more?" />
-            <div className="mt-10 grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-12">
-              <div className="[&>p+p]:mt-4! max-w-[68ch] lg:pt-8">
-                <p className="t-body">
-                  I&apos;m a product designer working on AI experiences inside Windows at
-                  Microsoft. My job sits at a strange and exciting intersection: operating
-                  systems, agents, enterprise workflows, trust, orchestration. All the
-                  messy, high-stakes problems that show up when software stops being a tool
-                  and starts acting on your behalf.
-                </p>
-                <p className="t-body">
-                  The more honest version is that I&apos;m wired to solve problems. I
-                  don&apos;t really know how to turn it off. If something feels
-                  inefficient, structurally off, or just vaguely wrong, I will keep
-                  pulling on it until I understand it. Sometimes that means building
-                  prototypes late at night. Sometimes it means mapping systems no one
-                  asked me to map.
-                </p>
-                <p className="t-body">
-                  I have a habit of obsessively researching the &quot;right&quot; solution
-                  to things most people would settle on in an afternoon. I like
-                  constraints. I like tradeoffs. I like figuring out what the real problem
-                  is underneath the surface problem.
-                </p>
-              </div>
               <div className="about-portrait-field">
                 <Figure
                   number="1.1"
@@ -129,6 +95,34 @@ export default function AboutPage() {
                   className="my-0 aspect-square lg:my-0"
                 />
               </div>
+          </div>
+        </section>
+
+        {/* ── 01 Bio — Annotated Split (body left, portrait right) ── */}
+        <section
+          data-section
+          data-reveal
+          id="bio"
+          className="about-room about-bio-room py-16 lg:py-24"
+        >
+          <div className="relative z-10">
+            <SectionLabel number="01" label="Bio" title="How I work through the ambiguity" />
+            <div className="mt-10 grid grid-cols-1 items-start gap-8 lg:grid-cols-[1.2fr_.8fr] lg:gap-12">
+              <div className="[&>p+p]:mt-4! max-w-[68ch] lg:pt-8">
+                <p className="t-body">I work on AI experiences inside Windows at Microsoft, where operating-system constraints, agent behavior, and human expectations have to fit together.</p>
+                <p className="t-body">On Agents in Windows, I prototyped in the shell with engineering and product partners, checking multiple agents and state changes. The hard part was keeping one predictable surface while different teams supplied different progress signals.</p>
+                <p className="t-body">On Teams for Education, I led research sessions with educators and students. That work moved the brief from retaining pandemic growth toward the classroom structure people were missing: stable groups, peer conversation, and teacher awareness.</p>
+
+              </div>
+              <aside className="about-evidence-rail">
+                <p className="t-mono-label">Microsoft · 2018–present</p>
+                <p className="t-body-sm mt-4">AI platforms, semantic search, and classroom experiences.</p>
+                <nav className="case-jumps" aria-label="Related design work">
+                  <a href="/agents-in-windows#constraints" className="t-mono-caption">Platform tradeoffs ↗</a>
+                  <a href="/teams-for-education#research" className="t-mono-caption">Research in practice ↗</a>
+                  <a href="#experience" className="t-mono-caption">Career history ↓</a>
+                </nav>
+              </aside>
             </div>
           </div>
         </section>

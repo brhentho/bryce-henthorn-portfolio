@@ -11,7 +11,10 @@ import {
   HeroIntro,
   NextProject,
   LoopingMedia,
+  CaseBrief,
+  DecisionTable,
 } from "@/components/manual"
+import { AgentSimulation } from "@/components/manual/AgentSimulation"
 import { DotGrid } from "@/components/atmosphere/DotGrid"
 import { Glow } from "@/components/atmosphere/Glow"
 
@@ -26,16 +29,19 @@ const AGENT_STATES = [
 const TASKBAR_KEYFRAMES = [
   {
     label: "EMPTY PIN",
+    detail: "A familiar return point exists before work starts.",
     src: "/assets/Frame 2147238301.png",
     alt: "Taskbar evolution keyframe 1 — agent pinned to the taskbar with no active work",
   },
   {
     label: "ACTIVE STATE",
+    detail: "The pin communicates ongoing work without requiring the app to stay open.",
     src: "/assets/Frame 2147238302.png",
     alt: "Taskbar evolution keyframe 2 — pinned agent showing an in-progress state indicator",
   },
   {
     label: "HOVER-CARD EXPANDED",
+    detail: "Progress detail appears on demand, keeping the taskbar compact.",
     src: "/assets/Frame 2147238303.png",
     alt: "Taskbar evolution keyframe 3 — hover card expanded from the taskbar icon showing step detail",
   },
@@ -171,7 +177,7 @@ export default function AgentsInWindowsPage() {
               eyebrow="CASE FILE / AGENTS IN WINDOWS"
               eyebrowClassName="t-mono-label editorial-hero-index"
               startDelay={120}
-              wordStep={42}
+              wordStep={18}
               lines={[
                 {
                   text: "Making AI agents visible and interruptible in Windows.",
@@ -180,6 +186,14 @@ export default function AgentsInWindowsPage() {
               ]}
             />
 
+            <CaseBrief
+              problem="Agent work was scattered across apps, chats, and notifications. People could not reliably see what was running or intervene."
+              ownership="I led agent visibility and orchestration design with three engineering partner teams across Microsoft."
+              decision="Anchor agents to the taskbar and define shared states, rather than introduce another workspace to learn."
+              outcome="The case shows the taskbar progression, five-state visual lexicon, and invocation prototypes behind that shared contract."
+              status="Ongoing platform work, 2025–present. The case presents design artifacts; the interactive example below is a portfolio simulation."
+              links={[{ href: "#process", label: "The decision" }, { href: "#simulation", label: "Try the interaction" }, { href: "#impact", label: "Evidence & scope" }]}
+            />
             <Figure
               number="0.1"
               caption="Researcher agent surfacing inside the Windows shell. Desktop scene with grid, telemetry overlay, and taskbar entry."
@@ -207,7 +221,7 @@ export default function AgentsInWindowsPage() {
               { label: "TIMELINE", value: "2025 – Present" },
               { label: "TEAM",     value: "3 engineering partner teams across Microsoft" },
               { label: "MY FOCUS", value: "OS-level agent surface, taskbar states, invocation system" },
-              { label: "STATUS",   value: "Shipping" },
+              { label: "STATUS",   value: "Ongoing platform work" },
             ]}
           />
         </section>
@@ -402,12 +416,18 @@ export default function AgentsInWindowsPage() {
                         sizes="(min-width: 1024px) 720px, 100vw"
                         className="block h-auto w-full"
                       />
+                      <p className="t-mono-caption mt-3">{kf.detail}</p>
                     </figure>
                   </li>
                 ))}
               </ol>
             </div>
           </div>
+            <DecisionTable label="Choosing a home for agents" options={[
+              { option: "Inside the originating app", tradeoff: "Agent work remains fragmented across the apps that start it.", disposition: "Move visibility to the OS." },
+              { option: "Independent taskbar pin", tradeoff: "A familiar return point, but progress needs a shared state language.", disposition: "Chosen foundation: familiar location, new states." },
+              { option: "Dedicated agent workspace", tradeoff: "Adds another place to learn and manage before the interaction model is established.", disposition: "Keep the initial model progressive." },
+            ]} />
         </section>
 
         {/* ── 04 Taskbar ── Body column + full-width media ── */}
@@ -444,14 +464,23 @@ export default function AgentsInWindowsPage() {
             </div>
             <Figure
               number="4.1"
-              caption="Taskbar agent. Hover-card expansion in motion."
+              caption="The expanded hover card makes the current step inspectable without reopening the conversation. This detail view crops the desktop recording to keep the agent legible."
             >
               <LoopingMedia
                 label="Taskbar agent hover card expanding to show progress"
-                src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Taskbar.mp4"
+                poster="/images/agents/taskbar-poster.jpg"
+                description="The hover card shows the current step above the taskbar so people can inspect ongoing work."
+                src="/media/agents-taskbar-detail.mp4"
               />
             </Figure>
           </div>
+        </section>
+
+        <section data-section id="simulation" className="py-16 lg:py-24">
+          <SectionLabel title="See the state. Take control. Return to the work." />
+          <Figure number="4.2" caption="Interactive portfolio simulation using the published state icons. Advance the scenario, approve a simulated request, pause, or retry. These controls illustrate the design intent; they do not operate Windows.">
+            <AgentSimulation />
+          </Figure>
         </section>
 
         {/* ── Pull-quote Interlude (§2.11) — transition from Taskbar into Constraints ── */}
@@ -561,6 +590,8 @@ export default function AgentsInWindowsPage() {
               <Figure number="6.1" caption="Ask Copilot composer. Invoking an agent with @">
                 <LoopingMedia
                   label="Ask Copilot composer invoking an agent with the at sign"
+                  poster="/images/agents/composer-poster.jpg"
+                  description="Typing @ selects an agent in the composer. The taskbar becomes its return point after dispatch."
                   src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Composer.mp4"
                 />
               </Figure>
@@ -661,39 +692,13 @@ export default function AgentsInWindowsPage() {
               title="From invisible to interruptible"
             />
             <div className="mt-10 max-w-[68ch] [&>p+p]:mt-4!">
-                <p className="t-body">
-                  Agents aren&apos;t hidden anymore. You see them running. You know what
-                  state they&apos;re in. You can come back to them whenever you want. No
-                  buried logs. No isolated app experiences. The work lives in familiar
-                  places.
-                </p>
-                <p className="t-body">
-                  And visibility builds trust. You watch automation work. You feel safer.
-                  You know you can stop it. Pause it. Fix it. Control matters. We
-                  didn&apos;t just make agents powerful. We made them understandable and
-                  stoppable so people actually feel comfortable letting them work.
-                </p>
-                <p className="t-body">
-                  This changes what Windows is. It&apos;s not just the app launcher anymore.
-                  It&apos;s the place where agents live. Where you invoke them. Where you
-                  watch them work. Windows becomes the coordination layer for all the
-                  intelligent work happening on your system.
-                </p>
-                <p className="t-body">
-                  Other teams are already building on these patterns. We created shared
-                  contracts for how agents show up, report progress, ask for help.
-                  Consistent. Predictable. This prevents a hundred teams from inventing a
-                  hundred different ways to surface agent status.
-                </p>
-                <p className="t-body">
-                  As agents become normal, people need to understand what&apos;s happening
-                  on their system. Developers need a clear way to wire agents into Windows.
-                  These foundations do that. They scale.
-                </p>
+              <p className="t-body">I led the visibility and orchestration design across three engineering partner teams. The work defined a shared way for agents to appear, report progress, and request help through Windows surfaces.</p>
+              <p className="t-body">The taskbar progression, invocation recordings, and five-state lexicon show the interaction contract. Prototyping in the shell with engineering helped us check how provider output, platform constraints, and user expectations met in the same surface.</p>
+              <p className="t-body">The platform work is ongoing. The evidence here is the shared interaction language, shell prototypes, and collaboration across three partner teams.</p>
             </div>
             <Figure
               number="8.1"
-              caption="Agents in Windows on stage. Visible, interruptible interactions."
+              caption="Public presentation of Agents in Windows. The stage image documents the announcement; the interaction artifacts above explain the design work."
               src="/images/agents/impact-stage.png"
               alt="Agents in Windows presented on stage"
               width={1661}
@@ -712,6 +717,9 @@ export default function AgentsInWindowsPage() {
           </div>
         </section>
 
+        {/* Retrospective placeholder — deferred by Bryce, October 28, 2026.
+            Add his reflection here when ready; draft prompts live in
+            docs/portfolio-implementation.md. */}
       </main>
       <NextProject href="/recall" title="Windows Recall" />
       <ManualFooter />

@@ -12,6 +12,8 @@ import {
   HeroIntro,
   NextProject,
   LoopingMedia,
+  CaseBrief,
+  DecisionTable,
 } from "@/components/manual"
 import { HeroSchematic } from "./svg/HeroSchematic"
 
@@ -94,13 +96,21 @@ export default function TeamsForEducationPage() {
             eyebrow="CASE FILE / TEAMS FOR EDUCATION"
             eyebrowClassName="t-mono-label editorial-hero-index"
             startDelay={120}
-            wordStep={42}
+            wordStep={18}
             lines={[
               {
                 text: "Modernizing online classes for an authentic virtual experience.",
                 className: "t-display-xl max-w-[24ch]",
               },
             ]}
+          />
+          <CaseBrief
+            problem="Pandemic adoption brought people into Teams, but broadcast-style classes made participation and belonging difficult."
+            ownership="I led the design process and interaction patterns for classroom orchestration, virtual tables, and teacher controls."
+            decision="Reframe the retention brief around persistent small groups and classroom structure, rather than adding features."
+            outcome="Research and concept testing informed stable groups, preparation before class, and less disruptive moderation."
+            status="The full virtual-tables concept did not ship as designed. This case distinguishes tested concepts from the classroom patterns it informed; 150M+ describes the broader Teams education audience."
+            links={[{ href: "#research", label: "Research evidence" }, { href: "#solution", label: "Alternatives & tradeoffs" }, { href: "#impact", label: "Concept vs. release" }]}
           />
           <Figure
             number="0.1"
@@ -128,7 +138,7 @@ export default function TeamsForEducationPage() {
               { label: "TIMELINE", value: "2020 – 2021" },
               { label: "TEAM",     value: "Cross-functional team of design, research, and engineering" },
               { label: "MY FOCUS", value: "Classroom orchestration, virtual tables, teacher controls" },
-              { label: "STATUS",   value: "Patterns shipped; concept influenced future Teams direction" },
+              { label: "STATUS",   value: "Tested concept; classroom patterns informed later direction" },
             ]}
           />
         </section>
@@ -148,7 +158,7 @@ export default function TeamsForEducationPage() {
           <div className="mt-12">
             <Telemetry
               items={[
-                { value: "150M+", unit: "USERS",     label: "Students and educators on Teams during the pandemic" },
+                { value: "150M+", unit: "PLATFORM AUDIENCE",     label: "Broader Teams education context, not virtual-tables adoption" },
                 { value: "30+",   unit: "PER CLASS", label: "Grid scale where structure breaks down" },
                 { value: "6",     unit: "HOURS/DAY", label: "Time students spent inside the grid" },
               ]}
@@ -364,6 +374,11 @@ export default function TeamsForEducationPage() {
           >
             <HeroSchematic />
           </Figure>
+          <DecisionTable label="Finding the right classroom structure" options={[
+            { option: "Literal classroom maps", tradeoff: "Avatars at drawn tables conveyed place but felt gimmicky within Teams.", disposition: "Move away from literal room simulation." },
+            { option: "Renamed breakout channels", tradeoff: "Functionally simple, but too abstract to preserve spatial awareness.", disposition: "Retain a visible group structure." },
+            { option: "Persistent virtual tables", tradeoff: "Stable seats and group identity, with teacher control balanced against peer discussion.", disposition: "Selected for prototyping and testing; not shipped as a complete concept." },
+          ]} />
         </section>
 
         {/* ── 05 Orchestration ── Full-bleed Atmospheric Plate (§2.8) ── */}
@@ -399,9 +414,11 @@ export default function TeamsForEducationPage() {
           </div>
 
           {/* Full-bleed video — the demo carries the argument */}
-          <Figure number="5.1" caption="Student view of their virtual table">
+          <Figure number="5.1" caption="Concept prototype: persistent group context lets a student join a table without leaving the classroom structure.">
             <LoopingMedia
               label="Student moving through a virtual classroom table"
+              poster="/images/teams/student-poster.jpg"
+              description="Concept prototype of a student entering a persistent virtual table."
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig06-2YDd5QkvxbZD2b8O44R0Nag6g14UhH.mov"
             />
           </Figure>
@@ -450,11 +467,13 @@ export default function TeamsForEducationPage() {
             <div>
               <Figure
                 number="6.1"
-                caption="Whole class to table transitions"
+                caption="Concept prototype: moving from the whole class to assigned groups preserves the classroom context."
                 className="my-0 lg:my-0"
               >
                 <LoopingMedia
                   label="Whole class transitioning into assigned virtual tables"
+                  poster="/images/teams/class-poster.jpg"
+                  description="Concept prototype of the whole class transitioning into assigned groups."
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov"
                 />
               </Figure>
@@ -489,11 +508,13 @@ export default function TeamsForEducationPage() {
           <div className="mt-10 lg:mt-14 max-w-[80ch]">
             <Figure
               number="7.1"
-              caption="Group creation and assignment flow"
+              caption="Concept prototype: teachers prepare groups before class so assignment does not consume discussion time."
               className="my-0 lg:my-0"
             >
               <LoopingMedia
                 label="Teacher creating and assigning student groups"
+                poster="/images/teams/groups-poster.jpg"
+                description="Concept prototype of a teacher preparing groups and assignments before class."
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov"
               />
             </Figure>
@@ -519,7 +540,7 @@ export default function TeamsForEducationPage() {
           <SectionLabel
             number="09"
             label="Impact"
-            title="What we learned"
+            title="What testing showed. What carried forward."
           />
           <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
             <div className="flex flex-col gap-4 max-w-[68ch]">
@@ -539,22 +560,23 @@ export default function TeamsForEducationPage() {
                 more than thirty people in a call.
               </p>
               <p className="t-body">
-                Retention turned out to be simple. It doesn&apos;t come from more
-                features. It comes from the same thing physical classrooms are built on:
-                structure. Social connection. Being seen.
+                The research reframed retention as a question of structure and social
+                connection. Testing supported the interaction direction; the documented
+                outcome is a tested concept and classroom patterns carried forward.
               </p>
               <aside className="t-mono-marginalia border-l border-[color:var(--rule)] pl-4 mt-2 max-w-prose">
-                Retention doesn&rsquo;t come from more features. It comes from structure.
+                The retention hypothesis became a question of structure and belonging.
               </aside>
             </div>
             <div className="flex items-start lg:pl-4">
-              <Image
+              <Figure
+                number="9.1"
+                caption="Educator reactions to the Teams Class Home Page, shown as related classroom work. These reactions are separate from the virtual-tables concept testing."
                 src="/images/teams/impact-tweets.png"
                 alt="Four educator tweets reacting to the new Class Home Page in Microsoft Teams. Kim Landtroop, Ellis J, Megan Townes, Madeline Cooney."
                 width={530}
                 height={612}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-auto"
+                className="my-0 w-full"
               />
             </div>
           </div>

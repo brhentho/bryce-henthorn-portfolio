@@ -19,3 +19,6 @@ export { RouteTransitionBoundary } from "./RouteTransitionBoundary"
 export { CoverPlate } from "./CoverPlate"
 export { HeroIntro } from "./HeroIntro"
 export { LoopingMedia } from "./LoopingMedia"
+
+export { CaseBrief } from "./CaseBrief"
+export { DecisionTable } from "./DecisionTable"
