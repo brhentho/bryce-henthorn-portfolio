@@ -12,6 +12,7 @@ import {
   HeroIntro,
   NextProject,
   LoopingMedia,
+  MediaSlot,
   CaseBrief,
   DecisionTable,
 } from "@/components/manual"
@@ -432,6 +433,17 @@ export default function RecallPage() {
               className="w-full h-auto"
             />
           </Figure>
+          <MediaSlot
+            number="5.2"
+            title="Reading a result: match type, source and time"
+            seconds={9}
+            shots={[
+              "Type a fragment someone actually remembers (\u201Cthe blue chart from the budget call\u201D)",
+              "Results resolve into separate text-match and visual-match groups",
+              "Hover a visual match; the match-type label and source app/time come forward",
+              "Open the snapshot; land on the exact moment, then return to results",
+            ]}
+          />
         </section>
 
         {/* ── 06 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}

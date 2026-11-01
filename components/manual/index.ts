@@ -22,3 +22,4 @@ export { LoopingMedia } from "./LoopingMedia"
 
 export { CaseBrief } from "./CaseBrief"
 export { DecisionTable } from "./DecisionTable"
+export { MediaSlot } from "./MediaSlot"

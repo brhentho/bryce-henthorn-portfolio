@@ -1,10 +1,12 @@
 import Image from "next/image"
 import { ManualShell } from "../recall/ManualShell"
 import {
+  CaseBrief,
   CoverPlate,
   Figure,
   HeroIntro,
   ManualFooter,
+  MediaSlot,
   NextProject,
   SectionLabel,
   SpecSheet,
@@ -58,6 +60,14 @@ export default function CopilotActionsPage() {
             Designing the experience of letting an AI agent work with your apps
             and files—while keeping you in charge of your PC.
           </p>
+          <CaseBrief
+            problem="An agent that operates apps and files changes what it means to ask for help. People need to know what they are allowing, what is happening now, and how to step in."
+            ownership="Computer-use interaction patterns for Copilot on Windows, including the settings and safety features around them."
+            decision="Treat stepping in as part of delegation: keep the task, the agent's workspace and the takeover action visible together."
+            outcome="Public announcement material shows the opt-in onboarding, contained agent workspace and paused-with-Take-control state described here."
+            status="Experimental capability announced October 2025. This case documents the public record; it makes no adoption or availability claims."
+            links={[{ href: "#interaction-model", label: "Delegation model" }, { href: "#workspace", label: "Agent workspace" }, { href: "#intervention", label: "Stepping in" }]}
+          />
           <Figure
             number="0.1"
             caption="Copilot Actions in the October 2025 announcement. The task, workspace, and handoff remain visible together. Image: Microsoft."
@@ -229,6 +239,18 @@ export default function CopilotActionsPage() {
               </tbody>
             </table>
           </div>
+          <MediaSlot
+            number="5.1"
+            title="Delegate, check in, take control, hand back"
+            seconds={12}
+            shots={[
+              "Type a task into Copilot; the agent workspace opens beside your desktop",
+              "Agent progresses through two steps; status updates in the conversation",
+              "Agent pauses at a decision it can't make; the question and Paused state appear together",
+              "Select Take control; complete the step yourself",
+              "Hand back; the agent resumes and finishes; show the result in context",
+            ]}
+          />
         </section>
 
         {/* §2.3 Body Column — scope, not unsubstantiated impact */}

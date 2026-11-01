@@ -11,6 +11,7 @@ import {
   HeroIntro,
   NextProject,
   LoopingMedia,
+  MediaSlot,
   CaseBrief,
   DecisionTable,
 } from "@/components/manual"
@@ -544,6 +545,17 @@ export default function AgentsInWindowsPage() {
                 alt="Windows desktop showing multiple agent interactions across the system"
                 width={1648}
                 height={930}
+              />
+              <MediaSlot
+                number="5.2"
+                title="Two agents, one consistent surface"
+                seconds={10}
+                shots={[
+                  "A research agent and a calendar agent start from different apps",
+                  "Both appear on the taskbar with the same state lexicon",
+                  "One needs input; its taskbar state changes while the other keeps working",
+                  "Answer from the taskbar without opening the originating app",
+                ]}
               />
             </div>
           </div>

@@ -112,7 +112,18 @@
   min-height: 320px;
   border-left: 1px solid var(--rule-hairline);
 }
-.manual .project-card-read { color: var(--text-secondary); }
+.manual .project-card-read { color: var(--text-secondary); transition: color var(--duration-fast-ui) var(--ease-out-quad); }
+.manual .project-card-read > span { display: inline-block; transition: translate var(--duration-normal-ui) var(--ease-out-expo); }
+.manual .project-card-media { overflow: hidden; }
+.manual .project-card-image { transition: scale var(--duration-slow-ui) var(--ease-out-expo); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .manual [data-project-card]:hover .project-card-image,
+  .manual [data-project-card]:focus-visible .project-card-image { scale: 1.02; }
+  .manual [data-project-card]:hover .project-card-read > span,
+  .manual [data-project-card]:focus-visible .project-card-read > span { translate: 2px -2px; }
+}
+.manual [data-project-card]:hover .project-card-read,
+.manual [data-project-card]:focus-visible .project-card-read { color: var(--text-primary); }
 .manual .project-card .pcard-title { display: block; overflow: visible; }
 .manual .case-brief { margin-block: 2.5rem; }
 .manual .case-brief-grid {
@@ -133,6 +144,19 @@
 .manual .decision-table td { min-width: 12rem; }
 .manual .evidence-note { margin-top: 2rem; max-width: 68ch; }
 .manual .evidence-note .t-mono-label { display: block; margin-bottom: .75rem; }
+/* Development-only slot for an uncaptured recording (MediaSlot). Dashed rule
+   marks it as provisional; corner geometry matches Figure. */
+.manual .media-slot {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-block: var(--space-block);
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px dashed var(--rule-strong);
+  background: color-mix(in srgb, var(--paper) 3%, var(--ink));
+}
+.manual .media-slot-shots { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: .5rem; max-width: 72ch; }
+.manual .media-slot-shots span { color: var(--text-tertiary); margin-right: .75rem; }
 @media (max-width: 767px) {
   .manual .project-card { grid-template-columns: 1fr; }
   .manual .project-card-media { min-height: 0; aspect-ratio: 16 / 10; border-left: 0; border-top: 1px solid var(--rule-hairline); }
