@@ -9,7 +9,6 @@ import {
   MediaSlot,
   NextProject,
   SectionLabel,
-  SpecSheet,
   TopBar,
 } from "@/components/manual"
 import { DelegationSequence } from "./DelegationSequence"
@@ -49,6 +48,7 @@ export default function CopilotActionsPage() {
       <main className={`container ${styles.page}`}>
         {/* §2.1 Hero Header — public product imagery, not reconstructed UI. */}
         <section data-section id="overview" className={styles.hero}>
+          <div className="case-title">
           <HeroIntro
             eyebrow="CASE FILE / COPILOT ACTIONS"
             eyebrowClassName="t-mono-label editorial-hero-index"
@@ -56,18 +56,18 @@ export default function CopilotActionsPage() {
             wordStep={42}
             lines={[{ text: "Delegating work. Keeping control.", className: `t-display-xl ${styles.headline}` }]}
           />
-          <p className={`t-body ${styles.lead}`}>
-            Designing the experience of letting an AI agent work with your apps
-            and files—while keeping you in charge of your PC.
-          </p>
           <CaseBrief
-            problem="An agent that operates apps and files changes what it means to ask for help. People need to know what they are allowing, what is happening now, and how to step in."
-            ownership="Computer-use interaction patterns for Copilot on Windows, including the settings and safety features around them."
-            decision="Treat stepping in as part of delegation: keep the task, the agent's workspace and the takeover action visible together."
-            outcome="Public announcement material shows the opt-in onboarding, contained agent workspace and paused-with-Take-control state described here."
-            status="Experimental capability announced October 2025. This case documents the public record; it makes no adoption or availability claims."
+            lede="An agent that operates your apps and files has to stay understandable and interruptible."
+            call="We kept the task, its workspace and the takeover action in view together."
+            ledger={[
+              { label: "ROLE", value: "Product & interaction design" },
+              { label: "SCOPE", value: "Computer-use patterns, settings & safety" },
+              { label: "PLATFORM", value: "Copilot on Windows 11" },
+              { label: "MILESTONE", value: "Oct 2025 · experimental, announced" },
+            ]}
             links={[{ href: "#interaction-model", label: "Delegation model" }, { href: "#workspace", label: "Agent workspace" }, { href: "#intervention", label: "Stepping in" }]}
           />
+          </div>
           <Figure
             number="0.1"
             caption="Copilot Actions in the October 2025 announcement. The task, workspace, and handoff remain visible together. Image: Microsoft."
@@ -87,16 +87,8 @@ export default function CopilotActionsPage() {
           </Figure>
         </section>
 
-        {/* §2.2 Spec Sheet Block */}
-        <section data-section data-reveal id="scope" className={styles.scope}>
-          <SpecSheet rows={[
-            { label: "ROLE", value: "Product & interaction design" },
-            { label: "PLATFORM", value: "Copilot on Windows 11" },
-            { label: "MY SCOPE", value: "Computer-use patterns, settings & safety features" },
-            { label: "PUBLIC MILESTONE", value: "October 2025 · experimental capability announced" },
-          ]} />
-          <p className={`t-mono-caption ${styles.draftLabel}`}>WORKING DRAFT · Project narrative for review</p>
-        </section>
+        {/* Draft marker stays visible until publication. */}
+        <p className={`t-mono-caption ${styles.draftLabel}`}>WORKING DRAFT · Project narrative for review</p>
 
         {/* §2.3 Body Column with Running Margin */}
         <section data-section data-reveal id="challenge" className={styles.section}>

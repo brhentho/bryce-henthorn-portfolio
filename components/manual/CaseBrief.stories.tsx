@@ -5,10 +5,13 @@ const meta: Meta<typeof CaseBrief> = { title: "Manual/CaseBrief", component: Cas
 export default meta
 type Story = StoryObj<typeof CaseBrief>
 export const Default: Story = { args: {
-  problem: "Agent progress is scattered across apps.",
-  ownership: "Visibility and orchestration across partner teams.",
-  decision: "Use a familiar taskbar anchor with a shared state language.",
-  outcome: "A five-state visual lexicon and interaction prototypes.",
-  status: "Illustrative story; not a release claim.",
+  lede: "Agent work was scattered across apps, chats and notifications.",
+  call: "We anchored it to the taskbar with one shared set of states.",
+  ledger: [
+    { label: "ROLE", value: "Lead designer, agent visibility" },
+    { label: "TEAM", value: "3 engineering partner teams" },
+    { label: "YEARS", value: "2025–present" },
+    { label: "STATUS", value: "Illustrative story" },
+  ],
   links: [{ href: "#decision", label: "The decision" }],
 } }

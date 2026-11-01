@@ -113,6 +113,7 @@ export default function RecallPage() {
       <main className="container">
         {/* ── 00 Overview / Hero ── */}
         <section data-section id="overview" className="editorial-hero pt-12 lg:pt-24 pb-16">
+          <div className="case-title">
           <HeroIntro
             eyebrow="CASE FILE / RECALL"
             eyebrowClassName="t-mono-label editorial-hero-index"
@@ -126,13 +127,17 @@ export default function RecallPage() {
             ]}
           />
           <CaseBrief
-            problem="People remember fragments of what they saw, while traditional search expects exact words and filenames."
-            ownership="I led the semantic search experience: query formation, result hierarchy, relevance explanation, and privacy information architecture."
-            decision="Separate text and visual matches, expose provenance, and favor fast retrieval over synthesized answers."
-            outcome="Testing surfaced buried visual matches; that finding led to separate result groups with visible source and time."
-            status="Announced at Build 2024; this case covers design work through 2025, including the subsequent privacy redesign. Announcement and availability are separate milestones."
+            lede="People remember fragments of what they saw, but search expects exact words and filenames."
+            call="We split text and visual matches and showed where every result came from."
+            ledger={[
+              { label: "FOCUS", value: "Semantic search: ranking, relevance & trust" },
+              { label: "TEAM", value: "Design, research & ML engineering" },
+              { label: "PLATFORM", value: "Windows 11, Copilot+ PCs" },
+              { label: "YEARS", value: "2023–2025" },
+            ]}
             links={[{ href: "#cards", label: "Ranking & relevance" }, { href: "#constraints", label: "What we cut" }, { href: "#trust", label: "Privacy decisions" }]}
           />
+          </div>
           <Figure
             number="0.1"
             caption="Recall on the Windows desktop. Semantic search surfaced as moments, not documents."
@@ -148,20 +153,6 @@ export default function RecallPage() {
               />
             </div>
           </Figure>
-        </section>
-
-        {/* ── Spec sheet ── */}
-        <section data-section data-reveal id="spec" className="py-8">
-          <SpecSheet
-            rows={[
-              { label: "ROLE",     value: "Product Designer, Windows AI" },
-              { label: "PLATFORM", value: "Windows 11 (Copilot+ PCs)" },
-              { label: "TIMELINE", value: "2023 – 2025" },
-              { label: "TEAM",     value: "Cross-functional team of design, research, and ML engineering" },
-              { label: "MY FOCUS", value: "Semantic search experience: ranking, relevance, and trust" },
-              { label: "STATUS",   value: "Announced at Build 2024; subsequent privacy redesign" },
-            ]}
-          />
         </section>
 
         {/* ── 01 Context ── */}

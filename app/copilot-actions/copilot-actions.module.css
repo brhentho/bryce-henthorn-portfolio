@@ -1,12 +1,9 @@
 .page { padding-bottom: 2rem; }
 .hero { padding-top: clamp(3rem, 8vw, 7rem); padding-bottom: 2rem; }
 .headline { max-width: 13ch; text-wrap: balance; }
-.lead { max-width: 52ch; margin-top: 2rem !important; }
 .heroFigure { margin-top: clamp(2.5rem, 6vw, 5rem); }
 .productImage { display: block; width: 100%; height: auto; }
 .heroFigure .productImage { padding: clamp(1rem, 3vw, 2.5rem) 0 0; }
-.scope { max-width: 900px; padding: 2rem 0; }
-.scope dl > div { grid-template-columns: minmax(110px, 160px) minmax(0, 1fr); }
 .draftLabel { margin-top: 1.5rem !important; }
 .section { padding-block: clamp(3rem, 7vw, 6rem); scroll-margin-top: 5rem; }
 .section h2 { max-width: 22ch; }
@@ -63,7 +60,6 @@
 
 @media (max-width: 767px) {
   .bodyWithMargin, .splitPlate { grid-template-columns: 1fr; gap: 2rem; }
-  .scope dl > div { grid-template-columns: 1fr; gap: 0.5rem; }
   .questions { padding-left: 1.25rem; }
   .sequence { grid-template-columns: 1fr; }
   .stageRail { padding: 0.5rem 1rem 1rem; border-right: 0; border-bottom: 1px solid var(--rule); }

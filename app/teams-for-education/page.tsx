@@ -2,7 +2,6 @@ import Image from "next/image"
 import { ManualShell } from "../recall/ManualShell"
 import {
   SectionLabel,
-  SpecSheet,
   Figure,
   Telemetry,
   Margin,
@@ -92,6 +91,7 @@ export default function TeamsForEducationPage() {
       <main className="container">
         {/* ── Hero ── */}
         <section data-section id="overview" className="teams-hero editorial-hero pb-16 pt-12 lg:pt-24">
+          <div className="case-title">
           <HeroIntro
             eyebrow="CASE FILE / TEAMS FOR EDUCATION"
             eyebrowClassName="t-mono-label editorial-hero-index"
@@ -105,13 +105,17 @@ export default function TeamsForEducationPage() {
             ]}
           />
           <CaseBrief
-            problem="Pandemic adoption brought people into Teams, but broadcast-style classes made participation and belonging difficult."
-            ownership="I led the design process and interaction patterns for classroom orchestration, virtual tables, and teacher controls."
-            decision="Reframe the retention brief around persistent small groups and classroom structure, rather than adding features."
-            outcome="Research and concept testing informed stable groups, preparation before class, and less disruptive moderation."
-            status="The full virtual-tables concept did not ship as designed. This case distinguishes tested concepts from the classroom patterns it informed; 150M+ describes the broader Teams education audience."
+            lede="Broadcast-style classes made participation and belonging hard."
+            call="We reframed the retention brief around persistent small groups, not more features."
+            ledger={[
+              { label: "ROLE", value: "Lead interaction designer, virtual classroom" },
+              { label: "TEAM", value: "Design, research & engineering" },
+              { label: "YEARS", value: "2020–2021" },
+              { label: "STATUS", value: "Tested concept; informed later classroom patterns" },
+            ]}
             links={[{ href: "#research", label: "Research evidence" }, { href: "#solution", label: "Alternatives & tradeoffs" }, { href: "#impact", label: "Concept vs. release" }]}
           />
+          </div>
           <Figure
             number="0.1"
             caption="Microsoft Teams classroom view. Students grouped at virtual tables with the moderation panel surfacing on the right."
@@ -127,20 +131,6 @@ export default function TeamsForEducationPage() {
               />
             </div>
           </Figure>
-        </section>
-
-        {/* ── Spec sheet ── */}
-        <section data-section data-reveal id="spec" className="py-8">
-          <SpecSheet
-            rows={[
-              { label: "ROLE",     value: "Lead interaction designer, virtual classroom" },
-              { label: "PLATFORM", value: "Microsoft Teams for Education" },
-              { label: "TIMELINE", value: "2020 – 2021" },
-              { label: "TEAM",     value: "Cross-functional team of design, research, and engineering" },
-              { label: "MY FOCUS", value: "Classroom orchestration, virtual tables, teacher controls" },
-              { label: "STATUS",   value: "Tested concept; classroom patterns informed later direction" },
-            ]}
-          />
         </section>
 
         {/* ── 01 Context ── */}

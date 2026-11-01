@@ -2,7 +2,6 @@ import Image from "next/image"
 import { ManualShell } from "../recall/ManualShell"
 import {
   SectionLabel,
-  SpecSheet,
   Figure,
   Telemetry,
   TopBar,
@@ -174,6 +173,7 @@ export default function AgentsInWindowsPage() {
           </div>
 
           <div className="agents-hero-content">
+            <div className="case-title">
             <HeroIntro
               eyebrow="CASE FILE / AGENTS IN WINDOWS"
               eyebrowClassName="t-mono-label editorial-hero-index"
@@ -182,19 +182,23 @@ export default function AgentsInWindowsPage() {
               lines={[
                 {
                   text: "Making AI agents visible and interruptible in Windows.",
-                  className: "t-display-xl max-w-[20ch]",
+                  className: "t-display-xl max-w-[22ch]",
                 },
               ]}
             />
 
             <CaseBrief
-              problem="Agent work was scattered across apps, chats, and notifications. People could not reliably see what was running or intervene."
-              ownership="I led agent visibility and orchestration design with three engineering partner teams across Microsoft."
-              decision="Anchor agents to the taskbar and define shared states, rather than introduce another workspace to learn."
-              outcome="The case shows the taskbar progression, five-state visual lexicon, and invocation prototypes behind that shared contract."
-              status="Ongoing platform work, 2025–present. The case presents design artifacts; the interactive example below is a portfolio simulation."
+              lede="Agent work was scattered across apps and notifications, with no way to see it or step in."
+              call="We anchored agents to the taskbar with one shared set of states."
+              ledger={[
+                { label: "ROLE", value: "Lead designer, agent visibility & orchestration" },
+                { label: "TEAM", value: "3 engineering partner teams" },
+                { label: "PLATFORM", value: "Windows 11 shell, taskbar, Ask Copilot" },
+                { label: "YEARS", value: "2025–present" },
+              ]}
               links={[{ href: "#process", label: "The decision" }, { href: "#simulation", label: "Try the interaction" }, { href: "#impact", label: "Evidence & scope" }]}
             />
+            </div>
             <Figure
               number="0.1"
               caption="Researcher agent surfacing inside the Windows shell. Desktop scene with grid, telemetry overlay, and taskbar entry."
@@ -211,20 +215,6 @@ export default function AgentsInWindowsPage() {
               </div>
             </Figure>
           </div>
-        </section>
-
-        {/* ── Spec sheet ── */}
-        <section data-section data-reveal id="spec" className="py-8">
-          <SpecSheet
-            rows={[
-              { label: "ROLE",     value: "Lead designer, agent visibility & orchestration" },
-              { label: "PLATFORM", value: "Windows 11: Shell, Taskbar, Ask Copilot" },
-              { label: "TIMELINE", value: "2025 – Present" },
-              { label: "TEAM",     value: "3 engineering partner teams across Microsoft" },
-              { label: "MY FOCUS", value: "OS-level agent surface, taskbar states, invocation system" },
-              { label: "STATUS",   value: "Ongoing platform work" },
-            ]}
-          />
         </section>
 
         {/* ── 01 Context ── Annotated Split Plate (§2.4) ── */}

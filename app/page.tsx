@@ -5,10 +5,17 @@ import {
   ManualFooter,
   ProjectCard,
   HeroIntro,
+  ViewTransitionLink,
 } from "@/components/manual"
 import { BootSequence } from "@/components/boot-sequence/BootSequence"
 import { DotGrid } from "@/components/atmosphere/DotGrid"
 import { Glow } from "@/components/atmosphere/Glow"
+
+const CONTENTS = [
+  { href: "/agents-in-windows", title: "Agents in Windows", years: "2025–" },
+  { href: "/recall", title: "Windows Recall", years: "2023–25" },
+  { href: "/teams-for-education", title: "Teams for Education", years: "2020–21" },
+]
 
 const PROJECTS = [
   {
@@ -91,12 +98,34 @@ export default function HomePage() {
                     {
                       text: "Designing AI agents and enterprise workflows for Windows at Microsoft.",
                       className:
-                        "t-h2 hero-intro-secondary text-balance max-w-[34ch] mt-8 lg:mt-12",
+                        "t-h2 hero-intro-secondary text-balance max-w-[34ch]",
                       as: "p",
                     },
                   ]}
                 />
               </div>
+            </div>
+
+            {/* Title-page foot: scroll cue left, contents right. Neutral
+                colour only; the active WORK index stays the single accent. */}
+            <div className="home-hero-foot">
+              <a href="#work" className="t-mono-label home-hero-cue">
+                <span aria-hidden="true">↓</span> Case studies
+              </a>
+              <nav aria-label="Contents" className="home-hero-contents">
+                <p className="t-mono-label">CONTENTS</p>
+                <ol>
+                  {CONTENTS.map((item, i) => (
+                    <li key={item.href}>
+                      <ViewTransitionLink href={item.href} className="home-hero-contents-link">
+                        <span className="t-mono-label">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="t-body-sm">{item.title}</span>
+                        <span className="t-mono-label">{item.years}</span>
+                      </ViewTransitionLink>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
             </div>
           </section>
 

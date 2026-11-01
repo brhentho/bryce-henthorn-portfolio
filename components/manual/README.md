@@ -15,8 +15,11 @@ so the active global navigation keeps the viewport's orange accent.
 ## Portfolio compositions
 
 - `ProjectCard`: separate text and unobscured image lanes, stacked on mobile.
-- `CaseBrief`: opening spec-sheet summary with problem, ownership, decision,
-  evidence, status, and same-page reading links.
+- `CaseBrief`: hero read of a case study. One two-tone sentence (`lede` →
+  `call`, problem → what the team did), then a single mono ledger of 3–4
+  facts and same-page jump links. Replaces the hero spec sheet; never repeat
+  ledger facts in a separate `SpecSheet` above the fold. Wrap HeroIntro +
+  CaseBrief in `.case-title` so they own the first screen.
 - `DecisionTable`: existing data-table primitive applied to alternatives and
   tradeoffs. Its horizontally scrollable region is keyboard focusable.
 - `AgentSimulation`: local, user-stepped portfolio example using published agent
