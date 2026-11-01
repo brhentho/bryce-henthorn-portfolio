@@ -116,7 +116,7 @@ export default function RecallPage() {
             eyebrow="CASE FILE / RECALL"
             eyebrowClassName="t-mono-label editorial-hero-index"
             startDelay={120}
-            wordStep={18}
+            wordStep={42}
             lines={[
               {
                 text: "Designing semantic search for everything you’ve seen.",
@@ -153,7 +153,7 @@ export default function RecallPage() {
         <section data-section data-reveal id="spec" className="py-8">
           <SpecSheet
             rows={[
-              { label: "ROLE",     value: "Senior UX/Product Designer" },
+              { label: "ROLE",     value: "Product Designer, Windows AI" },
               { label: "PLATFORM", value: "Windows 11 (Copilot+ PCs)" },
               { label: "TIMELINE", value: "2023 – 2025" },
               { label: "TEAM",     value: "Cross-functional team of design, research, and ML engineering" },

@@ -79,7 +79,7 @@ export default function HomePage() {
                   eyebrow="PORTFOLIO INDEX / 2026"
                   eyebrowClassName="t-mono-label editorial-hero-index"
                   startDelay={200}
-                  wordStep={14}
+                  wordStep={26}
                   lines={[
                     {
                       text: "I turn complex systems into trustworthy experiences.",

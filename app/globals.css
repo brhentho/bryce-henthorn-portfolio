@@ -59,8 +59,8 @@
   --duration-fast-ui:   180ms;
   --duration-normal-ui: 300ms;
   --duration-enter:     500ms;
-  --duration-route:     200ms;
-  --duration-hero:      300ms;
+  --duration-route:     500ms;
+  --duration-hero:      500ms;
   --duration-slow-ui:   700ms;
   --duration-ambient:   3000ms;
 }

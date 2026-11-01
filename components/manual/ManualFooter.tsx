@@ -12,7 +12,7 @@ export function ManualFooter() {
         <div className="flex flex-col items-start">
           <p className="t-body text-[color:var(--text-primary)]">Bryce Henthorn</p>
           <p className="t-mono-caption manual-footer-meta mt-1">
-            Senior Product Designer, Microsoft
+            Product Designer, Windows AI · Microsoft
           </p>
           <p className="t-mono-colophon manual-footer-meta mt-6">© 2026</p>
         </div>

@@ -14,9 +14,9 @@
 export type TransitionState = "idle" | "exiting" | "waiting"
 export type TransitionListener = (state: TransitionState) => void
 
-const EXIT_TIMEOUT_MS = 500
-const EXIT_DURATION_MS = 200
-const HERO_EXIT_DURATION_MS = 150
+const EXIT_TIMEOUT_MS = 1000
+const EXIT_DURATION_MS = 500
+const HERO_EXIT_DURATION_MS = 300
 const HERO_EXIT_EASING = "cubic-bezier(0.7, 0, 0.84, 0)"
 const HERO_HIDDEN_CLIP = "inset(-0.18em 100% -0.24em 0)"
 const COMMIT_TIMEOUT_MS = 2000

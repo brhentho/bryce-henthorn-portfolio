@@ -51,7 +51,7 @@ export function HeroIntro({
   eyebrowStyle,
   lines,
   startDelay = 80,
-  wordStep = 18,
+  wordStep = 32,
   linesWrapperClassName,
   static: isStatic = false,
 }: Props) {
@@ -104,7 +104,7 @@ export function HeroIntro({
     )
   }
 
-  const linesStart = startDelay + (eyebrow ? 100 : 0)
+  const linesStart = startDelay + (eyebrow ? 220 : 0)
   const wordCount = lines.reduce(
     (count, line) =>
       count + line.text.split(/(\s+)/).filter((part) => !/^\s+$/.test(part)).length,
@@ -125,7 +125,7 @@ export function HeroIntro({
           if (/^\s+$/.test(part)) return part
           const wordIndex = runningWord
           const enterDelay = linesStart + wordIndex * wordStep
-          const exitDelay = Math.min((wordCount - wordIndex - 1) * 3, 50)
+          const exitDelay = (wordCount - wordIndex - 1) * 10
           runningWord += 1
           return (
             <span
@@ -162,7 +162,7 @@ export function HeroIntro({
             style={
               {
                 "--hero-enter-delay": `${startDelay}ms`,
-                "--hero-exit-delay": `${Math.min(wordCount * 3, 50)}ms`,
+                "--hero-exit-delay": `${wordCount * 10}ms`,
               } as HeroMotionStyle
             }
           >

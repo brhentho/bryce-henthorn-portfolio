@@ -177,7 +177,7 @@ export default function AgentsInWindowsPage() {
               eyebrow="CASE FILE / AGENTS IN WINDOWS"
               eyebrowClassName="t-mono-label editorial-hero-index"
               startDelay={120}
-              wordStep={18}
+              wordStep={42}
               lines={[
                 {
                   text: "Making AI agents visible and interruptible in Windows.",

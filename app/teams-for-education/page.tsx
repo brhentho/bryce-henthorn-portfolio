@@ -96,7 +96,7 @@ export default function TeamsForEducationPage() {
             eyebrow="CASE FILE / TEAMS FOR EDUCATION"
             eyebrowClassName="t-mono-label editorial-hero-index"
             startDelay={120}
-            wordStep={18}
+            wordStep={42}
             lines={[
               {
                 text: "Modernizing online classes for an authentic virtual experience.",
