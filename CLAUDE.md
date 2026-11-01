@@ -2,9 +2,9 @@
 
 ## What this repo is
 
-A Next.js 16 + React 19 + Tailwind 4 portfolio for Bryce Henthorn (Senior Product Designer at Microsoft). Visual aesthetic is an **operator manual / technical document** treatment — near-black background with subtle noise, off-white text, single hot-orange accent, mono labels for chrome. The home page and three case studies (Recall, Agents in Windows, Teams for Education) read as chapters of one paginated document, not as separate microsites.
+A Next.js 16 + React 19 + Tailwind 4 portfolio for Bryce Henthorn (Product Designer, Windows AI at Microsoft — the site deliberately uses this role-neutral title everywhere). Visual aesthetic is an **operator manual / technical document** treatment — near-black background with subtle noise, off-white text, single hot-orange accent, mono labels for chrome. The home page and three published case studies (Agents in Windows, Recall, Teams for Education) read as chapters of one paginated document, not as separate microsites.
 
-This working copy is not a git repository. The current visual source of truth is the set of `.dc.html` design references (Home, Recall, Agents, Teams, About, plus a header/footer options sheet) produced in the August 2026 revision — ignore any deployed or older version of the site you might encounter. Where those files and this document disagree, the design files win and this document should be corrected.
+`/copilot-actions` is a review draft: `noindex`, not linked from the home page, and kept out of publication until original visuals and confirmed ownership exist (see `docs/copilot-actions-review.md`). Case-study copy keeps the team voice ("we"); ownership is stated once, in the CaseBrief and spec sheet. The current visual source of truth is the set of `.dc.html` design references (Home, Recall, Agents, Teams, About, plus a header/footer options sheet) produced in the August 2026 revision — ignore any deployed or older version of the site you might encounter. Where those files and this document disagree, the design files win and this document should be corrected.
 
 ## Required reading before touching case study pages
 
@@ -33,7 +33,7 @@ visual-system revision. Preserve these roles across all production routes:
 - **Typography:** Inter Tight 500 for display, Inter 400 for body, and
   JetBrains Mono for navigation, labels, captions, and system status.
 - **Display geometry:** oversized responsive type, tight negative tracking,
-  and approximately `0.84–0.95` line height.
+  and `0.92–0.95` line height (tokenized; see Leading below).
 - **Hero motion:** stable words resolve left-to-right with clipping. Never
   scramble glyphs or simulate a typewriter.
 - **Route motion:** hero typography resolves in reverse reading order on exit,
@@ -67,7 +67,18 @@ The canonical names:
 - **Motion** — `--ease-out-expo` (entrances), `--ease-in-expo` (exits),
   `--ease-in-out-sine` (mechanical apertures), `--ease-out-quad` (short UI state);
   `--duration-fast-ui` 180ms, `--duration-normal-ui` 300ms, `--duration-enter`
-  500ms, `--duration-slow-ui` 700ms, `--duration-ambient` 3000ms
+  500ms, `--duration-slow-ui` 700ms, `--duration-ambient` 3000ms;
+  `--duration-route` / `--duration-hero` 500ms, `--stagger-word` 32ms,
+  `--stagger-eyebrow` 220ms. Timings are deliberately ceremonial; don't shorten
+  them without asking.
+- **Hero clip** — `--hero-clip-hidden` / `--hero-clip-shown`. Shared by the CSS
+  reveal and the route-exit animation in `lib/page-transition.ts`. The shown
+  window must stay at ≥0.5em vertical / 0.25em horizontal overhang or glyphs
+  get shaved.
+- **Leading** — `--leading-display-xl` 0.92, `--leading-display` 0.94,
+  `--leading-heading-1/2/3`, `--leading-body` 1.6, `--leading-mono`. Display
+  leading never drops below 0.92.
+- **Rhythm** — `--space-room`, `--space-section`, `--space-block`
 
 The token block must stay reachable from OUTSIDE `.manual`: `PageTransitionOverlay`
 is a sibling of `{children}` in `app/layout.tsx`, and `::selection`, `body` and the
@@ -130,4 +141,5 @@ When restructuring or editing case study sections:
 - Tokens live in the global CSS as CSS variables; class utilities (`t-display-xl`, etc.) are defined alongside Tailwind in the same stylesheet
 - shadcn/ui under `components/ui/` — case study pages do not consume these directly; they use the `components/manual/` primitives instead
 - Storybook is configured for the manual primitives (`components/manual/Figure.stories.tsx`, etc.) — keep stories current when changing primitives
-- Type-check via `pnpm tsc --noEmit`; lint via `pnpm lint`; dev server via `pnpm dev`
+- Type-check via `pnpm tsc --noEmit`; tests via `pnpm test`; dev server via `pnpm dev`. `pnpm lint` has no ESLint config yet. pnpm is the only package manager (no `package-lock.json`).
+- After any type or motion change, run `scripts/audit-text-clipping.js` in the browser on every route at 1440/1024/390px; it must return `[]`.
