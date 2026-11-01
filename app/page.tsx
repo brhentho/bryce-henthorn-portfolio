@@ -60,7 +60,7 @@ export default function HomePage() {
           <section
             data-section
             id="overview"
-            className="home-hero py-6 lg:py-8"
+            className="home-hero"
           >
             <div className="home-hero-atmosphere" aria-hidden="true">
               <DotGrid />
@@ -91,7 +91,7 @@ export default function HomePage() {
                     {
                       text: "Designing AI agents and enterprise workflows for Windows at Microsoft.",
                       className:
-                        "t-display-l hero-intro-secondary text-balance max-w-[30ch] mt-1 lg:mt-2",
+                        "t-h2 hero-intro-secondary text-balance max-w-[34ch] mt-8 lg:mt-12",
                       as: "p",
                     },
                   ]}

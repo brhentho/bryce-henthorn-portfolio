@@ -17,8 +17,10 @@ export type TransitionListener = (state: TransitionState) => void
 const EXIT_TIMEOUT_MS = 1000
 const EXIT_DURATION_MS = 500
 const HERO_EXIT_DURATION_MS = 300
-const HERO_EXIT_EASING = "cubic-bezier(0.7, 0, 0.84, 0)"
-const HERO_HIDDEN_CLIP = "inset(-0.18em 100% -0.24em 0)"
+// Exit reverses the HeroIntro reveal, so it shares the same clip window and
+// the --ease-in-expo curve defined in globals.css.
+const HERO_EXIT_EASING_FALLBACK = "cubic-bezier(0.7, 0, 0.84, 0)"
+const HERO_HIDDEN_CLIP_FALLBACK = "inset(-0.5em 100% -0.5em -0.25em)"
 const COMMIT_TIMEOUT_MS = 2000
 
 let current: TransitionState = "idle"
@@ -123,6 +125,12 @@ function startHeroExitAnimations(): Animation[] {
     ".hero-intro-word, .hero-intro-eyebrow-text",
   )
 
+  const root = getComputedStyle(document.documentElement)
+  const easing =
+    root.getPropertyValue("--ease-in-expo").trim() || HERO_EXIT_EASING_FALLBACK
+  const hiddenClip =
+    root.getPropertyValue("--hero-clip-hidden").trim() || HERO_HIDDEN_CLIP_FALLBACK
+
   return Array.from(elements, (element) => {
     const computed = getComputedStyle(element)
     const delay = Number.parseFloat(
@@ -137,13 +145,13 @@ function startHeroExitAnimations(): Animation[] {
         },
         {
           opacity: 0.35,
-          clipPath: HERO_HIDDEN_CLIP,
+          clipPath: hiddenClip,
         },
       ],
       {
         duration: HERO_EXIT_DURATION_MS,
         delay: Number.isFinite(delay) ? delay : 0,
-        easing: HERO_EXIT_EASING,
+        easing,
         fill: "forwards",
       },
     )
