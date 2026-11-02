@@ -32,7 +32,7 @@ export function StateDiagram({ states, duration = 6000, className }: Props) {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         width="100%"
-        height="auto"
+        style={{ height: "auto" }}
         fill="none"
         stroke="currentColor"
         strokeWidth={1}

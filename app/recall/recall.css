@@ -39,16 +39,16 @@
 /* ── Type scale ── exact rem values from brief */
 /* Display tiers keep their original mobile floors while using calmer desktop
    ceilings so long editorial statements remain inside the opening viewport. */
-.manual .t-display-xl { font-family: var(--font-display); font-weight: 500; font-size: clamp(3.125rem, 7.4vw, 7.5rem); line-height: 0.86; letter-spacing: -0.065em; overflow-wrap: break-word; }
-.manual .t-display-l  { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.75rem, 6vw, 6rem); line-height: 0.9; letter-spacing: -0.055em; overflow-wrap: break-word; }
-.manual .t-h1         { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.125rem, 4.5vw, 4.5rem); line-height: 0.95; letter-spacing: -0.045em; }
-.manual .t-h2         { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.75rem, 3vw, 3rem); line-height: 1; letter-spacing: -0.035em; }
-.manual .t-h3         { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem;   line-height: 1.35; }
-.manual .t-body       { font-family: var(--font-body);    font-weight: 400; font-size: clamp(1rem, 1.25vw, 1.1875rem); line-height: 1.58; letter-spacing: -0.015em; color: var(--text-body); }
-.manual .t-body-sm    { font-family: var(--font-body);    font-weight: 400; font-size: 0.9375rem; line-height: 1.60; color: var(--text-body); }
-.manual .t-mono-label      { font-family: var(--font-mono); font-weight: 500; font-size: 0.625rem; line-height: 1.4; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); }
-.manual .t-mono-caption    { font-family: var(--font-mono); font-weight: 400; font-size: 0.6875rem; line-height: 1.55; letter-spacing: 0.06em; color: var(--text-tertiary); }
-.manual .t-mono-marginalia { font-family: var(--font-mono); font-weight: 400; font-size: 0.75rem;   line-height: 1.5;  color: var(--text-tertiary); }
+.manual .t-display-xl { font-family: var(--font-display); font-weight: 500; font-size: clamp(3.125rem, 7.4vw, 7.5rem); line-height: var(--leading-display-xl); letter-spacing: -0.06em; overflow-wrap: break-word; }
+.manual .t-display-l  { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.75rem, 6vw, 6rem); line-height: var(--leading-display); letter-spacing: -0.05em; overflow-wrap: break-word; }
+.manual .t-h1         { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.125rem, 4.5vw, 4.5rem); line-height: var(--leading-heading-1); letter-spacing: -0.04em; }
+.manual .t-h2         { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.75rem, 3vw, 3rem); line-height: var(--leading-heading-2); letter-spacing: -0.03em; }
+.manual .t-h3         { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem;   line-height: var(--leading-heading-3); letter-spacing: -0.01em; }
+.manual .t-body       { font-family: var(--font-body);    font-weight: 400; font-size: clamp(1rem, 1.25vw, 1.1875rem); line-height: var(--leading-body); letter-spacing: -0.011em; color: var(--text-body); text-wrap: pretty; }
+.manual .t-body-sm    { font-family: var(--font-body);    font-weight: 400; font-size: 0.9375rem; line-height: var(--leading-body); color: var(--text-body); text-wrap: pretty; }
+.manual .t-mono-label      { font-family: var(--font-mono); font-weight: 500; font-size: 0.6875rem; line-height: var(--leading-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); font-variant-numeric: tabular-nums slashed-zero; }
+.manual .t-mono-caption    { font-family: var(--font-mono); font-weight: 400; font-size: 0.75rem; line-height: 1.55; letter-spacing: 0.04em; color: var(--text-secondary); font-variant-numeric: tabular-nums slashed-zero; }
+.manual .t-mono-marginalia { font-family: var(--font-mono); font-weight: 400; font-size: 0.8125rem; line-height: 1.55; color: var(--text-tertiary); font-variant-numeric: tabular-nums slashed-zero; }
 /* Colophon strip — the footer's © / imprint line. One tier below caption. */
 .manual .t-mono-colophon   { font-family: var(--font-mono); font-weight: 500; font-size: 0.6875rem; line-height: 1.55; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
 
@@ -56,12 +56,17 @@
 .manual h1, .manual h2, .manual h3 {
   font-family: var(--font-display);
   color: var(--text-primary);
-  margin: 0;
 }
 
 .manual p {
-  margin: 0;
   color: var(--text-body);
+}
+
+/* Margin resets live in the base layer so Tailwind spacing utilities
+   (mt-*, mb-*) on headings and paragraphs actually apply. Unlayered, this
+   reset silently zeroed every spacing class on a <p>. */
+@layer base {
+  .manual h1, .manual h2, .manual h3, .manual p { margin: 0; }
 }
 
 .manual a {
@@ -71,6 +76,136 @@
 }
 
 /* ── Homepage project card ── */
+.manual .agent-simulation { padding: 3rem clamp(1.25rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem); }
+.manual .simulation-intro { max-width: 76ch; }
+.manual .simulation-states { border: 0; padding: 0; min-width: 0; margin: 2rem 0; }
+.manual .simulation-state-buttons { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.manual .simulation-state-buttons button { display: flex; align-items: center; gap: .5rem; min-height: 48px; padding: .5rem .75rem; border: 1px solid var(--rule); background: var(--ink); cursor: pointer; }
+.manual .simulation-state-buttons button[aria-pressed="true"] { border-color: var(--paper); background: color-mix(in srgb, var(--paper) 8%, var(--ink)); }
+.manual .simulation-split { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 3vw, 3rem); }
+.manual .simulation-surface { min-width: 0; }
+.manual .simulation-card { border: 1px solid var(--rule-strong); padding: clamp(1rem, 2vw, 2rem); }
+.manual .simulation-card-heading { display: flex; align-items: center; gap: 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+.manual .simulation-status { margin-block: 1.5rem; min-height: 12rem; }
+.manual .simulation-steps { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+.manual .simulation-steps li { display: flex; gap: 1rem; align-items: baseline; padding: .75rem 0; border-top: 1px solid var(--rule-hairline); color: var(--text-secondary); }
+.manual .simulation-steps li[aria-current="step"] { color: var(--paper); }
+.manual .simulation-steps li[data-done="true"] { color: var(--accent-signal); }
+.manual .simulation-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.manual .simulation-actions button { font-family: var(--font-mono); font-size: .75rem; min-height: 44px; padding: .6rem .85rem; border: 1px solid var(--rule-strong); color: var(--paper); background: var(--ink); cursor: pointer; }
+.manual .simulation-actions button:hover:not(:disabled) { background: color-mix(in srgb, var(--paper) 8%, var(--ink)); }
+.manual .simulation-actions button:disabled { color: var(--text-tertiary); border-color: var(--rule-hairline); cursor: not-allowed; }
+.manual .simulation-contract { display: grid; gap: 1.25rem; margin-block: 2rem; }
+@media (max-width: 767px) { .manual .simulation-split { grid-template-columns: 1fr; } }
+
+.manual .project-card {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  overflow: hidden;
+  background: var(--ink);
+}
+.manual .project-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+.manual .project-card-media {
+  position: relative;
+  min-width: 0;
+  min-height: 320px;
+  border-left: 1px solid var(--rule-hairline);
+}
+.manual .project-card-read { color: var(--text-secondary); transition: color var(--duration-fast-ui) var(--ease-out-quad); }
+.manual .project-card-read > span { display: inline-block; transition: translate var(--duration-normal-ui) var(--ease-out-expo); }
+.manual .project-card-media { overflow: hidden; }
+.manual .project-card-image { transition: scale var(--duration-slow-ui) var(--ease-out-expo); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .manual [data-project-card]:hover .project-card-image,
+  .manual [data-project-card]:focus-visible .project-card-image { scale: 1.02; }
+  .manual [data-project-card]:hover .project-card-read > span,
+  .manual [data-project-card]:focus-visible .project-card-read > span { translate: 2px -2px; }
+}
+.manual [data-project-card]:hover .project-card-read,
+.manual [data-project-card]:focus-visible .project-card-read { color: var(--text-primary); }
+.manual .project-card .pcard-title { display: block; overflow: visible; }
+/* CaseBrief: one sentence, then one strip of facts. The lede reads in two
+   tones: the situation in secondary, the team's call in primary. */
+.manual .case-brief { margin-top: clamp(2rem, 4.5vh, 3.5rem); }
+.manual .case-brief-lede {
+  max-width: 42ch;
+  font-size: clamp(1.375rem, 1.9vw, 1.875rem);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: var(--text-secondary);
+  text-wrap: balance;
+}
+.manual .case-brief-call { color: var(--text-primary); }
+.manual .case-ledger { margin-top: clamp(2.5rem, 6vh, 4.5rem); border-top: 1px solid var(--rule); }
+.manual .case-ledger-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+}
+.manual .case-ledger-facts > div {
+  padding: 1.25rem 1.5rem 1.25rem 0;
+}
+.manual .case-ledger-facts > div + div {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--rule-hairline);
+}
+.manual .case-ledger-facts dd { margin: .5rem 0 0; color: var(--text-primary); text-wrap: balance; }
+.manual .case-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .75rem 2rem;
+  padding-block: 1rem;
+  border-top: 1px solid var(--rule-hairline);
+}
+.manual .case-jumps .t-mono-label { color: var(--text-tertiary); }
+.manual .case-jumps a {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 5px;
+  transition: color var(--duration-fast-ui) var(--ease-out-quad), text-decoration-color var(--duration-fast-ui) var(--ease-out-quad);
+}
+.manual .case-jumps a:hover { color: var(--text-primary); text-decoration-color: var(--rule-strong); }
+@media (max-width: 767px) {
+  .manual .case-ledger-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .manual .case-ledger-facts > div:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .manual .case-ledger-facts > div:nth-child(n + 3) { border-top: 1px solid var(--rule-hairline); }
+}
+.manual [id] { scroll-margin-top: 5rem; }
+.manual .decision-table-wrap { margin-block: 2rem; overflow-x: auto; }
+.manual .decision-table { width: 100%; border-collapse: collapse; text-align: left; }
+.manual .decision-table caption { text-align: left; padding-block: 0 1rem; }
+.manual .decision-table th, .manual .decision-table td { padding: 1.25rem 1rem 1.25rem 0; vertical-align: top; border-bottom: 1px solid var(--rule); }
+.manual .decision-table th[scope="row"] { font-weight: 500; width: 24%; }
+.manual .decision-table td { min-width: 12rem; }
+.manual .evidence-note { margin-top: 2rem; max-width: 68ch; }
+.manual .evidence-note .t-mono-label { display: block; margin-bottom: .75rem; }
+/* Development-only slot for an uncaptured recording (MediaSlot). Dashed rule
+   marks it as provisional; corner geometry matches Figure. */
+.manual .media-slot {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-block: var(--space-block);
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px dashed var(--rule-strong);
+  background: color-mix(in srgb, var(--paper) 3%, var(--ink));
+}
+.manual .media-slot-shots { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: .5rem; max-width: 72ch; }
+.manual .media-slot-shots span { color: var(--text-tertiary); margin-right: .75rem; }
+@media (max-width: 767px) {
+  .manual .project-card { grid-template-columns: 1fr; }
+  .manual .project-card-media { min-height: 0; aspect-ratio: 16 / 10; border-left: 0; border-top: 1px solid var(--rule-hairline); }
+  .manual .case-brief-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
 .manual .pcard-title {
   display: -webkit-box;
   overflow: hidden;
@@ -99,11 +234,14 @@
   color: var(--text-secondary);
 }
 
+/* Underline skips descenders instead of running through them. */
 .manual .hero-intro-emphasis {
-  display: inline-block;
   color: var(--text-primary);
-  text-shadow: 0 0 18px color-mix(in srgb, var(--text-primary) 18%, transparent);
-  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--text-primary) 28%, transparent);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--text-primary) 32%, transparent);
+  text-underline-offset: 0.16em;
+  text-decoration-skip-ink: auto;
 }
 
 .manual .editorial-hero-index {
@@ -113,7 +251,7 @@
 .manual .editorial-hero {
   display: grid;
   align-content: end;
-  min-height: calc(100svh - 52px);
+  min-height: 0;
 }
 
 .manual .editorial-hero > figure,
@@ -121,12 +259,102 @@
   margin-top: clamp(4rem, 8vw, 8rem);
 }
 
+/* Case title page: eyebrow, headline, lede and ledger own the first screen
+   (minus the section's top padding); the hero figure's top edge peeks ~8vh
+   above the fold as the scroll invitation. */
+.manual .case-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: calc(86svh - 53px - 3rem);
+}
+@media (min-width: 1024px) {
+  .manual .case-title { min-height: calc(86svh - 53px - 6rem); }
+}
+.manual .editorial-hero .case-title + figure,
+.manual .case-title + figure { margin-top: 6svh; }
+
+/* Title page: the hero owns the first screen. Content anchors low, the foot
+   (scroll cue + contents) sits on the bottom edge. */
 .manual .home-hero {
-  min-height: calc(100svh - 52px);
+  min-height: calc(100svh - 53px);
 }
 
 .manual .home-hero-content {
-  padding-block: clamp(3rem, 7vw, 7rem);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-block: clamp(4rem, 10vh, 8rem) clamp(2.5rem, 6vh, 4.5rem);
+}
+
+.manual .home-hero .hero-intro-secondary {
+  margin-top: clamp(1.75rem, 3.5vh, 2.75rem);
+}
+
+.manual .home-hero-foot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-block: 1.5rem clamp(1.5rem, 4vh, 2.5rem);
+  border-top: 1px solid var(--rule-hairline);
+}
+
+.manual .home-hero-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  min-height: 44px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast-ui) var(--ease-out-quad);
+}
+.manual .home-hero-cue:hover { color: var(--text-primary); }
+.manual .home-hero-cue > span { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .manual .home-hero-cue > span { animation: hero-cue-drift var(--duration-ambient) var(--ease-in-out-sine) infinite; }
+}
+@keyframes hero-cue-drift {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 3px; }
+}
+
+.manual .home-hero-contents { min-width: min(100%, 22rem); }
+.manual .home-hero-contents ol { list-style: none; margin: .75rem 0 0; padding: 0; }
+.manual .home-hero-contents-link {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr auto;
+  align-items: baseline;
+  gap: 1rem;
+  min-height: 44px;
+  padding-block: .65rem;
+  border-top: 1px solid var(--rule-hairline);
+  text-decoration: none;
+}
+.manual .home-hero-contents-link .t-body-sm {
+  color: var(--text-secondary);
+  transition: color var(--duration-fast-ui) var(--ease-out-quad);
+}
+.manual .home-hero-contents-link:hover .t-body-sm,
+.manual .home-hero-contents-link:focus-visible .t-body-sm { color: var(--text-primary); }
+.manual .home-hero-contents-link > .t-mono-label:last-child { color: var(--text-tertiary); }
+
+/* The contents fade in after the headline has resolved. Specificity beats
+   the generic `section[data-section]:not([data-reveal]) > *` hero stagger. */
+@media (prefers-reduced-motion: no-preference) {
+  .manual section.home-hero[data-section] > .home-hero-foot {
+    animation: hero-foot-in var(--duration-enter) var(--ease-out-expo) 1.6s both;
+  }
+}
+@keyframes hero-foot-in { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 767px) {
+  .manual .home-hero-foot { flex-direction: column; align-items: stretch; }
+  .manual .home-hero-cue { display: none; }
+  .manual .home-hero-contents { min-width: 0; }
 }
 
 /* ── Shared manual atmosphere ──
@@ -230,21 +458,6 @@
 }
 
 /* Project cards use one stable information lane; the imagery supplies variation. */
-.manual .project-card-scrim {
-  background:
-    linear-gradient(
-      90deg,
-      var(--ink) 0%,
-      color-mix(in srgb, var(--ink) 97%, transparent) 34%,
-      color-mix(in srgb, var(--ink) 82%, transparent) 52%,
-      color-mix(in srgb, var(--ink) 20%, transparent) 82%
-    ),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--ink) 12%, transparent),
-      color-mix(in srgb, var(--ink) 28%, transparent)
-    );
-}
 
 .manual .manual-footer-meta {
   color: var(--text-secondary);
@@ -270,6 +483,14 @@
 }
 
 /* ── About page rooms ── */
+.manual .about-opening-grid { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); align-items: center; gap: 3rem; }
+.manual .about-hero { min-height: 0; }
+.manual .about-evidence-rail { padding-top: 2rem; }
+@media (max-width: 1023px) {
+  .manual .about-opening-grid { grid-template-columns: 1fr; }
+  .manual .about-opening-grid .about-portrait-field { max-width: 24rem; }
+}
+
 .manual .about-hero {
   position: relative;
   display: flex;

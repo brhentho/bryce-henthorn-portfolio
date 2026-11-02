@@ -59,8 +59,37 @@
   --duration-fast-ui:   180ms;
   --duration-normal-ui: 300ms;
   --duration-enter:     500ms;
+  --duration-route:     500ms;
+  --duration-hero:      500ms;
   --duration-slow-ui:   700ms;
   --duration-ambient:   3000ms;
+  /* Hero resolve cadence. HeroIntro's per-page wordStep overrides the stagger;
+     these are the defaults and the documented scale. */
+  --stagger-word:       32ms;
+  --stagger-eyebrow:    220ms;
+
+  /* Hero clip windows. 0.5em vertical clears Inter Tight's ascenders and
+     descenders at display leading; 0.25em horizontal clears side bearings
+     that negative tracking pushes outside the word box. */
+  --hero-clip-hidden: inset(-0.5em 100% -0.5em -0.25em);
+  --hero-clip-shown:  inset(-0.5em -0.25em -0.5em -0.25em);
+
+  /* ═══ Leading ═══
+     Display leading floors at 0.92: below that, Inter Tight descenders on one
+     line meet the ascenders of the next. */
+  --leading-display-xl: 0.92;
+  --leading-display:    0.94;
+  --leading-heading-1:  1;
+  --leading-heading-2:  1.05;
+  --leading-heading-3:  1.3;
+  --leading-body:       1.6;
+  --leading-mono:       1.45;
+
+  /* ═══ Rhythm ═══
+     Vertical spacing between rooms and inside them. */
+  --space-room:    clamp(5rem, 9vw, 9rem);
+  --space-section: clamp(3rem, 6vw, 6rem);
+  --space-block:   clamp(1.5rem, 3vw, 2.5rem);
 }
 
 /* ── Complementary data-flow route transition ── */
@@ -79,7 +108,7 @@ html:not([data-route-transition]) .route-transition {
 html[data-route-transition="exiting"] .route-transition {
   opacity: 1;
   visibility: visible;
-  transition: opacity var(--duration-enter) var(--ease-in-expo);
+  transition: opacity var(--duration-route) var(--ease-in-expo);
 }
 
 html[data-route-transition="waiting"] .route-transition {
@@ -337,14 +366,17 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
    HERO INTRO — deterministic left-to-right editorial resolve
    ═══════════════════════════════════════════════════════════════ */
 
+/* The clip window must clear ascenders, descenders and the side bearings that
+   negative display tracking pushes outside each word's box. A tighter settled
+   inset shaves "y", "g", "p" and the last glyph of every word. */
 @keyframes hero-word-in {
   from {
     opacity: 0.35;
-    clip-path: inset(-0.18em 100% -0.24em 0);
+    clip-path: var(--hero-clip-hidden);
   }
   to {
     opacity: 1;
-    clip-path: inset(-0.18em 0 -0.24em 0);
+    clip-path: var(--hero-clip-shown);
   }
 }
 
@@ -355,16 +387,16 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
 .hero-intro-eyebrow-text {
   display: inline-block;
   opacity: 0.35;
-  clip-path: inset(-0.18em 100% -0.24em 0);
-  animation: hero-word-in var(--duration-enter) var(--ease-out-expo) forwards;
+  clip-path: var(--hero-clip-hidden);
+  animation: hero-word-in var(--duration-hero) var(--ease-out-expo) forwards;
   animation-delay: var(--hero-enter-delay, 0ms);
 }
 
 .hero-intro-word {
   display: inline-block;
   opacity: 0.35;
-  clip-path: inset(-0.18em 100% -0.24em 0);
-  animation: hero-word-in var(--duration-enter) var(--ease-out-expo) forwards;
+  clip-path: var(--hero-clip-hidden);
+  animation: hero-word-in var(--duration-hero) var(--ease-out-expo) forwards;
   animation-delay: var(--hero-enter-delay, 0ms);
   /* allow long titles to wrap at the natural word boundaries */
   white-space: normal;
@@ -379,3 +411,5 @@ html.figma-capture-mode .manual [data-reveal] svg.manual-schematic {
     clip-path: none !important;
   }
 }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

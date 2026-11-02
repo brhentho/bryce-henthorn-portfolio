@@ -27,9 +27,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Bryce Henthorn | Senior UX/Product Designer",
+  title: "Bryce Henthorn | Product Designer, Windows AI",
   description:
-    "Designing human-AI systems at enterprise scale in Windows. Senior UX/Product Designer focused on interaction architecture, ambient agents, and scalable system design.",
+    "Designing human-AI systems at enterprise scale in Windows. Product designer focused on interaction architecture, ambient agents, and scalable system design.",
   icons: {
     icon: [
       { url: "/images/projects/favicons/Favicon-Light.png", media: "(prefers-color-scheme: light)" },
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     apple: "/images/projects/favicons/Favicon-Light.png",
   },
   openGraph: {
-    title: "Bryce Henthorn | Senior UX/Product Designer",
+    title: "Bryce Henthorn | Product Designer, Windows AI",
     description:
-      "Designing human-AI systems at enterprise scale in Windows. Senior UX/Product Designer focused on interaction architecture, ambient agents, and scalable system design.",
+      "Designing human-AI systems at enterprise scale in Windows. Product designer focused on interaction architecture, ambient agents, and scalable system design.",
     type: "website",
     url: "https://bhenthorn.com",
   },

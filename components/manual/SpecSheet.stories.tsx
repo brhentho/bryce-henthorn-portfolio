@@ -12,7 +12,7 @@ type Story = StoryObj<typeof SpecSheet>
 export const Default: Story = {
   args: {
     rows: [
-      { label: "ROLE",     value: "Senior UX/Product Designer" },
+      { label: "ROLE",     value: "Product Designer, Windows AI" },
       { label: "PLATFORM", value: "Windows 11 (Copilot+ PCs)" },
       { label: "TIMELINE", value: "2023 – 2024" },
       { label: "TEAM",     value: "12 designers, 60 engineers" },

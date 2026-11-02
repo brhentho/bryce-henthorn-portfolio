@@ -1,127 +1,59 @@
 # Operator Manual
 
-A scoped design system for the `/recall` case study experiment. Operator-manual aesthetic: hairline rules, mono labels, figure numbering, marginalia, instrument-style readouts.
+Shared presentation system for Home, About, Recall, Agents in Windows, and Teams
+for Education. Read `../../CLAUDE.md` and `../../docs/layout-direction.md` before
+changing it. The existing 13 layout primitives remain the composition vocabulary.
 
-**Scope.** Everything in this folder is namespaced under the `.manual` CSS class. Tokens, type scale, and layout primitives only apply inside that wrapper. The rest of the site is unaffected.
+## Visual system
 
-If this aesthetic lands on `/recall`, it gets ported to the other case studies and the home page. Until then: contained experiment.
+Tokens are defined once in `app/globals.css` at `:root`; scoped layout and type
+utilities are in `app/recall/recall.css`. Preserve Inter Tight display, Inter body,
+JetBrains Mono chrome, ink/paper materials, and the orange state accent. Do not
+copy token values into component styles. Figure labels and borders remain neutral
+so the active global navigation keeps the viewport's orange accent.
 
-## Token system
+## Portfolio compositions
 
-Tokens live in `app/recall/recall.css` under `.manual { … }`. Components read them via CSS custom properties — never hard-code colour or font. The system is dark-only.
+- `ProjectCard`: separate text and unobscured image lanes, stacked on mobile.
+- `CaseBrief`: hero read of a case study. One two-tone sentence (`lede` →
+  `call`, problem → what the team did), then a single mono ledger of 3–4
+  facts and same-page jump links. Replaces the hero spec sheet; never repeat
+  ledger facts in a separate `SpecSheet` above the fold. Wrap HeroIntro +
+  CaseBrief in `.case-title` so they own the first screen.
+- `DecisionTable`: existing data-table primitive applied to alternatives and
+  tradeoffs. Its horizontally scrollable region is keyboard focusable.
+- `AgentSimulation`: local, user-stepped portfolio example using published agent
+  icons. State transitions live in `lib/agent-simulation.ts`; no data access or
+  agent execution occurs. Native buttons, disabled unavailable actions, and a
+  polite status region support keyboard and assistive-technology use.
+- `LoopingMedia`: muted inline recordings with visible play/pause, optional poster
+  and description, visibility-aware playback, and an error fallback preserving
+  the still and explanatory text. Reduced motion disables automatic playback.
 
-### Material
-| Token | Value |
-|---|---|
-| `--ink` | `#0F0F10` |
+Wrap product media and simulations in `Figure` to retain registration marks,
+numbering, and decision-oriented captions. Introductory content needs room below
+the figure-number overlay; the simulation reserves this padding explicitly.
 
-### Surface
-| Token | Value |
-|---|---|
-| `--rule` | `#2A2A2C` |
-| `--rule-strong` | `#3F3F42` |
-| `--text-primary` | `#F5F1E8` |
-| `--text-body` | `color-mix(in srgb, var(--text-primary) 85%, var(--ink))` — body tier; sits between primary (headlines) and secondary (subtitles) |
-| `--text-secondary` | `#A8A6A0` |
-| `--text-tertiary` | `#6E6C68` |
-| `--bg` | `var(--ink)` |
-| `--fg` | `var(--text-primary)` |
+## Motion
 
-### Accents
-| Token | Value | Use |
-|---|---|---|
-| `--accent-schematic` | `#6B8FB8` | active geometry in diagrams, focal points |
-| `--accent-signal` | `#8FB079` | positive telemetry |
-| `--accent-alert` | `#D49B3D` | caution states |
-| `--accent-warning` | `#A86060` | error / warning states |
+Word resolution and chapter apertures retain their existing language. Route exits
+use a separate 200ms token and 150ms word exits with at most 50ms stagger. Hero
+resolution uses 300ms plus a short word stagger. Chapter timing is independent.
+Reduced motion navigates immediately, reveals text statically, disables smooth
+scroll, and leaves video playback under user control. The simulation never
+auto-advances and has no animation-dependent state changes.
 
-## Type scale
+## Verification
 
-| Class | Family | Weight | Size | Line | Tracking |
-|---|---|---|---|---|---|
-| `t-display-xl` | Inter Tight | 600 | `clamp(2.25rem, 7vw, 4.5rem)` | 1.05 | -0.02em |
-| `t-display-l` | Inter Tight | 600 | `clamp(2rem, 6vw, 3rem)` | 1.10 | -0.015em |
-| `t-h1` | Inter Tight | 600 | 2.25rem | 1.15 | -0.01em |
-| `t-h2` | Inter Tight | 500 | 1.625rem | 1.25 | -0.005em |
-| `t-h3` | Inter Tight | 500 | 1.25rem | 1.35 | — |
-| `t-body` | Open Sans | 400 | 1.0625rem | 1.65 | -0.005em |
-| `t-body-sm` | Open Sans | 400 | 0.9375rem | 1.60 | — |
-| `t-mono-label` | JetBrains Mono | 500 | 0.75rem | 1.4 | 0.08em / uppercase |
-| `t-mono-caption` | JetBrains Mono | 400 | 0.8125rem | 1.55 | — |
-| `t-mono-marginalia` | JetBrains Mono | 400 | 0.75rem | 1.5 | — |
+- `pnpm test`: simulation approval, pause/resume, failure/retry, reset, terminal states.
+- `pnpm exec tsc --noEmit`: TypeScript checks.
+- `pnpm build`: production compilation and static routes.
+- Stories accompany each new composition, including a deliberately unavailable
+  media example. The existing Storybook 8 Next.js integration currently fails on
+  Next.js 16's removed `next/config`; upgrading that integration is separate work.
+- The pre-existing `pnpm lint` script requires ESLint, which is not installed.
 
-## Components
-
-All components are in `components/manual/`. Import from the barrel: `import { Figure, Telemetry } from "@/components/manual"`.
-
-| Component | Props | Purpose |
-|---|---|---|
-| `RegistrationMark` | `size?, className?` | Decorative 12×12 SVG crosshair. Used in figure corners and chrome. `aria-hidden`. |
-| `Crossref` | `section, href, label?` | Inline mono `§ N.N` link. |
-| `TopBar` | `(no props)` | Combined site header: identifier (`BRYCE HENTHORN`) · nav · inline `§ NN / TT`. Replaces the legacy `RevisionHeader` + `ManualNav` + fixed `ProgressIndicator`. Below the `md` breakpoint the inline nav collapses to a three-rule menu trigger that opens a full-width drawer (200ms ease-out, body scroll-locked, Escape closes). |
-| `SectionLabel` | `number, label, title, id?` | Mono small-caps eyebrow above a real `<h2>`. |
-| `SpecSheet` | `rows: {label,value}[]` | Label/value grid with hairline rules between rows. |
-| `Figure` | `number, caption?, cf?, src?, alt?, width?, height?, priority?, children?` | Wraps img/video/svg/children with figure number, mono caption, optional cross-reference. |
-| `Telemetry` | `items: {value,unit,label}[]` | Instrument-style readout. Tabular numerals. |
-| `Margin` | `children, anchor?` | Right-margin aside on ≥1024px (CSS grid right-column area), inline `<aside>` below. |
-| `StateDiagram` | `states: {label}[], duration?` | Animated SVG sequence. Pauses on `prefers-reduced-motion`. |
-| `CoverPlate` | `number, total, title, ambient?` | Internal chapter divider — full-framed plate, ~60vh, with corner registration marks. |
-
-## Usage
-
-Every page wraps content in `ManualShell` (which mounts the `.manual` scope plus `NowReading` and the scroll-reveal controller) and renders `<TopBar />` as the first child:
-
-```tsx
-import { ManualShell } from "./ManualShell"
-import { TopBar, SectionLabel, SpecSheet, Figure, Telemetry, Margin, ManualFooter } from "@/components/manual"
-
-export default function Page() {
-  return (
-    <ManualShell>
-      <TopBar />
-      <main className="container">
-        <section data-section id="hero">
-          <h1 className="t-display-xl">Making AI memory legible</h1>
-        </section>
-
-        <section data-section id="problem">
-          <SectionLabel number="01" label="Problem" title="…" />
-          <div className="section-grid">
-            <p className="t-body">Body copy.</p>
-            <Margin>Designer's note.</Margin>
-          </div>
-          <Figure number="1.1" caption="Search vs. recall" src="/images/recall/fig-1-1.png" />
-        </section>
-      </main>
-      <ManualFooter />
-    </ManualShell>
-  )
-}
-```
-
-Every scrollable section needs `data-section` so `TopBar`'s inline `§ NN / TT` indicator can track position via `IntersectionObserver`.
-
-## Storybook
-
-```
-pnpm storybook
-```
-
-Stories live next to each component as `*.stories.tsx`. Every story renders inside the `.manual` scope automatically via the global decorator.
-
-## Accessibility
-
-- Headings (`SectionLabel`) emit real `<h2>`. No styled divs.
-- `TopBar`'s inline `§ NN / TT` indicator is `aria-hidden` — purely decorative orientation.
-- `Figure` falls back to `caption` for `alt` when no `alt` is provided.
-- `StateDiagram` honours `prefers-reduced-motion`.
-- `Margin` reflows inline below 1024px — never visually hidden.
-
-## Adding a new component
-
-1. Create `ComponentName.tsx` in this folder.
-2. Read tokens via CSS variables. Never hard-code colour or font family.
-3. Render only inside `.manual` (the page wrapper). If it must be `position: fixed`, mount it as a child of `.manual` so the cascade still applies.
-4. Export from `index.ts`.
-5. Add `ComponentName.stories.tsx` with at least a `Default` story.
-6. Update this README.
+Browser checks must cover desktop/mobile composition, navigation, keyboard
+activation, readable media failure, and all simulation states. Actual research
+artifacts and first-person retrospectives still require author-supplied evidence;
+see `docs/portfolio-implementation.md`.

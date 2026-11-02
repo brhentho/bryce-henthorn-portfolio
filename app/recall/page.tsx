@@ -12,6 +12,9 @@ import {
   HeroIntro,
   NextProject,
   LoopingMedia,
+  MediaSlot,
+  CaseBrief,
+  DecisionTable,
 } from "@/components/manual"
 
 // Listed in descending order to match the Figma stack (04 at top → 01 at bottom).
@@ -110,6 +113,7 @@ export default function RecallPage() {
       <main className="container">
         {/* ── 00 Overview / Hero ── */}
         <section data-section id="overview" className="editorial-hero pt-12 lg:pt-24 pb-16">
+          <div className="case-title">
           <HeroIntro
             eyebrow="CASE FILE / RECALL"
             eyebrowClassName="t-mono-label editorial-hero-index"
@@ -122,6 +126,18 @@ export default function RecallPage() {
               },
             ]}
           />
+          <CaseBrief
+            lede="People remember fragments of what they saw, but search expects exact words and filenames."
+            call="We split text and visual matches and showed where every result came from."
+            ledger={[
+              { label: "FOCUS", value: "Semantic search: ranking, relevance & trust" },
+              { label: "TEAM", value: "Design, research & ML engineering" },
+              { label: "PLATFORM", value: "Windows 11, Copilot+ PCs" },
+              { label: "YEARS", value: "2023–2025" },
+            ]}
+            links={[{ href: "#cards", label: "Ranking & relevance" }, { href: "#constraints", label: "What we cut" }, { href: "#trust", label: "Privacy decisions" }]}
+          />
+          </div>
           <Figure
             number="0.1"
             caption="Recall on the Windows desktop. Semantic search surfaced as moments, not documents."
@@ -137,20 +153,6 @@ export default function RecallPage() {
               />
             </div>
           </Figure>
-        </section>
-
-        {/* ── Spec sheet ── */}
-        <section data-section data-reveal id="spec" className="py-8">
-          <SpecSheet
-            rows={[
-              { label: "ROLE",     value: "Senior UX/Product Designer" },
-              { label: "PLATFORM", value: "Windows 11 (Copilot+ PCs)" },
-              { label: "TIMELINE", value: "2023 – 2025" },
-              { label: "TEAM",     value: "Cross-functional team of design, research, and ML engineering" },
-              { label: "MY FOCUS", value: "Semantic search experience: ranking, relevance, and trust" },
-              { label: "STATUS",   value: "Shipped at Build 2024; reshaped post-launch around privacy" },
-            ]}
-          />
         </section>
 
         {/* ── 01 Context ── */}
@@ -422,6 +424,17 @@ export default function RecallPage() {
               className="w-full h-auto"
             />
           </Figure>
+          <MediaSlot
+            number="5.2"
+            title="Reading a result: match type, source and time"
+            seconds={9}
+            shots={[
+              "Type a fragment someone actually remembers (\u201Cthe blue chart from the budget call\u201D)",
+              "Results resolve into separate text-match and visual-match groups",
+              "Hover a visual match; the match-type label and source app/time come forward",
+              "Open the snapshot; land on the exact moment, then return to results",
+            ]}
+          />
         </section>
 
         {/* ── 06 Performance ── Pull-quote Interlude (§2.11) + Strip Break (§2.9) ── */}
@@ -458,6 +471,8 @@ export default function RecallPage() {
               className="w-full aspect-[16/9] max-h-[520px] overflow-hidden"
               videoClassName="w-full h-full object-cover object-top"
               label="Recall refining semantic search results as the query changes"
+              poster="/images/recall/search-poster.jpg"
+              description="Search results refine as the query changes; input remains available while matching proceeds."
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4"
             />
           </Figure>
@@ -576,6 +591,8 @@ export default function RecallPage() {
           >
             <LoopingMedia
               label="Recall comparing synthesized answers with fast moment retrieval"
+              poster="/images/recall/retrieval-poster.jpg"
+              description="The selected direction retrieves source moments directly, preserving their connection to the query."
               src="https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4"
             />
           </Figure>
@@ -589,6 +606,10 @@ export default function RecallPage() {
               </p>
             </blockquote>
           </div>
+          <DecisionTable label="Retrieval versus synthesis" options={[
+            { option: "Synthesize an answer", tradeoff: "Early RAG exploration introduced latency that conflicted with the search interaction.", disposition: "Cut from this search experience." },
+            { option: "Retrieve relevant moments", tradeoff: "People interpret the evidence themselves; source and match type must remain legible.", disposition: "Chosen: responsive retrieval with visible provenance." },
+          ]} />
         </section>
 
         {/* ── 09 Impact ── Annotated Split Plate (§2.4) + Strip Break Telemetry (§2.9) ── */}
@@ -601,7 +622,7 @@ export default function RecallPage() {
           <SectionLabel
             number="09"
             label="Impact"
-            title="From rediscovery to reference pattern"
+            title="Making relevance inspectable"
           />
           <div className="mt-10 max-w-[68ch] [&>p+p]:mt-4!">
             <p className="t-body">
@@ -610,9 +631,9 @@ export default function RecallPage() {
               provenance turned mysterious AI behavior into something rational.
             </p>
             <p className="t-body">
-              The work shipped at Build 2024, then its privacy patterns, relevance
-              transparency, and match-type separation became reference points for Windows
-              Search and File Explorer.
+              The work was announced at Build 2024. The subsequent privacy patterns, relevance
+              transparency, and match-type separation informed related design discussions
+              across Windows Search and File Explorer.
             </p>
             <Margin anchor="9-pull" className="my-0">
               Recall proved that AI in core OS features doesn&rsquo;t require opacity or
@@ -622,7 +643,7 @@ export default function RecallPage() {
           </div>
           <Figure
             number="9.1"
-            caption="Recall announcement"
+            caption="Build 2024 announcement. A public milestone for the concept, separate from later availability and privacy revisions."
             src="/images/recall/impact-keynote.png"
             alt="Recall introduced on stage at Build. System architecture diagram (Screen Region Detector, Optical Character Recognition, Parser, Text Encoder, Image Encoder) framing the Recall pill."
             width={358}
@@ -633,12 +654,15 @@ export default function RecallPage() {
               variant="quiet"
               items={[
                 { value: "Copilot+", unit: "DEVICES",         label: "Local intelligence required for on-device indexing" },
-                { value: "WS + FE",  unit: "TEAMS ADOPTING",  label: "Windows Search and File Explorer adopting the patterns" },
-                { value: "2",        unit: "YEARS",           label: "Shipping cycle, including privacy redesign" },
+                { value: "WS + FE",  unit: "RELATED SURFACES", label: "Windows Search and File Explorer" },
+                { value: "2",        unit: "YEARS",           label: "Design period, including privacy redesign" },
               ]}
             />
           </div>
         </section>
+        {/* Retrospective placeholder — deferred by Bryce, October 28, 2026.
+            Add his reflection here when ready; draft prompts live in
+            docs/portfolio-implementation.md. */}
       </main>
       <NextProject href="/teams-for-education" title="Teams for Education" />
       <ManualFooter />

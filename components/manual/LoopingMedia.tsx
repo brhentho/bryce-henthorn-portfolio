@@ -14,6 +14,7 @@ type Props = {
   videoClassName?: string
   videoStyle?: CSSProperties
   poster?: string
+  description?: string
 }
 
 export function LoopingMedia({
@@ -23,9 +24,11 @@ export function LoopingMedia({
   videoClassName,
   videoStyle,
   poster,
+  description,
 }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const reduceMotion = useReducedMotion()
+  const [failed, setFailed] = useState(false)
   const [inView, setInView] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [preference, setPreference] = useState<PlaybackPreference>("auto")
@@ -57,6 +60,7 @@ export function LoopingMedia({
     if (!video) return
 
     const wantsPlayback =
+      !failed &&
       inView &&
       documentVisible &&
       (preference === "playing" ||
@@ -71,10 +75,25 @@ export function LoopingMedia({
       setPreference("paused")
       setIsPlaying(false)
     })
-  }, [documentVisible, inView, preference, reduceMotion])
+  }, [documentVisible, failed, inView, preference, reduceMotion])
 
   const togglePlayback = () => {
     setPreference(isPlaying ? "paused" : "playing")
+  }
+
+  if (failed) {
+    return (
+      <div className="media-fallback" role="group" aria-label={label}>
+        <div className={cn("relative", className)}>
+          {poster && <img src={poster} alt={`Still frame: ${label}`} className="block w-full h-auto" />}
+        </div>
+        <div className="p-6">
+          <p role="status" className="t-mono-label">Video unavailable</p>
+          <p className="t-body-sm mt-3">{description ?? label}</p>
+          <a className="t-mono-caption inline-flex min-h-11 items-center underline" href={src}>Open original recording ↗</a>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -95,6 +114,7 @@ export function LoopingMedia({
             event.currentTarget.currentTime = 0.001
           }
         }}
+        onError={() => setFailed(true)}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />

@@ -5,10 +5,17 @@ import {
   ManualFooter,
   ProjectCard,
   HeroIntro,
+  ViewTransitionLink,
 } from "@/components/manual"
 import { BootSequence } from "@/components/boot-sequence/BootSequence"
 import { DotGrid } from "@/components/atmosphere/DotGrid"
 import { Glow } from "@/components/atmosphere/Glow"
+
+const CONTENTS = [
+  { href: "/agents-in-windows", title: "Agents in Windows", years: "2025–" },
+  { href: "/recall", title: "Windows Recall", years: "2023–25" },
+  { href: "/teams-for-education", title: "Teams for Education", years: "2020–21" },
+]
 
 const PROJECTS = [
   {
@@ -26,7 +33,7 @@ const PROJECTS = [
     href: "/recall",
     eyebrow: "WINDOWS RECALL",
     title: "Designing semantic search for everything you’ve seen.",
-    proof: "SEARCH DESIGN · BUILD 2024",
+    proof: "SEARCH DESIGN · RELEVANCE & PRIVACY",
     imgSrc: "/images/recall/hero-demo.png",
     imgAlt:
       "Recall app on a Windows desktop, search results page with multiple match cards",
@@ -37,7 +44,7 @@ const PROJECTS = [
     href: "/teams-for-education",
     eyebrow: "TEAMS FOR EDUCATION",
     title: "Modernizing online classes for an authentic virtual experience.",
-    proof: "DESIGN LEAD · 150M+ USERS",
+    proof: "DESIGN LEAD · CLASSROOM RESEARCH",
     imgSrc: "/images/teams/hero-demo.png",
     imgAlt:
       "Microsoft Teams classroom view. Virtual tables of students with avatars and chat moderation panel.",
@@ -60,7 +67,7 @@ export default function HomePage() {
           <section
             data-section
             id="overview"
-            className="home-hero min-h-[calc(100vh-9rem)] py-16 lg:py-24"
+            className="home-hero"
           >
             <div className="home-hero-atmosphere" aria-hidden="true">
               <DotGrid />
@@ -91,26 +98,46 @@ export default function HomePage() {
                     {
                       text: "Designing AI agents and enterprise workflows for Windows at Microsoft.",
                       className:
-                        "t-display-l hero-intro-secondary text-balance max-w-[30ch] mt-1 lg:mt-2",
+                        "t-h2 hero-intro-secondary text-balance max-w-[34ch]",
                       as: "p",
                     },
                   ]}
                 />
               </div>
             </div>
+
+            {/* Title-page foot: scroll cue left, contents right. Neutral
+                colour only; the active WORK index stays the single accent. */}
+            <div className="home-hero-foot">
+              <a href="#work" className="t-mono-label home-hero-cue">
+                <span aria-hidden="true">↓</span> Case studies
+              </a>
+              <nav aria-label="Contents" className="home-hero-contents">
+                <p className="t-mono-label">CONTENTS</p>
+                <ol>
+                  {CONTENTS.map((item, i) => (
+                    <li key={item.href}>
+                      <ViewTransitionLink href={item.href} className="home-hero-contents-link">
+                        <span className="t-mono-label">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="t-body-sm">{item.title}</span>
+                        <span className="t-mono-label">{item.years}</span>
+                      </ViewTransitionLink>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </div>
           </section>
 
           {/* ── 01 Selected Work ── */}
           <section
             data-section
-            data-reveal
-            data-reveal-role="catalog"
             id="work"
-            className="home-room home-work-room py-16 lg:py-24"
+            className="home-room home-work-room pb-16 pt-4 lg:pb-24 lg:pt-6"
           >
             <div className="relative z-10">
               <SectionLabel number="01" label="Selected Work" title="Case studies" />
-              <div className="mt-10 space-y-10 lg:mt-14 lg:space-y-16">
+              <div className="mt-6 space-y-10 lg:mt-8 lg:space-y-12">
                 {PROJECTS.map((p) => (
                   <ProjectCard key={p.href} {...p} />
                 ))}
