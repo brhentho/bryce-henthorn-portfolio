@@ -1,0 +1,292 @@
+/* ─────────────────────────────────────────────────────────────
+   /explore — shared base for the three directions.
+   Production type classes are scoped to .manual; these are the
+   exploration equivalents, scoped to .xp so nothing leaks out.
+   ───────────────────────────────────────────────────────────── */
+
+.xp {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  min-height: 100vh;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+/* The root layout's ambient glow belongs to production pages. */
+body:has(.xp) .page-glow { display: none; }
+
+.xp img { max-width: 100%; }
+
+/* ── Type ── */
+.xp-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3rem, 8.4vw, 8.75rem);
+  line-height: var(--leading-display-xl);
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+.xp-h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 5vw, 4.75rem);
+  line-height: var(--leading-display);
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.xp-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.2vw, 3rem);
+  line-height: var(--leading-heading-2);
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.xp-h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: var(--leading-heading-3);
+  letter-spacing: -0.012em;
+}
+.xp-lede {
+  font-family: var(--font-body);
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.45;
+  letter-spacing: -0.014em;
+  color: var(--text-body);
+  text-wrap: pretty;
+}
+.xp-body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: var(--leading-body);
+  letter-spacing: -0.011em;
+  color: var(--text-body);
+  text-wrap: pretty;
+}
+.xp-body-sm {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-body);
+  text-wrap: pretty;
+}
+.xp-mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+.xp-caption {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+}
+.xp-measure { max-width: 38rem; }
+.xp-body + .xp-body { margin-top: 1.1em; }
+
+/* ── Controls ── */
+.xp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 4%, transparent);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast-ui) var(--ease-out-quad),
+    border-color var(--duration-fast-ui) var(--ease-out-quad),
+    opacity var(--duration-fast-ui) var(--ease-out-quad);
+}
+.xp-btn:hover:not(:disabled) { background: color-mix(in srgb, var(--paper) 10%, transparent); border-color: var(--rule-strong); }
+.xp-btn:active:not(:disabled) { background: color-mix(in srgb, var(--paper) 14%, transparent); }
+.xp-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.xp-btn[aria-pressed="true"] { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+
+.xp-link {
+  color: var(--paper);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color var(--duration-fast-ui) var(--ease-out-quad);
+}
+.xp-link:hover { text-decoration-color: var(--paper); }
+
+.xp-skip {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.xp-skip:focus { top: 1rem; }
+
+/* ── Review bar (scrolls away; never fixed) ── */
+.xp-bar {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  min-height: 44px;
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--rule-hairline);
+  background: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.xp-bar-group { display: flex; gap: 0.125rem; list-style: none; margin: 0; padding: 0; }
+.xp-bar-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  min-width: 32px;
+  justify-content: center;
+  padding: 0 0.5rem;
+  color: var(--text-tertiary);
+  border-radius: 4px;
+  transition: color var(--duration-fast-ui) var(--ease-out-quad), background-color var(--duration-fast-ui) var(--ease-out-quad);
+}
+.xp-bar-link:hover { color: var(--paper); }
+.xp-bar-link[aria-current="page"] { color: var(--paper); background: color-mix(in srgb, var(--paper) 9%, transparent); }
+.xp-bar-note { margin-left: auto; color: var(--text-faint); }
+@media (max-width: 560px) { .xp-bar-note { display: none; } }
+
+/* ── Index ── */
+.xp-index { max-width: 72rem; margin: 0 auto; padding: clamp(3rem, 9vw, 7rem) clamp(1.25rem, 4vw, 3rem) 4rem; }
+.xp-index-head { display: grid; gap: 1.25rem; margin-bottom: clamp(2.5rem, 6vw, 4.5rem); }
+.xp-index-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.xp-index-item {
+  display: grid;
+  grid-template-columns: 4rem 1fr auto;
+  gap: 1rem 2rem;
+  align-items: start;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.xp-index-item .xp-body { margin-top: 0.75rem; }
+.xp-index-letter { font-family: var(--font-display); font-weight: 500; font-size: 3rem; line-height: 0.92; letter-spacing: -0.04em; color: var(--text-tertiary); }
+.xp-index-links { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+.xp-index-foot { margin-top: 2.5rem; }
+@media (max-width: 760px) {
+  .xp-index-item { grid-template-columns: 2.5rem 1fr; }
+  .xp-index-letter { font-size: 2rem; }
+  .xp-index-links { grid-column: 2; }
+}
+
+/* ── Media ── */
+.xp .t-mono-label { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+/* ── Inverted paper sheet: swaps the material without new literals ── */
+.xp { --xp-ink: var(--ink); --xp-paper: var(--paper); }
+.xp-invert {
+  --paper: var(--xp-ink);
+  --ink: var(--xp-paper);
+  --rule-hairline: color-mix(in srgb, var(--xp-ink) 12%, transparent);
+  --rule: color-mix(in srgb, var(--xp-ink) 22%, transparent);
+  --rule-strong: color-mix(in srgb, var(--xp-ink) 48%, transparent);
+  --text-primary: var(--xp-ink);
+  --text-secondary: color-mix(in srgb, var(--xp-ink) 68%, transparent);
+  --text-tertiary: color-mix(in srgb, var(--xp-ink) 56%, transparent);
+  --text-faint: color-mix(in srgb, var(--xp-ink) 40%, transparent);
+  --text-body: color-mix(in srgb, var(--xp-ink) 88%, var(--xp-paper));
+  background: var(--xp-paper);
+  color: var(--xp-ink);
+}
+
+/* ── Simulation parts (layout belongs to each direction) ── */
+.xp-sim-states { border: 0; margin: 0; padding: 0; min-width: 0; }
+.xp-sim-states legend { margin-bottom: 0.75rem; }
+.xp-sim-state-row { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.xp-sim-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.25rem 0.75rem 0.25rem 0.375rem;
+  border: 1px solid var(--rule-hairline);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: border-color var(--duration-fast-ui) var(--ease-out-quad), color var(--duration-fast-ui) var(--ease-out-quad), background-color var(--duration-fast-ui) var(--ease-out-quad);
+}
+.xp-sim-state:hover { border-color: var(--rule-strong); color: var(--text-primary); }
+.xp-sim-state[aria-pressed="true"] { border-color: var(--text-primary); color: var(--text-primary); background: color-mix(in srgb, var(--paper) 7%, transparent); }
+.xp-sim-card { display: grid; gap: 1.25rem; }
+.xp-sim-head { display: flex; align-items: center; gap: 0.875rem; }
+.xp-sim-head .xp-body-sm { margin-top: 0.25rem; }
+.xp-sim-status { display: grid; gap: 0.5rem; min-height: 8.5rem; }
+.xp-sim-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--rule-hairline); }
+.xp-sim-steps li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  align-items: center;
+  min-height: 2.5rem;
+  border-bottom: 1px solid var(--rule-hairline);
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+}
+.xp-sim-steps li > span:first-child { font-family: var(--font-mono); font-size: 0.6875rem; }
+.xp-sim-steps li[data-done] { color: var(--text-secondary); }
+.xp-sim-steps li[aria-current="step"] { color: var(--text-primary); }
+.xp-sim-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.xp-sim-actions-secondary .xp-btn { min-height: 40px; font-size: 0.6875rem; }
+.xp-sim-intent { display: grid; gap: 0.75rem; align-content: start; }
+
+/* ── Footer ── */
+.xp-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2.5rem clamp(1.25rem, 4vw, 3rem) 3rem;
+  border-top: 1px solid var(--rule);
+}
+.xp-footer-links { display: grid; gap: 0; justify-items: start; }
+.xp-footer-links a { display: inline-flex; align-items: center; min-height: 44px; }
+@media (min-width: 760px) { .xp-footer-links { justify-items: end; text-align: right; } }
+.xp-cover { width: 100%; height: 100%; object-fit: cover; display: block; }
+.xp-sim-note { font-family: var(--font-mono); font-size: 0.6875rem; line-height: 1.5; letter-spacing: 0.04em; color: var(--text-tertiary); }
+
+/* ── View-transition continuity ── */
+::view-transition-group(*) {
+  animation-duration: var(--duration-enter);
+  animation-timing-function: var(--ease-out-expo);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--duration-normal-ui);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}
