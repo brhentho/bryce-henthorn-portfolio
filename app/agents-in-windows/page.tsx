@@ -15,6 +15,7 @@ import {
   DecisionTable,
 } from "@/components/manual"
 import { AgentSimulation } from "@/components/manual/AgentSimulation"
+import { TaskbarSequence } from "@/components/manual/TaskbarSequence"
 import { DotGrid } from "@/components/atmosphere/DotGrid"
 import { Glow } from "@/components/atmosphere/Glow"
 
@@ -24,27 +25,6 @@ const AGENT_STATES = [
   { src: "/assets/agents/Completed agent.svg",        label: "COMPLETED" },
   { src: "/assets/agents/Failed agent.svg",           label: "FAILED" },
   { src: "/assets/agents/Paused agent.svg",           label: "PAUSED" },
-]
-
-const TASKBAR_KEYFRAMES = [
-  {
-    label: "EMPTY PIN",
-    detail: "A familiar return point exists before work starts.",
-    src: "/assets/Frame 2147238301.png",
-    alt: "Taskbar evolution keyframe 1 — agent pinned to the taskbar with no active work",
-  },
-  {
-    label: "ACTIVE STATE",
-    detail: "The pin communicates ongoing work without requiring the app to stay open.",
-    src: "/assets/Frame 2147238302.png",
-    alt: "Taskbar evolution keyframe 2 — pinned agent showing an in-progress state indicator",
-  },
-  {
-    label: "HOVER-CARD EXPANDED",
-    detail: "Progress detail appears on demand, keeping the taskbar compact.",
-    src: "/assets/Frame 2147238303.png",
-    alt: "Taskbar evolution keyframe 3 — hover card expanded from the taskbar icon showing step detail",
-  },
 ]
 
 const AGENT_HOME_OPTIONS = [
@@ -201,12 +181,12 @@ export default function AgentsInWindowsPage() {
             </div>
             <Figure
               number="0.1"
-              caption="Researcher agent surfacing inside the Windows shell. Desktop scene with grid, telemetry overlay, and taskbar entry."
+              caption="Illustration of the Researcher agent reporting progress."
             >
               <div className="relative aspect-[16/9] w-full overflow-hidden sm:aspect-[2/1] lg:aspect-[1120/442]">
                 <Image
                   src="/images/agents/hero-demo.png"
-                  alt="Windows desktop with a Researcher agent panel showing a checklist of in-progress sub-tasks"
+                  alt="Illustration of a Researcher agent panel showing a checklist of in-progress tasks"
                   fill
                   priority
                   sizes="(min-width: 1280px) 1024px, 100vw"
@@ -261,9 +241,9 @@ export default function AgentsInWindowsPage() {
               <div className="agents-context-figure flex items-start">
                 <Figure
                   number="1.1"
-                  caption="Windows desktop with agent taskbar concept"
+                  caption="Concept for an agent progress card and taskbar entry."
                   src="/images/agents/context-desktop.png"
-                  alt="Windows desktop with agent taskbar concept"
+                  alt="Concept diagram of an agent progress card above taskbar icons"
                   width={1646}
                   height={1015}
                   className="my-0"
@@ -314,17 +294,17 @@ export default function AgentsInWindowsPage() {
             <div className="agents-problem-evidence mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
               <Figure
                 number="2.1"
-                caption="Fragmentation across apps. Windows has no insight into what is running within each window."
+                caption="Concept diagram: agent work fragmented across separate surfaces."
                 src="/images/agents/problem-fragmentation.png"
-                alt="Fragmented agent experience across multiple windows"
+                alt="Diagram showing separate agent surfaces alongside Windows"
                 width={1464}
                 height={734}
               />
               <Figure
                 number="2.2"
-                caption="Windows extends for agent observability. Consistent patterns for monitoring and management."
+                caption="Concept diagram: a shared Windows surface for observing agents."
                 src="/images/agents/problem-observability.png"
-                alt="Windows with unified agent observability"
+                alt="Diagram showing several agents alongside a shared Windows surface"
                 width={1464}
                 height={734}
               />
@@ -366,7 +346,7 @@ export default function AgentsInWindowsPage() {
               label="Process"
               title="Anchoring to what users already know"
             />
-            <div className="mt-10 grid grid-cols-1 items-start gap-x-20 gap-y-10 lg:mt-14 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
+            <div className="mt-10 max-w-[68ch] lg:mt-14">
               <div>
                 <div className="[&>p+p]:mt-4!">
                   <p className="t-body">
@@ -385,40 +365,14 @@ export default function AgentsInWindowsPage() {
                   </p>
                 </div>
               </div>
-
-              <ol
-                className="agents-process-sequence flex flex-col gap-8"
-                aria-label="Taskbar agent design progression"
-              >
-                {TASKBAR_KEYFRAMES.map((kf, i) => (
-                  <li key={kf.label}>
-                    <figure className="m-0">
-                      <figcaption className="mb-3 flex flex-col items-start gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-                        <span className="t-mono-label text-[color:var(--text-secondary)]">
-                          FIG. 3.{i + 1}
-                        </span>
-                        <span className="t-mono-label">{kf.label}</span>
-                      </figcaption>
-                      <Image
-                        src={kf.src}
-                        alt={kf.alt}
-                        width={1302}
-                        height={314}
-                        sizes="(min-width: 1024px) 720px, 100vw"
-                        className="block h-auto w-full"
-                      />
-                      <p className="t-mono-caption mt-3">{kf.detail}</p>
-                    </figure>
-                  </li>
-                ))}
-              </ol>
             </div>
-          </div>
             <DecisionTable label="Choosing a home for agents" options={[
               { option: "Inside the originating app", tradeoff: "Agent work remains fragmented across the apps that start it.", disposition: "Move visibility to the OS." },
               { option: "Independent taskbar pin", tradeoff: "A familiar return point, but progress needs a shared state language.", disposition: "Chosen foundation: familiar location, new states." },
               { option: "Dedicated agent workspace", tradeoff: "Adds another place to learn and manage before the interaction model is established.", disposition: "Keep the initial model progressive." },
             ]} />
+            <TaskbarSequence />
+          </div>
         </section>
 
         {/* ── 04 Taskbar ── Body column + full-width media ── */}

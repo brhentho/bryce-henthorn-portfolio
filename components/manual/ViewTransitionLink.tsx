@@ -8,6 +8,7 @@ import { transitionTo } from "@/lib/page-transition"
 type Props = LinkProps &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> & {
     children: ReactNode
+    instant?: boolean
   }
 
 function focusDestinationHeading(previousLocation: string) {
@@ -55,7 +56,7 @@ function focusDestinationHeading(previousLocation: string) {
  * (cmd/ctrl/shift, middle/right button) or when an upstream onClick
  * calls preventDefault.
  */
-export function ViewTransitionLink({ onClick, href, children, ...rest }: Props) {
+export function ViewTransitionLink({ onClick, href, children, instant = false, ...rest }: Props) {
   const router = useRouter()
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -68,10 +69,15 @@ export function ViewTransitionLink({ onClick, href, children, ...rest }: Props) 
     const destination = new URL(target, window.location.href)
     if (destination.pathname === window.location.pathname) return
 
-    e.preventDefault()
-    const destinationPathname = destination.pathname
     const previousLocation =
       window.location.pathname + window.location.search + window.location.hash
+    if (instant) {
+      focusDestinationHeading(previousLocation)
+      return
+    }
+
+    e.preventDefault()
+    const destinationPathname = destination.pathname
 
     void transitionTo(() => {
       // `scroll: false` keeps Next from re-scrolling after the route

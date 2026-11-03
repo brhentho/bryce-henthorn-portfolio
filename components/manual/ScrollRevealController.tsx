@@ -10,13 +10,11 @@ const SELECTOR = "[data-reveal]:not([data-revealed='true'])"
  * element and flips `data-revealed="true"` on first viewport entry, then
  * unobserves. CSS in recall.css handles the actual animation.
  *
- * SSR-safe by design: server renders elements with `data-reveal` and no
- * `data-revealed`, which CSS treats as the hidden initial state. No flash.
+ * Content remains visible before observation so an interrupted observer
+ * cannot leave a section hidden.
  *
- * The initial query is not enough on its own — anything rendered after mount
- * (client-only subtrees, a soft route change that reuses this controller)
- * would never be observed and would stay stuck at `opacity: 0`. So the scan
- * re-runs on `pathname` and a MutationObserver picks up nodes added later.
+ * The scan re-runs on `pathname` and a MutationObserver picks up nodes added
+ * after mount, including client-only subtrees.
  */
 export function ScrollRevealController() {
   const pathname = usePathname()
@@ -49,7 +47,6 @@ export function ScrollRevealController() {
       document
         .querySelectorAll<HTMLElement>(SELECTOR)
         .forEach((el) => {
-          el.setAttribute("data-reveal-pending", "true")
           observer.observe(el)
         })
     }

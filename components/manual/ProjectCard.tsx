@@ -2,6 +2,8 @@ import Image from "next/image"
 import { ViewTransitionLink } from "./ViewTransitionLink"
 
 type Props = {
+  id: string
+  index: string
   href: string
   eyebrow: string
   title: string
@@ -13,23 +15,26 @@ type Props = {
 }
 
 /** Independent text and image lanes keep both the argument and the UI legible. */
-export function ProjectCard({ href, eyebrow, title, proof, imgSrc, imgAlt, imagePosition = "center bottom", eager = false }: Props) {
+export function ProjectCard({ id, index, href, eyebrow, title, proof, imgSrc, imgAlt, imagePosition = "center bottom", eager = false }: Props) {
   return (
-    <ViewTransitionLink href={href} data-project-card className="block group">
-      <article className="project-card border border-[color:var(--rule)] transition-[border-color] duration-[var(--duration-fast-ui)] group-hover:border-[color:var(--rule-strong)] group-focus-visible:border-[color:var(--rule-strong)]">
-        <div className="project-card-content">
-          <p className="t-mono-label pcard-label">{eyebrow}</p>
-          <h3 className="t-h1 pcard-title text-balance">{title}</h3>
-          <p className="t-mono-colophon pcard-proof">{proof}</p>
-          <span className="t-mono-caption project-card-read">Read case study <span aria-hidden="true">↗</span></span>
+    <article id={id} className="showcase-chapter">
+      <div className="showcase-frame">
+        <div className="showcase-heading t-mono-label"><span>{index} / 03</span><span>Selected work</span></div>
+        <div className="showcase-grid">
+          <div className="project-card-content">
+            <h3 className="t-h1 text-balance">{eyebrow}</h3>
+            <p className="t-body showcase-description">{title}</p>
+            <p className="t-mono-colophon pcard-proof">{proof}</p>
+            <ViewTransitionLink href={href} instant className="t-mono-caption showcase-link">Read case study <span aria-hidden="true">↗</span></ViewTransitionLink>
+          </div>
+          <div className="showcase-media">
+            <Image src={imgSrc} alt={imgAlt} fill
+              sizes="(min-width: 1280px) 680px, (min-width: 768px) 60vw, 100vw"
+              className="showcase-image object-contain"
+              style={{ objectPosition: imagePosition }} loading={eager ? "eager" : "lazy"} />
+          </div>
         </div>
-        <div className="project-card-media">
-          <Image src={imgSrc} alt={imgAlt} fill
-            sizes="(min-width: 1280px) 680px, (min-width: 768px) 60vw, 100vw"
-            className="project-card-image object-contain"
-            style={{ objectPosition: imagePosition }} loading={eager ? "eager" : "lazy"} />
-        </div>
-      </article>
-    </ViewTransitionLink>
+      </div>
+    </article>
   )
 }

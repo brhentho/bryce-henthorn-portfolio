@@ -80,8 +80,11 @@
 .manual .simulation-intro { max-width: 76ch; }
 .manual .simulation-states { border: 0; padding: 0; min-width: 0; margin: 2rem 0; }
 .manual .simulation-state-buttons { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
-.manual .simulation-state-buttons button { display: flex; align-items: center; gap: .5rem; min-height: 48px; padding: .5rem .75rem; border: 1px solid var(--rule); background: var(--ink); cursor: pointer; }
+.manual .simulation-state-buttons button { display: flex; align-items: center; gap: .5rem; min-height: 48px; padding: .5rem .75rem; border: 1px solid var(--rule); background: var(--ink); cursor: pointer; transition: border-color var(--duration-fast-ui) var(--ease-out-quad), background-color var(--duration-fast-ui) var(--ease-out-quad); }
 .manual .simulation-state-buttons button[aria-pressed="true"] { border-color: var(--paper); background: color-mix(in srgb, var(--paper) 8%, var(--ink)); }
+.manual .simulation-state-buttons button:hover,
+.manual .simulation-state-buttons button:focus-visible { border-color: var(--paper); }
+.manual .simulation-state-buttons button[aria-pressed="true"] .t-mono-caption { color: var(--text-primary); }
 .manual .simulation-split { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 3vw, 3rem); }
 .manual .simulation-surface { min-width: 0; }
 .manual .simulation-card { border: 1px solid var(--rule-strong); padding: clamp(1rem, 2vw, 2rem); }
@@ -92,7 +95,7 @@
 .manual .simulation-steps li[aria-current="step"] { color: var(--paper); }
 .manual .simulation-steps li[data-done="true"] { color: var(--accent-signal); }
 .manual .simulation-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
-.manual .simulation-actions button { font-family: var(--font-mono); font-size: .75rem; min-height: 44px; padding: .6rem .85rem; border: 1px solid var(--rule-strong); color: var(--paper); background: var(--ink); cursor: pointer; }
+.manual .simulation-actions button { font-family: var(--font-mono); font-size: .75rem; min-height: 44px; padding: .6rem .85rem; border: 1px solid var(--rule-strong); color: var(--paper); background: var(--ink); cursor: pointer; transition: background-color var(--duration-fast-ui) var(--ease-out-quad), border-color var(--duration-fast-ui) var(--ease-out-quad); }
 .manual .simulation-actions button:hover:not(:disabled) { background: color-mix(in srgb, var(--paper) 8%, var(--ink)); }
 .manual .simulation-actions button:disabled { color: var(--text-tertiary); border-color: var(--rule-hairline); cursor: not-allowed; }
 .manual .simulation-contract { display: grid; gap: 1.25rem; margin-block: 2rem; }
@@ -2078,6 +2081,16 @@
   transition-delay: 760ms;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .manual .manual-cover-plate[data-revealed="true"] .manual-cover-shutter {
+    animation: cover-open var(--duration-slow-ui) var(--ease-in-out-sine) both;
+  }
+  @keyframes cover-open {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
+  }
+}
+
 .manual [data-reveal][data-reveal-pending="true"]:not([data-revealed="true"]) {
   opacity: 0;
   transform: translateY(var(--reveal-distance));
@@ -2085,6 +2098,116 @@
 .manual [data-reveal][data-revealed="true"] {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Project chapters retain ordinary document flow when sticky is unsuitable. */
+.manual .showcase-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.5rem;
+  margin-block: 2rem;
+}
+.manual .showcase-index a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: .5rem;
+  text-decoration: none;
+}
+.manual .showcase-index a:hover,
+.manual .showcase-index a:focus-visible { color: var(--text-primary); }
+.manual .showcase-index a span { color: var(--text-secondary); }
+.manual .showcase-chapter { margin-block: 2rem; }
+.manual .showcase-frame {
+  border: 1px solid var(--rule);
+  background: var(--ink);
+}
+.manual .showcase-heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--rule-hairline);
+}
+.manual .showcase-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+}
+.manual .showcase-description { max-width: 34ch; }
+.manual .showcase-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  min-height: 44px;
+  align-self: flex-start;
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+.manual .showcase-link:hover { text-decoration-color: var(--text-primary); }
+.manual .showcase-media {
+  position: relative;
+  min-width: 0;
+  min-height: 360px;
+  overflow: hidden;
+  border-left: 1px solid var(--rule-hairline);
+}
+.manual .showcase-image { object-position: center; }
+@media (min-width: 1024px) and (min-height: 52rem) and (prefers-reduced-motion: no-preference) {
+  .manual .showcase-chapter { min-height: calc(100svh + 8rem); }
+  .manual .showcase-frame { position: sticky; top: 5rem; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .manual .showcase-image {
+      animation: showcase-arrival linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 75%;
+    }
+    @keyframes showcase-arrival {
+      from { clip-path: inset(0 10% 0 0); transform: translateY(12px); }
+      to { clip-path: inset(0); transform: translateY(0); }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .manual .showcase-grid { grid-template-columns: 1fr; }
+  .manual .showcase-media { min-height: 0; aspect-ratio: 16 / 10; border-left: 0; border-top: 1px solid var(--rule-hairline); }
+}
+
+.manual .taskbar-sequence { min-width: 0; margin-top: var(--space-block); }
+.manual .taskbar-sequence-visual figure { margin: 0; }
+.manual .taskbar-sequence-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  padding: 1rem;
+  border: 1px solid var(--rule);
+}
+.manual .taskbar-sequence-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.manual .taskbar-sequence-visual figcaption { margin-top: .75rem; }
+.manual .taskbar-sequence-steps { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.manual .taskbar-sequence-steps li { border-top: 1px solid var(--rule); }
+.manual .taskbar-sequence-steps button {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 1rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 1rem 0;
+  text-align: left;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.manual .taskbar-sequence-steps button strong { display: block; font-weight: 500; }
+.manual .taskbar-sequence-steps button .t-body-sm { display: block; margin-top: .25rem; }
+.manual .taskbar-sequence-steps button[aria-pressed="true"] strong { text-decoration: underline; text-underline-offset: .25em; }
+.manual .taskbar-sequence-steps button:hover strong,
+.manual .taskbar-sequence-steps button:focus-visible strong { text-decoration: underline; text-underline-offset: .25em; }
+@media (min-width: 1024px) and (min-height: 52rem) and (prefers-reduced-motion: no-preference) {
+  .manual .taskbar-sequence { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 3rem; align-items: start; }
+  .manual .taskbar-sequence-visual { position: sticky; top: 6rem; }
+  .manual .taskbar-sequence-steps { margin: 0; }
+  .manual .taskbar-sequence-steps li { min-height: 12rem; }
 }
 
 /* Hairline draw-in inside any revealed section */

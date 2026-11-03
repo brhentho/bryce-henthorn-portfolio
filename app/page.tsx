@@ -19,17 +19,21 @@ const CONTENTS = [
 
 const PROJECTS = [
   {
+    id: "project-agents",
+    index: "01",
     href: "/agents-in-windows",
     eyebrow: "AGENTS IN WINDOWS",
     title: "Making AI agents visible and interruptible in Windows.",
     proof: "DESIGN LEAD · 3 TEAMS",
     imgSrc: "/images/agents/hero-demo.png",
     imgAlt:
-      "Windows desktop with a Researcher agent panel showing a checklist of in-progress sub-tasks",
+      "Illustration of a Researcher agent panel showing a checklist of in-progress tasks",
     imagePosition: "center bottom",
     eager: true,
   },
   {
+    id: "project-recall",
+    index: "02",
     href: "/recall",
     eyebrow: "WINDOWS RECALL",
     title: "Designing semantic search for everything you’ve seen.",
@@ -41,6 +45,8 @@ const PROJECTS = [
     eager: false,
   },
   {
+    id: "project-teams",
+    index: "03",
     href: "/teams-for-education",
     eyebrow: "TEAMS FOR EDUCATION",
     title: "Modernizing online classes for an authentic virtual experience.",
@@ -137,7 +143,14 @@ export default function HomePage() {
           >
             <div className="relative z-10">
               <SectionLabel number="01" label="Selected Work" title="Case studies" />
-              <div className="mt-6 space-y-10 lg:mt-8 lg:space-y-12">
+              <nav className="showcase-index" aria-label="Jump to a project">
+                {PROJECTS.map((project) => (
+                  <a key={project.id} href={`#${project.id}`} className="t-mono-label">
+                    <span>{project.index}</span> {project.eyebrow}
+                  </a>
+                ))}
+              </nav>
+              <div className="showcase-list">
                 {PROJECTS.map((p) => (
                   <ProjectCard key={p.href} {...p} />
                 ))}
