@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
+import { RegistrationMark } from "./RegistrationMark"
 
 const STEPS = [
   {
@@ -39,14 +40,29 @@ export function TaskbarSequence() {
   useEffect(() => {
     const sequence = sequenceRef.current
     if (!sequence || !("IntersectionObserver" in window)) return
+    const desktopMotion = window.matchMedia("(min-width: 1024px) and (min-height: 52rem) and (prefers-reduced-motion: no-preference)")
+    const steps = Array.from(sequence.querySelectorAll<HTMLElement>("[data-step]"))
     const observer = new IntersectionObserver((entries) => {
-      if (manuallySelected.current || !window.matchMedia("(min-width: 1024px) and (min-height: 52rem) and (prefers-reduced-motion: no-preference)").matches) return
+      if (manuallySelected.current || !desktopMotion.matches) return
       for (const entry of entries) {
         if (entry.isIntersecting) setSelected(Number(entry.target.getAttribute("data-step")))
       }
     }, { rootMargin: "-30% 0px -45% 0px" })
-    sequence.querySelectorAll("[data-step]").forEach((step) => observer.observe(step))
-    return () => observer.disconnect()
+    steps.forEach((step) => observer.observe(step))
+    const resumeOnScroll = () => {
+      if (!manuallySelected.current || !desktopMotion.matches) return
+      manuallySelected.current = false
+      const closest = steps.reduce((best, step) => {
+        const distance = Math.abs(step.getBoundingClientRect().top + step.offsetHeight / 2 - window.innerHeight * .425)
+        return distance < best.distance ? { step, distance } : best
+      }, { step: steps[0], distance: Infinity })
+      if (closest.step) setSelected(Number(closest.step.getAttribute("data-step")))
+    }
+    window.addEventListener("scroll", resumeOnScroll, { passive: true })
+    return () => {
+      observer.disconnect()
+      window.removeEventListener("scroll", resumeOnScroll)
+    }
   }, [])
 
   return (
@@ -54,9 +70,10 @@ export function TaskbarSequence() {
       <div className="taskbar-sequence-visual">
         <figure>
           <div className="taskbar-sequence-image">
+            <RegistrationMark className="absolute -top-[6px] -left-[6px]" />
             <Image key={current.src} src={current.src} alt={current.alt} width={current.width} height={current.height} sizes="(min-width: 1024px) 720px, 100vw" />
           </div>
-          <figcaption className="t-mono-caption">FIG. 3.{selected + 1} · {current.detail}</figcaption>
+          <figcaption className="t-mono-caption">FIG. 3.1–3.3 · Taskbar concepts and a progress card still.</figcaption>
         </figure>
       </div>
       <ol className="taskbar-sequence-steps" aria-label="Taskbar design progression">
@@ -66,6 +83,16 @@ export function TaskbarSequence() {
               <span className="t-mono-label">{String(index + 1).padStart(2, "0")}</span>
               <span><strong>{step.label}</strong><span className="t-body-sm">{step.detail}</span></span>
             </button>
+            <figure className="taskbar-mobile-figure">
+              <div className="taskbar-mobile-frame">
+                <RegistrationMark className="absolute -top-[6px] -left-[6px]" />
+                <Image src={step.src} alt={step.alt} width={step.width} height={step.height} sizes="100vw" className={index === 2 ? "taskbar-mobile-detail" : undefined} />
+              </div>
+              <figcaption className="t-mono-caption">
+                FIG. 3.{index + 1} · {step.detail}
+                {index === 2 && <> <a href={step.src}>View full image</a></>}
+              </figcaption>
+            </figure>
           </li>
         ))}
       </ol>

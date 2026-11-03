@@ -2174,8 +2174,10 @@
 }
 
 .manual .taskbar-sequence { min-width: 0; margin-top: var(--space-block); }
+.manual .taskbar-sequence-visual { display: none; }
 .manual .taskbar-sequence-visual figure { margin: 0; }
 .manual .taskbar-sequence-image {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2203,11 +2205,18 @@
 .manual .taskbar-sequence-steps button[aria-pressed="true"] strong { text-decoration: underline; text-underline-offset: .25em; }
 .manual .taskbar-sequence-steps button:hover strong,
 .manual .taskbar-sequence-steps button:focus-visible strong { text-decoration: underline; text-underline-offset: .25em; }
+.manual .taskbar-mobile-figure { margin: 0 0 2rem; }
+.manual .taskbar-mobile-frame { position: relative; border: 1px solid var(--rule); }
+.manual .taskbar-mobile-frame img { display: block; width: 100%; height: auto; }
+.manual .taskbar-mobile-frame img.taskbar-mobile-detail { aspect-ratio: 1; object-fit: cover; object-position: 70% center; }
+.manual .taskbar-mobile-figure figcaption { margin-top: .75rem; }
+.manual .taskbar-mobile-figure a { text-decoration: underline; }
 @media (min-width: 1024px) and (min-height: 52rem) and (prefers-reduced-motion: no-preference) {
   .manual .taskbar-sequence { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 3rem; align-items: start; }
-  .manual .taskbar-sequence-visual { position: sticky; top: 6rem; }
+  .manual .taskbar-sequence-visual { display: block; position: sticky; top: 6rem; }
   .manual .taskbar-sequence-steps { margin: 0; }
   .manual .taskbar-sequence-steps li { min-height: 12rem; }
+  .manual .taskbar-mobile-figure { display: none; }
 }
 
 /* Hairline draw-in inside any revealed section */

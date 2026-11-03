@@ -9,8 +9,10 @@ viewports, each project has a short sticky chapter; on smaller viewports and
 with reduced motion it remains a normal list. A scroll-linked image reveal is
 progressively enhanced where supported. The case-study link navigates directly,
 using the same image on both sides rather than introducing a second transition.
-The taskbar sequence offers direct controls with all three explanations visible;
-the existing simulation remains illustrative and runs locally.
+The taskbar sequence offers direct controls with all three explanations visible.
+On mobile and with reduced motion, the images sit alongside their steps rather
+than depending on a pinned visual; the cropped progress-card still links to its
+full context. The existing simulation remains illustrative and runs locally.
 
 ## Artifact gaps
 
