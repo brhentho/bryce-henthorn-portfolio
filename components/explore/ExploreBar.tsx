@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { DIRECTIONS, caseHref, homeHref } from "@/lib/explore/content"
 import { useEnhanced, treatmentHref } from "./Treatment"
+import { FinalReviewBar } from "./final/FinalReviewBar"
 
 /**
  * Review chrome for the explorations. It scrolls away with the page so it never
@@ -14,6 +15,7 @@ export function ExploreBar() {
   const current = DIRECTIONS.find((d) => pathname === homeHref(d.id) || pathname === caseHref(d.id))?.id
   const onCase = Boolean(current && pathname === caseHref(current))
   const enhanced = useEnhanced()
+  if (/^\/explore\/(synthesis|presence|signal)(\/|$)/.test(pathname)) return <FinalReviewBar />
 
   return (
     <nav className="xp-bar" aria-label="Exploration review">
@@ -58,6 +60,7 @@ export function ExploreBar() {
         </>
       )}
       <span className="xp-bar-note">Exploration · not published</span>
+      {current && <Link className="xp-bar-link" href="/explore/archive">Archive</Link>}
     </nav>
   )
 }

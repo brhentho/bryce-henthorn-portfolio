@@ -6,6 +6,8 @@ interface GradientASCIIProps {
   density?: number
   speed?: number
   glow?: number
+  flicker?: number
+  grain?: number
   intro?: boolean
   fontFamily?: string
   dpr?: number

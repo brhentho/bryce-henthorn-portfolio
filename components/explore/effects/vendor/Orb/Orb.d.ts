@@ -11,6 +11,7 @@ interface OrbProps {
   followCursor?: boolean
   rotateOnHover?: boolean
   hoverIntensity?: number
+  clickPulse?: boolean
   dpr?: number
   style?: CSSProperties
 }

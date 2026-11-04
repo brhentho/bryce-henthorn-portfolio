@@ -1,6 +1,76 @@
 # Six portfolio directions: November 2026 exploration
 
-## Active revision: original/enhanced A-C and replacement D-F
+## Active comparison: consolidation and two finalists
+
+The A-F rounds are now archived at `/explore/archive`. Their existing URLs and
+A-C Original/Enhanced choices are preserved. `/explore` is the finalist index.
+
+| Concept | Home | Agents case |
+|---|---|---|
+| `/explore/synthesis` | Direct merge: layered project plates, project-color changes, approach at the bottom. `?hero=ascii` or `?hero=orb` isolates the hero in identical type geometry. | C-derived static-dark product reveal, A's left contents/right reading grid, B's type scale. |
+| `/explore/presence` | Centered Orb behind text, stronger cursor response and larger product-led chapter entrances instead of circular atmospheric images. | More expansive product geometry and full-width evidence within the reading lane; no pinned body sections. |
+| `/explore/signal` | Quiet ASCII atmosphere and asymmetric editorial project spreads. | Alternating split layouts and paper/dark movements, with the same chosen opening and left rail. |
+
+Append `/agents-in-windows` for each case. All three use real project artifacts,
+the same factual content, and complete case arguments. Recall, Teams and About
+still link to published routes. No production page was redesigned.
+
+### Consolidated decisions
+
+- Hero -> selected projects -> approach -> contact on every homepage.
+- C's preferred case opening is retained: text above a tilted product plate that
+  grows/settles with ordinary scroll, on a static dark background.
+- A document-bounded sticky contents rail on desktop; inline contents on narrow
+  screens. No floating bottom dock or viewport-height minimum on body sections.
+- Dark/cool/plum/warm project surfaces progress into paper approach/decision
+  sections. Foreground, rules and controls use local material tokens; product
+  screenshots are never inverted. The surrounding surface color blends with
+  section scroll while an opaque local reading pane protects text contrast.
+- The supplied Hyperiux Shiny Button treatment is adapted as a native
+  ContinuityLink: conic edge, speckled mask and inner sheen, with cursor-directed
+  highlights and a fixed hit target. Focus has an equivalent distinct state.
+- Orb and ASCII have subtle idle motion and stronger pointer interaction. There
+  is no pause button in finalist heroes. Archived controls are unchanged.
+  Offscreen/hidden-tab rendering stops; reduced motion gets a composed still.
+- The Orb canvas is centered geometrically; text does not move with cursor play.
+  The synthesis hero choice persists across home/case/reload.
+
+### Scope and accessibility note
+
+This is local-only review, not a production selection or publication. Continuous
+decorative motion without a pause control still needs a specific WCAG 2.2.2
+assessment before publication. Reduced motion alone is not a claim of AA
+conformance. This known consideration is recorded rather than silently restoring
+the hero control the user rejected.
+
+Hyperiux effect-specific public-distribution rights remain to be confirmed.
+The shared artwork vendor sources and existing source notices are retained;
+the small shiny-link adaptation introduces no additional package dependency.
+
+### Consolidation checks
+
+- Eleven tests and the Webpack production build pass; all new routes prerender.
+- The 80-combination finalist matrix covers the comparison/archive indexes,
+  both Synthesis hero choices and all three home/case pairs at four viewport
+  sizes, with reduced motion on/off. No overflow, missing visible images, page
+  errors or visible text-clipping findings. Intentional sr-only clips are excluded.
+- An A-F original/enhanced smoke pass confirms the archive still renders.
+- Actual pointer tests verified a geometrically centered Orb, advancing idle
+  shader time, stronger cursor deformation, and no hero pause control.
+- Shiny-link highlights changed with pointer position while the target stayed
+  226.94 x 49.59px. Keyboard focus retains a visible 2px outline.
+- Native-scroll samples show changing case-product transforms, not held content.
+  Synthesis's hero choice persists through navigation/reload and its title keeps
+  identical geometry between the two artwork choices.
+- Independent technical review found and verified fixes for wrapping comparison
+  controls and fragmented top-navigation labels at 390px/200% text. All six
+  finalist pages retained 390px document width after repair. Sampled static
+  text/base-surface contrast was at least 8.45:1; no whole-site AA claim is implied.
+- Physical-device, Safari and Firefox verification remain outstanding.
+
+---
+
+## Archived revision: original/enhanced A-C and replacement D-F
 
 The light round-two directions and the subsequent dark Cinema / Working model /
 Design atlas revision were rejected. The historical notes below do not describe

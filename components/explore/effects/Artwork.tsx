@@ -22,7 +22,7 @@ class ArtworkBoundary extends Component<{ children: ReactNode; onError: () => vo
   render() { return this.state.failed ? null : this.props.children }
 }
 
-export function Artwork({ kind, className = "" }: { kind: Kind; className?: string }) {
+export function Artwork({ kind, className = "", presentation = "archive" }: { kind: Kind; className?: string; presentation?: "archive" | "finalist" }) {
   const ref = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
   const [visible, setVisible] = useState(false)
@@ -77,17 +77,19 @@ export function Artwork({ kind, className = "" }: { kind: Kind; className?: stri
       <div className="xp-art-still" data-poster aria-hidden="true" style={{ backgroundImage: `url(/explore/artwork/${kind}.webp)` }} />
       {active && <div className="xp-art-layer" aria-hidden="true">
         <ArtworkBoundary onError={() => setFailed(true)}>
-          <Suspense fallback={null}><Scene kind={kind} palette={palette} /></Suspense>
+          <Suspense fallback={null}><Scene kind={kind} palette={palette} finalist={presentation === "finalist"} /></Suspense>
         </ArtworkBoundary>
       </div>}
-      {!reduce && !failed && <button className="xp-art-control" type="button" aria-pressed={paused}
+      {presentation === "archive" && !reduce && !failed && <button className="xp-art-control" type="button" aria-pressed={paused}
         onClick={() => setPaused(value => !value)}>{paused ? "Resume animation" : "Pause animation"}</button>}
       {failed && <span className="xp-art-note" role="status">Still composition · graphics unavailable</span>}
     </div>
   )
 }
 
-function Scene({ kind, palette: p }: { kind: Kind; palette: Palette }) {
+function Scene({ kind, palette: p, finalist }: { kind: Kind; palette: Palette; finalist: boolean }) {
+  if (finalist && kind === "orb") return <Orb colors={[p.ice, p.white, p.blue]} backgroundColor={p.ink} size={.93} speed={.12} glow={.55} bleed={.3} trail={.4} intro={false} followCursor rotateOnHover hoverIntensity={1.8} clickPulse={false} dpr={1.25} />
+  if (finalist && kind === "ascii") return <ASCII colors={[p.ink, p.copper, p.white, p.ice]} shape="horizon" cellSize={14} density={.7} speed={.16} glow={.1} flicker={.03} grain={.025} intro={false} fontFamily={p.mono} dpr={1.25} />
   if (kind === "orb") return <Orb colors={[p.ice, p.white, p.blue]} backgroundColor={p.ink} size={.86} speed={.35} glow={.75} bleed={.6} trail={.35} intro={false} followCursor={false} rotateOnHover={false} hoverIntensity={.3} dpr={1.25} />
   if (kind === "ascii") return <ASCII colors={[p.ink, p.copper, p.white, p.ice]} shape="horizon" cellSize={14} density={.7} speed={.35} glow={.12} intro={false} fontFamily={p.mono} dpr={1.25} />
   if (kind === "ferro") return <Ferro colors={[p.white, p.ice, p.teal]} speed={.25} scale={1.2} brightness={2.6} spikeHeight={.85} sharpness={2} tilt={50} mouseStrength={.3} clickPulse={false} intro={false} dpr={1} />

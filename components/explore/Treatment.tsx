@@ -5,6 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation"
 import { createContext, useContext, useEffect, type ComponentProps, type ReactNode } from "react"
 
 const TreatmentContext = createContext(false)
+const HeroContext = createContext<"orb" | "ascii">("ascii")
 
 export function TreatmentProvider({ children }: { children: ReactNode }) {
   const search = useSearchParams()
@@ -25,8 +26,10 @@ export function TreatmentProvider({ children }: { children: ReactNode }) {
       delete root.dataset.keyboard
     }
   }, [])
-  return <TreatmentContext.Provider value={enhanced}>{children}</TreatmentContext.Provider>
+  return <TreatmentContext.Provider value={enhanced}><HeroContext.Provider value={search.get("hero") === "orb" ? "orb" : "ascii"}>{children}</HeroContext.Provider></TreatmentContext.Provider>
 }
+
+export function useHeroChoice() { return useContext(HeroContext) }
 
 export function useEnhanced() {
   return useContext(TreatmentContext)
