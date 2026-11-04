@@ -1,7 +1,8 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
+import Link, { useEnhanced } from "../Treatment"
+import { NumberPop } from "../effects/NumberPop"
 import { useRef, useState, type KeyboardEvent } from "react"
 import { AnimatePresence, motion, useTransform } from "framer-motion"
 import { useReducedMotion } from "../useReducedMotion"
@@ -28,6 +29,8 @@ const ease = [0.16, 1, 0.3, 1] as const
 
 export function BCase() {
   const active = useActiveSection(SCENE_IDS, 0.5)
+  const enhanced = useEnhanced()
+  const chapter = Math.max(0, SCENES.findIndex(scene => scene.id === active))
 
   return (
     <div className="xb xb-case">
@@ -67,6 +70,7 @@ export function BCase() {
       <ExploreFooter />
 
       <nav className="xb-dock" aria-label="Chapters">
+        {enhanced && <span className="xp-mono xb-current-chapter"><NumberPop value={String(chapter + 1).padStart(2, "0")} /> / 06</span>}
         {SCENES.map((s, i) => (
           <a key={s.id} href={`#${s.id}`} aria-current={active === s.id ? "location" : undefined}>
             <span className="xp-mono">{String(i + 1).padStart(2, "0")}</span>

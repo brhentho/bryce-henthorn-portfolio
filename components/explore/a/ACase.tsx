@@ -1,7 +1,8 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
+import Link, { useEnhanced } from "../Treatment"
+import { TyndallLight } from "../effects/Artwork"
 import { useRef, type CSSProperties, type MouseEvent } from "react"
 import { motion, useTransform } from "framer-motion"
 import { useReducedMotion } from "../useReducedMotion"
@@ -28,6 +29,7 @@ const SHEET_IDS = AGENTS.keyframes.map((_, i) => `keyframe-${i + 1}`)
 const agents = PROJECTS[0]
 
 export function ACase() {
+  const enhanced = useEnhanced()
   const reduce = useReducedMotion()
   const heroRef = useRef<HTMLElement>(null)
   const scrollYProgress = useSectionProgress(heroRef, ["start start", "end start"])
@@ -49,6 +51,7 @@ export function ACase() {
       <header ref={heroRef} className="xa-case-hero">
         <motion.div className="xa-case-atmos" style={reduce ? undefined : { y: atmosY }} aria-hidden="true">
           <Image src={agents.atmosphere} alt="" fill priority sizes="100vw" className="xp-cover" />
+          {enhanced && <TyndallLight />}
         </motion.div>
         <motion.div style={reduce ? undefined : { y: titleY }} className="xa-chapter-head">
           <p className="xp-mono">{AGENTS.eyebrow}</p>

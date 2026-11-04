@@ -1,5 +1,112 @@
 # Six portfolio directions: November 2026 exploration
 
+## Active revision: original/enhanced A-C and replacement D-F
+
+The light round-two directions and the subsequent dark Cinema / Working model /
+Design atlas revision were rejected. The historical notes below do not describe
+the current D-F routes.
+
+The active explorations deliberately permit ambient graphics, dimensional
+composition and expressive typography. The Windows-control-surface aesthetic is
+not their review standard. Production styles remain unchanged. Review concerns
+are readability, coherent art direction, accessible interaction and observed
+runtime behavior, not a blanket prohibition on decorative animation.
+
+| Direction | Homepage | Agents case |
+|---|---|---|
+| A / Layered editorial | Original composition; Enhanced adds light shafts to the existing cover | Original layered argument with the same lighting treatment at the opening |
+| B / Project destinations | Original porthole/dial; Enhanced trials CrystalizedBall in the abstract hero and Number pop-in on the destination | Original case and dock; Enhanced adds the current chapter number |
+| C / Spatial story | Original scatter/converge and cylinder; Enhanced trials a Moss Grid floor | Original spatial argument; Enhanced adds the floor, step-number motion and a clearly labeled response replay |
+| D / Luminous chapters | Orb behind the statement, then large vertical project chapters | Product-led argument with comparison, alternatives, taskbar details, simulation, constraints and invocation |
+| E / Signal index | Gradient ASCII opening, large project-name index and a responsive preview | Flowing reasoning alongside sticky evidence, with direct chapter links |
+| F / Material gallery | Ferrofluid opening and asymmetric project tiles with explicit inline inspection | Evidence-first article, enlarged artifact dialogs and the illustrative response replay |
+
+### Review
+
+Open `http://localhost:3471/explore`. Every direction includes a homepage and an
+Agents case. A-C support `?treatment=enhanced`; bare URLs remain Original. The
+review bar preserves the treatment between Home and Case. Enhanced and Original
+links are also exposed on the comparison index.
+
+All six home/case pairs are reviewed together. There is no homepage-only approval
+gate in this revision. Recall, Teams and About links still lead to published
+pages; those routes are not redesigned here.
+
+### Motion and artwork
+
+- Artwork is loaded per active route/treatment, not on the comparison index.
+  Pause, reduced motion, hidden tabs and offscreen heroes stop the renderer.
+  Unavailable graphics produce a labeled still composition, not missing text.
+- Shader code from the supplied references is retained under
+  `components/explore/effects/vendor/`, with typed public interfaces around the
+  JavaScript references. Local changes include resolution limits, readiness,
+  pointer/control isolation and cleanup. CrystalizedBall uses OGL; Moss Grid
+  uses Three/R3F/postprocessing. Orb, GradientASCII and Ferrofluid are raw WebGL2.
+- Number pop-in uses the transitions.dev changed-digit treatment with local
+  duration/easing/stagger tokens, tabular numerals and complete accessible values.
+  It does not invent metrics or count up from zero.
+- AI Response only animates newly arriving chunks of an explicitly prerecorded
+  example. It is not a live model, and no case-study prose is streamed. The sample
+  citation has no URL and is intentionally not a link.
+- F's image-filled heading is intentional, approved reference-driven typography.
+  A generic "gradient text" lint warning is not an aesthetic veto. Navigation,
+  evidence captions and body text remain solid and readable.
+- F's colored menu edge represents the layered navigation treatment, not an
+  accent attached to a content card. Its side-border lint warning is intentional.
+- Staggered-menu, content-reveal, proximity and masked-type treatments are adapted
+  to the existing motion stack rather than introducing GSAP just for demo parity.
+  Decrypted Text and Letter Glitch remain uninstalled alternatives.
+
+### Sources and distribution
+
+React Bits components retain the MIT + Commons Clause notice in
+`components/explore/effects/vendor/NOTICE.txt`. Number pop-in and SmoothUI AI
+Response have adjacent source/license notices. Tyndall lighting, Skiper44 scroll
+focus and Hyperiux Shiny Button informed locally adapted treatments.
+
+The supplied Moss Grid code is for this local exploration. Verify its
+effect-specific Hyperiux license before public distribution. No access to a
+Skiper Pro license, deployment, push or public publication is implied.
+
+### Verification of the active revision
+
+- Typecheck, nine tests (five simulation regressions and four response/number
+  tests), and the Webpack production build pass.
+- The route matrix covered 152 combinations: comparison index plus 18
+  home/case/treatment combinations, four viewport sizes, and reduced motion on/off.
+  No horizontal overflow, missing visible images or renderer fallback occurred.
+  Three hydration warnings came from the audit injecting an inline HTML style;
+  the corrected harness and targeted rechecks were clean. Intentional screen-reader
+  clipping is classified separately from visible text.
+- All published routes were audited at 1440/1024/390. The untouched
+  `/experiments/editorial-motion` page retains five clipping findings in its
+  experimental word treatment; these are not introduced by the explorations.
+- Browser interaction checks cover Original/Enhanced navigation and reload,
+  project focus, actual number updates, artwork pause/resume and live motion
+  preference changes, menu Escape/focus return and interrupted reopen, tile
+  inspection, image dialogs and response replay.
+- The independent technical review verified 390px/200% text behavior, unsupported
+  WebGL and actual context loss, and repeated renderer remounts. Findings fixed:
+  nested layout motion under reduced motion/keyboard, overlapping title/detail
+  during expansion, dim fallback text beneath the scrim, and stale variable-glyph
+  widths after enlargement. The fallback status measured about 9.9:1 contrast.
+- An additional desktop B check caught its hero copy intercepting the visible
+  pause button. Enhanced-mode copy now fits its content; paused B has zero
+  canvases, drawing calls and animation-frame callbacks in the confirmation sample.
+- Production-build frame-pacing samples used this Windows host's AMD Radeon
+  8060S at DPR 1, desktop and mobile-sized viewports. These are local browser
+  measurements, not certification of phone GPU, thermal or memory behavior.
+  Physical phones, Safari and Firefox remain unverified.
+- With JavaScript disabled, D/E/F still render the headline, real project links
+  and locally captured artwork posters.
+- The standalone local production server cannot serve Vercel's
+  `/_vercel/insights/script.js`; that pre-existing platform telemetry request
+  returns 404 locally. It is classified separately from application failures.
+
+---
+
+## Historical exploration record
+
 Approved scope:
 - Build two rounds of three working, distinct directions, each with a homepage and a representative
   Agents in Windows case study.

@@ -36,20 +36,20 @@ export const DIRECTIONS: {
   {
     id: "direction-d",
     letter: "D",
-    name: "Cinema",
-    idea: "An art-directed visual essay. Expansive images, intimate details, and a filmstrip you direct.",
+    name: "Luminous chapters",
+    idea: "An atmospheric opening becomes a sequence of immersive project chapters. Follow the work into the decisions.",
   },
   {
     id: "direction-e",
     letter: "E",
-    name: "Working model",
-    idea: "The product is the argument. Operate the interface, then inspect the decisions behind it.",
+    name: "Signal index",
+    idea: "A living typographic landscape, a direct index of the work, and evidence beside the decisions.",
   },
   {
     id: "direction-f",
     letter: "F",
-    name: "Design atlas",
-    idea: "A map of decisions and evidence. Trace the thinking, or go directly to the artifact.",
+    name: "Material gallery",
+    idea: "A sculptural opening and an asymmetric wall of work. Inspect each artifact where you found it.",
   },
 ]
 

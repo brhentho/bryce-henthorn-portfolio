@@ -109,6 +109,13 @@ html:has(.xr) { scroll-behavior: auto; }
 .xr .xp-btn { text-transform: none; letter-spacing: 0; border-radius: 0.375rem; }
 .xr-title-arrive { animation: xr-title var(--duration-hero) var(--ease-out-expo) both; }
 @keyframes xr-title { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── Dark revision foundation ── */
+.xr .xr-word { --hero-enter-delay: calc(var(--stagger-word) * var(--xr-word, 0)); }
+html[data-xr-handoff] .xr .hero-intro-word { animation-play-state: paused; }
+::view-transition-group(direction-d-artifact), ::view-transition-group(direction-e-artifact), ::view-transition-group(direction-f-artifact) { animation-duration: var(--duration-route); animation-timing-function: var(--ease-out-expo); }
+.xr-display { font-family: var(--font-display), sans-serif; font-weight: 500; letter-spacing: -0.055em; line-height: var(--leading-display-xl); }
+
 @media (prefers-reduced-motion: reduce) {
   .xr-title-arrive { animation: none; }
   .xr *, .xr *::before, .xr *::after { scroll-behavior: auto !important; transition: none !important; }

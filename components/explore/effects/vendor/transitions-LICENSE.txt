@@ -1,0 +1,11 @@
+Number pop-in, adapted from Transitions.dev by Jakub Antalik.
+https://github.com/Jakubantalik/transitions.dev/blob/main/skills/transitions-dev/02-number-pop-in.md
+https://transitions.dev/terms.html
+
+The transitions and skills may be used, modified and shipped in unlimited
+personal and commercial projects. Do not redistribute the library itself as
+a competing transitions library or kit. CLI tooling is MIT.
+
+Local adaptation scopes tokens to /explore, maps duration/easing/stagger to
+portfolio tokens, and uses React keys to re-enter changed digits rather than
+imperatively replacing DOM and forcing synchronous reflow.

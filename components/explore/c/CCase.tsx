@@ -1,7 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
+import Link, { useEnhanced } from "../Treatment"
+import { Artwork } from "../effects/Artwork"
+import { ResponseReplay } from "../effects/ResponseReplay"
 import { useRef, useState, type KeyboardEvent } from "react"
 import {
   type MotionValue,
@@ -90,6 +92,7 @@ export function CCase() {
 
 /** The hero image arrives as a tilted plane and settles flat as the reader moves in. */
 function Hero() {
+  const enhanced = useEnhanced()
   const { reduce } = useSpatial()
   const ref = useRef<HTMLElement>(null)
   const scrollYProgress = useSectionProgress(ref, ["start start", "end start"])
@@ -98,7 +101,7 @@ function Hero() {
 
   return (
     <header id="top" ref={ref} className="xc-case-hero">
-      <div className="xc-horizon" aria-hidden="true" />
+      {enhanced ? <Artwork kind="moss" className="xc-ambient" /> : <div className="xc-horizon" aria-hidden="true" />}
       <div className="xc-case-hero-copy">
         <p className="xp-mono">{AGENTS.eyebrow}</p>
         <RevealWords as="h1" className="xp-display xc-case-title" text={AGENTS.title} delay={100} />
@@ -378,6 +381,7 @@ function Taskbar() {
 const TRAY = ["Start", "Search", "Files", "Browser", "Mail"]
 
 function Simulation() {
+  const enhanced = useEnhanced()
   const sim = useAgentSim()
   const [open, setOpen] = useState(true)
   const { reduce } = useSpatial()
@@ -399,7 +403,7 @@ function Simulation() {
             aria-hidden={!open}
             inert={!open}
           >
-            <SimCard sim={sim} />
+            <SimCard sim={sim} numberMotion={enhanced} />
           </motion.div>
           <div className="xc-taskbar">
             {TRAY.map((label) => (
@@ -422,6 +426,7 @@ function Simulation() {
       </div>
       <p className="xp-caption">Select the agent icon in the taskbar to raise or lower its progress card. The other taskbar shapes are placeholders.</p>
       <SimDisclaimer />
+      {enhanced && <ResponseReplay />}
     </section>
   )
 }

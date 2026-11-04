@@ -1,47 +1,59 @@
-import Link from "next/link"
-import { PERSON, PROJECTS, caseHref } from "@/lib/explore/content"
-import { StudioHeader, StudioFooter } from "../round-two/CaseParts"
-import { StudyFigure } from "../round-two/Media"
+"use client"
+
+import Image from "next/image"
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { PERSON, PROJECTS } from "@/lib/explore/content"
+import { Artwork } from "../effects/Artwork"
+import { LayeredMenu } from "../effects/LayeredMenu"
+import { ExperienceHeader, ProjectLink, Reveal } from "../ExperienceParts"
+import { StudioFooter } from "../round-two/CaseParts"
+import { XrTitle, useMotionSeconds } from "../round-two/Motion"
+import { useReducedMotion } from "../useReducedMotion"
 
 export function FHome() {
-  return (
-    <>
-      <a className="xp-skip" href="#work">Skip to the project index</a>
-      <StudioHeader direction="direction-f" label="Design atlas / selected work" />
-      <main id="main" className="xr-shell">
-        <header className="xf-home-hero">
-          <div className="xf-title-block"><p className="xr-label">Bryce Henthorn / {PERSON.role}</p>
-            <h1 className="xr-title-arrive">{PERSON.statement}</h1>
-            <p className="xr-intro">{PERSON.secondary}</p>
-          </div>
-          <div className="xf-principle-sheet" aria-label="Design principles">
-            <p className="xr-label">A common thread</p>
-            {PERSON.principles.map((principle, index) => <div className="xf-principle" key={principle.label}>
-              <span className="xf-principle-symbol" data-symbol={index} aria-hidden="true"><i /><i /><i /></span>
-              <h2>{principle.label}</h2><p>{principle.statement}</p>
-            </div>)}
-            <p className="xf-sheet-caption">Three principles. Different product contexts.</p>
-          </div>
-        </header>
-        <nav id="work" className="xf-index" aria-label="Project index">
-          <p className="xr-label">Project index</p>
-          {PROJECTS.map((project, index) => <a key={project.slug} href={`#project-${project.slug}`}>
-            <span className="xr-label">0{index + 1}</span><span>{project.name}</span><span className="xf-index-year">{project.years}</span><span aria-hidden="true">↓</span>
-          </a>)}
-        </nav>
-        {PROJECTS.map((project, index) => (
-          <section className="xf-project xr-section" id={`project-${project.slug}`} key={project.slug}>
-            <aside><p className="xr-label">0{index + 1} / {project.name}</p><p>{project.proof}</p><p>{project.years}</p></aside>
-            <div className="xf-project-body"><h2>{project.title}</h2>
-              <StudyFigure src={project.image} alt={project.imageAlt} width={project.imageWidth} height={project.imageHeight}
-                caption={`${project.name} / product artifact`} number={`0${index + 1}`} />
-              <Link className="xr-link" href={index ? project.productionHref : caseHref("direction-f")}>{index ? "Open published case" : "Explore the decisions"} <span aria-hidden="true">↗</span></Link>
-            </div>
-          </section>
-        ))}
-        <section className="xf-closing xr-section"><p className="xr-label">The connecting idea</p><h2>{PERSON.thesis}</h2><p className="xr-intro">{PERSON.thesisBody}</p></section>
-      </main>
-      <StudioFooter direction="direction-f" />
-    </>
-  )
+  const [selected, setSelected] = useState<number | null>(null)
+  const [instant, setInstant] = useState(false)
+  const reduce = useReducedMotion()
+  const duration = useMotionSeconds("--duration-normal-ui")
+  return <>
+    <a className="xp-skip" href="#work">Skip to selected work</a>
+    <ExperienceHeader direction="direction-f"><LayeredMenu /></ExperienceHeader>
+    <main id="main">
+      <header className="x3-hero xf-opening">
+        <Artwork kind="ferro" />
+        <div className="x3-hero-copy">
+          <p className="xr-label">Product design / Windows AI / {PERSON.location}</p>
+          <XrTitle className="x3-title" text={PERSON.statement} />
+          <p className="xr-intro">{PERSON.secondary}</p>
+          <a className="xr-link" href="#work">Enter the gallery <span aria-hidden="true">↓</span></a>
+        </div>
+      </header>
+      <section id="work" className="xr-shell xr-section xf-gallery" aria-labelledby="xf-work-title">
+        <div className="xf-gallery-heading"><Reveal><h2 id="xf-work-title" className="xf-masked-heading">Selected work.</h2></Reveal><p className="xr-label">Three projects / One practice</p></div>
+        <div className="xf-wall">
+          {PROJECTS.map((project, index) => {
+            const expanded = selected === index
+            return <motion.article key={project.slug} layout={!reduce} className="xf-tile" data-expanded={expanded} data-instant={instant || undefined} data-project={index}
+              transition={{ duration: reduce || instant ? 0 : duration, ease: [.16, 1, .3, 1] }} aria-labelledby={`xf-project-${index}`}>
+              <motion.div layout={reduce || instant ? false : "position"} transition={{ duration: reduce || instant ? 0 : duration, ease: [.16, 1, .3, 1] }} className="xf-tile-top"><p className="xr-label">0{index + 1} / {project.years}</p><p className="xr-label">{project.proof}</p></motion.div>
+              <div className="x3-project-image"><Image src={project.image} alt={project.imageAlt} width={project.imageWidth} height={project.imageHeight}
+                sizes="(max-width: 850px) 90vw, 65vw" style={index === 0 ? { viewTransitionName: "direction-f-artifact" } : undefined} /></div>
+              <motion.div layout={reduce || instant ? false : "position"} transition={{ duration: reduce || instant ? 0 : duration, ease: [.16, 1, .3, 1] }} className="xf-tile-name"><h3 id={`xf-project-${index}`}>{project.name}</h3>
+                <button type="button" aria-expanded={expanded} aria-controls={`xf-detail-${index}`}
+                  onClick={event => { setInstant(event.detail === 0); setSelected(expanded ? null : index) }}>{expanded ? "Close details −" : "Inspect +"}</button>
+              </motion.div>
+              <div className="xf-tile-detail" id={`xf-detail-${index}`} hidden={!expanded}><p>{project.title}</p><p className="xr-label">Fig. 0{index + 1} / {project.name} / Product artifact</p></div>
+              <ProjectLink direction="direction-f" index={index} />
+            </motion.article>
+          })}
+        </div>
+      </section>
+      <section className="xr-shell xr-section xf-approach" aria-labelledby="xf-thesis">
+        <p className="xr-label">The connecting thread</p><h2 id="xf-thesis">{PERSON.thesis}</h2><p className="xr-intro">{PERSON.thesisBody}</p>
+        <ol>{PERSON.principles.map((item, index) => <li key={item.label}><span className="xr-label">0{index + 1}</span><h3>{item.label}</h3><p>{item.statement}</p></li>)}</ol>
+      </section>
+    </main>
+    <StudioFooter direction="direction-f" />
+  </>
 }

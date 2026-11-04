@@ -130,7 +130,7 @@ body:has(.xp) .page-glow { display: none; }
 .xp-link:hover { text-decoration-color: var(--paper); }
 
 .xp-skip {
-  position: absolute;
+  position: fixed;
   left: 1rem;
   top: -100px;
   z-index: 100;

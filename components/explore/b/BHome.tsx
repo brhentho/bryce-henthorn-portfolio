@@ -17,6 +17,9 @@ import { ContinuityLink } from "@/components/explore/ContinuityLink"
 import { ExploreFooter } from "@/components/explore/ExploreFooter"
 import { RevealWords } from "@/components/explore/RevealWords"
 import { PERSON, PROJECTS, caseHref, type Project } from "@/lib/explore/content"
+import { useEnhanced } from "../Treatment"
+import { Artwork } from "../effects/Artwork"
+import { NumberPop } from "../effects/NumberPop"
 
 const N = PROJECTS.length
 
@@ -55,10 +58,11 @@ export function BHome() {
 }
 
 function BHero() {
+  const enhanced = useEnhanced()
   return (
     <section className="xb-hero" aria-labelledby="xb-hero-title">
-      <div className="xb-hero-port" aria-hidden="true">
-        <Image src="/images/heroes/HomeHeroRender.jpg" alt="" fill priority sizes="60vmin" className="xp-cover" />
+      <div className="xb-hero-port" aria-hidden={enhanced ? undefined : true}>
+        {enhanced ? <Artwork kind="crystal" /> : <Image src="/images/heroes/HomeHeroRender.jpg" alt="" fill priority sizes="60vmin" className="xp-cover" />}
       </div>
       <div className="xb-hero-copy">
         <p className="xp-mono">{PERSON.name} · {PERSON.role}</p>
@@ -78,6 +82,7 @@ function BHero() {
 
 /** Sticky stage: one ~100vh segment per project, a porthole that opens toward each destination. */
 function Destinations() {
+  const enhanced = useEnhanced()
   const stageRef = useRef<HTMLElement>(null)
   const scrollYProgress = useSectionProgress(stageRef, ["start start", "end end"])
   const [index, setIndex] = useState(0)
@@ -143,6 +148,7 @@ function Destinations() {
 
         <p className="sr-only" aria-live="polite">{`Destination ${index + 1} of ${N}: ${project.name}`}</p>
         <div className="xb-dest">
+          {enhanced && <p className="xp-mono xb-dest-counter">Destination <NumberPop value={String(index + 1).padStart(2, "0")} /> · {project.years}</p>}
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={project.slug}
@@ -150,7 +156,7 @@ function Destinations() {
               animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
               exit={{ opacity: 0, y: -10, transition: { duration: 0.18, ease: [0.7, 0, 0.84, 0] } }}
             >
-              <DestinationCopy project={project} index={index} />
+              <DestinationCopy project={project} index={index} showNumber={!enhanced} />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -161,11 +167,11 @@ function Destinations() {
   )
 }
 
-function DestinationCopy({ project: p, index }: { project: Project; index: number }) {
+function DestinationCopy({ project: p, index, showNumber = true }: { project: Project; index: number; showNumber?: boolean }) {
   const isAgents = p.slug === "agents"
   return (
     <div className="xb-dest-inner">
-      <p className="xp-mono">Destination {String(index + 1).padStart(2, "0")} · {p.years}</p>
+      {showNumber && <p className="xp-mono">Destination <NumberPop value={String(index + 1).padStart(2, "0")} /> · {p.years}</p>}
       <h3 className="xp-h1">{p.name}</h3>
       <p className="xp-lede">{p.title}</p>
       <p className="xp-caption">{p.proof}</p>

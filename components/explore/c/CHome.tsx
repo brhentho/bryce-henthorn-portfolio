@@ -17,6 +17,8 @@ import { ExploreFooter } from "@/components/explore/ExploreFooter"
 import { RevealWords } from "@/components/explore/RevealWords"
 import { useMediaQuery } from "@/components/explore/useMediaQuery"
 import { PERSON, PROJECTS, caseHref, type Project } from "@/lib/explore/content"
+import { useEnhanced } from "../Treatment"
+import { Artwork } from "../effects/Artwork"
 
 const N = PROJECTS.length
 const ease = [0.16, 1, 0.3, 1] as const
@@ -77,6 +79,7 @@ function HeroCopy() {
 
 /** Scattered project windows in depth converge into one row as the reader scrolls. */
 function ConvergeHero() {
+  const enhanced = useEnhanced()
   const ref = useRef<HTMLElement>(null)
   const scrollYProgress = useSectionProgress(ref, ["start start", "end end"])
   const horizon = useTransform(scrollYProgress, [0, 1], ["18%", "-6%"])
@@ -87,7 +90,7 @@ function ConvergeHero() {
   return (
     <section ref={ref} className="xc-hero" aria-labelledby="xc-hero-title">
       <div className="xc-hero-sticky">
-        <motion.div className="xc-horizon" style={{ y: horizon }} aria-hidden="true" />
+        {enhanced ? <Artwork kind="moss" className="xc-ambient" /> : <motion.div className="xc-horizon" style={{ y: horizon }} aria-hidden="true" />}
         <motion.div style={{ opacity: copyOpacity, y: copyY }} className="xc-hero-copy-wrap">
           <HeroCopy />
         </motion.div>
@@ -126,9 +129,10 @@ function ConvergeWindow({ project, index, progress }: { project: Project; index:
 }
 
 function FlatHero() {
+  const enhanced = useEnhanced()
   return (
     <section className="xc-hero xc-hero-flat" aria-labelledby="xc-hero-title">
-      <div className="xc-horizon" aria-hidden="true" />
+      {enhanced ? <Artwork kind="moss" className="xc-ambient" /> : <div className="xc-horizon" aria-hidden="true" />}
       <HeroCopy />
     </section>
   )

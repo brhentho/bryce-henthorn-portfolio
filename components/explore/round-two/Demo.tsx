@@ -13,7 +13,7 @@ export function WorkingDemo() {
       <div className="xr-demo-stage">
         <div className="xr-demo-caption"><span className="xr-label">Windows / research agent</span><span>Interactive study</span></div>
         <div className="xr-demo-viewport">
-          <div className="xr-demo-card" id={id} aria-hidden={!expanded} inert={!expanded}><SimCard sim={sim} /></div>
+          <div className="xr-demo-card" id={id} aria-hidden={!expanded} inert={!expanded}><SimCard sim={sim} numberMotion /></div>
           {!expanded && <p className="xr-demo-collapsed">Work remains visible in the taskbar.<br />Open the agent to inspect its progress.</p>}
         </div>
         <div className="xr-taskbar">

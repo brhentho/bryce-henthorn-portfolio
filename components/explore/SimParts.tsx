@@ -2,6 +2,7 @@
 
 import { AGENTS } from "@/lib/explore/content"
 import { SIM_STATES, SIM_STEPS, agentStatuses, type useAgentSim } from "@/lib/explore/simulation"
+import { NumberPop } from "./effects/NumberPop"
 
 type Sim = ReturnType<typeof useAgentSim>
 
@@ -29,7 +30,7 @@ export function SimStates({ sim, className = "" }: { sim: Sim; className?: strin
 }
 
 /** Status, steps and controls for the illustrative task. Layout is owned by each direction. */
-export function SimCard({ sim, className = "", compact = false }: { sim: Sim; className?: string; compact?: boolean }) {
+export function SimCard({ sim, className = "", compact = false, numberMotion = false }: { sim: Sim; className?: string; compact?: boolean; numberMotion?: boolean }) {
   const { state, current, headline } = sim
   const primary = sim.actions.filter((a) => ["advance", "approve", "pause", "resume"].includes(a.id))
   const secondary = sim.actions.filter((a) => ["fail", "retry"].includes(a.id))
@@ -45,7 +46,7 @@ export function SimCard({ sim, className = "", compact = false }: { sim: Sim; cl
       </div>
       <div role="status" aria-live="polite" aria-atomic="true" className="xp-sim-status">
         <p className="xp-mono">
-          {current.label} · step {state.step + 1} of 4
+          {current.label} · step {numberMotion ? <NumberPop value={String(state.step + 1)} /> : state.step + 1} of 4
         </p>
         <p className="xp-h3">{headline}</p>
         {!compact && <p className="xp-body-sm">{current.detail}</p>}

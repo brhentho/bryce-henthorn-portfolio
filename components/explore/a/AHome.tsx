@@ -11,10 +11,13 @@ import { ExploreFooter } from "@/components/explore/ExploreFooter"
 import { RevealWords } from "@/components/explore/RevealWords"
 import { useActiveSection } from "@/components/explore/useActiveSection"
 import { PERSON, PROJECTS, caseHref, type Project } from "@/lib/explore/content"
+import { useEnhanced } from "../Treatment"
+import { TyndallLight } from "../effects/Artwork"
 
 const SECTIONS = ["xa-top", "work-agents", "work-recall", "work-teams", "xa-close"] as const
 
 export function AHome() {
+  const enhanced = useEnhanced()
   const reduce = useReducedMotion()
   const heroRef = useRef<HTMLElement>(null)
   const scrollYProgress = useSectionProgress(heroRef, ["start start", "end start"])
@@ -49,6 +52,7 @@ export function AHome() {
         <section id="xa-top" ref={heroRef} className="xa-hero" aria-labelledby="xa-hero-title">
           <motion.div className="xa-hero-plate" style={reduce ? undefined : { y: plateY, scale: plateScale }}>
             <Image src="/images/heroes/HomeHeroRender.jpg" alt="" fill priority sizes="100vw" className="xp-cover" />
+            {enhanced && <TyndallLight />}
           </motion.div>
           <motion.div className="xa-hero-veil" style={reduce ? undefined : { opacity: veil }} aria-hidden="true" />
 

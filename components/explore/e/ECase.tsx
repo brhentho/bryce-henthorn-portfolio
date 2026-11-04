@@ -1,46 +1,44 @@
 import { AGENTS } from "@/lib/explore/content"
-import { StudioHeader, StudioFooter, Ledger, Paragraphs, ProblemPair, DecisionOptions, FrameSelector, CaseImpact, PublishedLinks } from "../round-two/CaseParts"
+import { ExperienceHeader, CaseContents, Constraints, Invocation } from "../ExperienceParts"
+import { StudioFooter, Ledger, Paragraphs, ProblemPair, DecisionOptions, FrameSelector, CaseImpact, PublishedLinks } from "../round-two/CaseParts"
 import { StudyFigure, TaskbarFilm } from "../round-two/Media"
 import { WorkingDemo } from "../round-two/Demo"
+import { XrTitle } from "../round-two/Motion"
+import { HeroArtifact } from "../ExperienceParts"
 
 export function ECase() {
-  return (
-    <>
-      <a className="xp-skip" href="#states">Skip to the operating example</a>
-      <StudioHeader direction="direction-e" label="Case study / Agents in Windows" />
-      <main id="main" className="xr-shell">
-        <header className="xe-case-hero">
-          <p className="xr-label">Agents in Windows / interaction design</p>
-          <h1 className="xr-title-arrive">{AGENTS.title}</h1>
-          <div className="xe-hero-bottom"><p className="xr-intro">{AGENTS.call}</p><a className="xr-link" href="#states">Try the model <span aria-hidden="true">↓</span></a></div>
-          <Ledger />
-        </header>
-        <nav className="xe-chapter-links" aria-label="Case study sections">
-          <a href="#states">Operate</a><a href="#context">Context</a><a href="#problem">Problem</a><a href="#decision">Decision</a><a href="#taskbar">Details</a><a href="#impact">Impact</a>
-        </nav>
-        <section id="states" className="xr-section xe-operate">
-          <p className="xr-label">An interface you can question</p><h2>See the state.<br />Take control.</h2>
-          <p className="xr-intro">{AGENTS.simulation.disclaimer}</p><WorkingDemo />
-        </section>
-        <section id="context" className="xr-section xr-split">
-          <div><p className="xr-label">Why this needed to exist</p><h2>{AGENTS.context.title}</h2><Paragraphs items={AGENTS.context.body} /></div>
-          <StudyFigure {...AGENTS.context.figure} number="01" />
-        </section>
-        <section id="problem" className="xr-section xe-problem">
-          <p className="xr-label">Visibility, not more automation</p><h2>{AGENTS.problem.thesis}</h2>
-          <Paragraphs items={AGENTS.problem.body} /><ProblemPair />
-        </section>
-        <section id="decision" className="xr-section">
-          <div className="xe-decision-head"><h2>{AGENTS.decision.title}</h2><Paragraphs items={AGENTS.decision.body} /></div>
-          <DecisionOptions interactive />
-        </section>
-        <section id="taskbar" className="xr-section">
-          <p className="xr-label">The interface, up close</p><h2>{AGENTS.taskbar.title}</h2>
-          <FrameSelector /><div className="xe-detail-prose"><Paragraphs items={AGENTS.taskbar.body} /></div><TaskbarFilm />
-        </section>
-        <CaseImpact /><PublishedLinks />
-      </main>
-      <StudioFooter direction="direction-e" />
-    </>
-  )
+  return <>
+    <a className="xp-skip" href="#context">Skip to the case study</a>
+    <ExperienceHeader direction="direction-e" />
+    <main id="main" className="xr-shell">
+      <header className="x3-case-hero xe-case-opening">
+        <p className="xr-label">01 / Agents in Windows / A system made legible</p>
+        <XrTitle text={AGENTS.title} />
+        <div className="xe-case-lead"><p className="xr-intro">{AGENTS.lede}</p><p className="xr-intro">{AGENTS.call}</p></div>
+        <Ledger /><HeroArtifact direction="direction-e" />
+      </header>
+      <CaseContents className="xe-contents" />
+      <section id="context" className="xr-section xe-essay">
+        <div className="xe-reading"><p className="xr-label">Context</p><h2>{AGENTS.context.title}</h2><Paragraphs items={AGENTS.context.body} /></div>
+        <div className="xe-evidence"><StudyFigure {...AGENTS.context.figure} number="01.1" /></div>
+      </section>
+      <section id="problem" className="xr-section">
+        <div className="xe-case-lead"><h2>{AGENTS.problem.thesis}</h2><Paragraphs items={AGENTS.problem.body} /></div>
+        <ProblemPair />
+      </section>
+      <section id="decision" className="xr-section xe-decision">
+        <div className="xe-case-lead"><h2>{AGENTS.decision.title}</h2><Paragraphs items={AGENTS.decision.body} /></div>
+        <DecisionOptions />
+      </section>
+      <section id="taskbar" className="xr-section xe-essay">
+        <div className="xe-reading"><p className="xr-label">Progressive disclosure</p><h2>{AGENTS.taskbar.title}</h2><Paragraphs items={AGENTS.taskbar.body} /></div>
+        <div className="xe-evidence"><FrameSelector /><TaskbarFilm /></div>
+      </section>
+      <section id="states" className="xr-section">
+        <p className="xr-label">The shared state language</p><h2>{AGENTS.simulation.title}</h2><WorkingDemo />
+      </section>
+      <Constraints /><Invocation /><CaseImpact /><PublishedLinks />
+    </main>
+    <StudioFooter direction="direction-e" />
+  </>
 }
