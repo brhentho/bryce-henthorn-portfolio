@@ -1,0 +1,66 @@
+.xd {
+  --xd-paper: #eee9df;
+  --xd-ink: #22291f;
+  --xd-muted: #ded9cc;
+  --xd-rust: #873d28;
+  --xd-night: #1d241c;
+  --xd-night-surface: #30382d;
+  --xr-bg: var(--xd-paper);
+  --xr-fg: var(--xd-ink);
+  --xr-surface: var(--xd-muted);
+  --xr-accent: var(--xd-rust);
+}
+.xd h1, .xd h2, .xd .xr-contact, .xd .xr-impact blockquote { font-family: var(--font-cinema), Georgia, serif; }
+.xd h1 { font-size: clamp(3.25rem, 6.6vw, 7rem); line-height: 0.98; letter-spacing: -0.035em; text-wrap: pretty; }
+.xd h2 { font-size: clamp(2.75rem, 5vw, 5.5rem); letter-spacing: -0.025em; }
+.xd em { font-style: italic; font-weight: inherit; }
+.xd-home-hero { display: grid; grid-template-columns: 1.1fr 0.9fr; column-gap: 5%; align-items: center; padding-block: 3rem 2rem; min-height: calc(100svh - 140px); }
+.xd-home-title { position: relative; z-index: 1; display: grid; justify-items: start; gap: 2rem; padding-block: 1rem; }
+.xd-home-title .xr-intro { max-width: 30ch; font-size: 1rem; }
+.xd-sculpture .xr-image-frame { border: 0; }
+.xd-sculpture img { max-height: 72svh; object-fit: cover; }
+.xd-hero-foot { grid-column: 1/-1; margin-top: 2rem !important; }
+.xd-work { padding-top: var(--xr-section); }
+.xd-work-head { display: grid; grid-template-columns: 1fr 1fr; align-items: end; margin-bottom: 4rem; }
+.xd-project { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; margin-bottom: clamp(4rem, 10vw, 10rem); }
+.xd-project-art { grid-column: 1/10; display: block; min-width: 0; }
+.xd-project-copy { grid-column: 10/-1; align-self: end; display: grid; justify-items: start; gap: 1.5rem; padding-bottom: 2rem; }
+.xd-project-copy h3 { font-size: clamp(1.4rem, 2.2vw, 2.25rem); font-family: var(--font-cinema), Georgia, serif; }
+.xd-project-1 .xd-project-art { grid-column: 5/-1; }
+.xd-project-1 .xd-project-copy { grid-column: 2/5; grid-row: 1; }
+.xd-project-2 .xd-project-art { grid-column: 1/9; }
+.xd-project-2 .xd-project-copy { grid-column: 9/-1; }
+.xd-project-art:hover { text-decoration: none !important; }
+.xd-project-art .xr-image-frame { padding: clamp(1rem, 2.5vw, 2.5rem); aspect-ratio: auto !important; }
+.xd-manifesto { max-width: 1100px; text-align: center; padding-block: 3rem var(--xr-section); }
+.xd-manifesto .xr-intro { margin-inline: auto; margin-top: 2rem; }
+.xd-footer { background: var(--xd-night); }
+.xd .xr-footer { border-top: 1px solid var(--rule); }
+.xd-case-hero { padding-top: clamp(3rem, 6vw, 6rem); }
+.xd-case-hero h1 { max-width: 19ch; margin-block: 2rem; font-size: clamp(3.25rem, 8vw, 8rem); }
+.xd-case-deck { display: grid; grid-template-columns: 1fr 1fr; gap: var(--xr-gap); max-width: 60rem; font-size: 1.125rem; line-height: 1.6; margin-bottom: 2rem; }
+.xd-opening-plate { margin-top: 2rem; }
+.xd-night { --xr-bg: var(--xd-night); --xr-fg: var(--xd-paper); --xr-surface: var(--xd-night-surface); --xr-accent: var(--xd-paper); }
+.xd-problem-title { max-width: 18ch; font-size: clamp(3.5rem, 7vw, 7.5rem) !important; margin-bottom: 3rem !important; }
+.xd-night .xr-prose { margin-left: auto; }
+.xd-decision > .xr-prose { margin-left: auto; }
+.xd-decision .xr-options { margin-top: 3rem; }
+.xd-section-heading { display: grid; grid-template-columns: 1fr 2fr; gap: var(--xr-gap); }
+.xd-taskbar { border-top: 1px solid var(--rule); }
+.xd-taskbar .xr-prose { margin-left: auto; margin-block: 3rem; }
+.xd-taskbar .xr-film { max-width: 65rem; margin-inline: auto; }
+.xd .xr-frame-selector .xr-image-frame { background: var(--xd-ink); }
+.xd .xr-impact { border-top: 1px solid var(--rule); }
+@media (max-width: 900px) {
+  .xd-project { grid-template-columns: 1fr 1fr; }
+  .xd-project .xd-project-art { grid-column: 1/-1; }
+  .xd-project .xd-project-copy { grid-column: 1/-1; grid-row: auto; max-width: 40rem; }
+}
+@media (max-width: 650px) {
+  .xd-home-hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 1rem; }
+  .xd-home-title { gap: 1.5rem; }
+  .xd-sculpture .xr-image-frame { aspect-ratio: 4/3 !important; }
+  .xd-sculpture img { object-position: 50% 50%; }
+  .xd-work-head, .xd-case-deck, .xd-section-heading { grid-template-columns: 1fr; gap: 1.5rem; }
+  .xd-hero-foot { margin-top: 0 !important; }
+}

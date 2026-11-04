@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { DIRECTIONS, caseHref, homeHref, type DirectionId } from "@/lib/explore/content"
+import { DIRECTIONS, caseHref, homeHref } from "@/lib/explore/content"
 
 /**
  * Review chrome for the explorations. It scrolls away with the page so it never
@@ -10,9 +10,8 @@ import { DIRECTIONS, caseHref, homeHref, type DirectionId } from "@/lib/explore/
  */
 export function ExploreBar() {
   const pathname = usePathname() ?? "/explore"
-  const match = pathname.match(/^\/explore\/(direction-[abc])(\/agents-in-windows)?/)
-  const current = (match?.[1] ?? null) as DirectionId | null
-  const onCase = Boolean(match?.[2])
+  const current = DIRECTIONS.find((d) => pathname === homeHref(d.id) || pathname === caseHref(d.id))?.id
+  const onCase = Boolean(current && pathname === caseHref(current))
 
   return (
     <nav className="xp-bar" aria-label="Exploration review">

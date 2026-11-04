@@ -1,9 +1,10 @@
-# Three portfolio directions: November 2026 exploration
+# Six portfolio directions: November 2026 exploration
 
 Approved scope:
-- Build three working, distinct directions, each with a homepage and a representative
+- Build two rounds of three working, distinct directions, each with a homepage and a representative
   Agents in Windows case study.
-- Use the same real content and assets throughout.
+- Keep facts and product evidence consistent. Round two also allows clearly labeled,
+  replaceable original or license-cleared illustrative media and distinct visual identities.
 - Leave production routes untouched.
 - Commit locally only: no deploy, push or PR.
 
@@ -15,11 +16,17 @@ Approved scope:
 | `/explore/direction-a` · `/agents-in-windows` | **A: layered editorial** |
 | `/explore/direction-b` · `/agents-in-windows` | **B: project destinations** |
 | `/explore/direction-c` · `/agents-in-windows` | **C: spatial story** |
+| `/explore/direction-d` · `/agents-in-windows` | **D: Cinema** |
+| `/explore/direction-e` · `/agents-in-windows` | **E: Working model** |
+| `/explore/direction-f` · `/agents-in-windows` | **F: Design atlas** |
 
 The `/explore` layout sets `noindex` and nothing on the published site links to it. A
-thin `ExploreBar` switches between A, B and C and between home and case.
+thin `ExploreBar` switches between A–F and between home and case, preserving the
+page mode. Run `pnpm dev --port 3471` and open `http://localhost:3471/explore`.
+The first-round checkpoint is local commit `d322e86`, on
+`brhentho-microsoft-explore-three-directions`. No direction has been promoted.
 
-## The three directions
+## Round one: A / B / C
 
 - **A: layered editorial.** This is the closest to the current operator-manual
   system.
@@ -50,7 +57,7 @@ morph from home to case, and these hooks:
 - `useActiveSection` / `goToSection`
 - an SSR-safe `useReducedMotion` and `useMediaQuery`
 
-## Recommendation
+## Recommendation from round one
 
 **Use A as the base, and borrow from B for the homepage work index.**
 - **A's case study argues best.** The layers carry meaning: before and after, and
@@ -97,7 +104,7 @@ the case hero.
   - About page variants.
   - Production-grade video posters for every frame.
 
-## Checks actually run
+## First-round checks
 
 - `pnpm tsc --noEmit`: clean.
 - `pnpm test`: 5/5.
@@ -171,7 +178,7 @@ the case hero.
   - Lighthouse/performance traces
   - human review
 
-## Gaps needing Bryce's judgment
+## First-round review questions
 
 1. **Which base?** The recommendation is A with B's work index, but it is a taste
    call. Is C's spatial ambition worth its maintenance cost and its "demo" risk?
@@ -189,3 +196,131 @@ the case hero.
    project. Tighten it, or keep it as a breath?
 7. **Promotion path.** Should the chosen direction be extended to Recall and Teams
    before it replaces any production route?
+
+## Round two: D / E / F
+
+**D: Cinema** uses Instrument Serif, warm paper, an original sculptural poster,
+and staggered project spreads. The case alternates broad image plates with compact
+argument, changes to ink at the problem boundary, and lets the visitor select
+three real taskbar keyframes. Its existing taskbar film is visitor-controlled.
+
+**E: Working model** uses charcoal/chalk, precise sans type, and a project viewport
+that changes the artifact, contribution and destination together. Agents is the
+default; nothing cycles automatically. The case places the working state
+simulation before its rationale. Decision tabs preserve the distinction between
+the inspected alternative and the chosen taskbar foundation. Mobile uses focused
+desktop-detail crops, not a miniature full-width screenshot or invented mobile UI.
+
+**F: Design atlas** uses light technical sheets and a linked evidence map.
+Its five destinations are actual case sections; the connectors describe reading
+relationships, not product architecture. All three candidate-home rationales
+remain visible when a branch is focused. On mobile the map becomes a link list,
+with the same normal-flow article beneath it.
+
+Each direction owns its narrative ordering. Shared helpers are limited to figures,
+case content, controls and the existing simulation reducer. D/E/F styles and their
+material tokens are scoped to the explorations; production tokens, manual
+primitives and A/B/C direction-specific files are unchanged.
+
+### Reference adaptations
+
+All nine sites were inspected live with hero, body and detail captures. Resend's
+SDK tabs and Midday's feature selector were also exercised. This was inspiration
+research, not a full audit of those sites.
+
+| Reference | What was adapted |
+| --- | --- |
+| [Trionn](https://trionn.com/) | D's large material image and decisive editorial scene change; no particle effects or scrambled type. |
+| [Supercommon](https://supercommon.systems/) | E's isolated operating surface and restrained surrounding explanation. |
+| [Resend](https://resend.com/) | E's controls replace the real example within its frame; D contrasts material imagery with type. |
+| [Specify Launch Week](https://specifyapp.com/launchweek) | F's connected modules become an index of evidence. |
+| [Harness open source](https://www.harness.io/open-source) | F links the decision to its interface artifact; D changes background at a narrative boundary. |
+| [Midday](https://midday.ai/) | E's prominent product viewport and explicit project selection. |
+| [Daybox](https://usedaybox.com/) | E keeps the problem and next meaningful control adjacent to the demonstration. |
+| [CP agency](https://cp-agency.eu/en) | D's asymmetric type and differently proportioned project compositions. |
+| [Linear](https://linear.app/homepage) | E's focused product evidence and F's precise figure-to-decision relationships. |
+
+No imagery, video, logos or code were copied from these reference sites.
+
+### Media ownership and replacement
+
+- `lib/explore/media.ts` is the replacement manifest. `EXPLORATION_MEDIA` holds
+  image/video sources, poster, dimensions, alternative text, object position,
+  illustrative status and attribution. Both media kinds render without changing
+  layout code; keep truthful captions and attribution when replacing a source.
+- `public/explore/cinema-study.svg` is an original vector composition created for
+  this exploration: three paper-like surfaces representing state, control and
+  continuity. It is visibly labeled as illustrative, not shipped Windows UI.
+  The implemented poster is portrait (1200×1400), rather than the proposed wide
+  composition, to support D's title-page arrangement. No new film was necessary.
+- `PROJECT_MOBILE_MEDIA` maps E's square mobile crops. The three
+  `public/explore/*-mobile.webp` files are derived from existing portfolio
+  `public/images/{agents,recall,teams}/hero-demo.png` assets. Crop rectangles
+  `(left, top, width, height)` are Agents `(1200,280,600,600)`,
+  Recall `(155,92,350,350)`, Teams `(360,92,350,350)`. Preserve the square ratio
+  or update the scoped mobile frame rule. Captions identify these as desktop details.
+- Other product figures and the taskbar film reuse existing portfolio assets.
+  No new product claims or simulated screenshots have been added.
+- Instrument Serif is loaded using `next/font/google`; its copyright and SIL OFL
+  1.1 are included in `public/explore/InstrumentSerif-OFL.txt`.
+  [Authoritative license](https://github.com/google/fonts/blob/main/ofl/instrumentserif/OFL.txt).
+- Videos have native controls, no autoplay/loop, `preload="none"`, and a poster.
+  Starting a video pauses other videos. Unavailable images/videos expose an error
+  message while retaining the frame and caption.
+
+### Motion and interaction choices
+
+The title entrance is a tokenized 500ms opacity/12px translation with Expo Out;
+reduced motion removes it. There are no new pinned sequences, camera journeys or
+scroll-scrubbed films. Local selection is immediate, except the short CSS option
+background treatment; anchors navigate immediately rather than inheriting
+production's smooth scrolling. D/E/F use normal links, not A/B/C's hero morph.
+
+The shared simulation retains pause/resume, approval, completion/reset,
+failure/retry and five inspected states. It is explicitly illustrative. Collapsing
+its card preserves the taskbar position; the hidden card is inert and excluded
+from the accessibility tree without removing its layout space.
+
+### Second-round verification
+
+- Type-check, the five simulation tests and production build pass. All thirteen
+  explore routes are statically prerendered.
+- The comparison sweep covered 104 combinations: thirteen routes, 1440×900,
+  1024×768, 390×844 and 1440×700, reduced motion on/off. There were no missing
+  images, horizontal overflow or browser errors. D/E/F returned `[]` from the
+  text-clipping audit; index/A/B/C findings are intentional `sr-only` content.
+- The production check covered all six main routes and two existing experiment
+  routes at 1440/1024/390. Production and boot-sequence clipping audits returned
+  `[]`. The unchanged editorial-motion experiment still reports five clipped
+  elements per size; it was not modified as part of this exploration.
+- Functional coverage includes all simulation actions and states, keyboard
+  frame/decision/project tabs, direct anchors and refresh, the F map and branch
+  focus, A–F case-mode switching, Back, visible DOM-text contrast, and failed-media
+  fallbacks. Contrast checks exclude text inside images and disabled controls.
+- Independent craft review returned three concrete fixes: collapse displaced the
+  taskbar, E's mobile screenshot was too small, and E metadata shifted the image
+  during project selection. The implementation now preserves the card footprint,
+  uses focused mobile crops, and overlays metadata rows to reserve their maximum
+  intrinsic height with unbroken years. These are scoped fixes, not A/B/C changes.
+- Enlarged-text inspection at 200% exposed grid min-content overflow on narrow
+  screens. Scoped `overflow-wrap: anywhere` lets long words contribute a breakable
+  minimum width; no clipping or overflow-hiding workaround is used.
+- The final rerun passed all 57 functional scenarios, including stable collapse
+  geometry at both sizes and motion preferences, square mobile crops with no
+  image-position shift, and 200% text reflow on all six new pages at 1440/390.
+  The twelve desktop/mobile layout reruns returned no clipping or browser errors.
+- Chrome desktop and mobile emulation were used. Real-device touch, Safari/Firefox,
+  screen readers and performance/Lighthouse measurements remain untested.
+
+### Round-two recommendation and remaining judgment
+
+**E is the strongest new base hypothesis**, because the visitor can inspect
+interaction-design evidence early. D tests visual memorability and F tests whether
+the decision map makes systems thinking easier to follow. This does not replace
+the first-round recommendation or select a production winner.
+
+The remaining choices are editorial: D's final artwork and art/product balance,
+whether E feels sufficiently authored rather than like product marketing, and
+whether F's map earns its space. Recall/Teams and About variants remain outside
+scope; their links go to the existing published pages. Compare all six before
+choosing a base and extending it.

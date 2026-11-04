@@ -163,11 +163,11 @@ body:has(.xp) .page-glow { display: none; }
 .xp-bar-link {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
-  min-width: 32px;
+  min-height: 44px;
+  min-width: 44px;
   justify-content: center;
   padding: 0 0.5rem;
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   border-radius: 4px;
   transition: color var(--duration-fast-ui) var(--ease-out-quad), background-color var(--duration-fast-ui) var(--ease-out-quad);
 }
@@ -175,6 +175,12 @@ body:has(.xp) .page-glow { display: none; }
 .xp-bar-link[aria-current="page"] { color: var(--paper); background: color-mix(in srgb, var(--paper) 9%, transparent); }
 .xp-bar-note { margin-left: auto; color: var(--text-faint); }
 @media (max-width: 560px) { .xp-bar-note { display: none; } }
+@media (max-width: 650px) {
+  .xp-bar { gap: 0 0.5rem; padding-inline: 1rem; }
+  .xp-bar > .xp-bar-link { order: 0; }
+  .xp-bar-group[aria-label="Page"] { order: 1; margin-left: auto; }
+  .xp-bar-group[aria-label="Directions"] { order: 2; flex-basis: 100%; }
+}
 
 /* ── Index ── */
 .xp-index { max-width: 72rem; margin: 0 auto; padding: clamp(3rem, 9vw, 7rem) clamp(1.25rem, 4vw, 3rem) 4rem; }
@@ -192,6 +198,8 @@ body:has(.xp) .page-glow { display: none; }
 .xp-index-letter { font-family: var(--font-display); font-weight: 500; font-size: 3rem; line-height: 0.92; letter-spacing: -0.04em; color: var(--text-tertiary); }
 .xp-index-links { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
 .xp-index-foot { margin-top: 2.5rem; }
+.xp-index-round + .xp-index-round { margin-top: 3rem; }
+.xp-index-round > h2 { margin-bottom: 1rem; }
 @media (max-width: 760px) {
   .xp-index-item { grid-template-columns: 2.5rem 1fr; }
   .xp-index-letter { font-size: 2rem; }

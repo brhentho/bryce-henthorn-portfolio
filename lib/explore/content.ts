@@ -1,13 +1,13 @@
 /**
  * Shared content for the /explore directions.
  *
- * Every string here is lifted from the production pages (app/page.tsx and
- * app/agents-in-windows/page.tsx). The three directions must differ in design
+ * Portfolio copy is lifted from the production pages (app/page.tsx and
+ * app/agents-in-windows/page.tsx). The directions must differ in design
  * and interaction only — never in claims. Do not add metrics, findings,
  * shipped functionality, or ownership statements that production does not make.
  */
 
-export type DirectionId = "direction-a" | "direction-b" | "direction-c"
+export type DirectionId = "direction-a" | "direction-b" | "direction-c" | "direction-d" | "direction-e" | "direction-f"
 
 export const DIRECTIONS: {
   id: DirectionId
@@ -32,6 +32,24 @@ export const DIRECTIONS: {
     letter: "C",
     name: "Spatial story",
     idea: "You move through the work: scattered windows converge into one taskbar you can operate.",
+  },
+  {
+    id: "direction-d",
+    letter: "D",
+    name: "Cinema",
+    idea: "An art-directed visual essay. Expansive images, intimate details, and a filmstrip you direct.",
+  },
+  {
+    id: "direction-e",
+    letter: "E",
+    name: "Working model",
+    idea: "The product is the argument. Operate the interface, then inspect the decisions behind it.",
+  },
+  {
+    id: "direction-f",
+    letter: "F",
+    name: "Design atlas",
+    idea: "A map of decisions and evidence. Trace the thinking, or go directly to the artifact.",
   },
 ]
 
