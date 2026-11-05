@@ -17,6 +17,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   },
   "agents-composer": {
     kind: "video", title: "Select and dispatch an agent",
+    width: 1934, height: 1088,
     src: "https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/Composer.mp4",
     poster: "/images/agents/composer-poster.jpg",
     description: "Design recording of agent selection through the Ask Copilot composer.",
@@ -24,6 +25,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   },
   "agents-taskbar": {
     kind: "video", title: "Inspect agent progress from the taskbar",
+    width: 760, height: 428,
     src: "/media/agents-taskbar-detail.mp4", poster: "/images/agents/taskbar-poster.jpg",
     description: "A cropped desktop recording shows the expanded taskbar hover card.",
     caption: "The expanded hover card exposes the current step. This crop keeps the taskbar detail legible.",
@@ -71,6 +73,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   },
   "recall-search": {
     kind: "video", title: "Recall search interaction",
+    width: 1920, height: 1080,
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4",
     poster: "/images/recall/search-poster.jpg",
     description: "Design recording of query refinement and a full results grid separated into Text matches and Visual matches.",
@@ -78,6 +81,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   },
   "recall-retrieval": {
     kind: "video", title: "Exploratory answer-preview concept",
+    width: 1920, height: 1080,
     src: "https://sayyacgp8fag7fqj.public.blob.vercel-storage.com/shilpa_0603_03%201.mp4",
     poster: "/images/recall/retrieval-poster.jpg",
     description: "An exploratory search popup places an answer-preview card above text and visual matches.",
@@ -92,6 +96,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   },
   "teams-prepare": {
     kind: "video", title: "Teacher preparation before class",
+    width: 1920, height: 1080,
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig04-SzV8nkwmimnnyjPOiYSn8Z9J0VAp5z.mov",
     poster: "/images/teams/class-poster.jpg",
     description: "Concept recording showing Manage class team, Create class groups, and manual or automatic assignment.",
@@ -99,6 +104,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   },
   "teams-classroom": {
     kind: "video", title: "Start and oversee table discussions",
+    width: 1920, height: 1080,
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig06-2YDd5QkvxbZD2b8O44R0Nag6g14UhH.mov",
     poster: "/images/teams/student-poster.jpg",
     description: "Concept recording showing Start all groups and active tables with Join and Stop controls.",
@@ -106,6 +112,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   },
   "teams-student": {
     kind: "video", title: "Reopen shared notes from a prior class",
+    width: 1920, height: 1080,
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov",
     poster: "/images/teams/groups-poster.jpg",
     description: "Concept recording showing a small-group call opening Group notes with prior class notes and documents.",

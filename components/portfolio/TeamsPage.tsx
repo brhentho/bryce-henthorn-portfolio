@@ -28,8 +28,8 @@ export function TeamsPage() {
       { label: "Status", value: "Tested concept; not shipped as a complete experience" },
     ]}
     hero={{
-      src: "/images/teams/hero-demo.png", width: 1120, height: 442,
-      alt: "Teams virtual classroom concept with persistent table groups and a moderation panel",
+      src: "/images/teams/hero-classroom-groups.png", width: 2000, height: 1075,
+      alt: "Teams classroom concept showing group rooms and the teacher's Groups management panel",
       caption: "Virtual classroom concept. Product-design artifact, not a claim of released functionality.",
     }}
     chapters={chapters}

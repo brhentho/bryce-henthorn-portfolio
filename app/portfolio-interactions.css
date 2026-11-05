@@ -1,3 +1,5 @@
+/* Texture must not shift luminance after the crossing contrast is resolved. */
+body:has(.portfolio .fn-environment[data-crossing]) > .noise { opacity: 0; }
 .portfolio .fn-brand {
   min-height: 44px;
   justify-content: center;
@@ -7,6 +9,35 @@
   letter-spacing: -.025em;
 }
 .portfolio :is(a, button, summary, input[type="radio"]) { cursor: pointer; }
+.portfolio .pf-number-rail a {
+  width: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+  border-radius: 999px;
+  text-decoration: none;
+}
+.portfolio .pf-number-rail a span { font-size: .75rem; }
+.portfolio .pf-number-rail a:is(:hover, :focus-visible) { color: var(--text-primary); background: var(--xr-surface); }
+.portfolio .pf-number-rail a[aria-current] { background: var(--xr-surface); }
+.portfolio .pf-playback-notice { padding: .75rem 1rem; font-size: .875rem; line-height: 1.5; color: var(--text-primary); }
+.portfolio .fn-environment[data-crossing] :focus-visible { outline-color: var(--text-primary); }
+.portfolio .fn-environment[data-crossing] :is(.xp-btn, .xp-sim-state) {
+  color: var(--text-primary);
+  background: var(--surface-bg);
+  transition: none;
+}
+.portfolio .fn-environment[data-crossing] :is(.xp-btn, .xp-sim-state):is(:hover, :active, [aria-pressed="true"]) {
+  color: var(--text-primary);
+  background: var(--surface-bg);
+  border-color: var(--text-primary);
+}
+.portfolio .fn-environment[data-crossing] :is(.xp-btn, .xp-sim-state)[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+@media (max-width: 1100px) {
+  .portfolio .pf-number-rail nav { gap: .25rem; }
+}
 .portfolio .fn-nav .pf-navigation {
   position: relative;
   flex-wrap: wrap;

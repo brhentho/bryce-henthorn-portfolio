@@ -36,7 +36,12 @@ export function CaseLayout({ page, title, deck, call, ledger, hero, chapters, ch
         <div className="fn-case-intro"><p>{call}</p><dl className="xr-ledger">{ledger.map(item=><div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl></div>
       </header>
       <div className="fn-reading-grid">
-        <aside className="fn-rail"><nav aria-label="Case contents"><p className="fn-label">In this case</p>{chapters.map((chapter,index)=><a key={chapter.id} href={`#${chapter.id}`} aria-current={active===chapter.id?"location":undefined}><span>{String(index+1).padStart(2,"0")}</span>{chapter.label}</a>)}</nav></aside>
+        <aside className="fn-rail pf-number-rail"><nav aria-label="Case progress">{chapters.map((chapter,index)=>{
+          const number = String(index + 1).padStart(2, "0")
+          return <a key={chapter.id} href={`#${chapter.id}`}
+            aria-label={`${number} of ${String(chapters.length).padStart(2, "0")}: ${chapter.label}`}
+            aria-current={active===chapter.id?"location":undefined}><span>{number}</span></a>
+        })}</nav></aside>
         <div className="fn-reading-body">{children}</div>
       </div>
     </main>

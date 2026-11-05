@@ -34,8 +34,8 @@ export function AgentsPage() {
       { label: "Years", value: "2025–present" },
     ]}
     hero={{
-      src: "/images/agents/hero-demo.png", width: 2240, height: 884,
-      alt: "Windows desktop with a Researcher agent panel showing in-progress tasks",
+      src: "/images/agents/hero-taskbar-attention.png", width: 2000, height: 1125,
+      alt: "Windows desktop with Copilot and Researcher taskbar previews, showing a needs-attention state",
       caption: "Agent visibility in the Windows shell. Design artifact from ongoing platform work.",
     }}
     chapters={chapters}
@@ -105,14 +105,13 @@ export function AgentsPage() {
       </div>
     </CaseSection>
 
-    <CaseSection id="constraints" title="A shared contract meant saying no.">
-      <Split>
-        <Prose>
-          <p>Windows needs a stable interaction contract while agent providers change their capabilities and outputs. Partner teams wanted the detailed progress views, custom visualizations and specialized features available inside their own apps. The shared OS surface could not become all of those interfaces at once.</p>
-          <p>We kept the taskbar contract focused on visibility, inspection and intervention. Rich provider-specific experiences could exist elsewhere without making each agent behave differently at the system level.</p>
-        </Prose>
-        <PortfolioMedia id="agents-constraints" number="05.1" />
-      </Split>
+    <CaseSection id="constraints" tone="paper" className="pf-constraints-section">
+      <PortfolioMedia id="agents-constraints" number="05.1" />
+      <h2 data-pf-reveal="reading">A shared contract meant saying no.</h2>
+      <Prose>
+        <p>Windows needs a stable interaction contract while agent providers change their capabilities and outputs. Partner teams wanted the detailed progress views, custom visualizations and specialized features available inside their own apps. The shared OS surface could not become all of those interfaces at once.</p>
+        <p>We kept the taskbar contract focused on visibility, inspection and intervention. Rich provider-specific experiences could exist elsewhere without making each agent behave differently at the system level.</p>
+      </Prose>
       <div id="iteration" className="pf-anchor">
         <h3>Test the contract in the shell, not just on a board.</h3>
         <Prose>

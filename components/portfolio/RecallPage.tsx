@@ -27,8 +27,8 @@ export function RecallPage() {
       { label: "Years", value: "2023–2025" },
     ]}
     hero={{
-      src: "/images/recall/hero-demo.png", width: 1120, height: 442,
-      alt: "Recall on a Windows desktop with a grid of search result cards",
+      src: "/images/recall/hero-text-matches.png", width: 2000, height: 1165,
+      alt: "Recall text-match results for a presentation with a red barn on a Windows desktop",
       caption: "Recall search design: results presented as captured moments with source context.",
     }}
     chapters={chapters}

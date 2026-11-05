@@ -82,6 +82,41 @@ after fixing wrapped navigation at 200% text; Recall annotation contrast measure
 8.12:1 for body text and 13.59:1 for headings. Other engines and physical devices
 remain unverified.
 
+## Reading-flow refinement
+
+- Agents adds a light-paper environment anchor at `#constraints`, transitioning
+  the existing full-page backdrop rather than painting a section rectangle.
+  The light treatment continues through impact and the footer.
+- Public case progress is numbers-only, preserving each existing section link,
+  active state, accessible chapter name and 44px target. Global navigation and
+  archived chapter labels are unchanged.
+- `PortfolioVideo` uses native media lazy loading where supported plus the
+  `video-playback` controller: start at 60% visibility, pause below 20%, loop muted,
+  preserve the playhead, and respect deliberate pause/unmute. Hidden tabs and
+  closed disclosures stop playback; reduced motion and reported save-data leave
+  manual Play available. No-JS retains native manual controls.
+- Seven recordings have dimensions verified from their decoded metadata, reserving
+  frame space before loading. Autoplay denial retains the player with recovery
+  guidance; actual media errors retain the existing poster/original-source fallback.
+- The supplied 2000x1125 Agents screenshot is used only for the public Agents hero,
+  with accurate alternative text and its original aspect ratio. The selected
+  browser context was Teams, but the supplied image depicts Agents; this placement
+  is an explicit best-judgment assumption pending the author's review. A subsequent
+  Teams-specific upload replaces the public Teams hero at its original 2000x1075
+  dimensions; the supplied Recall text-match image replaces its public hero at
+  2000x1165. Public homepage project images use these same supplied images,
+  dimensions and descriptions. Archived hero sources remain unchanged.
+
+Validation: 38 tests, typecheck and production build pass; all seven clips
+advanced and looped in viewport playback checks. Native pause/play, offscreen
+resume, hidden tabs, disclosure closure, reduced motion, save-data, autoplay
+denial and genuine media failure were exercised. The public 40-case layout
+matrix has no visible clipping or overflow. Technical review exposed midtone
+control/focus contrast issues: public crossing fills now use the resolved ground,
+focus uses its primary foreground, and the contrast-changing noise overlay is
+temporarily suppressed. A 25-case recheck measured minimum 4.618554588980766:1.
+Settled/archive texture remains unchanged; other engines/devices are unverified.
+
 ## Historical October implementation
 
 Approved scope: preserve typography and palette; improve homepage visibility,

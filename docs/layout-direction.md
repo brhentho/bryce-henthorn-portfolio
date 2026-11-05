@@ -129,7 +129,7 @@ Do not mechanically apply one background ramp or one case-body template to every
 | Page | Argument order | Layout and motion |
 |---|---|---|
 | Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve ASCII, layered project entrances and continuous atmosphere; clean linked product images with bounded pointer response, then staggered Approach |
-| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Hero/brief, comparison, decision table, compact keyframe rail and user-controlled demonstration; dark tonal continuity |
+| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Hero/brief, comparison, decision table, keyframes and user-controlled simulation; dark opening fades to light at constraints and stays light through the ending |
 | Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> qualified milestone | Hero/brief, selectable four-layer capture/index model (2.5), enlarged provenance card with annotations (2.4), supporting recording (2.8), decision table and privacy pair; mainly ink/graphite |
 | Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Research split, data table, conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
 | About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split, grouped working-example/ledger arrivals and shared neutral ink; no warm-brown override or product simulation |
@@ -142,6 +142,17 @@ Public homepage captions and synthetic device bars are intentionally removed;
 case-study evidence retains its useful captions and figure framing.
 Reading/evidence reveals settle once, preserve text contrast and never hold
 document scrolling. These opt-ins do not restyle the archived explorations.
+
+The public case rail displays section numbers only, with the current number
+emphasized and complete chapter names retained in accessible link labels.
+Recorded videos loop muted while sufficiently visible, pause offscreen and
+respect manual pause. Reduced-motion/data-saving preferences leave native Play
+available without automatic playback. This does not auto-run the Agents simulation.
+
+Agents' constraints image is a full reading-container plate (2.8) between the
+interactive prototype and "A shared contract meant saying no." It leads the
+light passage, retaining its figure caption before the heading and constrained
+body copy. It is not a half-width image beside the explanation.
 
 Actual media inspection corrected the source captions: `Teams_fig04` shows group
 preparation, `Teams_fig06` live teacher orchestration, and `Teams_fig05` shared
