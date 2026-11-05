@@ -2,18 +2,22 @@
 
 import Image from "next/image"
 import { useRef } from "react"
-import { motion, useTransform } from "framer-motion"
+import { motion, useTransform, type MotionValue } from "framer-motion"
 import { PERSON, PROJECTS } from "@/lib/explore/content"
 import type { Finalist, HeroKind } from "@/lib/explore/finalists"
 import { Artwork } from "../effects/Artwork"
 import { RevealWords } from "../RevealWords"
 import { useSectionProgress } from "../useSectionProgress"
 import { useReducedMotion } from "../useReducedMotion"
-import { Approach, CaseLink, FinalFooter, FinalHeader, MaterialSection, useFinalHero } from "./Shared"
+import { useMediaQuery } from "../useMediaQuery"
+import { Environment } from "./Environment"
+import { Approach, CaseLink, Chapter, FinalFooter, FinalHeader, useFinalHero } from "./Shared"
+
+const TONES = ["cool", "plum", "warm"] as const
 
 export function FinalHome({ concept }: { concept: Finalist }) {
   const hero = useFinalHero(concept)
-  return <div className={`fn-concept fn-${concept}`}>
+  return <Environment className={`fn-concept fn-${concept}`}>
     <a className="xp-skip" href="#work">Skip to selected work</a>
     <FinalHeader concept={concept} hero={hero} />
     <main id="main">
@@ -33,34 +37,107 @@ export function FinalHome({ concept }: { concept: Finalist }) {
       <Approach />
     </main>
     <FinalFooter />
-  </div>
+  </Environment>
 }
+
+type Offset = Parameters<typeof useSectionProgress>[1]
+type Entrance = {
+  /** Image entrance, measured on the untransformed `[data-project-entry]` wrapper. */
+  enter: Offset
+  /** After the entrance: layered drift until the wrapper leaves. */
+  after: Offset
+  /** Copy staging, measured on the untransformed copy column. */
+  copy: Offset
+  scale: number; y: number; x: number; tilt: number; inner: number
+  mask: "aperture" | "wipe" | "none"
+  drift: number; copyDrift: number
+}
+
+// Starting choreography from the approved plan; narrow screens keep a visible entrance with less travel.
+const ENTRANCES: Record<Finalist, Record<"wide" | "narrow", Entrance>> = {
+  synthesis: {
+    wide: { enter: ["start 1", "start .25"], after: ["start .25", "end start"], copy: ["start .95", "start .4"], scale: .8, y: 96, x: 0, tilt: 0, inner: 1.18, mask: "aperture", drift: -64, copyDrift: -24 },
+    narrow: { enter: ["start 1", "start .3"], after: ["start .3", "end start"], copy: ["start 1", "start .5"], scale: .88, y: 56, x: 0, tilt: 0, inner: 1.12, mask: "aperture", drift: -28, copyDrift: -10 },
+  },
+  presence: {
+    wide: { enter: ["start 1", "start .12"], after: ["start .12", "end start"], copy: ["start .92", "start .3"], scale: .7, y: 120, x: 0, tilt: 14, inner: 1.08, mask: "none", drift: -40, copyDrift: 0 },
+    narrow: { enter: ["start 1", "start .2"], after: ["start .2", "end start"], copy: ["start .95", "start .4"], scale: .82, y: 72, x: 0, tilt: 6, inner: 1.06, mask: "none", drift: -18, copyDrift: 0 },
+  },
+  signal: {
+    wide: { enter: ["start .98", "start .45"], after: ["start .45", "end start"], copy: ["start 1", "start .62"], scale: 1, y: 0, x: -56, tilt: 0, inner: 1.04, mask: "wipe", drift: -36, copyDrift: -12 },
+    narrow: { enter: ["start .98", "start .5"], after: ["start .5", "end start"], copy: ["start 1", "start .65"], scale: 1, y: 0, x: -20, tilt: 0, inner: 1.03, mask: "wipe", drift: -14, copyDrift: -6 },
+  },
+}
+
+// Explicit rest values: framer keeps the last animated value if a style key is merely removed.
+const REST = { x: 0, y: 0, scale: 1, scaleX: 1, rotateX: 0, opacity: 1 }
+const clamp01 = (value: number) => Math.min(1, Math.max(0, value))
+const stage = (progress: number, from: number, to: number) => clamp01((progress - from) / (to - from))
 
 function Project({ concept, hero, index }: { concept: Finalist; hero: HeroKind; index: number }) {
   const project = PROJECTS[index]
-  const ref = useRef<HTMLDivElement>(null)
+  const entry = useRef<HTMLDivElement>(null)
+  const copy = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
-  const progress = useSectionProgress(ref, ["start .95", "start .2"])
-  const scale = useTransform(progress, [0, 1], [concept === "presence" ? .78 : .95, 1])
-  const y = useTransform(progress, [0, 1], [concept === "presence" ? 70 : 28, 0])
-  const rotateX = useTransform(progress, [0, 1], [concept === "presence" ? 10 : 0, 0])
-  return <MaterialSection material={(["cool", "plum", "warm"] as const)[index]} id={`work-${project.slug}`} className={`fn-project fn-project-${index}`}>
-    <div ref={ref} className="fn-project-grid">
-      <div className="fn-project-copy">
-        <p className="fn-label">0{index + 1} / {project.years}</p><h2>{project.name}</h2>
-        <p className="fn-project-thesis">{project.title}</p>{concept !== "signal" && <p className="fn-label">{project.proof}</p>}
+  const narrow = useMediaQuery("(max-width: 700px)")
+  const e = ENTRANCES[concept][narrow ? "narrow" : "wide"]
+
+  const enter = useSectionProgress(entry, e.enter)
+  const after = useSectionProgress(entry, e.after)
+  const text = useSectionProgress(copy, e.copy)
+
+  const scale = useTransform(enter, [0, 1], [e.scale, 1])
+  const x = useTransform(enter, [0, 1], [e.x, 0])
+  const y = useTransform([enter, after] as MotionValue<number>[], ([p, a]: number[]) => (1 - p) * e.y + a * e.drift)
+  const rotateX = useTransform(enter, [0, 1], [e.tilt, 0])
+  const inner = useTransform(enter, [0, 1], [e.inner, 1])
+  const clipPath = useTransform(enter, p => {
+    const r = 1 - p
+    if (e.mask === "aperture") return `inset(${(r * 9).toFixed(2)}% ${(r * 11).toFixed(2)}% ${(r * 9).toFixed(2)}% ${(r * 11).toFixed(2)}% round 8px)`
+    if (e.mask === "wipe") return `inset(0% ${(r * 100).toFixed(2)}% 0% 0%)`
+    return "none"
+  })
+  const rule = useTransform(enter, [0, .7], [0, 1])
+  const caption = useTransform(enter, [.3, 1], [.35, 1])
+
+  const labelY = useTransform(text, p => `${(1 - stage(p, 0, .5)) * 110}%`)
+  const titleY = useTransform(text, p => `${(1 - stage(p, .08, .68)) * .55}em`)
+  const titleOpacity = useTransform(text, p => .15 + .85 * stage(p, .08, .5))
+  const thesisY = useTransform(text, p => (1 - stage(p, .3, 1)) * 40)
+  const thesisOpacity = useTransform(text, p => .25 + .75 * stage(p, .3, 1))
+  const headingY = useTransform(after, a => a * e.copyDrift)
+  const note = useTransform(enter, p => (1 - stage(p, .4, 1)) * 16)
+  const noteOpacity = useTransform(enter, p => .4 + .6 * stage(p, .4, 1))
+
+  const motionOn = !reduce
+  return <Chapter tone={TONES[index]} band={[1, .35]} id={`work-${project.slug}`} className={`fn-project fn-project-${index}`}>
+    <div className="fn-project-grid">
+      <div ref={copy} className="fn-project-copy" data-project-copy={project.slug}>
+        <motion.div className="fn-project-heading" style={motionOn && e.copyDrift ? { y: headingY } : REST}>
+          <div className="fn-line-mask"><motion.p className="fn-label" style={motionOn ? { y: labelY } : REST}>0{index + 1} / {project.years}</motion.p></div>
+          <div className="fn-line-mask"><motion.h2 style={motionOn ? { y: titleY, opacity: titleOpacity } : REST}>{project.name}</motion.h2></div>
+          <motion.p className="fn-project-thesis" style={motionOn ? { y: thesisY, opacity: thesisOpacity } : REST}>{project.title}</motion.p>
+          {concept !== "signal" && <motion.p className="fn-label fn-project-proof" style={motionOn ? { y: thesisY, opacity: thesisOpacity } : REST}>{project.proof}</motion.p>}
+        </motion.div>
         <CaseLink concept={concept} hero={hero} index={index} />
       </div>
-      <motion.figure className="fn-project-plate" style={reduce ? undefined : { scale, y, rotateX }}>
-        <div className="fn-device">
-          <div className="fn-device-bar" aria-hidden="true"><i /><i /><i /><span>{project.name}</span></div>
-          <Image src={project.image} alt={project.imageAlt} width={project.imageWidth} height={project.imageHeight}
-            sizes={concept === "presence" ? "92vw" : "(max-width: 850px) 92vw, 60vw"}
-            style={index === 0 ? { viewTransitionName: `${concept}-product` } : undefined} />
-        </div>
-        <figcaption className="fn-label">Fig. 0{index + 1} / {project.name} / Product artifact</figcaption>
-      </motion.figure>
-      {concept === "signal" && <div className="fn-project-annotation"><span className="fn-label">Contribution</span><p>{project.proof}</p></div>}
+      <div ref={entry} className="fn-project-entry" data-project-entry={project.slug}>
+        <motion.figure className="fn-project-plate" data-project-art={project.slug} style={motionOn ? { scale, x, y, rotateX } : REST}>
+          <motion.div className="fn-device" style={motionOn && e.mask !== "none" ? { clipPath } : { clipPath: "none" }}>
+            <div className="fn-device-bar" aria-hidden="true"><i /><i /><i /><span>{project.name}</span></div>
+            <div className="fn-device-view">
+              <motion.div className="fn-device-image" style={motionOn ? { scale: inner } : REST}>
+                <Image src={project.image} alt={project.imageAlt} width={project.imageWidth} height={project.imageHeight}
+                  sizes={concept === "presence" ? "92vw" : "(max-width: 850px) 92vw, 60vw"}
+                  style={index === 0 ? { viewTransitionName: `${concept}-product` } : undefined} />
+              </motion.div>
+            </div>
+          </motion.div>
+          {concept === "signal" && <motion.span className="fn-registration-rule" aria-hidden="true" style={motionOn ? { scaleX: rule } : REST} />}
+          <motion.figcaption className="fn-label" style={motionOn && concept === "signal" ? { opacity: caption } : REST}>Fig. 0{index + 1} / {project.name} / Product artifact</motion.figcaption>
+        </motion.figure>
+      </div>
+      {concept === "signal" && <motion.div className="fn-project-annotation" style={motionOn ? { y: note, opacity: noteOpacity } : REST}><span className="fn-label">Contribution</span><p>{project.proof}</p></motion.div>}
     </div>
-  </MaterialSection>
+  </Chapter>
 }

@@ -15,6 +15,9 @@
   background: var(--fn-black);
 }
 .fn *, .fn *::before, .fn *::after { box-sizing: border-box; }
+/* Skip link hides by its own height, so enlarged text cannot leave part of it showing while unfocused. */
+.fn .xp-skip { top: 0; translate: 0 calc(-100% - 1rem); }
+.fn .xp-skip:focus { top: 1rem; translate: none; }
 .fn-review-bar .xp-bar-group { flex-wrap: wrap; max-width: 100%; min-width: 0; }
 .fn-review-bar .xp-bar-link { white-space: nowrap; }
 .fn h1, .fn h2, .fn h3 { font-family: var(--font-display); font-weight: 500; }
@@ -33,11 +36,15 @@
 .fn-home-copy a { pointer-events: auto; }
 .fn .fn-home-title { font-size: clamp(3.25rem, min(8vw, 12svh), 8.5rem); max-width: 16ch; margin-block: 1.5rem 2rem; }
 .fn-work-cue { display: inline-flex; align-items: center; justify-content: space-between; gap: 3rem; min-height: 44px; margin-top: 2rem; border-bottom: 1px solid var(--rule); font-size: .875rem; }
-.fn-hero-scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, var(--fn-black), transparent 75%); }
+.fn-hero-scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+/* The hero fades into the live page backdrop (base + glow) instead of onto a painted color. At rest this
+   composites identically to the former ink scrim; while the environment moves there is no seam. */
+.fn-home-hero .xp-art { mask-image: linear-gradient(0deg, transparent, black 75%); }
+.fn-hero-orb .xp-art { mask-image: linear-gradient(0deg, transparent, black 22%); }
 .fn-hero-orb .fn-home-copy { justify-self: center; text-align: center; }
 .fn-hero-orb .fn-home-title { max-width: 16ch; }
 .fn-hero-orb .fn-intro { margin-inline: auto; }
-.fn-hero-orb .fn-hero-scrim { background: radial-gradient(ellipse 45% 40% at 50% 50%, color-mix(in srgb, var(--fn-black) 78%, transparent), color-mix(in srgb, var(--fn-black) 22%, transparent) 100%), linear-gradient(0deg, var(--fn-black), transparent 22%); }
+.fn-hero-orb .fn-hero-scrim { background: radial-gradient(ellipse 45% 40% at 50% 50%, color-mix(in srgb, var(--fn-black) 78%, transparent), color-mix(in srgb, var(--fn-black) 22%, transparent) 100%); mask-image: linear-gradient(0deg, transparent, black 22%); }
 .fn-hero-ascii { align-items: end; }
 .fn-synthesis .fn-home-copy { justify-self: start; text-align: left; }
 .fn-synthesis .fn-home-title { max-width: 16ch; }
@@ -45,52 +52,94 @@
 .fn-synthesis .fn-home-hero { align-items: end; }
 .fn-home-hero .xp-art-layer, .fn-home-hero .xp-art-still { transform: none; }
 .fn-home-hero .xp-art-control { display: none; }
-.fn-surface {
-  --surface-bg: var(--fn-black); --surface-fg: var(--fn-white); --surface-accent: var(--fn-accent-dark);
+/* One page environment. Chapters are transparent; the fixed backdrop and every text/rule/link token
+   follow the ground actually behind the copy. Tones are read by Environment.tsx as --env-<tone>. */
+.fn-environment {
+  --environment-background: var(--fn-black); --environment-foreground: var(--fn-white);
+  --environment-glow: transparent; --environment-glow-x: 50%; --environment-glow-y: 0%;
+  --environment-accent: var(--fn-accent-dark);
+  --env-body: 90%; --env-secondary: 76%; --env-tertiary: 67%;
+  --env-ink: var(--fn-black);
+  --env-paper: var(--fn-white); --env-paper-glow: var(--paper-glow); --env-paper-glow-strength: .55; --env-paper-glow-x: 82; --env-paper-glow-y: 0;
+  --paper-glow: #ffffff;
+  --surface-bg: var(--environment-background); --surface-fg: var(--environment-foreground); --surface-accent: var(--environment-accent);
   --xr-bg: var(--surface-bg); --xr-fg: var(--surface-fg); --xr-accent: var(--surface-accent);
   --ink: var(--surface-bg); --paper: var(--surface-fg);
   --text-primary: var(--surface-fg);
-  --text-body: color-mix(in srgb, var(--surface-fg) 90%, var(--surface-bg));
-  --text-secondary: color-mix(in srgb, var(--surface-fg) 76%, var(--surface-bg));
-  --text-tertiary: color-mix(in srgb, var(--surface-fg) 67%, var(--surface-bg));
+  --text-body: color-mix(in srgb, var(--surface-fg) var(--env-body), var(--surface-bg));
+  --text-secondary: color-mix(in srgb, var(--surface-fg) var(--env-secondary), var(--surface-bg));
+  --text-tertiary: color-mix(in srgb, var(--surface-fg) var(--env-tertiary), var(--surface-bg));
   --rule: color-mix(in srgb, var(--surface-fg) 25%, transparent);
   --rule-hairline: color-mix(in srgb, var(--surface-fg) 14%, transparent);
   --rule-strong: color-mix(in srgb, var(--surface-fg) 50%, transparent);
   --xr-surface: color-mix(in srgb, var(--surface-fg) 6%, var(--surface-bg));
-  position: relative; isolation: isolate; color: var(--surface-fg); background: var(--surface-bg);
+  position: relative; isolation: isolate; color: var(--surface-fg);
 }
-.fn-surface[data-material="cool"] { --surface-bg: var(--fn-cool); }
-.fn-surface[data-material="plum"] { --surface-bg: var(--fn-plum); }
-.fn-surface[data-material="warm"] { --surface-bg: var(--fn-warm); }
-.fn-surface[data-material="paper"] { --surface-bg: var(--fn-white); --surface-fg: var(--fn-black); --surface-accent: var(--fn-accent-light); }
-.fn-surface-wash { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 80% 10%, color-mix(in srgb, var(--surface-fg) 6%, transparent), transparent 65%); }
-.fn-surface-content { position: relative; background: var(--surface-bg); }
-.fn-project { padding: var(--fn-room) var(--fn-pad); overflow: clip; }
-.fn-project-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 5%; align-items: center; perspective: 1600px; }
+.fn-environment[data-ground="light"] { --environment-accent: var(--fn-accent-light); }
+/* Mid-luminance crossing: text is pure black/white and secondary copy stops attenuating. */
+.fn-environment[data-crossing] { --env-body: 100%; --env-secondary: 100%; --env-tertiary: 100%; --xr-surface: var(--surface-bg); }
+.fn-backdrop { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-color: var(--environment-background); }
+.fn-backdrop::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 85% 75% at var(--environment-glow-x) var(--environment-glow-y), var(--environment-glow), transparent 70%); }
+.fn-synthesis {
+  --env-dusk: #0e131b; --env-dusk-glow: #2f4769; --env-dusk-glow-strength: .18; --env-dusk-glow-x: 86; --env-dusk-glow-y: 14;
+  --env-cool: #0f1826; --env-cool-glow: #3d6098; --env-cool-glow-strength: .22; --env-cool-glow-x: 82; --env-cool-glow-y: 10;
+  --env-plum: #1a1522; --env-plum-glow: #6a4578; --env-plum-glow-strength: .15; --env-plum-glow-x: 16; --env-plum-glow-y: 26;
+  --env-warm: #1f1915; --env-warm-glow: #8c5b37; --env-warm-glow-strength: .18; --env-warm-glow-x: 78; --env-warm-glow-y: 72;
+  --env-graphite: #141518; --env-graphite-glow: #464a55; --env-graphite-glow-strength: .16; --env-graphite-glow-x: 50; --env-graphite-glow-y: 0;
+  --env-paper-cool: #e6e8e5; --env-paper-cool-glow: var(--paper-glow); --env-paper-cool-glow-strength: .5; --env-paper-cool-glow-x: 14; --env-paper-cool-glow-y: 18;
+  --env-paper-warm: #eee7da; --env-paper-warm-glow: #fff7e8; --env-paper-warm-glow-strength: .6; --env-paper-warm-glow-x: 72; --env-paper-warm-glow-y: 84;
+}
+/* Presence: deeper product-led tones; the highlight sits where the product plate enters. */
+.fn-presence {
+  --env-dusk: #0c111b; --env-dusk-glow: #2a4670; --env-dusk-glow-strength: .18; --env-dusk-glow-x: 50; --env-dusk-glow-y: 30;
+  --env-cool: #0a1222; --env-cool-glow: #2e5eae; --env-cool-glow-strength: .26; --env-cool-glow-x: 50; --env-cool-glow-y: 64;
+  --env-plum: #140f1f; --env-plum-glow: #5a4290; --env-plum-glow-strength: .19; --env-plum-glow-x: 50; --env-plum-glow-y: 60;
+  --env-warm: #19120d; --env-warm-glow: #a3592a; --env-warm-glow-strength: .2; --env-warm-glow-x: 50; --env-warm-glow-y: 66;
+  --env-graphite: #121316; --env-graphite-glow: #454852; --env-graphite-glow-strength: .12; --env-graphite-glow-x: 50; --env-graphite-glow-y: 10;
+  --env-paper-glow-x: 50;
+}
+/* Signal: low-saturation tints only, no spotlight; the more paper-led reading comparison. */
+.fn-signal {
+  --env-cool: #101419; --env-plum: #151318; --env-warm: #161310; --env-graphite: #131416;
+  --env-paper: #ece9e1; --env-paper-cool: #e4e6e3; --env-paper-warm: #eee5d6; --env-paper-glow-strength: 0;
+}
+.fn-chapter { position: relative; }.fn-project { padding: var(--fn-room) var(--fn-pad); overflow-x: clip; }
+.fn-project-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 5%; align-items: center; }
+.fn-project-heading { display: grid; gap: 1.25rem; justify-items: start; }
+/* Line mask without overflow/clip-path: glyphs at rest are fully inside the padded box. */
+.fn-line-mask { mask-image: linear-gradient(black, black); padding: .1em .15em .24em; margin: -.1em -.15em -.24em; }
+.fn-project-entry { min-width: 0; perspective: 1600px; }
+.fn-project-proof { max-width: 44ch; }
 .fn-project-copy { display: grid; gap: 1.25rem; justify-items: start; min-width: 0; }
 .fn-project-thesis { font-size: clamp(1.2rem, 1.8vw, 1.75rem); line-height: 1.4; max-width: 30ch; }
-.fn-project-plate { min-width: 0; transform-origin: center bottom; }
+.fn-project-plate { min-width: 0; transform-origin: center 70%; position: relative; }
 .fn-device { background: var(--fn-black); border: 1px solid var(--rule-strong); border-radius: .5rem; overflow: hidden; }
 .fn-device img { display: block; width: 100%; height: auto; }
+.fn-device-view { overflow: hidden; }
+.fn-device-image { transform-origin: 50% 40%; }
+.fn-registration-rule { display: block; height: 1px; margin-top: .75rem; background: var(--rule-strong); transform-origin: left; }
 .fn-device-bar { display: flex; align-items: center; gap: .375rem; min-height: 1.75rem; padding-inline: .75rem; color: var(--fn-white); background: var(--fn-black); }
 .fn-device-bar i { display: block; width: 4px; height: 4px; background: var(--fn-white); opacity: .45; border-radius: 50%; }
 .fn-device-bar span { margin-left: auto; font: .5625rem var(--font-mono); opacity: .7; }
 .fn-project-plate figcaption, .fn-case-product figcaption { padding-top: 1rem; }
 .fn-synthesis .fn-project-1 .fn-project-copy { grid-column: 2; grid-row: 1; }
-.fn-synthesis .fn-project-1 .fn-project-plate { grid-column: 1; grid-row: 1; }
+.fn-synthesis .fn-project-1 .fn-project-entry { grid-column: 1; grid-row: 1; }
 .fn-synthesis .fn-project-1 .fn-project-grid { grid-template-columns: 1.25fr .75fr; }
 .fn-presence .fn-project-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 .fn-presence .fn-project-copy { grid-template-columns: 1fr 1fr; align-items: end; }
-.fn-presence .fn-project-copy > .fn-label:first-child { grid-column: 1/-1; }
+.fn-presence .fn-project-heading { display: contents; }
+.fn-presence .fn-project-heading > .fn-line-mask:first-child { grid-column: 1/-1; }
+.fn-presence .fn-project-proof { grid-column: 1; }
 .fn-presence .fn-project-copy h2 { font-size: clamp(2.5rem, 6vw, 6rem); }
 .fn-presence .fn-project-copy .fn-shiny { grid-column: 2; grid-row: 3; justify-self: end; }
 .fn-presence .fn-project-thesis { justify-self: end; }
-.fn-presence .fn-project-plate { width: 100%; }
+.fn-presence .fn-project-plate { width: 100%; transform-origin: 50% 100%; }
 .fn-presence .fn-device { border-radius: .75rem; }
 .fn-signal .fn-project-grid { grid-template-columns: .7fr 1.3fr; align-items: start; }
 .fn-signal .fn-project-copy h2 { font-size: clamp(2.5rem, 5vw, 5rem); }
-.fn-signal .fn-project-plate { padding-top: 5rem; }
-.fn-signal .fn-project-1 .fn-project-plate { padding-top: 0; }
+.fn-signal .fn-project-entry { padding-top: 5rem; }
+.fn-signal .fn-project-plate { transform-origin: left center; }
+.fn-signal .fn-project-1 .fn-project-entry { padding-top: 0; }
 .fn-project-annotation { grid-column: 2; display: grid; grid-template-columns: .6fr 1fr; gap: 2rem; padding-top: 2rem; }
 .fn-project-annotation p { font-size: 1rem; line-height: 1.5; }
 .fn-approach { padding: var(--fn-room) var(--fn-pad); }
@@ -125,7 +174,7 @@
 .fn-shiny:is(:hover,:focus-visible)::after { opacity: 1; }
 .fn-shiny:focus-visible { --shine-angle: 110deg; }
 .fn-shiny:active { translate: 0 1px; }
-.fn-case-hero { padding: 4rem var(--fn-pad) 3rem; position: relative; background: var(--fn-black); }
+.fn-case-hero { padding: 4rem var(--fn-pad) 3rem; position: relative; }
 .fn .fn-case-title { font-size: clamp(2.5rem, 6vw, 6rem); max-width: 18ch; margin-block: 1.5rem; }
 .fn-case-product-view { perspective: 1400px; margin-top: 3rem; }
 .fn-case-product { transform-origin: 50% 65%; }
@@ -133,36 +182,62 @@
 .fn-case-intro > p { font-size: clamp(1.5rem, 2.8vw, 2.5rem); line-height: 1.2; letter-spacing: -.03em; max-width: 26ch; }
 .fn-case-intro .xr-ledger { grid-template-columns: 1fr 1fr; padding-block: 0; }
 .fn-reading-grid { display: grid; grid-template-columns: 12rem minmax(0,1fr); }
-.fn-rail { padding: 0 1.25rem 0 var(--fn-pad); background: var(--fn-black); z-index: 5; }
+.fn-rail { padding: 0 1.25rem 0 var(--fn-pad); z-index: 5; }
 .fn-rail nav { position: sticky; top: 1rem; padding-top: 3rem; }
 .fn-rail nav > p { margin-bottom: 1.5rem; font-size: .625rem; }
 .fn-rail a { display: flex; min-height: 44px; gap: .75rem; align-items: center; font-size: .75rem; color: var(--text-secondary); }
 .fn-rail a span { font: .625rem var(--font-mono); }
-.fn-rail a[aria-current] { color: var(--fn-white); }
-.fn-rail a[aria-current] span { color: var(--fn-accent-dark); }
+.fn-rail a[aria-current] { color: var(--text-primary); }
+/* Active marker stays legible across the whole dark-to-light ramp: primary text plus a currentColor rule,
+   not the accent (which drops below 3:1 against mid-crossing grounds). */
+.fn-rail a[aria-current] span { color: var(--text-primary); text-decoration: underline 1px currentColor; text-underline-offset: .35em; }
 .fn-reading-body { min-width: 0; }
-.fn-case-section { padding: clamp(3rem, 6vw, 6rem) clamp(1.25rem, 4vw, 4rem); scroll-margin-top: 1rem; }
+.fn-case-section { padding: clamp(4rem, 8vw, 8rem) clamp(1.25rem, 4vw, 4rem); scroll-margin-top: 1rem; }
+.fn-case-section > * + * { margin-top: clamp(2rem, 3vw, 3rem); }
 .fn-case-section h2 { font-size: clamp(2rem, 3.5vw, 3.5rem); max-width: 22ch; }
-.fn-case-section .fn-surface-content > * + * { margin-top: 2rem; }
 .fn-case-section .xr-prose { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.7; max-width: 62ch; }
 .fn-case-section .xr-prose p { text-wrap: pretty; }
+.fn-section-head { display: grid; gap: 1.25rem; }
 .fn-evidence-split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 6%; align-items: center; }
 .fn-evidence-split > div { display: grid; gap: 1.5rem; }
 .fn-decision-head { display: grid; gap: 2rem; }
-.fn-presence .fn-evidence-split { grid-template-columns: 1fr; gap: 2rem; }
-.fn-presence .fn-evidence-split > .xr-figure { margin-top: 1rem; }
+.fn-presence .fn-evidence-split { grid-template-columns: 1fr; gap: 3rem; }
 .fn-signal .fn-decision-head { grid-template-columns: .8fr 1.2fr; gap: 5%; }
-.fn-case-section .xr-options { margin-top: 3rem; }
-.fn-case-section .xr-option-grid { gap: 1rem; }
-.fn-case-section .xr-option-grid article { padding: 1.25rem; border: 1px solid var(--rule); }
+/* Evidence arrives against an offset registration frame that settles to an 8px echo. Registration and lateral
+   travel lead from the left/below only, so no entrance state extends past the right edge of the page. */
+.fn-evidence { min-width: 0; perspective: 1400px; }
+.fn-evidence-plate { isolation: isolate; transform-origin: 50% 85%; }
+.fn-evidence[data-registered] .xr-image-frame::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border: 1px solid var(--rule); translate: calc(var(--fn-reg, 8px) * -1) var(--fn-reg, 8px); }
+.fn-problem-pair { align-items: start; gap: clamp(1.5rem, 3vw, 3rem); }
+.fn-case-section .xr-options { margin-top: 0; }
+.fn-case-section .xr-option-grid { gap: 1rem; align-items: start; padding-top: 1rem; }
+.fn-case-section .xr-option-grid .fn-option { padding: clamp(1.25rem, 2vw, 2rem); gap: 1rem; border: 1px solid var(--rule); }
+.fn-option h3 { font-size: clamp(1.25rem, 1.6vw, 1.625rem); line-height: 1.2; }
+.fn-option p:not(.xr-label) { line-height: 1.55; color: var(--text-body); }
+/* The chosen foundation is a raised sheet in the opposite material; its own tokens guarantee contrast. */
+.fn-case-section .xr-option-grid .fn-option[data-chosen] {
+  --sheet-bg: var(--fn-white); --sheet-fg: var(--fn-black);
+  --text-primary: var(--sheet-fg);
+  --text-body: color-mix(in srgb, var(--sheet-fg) 88%, var(--sheet-bg));
+  --text-secondary: color-mix(in srgb, var(--sheet-fg) 74%, var(--sheet-bg));
+  --rule: color-mix(in srgb, var(--sheet-fg) 25%, transparent);
+  background: var(--sheet-bg); color: var(--sheet-fg); border-color: transparent; translate: 0 -1rem;
+  box-shadow: 0 2rem 3rem -2rem color-mix(in srgb, var(--fn-black) 80%, transparent);
+}
+.fn-environment[data-ground="light"] .xr-option-grid .fn-option[data-chosen] { --sheet-bg: var(--fn-black); --sheet-fg: var(--fn-white); }
+.fn-option[data-chosen] .xr-disposition { font-weight: 500; color: var(--text-primary); }
 .fn-case-section .xr-demo { grid-template-columns: 1.2fr .8fr; }
 .fn-case-section .xr-demo-stage, .fn-case-section .xr-demo-card { border-radius: .5rem; }
-.fn-case-section .xr-film { margin-top: 3rem; }
-.fn-nested-section { padding-block: 0; }
-.fn-case-section .x3-constraints { display: grid; gap: 2rem; }
-.fn-case-section .x3-constraints > div { display: grid; gap: 2rem; }
-.fn-case-section .x3-invocation-film video { width: 100%; max-height: 70vh; background: var(--fn-black); }
+.fn-case-section .xr-film { margin-top: 0; }
+.fn-nested-section > .xr-section { padding-block: 0; scroll-margin-top: 1rem; }
+.fn-case-section .x3-constraints { display: grid; grid-template-columns: .9fr 1.1fr; gap: 6%; align-items: center; }
+.fn-case-section :is(.x3-constraints, .xr-impact) > div { display: grid; gap: 1.5rem; align-content: start; }
+.fn-case-section .x3-invocation { display: grid; gap: 1.5rem; }
+.fn-case-section .x3-invocation-film { margin-top: 1.5rem; }
+.fn-case-section .x3-invocation-film video { display: block; width: 100%; max-height: 70vh; background: var(--fn-black); }
 .fn-case-section .x3-invocation-film figcaption { padding-top: 1rem; }
+.fn-case-section .xr-impact { row-gap: clamp(2.5rem, 4vw, 4rem); align-items: start; }
+.fn-case-section .xr-published { margin-top: clamp(3rem, 5vw, 5rem); }
 ::view-transition-group(synthesis-product), ::view-transition-group(presence-product), ::view-transition-group(signal-product) { animation-duration: var(--duration-route); animation-timing-function: var(--ease-out-expo); }
 @media (min-width: 1600px) { .fn-reading-grid { grid-template-columns: 16rem minmax(0,1fr); } }
 @media (max-width: 1100px) {
@@ -174,13 +249,13 @@
 }
 @media (max-width: 850px) {
   .fn-project-grid, .fn-signal .fn-project-grid, .fn-synthesis .fn-project-1 .fn-project-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .fn-synthesis .fn-project-1 .fn-project-copy, .fn-synthesis .fn-project-1 .fn-project-plate { grid-column: auto; grid-row: auto; }
+  .fn-synthesis .fn-project-1 .fn-project-copy, .fn-synthesis .fn-project-1 .fn-project-entry { grid-column: auto; grid-row: auto; }
   .fn-presence .fn-project-copy { grid-template-columns: 1fr; }
   .fn-presence .fn-project-copy .fn-shiny { grid-column: auto; grid-row: auto; justify-self: start; }
   .fn-presence .fn-project-thesis { justify-self: start; }
-  .fn-signal .fn-project-plate { padding: 0; }
+  .fn-signal .fn-project-entry { padding: 0; }
   .fn-project-annotation { grid-column: 1; }
-  .fn-approach-heading, .fn-case-intro, .fn-evidence-split, .fn-signal .fn-decision-head { grid-template-columns: 1fr; gap: 2rem; }
+  .fn-approach-heading, .fn-case-intro, .fn-evidence-split, .fn-signal .fn-decision-head, .fn-case-section .x3-constraints { grid-template-columns: 1fr; gap: 2rem; }
   .fn-approach .fn-intro, .fn-approach ol { margin-left: 0; }
   .fn-approach li { grid-template-columns: 2rem 1fr; }
   .fn-approach li p { grid-column: 2; }
@@ -197,6 +272,7 @@
   .fn-footer-line { align-items: start; flex-direction: column; }
   .fn-project-annotation { grid-template-columns: 1fr; gap: .75rem; }
   .fn-case-section .xr-option-grid { grid-template-columns: 1fr; }
+  .fn-case-section .xr-option-grid .fn-option[data-chosen] { translate: none; }
   .fn-case-hero { padding-top: 2rem; }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -9,7 +9,7 @@ A-C Original/Enhanced choices are preserved. `/explore` is the finalist index.
 |---|---|---|
 | `/explore/synthesis` | Direct merge: layered project plates, project-color changes, approach at the bottom. `?hero=ascii` or `?hero=orb` isolates the hero in identical type geometry. | C-derived static-dark product reveal, A's left contents/right reading grid, B's type scale. |
 | `/explore/presence` | Centered Orb behind text, stronger cursor response and larger product-led chapter entrances instead of circular atmospheric images. | More expansive product geometry and full-width evidence within the reading lane; no pinned body sections. |
-| `/explore/signal` | Quiet ASCII atmosphere and asymmetric editorial project spreads. | Alternating split layouts and paper/dark movements, with the same chosen opening and left rail. |
+| `/explore/signal` | Quiet ASCII atmosphere and asymmetric editorial project spreads. | Editorial split layouts on a paper-led reading ground after the dark opening, with the same chosen opening and left rail. |
 
 Append `/agents-in-windows` for each case. All three use real project artifacts,
 the same factual content, and complete case arguments. Recall, Teams and About
@@ -22,10 +22,35 @@ still link to published routes. No production page was redesigned.
   grows/settles with ordinary scroll, on a static dark background.
 - A document-bounded sticky contents rail on desktop; inline contents on narrow
   screens. No floating bottom dock or viewport-height minimum on body sections.
-- Dark/cool/plum/warm project surfaces progress into paper approach/decision
-  sections. Foreground, rules and controls use local material tokens; product
-  screenshots are never inverted. The surrounding surface color blends with
-  section scroll while an opaque local reading pane protects text contrast.
+- One page environment, not section panels (Opus-led correction). A single
+  fixed backdrop (`[data-environment]`, base color + optional radial glow) sits
+  behind each page; chapters, rail and footer are transparent tone anchors
+  (`data-env`, `data-env-start`, `data-env-end`). The backdrop interpolates in
+  OKLab between neighboring anchors as their untransformed tops cross the
+  viewport, so it is a pure function of scroll position: reverse scroll, hash
+  jumps, refresh and Back/Forward resolve without timers. Homes stay dark
+  (ink -> cool -> plum -> warm -> graphite; Presence uses deeper product-led
+  tones with the highlight where the product enters; Signal uses low-saturation
+  tints and no spotlight). Each case turns light exactly once over ~40svh
+  (Synthesis at Constraints, Presence at Impact, Signal at Context) and stays
+  light through the footer. Tones live once as `--env-<tone>` tokens in
+  `final.css`.
+- Foreground follows the ground actually behind it (`lib/explore/environment.ts`).
+  Settled grounds use the palette text; through the mid-luminance crossing text
+  snaps to pure white/black (never gray), secondary attenuation is removed and
+  the glow fades out. The hero art now fades into the live backdrop via a mask
+  instead of a painted scrim color, compositing identically at rest. Product
+  screenshots, video, the simulator and the chosen decision sheet remain real
+  surfaces; there are no opaque reading panes.
+- Project entrances are measured on untransformed wrappers while the image is on
+  screen: Synthesis grows .80 -> 1 with a 96px rise, opening aperture and
+  1.18 -> 1 inner crop, then layered drift; Presence grows .70 -> 1 with a
+  14deg -> 0 tilt and 120px rise, title resolving with the product; Signal
+  wipes left-to-right with a lateral settle, registration rule and caption, its
+  title leading. Titles resolve through a line mask, theses follow; case links
+  never move. Narrow screens keep visible but shorter travel; reduced motion is
+  static. Case evidence arrives against an offset registration frame; the
+  problem pair arrives in layers; the chosen decision is a raised inverted sheet.
 - The supplied Hyperiux Shiny Button treatment is adapted as a native
   ContinuityLink: conic edge, speckled mask and inner sheen, with cursor-directed
   highlights and a fixed hit target. Focus has an equivalent distinct state.
@@ -34,6 +59,23 @@ still link to published routes. No production page was redesigned.
   Offscreen/hidden-tab rendering stops; reduced motion gets a composed still.
 - The Orb canvas is centered geometrically; text does not move with cursor play.
   The synthesis hero choice persists across home/case/reload.
+
+### Diagnostic contract (correction)
+
+- `.fn-environment[data-ground="dark|light"]` is the page root; `[data-crossing]`
+  is present while text is in its contrast-safe crossing state.
+- `--environment-background` on the root is the exact base color painting the
+  fixed `[data-environment]` backdrop (its computed `background-color`);
+  `--environment-foreground`, `--environment-glow`, `--environment-glow-x/y`
+  complete the state. The glow is a separate `::after` layer.
+- `[data-project-entry]` (untransformed, value = project slug) wraps the moving
+  `[data-project-art]`; `[data-project-copy]` is the untransformed copy column.
+  Clip state is on `[data-project-art] .fn-device`; inner crop on `.fn-device-image`.
+- `[data-evidence]` (untransformed) wraps `.fn-evidence-plate`; `--fn-reg` is the
+  registration offset.
+- Text tokens are derived from these values in `final.css`; selected decision
+  sheets carry their own tokens. Contrast should be measured against the
+  composed backdrop, not only the base color.
 
 ### Scope and accessibility note
 
@@ -67,6 +109,32 @@ the small shiny-link adaptation introduces no additional package dependency.
   finalist pages retained 390px document width after repair. Sampled static
   text/base-surface contrast was at least 8.45:1; no whole-site AA claim is implied.
 - Physical-device, Safari and Firefox verification remain outstanding.
+
+### Correction checks (continuous environment)
+
+- 18 tests pass, including OKLab/contrast tests of the crossing ramp; type check
+  and production build pass.
+- Accepted heroes: geometry and copy deltas were 0 on all seven paths at 1440px
+  with reduced motion, compared against the pre-correction baseline.
+- Backdrop: no opaque chapter/content/rail/footer surfaces on the six pages;
+  27-53 distinct base colors per page; homes stay dark; each case has exactly
+  one dark -> light movement and the footer continues the final ground.
+- Composed-pixel contrast through each case crossing: 373 samples, minimum
+  4.68:1. Text switches to its contrast-safe state below 12:1 palette contrast,
+  where raised 6% surfaces also fall back to the ground. The active rail number
+  uses primary text with a currentColor underline (minimum 4.61:1 across the
+  ramp) instead of the accent.
+- Project strips show intermediate states at 1440/1024/390 on the untransformed
+  `[data-project-entry]` wrappers. Case evidence enters from the left/below, so
+  no entrance overruns the page: zero transient horizontal overflow at
+  1440x900, 1440x700, 1024x768 and 390x844.
+- Without JavaScript, a finalist-scoped `<noscript>` style settles project
+  images, copy and case evidence at their final states (no clip, transform or
+  dimming); heroes are unaffected.
+- The finalist skip link hides by its own height (fully off-screen at 390px with
+  200% text) and appears on focus. The 80-combination production matrix ran with
+  zero app errors, overflow or clipped visible text; intentional sr-only hero
+  copies are excluded.
 
 ---
 
