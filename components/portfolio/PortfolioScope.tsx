@@ -1,10 +1,12 @@
 import type { ReactNode } from "react"
+import { PortfolioReveals } from "./PortfolioReveals"
 import "../../app/explore/explore.css"
 import "../../app/explore/effects.css"
 import "../../app/portfolio-primitives.css"
 import "../../app/portfolio-foundation.css"
 import "../../app/portfolio.css"
 import "../../app/portfolio-pages.css"
+import "../../app/portfolio-interactions.css"
 
 const NO_SCRIPT = `<style>
 .portfolio :is([data-project-art], [data-project-art] .fn-device, [data-project-art] .fn-device-image, [data-project-art] figcaption,
@@ -17,5 +19,6 @@ export function PortfolioScope({ children }: { children: ReactNode }) {
   return <div className="portfolio xp xr fn">
     <noscript dangerouslySetInnerHTML={{ __html: NO_SCRIPT }} />
     {children}
+    <PortfolioReveals />
   </div>
 }

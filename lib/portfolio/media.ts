@@ -65,9 +65,9 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   "recall-provenance": {
     kind: "image", title: "Result provenance",
     src: "/images/recall/transparency-card-grid.png",
-    alt: "Recall result cards for Catering with source application and match-type labels",
+    alt: "Recall results for Presentation with a red barn, showing screenshot context, source application and time",
     width: 1641, height: 881,
-    caption: "Match type, app and time help a reader judge the result rather than rely on an unexplained relevance score.",
+    caption: "Screenshot context, source app and time help a reader judge a result. This still does not show the separate text and visual match headings.",
   },
   "recall-search": {
     kind: "video", title: "Recall search interaction",

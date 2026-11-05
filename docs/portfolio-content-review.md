@@ -9,6 +9,12 @@ requests live in `lib/portfolio/media.ts`. “Ready” means a source is availab
 for composition, **not** that all rights, release status or product claims have
 been independently verified. Existing assets are retained, not deleted.
 
+The interactive Recall capture/index drawing is an explanatory reconstruction of
+the existing four-layer diagram, not a running system or measured timing model.
+The provenance enlargement uses the red-barn result screenshot's actual source,
+time and surrounding context. It does not show separated Text/Visual headings;
+that distinction belongs with the verified search recording.
+
 ## Publication and factual questions
 
 | ID | Page / section | Confirm | Current treatment |

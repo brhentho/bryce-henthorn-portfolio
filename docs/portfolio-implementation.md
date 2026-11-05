@@ -8,7 +8,7 @@
 ## Current local portfolio promotion
 
 - Main Home uses the selected Synthesis + ASCII experience, public navigation and
-  qualified project-status captions. Agents, Recall, Teams and About have distinct
+  qualified project copy. Agents, Recall, Teams and About have distinct
   narrative compositions using the shared public portfolio layer.
 - Existing environment math and visual foundations were promoted with compatibility
   wrappers, preserving the exploration archive. Static Synthesis tokens live in
@@ -39,6 +39,48 @@ This is a **local review build**, not a deployed or publication-approved portfol
 Clearance/version/outcome questions, physical-browser/device checks and the
 continuous-artwork accessibility publication assessment remain explicit follow-up
 items. No fabricated research, metrics or completed-media claims fill those gaps.
+
+## Public interaction polish
+
+- The public header is a name-only home link. Work/About/Contact share a gooey
+  highlight that moves independently of text and click targets. Primary and quiet
+  actions share the cursor-responsive edge, mono labels, focus and press treatment.
+- `PortfolioLink` selects the public editorial wipe in the existing transition
+  coordinator. The opaque panel covers the route commit and continues offscreen
+  before the headline resolves. Public links do not also start an artifact morph.
+  Keyboard/reduced-motion navigation is direct; local anchors remain local and
+  cross-page hashes receive the correct scroll position and focus. Interrupted
+  and uncommitted navigation releases the shield, with an explicit recovery message.
+- Homepage project images link to their cases and have a bounded pointer response
+  nested separately from the approved scroll transforms. Synthetic window bars and
+  homepage image captions are removed; archived figures keep both. Approach stays
+  at the bottom and its heading, introduction and principles arrive in groups.
+- `PortfolioReveals` progressively enhances reading/evidence groups without hiding
+  server-rendered content. Text keeps its contrast during movement. Focus, deep
+  links and reduced-motion changes settle content; videos remain user controlled.
+- Recall uses a selectable four-plane SVG capture/index model and an enlarged,
+  annotated provenance result. The latter shows source/time/context, not invented
+  Text/Visual headings. The existing recording supplies the separated-match evidence.
+- About now uses neutral ink/graphite instead of the two previous warm overrides.
+  Working examples, concurrent experience and philosophy retain their actual copy.
+- Shared exploration components use public opt-ins; no archive redesign or new
+  package is required. Accepted Inter typography and historical grid styles remain
+  intentional, not new style-lint defects.
+
+The public wipe has regression coverage for ordering, focus/hash placement,
+keyboard/reduced-motion bypass, supersession, timeout recovery and live motion
+preference changes. Browser interaction and responsive checks supplement those
+coordinator tests; they are not replaced by a build.
+
+Validation for this pass: typecheck, 28 tests and the Webpack production build
+pass. The five public pages passed 40 viewport/motion combinations; finalist
+routes passed 30 desktop/tablet/mobile checks, and A-F/archive routes passed 57.
+Clipping findings were limited to intentionally clipped screen-reader-only text.
+Production-mode checks covered route focus and Back, hash targeting, placeholders,
+recording failure and the unpublished draft. Independent technical review passed
+after fixing wrapped navigation at 200% text; Recall annotation contrast measured
+8.12:1 for body text and 13.59:1 for headings. Other engines and physical devices
+remain unverified.
 
 ## Historical October implementation
 

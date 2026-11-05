@@ -6,6 +6,7 @@ import { PERSON } from "@/lib/explore/content"
 import { finalistHref, type Finalist, type HeroKind } from "@/lib/explore/finalists"
 import { ShinyLink } from "./ShinyLink"
 import { useHeroChoice } from "../Treatment"
+import { PortfolioAction } from "@/components/portfolio/PortfolioAction"
 
 export function useFinalHero(concept: Finalist): HeroKind {
   const hero = useHeroChoice()
@@ -39,14 +40,15 @@ export function Chapter({ children, tone, band = [1, .4], id, className = "", as
   </Tag>
 }
 
-export function Approach({ title = PERSON.thesis }: { title?: string } = {}) {
+export function Approach({ title = PERSON.thesis, publicMode = false }: { title?: string; publicMode?: boolean } = {}) {
   return <Chapter tone="graphite" band={[.95, .35]} id="approach" className="fn-approach">
-    <div className="fn-approach-heading"><p className="fn-label">The approach</p><h2>{title}</h2></div>
-    <p className="fn-intro">{PERSON.thesisBody}</p>
-    <ol>{PERSON.principles.map((p, index) => <li key={p.label}><span className="fn-label">0{index + 1}</span><h3>{p.label}</h3><p>{p.statement}</p></li>)}</ol>
+    <div className="fn-approach-heading" data-pf-reveal={publicMode ? "reading" : undefined}><p className="fn-label">The approach</p><h2>{title}</h2></div>
+    <p className="fn-intro" data-pf-reveal={publicMode ? "reading" : undefined}>{PERSON.thesisBody}</p>
+    <ol>{PERSON.principles.map((p, index) => <li key={p.label} data-pf-reveal={publicMode ? "reading" : undefined}><span className="fn-label">0{index + 1}</span><h3>{p.label}</h3><p>{p.statement}</p></li>)}</ol>
   </Chapter>
 }
 export function CaseLink({ concept, hero, index, publicMode = false }: { concept: Finalist; hero: HeroKind; index: number; publicMode?: boolean }) {
   const destinations = [publicMode ? "/agents-in-windows" : finalistHref(concept, true, hero), "/recall", "/teams-for-education"]
-  return <ShinyLink href={destinations[index]}>{publicMode || index === 0 ? "Read the case study" : "Read published case"}</ShinyLink>
+  const Control = publicMode ? PortfolioAction : ShinyLink
+  return <Control href={destinations[index]}>{publicMode || index === 0 ? "Read the case study" : "Read published case"}</Control>
 }

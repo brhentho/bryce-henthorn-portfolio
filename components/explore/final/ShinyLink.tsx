@@ -3,9 +3,10 @@
 import { useEffect, useRef, type ReactNode, type PointerEvent } from "react"
 import { ContinuityLink } from "../ContinuityLink"
 import { useReducedMotion } from "../useReducedMotion"
+import { PortfolioLink } from "@/components/portfolio/PortfolioLink"
 
 // Conic edge, speckled mask and inner sheen adapted from the supplied Hyperiux Shiny Button.
-export function ShinyLink({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
+export function ShinyLink({ href, children, className = "", publicMode = false }: { href: string; children: ReactNode; className?: string; publicMode?: boolean }) {
   const reduce = useReducedMotion()
   const frame = useRef(0)
   useEffect(() => () => cancelAnimationFrame(frame.current), [])
@@ -21,8 +22,16 @@ export function ShinyLink({ href, children, className = "" }: { href: string; ch
       link.style.setProperty("--shine-y", `${y}px`)
     })
   }
-  return <ContinuityLink href={href} pointerOnly className={`fn-shiny ${className}`} onPointerMove={move}
-    onPointerLeave={event => { cancelAnimationFrame(frame.current); event.currentTarget.style.removeProperty("--shine-angle") }}>
-    <span className="fn-shiny-label">{children}</span><span className="fn-shiny-arrow" aria-hidden="true">↗</span>
-  </ContinuityLink>
+  const Control = publicMode ? PortfolioLink : ContinuityLink
+  return <Control href={href} {...(!publicMode ? { pointerOnly: true } : {})} className={`fn-shiny ${className}`} onPointerMove={move}
+    onPointerLeave={event => {
+      cancelAnimationFrame(frame.current)
+      event.currentTarget.style.removeProperty("--shine-angle")
+      if (publicMode) {
+        event.currentTarget.style.removeProperty("--shine-x")
+        event.currentTarget.style.removeProperty("--shine-y")
+      }
+    }}>
+    <span className="fn-shiny-label">{children}</span><span className="fn-shiny-arrow" aria-hidden="true">{publicMode ? href.startsWith("#") ? "↓" : "→" : "↗"}</span>
+  </Control>
 }

@@ -40,9 +40,12 @@ visual-system revision. Preserve these roles across all production routes:
   and `0.92–0.95` line height (tokenized; see Leading below).
 - **Hero motion:** stable words resolve left-to-right with clipping. Never
   scramble glyphs or simulate a typewriter.
-- **Route motion:** hero typography resolves in reverse reading order on exit,
-  then the destination's existing left-to-right `HeroIntro` runs unchanged.
-  Reduced motion navigates immediately.
+- **Route motion:** public pointer navigation uses a full-screen editorial ink
+  wipe, with visible hero words resolving backward on exit and the destination's
+  existing left-to-right reveal after uncovering. One coordinator owns scroll,
+  hash targeting and focus; do not layer native artifact morphs over the wipe.
+  Keyboard/reduced-motion navigation is direct; local anchors stay local.
+  Archived routes retain their existing transition behavior.
 - **Chapter motion:** the mechanical aperture is reserved for `CoverPlate`.
   Do not apply it to ordinary `Figure` components.
 - **Texture and chrome:** retain subtle paper texture, alpha rules,
@@ -135,7 +138,7 @@ When restructuring or editing case study sections:
 
 7. **One section's worth of changes per turn, then stop.** When restructuring, edit one section, show the diff, and wait for review before moving to the next. Do not batch-edit a whole page. *Exception:* when implementing a design handoff that spans multiple pages, batch by phase (shared components → homepage → per-page) and stop for review between phases — confirm that framing with the user first.
 
-8. **Keep figure chrome on every plate that contains a figure.** Hairline borders, corner registration marks, `FIG. X.Y` numbering. "Full-bleed" in this codebase means edge-to-container, never edge-to-viewport without the frame.
+8. **Keep figure chrome on case-study evidence plates.** Hairline borders, corner registration marks, `FIG. X.Y` numbering. "Full-bleed" in this codebase means edge-to-container, never edge-to-viewport without the frame. The public homepage's linked project images deliberately omit captions and synthetic device bars; archived project plates retain their original chrome.
 
 ## Slash commands
 

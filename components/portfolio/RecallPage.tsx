@@ -1,6 +1,7 @@
 import { CaseLayout } from "./CaseLayout"
 import { CaseSection, Decisions, Pair, Prose, ShinyLink, Split } from "./Blocks"
 import { PortfolioMedia } from "./PortfolioMedia"
+import { RecallModel, RecallProvenance } from "./RecallModel"
 
 const chapters = [
   { id: "context", label: "Memory starts with fragments" },
@@ -11,13 +12,6 @@ const chapters = [
   { id: "trust", label: "Privacy and recovery" },
   { id: "impact", label: "Learning and milestones" },
 ] as const
-
-const stages = [
-  { title: "Screenshot capture", detail: "When capture is enabled and content is eligible, screen snapshots provide the visual source material." },
-  { title: "OCR processing", detail: "Image processing and optical character recognition extract text from the snapshot." },
-  { title: "Meaning analysis", detail: "Extracted content is interpreted and represented as semantic vectors for matching." },
-  { title: "Search and index service", detail: "An index makes captured content retrievable by similarity to a query, rather than exact words alone." },
-]
 
 export function RecallPage() {
   return <CaseLayout
@@ -52,15 +46,7 @@ export function RecallPage() {
 
     <CaseSection id="system" title="From captured content to searchable moments.">
       <p className="pf-caption">Simplified capture and indexing model—not a measured query-time sequence. Capture eligibility and behavior depend on the product version and settings.</p>
-      <div className="pf-recall-model">
-        <ol className="pf-model-stages">
-          {stages.map((stage, index) => <li key={stage.title}>
-            <span className="fn-label">0{index + 1}</span>
-            <div><h3>{stage.title}</h3><p>{stage.detail}</p></div>
-          </li>)}
-        </ol>
-        <PortfolioMedia id="recall-model" number="02" />
-      </div>
+      <RecallModel />
     </CaseSection>
 
     <CaseSection id="cards" title="One ranking hid the result people needed." tone="graphite">
@@ -77,13 +63,12 @@ export function RecallPage() {
     </CaseSection>
 
     <CaseSection id="transparency" title="Let people judge the match.">
-      <Split>
-        <Prose>
-          <p>Technically plausible results can still feel wrong. Instead of treating the relevance score as a verdict, we exposed the cues a person could use to disagree with it.</p>
-          <p>Text and visual labels explain the kind of match. The source app and timestamp locate it. The screenshot supplies the surrounding context. Together they let someone inspect a candidate without pretending the model cannot make mistakes.</p>
-        </Prose>
-        <PortfolioMedia id="recall-provenance" number="04.1" />
-      </Split>
+      <Prose>
+        <p>Technically plausible results can still feel wrong. Instead of treating the relevance score as a verdict, we exposed the cues a person could use to disagree with it.</p>
+        <p>The source app and timestamp locate the moment. The screenshot supplies the surrounding context. Together they let someone inspect a candidate without pretending the model cannot make mistakes.</p>
+      </Prose>
+      <RecallProvenance />
+      <p className="pf-caption">Text and visual labels explain the kind of match. The search recording below shows that separation alongside query refinement.</p>
       <PortfolioMedia id="recall-search" number="04.2" />
     </CaseSection>
 

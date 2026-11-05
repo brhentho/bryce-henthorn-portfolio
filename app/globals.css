@@ -67,6 +67,10 @@
      these are the defaults and the documented scale. */
   --stagger-word:       32ms;
   --stagger-eyebrow:    220ms;
+  --pf-reveal-distance: 24px;
+  --pf-evidence-distance: 40px;
+  --pf-image-tilt: 2deg;
+  --pf-image-scale: 1.02;
 
   /* Hero clip windows. 0.5em vertical clears Inter Tight's ascenders and
      descenders at display leading; 0.25em horizontal clears side bearings
@@ -140,6 +144,20 @@ html[data-route-transition="waiting"] .hero-intro-word {
 }
 
 /* ── Tailwind v4 theme tokens ── */
+html[data-route-style="portfolio"] .route-transition {
+  background: var(--fn-black) !important;
+  border-right: 1px solid var(--rule-strong);
+  opacity: 1;
+  visibility: visible;
+  transition: none;
+  will-change: transform;
+}
+
+html[data-route-style="portfolio"][data-route-transition="revealing"] .hero-intro-word,
+html[data-route-style="portfolio"][data-route-transition="revealing"] .hero-intro-eyebrow-text {
+  animation-play-state: paused;
+}
+
 @theme inline {
   /* Tailwind only needs what the remaining source actually uses.
      --color-border and --color-ring are load-bearing: the

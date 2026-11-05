@@ -1,6 +1,7 @@
 import { EvidenceReveal, Prose, ShinyLink } from "./Blocks"
 import { PortfolioShell } from "./PortfolioShell"
 import { PortfolioMedia } from "./PortfolioMedia"
+import { RevealWords } from "../explore/RevealWords"
 
 const experience = [
   {
@@ -23,14 +24,14 @@ const experience = [
 export function AboutPage() {
   return <PortfolioShell page="about">
     <main id="main" className="pf-about-main">
-      <header className="pf-about-hero" data-env="warm" data-env-start="1" data-env-end=".4">
+      <header className="pf-about-hero" data-env="ink" data-env-start="1" data-env-end=".4">
         <div>
           <p className="fn-label">Bryce Henthorn / About</p>
-          <h1>A systems thinker.<br />A hands-on designer.</h1>
+          <h1><RevealWords as="span" text="A systems thinker." /><br /><RevealWords as="span" text="A hands-on designer." delay={96} /></h1>
           <p className="pf-about-role">Product Designer, Windows AI at Microsoft.</p>
           <Prose><p>I work where operating-system constraints, agent behavior and human expectations meet. I like unclear terrain—and turning it into something people can understand and use.</p></Prose>
         </div>
-        <EvidenceReveal><PortfolioMedia id="about-portrait" number="01" /></EvidenceReveal>
+        <EvidenceReveal><PortfolioMedia id="about-portrait" number="01" className="pf-portrait" /></EvidenceReveal>
       </header>
 
       <section id="bio" className="pf-about-section">

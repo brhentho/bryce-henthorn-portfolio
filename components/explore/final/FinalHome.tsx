@@ -13,6 +13,8 @@ import { useMediaQuery } from "../useMediaQuery"
 import { Environment } from "./Environment"
 import { Approach, CaseLink, Chapter, FinalFooter, FinalHeader, useFinalHero } from "./Shared"
 import { PortfolioHeader, PortfolioFooter } from "@/components/portfolio/Navigation"
+import { PortfolioAction } from "@/components/portfolio/PortfolioAction"
+import { ProjectImageLink } from "@/components/portfolio/ProjectImageLink"
 
 const TONES = ["cool", "plum", "warm"] as const
 
@@ -31,13 +33,14 @@ export function FinalHome({ concept, publicMode = false, projects = PROJECTS }: 
           <p className="fn-label">{PERSON.location} / Microsoft / Product design</p>
           <RevealWords as="h1" id="fn-home-title" className="fn-home-title" text={PERSON.statement} />
           <p className="fn-intro">{PERSON.secondary}</p>
-          <a className="fn-work-cue" href="#work">Selected work <span aria-hidden="true">↓</span></a>
+          {publicMode ? <PortfolioAction variant="quiet" className="fn-work-cue" href="#work">Selected work</PortfolioAction>
+            : <a className="fn-work-cue" href="#work">Selected work <span aria-hidden="true">↓</span></a>}
         </div>
       </section>
       <div id="work" className="fn-work" aria-label="Selected work">
         {projects.map((project, index) => <Project key={project.slug} concept={concept} hero={hero} index={index} project={project} publicMode={publicMode} />)}
       </div>
-      <Approach title={publicMode ? "How I make complexity usable" : undefined} />
+      <Approach title={publicMode ? "How I make complexity usable" : undefined} publicMode={publicMode} />
     </main>
     {publicMode ? <PortfolioFooter /> : <FinalFooter />}
   </Environment>
@@ -94,6 +97,7 @@ function Project({ concept, hero, index, project, publicMode }: { concept: Final
   const rotateX = useTransform(enter, [0, 1], [e.tilt, 0])
   const inner = useTransform(enter, [0, 1], [e.inner, 1])
   const clipPath = useTransform(enter, p => {
+    if (publicMode && p >= 1) return "none"
     const r = 1 - p
     if (e.mask === "aperture") return `inset(${(r * 9).toFixed(2)}% ${(r * 11).toFixed(2)}% ${(r * 9).toFixed(2)}% ${(r * 11).toFixed(2)}% round 8px)`
     if (e.mask === "wipe") return `inset(0% ${(r * 100).toFixed(2)}% 0% 0%)`
@@ -112,6 +116,12 @@ function Project({ concept, hero, index, project, publicMode }: { concept: Final
   const noteOpacity = useTransform(enter, p => .4 + .6 * stage(p, .4, 1))
 
   const motionOn = !reduce
+  const image = <motion.div className="fn-device-image" style={motionOn ? { scale: inner } : REST}>
+    <Image src={project.image} alt={project.imageAlt} width={project.imageWidth} height={project.imageHeight}
+      sizes={concept === "presence" ? "92vw" : "(max-width: 850px) 92vw, 60vw"}
+      style={!publicMode && index === 0 ? { viewTransitionName: `${concept}-product` } : undefined} />
+  </motion.div>
+  const destination = ["/agents-in-windows", "/recall", "/teams-for-education"][index]
   return <Chapter tone={TONES[index]} band={[1, .35]} id={`work-${project.slug}`} className={`fn-project fn-project-${index}`}>
     <div className="fn-project-grid">
       <div ref={copy} className="fn-project-copy" data-project-copy={project.slug}>
@@ -126,17 +136,13 @@ function Project({ concept, hero, index, project, publicMode }: { concept: Final
       <div ref={entry} className="fn-project-entry" data-project-entry={project.slug}>
         <motion.figure className="fn-project-plate" data-project-art={project.slug} style={motionOn ? { scale, x, y, rotateX } : REST}>
           <motion.div className="fn-device" style={motionOn && e.mask !== "none" ? { clipPath } : { clipPath: "none" }}>
-            <div className="fn-device-bar" aria-hidden="true"><i /><i /><i /><span>{project.name}</span></div>
+            {!publicMode && <div className="fn-device-bar" aria-hidden="true"><i /><i /><i /><span>{project.name}</span></div>}
             <div className="fn-device-view">
-              <motion.div className="fn-device-image" style={motionOn ? { scale: inner } : REST}>
-                <Image src={project.image} alt={project.imageAlt} width={project.imageWidth} height={project.imageHeight}
-                  sizes={concept === "presence" ? "92vw" : "(max-width: 850px) 92vw, 60vw"}
-                  style={publicMode ? { viewTransitionName: `portfolio-${project.slug}` } : index === 0 ? { viewTransitionName: `${concept}-product` } : undefined} />
-              </motion.div>
+              {publicMode ? <ProjectImageLink href={destination} label={`Read ${project.name} case study`}>{image}</ProjectImageLink> : image}
             </div>
           </motion.div>
           {concept === "signal" && <motion.span className="fn-registration-rule" aria-hidden="true" style={motionOn ? { scaleX: rule } : REST} />}
-          <motion.figcaption className="fn-label" style={motionOn && concept === "signal" ? { opacity: caption } : REST}>Fig. 0{index + 1} / {project.name} / {project.artifactStatus ?? "Product artifact"}</motion.figcaption>
+          {!publicMode && <motion.figcaption className="fn-label" style={motionOn && concept === "signal" ? { opacity: caption } : REST}>Fig. 0{index + 1} / {project.name} / {project.artifactStatus ?? "Product artifact"}</motion.figcaption>}
         </motion.figure>
       </div>
       {concept === "signal" && <motion.div className="fn-project-annotation" style={motionOn ? { y: note, opacity: noteOpacity } : REST}><span className="fn-label">Contribution</span><p>{project.proof}</p></motion.div>}

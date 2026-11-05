@@ -128,11 +128,20 @@ Do not mechanically apply one background ramp or one case-body template to every
 
 | Page | Argument order | Layout and motion |
 |---|---|---|
-| Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve the selected ASCII hero and Synthesis's layered project entrances and continuous dark atmosphere |
+| Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve ASCII, layered project entrances and continuous atmosphere; clean linked product images with bounded pointer response, then staggered Approach |
 | Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Hero/brief, comparison, decision table, compact keyframe rail and user-controlled demonstration; dark tonal continuity |
-| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> qualified milestone | Hero/brief, annotated splits, compact stage rail, accurate result evidence, decision table and privacy pair; mainly ink/graphite |
+| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> qualified milestone | Hero/brief, selectable four-layer capture/index model (2.5), enlarged provenance card with annotations (2.4), supporting recording (2.8), decision table and privacy pair; mainly ink/graphite |
 | Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Research split, data table, conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
-| About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split and readable career ledger; quiet warm ink, not a fourth product simulation |
+| About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split, grouped working-example/ledger arrivals and shared neutral ink; no warm-brown override or product simulation |
+
+Public navigation uses a name-only wordmark and a gooey moving highlight with
+stationary labels/targets. Cross-page pointer navigation uses an editorial ink
+wipe; the existing headline resolve follows it. Keyboard/reduced-motion
+navigation remains direct, and local anchors do not trigger a page wipe.
+Public homepage captions and synthetic device bars are intentionally removed;
+case-study evidence retains its useful captions and figure framing.
+Reading/evidence reveals settle once, preserve text contrast and never hold
+document scrolling. These opt-ins do not restyle the archived explorations.
 
 Actual media inspection corrected the source captions: `Teams_fig04` shows group
 preparation, `Teams_fig06` live teacher orchestration, and `Teams_fig05` shared

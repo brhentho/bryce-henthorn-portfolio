@@ -37,12 +37,47 @@
 .portfolio .pf-state-lexicon p { font-size: .875rem; line-height: 1.6; color: var(--text-secondary); }
 .portfolio .pf-state-figure figcaption { border-top: 1px solid var(--rule); padding-block: 1rem; }
 .portfolio .pf-recall-fragments { display: grid; grid-template-columns: .85fr 1.15fr; gap: 7%; align-items: start; }
-.portfolio .pf-recall-model { display: grid; grid-template-columns: 1.1fr .9fr; gap: 7%; align-items: start; }
-.portfolio .pf-model-stages { list-style: none; display: grid; gap: 2rem; }
-.portfolio .pf-model-stages li { display: grid; grid-template-columns: 2rem 1fr; gap: 1rem; border-top: 1px solid var(--rule); padding-top: 1.25rem; }
-.portfolio .pf-model-stages h3 { font-size: 1.125rem; line-height: 1.4; }
-.portfolio .pf-model-stages p { margin-top: .75rem; font-size: .9375rem; line-height: 1.65; color: var(--text-secondary); }
-.portfolio .pf-model-stages .fn-label { padding-top: .25rem; }
+.portfolio .pf-recall-model { display: grid; grid-template-columns: .85fr 1.15fr; gap: 4%; align-items: center; }
+.portfolio .pf-recall-stages { min-width: 0; border: 0; padding: 0; }
+.portfolio .pf-recall-stages legend { margin-bottom: 1rem; }
+.portfolio .pf-recall-stage { display: flex; gap: .75rem; align-items: start; padding: 1rem .5rem; border-top: 1px solid var(--rule); cursor: pointer; }
+.portfolio .pf-recall-stage input { flex: 0 0 1rem; width: 1rem; height: 1rem; margin-top: .25rem; accent-color: var(--text-primary); }
+.portfolio .pf-recall-stage:has(input:checked), .portfolio .pf-recall-stage:hover { background: var(--xr-surface); }
+.portfolio .pf-recall-stage:has(input:focus-visible) { outline: 2px solid var(--text-primary); outline-offset: 3px; }
+.portfolio .pf-recall-stage:active { background: var(--rule-hairline); }
+.portfolio .pf-recall-stage-copy { display: grid; gap: .5rem; min-width: 0; }
+.portfolio .pf-recall-stage-title { display: flex; gap: .75rem; align-items: baseline; font-size: 1rem; line-height: 1.5; }
+.portfolio .pf-recall-stage-title .fn-label { flex: none; font-variant-numeric: tabular-nums; }
+.portfolio .pf-recall-model-figure svg { display: block; width: 100%; height: auto; overflow: visible; }
+.portfolio .pf-recall-registered::before, .portfolio .pf-recall-registered::after { content: ""; position: absolute; width: .75rem; height: .75rem; pointer-events: none; border-color: var(--text-secondary); }
+.portfolio .pf-recall-registered::before { top: -1px; left: -1px; border-top: 1px solid; border-left: 1px solid; }
+.portfolio .pf-recall-registered::after { bottom: -1px; right: -1px; border-bottom: 1px solid; border-right: 1px solid; }
+.portfolio .pf-recall-plane { transition: transform var(--duration-normal-ui) var(--ease-out-quad); }
+.portfolio .pf-recall-plane-surface { fill: var(--fn-black); stroke: var(--rule-strong); }
+.portfolio .pf-recall-plane-outline { fill: none; stroke: var(--fn-white); stroke-width: 1.5; opacity: 0; transition: opacity var(--duration-normal-ui) var(--ease-out-quad); }
+.portfolio .pf-recall-plane-drawing { fill: none; stroke: var(--fn-white); stroke-width: 1.5; opacity: .6; }
+.portfolio .pf-recall-plane-number { font: 16px var(--font-mono); fill: var(--text-primary); }
+.portfolio .pf-recall-axis { fill: none; stroke: var(--text-secondary); }
+.portfolio .pf-recall-model:has(input[value="0"]:checked) [data-plane="0"],
+.portfolio .pf-recall-model:has(input[value="1"]:checked) [data-plane="1"],
+.portfolio .pf-recall-model:has(input[value="2"]:checked) [data-plane="2"],
+.portfolio .pf-recall-model:has(input[value="3"]:checked) [data-plane="3"] { transform: translateY(-8px); }
+.portfolio .pf-recall-model:has(input[value="0"]:checked) [data-plane="0"] .pf-recall-plane-outline,
+.portfolio .pf-recall-model:has(input[value="1"]:checked) [data-plane="1"] .pf-recall-plane-outline,
+.portfolio .pf-recall-model:has(input[value="2"]:checked) [data-plane="2"] .pf-recall-plane-outline,
+.portfolio .pf-recall-model:has(input[value="3"]:checked) [data-plane="3"] .pf-recall-plane-outline { opacity: 1; }
+.portfolio .pf-recall-model:has(input:focus-visible) .pf-recall-plane,
+.portfolio .pf-recall-model:has(input:focus-visible) .pf-recall-plane-outline { transition: none; }
+.portfolio .pf-recall-provenance-plate { display: grid; grid-template-columns: 1.25fr 1fr; align-items: center; gap: 2rem; padding: 2rem; }
+.portfolio .pf-recall-result { min-width: 0; }
+.portfolio .pf-recall-result svg { display: block; width: 100%; height: auto; overflow: hidden; }
+.portfolio .pf-recall-annotations { display: grid; gap: 1.5rem; }
+.portfolio .pf-recall-annotations dt { font: .8125rem/1.5 var(--font-mono); color: var(--text-primary); }
+.portfolio .pf-recall-annotations dd { margin-top: .5rem; }
+.portfolio .pf-recall-full-grid { margin-top: 1rem; border-bottom: 1px solid var(--rule); }
+.portfolio .pf-recall-full-grid summary { cursor: pointer; padding: 1rem .25rem; font-size: .9375rem; line-height: 1.5; }
+.portfolio .pf-recall-full-grid summary:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 3px; }
+.portfolio .pf-recall-full-grid img { display: block; width: 100%; height: auto; margin-bottom: 1rem; border: 1px solid var(--rule); }
 .portfolio .pf-recall .pf-decisions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .portfolio .pf-supporting-recording { border-block: 1px solid var(--rule); }
 .portfolio .pf-supporting-recording summary {
@@ -89,7 +124,14 @@
   .portfolio .pf-working-examples, .portfolio .pf-about-philosophy,
   .portfolio .pf-prior-work, .portfolio .pf-student-split,
   .portfolio .pf-recall .pf-decisions { grid-template-columns: 1fr; gap: 2rem; }
-  .portfolio .pf-recall-model > .pf-media { max-width: 25rem; }
+  .portfolio .pf-recall-model { grid-template-columns: 1fr; }
+  .portfolio .pf-recall-model-figure { grid-row: 1; width: 100%; max-width: 38rem; justify-self: center; }
+  .portfolio .pf-recall-provenance-plate { grid-template-columns: 1fr; padding: 1.25rem; gap: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio .pf-recall-model .pf-recall-plane,
+  .portfolio .pf-recall-model .pf-recall-plane-outline { transition: none; }
+  .portfolio .pf-recall-model .pf-recall-plane { transform: none !important; }
 }
 @media (max-width: 540px) {
   .portfolio .pf-step-strip, .portfolio .pf-recovery-pair,
