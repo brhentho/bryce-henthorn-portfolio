@@ -1,5 +1,47 @@
 # Portfolio implementation — October 2026
 
+> Historical implementation record. The current main-route build promotes
+> Synthesis + ASCII and uses the page-specific outline in `docs/layout-direction.md`.
+> Current story questions and media requests are in `docs/portfolio-content-review.md`.
+> Production-source edits are now authorized locally; deployment is still separate.
+
+## Current local portfolio promotion
+
+- Main Home uses the selected Synthesis + ASCII experience, public navigation and
+  qualified project-status captions. Agents, Recall, Teams and About have distinct
+  narrative compositions using the shared public portfolio layer.
+- Existing environment math and visual foundations were promoted with compatibility
+  wrappers, preserving the exploration archive. Static Synthesis tokens live in
+  the root token block; public layout/content styles are scoped.
+- The critic's source-caption assumptions were checked against actual video
+  frames. Teams fig04 is preparation, fig06 is live orchestration, and fig05 is
+  shared materials. Recall's second clip is an answer-preview exploration, not a
+  matched performance comparison. All seven existing recordings advanced playback
+  in Chromium.
+- Missing artifacts have compact, stable-ID slots that remain visible in both dev
+  and production-mode local builds. The detailed replacement briefs, editorial
+  holds and source map are in `portfolio-content-review.md`.
+- Typecheck, 23 tests and the production build pass. The five main pages passed
+  40 viewport/reduced-motion combinations with no visible text clipping,
+  horizontal overflow, missing visible images or wrong/dead main-site links.
+- Public artifact navigation, destination-heading focus, Back, no-JS content,
+  recording failure fallback, visible build-mode placeholders and the unpublished
+  Copilot Actions robots metadata were exercised.
+- Technical review found low contrast behind the homepage's type. A public-only
+  soft scrim now protects text while retaining the selected ASCII geometry and
+  animation. Sampled composited contrast passed at desktop and narrow widths.
+  The accepted Inter typography and archived grid treatments are intentional;
+  generic style-lint warnings are not reasons to replace the chosen design.
+- One stale development image-optimizer request was cleared by restarting the
+  owned dev server. No source image or global optimization policy was bypassed.
+
+This is a **local review build**, not a deployed or publication-approved portfolio.
+Clearance/version/outcome questions, physical-browser/device checks and the
+continuous-artwork accessibility publication assessment remain explicit follow-up
+items. No fabricated research, metrics or completed-media claims fill those gaps.
+
+## Historical October implementation
+
 Approved scope: preserve typography and palette; improve homepage visibility,
 case-study arguments, evidence framing, product media, and purposeful motion.
 

@@ -2,9 +2,11 @@
 
 ## What this repo is
 
-A Next.js 16 + React 19 + Tailwind 4 portfolio for Bryce Henthorn (Product Designer, Windows AI at Microsoft — the site deliberately uses this role-neutral title everywhere). Visual aesthetic is an **operator manual / technical document** treatment — near-black background with subtle noise, off-white text, single hot-orange accent, mono labels for chrome. The home page and three published case studies (Agents in Windows, Recall, Teams for Education) read as chapters of one paginated document, not as separate microsites.
+A Next.js 16 + React 19 + Tailwind 4 portfolio for Bryce Henthorn (Product Designer, Windows AI at Microsoft — the site deliberately uses this role-neutral title everywhere). The selected direction is **Synthesis + ASCII**, promoted from the explorations at `f88faeb`. It retains the editorial typography, mono labels, figure chrome and readable case-study rail, with a living ASCII homepage and story-specific product motion. Home, Agents, Recall, Teams and About belong to one visual family, but do not share an identical page outline or background-change sequence.
 
-`/copilot-actions` is a review draft: `noindex`, not linked from the home page, and kept out of publication until original visuals and confirmed ownership exist (see `docs/copilot-actions-review.md`). Case-study copy keeps the team voice ("we"); the role is stated once, in the hero CaseBrief ledger, which replaces the old hero spec sheet (§2.2 Spec Sheet Block is now used only for in-body data such as Recall's trust principles). Home and case heroes are title pages: they fill the first screen, with content anchored low. The current visual source of truth is the set of `.dc.html` design references (Home, Recall, Agents, Teams, About, plus a header/footer options sheet) produced in the August 2026 revision — ignore any deployed or older version of the site you might encounter. Where those files and this document disagree, the design files win and this document should be corrected.
+`/copilot-actions` is a review draft: `noindex`, not linked from the home page, and kept out of publication until original visuals and confirmed ownership exist (see `docs/copilot-actions-review.md`). Case-study copy keeps the team voice ("we"); individual scope is stated once in the hero ledger. The approved Synthesis implementation and `docs/portfolio-content-review.md` are the current visual/editorial references. The `.dc.html` files and previous exploration plans are historical, not an instruction to undo the selected direction. The exploration archive remains available for comparison.
+
+Public composition lives in `components/portfolio/` with shared styles in `app/portfolio-foundation.css`, `app/portfolio-primitives.css`, `app/portfolio.css` and page-specific `app/portfolio-pages.css`. Compatibility wrappers preserve archived imports. Main-route links never lead to review concepts. Planned-media slots have stable request IDs and remain visible in development and production-mode local review builds; they are not shipped product evidence or permission to deploy.
 
 ## Required reading before touching case study pages
 
@@ -28,8 +30,10 @@ The layout-direction document is the spec. Do not modify §2 (the primitive voca
 The August 2026 token lock was intentionally superseded by the editorial
 visual-system revision. Preserve these roles across all production routes:
 
-- **Material:** `#0B0B0C` ink, `#E8E5DC` paper, paper-derived alpha rules, and
-  one `#FF4D00` state accent per visible viewport.
+- **Material:** selected Synthesis uses the `--fn-*` foundation (`#0B0D12` ink,
+  `#EFEDE6` paper), coordinated environment/foreground outputs and story-specific
+  tones. The legacy manual material tokens listed below remain intact for archived
+  routes and the unpublished draft. Do not recolor those routes during promotion.
 - **Typography:** Inter Tight 500 for display, Inter 400 for body, and
   JetBrains Mono for navigation, labels, captions, and system status.
 - **Display geometry:** oversized responsive type, tight negative tracking,
@@ -54,6 +58,10 @@ there, and never introduce a local colour literal — if a value is worth using
 twice it is worth a token.
 
 The canonical names:
+
+The selected foundation's static `--fn-black`, `--fn-white`, accent and rhythm
+tokens also live in this root block. Environment variables on a page are derived
+runtime state; archived exploration palette parameters remain compatibility data.
 
 - **Material** — `--ink` `#0B0B0C`, `--paper` `#E8E5DC`
 - **Rules** — `--rule-hairline` / `--rule` / `--rule-strong` (paper at 12 / 22 / 48%)
@@ -89,8 +97,11 @@ global focus ring are outside it too. That is why the tokens sit at `:root`.
 `@layer base` is a compile-time dependency on them, so removing either breaks the
 build. Note that `--color-border` is the 12% `--rule-hairline` tier, not `--rule`.
 
-Do not add signal sweeps, parallax, 3D tilt, cursor replacement, marquees,
-particles, or generic glow decoration.
+The approved ASCII idle/pointer treatment, layered project entrances, product tilt-to-flat
+reveals and shiny case links are intentional. Vary body motion according to the case's
+argument, not a component checklist. Do not add cursor replacement, unsolicited
+marquees or competing decorative scenes. Never reintroduce opaque section bands
+as a substitute for the selected continuous page environment.
 
 ### Retired in the August 2026 revision
 

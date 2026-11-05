@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { useRef } from "react"
 import { motion, useTransform, type MotionValue } from "framer-motion"
-import { PERSON, PROJECTS } from "@/lib/explore/content"
+import { PERSON, PROJECTS, type Project as ProjectData } from "@/lib/explore/content"
 import type { Finalist, HeroKind } from "@/lib/explore/finalists"
 import { Artwork } from "../effects/Artwork"
 import { RevealWords } from "../RevealWords"
@@ -12,14 +12,17 @@ import { useReducedMotion } from "../useReducedMotion"
 import { useMediaQuery } from "../useMediaQuery"
 import { Environment } from "./Environment"
 import { Approach, CaseLink, Chapter, FinalFooter, FinalHeader, useFinalHero } from "./Shared"
+import { PortfolioHeader, PortfolioFooter } from "@/components/portfolio/Navigation"
 
 const TONES = ["cool", "plum", "warm"] as const
 
-export function FinalHome({ concept }: { concept: Finalist }) {
+type HomeProject = ProjectData & { artifactStatus?: string }
+
+export function FinalHome({ concept, publicMode = false, projects = PROJECTS }: { concept: Finalist; publicMode?: boolean; projects?: readonly HomeProject[] }) {
   const hero = useFinalHero(concept)
   return <Environment className={`fn-concept fn-${concept}`}>
     <a className="xp-skip" href="#work">Skip to selected work</a>
-    <FinalHeader concept={concept} hero={hero} />
+    {publicMode ? <PortfolioHeader /> : <FinalHeader concept={concept} hero={hero} />}
     <main id="main">
       <section className={`fn-home-hero fn-hero-${hero}`} aria-labelledby="fn-home-title">
         <Artwork key={hero} kind={hero} presentation="finalist" />
@@ -32,11 +35,11 @@ export function FinalHome({ concept }: { concept: Finalist }) {
         </div>
       </section>
       <div id="work" className="fn-work" aria-label="Selected work">
-        {PROJECTS.map((project, index) => <Project key={project.slug} concept={concept} hero={hero} index={index} />)}
+        {projects.map((project, index) => <Project key={project.slug} concept={concept} hero={hero} index={index} project={project} publicMode={publicMode} />)}
       </div>
-      <Approach />
+      <Approach title={publicMode ? "How I make complexity usable" : undefined} />
     </main>
-    <FinalFooter />
+    {publicMode ? <PortfolioFooter /> : <FinalFooter />}
   </Environment>
 }
 
@@ -74,8 +77,7 @@ const REST = { x: 0, y: 0, scale: 1, scaleX: 1, rotateX: 0, opacity: 1 }
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value))
 const stage = (progress: number, from: number, to: number) => clamp01((progress - from) / (to - from))
 
-function Project({ concept, hero, index }: { concept: Finalist; hero: HeroKind; index: number }) {
-  const project = PROJECTS[index]
+function Project({ concept, hero, index, project, publicMode }: { concept: Finalist; hero: HeroKind; index: number; project: HomeProject; publicMode: boolean }) {
   const entry = useRef<HTMLDivElement>(null)
   const copy = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
@@ -119,7 +121,7 @@ function Project({ concept, hero, index }: { concept: Finalist; hero: HeroKind; 
           <motion.p className="fn-project-thesis" style={motionOn ? { y: thesisY, opacity: thesisOpacity } : REST}>{project.title}</motion.p>
           {concept !== "signal" && <motion.p className="fn-label fn-project-proof" style={motionOn ? { y: thesisY, opacity: thesisOpacity } : REST}>{project.proof}</motion.p>}
         </motion.div>
-        <CaseLink concept={concept} hero={hero} index={index} />
+        <CaseLink concept={concept} hero={hero} index={index} publicMode={publicMode} />
       </div>
       <div ref={entry} className="fn-project-entry" data-project-entry={project.slug}>
         <motion.figure className="fn-project-plate" data-project-art={project.slug} style={motionOn ? { scale, x, y, rotateX } : REST}>
@@ -129,12 +131,12 @@ function Project({ concept, hero, index }: { concept: Finalist; hero: HeroKind; 
               <motion.div className="fn-device-image" style={motionOn ? { scale: inner } : REST}>
                 <Image src={project.image} alt={project.imageAlt} width={project.imageWidth} height={project.imageHeight}
                   sizes={concept === "presence" ? "92vw" : "(max-width: 850px) 92vw, 60vw"}
-                  style={index === 0 ? { viewTransitionName: `${concept}-product` } : undefined} />
+                  style={publicMode ? { viewTransitionName: `portfolio-${project.slug}` } : index === 0 ? { viewTransitionName: `${concept}-product` } : undefined} />
               </motion.div>
             </div>
           </motion.div>
           {concept === "signal" && <motion.span className="fn-registration-rule" aria-hidden="true" style={motionOn ? { scaleX: rule } : REST} />}
-          <motion.figcaption className="fn-label" style={motionOn && concept === "signal" ? { opacity: caption } : REST}>Fig. 0{index + 1} / {project.name} / Product artifact</motion.figcaption>
+          <motion.figcaption className="fn-label" style={motionOn && concept === "signal" ? { opacity: caption } : REST}>Fig. 0{index + 1} / {project.name} / {project.artifactStatus ?? "Product artifact"}</motion.figcaption>
         </motion.figure>
       </div>
       {concept === "signal" && <motion.div className="fn-project-annotation" style={motionOn ? { y: note, opacity: noteOpacity } : REST}><span className="fn-label">Contribution</span><p>{project.proof}</p></motion.div>}

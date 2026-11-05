@@ -1,6 +1,6 @@
 import test from "node:test"
 import assert from "node:assert/strict"
-import { BLACK, CROSSING_CONTRAST, WHITE, bandProgress, contrastRatio, mixAtmosphere, mixOklab, parseHex, relativeLuminance, resolveGround, toHex } from "../lib/explore/environment.ts"
+import { BLACK, CROSSING_CONTRAST, WHITE, bandProgress, contrastRatio, mixAtmosphere, mixOklab, parseHex, relativeLuminance, resolveGround, toHex } from "../lib/portfolio/environment.ts"
 
 const ink = parseHex("#0b0d12"), paper = parseHex("#efede6")
 

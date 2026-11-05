@@ -1,0 +1,100 @@
+/* Page-specific narrative composition. Shared surfaces live in portfolio.css. */
+.portfolio .pf-caption {
+  max-width: 72ch;
+  font-size: .9375rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.portfolio .pf-pull-line {
+  max-width: 23ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 3.25rem);
+  line-height: var(--leading-heading-2);
+  letter-spacing: -.035em;
+  color: var(--text-primary);
+}
+.portfolio .pf-anchor { scroll-margin-top: 7rem; }
+.portfolio .pf-anchor > * + * { margin-top: 1.5rem; }
+.portfolio .pf-step-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  padding-block: 1.5rem;
+  border-block: 1px solid var(--rule);
+  list-style: none;
+}
+.portfolio .pf-step-strip p { margin-top: .75rem; font-size: 1rem; line-height: 1.6; }
+.portfolio .pf-state-figure { border-block: 1px solid var(--rule); }
+.portfolio .pf-state-lexicon {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  padding-block: 1.5rem;
+  list-style: none;
+}
+.portfolio .pf-state-lexicon li { display: grid; align-content: start; gap: .75rem; }
+.portfolio .pf-state-lexicon h3 { font-size: 1rem; line-height: 1.4; letter-spacing: -.01em; }
+.portfolio .pf-state-lexicon p { font-size: .875rem; line-height: 1.6; color: var(--text-secondary); }
+.portfolio .pf-state-figure figcaption { border-top: 1px solid var(--rule); padding-block: 1rem; }
+.portfolio .pf-recall-fragments { display: grid; grid-template-columns: .85fr 1.15fr; gap: 7%; align-items: start; }
+.portfolio .pf-recall-model { display: grid; grid-template-columns: 1.1fr .9fr; gap: 7%; align-items: start; }
+.portfolio .pf-model-stages { list-style: none; display: grid; gap: 2rem; }
+.portfolio .pf-model-stages li { display: grid; grid-template-columns: 2rem 1fr; gap: 1rem; border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+.portfolio .pf-model-stages h3 { font-size: 1.125rem; line-height: 1.4; }
+.portfolio .pf-model-stages p { margin-top: .75rem; font-size: .9375rem; line-height: 1.65; color: var(--text-secondary); }
+.portfolio .pf-model-stages .fn-label { padding-top: .25rem; }
+.portfolio .pf-recall .pf-decisions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.portfolio .pf-supporting-recording { border-block: 1px solid var(--rule); }
+.portfolio .pf-supporting-recording summary {
+  cursor: pointer;
+  padding: 1.25rem .25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.portfolio .pf-supporting-recording[open] > .pf-media { padding-bottom: 1.5rem; }
+.portfolio .pf-recovery-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding-block: 2rem; border-block: 1px solid var(--rule); }
+.portfolio .pf-recovery-pair h3 { font-size: 1.5rem; margin-block: 1rem; }
+.portfolio .pf-recovery-pair p { font-size: 1rem; line-height: 1.65; color: var(--text-secondary); }
+.portfolio .pf-principles > div { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; padding-block: 1.25rem; border-bottom: 1px solid var(--rule); }
+.portfolio .pf-principles dt { font-family: var(--font-mono); font-size: .8125rem; line-height: 1.6; }
+.portfolio .pf-principles dd { font-size: 1rem; line-height: 1.65; color: var(--text-secondary); }
+.portfolio .pf-small-artifact { max-width: 28rem; }
+.portfolio .pf-classroom-diagram .pf-media-frame {
+  --bg: var(--surface-bg);
+  --accent-schematic: var(--surface-fg);
+}
+.portfolio .pf-classroom-diagram svg { display: block; }
+.portfolio .pf-classroom-diagram .teams-table-label,
+.portfolio .pf-classroom-diagram .teams-teacher-label { fill: var(--text-primary); stroke: none; }
+.portfolio .pf-student-split { grid-template-columns: 1.15fr .85fr; }
+.portfolio .pf-outcome-note { border-block: 1px solid var(--rule); padding-block: 2rem; }
+.portfolio .pf-outcome-note > .pf-prose { margin-top: 1.5rem; }
+.portfolio .pf-about-role { font-size: clamp(1.125rem, 1.6vw, 1.5rem); line-height: 1.5; margin-bottom: 1.5rem; }
+.portfolio .pf-about-section h2 { max-width: 23ch; font-size: clamp(2rem, 3.5vw, 3.75rem); line-height: var(--leading-heading-2); letter-spacing: -.035em; }
+.portfolio .pf-about-section h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); line-height: 1.25; }
+.portfolio .pf-working-examples { display: grid; grid-template-columns: 1fr 1fr; gap: 8%; }
+.portfolio .pf-working-examples article { display: grid; justify-items: start; align-content: start; gap: 1.5rem; }
+.portfolio .pf-working-examples p:not(.fn-label), .portfolio .pf-about-philosophy p { max-width: 64ch; font-size: 1.0625rem; line-height: 1.7; color: var(--text-secondary); }
+.portfolio .pf-about-philosophy { display: grid; grid-template-columns: 1fr 1fr; gap: 8%; }
+.portfolio .pf-concurrent { display: block; margin-top: .5rem; }
+.portfolio .pf-prior-work { display: grid; grid-template-columns: .45fr 1.55fr; gap: 2rem; border-top: 1px solid var(--rule); padding-block: 1.5rem; }
+.portfolio .pf-prior-work dl { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.portfolio .pf-prior-work dt { font-size: 1.125rem; }
+.portfolio .pf-prior-work dd { margin-top: .75rem; font-family: var(--font-mono); font-size: .8125rem; color: var(--text-secondary); }
+@media (max-width: 1050px) {
+  .portfolio .pf-state-lexicon { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 850px) {
+  .portfolio .pf-recall-fragments, .portfolio .pf-recall-model,
+  .portfolio .pf-working-examples, .portfolio .pf-about-philosophy,
+  .portfolio .pf-prior-work, .portfolio .pf-student-split,
+  .portfolio .pf-recall .pf-decisions { grid-template-columns: 1fr; gap: 2rem; }
+  .portfolio .pf-recall-model > .pf-media { max-width: 25rem; }
+}
+@media (max-width: 540px) {
+  .portfolio .pf-step-strip, .portfolio .pf-recovery-pair,
+  .portfolio .pf-principles > div { grid-template-columns: 1fr; gap: 1rem; }
+  .portfolio .pf-state-lexicon { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .portfolio .pf-step-strip li + li { padding-top: 1rem; border-top: 1px solid var(--rule); }
+  .portfolio .pf-recovery-pair article + article { padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+}

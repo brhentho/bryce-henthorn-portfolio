@@ -1,6 +1,11 @@
 # Six portfolio directions: November 2026 exploration
 
-## Active comparison: consolidation and two finalists
+**Selection:** Synthesis + ASCII is the winner and is now the foundation of the
+main local portfolio. The comparisons below remain archived references. Current
+page narratives and pending assets are documented in `portfolio-content-review.md`;
+implementation status is in `portfolio-implementation.md`.
+
+## Preserved comparison: consolidation and two finalists
 
 The A-F rounds are now archived at `/explore/archive`. Their existing URLs and
 A-C Original/Enhanced choices are preserved. `/explore` is the finalist index.

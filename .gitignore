@@ -21,4 +21,5 @@ critique/animations/
 # Agent scratch dirs and local worktrees (never commit these)
 .a5c/
 .claude/worktrees/
+.craft/
 fixes/

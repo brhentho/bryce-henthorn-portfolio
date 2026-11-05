@@ -90,6 +90,17 @@
   --space-room:    clamp(5rem, 9vw, 9rem);
   --space-section: clamp(3rem, 6vw, 6rem);
   --space-block:   clamp(1.5rem, 3vw, 2.5rem);
+
+  /* Selected Synthesis foundation; separate names preserve the archived manual palette. */
+  --fn-black: #0b0d12;
+  --fn-white: #efede6;
+  --fn-cool: #111b2b;
+  --fn-plum: #211728;
+  --fn-warm: #241d18;
+  --fn-accent-dark: #ffad78;
+  --fn-accent-light: #a53b09;
+  --fn-pad: clamp(1.25rem, 5vw, 5rem);
+  --fn-room: clamp(4rem, 8vw, 8rem);
 }
 
 /* ── Complementary data-flow route transition ── */

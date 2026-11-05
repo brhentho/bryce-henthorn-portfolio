@@ -1,7 +1,7 @@
 # Layout Direction — Operator-Manual Case Studies
 
 **Branch:** `feature/editorial-visual-system`
-**Scope:** Layout and narrative composition using the shared editorial visual system. The 13 layout primitives remain stable; canonical typography, color, and motion roles are defined in `CLAUDE.md`.
+**Scope:** Layout and narrative composition using the selected Synthesis + ASCII foundation. The 13 layout primitives remain stable; canonical typography, color, and motion roles are defined in `CLAUDE.md`. Current media/evidence requests live in `docs/portfolio-content-review.md`.
 **Audience:** A future Claude/agent or designer extending case study pages without rereading the source files.
 
 ---
@@ -119,6 +119,39 @@ Document-chrome contract: Hairline rules between rows; never collapse rows into 
 ---
 
 ## 3. Per-page narrative outlines
+
+### Current main-portfolio composition
+
+The following map supersedes the historical page sequences below. It follows a
+source-grounded narrative critique and the user's selection of Synthesis + ASCII.
+Do not mechanically apply one background ramp or one case-body template to every page.
+
+| Page | Argument order | Layout and motion |
+|---|---|---|
+| Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve the selected ASCII hero and Synthesis's layered project entrances and continuous dark atmosphere |
+| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Hero/brief, comparison, decision table, compact keyframe rail and user-controlled demonstration; dark tonal continuity |
+| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> qualified milestone | Hero/brief, annotated splits, compact stage rail, accurate result evidence, decision table and privacy pair; mainly ink/graphite |
+| Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Research split, data table, conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
+| About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split and readable career ledger; quiet warm ink, not a fourth product simulation |
+
+Actual media inspection corrected the source captions: `Teams_fig04` shows group
+preparation, `Teams_fig06` live teacher orchestration, and `Teams_fig05` shared
+notes/materials at a table. Recall's second recording shows an exploratory answer
+preview, not a measured matched comparison with the selected retrieval design.
+
+Preserve substantive content when merging repeated sections. State individual
+scope once in the case ledger and use team voice in the narrative. Planned media
+slots must stay compact, explicitly pending and visible in local review builds.
+No timing, adoption, research quotation or privacy guarantee may be invented to
+fill a layout.
+
+### Historical editorial-revision outlines
+
+The detailed outlines that follow document an earlier iteration. Asset
+availability and some claims have changed: current heroes and named taskbar
+frames exist; Teams already has a schematic; its old bandwidth proposal is not
+part of the current case. Do not use the historical proposals as a source of
+facts or new media requirements.
 
 Source files:
 - `app/recall/page.tsx` — Recall (10 sections)
@@ -286,15 +319,18 @@ Things that would break the narrative feel. Do not do these.
 
 Places where the existing copy is too thin to support a non-stacked layout, or where a proposed visual content brief depends on facts the source doesn't carry.
 
-| ID | Page | Section | What's missing |
-|---|---|---|---|
-| Q1 | Recall | 06 Performance | The proposed Pull-quote Interlude + telemetry strip needs three latency-related stats (e.g., median query latency, retrigger threshold, search-as-you-type cadence). Source copy says "we tuned how aggressively the system sent queries" but gives no numbers. Either the strip stays generic (3 unlabeled keyframes of a query growing) or new numbers need to be sourced from the team. **Recommendation: write three short qualitative metrics — "PER KEYSTROKE / 200MS WINDOW / NO BLOCKING WAIT" — that match the copy without claiming data we don't have.** |
-| Q2 | Recall | 03 Problem | The final paragraph (about static ranking and task-shaped relevance) is doing the work of a separate sub-section but lives buried at the end of a 5-paragraph body. Should it become its own plate (Pull-quote Interlude on "Relevance wasn't a fixed property of the result") and the surrounding text shrink? The proposed sequence in §3.1 assumes yes. |
-| Q3 | Agents in Windows | 00 Hero | Source has no Fig 0.1 in the hero. The repo contains `Agents in Windows hero.png` and `Agents in Windows Fractal.png` — confirm which to use, or commission a new SVG schematic mirroring `HeroSchematic` from Recall. |
-| Q4 | Agents in Windows | 03 Process | Captions read "Taskbar evolution — step 1/2/3" — placeholders. Each frame needs a real caption naming what changes between frames (initial pin, agent state visible, hover-card expanded?). Without this, the proposed Stage Rail Plate has nothing to anchor the rail labels to. |
-| Q5 | Teams for Education | 00 Hero | Source has no Fig 0.1. The proposed SVG (top-down virtual-tables grid) doesn't exist yet. Confirm whether to commission this drawing or pull from existing imagery. |
-| Q6 | Teams for Education | 04 Solution | The proposed Exploded Diagram Plate needs four marginalia call-outs naming the anatomy of a virtual table card ("TABLE CARD / FIXED SEAT / PERSISTENT MATERIALS SLOT / MODERATION HOOK"). Source copy supports the first three; "moderation hook" is interpolated from the long paragraph about ambient teacher controls. Confirm the four labels and whether `teams-fig02.png` shows enough anatomy to support call-outs, or whether a new SVG of a single table is needed. |
-| Q7 | Teams for Education | 08 Bandwidth | The proposed Strip Break needs three labeled stat columns. Source copy is qualitative ("older devices, spotty connections, shared home networks") with no numbers. Either keep the columns qualitative ("OLDER DEVICES / SHARED HOME NETWORKS / TIME LOST TO LOADING") or source real numbers. **Recommendation: qualitative is fine — the strip is breaking rhythm, not telling a data story.** |
+| ID | Page | Section | What's missing | Recommended fix |
+|---|---|---|---|---|
+| AGENTS-M01 | Agents | Shared contract | Cleared cross-provider evidence beyond one agent recording | Existing image plus compact request; supply two agents using the same visible state contract |
+| AGENTS-M02 | Agents | Decision | Original evaluation board and observation | Keep the supported alternatives summary; request original evidence rather than inventing a research result |
+| RECALL-M01 | Recall | Ranking | Matched merged/separated results for the same query | Accurately label existing different-purpose figures; request a genuine comparison |
+| RECALL-M02 | Recall | Privacy | Cleared, version-bound deletion/capture-control artifact | Use a compact placeholder pending review; no unqualified system guarantee |
+| RECALL-C01 | Recall | Responsiveness | A source for the former `200MS WINDOW` claim | Remove the number. It is quantitative, not a qualitative substitute for missing evidence |
+| TEAMS-M01 | Teams | Teacher controls | Evidence of specific interventions beyond visible start/stop/join behavior | Keep the verified orchestration recording and request only the missing control behavior |
+| TEAMS-M02 | Teams | Research/outcome | Cleared research-to-decision and prototype-test evidence | Compact request; qualify outcomes and retain tested-concept status |
+
+Detailed questions, clearance holds and replacement instructions are maintained
+in `docs/portfolio-content-review.md`, not expanded into empty page chapters.
 
 ---
 

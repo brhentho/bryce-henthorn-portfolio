@@ -1,0 +1,56 @@
+.portfolio { position: relative; z-index: 1; isolation: isolate; }
+::view-transition-group(portfolio-agents), ::view-transition-group(portfolio-recall), ::view-transition-group(portfolio-teams) {
+  animation-duration: var(--duration-route);
+  animation-timing-function: var(--ease-out-expo);
+}
+.portfolio .fn-home-hero { min-height: calc(100svh - 6rem); }
+.portfolio .fn-hero-ascii .fn-hero-scrim {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--fn-black) 75%, transparent) 0% 60%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent, black 25%);
+}
+.portfolio .fn-home-copy > .fn-label { color: var(--text-primary); }
+.portfolio .fn-case-title { max-width: 19ch; }
+.portfolio .pf-section > * + * { margin-top: 1.75rem; }
+.portfolio .pf-section > .fn-label + h2 { margin-top: .875rem; }
+.portfolio .pf-section h2 { max-width: 23ch; }
+.portfolio .pf-prose { max-width: 64ch; }
+.portfolio .pf-split { display: grid; grid-template-columns: .85fr 1.15fr; gap: 5%; align-items: start; }
+.portfolio .pf-split > div { min-width: 0; }
+.portfolio .pf-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+.portfolio .pf-media { margin: 0; min-width: 0; }
+.portfolio .pf-media-frame { position: relative; border: 1px solid var(--rule); background: var(--xr-surface); }
+.portfolio .pf-media-frame img,.portfolio .pf-media-frame video { width: 100%; height: auto; display: block; }
+.portfolio .pf-media-frame video { max-height: 70svh; object-fit: contain; }
+.portfolio .pf-media figcaption { padding-top: .875rem; text-transform: none; letter-spacing: .01em; }
+.portfolio .pf-media-request { display: grid; gap: .75rem; border: 1px dashed var(--rule-strong); padding: 1.5rem; max-width: 52rem; }
+.portfolio .pf-media-request h3 { font-size: 1.125rem; letter-spacing: -.02em; }
+.portfolio .pf-media-request > p:not(.fn-label) { line-height: 1.55; color: var(--text-secondary); font-size: .9375rem; }
+.portfolio .pf-media-error { padding: 1rem; line-height: 1.6; }
+.portfolio .pf-media-error a { text-decoration: underline; }
+.portfolio .pf-decisions { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+.portfolio .pf-decisions article { border: 1px solid var(--rule); padding: 1.5rem; display: grid; gap: 1rem; align-content: start; }
+.portfolio .pf-decisions p { line-height: 1.6; font-size: .9375rem; }
+.portfolio .pf-decisions .fn-label { font-size: .625rem; }
+.portfolio .pf-decisions article[data-chosen] { border-color: var(--rule-strong); background: var(--xr-surface); }
+.portfolio .pf-evidence { min-width: 0; }
+.portfolio .fn-rail a span { flex: none; min-width: 2ch; white-space: nowrap; }
+.portfolio .fn-rail a { line-height: 1.5; }
+.portfolio .pf-about { --env-graphite: var(--fn-warm); }
+.portfolio .pf-about-main { padding: 3rem var(--fn-pad) var(--fn-room); }
+.portfolio .pf-about-hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 8%; align-items: center; padding-bottom: var(--fn-room); }
+.portfolio .pf-about-hero h1 { font-size: clamp(3rem,6vw,6rem); margin-block: 1.5rem; }
+.portfolio .pf-about-hero img { width: 100%; height: auto; }
+.portfolio .pf-about-section { padding-block: 3rem; display: grid; gap: 2rem; border-top: 1px solid var(--rule); }
+.portfolio .pf-experience > div { display: grid; grid-template-columns: .45fr 1.55fr; gap: 2rem; padding-block: 1.5rem; border-top: 1px solid var(--rule); }
+.portfolio .pf-experience dd { display: grid; gap: .75rem; }
+.portfolio .pf-experience p { line-height: 1.65; }
+.portfolio .pf-next { display: flex; gap: 1rem; flex-wrap: wrap; padding-block: 2rem; }
+.portfolio .pf-section .xr-demo { grid-template-columns: 1fr; }
+.portfolio .pf-section .xr-demo-explanation { display: grid; grid-template-columns: 1fr 1fr; }
+.portfolio .pf-section .xr-demo-explanation > :first-child,.portfolio .pf-section .xr-demo-explanation > :last-child { grid-column: 1/-1; }
+@media (max-width:850px) {
+  .portfolio .pf-split,.portfolio .pf-pair,.portfolio .pf-decisions,.portfolio .pf-about-hero { grid-template-columns: 1fr; gap: 2rem; }
+  .portfolio .pf-about-hero img { max-height: 65svh; object-fit: cover; object-position: 50% 30%; }
+  .portfolio .pf-experience > div { grid-template-columns: 1fr; gap: .75rem; }
+  .portfolio .pf-section .xr-demo-explanation { grid-template-columns: 1fr; }
+}
