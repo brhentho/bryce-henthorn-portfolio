@@ -1,7 +1,8 @@
 import Image from "next/image"
 import { CaseLayout } from "./CaseLayout"
-import { AgentDemo, AgentKeyframes, CaseSection, Decisions, Pair, Prose, ShinyLink, Split } from "./Blocks"
+import { AgentKeyframes, CaseSection, Decisions, Prose, ShinyLink, Split } from "./Blocks"
 import { PortfolioMedia } from "./PortfolioMedia"
+import { AgentsComparison } from "./AgentsComparison"
 
 const chapters = [
   { id: "context", label: "The missing return point" },
@@ -45,11 +46,7 @@ export function AgentsPage() {
         <p>Some agents lived inside apps. Others appeared in Copilot conversations or arrived as notifications. Starting work was only part of the interaction: people also needed to find it later, understand whether it was still running, and know when it needed them.</p>
         <p>Early interviews surfaced a consistent concern about surprises and unclear progress. We treated that as an observability problem—not evidence that everyone distrusts automation. The OS offered a common surface across the different places work began.</p>
       </Prose>
-      <Pair>
-        <PortfolioMedia id="agents-fragmentation" number="02.1" />
-        <PortfolioMedia id="agents-observability" number="02.2" />
-      </Pair>
-      <p className="pf-caption">Fragmented application visibility / proposed OS-level observability. Two compositions of the same problem, not measured outcome evidence.</p>
+      <AgentsComparison />
     </CaseSection>
 
     <CaseSection id="process" title="Why the taskbar, not another workspace.">
@@ -81,7 +78,7 @@ export function AgentsPage() {
       <Prose>
         <p>A pin establishes the return point. A state signal says whether attention is needed. The expanded hover card reveals the current step without requiring someone to reopen the conversation. These are three views of the chosen direction, not three alternative designs.</p>
       </Prose>
-      <AgentKeyframes />
+      <AgentKeyframes floating />
       <Split>
         <Prose>
           <p>Providers report progress differently. Some stream detailed steps; others remain quiet for long stretches. We needed enough common structure to communicate state without promising detail the agent could not supply.</p>
@@ -89,20 +86,15 @@ export function AgentsPage() {
         </Prose>
         <PortfolioMedia id="agents-taskbar" number="04.1" />
       </Split>
-      <figure className="pf-state-figure">
+      <figure id="simulation" className="pf-state-figure pf-anchor">
         <ul className="pf-state-lexicon">
           {states.map(state => <li key={state.label}>
             <Image src={`/assets/agents/${state.asset} agent.svg`} alt="" width={40} height={40} />
             <h3>{state.label}</h3><p>{state.meaning}</p>
           </li>)}
         </ul>
-        <figcaption className="fn-label">Fig. 04.2 / Five-state visual lexicon. An interaction inventory, not an impact metric.</figcaption>
+        <figcaption className="fn-label">Fig. 04.2 / One shared language for five states of agent work.</figcaption>
       </figure>
-      <div id="simulation" className="pf-anchor">
-        <h3>Try the state contract.</h3>
-        <p className="pf-caption">Fictional portfolio simulation. Advance the scenario explicitly, respond to a simulated request, pause or retry. These controls do not operate Windows or a real agent.</p>
-        <AgentDemo />
-      </div>
     </CaseSection>
 
     <CaseSection id="constraints" tone="paper" className="pf-constraints-section">

@@ -78,14 +78,21 @@ export function DecisionOptions({ interactive = false }: { interactive?: boolean
   )
 }
 
-export function FrameSelector() {
+const FLOATING_KEYFRAME_SIZES = [
+  { width: 651, height: 155 },
+  { width: 640, height: 159 },
+  { width: 640, height: 157 },
+]
+
+export function FrameSelector({ floating = false }: { floating?: boolean } = {}) {
   const [selected, setSelected] = useState(0)
   const uid = useId()
   const frame = AGENTS.keyframes[selected]
+  const size = floating ? FLOATING_KEYFRAME_SIZES[selected] : AGENTS.keyframeSize
   return (
-    <div className="xr-frame-selector">
+    <div className={`xr-frame-selector${floating ? " pf-floating-keyframes" : ""}`}>
       <div role="tabpanel" id={`${uid}-panel`} aria-labelledby={`${uid}-tab-${selected}`} tabIndex={0}>
-        <StudyFigure {...frame} {...AGENTS.keyframeSize} caption={frame.detail} number={`03.${selected + 1}`} />
+        <StudyFigure {...frame} {...size} caption={frame.detail} number={`03.${selected + 1}`} />
       </div>
       <div className="xr-frame-tabs" role="tablist" aria-label="Taskbar keyframes">
         {AGENTS.keyframes.map((item, index) => (

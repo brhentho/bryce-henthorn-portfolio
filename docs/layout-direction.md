@@ -26,7 +26,7 @@ These are imperative, opinionated rules. Apply them in order; later rules tie-br
 
 8. **Let the grid stretch — break the 68-character body column when figure content earns it.** The default `section-grid` + `max-w-[68ch]` body is the right baseline, but at least every third section should leave that lane: an Annotated Split Plate, a marginalia rail, a bleed figure, or a comparison plate. Lock-step body columns make the page feel like a Medium post.
 
-9. **Keep frame chrome on every plate that contains a figure.** Hairline borders and corner registration marks are how the operator-manual aesthetic survives layout variety. A "full-bleed" plate in this document means edge-to-container, not edge-of-viewport. Bleeding past the registration frame breaks the contract.
+9. **Use figure chrome deliberately.** Hairline borders and registration marks preserve the document treatment where a framed plate is intended. The explicitly floating artifacts in the current composition map remain unboxed. "Full-bleed" still means edge-to-container, not edge-of-viewport.
 
 10. **One pull-quote per page may take the entire viewport.** Recall's "Perfection wasn't the goal. Legibility was." or Teams' "The system worked for lecturing. It failed at learning." can stand alone as a Pull-quote Interlude — quote in display type, no body, hairline rules above and below. This is how text-only sections earn their place without stacking.
 
@@ -129,9 +129,9 @@ Do not mechanically apply one background ramp or one case-body template to every
 | Page | Argument order | Layout and motion |
 |---|---|---|
 | Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve ASCII, layered project entrances and continuous atmosphere; clean linked product images with bounded pointer response, then staggered Approach |
-| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Hero/brief, comparison, decision table, keyframes and user-controlled simulation; dark opening fades to light at constraints and stays light through the ending |
-| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> qualified milestone | Hero/brief, selectable four-layer capture/index model (2.5), enlarged provenance card with annotations (2.4), supporting recording (2.8), decision table and privacy pair; mainly ink/graphite |
-| Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Research split, data table, conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
+| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Floating SVG comparison (2.6), decision table, floating keyframes, actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
+| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> milestone | Floating selectable four-layer model (2.5/2.7), provenance crop with annotations (2.4), recordings, decision table, privacy pair and full reading-width announcement figure (2.8); mainly ink/graphite |
+| Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Curated research evidence strip (2.9), workflow finding/intent table (2.13), conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
 | About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split, grouped working-example/ledger arrivals and shared neutral ink; no warm-brown override or product simulation |
 
 Public navigation uses a name-only wordmark and a gooey moving highlight with
@@ -147,12 +147,45 @@ The public case rail displays section numbers only, with the current number
 emphasized and complete chapter names retained in accessible link labels.
 Recorded videos loop muted while sufficiently visible, pause offscreen and
 respect manual pause. Reduced-motion/data-saving preferences leave native Play
-available without automatic playback. This does not auto-run the Agents simulation.
+available without automatic playback.
+
+The public Agents simulator is removed; the real recording, keyframes and
+five-state legend provide the explanation without a second workflow to learn.
+Archived simulations remain. The Agents comparison and taskbar cutouts, and
+Recall's exploded model, intentionally float without a website matte or frame.
+Recall retains its planes and stage controls but omits the large vertical arrow.
+
+The Agents comparison contrasts scattered work contexts with one shared Windows
+visibility layer. Matching geometric markers preserve identity without A/B/C
+codes; individual arrowless connections associate each context with its own
+state. The layer is a meaningful diagram object, not a backing card around the
+whole illustration or an execution engine.
+
+Public rectangular images and recordings share rounded corners and quiet
+elevation, with captions outside the visual surface. Transparent compositions
+and taskbar cutouts retain their silhouettes; icons and vector schematics are
+not blanket-rounded or filtered. Shadows are suppressed during contrast-sensitive
+ground crossings. Archives keep their existing treatment.
+
+Public hero and section headings retain negative tracking but are 0.02em looser
+than the earlier lock. The public tracking roles are defined in the root token
+block; body/navigation text and archived typography are not loosened globally.
+
+Recall's announcement photograph is no longer a capped thumbnail in a split.
+It fills the reading column beneath the closing heading, followed by readable
+body copy. The registry uses its measured 1434 x 807 dimensions.
+
+Teams uses one author-confirmed approximate statistic and anonymous student themes,
+not six reproduced slides. The research placeholder is replaced by the supplied
+evidence; selected workflow findings connect to preparation, shared materials and
+teacher awareness. Keep the sources light on the page and traceable in the review
+notes; do not turn input research into an adoption or retention result.
 
 Agents' constraints image is a full reading-container plate (2.8) between the
 interactive prototype and "A shared contract meant saying no." It leads the
 light passage, retaining its figure caption before the heading and constrained
-body copy. It is not a half-width image beside the explanation.
+body copy. This image intentionally floats directly on the page without a frame
+border or background. It is not a half-width image beside the explanation.
 
 Actual media inspection corrected the source captions: `Teams_fig04` shows group
 preparation, `Teams_fig06` live teacher orchestration, and `Teams_fig05` shared

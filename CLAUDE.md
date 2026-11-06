@@ -138,7 +138,7 @@ When restructuring or editing case study sections:
 
 7. **One section's worth of changes per turn, then stop.** When restructuring, edit one section, show the diff, and wait for review before moving to the next. Do not batch-edit a whole page. *Exception:* when implementing a design handoff that spans multiple pages, batch by phase (shared components → homepage → per-page) and stop for review between phases — confirm that framing with the user first.
 
-8. **Keep figure chrome on case-study evidence plates.** Hairline borders, corner registration marks, `FIG. X.Y` numbering. "Full-bleed" in this codebase means edge-to-container, never edge-to-viewport without the frame. The public homepage's linked project images deliberately omit captions and synthetic device bars; archived project plates retain their original chrome.
+8. **Keep figure chrome purposeful.** Framed evidence plates use hairlines, registration marks and figure numbering. Explicit floating-artifact exceptions in `docs/layout-direction.md` remain unboxed. "Full-bleed" means edge-to-container, not edge-to-viewport. Public homepage images omit captions and synthetic device bars; archived project plates retain their original chrome.
 
 ## Slash commands
 

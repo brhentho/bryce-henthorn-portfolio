@@ -32,6 +32,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   },
   "agents-constraints": {
     kind: "image", title: "A shared shell surface",
+    presentation: "cutout",
     src: "/images/agents/constraints-desktop.png",
     alt: "Windows desktop design showing multiple agent interactions",
     width: 1648, height: 930,
@@ -52,6 +53,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   },
   "recall-card-anatomy": {
     kind: "image", title: "Screenshot-led result cards",
+    presentation: "cutout",
     src: "/images/recall/cards-card-hierarchy.png",
     alt: "Six Recall result cards with screenshots, timestamps and source application metadata",
     width: 3056, height: 1606,
@@ -91,7 +93,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
     kind: "image", title: "Recall at Build 2024",
     src: "/images/recall/impact-keynote.png",
     alt: "Recall announcement showing components of the processing architecture",
-    width: 358, height: 210,
+    width: 1434, height: 807,
     caption: "Build 2024 announcement. A public milestone, separate from later availability and privacy revisions.",
   },
   "teams-prepare": {
@@ -116,7 +118,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Teams_fig05-P8cWRCiwt0bUCrucyij7Dh4KVxwhDT.mov",
     poster: "/images/teams/groups-poster.jpg",
     description: "Concept recording showing a small-group call opening Group notes with prior class notes and documents.",
-    caption: "At the table: reopen shared notes and documents from a prior class. The clip shows continuity of materials, not a complete re-entry flow.",
+    caption: "At the table: reopen shared notes and documents from a prior class.",
   },
   "about-portrait": {
     kind: "image", title: "Bryce Henthorn",
@@ -150,8 +152,8 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
     description: "A cleared prototype artifact showing supported moderation beyond the start, join and stop controls already demonstrated.",
   },
   "TEAMS-M02": {
-    kind: "request", requestId: "TEAMS-M02", reason: "clearance-needed",
-    title: "From classroom observation to concept",
-    description: "An anonymized, cleared research board connecting an observation, the persistent-group decision and a prototype-test finding.",
+    kind: "request", requestId: "TEAMS-M02", reason: "requested",
+    title: "Supporting concept-testing notes",
+    description: "Optional supporting material connecting a tested classroom interaction to the feedback it received. Research inputs are already represented on the page.",
   },
 }

@@ -71,6 +71,13 @@
   --pf-evidence-distance: 40px;
   --pf-image-tilt: 2deg;
   --pf-image-scale: 1.02;
+  --pf-media-radius: clamp(12px, 1.1vw, 16px);
+  --pf-media-shadow: 0 2px 6px rgb(0 0 0 / .16), 0 18px 42px -16px rgb(0 0 0 / .36);
+  --pf-media-drop-shadow: drop-shadow(0 2px 3px rgb(0 0 0 / .16)) drop-shadow(0 clamp(6px, 1vw, 14px) clamp(10px, 1.25vw, 18px) rgb(0 0 0 / .22));
+  --pf-cutout-shadow: drop-shadow(0 6px 10px rgb(0 0 0 / .14));
+  --pf-tracking-display: -.035em;
+  --pf-tracking-heading: -.025em;
+  --pf-tracking-about-heading: -.015em;
 
   /* Hero clip windows. 0.5em vertical clears Inter Tight's ascenders and
      descenders at display leading; 0.25em horizontal clears side bearings

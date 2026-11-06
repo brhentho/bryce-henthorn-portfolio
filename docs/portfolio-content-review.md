@@ -26,8 +26,8 @@ that distinction belongs with the verified search recording.
 | RECALL-C02 | Privacy | Which versions and responsibilities does the earlier opt-out → opt-in account describe? What exact capture eligibility, local-processing and deletion/retention boundaries apply? | No migration chronology or universal security guarantee. Distinguish design intent, snapshot deletion and future capture settings. |
 | RECALL-C03 | Imagery | Are reservation and financial examples synthetic, redacted and cleared? Audit other product screenshots for names, account data and confidential content too. | Do not render reservation/financial/recovery stills. RECALL-M02 asks for benign version-labeled recovery evidence. Existing assets remain in the repository and may still be publicly addressable. |
 | RECALL-C04 | Ranking / evaluation | What research supports merged-ranking problems, result inspectability and responsiveness? Provide permitted method, sample context and observations. | Source’s qualitative ranking finding is prominent, but no measured improvement. Card anatomy and separated grid are not labeled before/after. |
-| TEAMS-C01 | Research | Are student names, grade labels, quotations and co-design imagery cleared for a public portfolio? | No identifying research quotes, names or co-design images rendered. Existing themes summarized as prose; TEAMS-M02 visible. |
-| TEAMS-C02 | Findings / scale | What supports participation, speed, retention and the former platform/classroom statistics? | Removed 150M+, 30+ and six-hours claims. Bound outcome to qualitative concept testing; no comparative speed or retention result. |
+| TEAMS-C01 | Research | Any later use of participant identities or direct quotations needs separate consideration. | Author supplied the research frames and chose anonymous paraphrases. Research themes now replace the on-page TEAMS-M02 placeholder; names, grades and direct quotes stay off the page. |
+| TEAMS-C02 | Findings / scale | Keep platform preference distinct from prototype outcomes. | Author confirmed the supplied ~70% LMS/SIS preference figure. It appears with its February 2020 teacher-survey source label, not as Teams adoption or retention improvement. No 150M+, 30+ or six-hours claims are reintroduced. |
 | TEAMS-C03 | Teacher control / lineage | Which moderation controls were implemented, tested or only intended? Which later releases can be demonstrably traced to this work? | Start/join/stop grounded in recording frames. Mute/redirect/flag described as design discussion. No verified release-lineage claim. |
 | ABOUT-C01 | Career | Confirm all role labels and dates, optional earlier Amazon/Nordstrom contract dates, and public wording of the Copilot Actions experience entry. | All source entries retained. Both 2025–present entries marked concurrent. No invented earlier dates, availability or resume. Copilot Actions entry has no case link. |
 
@@ -105,18 +105,33 @@ The same stable request ID is used on the page and in the registry.
 - **Fallback:** Existing during-class orchestration recording plus compact
   request; no claim that teacher perspective is wholly missing.
 
-### TEAMS-M02 — Classroom observation to concept
+### TEAMS-M02 — Supporting concept-testing notes
 
-- **Priority / location:** P2, visible in
-  `/teams-for-education#research` because identifying source artifacts are held.
-- **Kind / status:** Anonymized research-to-decision board; clearance needed.
-- **Frame list:** A permitted classroom observation, the persistent-group
-  decision it informed, and an actual prototype-test observation. Identify
-  method and limits without reconstructing participant quotations.
-- **Required context:** Research permission, anonymization review, consent for
-  any imagery, and clear distinction between a theme and a measured finding.
-- **Fallback:** Summaries of the existing teacher/student themes in prose,
-  never invented anonymized quotes.
+- **Priority / location:** Optional, checklist-only. The research section now
+  uses the supplied teacher-survey and student-session evidence.
+- **Kind / status:** Additional concept-testing artifact; requested if useful.
+- **Purpose:** Add a concrete example of feedback on a tested classroom
+  interaction if the author wants to expand the ending later.
+- **Current treatment:** No on-page research placeholder. Keep the stable request
+  ID without making the existing evidence wait for another research document.
+
+### Supplied Teams evidence
+
+The author confirmed the project material and the approximate platform-preference
+statistic. The page uses short source labels and confident project language;
+these notes preserve traceability rather than add on-page methodological caveats.
+
+| Supplied frame | Page use |
+| --- | --- |
+| `1281:67439` — student sessions | Anonymous paraphrases about speaking in smaller groups and connection with peers |
+| `1281:67451`, `1281:67695` — activity/skill material | Group projects and discussions supporting the four Cs; no recreated matrix or inferred chart percentages |
+| `1281:67778` — teacher survey | ~70% preferred their LMS/SIS to facilitate group work; source February 2020 |
+| `1281:67821` — group-work contexts | Continuity across project/class timescales; no added aggregate percentages |
+| `1281:67545` — experience reviews | Chat/participant switching, student visibility during presentation, scattered controls and notes |
+
+Research inputs support the design rationale; they are not presented as measured
+results of the virtual-tables concept. Raw transcripts and identifying slide
+exports remain outside the repository.
 
 ## Existing media: source and evidence boundaries
 

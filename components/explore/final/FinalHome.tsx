@@ -99,7 +99,7 @@ function Project({ concept, hero, index, project, publicMode }: { concept: Final
   const clipPath = useTransform(enter, p => {
     if (publicMode && p >= 1) return "none"
     const r = 1 - p
-    if (e.mask === "aperture") return `inset(${(r * 9).toFixed(2)}% ${(r * 11).toFixed(2)}% ${(r * 9).toFixed(2)}% ${(r * 11).toFixed(2)}% round 8px)`
+    if (e.mask === "aperture") return `inset(${(r * 9).toFixed(2)}% ${(r * 11).toFixed(2)}% ${(r * 9).toFixed(2)}% ${(r * 11).toFixed(2)}% round ${publicMode ? "var(--pf-media-radius)" : "8px"})`
     if (e.mask === "wipe") return `inset(0% ${(r * 100).toFixed(2)}% 0% 0%)`
     return "none"
   })

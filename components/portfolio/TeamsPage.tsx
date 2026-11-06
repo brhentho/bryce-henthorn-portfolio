@@ -11,7 +11,7 @@ const chapters = [
   { id: "orchestration", label: "During class" },
   { id: "student-view", label: "At the table" },
   { id: "teacher-control", label: "Teacher control" },
-  { id: "impact", label: "What testing suggested" },
+  { id: "impact", label: "What we learned" },
 ] as const
 
 export function TeamsPage() {
@@ -20,17 +20,17 @@ export function TeamsPage() {
     title="A classroom needs more than a video grid."
     deck="Broadcast-style classes made participation and belonging difficult. We explored a more persistent structure for small-group learning."
     call="We reframed the retention brief around stable groups, peer conversation and teacher awareness—not more features."
-    status="Tested concept · not a full release"
+    status="Tested concept"
     ledger={[
       { label: "Role", value: "Lead interaction designer, virtual classroom" },
       { label: "Team", value: "Design, research & engineering" },
       { label: "Years", value: "2020–2021" },
-      { label: "Status", value: "Tested concept; not shipped as a complete experience" },
+      { label: "Status", value: "Prototype and concept testing" },
     ]}
     hero={{
       src: "/images/teams/hero-classroom-groups.png", width: 2000, height: 1075,
       alt: "Teams classroom concept showing group rooms and the teacher's Groups management panel",
-      caption: "Virtual classroom concept. Product-design artifact, not a claim of released functionality.",
+      caption: "Virtual classroom concept with persistent groups and a teacher’s overview.",
     }}
     chapters={chapters}
   >
@@ -42,15 +42,31 @@ export function TeamsPage() {
       <p className="pf-pull-line">A smaller audience.<br />A familiar group.<br />A place to return to.</p>
     </CaseSection>
 
-    <CaseSection id="research" title="What students and teachers were missing." tone="paper-warm">
-      <Split>
-        <Prose>
-          <p>We ran research sessions with students, parents and teachers, mapping the day-to-day experience inside Teams. We looked at when participation broke down, what made speaking uncomfortable, and how educators kept track of a class.</p>
-          <p>The themes were practical and social. Students missed group discussions and familiar peers. Speaking in a smaller group could feel less daunting than addressing the whole class. Teachers needed to see the classroom without continually rebuilding its logistics.</p>
-          <p>These are summaries of the existing research themes, not reconstructed quotations. They led us toward stable group identity and more continuity between sessions.</p>
-        </Prose>
-        <PortfolioMedia id="TEAMS-M02" />
-      </Split>
+    <CaseSection id="research" title="Small groups made participation easier." tone="paper-warm">
+      <Prose>
+        <p>Teachers identified group projects and discussions as valuable ways to build critical thinking, creativity, collaboration and communication. Student sessions made the social need equally clear: people missed learning with their peers, not just watching a lesson.</p>
+      </Prose>
+      <figure className="pf-teams-evidence" data-pf-reveal="reading">
+        <div className="pf-teams-evidence-grid">
+          <div className="pf-teams-evidence-stat">
+            <p className="pf-teams-evidence-number">~70%</p>
+            <p>of teachers preferred their existing school platform for group work.</p>
+            <p className="fn-label">K–12 teacher survey / February 2020</p>
+          </div>
+          <div>
+            <p className="fn-label">Student sessions</p>
+            <h3>A smaller audience.</h3>
+            <p>Speaking up felt easier in a small group. There was less overlap, less awkward silence, and more room to take a turn.</p>
+          </div>
+          <div>
+            <p className="fn-label">Student sessions</p>
+            <h3>A sense of belonging.</h3>
+            <p>Students missed group activities, talking with friends, and feeling part of a class—not simply being present on a call.</p>
+          </div>
+        </div>
+        <figcaption className="fn-label">Fig. 01.1 / Teacher survey and student-session themes. School platforms include learning management and student information systems.</figcaption>
+      </figure>
+      <Prose><p>We needed to keep collaboration inside the class’s existing workflow while making the group itself recognizable. That pointed toward a place people could return to, rather than a new set of meeting controls.</p></Prose>
     </CaseSection>
 
     <CaseSection id="solution" title="Structure without a literal classroom.">
@@ -58,11 +74,11 @@ export function TeamsPage() {
       <Decisions items={[
         { title: "Literal classroom maps", tradeoff: "Avatars at drawn tables communicated place, but the room simulation felt gimmicky inside Teams.", disposition: "Keep the useful spatial cues, not the literal scenery." },
         { title: "Renamed breakout channels", tradeoff: "Functionally simple, but too abstract to preserve a visible sense of the group.", disposition: "Give the group a recognizable structure." },
-        { title: "Persistent virtual tables", tradeoff: "Stable seats and group identity could carry context between sessions, while fitting the existing product.", disposition: "Selected for prototyping and testing—not shipped as a complete concept.", chosen: true },
+        { title: "Persistent virtual tables", tradeoff: "Stable seats and group identity could carry context between sessions, while fitting the existing product.", disposition: "Selected for prototyping and testing.", chosen: true },
       ]} />
       <figure className="pf-media pf-classroom-diagram">
         <div className="pf-media-frame"><HeroSchematic /></div>
-        <figcaption className="fn-label">Fig. 02 / Conceptual classroom schematic: persistent tables, recognizable seats and a teacher’s global view. Illustrative topology, not research sample size.</figcaption>
+        <figcaption className="fn-label">Fig. 02 / Conceptual classroom: persistent tables, recognizable seats and a teacher’s global view.</figcaption>
       </figure>
       <Prose><p>Fixed positions made neighbors recognizable. Table-level discussion, shared materials and instructions were intended to persist between sessions. The next class could begin with a group’s context, instead of another round of assignments and redistribution.</p></Prose>
     </CaseSection>
@@ -70,8 +86,8 @@ export function TeamsPage() {
     <CaseSection id="group-creation" title="Before class: prepare a place to return to." eyebrow="Teacher preparation">
       <Split>
         <Prose>
-          <p>Creating breakout rooms during a meeting made group logistics part of instructional time. The concept moved that work earlier: teachers could prepare groups, assign students to seats, and attach materials or instructions before class.</p>
-          <p>Persistent tables were intended to reduce the need to establish the same groups and resources at each session. Preparation became part of a continuing classroom structure rather than a one-meeting setup step.</p>
+          <p>The teacher survey described group work at the scale of projects, classes and longer periods—not only the call currently open. We designed the table as a continuing home for the group and its work.</p>
+          <p>Teachers could prepare groups, assign students to seats, and attach materials or instructions before class. Preparation became part of a continuing classroom structure rather than a one-meeting setup step.</p>
         </Prose>
         <PortfolioMedia id="teams-prepare" number="03" />
       </Split>
@@ -80,7 +96,7 @@ export function TeamsPage() {
     <CaseSection id="orchestration" title="During class: move together without losing the room." eyebrow="Whole class → groups">
       <Prose>
         <p>The classroom view provided a common starting point. Moving into assigned groups should change the scale of conversation without making the class feel like a collection of disconnected meetings.</p>
-        <p>From the groups panel, the teacher can start discussions and see tables in progress, with Join and Stop controls available. The recording shows that orchestration layer—not the full set of moderation behaviors we considered.</p>
+        <p>From the groups panel, the teacher can start discussions and see tables in progress, with Join and Stop controls available.</p>
       </Prose>
       <PortfolioMedia id="teams-classroom" number="04" />
     </CaseSection>
@@ -89,27 +105,31 @@ export function TeamsPage() {
       <Split className="pf-student-split">
         <PortfolioMedia id="teams-student" number="05" />
         <Prose>
-          <p>Discussion does not stop when someone steps away. We designed entry and re-entry around enough context to orient: familiar group members, recent activity, shared materials and who was talking.</p>
-          <p>A stable seat was a cue to belonging, not the entire experience. The recording shows a small-group call opening shared notes and documents from a prior class. It demonstrates access to earlier work, rather than a complete student re-entry sequence.</p>
+          <p>The experience reviews surfaced another kind of fragmentation: plenty of ways to take notes, but no clear place to return to them. We gave shared notes and materials a home at the table, alongside the people using them.</p>
+          <p>The recording shows a group opening notes and documents from a prior class. A stable group could carry its work forward, rather than starting each session from scratch.</p>
         </Prose>
       </Split>
     </CaseSection>
 
     <CaseSection id="teacher-control" title="Teacher control without breaking peer conversation.">
       <Prose>
-        <p>Small groups needed room for organic discussion; teachers still needed situational awareness and a way to intervene. The design intent was to make observation and supported moderation available from a global view without unnecessarily pulling students out of context.</p>
-        <p>Starting, joining and stopping groups are visible in the orchestration recording. More specific interventions—such as muting, redirecting or flagging—were part of the design discussion. They remain distinct from those demonstrated controls and need their own supporting artifact.</p>
+        <p>Small groups needed room for organic discussion; teachers still needed awareness of the class. Reviews of the meeting experience showed how easily that awareness could be lost across panels and controls.</p>
       </Prose>
+      <dl className="pf-teams-findings" data-pf-reveal="reading">
+        <div><dt>Chat and participants competed for space.</dt><dd>Teachers had to switch between the two. The classroom concept needed a persistent overview instead of another hidden meeting pane.</dd></div>
+        <div><dt>Presenting could hide the students.</dt><dd>The review called out lost visibility while screen-sharing. We treated teacher awareness as a first-class part of the classroom view.</dd></div>
+        <div><dt>Controls lived in different places.</dt><dd>The groups panel brought status, Join and Stop together, making the teacher’s next action easier to locate.</dd></div>
+      </dl>
+      <p className="fn-label">Source / Meeting-experience reviews, 2019–2021</p>
+      <Prose><p>Starting, joining and stopping groups are visible in the recording. More specific interventions, such as muting or redirecting, remained part of the design exploration.</p></Prose>
       <PortfolioMedia id="TEAMS-M01" />
     </CaseSection>
 
-    <CaseSection id="impact" title="What testing suggested. What did not ship.">
+    <CaseSection id="impact" title="What we learned.">
       <div className="pf-outcome-note">
-        <p className="fn-label">Tested concept / not a complete shipped experience</p>
         <Prose>
-          <p>Concept testing suggested that stable groups and a smaller audience were a useful direction for participation, while the global classroom view addressed teacher awareness. These are qualitative findings from the concept work, not measured improvements in retention, speed or engagement.</p>
-          <p>The full virtual-tables experience did not ship as designed. Persistent class context, structured groups and clearer participation remained useful design questions, but this case does not claim a verified lineage to later releases.</p>
-          <p>The lasting shift in the brief was from adding features to designing the conditions for conversation. Structure and social connection became part of the retention hypothesis—not a proven retention outcome.</p>
+          <p>Concept testing suggested that stable groups and a smaller audience were a useful direction for participation, while the global classroom view addressed teacher awareness.</p>
+          <p>The full virtual-tables experience did not ship as designed. The lasting shift in the brief was from adding meeting features to designing the conditions for conversation: recognizable groups, shared context and a teacher who could stay connected to the room.</p>
         </Prose>
       </div>
       <nav className="pf-next" aria-label="Next case"><ShinyLink href="/agents-in-windows">Agents in Windows</ShinyLink></nav>

@@ -96,7 +96,10 @@ body:has(.portfolio .fn-environment[data-crossing]) > .noise { opacity: 0; }
 .portfolio .fn-contact-title:focus-visible { outline-offset: .15em; }
 .portfolio .fn-project .fn-device { background: transparent; border: 0; overflow: visible; }
 .portfolio .fn-project .fn-device-view { overflow: visible; }
-.portfolio .pf-project-link { display: block; border-radius: .5rem; perspective: 1200px; }
+.portfolio .pf-project-link { display: block; border-radius: var(--pf-media-radius); perspective: 1200px; }
+.portfolio .fn-project-plate { filter: var(--pf-media-drop-shadow); }
+.portfolio .fn-device-image img { border-radius: var(--pf-media-radius); }
+.portfolio .fn-environment[data-crossing] .fn-project-plate { filter: none; }
 .portfolio .pf-project-link:focus-visible { outline-offset: 6px; }
 .portfolio .pf-image-interaction {
   transform: rotateX(0) rotateY(0) scale(1);

@@ -80,7 +80,6 @@ export function RecallModel() {
         <svg viewBox="0 0 720 540" role="img" aria-labelledby={`${name}-title ${name}-description`}>
           <title id={`${name}-title`}>Capture to index, read bottom to top</title>
           <desc id={`${name}-description`}>Four conceptual planes: screenshot capture, OCR text extraction, semantic relationships, and indexed results. The controls emphasize a plane, not a running process.</desc>
-          <path className="pf-recall-axis" d="M75 440V145m-6 10 6-10 6 10" />
           {stages.map((stage, index) => <g key={stage.title} transform={`translate(0 ${300 - index * 85})`}>
             <g data-recall-arrival="">
               <g className="pf-recall-plane" data-plane={index}>

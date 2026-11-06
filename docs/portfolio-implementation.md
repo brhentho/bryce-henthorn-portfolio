@@ -117,6 +117,63 @@ focus uses its primary foreground, and the contrast-changing noise overlay is
 temporarily suppressed. A 25-case recheck measured minimum 4.618554588980766:1.
 Settled/archive texture remains unchanged; other engines/devices are unverified.
 
+## Evidence and explanation refinement
+
+- Teams uses the author's supplied research selectively: one approximate 70%
+  school-platform preference figure, anonymous student-session themes, and
+  concrete meeting-workflow findings tied to the design. Full slide layouts,
+  identifying quotations and redundant methodological caveats are not reproduced.
+  `TEAMS-M02` is now an optional checklist-only concept-testing follow-up.
+- Agents' context comparison uses floating conceptual SVGs: distinct origins
+  remain in place while Windows adds a shared return point. The public workflow
+  simulator is removed; actual recordings, keyframes and the five-state legend
+  carry the explanation. The legacy `#simulation` anchor points to that legend.
+- Public taskbar keyframes lose the matte, border, corner overlay and excess
+  padding, and use each image's measured dimensions. The selector's default
+  archive presentation is unchanged.
+- Recall's exploded model loses its outer frame/background and vertical arrow,
+  retaining the four planes, stage identifiers and selection behavior. The
+  separate provenance figure keeps its own presentation.
+
+Typecheck, 38 tests and the production build pass. The 40-case public layout
+matrix has no visible clipping, overflow or missing images. Targeted browser
+checks cover natural keyframe geometry/keyboard selection, Recall stage controls,
+200% text, remaining recording playback and archived demo/frame preservation.
+A bounded technical review passed; computed Teams evidence contrast was at least
+8.24:1. This was not a new all-engine or complete transition-pixel audit.
+
+## Media finish and abstract visibility map
+
+- Public media uses a shared 12–16px responsive radius, contact/ambient shadows,
+  and explicit rectangular versus cutout treatment. Captions, notices and
+  annotations are not included in the visual surface's shadow or clipping.
+- Homepage shadows surround the composited, scroll-clipped picture; public mask
+  corners use the shared radius. Existing travel, hover response and timings
+  remain intact. Archive masks and media styles are unchanged.
+- Agents' constraints composition, taskbar PNGs and Recall's card collage stay
+  transparent, with light silhouette-aware depth. Vector schematics and status
+  icons remain crisp. Native video focus remains visible; fullscreen is unrounded.
+- The revised Agents map replaces repeated wireframe boxes with distinct
+  geometric identities, larger labels and a prominent shared visibility layer.
+  At enlarged text, connected origin/state pairs share a continuous visibility
+  rail rather than shrinking labels or dropping the associations.
+- Recall's announcement image now fills the reading column. The old 28rem cap
+  is removed, source dimensions corrected to 1434 x 807, and responsive image
+  sizing reflects its new placement. Existing copy and caption remain.
+- Shadow effects are suppressed during midtone crossings to avoid changing the
+  backdrop used for contrast-safe captions and controls.
+- Public hero and section heading tracking is loosened by 0.02em: h1 uses
+  -0.035em, standard h2 -0.025em, and About's section h2 -0.015em. Body text,
+  navigation, diagram h3 labels and archive typography keep their prior values.
+
+Typecheck, 39 tests and the production build pass. Browser checks cover media
+roles, intrinsic proportions, full-column Recall sizing, clip/hover continuity,
+video pause/seek/fullscreen/focus, failure recovery and archive isolation. All
+40 public viewport/motion combinations pass after the tracking change. Technical
+review verified continuous diagram connections and unbroken labels at 200% text
+after three targeted corrections. Physical devices and other engines are not
+claimed as verified.
+
 ## Historical October implementation
 
 Approved scope: preserve typography and palette; improve homepage visibility,

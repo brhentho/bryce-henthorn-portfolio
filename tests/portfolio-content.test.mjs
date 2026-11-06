@@ -54,3 +54,14 @@ test("Recall distinguishes inspected answer-preview exploration from chosen resu
   assert.match(PORTFOLIO_MEDIA["recall-retrieval"].title, /Exploratory answer-preview/)
   assert.match(PORTFOLIO_MEDIA["recall-retrieval"].caption, /not a matched comparison/)
 })
+
+test("floating compositions keep their cutout treatment and keynote dimensions match the source", () => {
+  for (const id of ["agents-constraints", "recall-card-anatomy"]) {
+    assert.equal(PORTFOLIO_MEDIA[id].presentation, "cutout")
+  }
+  const media = PORTFOLIO_MEDIA["recall-announcement"]
+  const png = readFileSync(new URL(`../public${media.src}`, import.meta.url))
+  assert.equal(png.toString("ascii", 1, 4), "PNG")
+  assert.equal(media.width, png.readUInt32BE(16))
+  assert.equal(media.height, png.readUInt32BE(20))
+})

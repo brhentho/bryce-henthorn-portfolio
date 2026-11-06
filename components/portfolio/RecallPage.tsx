@@ -1,5 +1,5 @@
 import { CaseLayout } from "./CaseLayout"
-import { CaseSection, Decisions, Pair, Prose, ShinyLink, Split } from "./Blocks"
+import { CaseSection, Decisions, Pair, Prose, ShinyLink } from "./Blocks"
 import { PortfolioMedia } from "./PortfolioMedia"
 import { RecallModel, RecallProvenance } from "./RecallModel"
 
@@ -105,14 +105,12 @@ export function RecallPage() {
       </dl>
     </CaseSection>
 
-    <CaseSection id="impact" title="What we learned, and what was announced.">
-      <Split>
-        <Prose>
-          <p>The testing described in this work included people explaining why results appeared, rejecting mismatches and recovering information they had struggled to find. Those observations supported visible provenance and separated match types; they are not a quantified claim about all users or all queries.</p>
-          <p>Recall was announced at Build 2024. Relevance transparency and privacy patterns also informed related design discussions across Windows Search and File Explorer. That is a connection between design efforts, not proof of adoption or a claim that the privacy questions were solved.</p>
-        </Prose>
-        <PortfolioMedia id="recall-announcement" number="06" className="pf-small-artifact" />
-      </Split>
+    <CaseSection id="impact" title="What we learned, and what was announced." className="pf-recall-impact">
+      <PortfolioMedia id="recall-announcement" number="06" sizes="(min-width: 1600px) calc(100vw - 24rem), (min-width: 1101px) calc(100vw - 20rem), 92vw" />
+      <Prose>
+        <p>The testing described in this work included people explaining why results appeared, rejecting mismatches and recovering information they had struggled to find. Those observations supported visible provenance and separated match types; they are not a quantified claim about all users or all queries.</p>
+        <p>Recall was announced at Build 2024. Relevance transparency and privacy patterns also informed related design discussions across Windows Search and File Explorer. That is a connection between design efforts, not proof of adoption or a claim that the privacy questions were solved.</p>
+      </Prose>
       <nav className="pf-next" aria-label="Next case"><ShinyLink href="/teams-for-education">Teams for Education</ShinyLink></nav>
     </CaseSection>
   </CaseLayout>
