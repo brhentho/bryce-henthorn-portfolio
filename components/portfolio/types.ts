@@ -1,4 +1,4 @@
-export type PortfolioPage = "agents" | "recall" | "teams" | "about"
+export type PortfolioPage = "agents" | "recall" | "teams" | "copilot-actions" | "about"
 export type ChapterLink = { id: string; label: string }
 export type LedgerItem = { label: string; value: string }
 export type MediaItem =

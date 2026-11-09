@@ -10,7 +10,14 @@ import { RevealWords } from "../explore/RevealWords"
 import { PortfolioShell } from "./PortfolioShell"
 import type { ChapterLink, LedgerItem, PortfolioPage } from "./types"
 
-type HeroImage = { src: string; alt: string; width: number; height: number; caption: string }
+type HeroImage = { src: string; alt: string; width: number; height: number; caption: string; linkToOriginal?: boolean }
+const CASE_LABELS = {
+  agents: "Agents in Windows",
+  recall: "Windows Recall",
+  teams: "Teams for Education",
+  "copilot-actions": "Copilot Actions",
+} satisfies Record<Exclude<PortfolioPage, "about">, string>
+
 export function CaseLayout({ page, title, deck, call, ledger, hero, chapters, children, status }: {
   page: Exclude<PortfolioPage,"about">; title: string; deck: string; call: string;
   ledger: readonly LedgerItem[]; hero: HeroImage; chapters: readonly ChapterLink[]; children: ReactNode; status: string
@@ -23,14 +30,17 @@ export function CaseLayout({ page, title, deck, call, ledger, hero, chapters, ch
   const scale = useTransform(progress,[0,.65],[.92,1])
   const ids = useMemo(() => chapters.map(chapter => chapter.id), [chapters])
   const active = useActiveSection(ids,.3)
+  const image = <div className="fn-device"><Image src={hero.src} alt={hero.alt} width={hero.width} height={hero.height} sizes="94vw" priority /></div>
   return <PortfolioShell page={page}>
     <main id="main">
-      <header ref={ref} className="fn-case-hero">
-        <p className="fn-label">{page === "agents" ? "Agents in Windows" : page === "recall" ? "Windows Recall" : "Teams for Education"} / {status}</p>
+      <header ref={ref} id="overview" className="fn-case-hero">
+        <p className="fn-label">{CASE_LABELS[page]} / {status}</p>
         <RevealWords as="h1" className="fn-case-title" text={title} />
         <p className="fn-intro">{deck}</p>
         <div className="fn-case-product-view"><motion.figure className="fn-case-product pf-motion" style={reduce ? {rotateX:0,y:0,scale:1} : {rotateX:tilt,y,scale}}>
-          <div className="fn-device"><Image src={hero.src} alt={hero.alt} width={hero.width} height={hero.height} sizes="94vw" priority /></div>
+          {hero.linkToOriginal
+            ? <a className="pf-hero-image-link" href={hero.src} target="_blank" rel="noreferrer" aria-label={`Open ${CASE_LABELS[page]} image at full size (new tab)`}>{image}</a>
+            : image}
           <figcaption className="fn-label">Fig. 01 / {hero.caption}</figcaption>
         </motion.figure></div>
         <div className="fn-case-intro"><p>{call}</p><dl className="xr-ledger">{ledger.map(item=><div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl></div>

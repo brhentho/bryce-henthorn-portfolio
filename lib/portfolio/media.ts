@@ -1,6 +1,26 @@
 import type { MediaItem } from "@/components/portfolio/types"
 
 export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
+  "cua-onboarding": {
+    kind: "image", title: "Microsoft's Copilot Actions onboarding screen",
+    src: "/images/copilot-actions/announcement-onboarding.png",
+    alt: "Copilot onboarding explains the Experimental agentic features setting, access to local folders, and experimental risks, with Cancel and Open Settings actions.",
+    width: 1920, height: 1307,
+    caption: "Published onboarding: enabling the capability, explaining access, and opening Settings. October 2025. Image: Microsoft.",
+  },
+  "cua-intervention": {
+    kind: "image", title: "Microsoft's Copilot Actions travel-video example",
+    presentation: "cutout",
+    src: "/images/copilot-actions/announcement-app.png",
+    alt: "Copilot pauses while editing Italy travel videos to ask which app to use. The workspace, question, Paused state and Take control action are visible together.",
+    width: 1920, height: 1236,
+    caption: "Published travel-video example: an app-choice question, Paused state and Take control action in context. October 2025. Image: Microsoft.",
+  },
+  "CUA-M01": {
+    kind: "request", requestId: "CUA-M01", reason: "requested",
+    title: "Delegate, check in, take control, hand back",
+    description: "A cleared walkthrough of a task, progress, a request for input, direct control and return to the agent. Show only supported handoff behavior and the result in context.",
+  },
   "agents-fragmentation": {
     kind: "image", title: "Fragmented agent work",
     src: "/images/agents/problem-fragmentation.png",

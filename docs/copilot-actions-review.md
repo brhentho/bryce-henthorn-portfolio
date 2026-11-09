@@ -1,20 +1,41 @@
 # Copilot Actions — review draft
 
-Branch: `feat/copilot-actions-case-study`
-
 Route: `/copilot-actions`
 
-This is a review draft saved on its own GitHub branch. Keep it unmerged until publication is approved. No PR or production deployment is part of this handoff. `vercel.json` disables automatic deployment for `feat/copilot-actions-case-study`; the live homepage remains unchanged.
+This is an unpublished review draft. Keep it unmerged until publication is
+approved. No PR or production deployment is part of this migration, and the
+homepage remains unchanged.
+
+## Synthesis migration review
+
+The page uses the main portfolio's shared Synthesis shell, hero, reading rail,
+navigation, footer, sections, prose, media and evidence entrances. The seven
+existing body anchors and keyboard-operable delegation interaction remain intact.
+Only the chapter divider retains the manual `CoverPlate`, its scoped stylesheet
+and reveal controller to preserve the established aperture. There is no legacy
+body wrapper, duplicate page background or new motion language. The route remains
+`noindex, nofollow` and is not linked from the homepage. This visual migration
+does not authorize publication.
+
+The opening image, `public/images/copilot-actions/cua-hero.png`, is the supplied
+`CUA.png` design image, displayed in full at its original aspect ratio. It shows a
+restaurant-reservation task with a browser workspace, progress and Take control
+action. It is not attributed to the October 2025 announcement and does not
+establish availability, authorship of every depicted element, or measured outcomes.
+The former travel-video announcement hero now accompanies the intervention copy.
+It preserves the original transparent silhouette; onboarding uses the shared
+rounded media surface. Both retain full-size image links and Microsoft attribution.
 
 ## Scope
 
-- New case study using the existing manual components, typography, tokens, and reveal behavior.
-- Homepage features Copilot Actions, Agents in Windows, and Recall. Teams remains available through an Earlier work link; its page and assets are retained.
-- New page is classified as Work in the header.
+- Shared Synthesis composition with varied body primitives and a continuous ink environment.
+- No incoming homepage or public-case links to the draft.
+- Page is classified as Work in the header.
 - Interactive stage rail supports click, keyboard arrows, Home, End, and reduced motion.
 - Product screenshots open at full size in a new tab.
 - Native disclosure at the end holds editorial review questions.
-- Draft metadata is `noindex, nofollow`; remove this after narrative approval, before publication.
+- Draft metadata is `noindex, nofollow`; any change requires separate publication approval.
+- Planned walkthrough stays compact and visible in local development and production previews as `CUA-M01`, never as a playable recording.
 
 ## Evidence boundaries
 
@@ -38,7 +59,26 @@ The milestone is the October 16, 2025 announcement of an experimental capability
 | Perspective | 2.3 Body Column |
 | Public record | 2.13 Data Table Block |
 
-No shared layout primitives were changed. The new diagram composes HTML/CSS inside the shared Figure frame. Drawing brief: two stacked workspace outlines, one for ongoing user work and one dashed outline for the contained agent workspace, connected by a labeled check-in/takeover relationship. It uses existing tokens, registration marks and figure numbering, with a responsive half-width slot in a split plate. It explains conceptual separation rather than security implementation details.
+The primitive vocabulary is unchanged. The retained conceptual diagram composes
+HTML/CSS in a hairline evidence plate. Original drawing brief: two stacked
+workspace outlines, one for ongoing user work and one dashed outline for the
+contained agent workspace, connected by a labeled check-in/takeover relationship.
+It uses existing tokens, registration marks and figure numbering, with a responsive
+half-width slot in a split plate. It explains conceptual separation rather than
+security implementation details.
+
+### CUA-M01 — Delegate, check in, take control, hand back
+
+- **Location / status:** `/copilot-actions#intervention`; requested, not recorded.
+- **Purpose:** Show the transitions a still cannot establish without implying
+  that a proposed recording is evidence of shipped behavior.
+- **Shot list:** Enter a cleared task; inspect progress; encounter a request for
+  input; select Take control; complete the user step; return to the agent if
+  supported; show the result in context.
+- **Required context:** Build or prototype version, confirmed handoff behavior,
+  source clearance and synthetic or permitted task content.
+- **Fallback:** Attributed announcement image, the three-needs table and the
+  compact planned-media request. No fabricated duration or play button.
 
 ## Open questions before publication
 
@@ -61,16 +101,15 @@ The two unmodified PNGs are attributed to Microsoft in figure captions:
 - `public/images/copilot-actions/announcement-app.png`: https://blogs.windows.com/wp-content/uploads/sites/2/2025/10/Copilot-Actions-app1920.png
 - `public/images/copilot-actions/announcement-onboarding.png`: https://blogs.windows.com/wp-content/uploads/sites/2/2025/10/Under-embargo-until-10.16-Copilot-Actions-visual1920.png
 
-## Local checks
+## Local validation
 
-Use pnpm for this repository: `pnpm install --frozen-lockfile`, `pnpm tsc --noEmit`, `pnpm build`.
+Use pnpm: `pnpm tsc --noEmit`, `pnpm test`, `pnpm build`. This environment
+requires `NEXT_TURBOPACK_EXPERIMENTAL_USE_SYSTEM_TLS_CERTS=1` for the existing
+Google Fonts fetch; do not disable TLS verification.
 
-The repository's npm lockfile is already out of sync with package.json and npm also reports the existing Storybook 8 / Next 16 peer mismatch. No dependency or lockfile changes are part of this draft.
-
-For local validation, 104 Microsoft mirror tarball URLs in a temporary copy of the pnpm lockfile were normalized to registry.npmjs.org. Versions and integrity hashes were preserved, and all 750 entries passed the installer's supply-chain verification. The tracked lockfile was restored afterward. Optional dependency build scripts were not run.
-
-TypeScript and the production Next.js build passed. This environment required `NEXT_TURBOPACK_EXPERIMENTAL_USE_SYSTEM_TLS_CERTS=1` for Next to retrieve the existing Google Fonts over TLS. No TLS verification was disabled, and no font or application configuration was changed.
-
-The local preview service passes Vite-shaped arguments. A temporary, uncommitted adapter translated `--host` to `--hostname`, omitted `--strictPort`, and served the completed Next production build. This adapter is not part of the portfolio change.
-
-Browser verification passed for the homepage-to-case-study route, desktop rendering, click and arrow/Home keyboard selection of the stage rail, and the review-notes disclosure. A 390px iframe viewport verified mobile wrapping (375px content viewport with scrollbar), no horizontal overflow, stage selection, and the mobile navigation drawer. Only browser-extension metadata errors appeared in the inspected console entries, not application exceptions. A desktop screenshot is saved at `docs/copilot-actions-preview.jpg`.
+Check 1440/1024/390px layouts, full-size image links, chapter navigation, delegation
+clicks and arrow/Home/End keys, the review disclosure, reduced motion, 200% text
+and no-JavaScript readability. Confirm the production-mode local preview retains
+both `noindex, nofollow` and `CUA-M01`. The text-clipping audit must distinguish
+intentional `.sr-only` accessible heading text from visible clipping; do not
+silently change its thresholds or claim an empty raw report.

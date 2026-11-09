@@ -1,6 +1,7 @@
 "use client"
 
 import { useId, useRef, useState, type KeyboardEvent } from "react"
+import { RegistrationMark } from "@/components/manual/RegistrationMark"
 import styles from "./copilot-actions.module.css"
 
 const STAGES = [
@@ -44,17 +45,18 @@ export function DelegationSequence() {
             onClick={() => setActive(index)}
             onKeyDown={(event) => onKeyDown(event, index)}
           >
-            <span className="t-mono-label">{String(index + 1).padStart(2, "0")}</span>
+            <span className="fn-label">{String(index + 1).padStart(2, "0")}</span>
             <span>{item.label}</span>
             <span aria-hidden="true">↗</span>
           </button>
         ))}
       </div>
       <div id={`${id}-panel`} role="tabpanel" aria-labelledby={`${id}-tab-${active}`} tabIndex={0} className={styles.stagePanel}>
-        <p className="t-mono-label">{stage.focus}</p>
-        <h3 className="t-h1">{stage.question}</h3>
-        <p className="t-body">{stage.detail}</p>
-        <p className={`t-mono-caption ${styles.responsibility}`}>{stage.responsibility}</p>
+        <RegistrationMark className={styles.registration} aria-hidden="true" />
+        <p className="fn-label">{stage.focus}</p>
+        <h3>{stage.question}</h3>
+        <p>{stage.detail}</p>
+        <p className={`fn-label ${styles.responsibility}`}>{stage.responsibility}</p>
       </div>
     </div>
   )
