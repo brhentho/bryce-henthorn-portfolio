@@ -1,0 +1,42 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Full">
+<g id="Vector 90">
+<use xlink:href="#stroke0_0_49" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke0_0_49" stroke="url(#paint0_linear_0_49)" stroke-opacity="0.2"/>
+</g>
+<g id="Vector 92">
+<use xlink:href="#stroke1_0_49" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke1_0_49" stroke="url(#paint1_linear_0_49)" stroke-opacity="0.2"/>
+</g>
+<g id="Vector 91">
+<use xlink:href="#stroke2_0_49" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke2_0_49" stroke="url(#paint2_linear_0_49)" stroke-opacity="0.2"/>
+</g>
+<g id="Vector 93">
+<use xlink:href="#stroke3_0_49" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke3_0_49" stroke="url(#paint3_linear_0_49)" stroke-opacity="0.2"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_49" x1="9.2047" y1="10.4993" x2="9.2047" y2="2.66602" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_49" x1="9.2047" y1="21.5007" x2="9.2047" y2="29.334" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_49" x1="22.7953" y1="10.4993" x2="22.7953" y2="2.66602" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_49" x1="22.7953" y1="21.5007" x2="22.7953" y2="29.334" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<path id="stroke0_0_49" d="M10.666 3.99935H6.99935C5.58513 3.99935 4.87803 3.99935 4.43869 4.43869C3.99935 4.87803 3.99935 5.58514 3.99935 6.99935V10.666" stroke-width="2" stroke-linecap="round"/>
+<path id="stroke1_0_49" d="M10.666 28.0007H6.99935C5.58513 28.0007 4.87803 28.0007 4.43869 27.5613C3.99935 27.122 3.99935 26.4149 3.99935 25.0007V21.334" stroke-width="2" stroke-linecap="round"/>
+<path id="stroke2_0_49" d="M21.334 3.99935H25.0007C26.4149 3.99935 27.122 3.99935 27.5613 4.43869C28.0007 4.87803 28.0007 5.58514 28.0007 6.99935V10.666" stroke-width="2" stroke-linecap="round"/>
+<path id="stroke3_0_49" d="M21.334 28.0007H25.0007C26.4149 28.0007 27.122 28.0007 27.5613 27.5613C28.0007 27.122 28.0007 26.4149 28.0007 25.0007V21.334" stroke-width="2" stroke-linecap="round"/>
+</defs>
+</svg>

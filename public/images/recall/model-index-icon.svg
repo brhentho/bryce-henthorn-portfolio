@@ -1,0 +1,50 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="package_search">
+<g id="Vector 83">
+<use xlink:href="#stroke0_0_22" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke0_0_22" stroke="url(#paint0_linear_0_22)" stroke-opacity="0.2"/>
+</g>
+<g id="Vector 110">
+<use xlink:href="#stroke1_0_22" fill="white" fill-opacity="0.786"/>
+<use xlink:href="#stroke1_0_22" fill="url(#paint1_linear_0_22)" fill-opacity="0.2"/>
+</g>
+<g id="Ellipse 65">
+<circle cx="23.3333" cy="21.9993" r="3.33333" stroke-width="2" stroke="white" stroke-opacity="0.786"/>
+<circle cx="23.3333" cy="21.9993" r="3.33333" stroke-width="2" stroke="url(#paint2_linear_0_22)" stroke-opacity="0.2"/>
+</g>
+<g id="Vector 109">
+<use xlink:href="#stroke2_0_22" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke2_0_22" stroke="url(#paint3_linear_0_22)" stroke-opacity="0.2"/>
+</g>
+<g id="Vector 111">
+<use xlink:href="#stroke3_0_22" fill="white" fill-opacity="0.786"/>
+<use xlink:href="#stroke3_0_22" fill="url(#paint4_linear_0_22)" fill-opacity="0.2"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_22" x1="10.0102" y1="4.6" x2="10.0102" y2="32.8" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_22" x1="22.503" y1="7.55065" x2="22.503" y2="17.734" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_22" x1="21.4613" y1="18.8327" x2="21.4613" y2="26.666" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_22" x1="26.4384" y1="24.716" x2="26.4384" y2="27.066" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint4_linear_0_22" x1="12.4196" y1="24.7493" x2="12.4196" y2="28.666" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<path id="stroke0_0_22" d="M5.33398 10.6667L14.9407 4.6625C15.4561 4.34033 15.7139 4.17925 16.0007 4.17925C16.2874 4.17925 16.5452 4.34033 17.0606 4.6625L23.9537 8.97067C25.1716 9.73184 25.7805 10.1124 25.7805 10.6667C25.7805 11.2209 25.1716 11.6015 23.9537 12.3627L16.0007 17.3333V27.0979C16.0007 27.4968 16.0007 27.6962 15.8718 27.7676C15.743 27.839 15.5739 27.7333 15.2357 27.5219L6.27399 21.9208C5.81446 21.6336 5.5847 21.49 5.45934 21.2639C5.33398 21.0377 5.33398 20.7667 5.33398 20.2248V10.6667ZM16.0007 17.3333L5.33398 10.6667" stroke-width="2" stroke-linejoin="round"/>
+<path id="stroke1_0_22" d="M25.6673 16.0007C25.6673 16.5529 26.115 17.0007 26.6673 17.0007C27.2196 17.0007 27.6673 16.5529 27.6673 16.0007H26.6673H25.6673ZM25.7273 10.0798L25.1973 10.9278H25.1973L25.7273 10.0798ZM26.6673 11.7758H25.6673V16.0007H26.6673H27.6673V11.7758H26.6673ZM25.7273 10.0798L26.2573 9.23182L21.864 6.48599L21.334 7.33398L20.804 8.18198L25.1973 10.9278L25.7273 10.0798ZM26.6673 11.7758H27.6673C27.6673 11.5237 27.6684 11.2649 27.6471 11.0427C27.6238 10.7992 27.5689 10.5269 27.4166 10.252L26.542 10.7368L25.6673 11.2216C25.6403 11.1729 25.6482 11.1492 25.6562 11.2332C25.6663 11.3384 25.6673 11.4861 25.6673 11.7758H26.6673ZM25.7273 10.0798L25.1973 10.9278C25.443 11.0814 25.5677 11.1605 25.6516 11.2248C25.7186 11.2762 25.6943 11.2703 25.6673 11.2216L26.542 10.7368L27.4166 10.252C27.2643 9.97716 27.0624 9.78634 26.8683 9.63754C26.6911 9.5017 26.4711 9.36545 26.2573 9.23182L25.7273 10.0798Z"/>
+<path id="stroke2_0_22" d="M28 26.666L26 24.666" stroke-width="2" stroke-linecap="round"/>
+<path id="stroke3_0_22" d="M14.9394 27.3369L14.4094 28.1848H14.4094L14.9394 27.3369ZM17.3327 27.166L17.8627 28.014V28.014L17.3327 27.166ZM17.0593 27.3369L16.5293 26.4889L16.5293 26.4889L17.0593 27.3369ZM19.196 27.1807C19.6644 26.888 19.8067 26.271 19.514 25.8027C19.2213 25.3343 18.6044 25.192 18.136 25.4847L18.666 26.3327L19.196 27.1807ZM17.9993 26.7493L18.5293 27.5973L18.5293 27.5973L17.9993 26.7493ZM14.9394 27.3369L15.4693 26.4889L11.196 23.818L10.666 24.666L10.136 25.514L14.4094 28.1848L14.9394 27.3369ZM17.3327 27.166L16.8027 26.318L16.5293 26.4889L17.0593 27.3369L17.5893 28.1848L17.8627 28.014L17.3327 27.166ZM18.666 26.3327L18.136 25.4847L17.4693 25.9014L17.9993 26.7493L18.5293 27.5973L19.196 27.1807L18.666 26.3327ZM17.9993 26.7493L17.4694 25.9014L16.8027 26.318L17.3327 27.166L17.8627 28.014L18.5293 27.5973L17.9993 26.7493ZM14.9394 27.3369L14.4094 28.1848C14.6495 28.335 14.8936 28.489 15.1158 28.5976C15.3591 28.7166 15.65 28.8201 15.9993 28.8201V27.8201V26.8201C16.0619 26.8201 16.0806 26.8431 15.9944 26.8009C15.8872 26.7485 15.7446 26.6609 15.4693 26.4889L14.9394 27.3369ZM17.0593 27.3369L16.5293 26.4889C16.2541 26.6609 16.1115 26.7485 16.0043 26.8009C15.9181 26.8431 15.9368 26.8201 15.9993 26.8201V27.8201V28.8201C16.3487 28.8201 16.6396 28.7166 16.8829 28.5976C17.1051 28.489 17.3492 28.335 17.5893 28.1848L17.0593 27.3369Z"/>
+</defs>
+</svg>

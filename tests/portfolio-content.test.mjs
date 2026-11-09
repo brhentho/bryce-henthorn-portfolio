@@ -55,6 +55,29 @@ test("Recall distinguishes inspected answer-preview exploration from chosen resu
   assert.match(PORTFOLIO_MEDIA["recall-retrieval"].caption, /not a matched comparison/)
 })
 
+test("Recall model keeps source planes local and qualifies capture and illustrative scores", () => {
+  const model = read("components/portfolio/RecallModel.tsx")
+  for (const stage of ["capture", "ocr", "meaning", "index"]) {
+    const icon = read(`public/images/recall/model-${stage}-icon.svg`)
+    assert.match(icon, /<svg\b/)
+  }
+  for (const stage of ["capture", "meaning"]) {
+    const plane = read(`public/images/recall/model-${stage}.svg`)
+    assert.match(plane, /viewBox="0 0 330\.702 224\.763"/)
+    assert.doesNotMatch(plane, /(?:href|src)="https?:/)
+  }
+  assert.match(model, /When capture is enabled and content is eligible/)
+  assert.match(model, /Similarity scores are illustrative, not measured results/)
+  assert.doesNotMatch(model, /figma\.com\/api\/mcp\/asset|continuously monitors/)
+})
+
+test("Recall layer explanations are a reading list, not selectable controls", () => {
+  const model = read("components/portfolio/RecallModel.tsx").split("export function RecallProvenance")[0]
+  assert.match(model, /<ol[^>]+aria-label="Capture-to-index layers"/)
+  assert.match(model, /<li[^>]+tabIndex=\{0\}/)
+  assert.doesNotMatch(model, /<input|<button|<label|<fieldset|onClick|onChange|defaultChecked|aria-selected|Select a layer/)
+})
+
 test("floating compositions keep their cutout treatment and keynote dimensions match the source", () => {
   for (const id of ["agents-constraints", "recall-card-anatomy"]) {
     assert.equal(PORTFOLIO_MEDIA[id].presentation, "cutout")
