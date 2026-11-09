@@ -389,7 +389,7 @@ Places where the existing copy is too thin to support a non-stacked layout, or w
 | AGENTS-M01 | Agents | Shared contract | Cleared cross-provider evidence beyond one agent recording | Existing image plus compact request; supply two agents using the same visible state contract |
 | AGENTS-M02 | Agents | Decision | Original evaluation board and observation | Keep the supported alternatives summary; request original evidence rather than inventing a research result |
 | RECALL-M01 | Recall | Ranking | Matched merged/separated results for the same query | Accurately label existing different-purpose figures; request a genuine comparison |
-| RECALL-M02 | Recall | Privacy | Cleared, version-bound deletion/capture-control artifact | Use a compact placeholder pending review; no unqualified system guarantee |
+| RECALL-M02 | Recall | Privacy | Product version and exact retention boundary remain unconfirmed | Author-approved deletion/capture-settings still pair replaces the placeholder; label as design artifacts, not a system guarantee |
 | RECALL-C01 | Recall | Responsiveness | A source for the former `200MS WINDOW` claim | Remove the number. It is quantitative, not a qualitative substitute for missing evidence |
 | TEAMS-M02 | Teams | Research/outcome | Cleared research-to-decision and prototype-test evidence | Compact request; qualify outcomes and retain tested-concept status |
 

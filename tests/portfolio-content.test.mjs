@@ -19,9 +19,9 @@ test("every composed media ID resolves and local ready sources exist", () => {
   }
 })
 
-test("all six stable artifact requests have explicit status and review instructions", () => {
+test("remaining artifact requests have explicit status and review instructions", () => {
   const checklist = read("docs/portfolio-content-review.md")
-  for (const id of ["AGENTS-M01", "AGENTS-M02", "RECALL-M01", "RECALL-M02", "TEAMS-M01", "TEAMS-M02"]) {
+  for (const id of ["AGENTS-M01", "AGENTS-M02", "RECALL-M01", "TEAMS-M01", "TEAMS-M02"]) {
     const media = PORTFOLIO_MEDIA[id]
     assert.equal(media.kind, "request")
     assert.equal(media.requestId, id)
@@ -29,6 +29,26 @@ test("all six stable artifact requests have explicit status and review instructi
     assert.ok(checklist.includes(`### ${id}`), `Missing artifact brief for ${id}`)
     assert.equal("src" in media, false, "Requests must not masquerade as playable media")
   }
+})
+
+test("Recall recovery replaces the request with approved images in flow order", () => {
+  const recall = pages[1]
+  assert.match(recall, /<Pair>\s*<PortfolioMedia id="recall-delete-snapshot"[^>]+\/>\s*<PortfolioMedia id="recall-capture-settings"[^>]+\/>\s*<\/Pair>/)
+  assert.doesNotMatch(recall, /id="RECALL-M02"/)
+  assert.equal(PORTFOLIO_MEDIA["RECALL-M02"], undefined)
+  assert.match(read("docs/portfolio-content-review.md"), /### RECALL-M02/)
+  const dimensions = []
+  for (const id of ["recall-delete-snapshot", "recall-capture-settings"]) {
+    const media = PORTFOLIO_MEDIA[id]
+    assert.equal(media.kind, "image")
+    assert.ok(media.alt)
+    const png = readFileSync(new URL(`../public${media.src}`, import.meta.url))
+    assert.equal(png.toString("ascii", 1, 4), "PNG")
+    assert.equal(media.width, png.readUInt32BE(16))
+    assert.equal(media.height, png.readUInt32BE(20))
+    dimensions.push([media.width, media.height])
+  }
+  assert.deepEqual(dimensions[0], dimensions[1], "Recovery crops must share dimensions")
 })
 
 test("Teams films follow inspected content rather than historic captions", () => {
