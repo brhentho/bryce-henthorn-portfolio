@@ -21,7 +21,7 @@ The provenance figure uses the supplied red-barn query and four-result compositi
 at full reading width without a frame or numbered caption, with short Source,
 Time and Context annotations beneath it. The top 300px of empty space are cropped
 from the supplied 1678 x 829 image, preserving the query and all four result cards
-in a 1678 x 529 asset. The original full UI remains available in the disclosure.
+in a 1678 x 529 asset. The redundant full-grid disclosure is omitted.
 The composition does not show separated Text/Visual headings; that distinction
 belongs with the verified search recording.
 
@@ -83,8 +83,9 @@ The same stable request ID is used on the page and in the registry.
   source/time, open the relevant snapshot, return.
 - **Required context:** Matching build/design revision, permitted research
   observation and synthetic or cleared result content.
-- **Fallback:** Existing card anatomy and separated-result grid, explicitly
-  different artifacts rather than fabricated before/after evidence.
+- **Fallback:** Existing generic result-grid study in `#cards`, not a verified
+  before state or evidence of separate headings. The search recording in
+  `#performance` shows match groups; it is not a matched before/after comparison.
 
 ### RECALL-M02 — Remove a moment; change future capture
 
@@ -212,9 +213,11 @@ implementation. Future cleared exports can replace registry requests by ID.
 | Agents | Impact | `#impact`: ongoing work and announcement distinguished from availability/outcomes. Repeated individual ownership removed; role stays in ledger. |
 | Recall | Context + Problem | `#context`: memory fragments and task-dependent relevance. Reservation example withheld, not replaced with invented screenshot. |
 | Recall | System | `#system`: actual four stages in forward reading order. Original reverse-stacked illustration labeled as such. |
-| Recall | Cards + buried ranking observation | `#cards`: merged-ranking finding promoted, screenshot-led hierarchy and separated results accurately labeled. |
-| Recall | Transparency + primary film | `#transparency`: source, time, match type, false positives and query/result recording. |
-| Recall | Performance + Constraints | `#constraints`, nested `#performance`: qualitative cadence and original retrieval/synthesis decision preserved; answer-preview exploration recording visible directly without a disclosure or surrounding rules, relabeled from inspected frames. Unsupported 200ms removed. |
+| Recall | Cards as moments | `#moments`: screenshot-first hierarchy and secondary app/time/text context, alongside the existing six-card exploration cutout. Follows the capture/index model before discussing ranking. |
+| Recall | Buried ranking observation | `#cards`: trust premise and merged-ranking finding, beside the generic result-grid study. The blue-chart query is an illustrative example, not a research transcript. The still does not show separate text/visual headings; it is not a verified before state. Matched comparison remains requested as RECALL-M01. |
+| Recall | Transparency | `#transparency`: separate match types explain retrieval signals; source, time and screenshot context help people judge a candidate. Approved frameless provenance artwork retained; no measured trust or cognitive-load claim. |
+| Recall | Performance + primary film | `#performance`: results refine while typing; design and engineering tuned query cadence against typing patterns. Existing search recording shows grouped results, not measured latency or one request per keystroke. Unsupported 200ms remains removed. |
+| Recall | Constraints / RAG | `#constraints`: author's synthesis exploration and decision to prioritize retrieval, scoped to this search experience. Text above the existing answer-preview recording; no comparison table. The film is an exploratory interface, not proof of backend RAG, shipped behavior or a measured comparison. |
 | Recall | Trust | `#trust`: recovery/prevention pair and four principles bounded by version/design scope; sensitive stills withheld. |
 | Recall | Impact | `#impact`: bounded testing observations, Build 2024 and related design discussions. Removed “proved” and ripple/adoption inference. |
 | Teams | Context + Problem + research | `#context` and `#research`: pandemic scale, retention reframing, class-wide concept cover, teacher logistics and peer conversation. Identifying research held pending its separate implementation pass. |

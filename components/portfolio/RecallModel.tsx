@@ -147,9 +147,5 @@ export function RecallProvenance() {
         <div><dt>Context</dt><dd className="pf-caption">Recognize the moment from the full screenshot.</dd></div>
       </dl>
     </figure>
-    <details className="pf-recall-full-grid">
-      <summary>Inspect the full result grid</summary>
-      <Image src="/images/recall/transparency-card-grid.png" alt="Full Recall results grid for Presentation with a red barn, with application filters, timestamps and source badges." width={1641} height={881} sizes="(max-width: 850px) 92vw, 75vw" />
-    </details>
   </div>
 }

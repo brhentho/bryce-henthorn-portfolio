@@ -57,14 +57,14 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
     src: "/images/recall/cards-card-hierarchy.png",
     alt: "Six Recall result cards with screenshots, timestamps and source application metadata",
     width: 3056, height: 1606,
-    caption: "Card hierarchy: a screenshot anchors recognition; time and source app provide provenance.",
+    caption: "Six card-layout explorations: screenshots anchor recognition; time and source app stay secondary.",
   },
   "recall-separated-results": {
-    kind: "image", title: "Separated visual results",
+    kind: "image", title: "Recall result-grid study",
     src: "/images/recall/clarity-results-grid.png",
-    alt: "Recall visual-match result grid for a presentation with a red barn",
+    alt: "Recall result grid for a presentation with a red barn, with a Results heading and All filter",
     width: 1024, height: 550,
-    caption: "Separated results: visual matches have a distinct place to scan. This is not a matched before-and-after comparison.",
+    caption: "Result-grid study. This still does not show separate text and visual match groups or a matched before-and-after comparison.",
   },
   "recall-provenance": {
     kind: "image", title: "Result provenance",
@@ -79,7 +79,7 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Recall_fig05-JAHG0aeAytDorw718qnZiWG2n09om9.mp4",
     poster: "/images/recall/search-poster.jpg",
     description: "Design recording of query refinement and a full results grid separated into Text matches and Visual matches.",
-    caption: "Query refinement and separated text and visual matches. The selected result presentation, without a measured latency claim.",
+    caption: "Search design recording: results refine with the query, with separate Text matches and Visual matches. This illustrates the interaction, not a latency benchmark.",
   },
   "recall-retrieval": {
     kind: "video", title: "Exploratory answer-preview concept",

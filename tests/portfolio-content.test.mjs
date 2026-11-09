@@ -71,6 +71,23 @@ test("Recall provenance uses the trimmed composition at its intrinsic dimensions
   assert.equal(media.height, png.readUInt32BE(20))
 })
 
+test("Recall introduces card hierarchy between the system and ranking without duplicating artwork", () => {
+  const recall = pages[1]
+  const sections = [...recall.matchAll(/<CaseSection id="([^"]+)"[\s\S]*?<\/CaseSection>/g)]
+  const systemIndex = sections.findIndex(section => section[1] === "system")
+  assert.ok(systemIndex >= 0)
+  assert.equal(sections[systemIndex + 1][1], "moments")
+  assert.equal(sections[systemIndex + 2][1], "cards")
+  const moments = sections[systemIndex + 1][0]
+  const ranking = sections[systemIndex + 2][0]
+  assert.match(moments, /<PortfolioMedia id="recall-card-anatomy"/)
+  assert.equal((recall.match(/id="recall-card-anatomy"/g) ?? []).length, 1)
+  assert.doesNotMatch(moments, /id="recall-separated-results"/)
+  assert.match(ranking, /id="recall-separated-results"/)
+  assert.match(ranking, /id="RECALL-M01"/)
+  assert.match(recall.split("export function RecallPage")[0], /id: "moments"/)
+})
+
 test("Agents taskbar explorations stay together with the alternatives discussion", () => {
   const agents = pages[0]
   const process = agents.match(/<CaseSection id="process"[\s\S]*?<\/CaseSection>/)?.[0]
@@ -97,6 +114,26 @@ test("Agents taskbar explorations stay together with the alternatives discussion
   assert.doesNotMatch(taskbar, /\/assets\/Frame /)
   assert.match(taskbar, /id="agents-taskbar"/)
   assert.match(taskbar, /className="pf-state-lexicon"/)
+})
+
+test("Recall gives search latency and the RAG tradeoff distinct chapters and recordings", () => {
+  const recall = pages[1]
+  const sections = [...recall.matchAll(/<CaseSection id="([^"]+)"[\s\S]*?<\/CaseSection>/g)]
+  assert.deepEqual(sections.map(section => section[1]), [
+    "context", "system", "moments", "cards", "transparency", "performance", "constraints", "trust", "impact",
+  ])
+  const chapters = [...recall.split("export function RecallPage")[0].matchAll(/id: "([^"]+)"/g)].map(match => match[1])
+  assert.deepEqual(chapters, sections.map(section => section[1]))
+  for (const [sectionId, mediaId] of [["performance", "recall-search"], ["constraints", "recall-retrieval"]]) {
+    const section = sections.find(item => item[1] === sectionId)[0]
+    assert.equal((recall.match(new RegExp(`id="${mediaId}"`, "g")) ?? []).length, 1)
+    assert.ok(section.indexOf("</Prose>") < section.indexOf(`<PortfolioMedia id="${mediaId}"`))
+    assert.match(section, new RegExp(`<PortfolioMedia id="${mediaId}"`))
+    assert.doesNotMatch(section, /<Decisions|<Pair|<Split/)
+  }
+  const transparency = sections.find(section => section[1] === "transparency")[0]
+  assert.match(transparency, /<RecallProvenance/)
+  assert.doesNotMatch(transparency, /id="recall-search"/)
 })
 
 test("publication holds do not leak back into main page content", () => {
