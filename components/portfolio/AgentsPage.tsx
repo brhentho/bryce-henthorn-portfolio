@@ -1,12 +1,12 @@
 import Image from "next/image"
 import { CaseLayout } from "./CaseLayout"
-import { AgentKeyframes, CaseSection, Decisions, Prose, ShinyLink, Split } from "./Blocks"
+import { CaseSection, Prose, ShinyLink, Split } from "./Blocks"
 import { PortfolioMedia } from "./PortfolioMedia"
 import { AgentsTaskField } from "./AgentsTaskField"
 
 const chapters = [
   { id: "context", label: "The missing return point" },
-  { id: "process", label: "Why the taskbar" },
+  { id: "process", label: "Taskbar explorations" },
   { id: "invocation", label: "Dispatch and return" },
   { id: "taskbar", label: "States and control" },
   { id: "constraints", label: "The shared contract" },
@@ -49,16 +49,41 @@ export function AgentsPage() {
       <AgentsTaskField />
     </CaseSection>
 
-    <CaseSection id="process" title="Why the taskbar, not another workspace.">
-      <Prose>
-        <p>We explored three homes for agents. The decision was not simply where to put an icon; it was how much of a new system someone should have to learn before they could find their work again.</p>
-      </Prose>
-      <Decisions items={[
-        { title: "Inside the originating app", tradeoff: "Keeps the local context, but visibility remains fragmented across the applications that start work.", disposition: "Move shared monitoring to the OS." },
-        { title: "An independent taskbar pin", tradeoff: "Provides a familiar return point. Progress still needs a language that works across providers.", disposition: "Build on the existing location and add shared states.", chosen: true },
-        { title: "A dedicated agent workspace", tradeoff: "Creates room for rich management, but adds another place to learn before the interaction model is established.", disposition: "Keep the first step progressive rather than create a separate destination." },
-      ]} />
-      <Prose><p>The taskbar let agents become a Windows construct without pretending they behave exactly like apps. We could preserve the familiar location while defining how ongoing work, requests for help and completion should appear.</p></Prose>
+    <CaseSection id="process">
+      <Split className="pf-agents-exploration-split">
+        <div className="pf-agents-exploration-copy">
+          <h2 data-pf-reveal="reading">Anchoring to what users already know</h2>
+          <Prose>
+            <p>We tested three directions.</p>
+            <ol>
+              <li>Keep agents inside the apps that spawn them.</li>
+              <li>Pin them independently like applications.</li>
+              <li>Or create a dedicated agent workspace.</li>
+            </ol>
+            <p>Each had problems. Some felt bloated for something that barely existed yet. Others made agents too cryptic about where they actually were and how to get back to them.</p>
+            <p>Agents are genuinely new, but they don't have to feel alien. We pushed for a progressive approach. Build on something users already use every day rather than forcing them to memorize a new system. We anchored agents to the taskbar. Same place apps live. Same behaviors. But with new states and signals that reflect how agents work.</p>
+          </Prose>
+        </div>
+        <figure className="pf-media pf-agents-explorations">
+          <div className="pf-agents-explorations-images">
+            <div className="pf-media-frame pf-media-cutout">
+              <Image src="/assets/Frame 2147262306.png" width={651} height={155}
+                alt="Taskbar exploration with numbered activity indicators beside Copilot and File Explorer."
+                sizes="(max-width: 850px) 92vw, 44vw" />
+            </div>
+            <div className="pf-media-frame pf-media-cutout">
+              <Image src="/assets/Frame 2147262307.png" width={651} height={159}
+                alt="Taskbar exploration with distinct agent icons grouped before the application icons."
+                sizes="(max-width: 850px) 92vw, 44vw" />
+            </div>
+            <div className="pf-media-frame pf-media-cutout">
+              <Image src="/assets/Frame 2147262308.png" width={651} height={157}
+                alt="Taskbar exploration with two agent icons grouped beside the weather widget."
+                sizes="(max-width: 850px) 92vw, 44vw" />
+            </div>
+          </div>
+        </figure>
+      </Split>
     </CaseSection>
 
     <CaseSection id="invocation" title="Start it once. Find it while it works.">
@@ -76,9 +101,8 @@ export function AgentsPage() {
 
     <CaseSection id="taskbar" title="Know when to look, and when to act." tone="graphite">
       <Prose>
-        <p>A pin establishes the return point. A state signal says whether attention is needed. The expanded hover card reveals the current step without requiring someone to reopen the conversation. These are three views of the chosen direction, not three alternative designs.</p>
+        <p>A pin establishes the return point. A state signal says whether attention is needed. The expanded hover card reveals the current step without requiring someone to reopen the conversation.</p>
       </Prose>
-      <AgentKeyframes floating />
       <Split>
         <Prose>
           <p>Providers report progress differently. Some stream detailed steps; others remain quiet for long stretches. We needed enough common structure to communicate state without promising detail the agent could not supply.</p>
@@ -93,17 +117,16 @@ export function AgentsPage() {
             <h3>{state.label}</h3><p>{state.meaning}</p>
           </li>)}
         </ul>
-        <figcaption className="fn-label">Fig. 04.2 / One shared language for five states of agent work.</figcaption>
       </figure>
     </CaseSection>
 
     <CaseSection id="constraints" tone="paper" className="pf-constraints-section">
-      <PortfolioMedia id="agents-constraints" number="05.1" />
       <h2 data-pf-reveal="reading">A shared contract meant saying no.</h2>
       <Prose>
         <p>Windows needs a stable interaction contract while agent providers change their capabilities and outputs. Partner teams wanted the detailed progress views, custom visualizations and specialized features available inside their own apps. The shared OS surface could not become all of those interfaces at once.</p>
         <p>We kept the taskbar contract focused on visibility, inspection and intervention. Rich provider-specific experiences could exist elsewhere without making each agent behave differently at the system level.</p>
       </Prose>
+      <PortfolioMedia id="agents-constraints" number="05.1" />
       <div id="iteration" className="pf-anchor">
         <h3>Test the contract in the shell, not just on a board.</h3>
         <Prose>

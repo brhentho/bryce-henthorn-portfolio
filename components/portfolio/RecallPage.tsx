@@ -1,5 +1,5 @@
 import { CaseLayout } from "./CaseLayout"
-import { CaseSection, Decisions, Pair, Prose, ShinyLink } from "./Blocks"
+import { CaseSection, Pair, Prose, ShinyLink, Split } from "./Blocks"
 import { PortfolioMedia } from "./PortfolioMedia"
 import { RecallModel, RecallProvenance } from "./RecallModel"
 import { RecallIdentity } from "./RecallIdentity"
@@ -7,9 +7,11 @@ import { RecallIdentity } from "./RecallIdentity"
 const chapters = [
   { id: "context", label: "Memory starts with fragments" },
   { id: "system", label: "Capture to searchable moments" },
-  { id: "cards", label: "The ranking decision" },
+  { id: "moments", label: "Cards as moments" },
+  { id: "cards", label: "Merged results killed clarity" },
   { id: "transparency", label: "Judge the match" },
-  { id: "constraints", label: "Retrieval over synthesis" },
+  { id: "performance", label: "Fast enough to feel alive" },
+  { id: "constraints", label: "Why we cut RAG" },
   { id: "trust", label: "Privacy and recovery" },
   { id: "impact", label: "Learning and milestones" },
 ] as const
@@ -45,44 +47,63 @@ export function RecallPage() {
       </div>
     </CaseSection>
 
-    <CaseSection id="system" title="From captured content to searchable moments.">
-      <p className="pf-caption">Simplified capture and indexing model—not a measured query-time sequence. Capture eligibility and behavior depend on the product version and settings.</p>
-      <RecallModel />
+    <CaseSection id="system">
+      <RecallModel>
+        <h2 data-pf-reveal="reading">From captured content to searchable moments.</h2>
+        <p className="pf-caption">Four layers turn eligible snapshots into searchable moments. Capture eligibility and behavior depend on the product version and settings.</p>
+      </RecallModel>
     </CaseSection>
 
-    <CaseSection id="cards" title="One ranking hid the result people needed." tone="graphite">
-      <Prose>
-        <p>In the design testing described in this work, one merged ranking buried visual matches. A result could be useful because of what it looked like, yet lose visibility to textually similar content.</p>
-        <p>We separated text and visual results so people could scan the kind of match their memory offered. Within each card, the screenshot became the primary anchor; source app, time and extracted text remained visible but secondary.</p>
-      </Prose>
-      <Pair>
-        <PortfolioMedia id="recall-card-anatomy" number="03.1" />
-        <PortfolioMedia id="recall-separated-results" number="03.2" />
-      </Pair>
-      <p className="pf-caption">Card anatomy and separated-result layout explain different decisions. They are not the same query in two versions.</p>
+    <CaseSection id="moments" title="Cards as moments, not documents.">
+      <Split>
+        <Prose>
+          <p>A Recall card needed to hold several pieces of information: a screenshot, app name, timestamp, extracted text, and relevance signals.</p>
+          <p>We built around the screenshot as the primary anchor. Not a cropped asset preview, but the actual desktop as it appeared. That context is what lodges in memory.</p>
+          <p>App name, timestamp, and extracted text stayed visible but secondary. The hierarchy pushed away from “found document” and toward “revisited moment.”</p>
+          <p>The result is something between a timeline and a search interface: visual enough to scan like memory works, structured enough to act predictably.</p>
+        </Prose>
+        <PortfolioMedia id="recall-card-anatomy" number="03.1" sizes="(max-width: 850px) 92vw, 50vw" />
+      </Split>
+    </CaseSection>
+
+    <CaseSection id="cards" title="Merged results killed clarity." tone="graphite">
+      <Split>
+        <PortfolioMedia id="recall-separated-results" number="04" sizes="(max-width: 850px) 92vw, 40vw" />
+        <Prose>
+          <p>AI-powered search has a trust problem: technically plausible results can feel wrong. Search for “blue chart spreadsheet,” for example, and a result might come from an unrelated app that simply had a blue element.</p>
+          <p>Our first version blended text and visual matches into one ranked list. It looked clean and simple, but testing revealed a problem: text matches dominated, visual matches got buried, and people struggled to understand why something appeared.</p>
+          <p>The problem was not just whether a result was correct. It was whether someone could understand the match well enough to judge it.</p>
+        </Prose>
+      </Split>
       <PortfolioMedia id="RECALL-M01" />
     </CaseSection>
 
     <CaseSection id="transparency" title="Let people judge the match.">
       <Prose>
-        <p>Technically plausible results can still feel wrong. Instead of treating the relevance score as a verdict, we exposed the cues a person could use to disagree with it.</p>
-        <p>The source app and timestamp locate the moment. The screenshot supplies the surrounding context. Together they let someone inspect a candidate without pretending the model cannot make mistakes.</p>
+        <p>We split text and visual matches into separate sections. Text matches were labeled as text matches; visual matches were labeled as visual matches. People could scan the kind of match their memory offered, rather than decode one blended ranking.</p>
+        <p>Match type explained why something appeared. The source app and timestamp located the moment, while the screenshot supplied the surrounding context. Together, these cues let people judge relevance themselves.</p>
+        <p>We did not try to eliminate every false positive at the model layer. Perfection wasn’t the goal. Legibility was.</p>
       </Prose>
       <RecallProvenance />
-      <p className="pf-caption">Text and visual labels explain the kind of match. The search recording below shows that separation alongside query refinement.</p>
-      <PortfolioMedia id="recall-search" number="04.2" />
     </CaseSection>
 
-    <CaseSection id="constraints" title="Choose retrieval over synthesis.">
+    <CaseSection id="performance" title="Fast enough to feel alive.">
       <Prose>
-        <p>We explored retrieval-augmented generation across screenshots. Synthesis could offer an answer, but its latency conflicted with the search interaction we were designing. We chose to surface relevant moments and let people interpret the source material themselves.</p>
-        <p id="performance">The retrieval experience still required tuning. Indexing and semantic matching are computational work; query retriggering had to balance result refinement with responsive input. The recordings illustrate the direction, not a benchmark or a guaranteed response time.</p>
+        <p>Embedding indexing and local retrieval are computationally heavy. Response times varied, and some queries left people waiting.</p>
+        <p>We made waiting feel like progress. Results refined as people typed, rather than requiring a finished query before anything could appear. The interaction kept moving toward the moment they remembered.</p>
+        <p>Design and engineering iterated on how often to send queries, using actual typing patterns to balance result refinement with responsiveness. We wanted to avoid expensive retriggering without making the interface feel stalled.</p>
       </Prose>
-      <Decisions items={[
-        { title: "Synthesize an answer", tradeoff: "Early RAG exploration added latency and another interpretation layer between the query and its source moments.", disposition: "Cut from this search experience." },
-        { title: "Retrieve relevant moments", tradeoff: "People interpret the evidence themselves, so match type and provenance must remain legible.", disposition: "Prioritize direct retrieval with inspectable sources.", chosen: true },
-      ]} />
-      <PortfolioMedia id="recall-retrieval" number="05" />
+      <PortfolioMedia id="recall-search" number="06" />
+    </CaseSection>
+
+    <CaseSection id="constraints" title="We killed RAG to keep search fast.">
+      <Prose>
+        <p>Early on, we explored synthesis across memories. Retrieval-augmented generation could answer higher-level questions by stitching together context from many screenshots.</p>
+        <p>Latency killed it for this search experience. Retrieving and generating across large memory sets created delays that broke the core expectation: search should feel instantaneous.</p>
+        <p>We abandoned synthesis and focused on speed and legibility instead. Surface relevant moments. Let people interpret them.</p>
+        <p>And honestly, it was the right call design-wise. The system helps people rediscover what they saw. It doesn’t rewrite their history for them.</p>
+      </Prose>
+      <PortfolioMedia id="recall-retrieval" number="07" />
     </CaseSection>
 
     <CaseSection id="trust" title="Remove a moment. Control future capture." tone="ink">
@@ -95,8 +116,8 @@ export function RecallPage() {
         <article><span className="fn-label">What happens next</span><h3>Review capture settings.</h3><p>Offer a path to pause capture or manage app and website exclusions where supported. Make the difference between removing and preventing understandable.</p></article>
       </div>
       <Pair>
-        <PortfolioMedia id="recall-delete-snapshot" number="05.1" sizes="(max-width: 850px) 92vw, 45vw" />
-        <PortfolioMedia id="recall-capture-settings" number="05.2" sizes="(max-width: 850px) 92vw, 45vw" />
+        <PortfolioMedia id="recall-delete-snapshot" number="08.1" sizes="(max-width: 850px) 92vw, 45vw" />
+        <PortfolioMedia id="recall-capture-settings" number="08.2" sizes="(max-width: 850px) 92vw, 45vw" />
       </Pair>
       <p className="pf-caption">Privacy recovery design: confirm deletion, then review future capture settings. These are separate decisions, not a claim about a specific release or retention behavior.</p>
       <dl className="pf-principles">
@@ -108,7 +129,7 @@ export function RecallPage() {
     </CaseSection>
 
     <CaseSection id="impact" title="What we learned, and what was announced." className="pf-recall-impact">
-      <PortfolioMedia id="recall-announcement" number="06" sizes="(min-width: 1600px) calc(100vw - 24rem), (min-width: 1101px) calc(100vw - 20rem), 92vw" />
+      <PortfolioMedia id="recall-announcement" number="09" sizes="(min-width: 1600px) calc(100vw - 24rem), (min-width: 1101px) calc(100vw - 20rem), 92vw" />
       <Prose>
         <p>The testing described in this work included people explaining why results appeared, rejecting mismatches and recovering information they had struggled to find. Those observations supported visible provenance and separated match types; they are not a quantified claim about all users or all queries.</p>
         <p>Recall was announced at Build 2024. Relevance transparency and privacy patterns also informed related design discussions across Windows Search and File Explorer. That is a connection between design efforts, not proof of adoption or a claim that the privacy questions were solved.</p>

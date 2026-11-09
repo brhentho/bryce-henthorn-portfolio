@@ -83,8 +83,19 @@
   --pf-task-surface-high: color-mix(in srgb, var(--text-primary) 18%, transparent);
   --pf-task-shadow: 0 2px 8px rgb(0 0 0 / .12), inset 0 1px 0 rgb(255 255 255 / .08);
   --pf-task-drift-duration: 12000ms;
+  --pf-recall-plane: #18171c;
+  --pf-recall-edge: #717171;
+  --pf-recall-detail: #ffffff;
+  --pf-recall-cyan: #38c8cd;
+  --pf-recall-score: #1cf2ef;
+  --pf-recall-arrival-distance: 16px;
+  --pf-recall-hover-gap: 16px;
   --pf-recall-identity-grid: #ffffff;
   --pf-recall-identity-cell: rgb(255 255 255 / .25);
+  --pf-teams-initials-ink: #346c6d;
+  --pf-evidence-heading-size: clamp(1.75rem, 3vw, 2.5rem);
+  --pf-action-blue: #8eb6ff;
+  --pf-action-purple: #b3a0ff;
 
   /* Hero clip windows. 0.5em vertical clears Inter Tight's ascenders and
      descenders at display leading; 0.25em horizontal clears side bearings

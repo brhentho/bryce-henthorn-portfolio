@@ -129,17 +129,22 @@ Do not mechanically apply one background ramp or one case-body template to every
 | Page | Argument order | Layout and motion |
 |---|---|---|
 | Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve ASCII, layered project entrances and continuous atmosphere; clean linked product images with bounded pointer response, then staggered Approach |
-| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Scattered task-pill field (2.8, floating exception), decision table, floating keyframes, actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
-| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> milestone | Floating Recall identity beside the opening prose (2.4), floating selectable four-layer model (2.5/2.7), provenance crop with annotations (2.4), recordings, decision table, privacy pair and full reading-width announcement figure (2.8); mainly ink/graphite |
-| Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Curated research evidence strip (2.9), workflow finding/intent table (2.13), conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
+| Agents | Fragmentation -> taskbar explorations -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Scattered task-pill field (2.8, floating exception), exploration narrative beside grouped taskbar cutouts (2.4, floating exception), actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
+| Recall | Fragmentary memory -> capture/index model -> cards as moments -> merged-ranking problem -> match types and provenance -> search latency -> RAG tradeoff -> privacy boundary -> milestone | Floating Recall identity beside the opening prose (2.4), floating four-layer model with hover/focus emphasis (2.5/2.7), screenshot-led hierarchy beside six card explorations (2.4, cutout exception), reversed ranking split (2.4), full reading-width provenance (2.8) with three-column annotations (2.13, stacked on mobile), latency and RAG reading columns with supporting recordings (2.3), privacy pair and full reading-width announcement (2.8); mainly ink/graphite |
+| Teams | Pandemic scale -> classroom chapter break -> research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome and Class Home Page | Intro scale strip (2.9), class-wide avatar cover (2.10), curated research evidence strip (2.9), workflow finding/intent table (2.13), conceptual schematic and correctly placed recordings; impact uses an annotated split plate (2.4) followed by public-reaction evidence (2.6, floating exception: staggered, lightly overlapping original posts with attribution in each image and no separate caption or summary block, stacked without overlap on narrow screens); dark opening to warm-paper research/body |
 | About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split, grouped working-example/ledger arrivals and shared neutral ink; no warm-brown override or product simulation |
 
 Public navigation uses a name-only wordmark and a gooey moving highlight with
 stationary labels/targets. Cross-page pointer navigation uses an editorial ink
 wipe; the existing headline resolve follows it. Keyboard/reduced-motion
 navigation remains direct, and local anchors do not trigger a page wipe.
-Public homepage captions and synthetic device bars are intentionally removed;
-case-study evidence retains its useful captions and figure framing.
+Public images, recordings and diagrams omit standalone caption lines, including
+the `Fig. NN / ...` labels; surrounding content carries the explanation.
+Alt text, diagram annotations, media controls, planned-media notices and
+purposeful figure framing remain. Source-caption metadata stays in the media
+registry for review. This public composition overrides the caption conventions
+in the section-type vocabulary; archives and the unpublished draft retain
+their original captions. Public homepage synthetic device bars remain removed.
 Reading/evidence reveals settle once, preserve text contrast and never hold
 document scrolling. These opt-ins do not restyle the archived explorations.
 
@@ -149,7 +154,7 @@ Recorded videos loop muted while sufficiently visible, pause offscreen and
 respect manual pause. Reduced-motion/data-saving preferences leave native Play
 available without automatic playback.
 
-The public Agents simulator is removed; the real recording, keyframes and
+The public Agents simulator is removed; the real recording, exploration images and
 five-state legend provide the explanation without a second workflow to learn.
 The legend uses native 110 x 110 state-icon exports from
 [the approved Figma lineup](https://www.figma.com/design/OFb99P2At6oxtDGjDicLx8/Bryce-s-scratch?node-id=1334-113968),
@@ -158,7 +163,51 @@ wrap to three and then two on narrower screens. Keep the portfolio typography,
 continuous environment and figure rules, not the reference's backdrop or intro.
 Archived simulations remain. The Agents task field and taskbar cutouts, and
 Recall's exploded model, intentionally float without a website matte or frame.
-Recall retains its planes and stage controls but omits the large vertical arrow.
+Recall pairs four Figma-derived dark/cyan planes with an icon-led, two-column
+stage explanation grid (2.5/2.7). Increased vertical separation exposes the capture,
+OCR, semantic and index artwork; quiet left-side identifiers and leader lines
+connect the layer order to the explanations. This borrows the callout treatment
+from the supplied Memory Index reference, not its broader activity/user-graph
+claims. The large vertical arrow remains omitted. On narrow screens the diagram
+precedes the explanations; scores are explicitly illustrative. Hovering a plane
+or explanation highlights the pair, as does keyboard focus on an explanation.
+There is no click selection or radio control. Pointer hover gently separates
+the four planes, then reverses on departure; labels and leaders stay fixed.
+Keyboard, reduced motion and touch keep the stack stationary.
+
+The three author-supplied Agents taskbar exports `2147262306`, `2147262307` and
+`2147262308` replace the earlier cutouts from Design playbook frame `380:39833` and belong
+beside the author-supplied "Anchoring to what users already know" narrative in
+`#process`. The heading, three-direction ordered list and progressive-approach
+prose occupy the left column; all three cutouts remain visible in source order
+as one grouped figure in the right column, without a caption. Narrow screens
+show the text before the figure. Preserve the portfolio typography and continuous
+environment, without decision cards or selected-direction badges. The images are
+taskbar explorations, not one-to-one depictions of the three destinations or a
+pin/state/hover-card sequence. This is an Annotated Split Plate (2.4), retaining
+the floating-cutout exception. The later `#taskbar` section retains the actual
+recording and five-state legend.
+
+Recall's provenance composition also floats without a frame or registration
+marks. Its short Source, Time and Context annotations replace a numbered
+figure caption, per the approved simplification.
+
+Recall's `#moments` section explains screenshot-first card hierarchy between the
+capture/index model and ranking. Four short paragraphs sit beside the existing
+six-card exploration cutout (2.4), stacking on narrow screens. The card study is
+not a before state paired with the ranking grid. The latter remains with
+`#cards`, labeled as a generic result-grid study rather than evidence of separate
+text and visual headings; the matched comparison remains requested.
+
+The ranking problem precedes its response. `#transparency` explains separate
+match groups and preserves the approved provenance composition. `#performance`
+is a chapter, not a nested paragraph: query-cadence context comes before the
+existing search recording. `#constraints` then explains why synthesis was cut
+from this search experience, with text above the existing answer-preview
+exploration. These two reading columns and supporting recordings use 2.3,
+without an extra atmospheric plate or environment transition. The former
+Synthesize/Retrieve comparison table is removed. Privacy and impact retain
+their established compositions.
 
 The Recall introduction replaces the three-line memory-fragment treatment with
 the authentic blue logo floating over a fading grid and blue-violet glow, matching
@@ -179,7 +228,7 @@ The responsive field recomposes into offset rows when labels need more room.
 There is no shared Windows container, connector, simulated status or task action.
 
 Public rectangular images and recordings share rounded corners and quiet
-elevation, with captions outside the visual surface. Transparent compositions
+elevation, without caption lines below the visual surface. Transparent compositions
 and taskbar cutouts retain their silhouettes; icons and vector schematics are
 not blanket-rounded or filtered. Shadows are suppressed during contrast-sensitive
 ground crossings. Archives keep their existing treatment.
@@ -192,17 +241,23 @@ Recall's announcement photograph is no longer a capped thumbnail in a split.
 It fills the reading column beneath the closing heading, followed by readable
 body copy. The registry uses its measured 1434 x 807 dimensions.
 
-Teams uses one author-confirmed approximate statistic and anonymous student themes,
-not six reproduced slides. The research placeholder is replaced by the supplied
+Teams pairs the author-supplied 150M+ pandemic platform scale with the separate
+author-confirmed approximate teacher-preference statistic and anonymous student
+themes, not six reproduced slides. A static class-wide avatar/reaction composition
+from Bryce's scratch `1327:98310` closes the intro as a Cover Plate; it is a
+concept illustration, not a working meeting or research participant roster. The
+surrounding page keeps its continuous environment, with no new motion. The research placeholder is replaced by the supplied
 evidence; selected workflow findings connect to preparation, shared materials and
 teacher awareness. Keep the sources light on the page and traceable in the review
 notes; do not turn input research into an adoption or retention result.
 
-Agents' constraints image is a full reading-container plate (2.8) between the
-interactive prototype and "A shared contract meant saying no." It leads the
-light passage, retaining its figure caption before the heading and constrained
-body copy. This image intentionally floats directly on the page without a frame
-border or background. It is not a half-width image beside the explanation.
+Agents' constraints image is a full reading-container plate (2.8) after the two
+opening paragraphs under "A shared contract meant saying no." and before
+"Test the contract in the shell, not just on a board." It separates the shared
+contract rationale from the shell-testing discussion, without a figure
+caption in the light passage. This image intentionally floats directly on the
+page without a frame border or background. It is not a half-width image beside
+the explanation.
 
 Actual media inspection corrected the source captions: `Teams_fig04` shows group
 preparation, `Teams_fig06` live teacher orchestration, and `Teams_fig05` shared

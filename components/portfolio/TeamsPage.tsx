@@ -2,6 +2,7 @@ import { HeroSchematic } from "@/app/teams-for-education/svg/HeroSchematic"
 import { CaseLayout } from "./CaseLayout"
 import { CaseSection, Decisions, Prose, ShinyLink, Split } from "./Blocks"
 import { PortfolioMedia } from "./PortfolioMedia"
+import { TeamsClassroomCover } from "./TeamsClassroomIllustrations"
 
 const chapters = [
   { id: "context", label: "Reframing the brief" },
@@ -35,11 +36,15 @@ export function TeamsPage() {
     chapters={chapters}
   >
     <CaseSection id="context" title="The retention brief became a participation problem.">
+      <div className="pf-teams-scale">
+        <p className="pf-teams-scale-number">150M+</p>
+        <p>Students and educators on Teams during the pandemic</p>
+      </div>
       <Prose>
         <p>During the pandemic, Teams became an important classroom connection. Our brief began with retaining that growth. Research, synthesis and prototyping shifted the question: what was missing from the experience people were being asked to return to?</p>
         <p>Teachers were coordinating attendance, chat, breakout rooms and technical problems while trying to teach. Students described the discomfort of speaking to a whole-class audience and the absence of casual peer conversation. A video grid could carry a lecture, but it did not supply the structure of a classroom.</p>
       </Prose>
-      <p className="pf-pull-line">A smaller audience.<br />A familiar group.<br />A place to return to.</p>
+      <TeamsClassroomCover />
     </CaseSection>
 
     <CaseSection id="research" title="Small groups made participation easier." tone="paper-warm">
@@ -64,7 +69,6 @@ export function TeamsPage() {
             <p>Students missed group activities, talking with friends, and feeling part of a class—not simply being present on a call.</p>
           </div>
         </div>
-        <figcaption className="fn-label">Fig. 01.1 / Teacher survey and student-session themes. School platforms include learning management and student information systems.</figcaption>
       </figure>
       <Prose><p>We needed to keep collaboration inside the class’s existing workflow while making the group itself recognizable. That pointed toward a place people could return to, rather than a new set of meeting controls.</p></Prose>
     </CaseSection>
@@ -78,7 +82,6 @@ export function TeamsPage() {
       ]} />
       <figure className="pf-media pf-classroom-diagram">
         <div className="pf-media-frame"><HeroSchematic /></div>
-        <figcaption className="fn-label">Fig. 02 / Conceptual classroom: persistent tables, recognizable seats and a teacher’s global view.</figcaption>
       </figure>
       <Prose><p>Fixed positions made neighbors recognizable. Table-level discussion, shared materials and instructions were intended to persist between sessions. The next class could begin with a group’s context, instead of another round of assignments and redistribution.</p></Prose>
     </CaseSection>
@@ -124,12 +127,24 @@ export function TeamsPage() {
       <Prose><p>Starting, joining and stopping groups are visible in the recording. More specific interventions, such as muting or redirecting, remained part of the design exploration.</p></Prose>
     </CaseSection>
 
-    <CaseSection id="impact" title="What we learned.">
-      <div className="pf-outcome-note">
+    <CaseSection id="impact" title="What carried forward.">
+      <Split className="pf-teams-impact">
         <Prose>
-          <p>Concept testing suggested that stable groups and a smaller audience were a useful direction for participation, while the global classroom view addressed teacher awareness.</p>
-          <p>The full virtual-tables experience did not ship as designed. The lasting shift in the brief was from adding meeting features to designing the conditions for conversation: recognizable groups, shared context and a teacher who could stay connected to the room.</p>
+          <p>Concept testing suggested that stable groups and a smaller audience helped students speak up. Teachers could move between groups and notice students who needed support, without losing their view of the class.</p>
+          <p>The full virtual-tables experience did not ship as designed. But the research informed Class Home Page: a persistent starting point for class resources, assignments and schedules.</p>
+          <p>The lasting shift was from adding meeting features to creating the conditions for learning: shared context, social connection and a place to return to.</p>
         </Prose>
+        <PortfolioMedia id="teams-class-home" number="06" sizes="(max-width: 850px) 92vw, 45vw" />
+      </Split>
+      <div className="pf-teams-reception">
+        <h3>A clearer home for the class.</h3>
+        <p className="pf-caption">Educators welcomed Class Home Page. These public reactions are to that experience, not the virtual-tables concept.</p>
+        <div className="pf-teams-reaction-grid">
+          <PortfolioMedia id="teams-reaction-kim" sizes="(max-width: 850px) 88vw, 45vw" />
+          <PortfolioMedia id="teams-reaction-ellis" sizes="(max-width: 850px) 88vw, 45vw" />
+          <PortfolioMedia id="teams-reaction-megan" sizes="(max-width: 850px) 88vw, 45vw" />
+          <PortfolioMedia id="teams-reaction-madeline" sizes="(max-width: 850px) 88vw, 45vw" />
+        </div>
       </div>
       <nav className="pf-next" aria-label="Next case"><ShinyLink href="/agents-in-windows">Agents in Windows</ShinyLink></nav>
     </CaseSection>
