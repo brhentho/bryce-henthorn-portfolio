@@ -30,7 +30,7 @@ that distinction belongs with the verified search recording.
 | AGENTS-C03 | Taskbar decision | What permitted observations favored the taskbar over app-bound and dedicated-workspace options? | All three alternatives and tradeoffs retained as a decision summary. Original evaluation board requested in AGENTS-M02. |
 | RECALL-C01 | Retrieval | Is there a measured/configured basis for the earlier 200ms statement? Which device, workload and build? | Removed the number and nonblocking absolutes. Qualitative query-cadence rationale only. |
 | RECALL-C02 | Privacy | Which versions and responsibilities does the earlier opt-out → opt-in account describe? What exact capture eligibility, local-processing and deletion/retention boundaries apply? | No migration chronology or universal security guarantee. Distinguish design intent, snapshot deletion and future capture settings. |
-| RECALL-C03 | Imagery | Are reservation and financial examples synthetic, redacted and cleared? Audit other product screenshots for names, account data and confidential content too. | Do not render reservation/financial/recovery stills. RECALL-M02 asks for benign version-labeled recovery evidence. Existing assets remain in the repository and may still be publicly addressable. |
+| RECALL-C03 | Imagery | Are reservation and financial examples synthetic, redacted and cleared? Audit other product screenshots for names, account data and confidential content too. | Author explicitly approved the two supplied RECALL-M02 screenshots, including the redacted Fidelity snapshot and visible site name. Only these recovery crops are rendered as design artifacts; unrelated reservation/financial stills remain held. Product version and retention boundaries remain unconfirmed. |
 | RECALL-C04 | Ranking / evaluation | What research supports merged-ranking problems, result inspectability and responsiveness? Provide permitted method, sample context and observations. | Source’s qualitative ranking finding is prominent, but no measured improvement. Card anatomy and separated grid are not labeled before/after. |
 | TEAMS-C01 | Research | Any later use of participant identities or direct quotations needs separate consideration. | Author supplied the research frames and chose anonymous paraphrases. Research themes now replace the on-page TEAMS-M02 placeholder; names, grades and direct quotes stay off the page. |
 | TEAMS-C02 | Findings / scale | Keep platform preference distinct from prototype outcomes. | Author confirmed the supplied ~70% LMS/SIS preference figure. It appears with its February 2020 teacher-survey source label, not as Teams adoption or retention improvement. No 150M+, 30+ or six-hours claims are reintroduced. |
@@ -67,7 +67,7 @@ The same stable request ID is used on the page and in the registry.
   comparable task context; observations that actually informed selection.
 - **Required context:** Evaluation method/date, participant context if
   permissible, source status and clearance.
-- **Fallback:** Readable three-alternative decision summary before keyframes.
+- **Fallback:** Readable three-alternative decision summary with the three taskbar exploration images, not a claim of original evaluation evidence.
 
 ### RECALL-M01 — The same query, two ranking treatments
 
@@ -85,16 +85,21 @@ The same stable request ID is used on the page and in the registry.
 ### RECALL-M02 — Remove a moment; change future capture
 
 - **Priority / location:** P1, `/recall#trust`.
-- **Kind / status:** Version-bound privacy recovery recording or still pair;
-  clearance needed.
-- **Shot list:** Benign synthetic snapshot; actual deletion action and scope;
-  confirmation; navigate to actual capture settings; change a supported
-  setting; show what the setting now means. If prevention is demonstrated,
-  do not imply deletion and exclusion have identical scope.
-- **Required context:** Product version, implemented controls and exact
-  retention boundary; confirm synthetic contents and export clearance.
-- **Fallback:** Text comparison of recovery versus prevention and compact
-  placeholder. Neither sensitive source still is rendered.
+- **Kind / status:** Fulfilled with two author-supplied, explicitly approved
+  design stills. Approval includes the redacted Fidelity snapshot and visible
+  site name, not unrelated held imagery or permission to deploy.
+- **Sources:** Frame 2147262296 ("Delete snapshot?"), followed by Frame
+  2147262301 ("Snapshot removed" and capture settings). Both 2000 x 1338
+  sources are cropped to the same rectangle (640, 280)-(1400, 1080), preserving
+  complete dialogs at equal scale in 760 x 800 exports.
+- **Implementation:** `recall-delete-snapshot` and `recall-capture-settings`
+  in the media registry; `privacy-delete-snapshot.png` and
+  `privacy-capture-settings.png` under `public/images/recall/`. Side by side
+  on desktop, deletion first when stacked. The RECALL-M02 placeholder is retired.
+- **Remaining context:** Product version, implemented controls and exact
+  retention boundary are not confirmed. Label these as design artifacts;
+  neither screenshot proves that a capture setting was changed or that
+  deletion and exclusion have identical scope. Existing privacy caveats remain.
 
 ### TEAMS-M01 — Retired on-page request
 
@@ -167,7 +172,7 @@ with their original source recordings.
   frames show search refinement and the separated Text matches / Visual matches
   full grid at approximately 12s.
 - `recall-retrieval`: existing `shilpa_0603_03%201.mp4` on the sayyacgp8fag7fqj
-  host, retrieval poster. Secondary, explicitly expandable **answer-preview
+  host, retrieval poster. Secondary, directly visible **answer-preview
   exploration**, not the selected retrieval-only direction. An inspected frame
   at approximately 17s shows a distinct answer-preview card above text and visual
   matches. Different queries/layouts mean this is not a matched before/after or
@@ -187,16 +192,16 @@ implementation. Future cleared exports can replace registry requests by ID.
 | Page | Source material | New location / disposition |
 | --- | --- | --- |
 | Agents | Context + Problem | `#context`: fragmented/observable pair, early-interview concern and OS opportunity, without universal psychological claims. |
-| Agents | Three candidate homes | `#process`: all alternatives and tradeoffs precede the selected state keyframes. |
+| Agents | Three candidate homes | `#process`: all alternatives and tradeoffs followed by the three taskbar exploration images from Figma frame `380:39833`, visible together under one caption. |
 | Agents | Invocation | `#invocation`: dispatch → monitor → return, composer recording. |
-| Agents | Taskbar + state inventory + simulation | `#taskbar`, nested `#simulation`: compact selected keyframes, actual detail recording, all five states, explicitly fictional user-driven demo. |
+| Agents | Taskbar + state inventory | `#taskbar`, nested `#simulation`: actual detail recording and all five states. The exploration images belong to `#process`; no public simulator. |
 | Agents | Constraints + Iteration | `#constraints`, nested `#iteration`: provider requests, stable contract, actual-shell prototypes and multiple-agent testing retained. |
 | Agents | Impact | `#impact`: ongoing work and announcement distinguished from availability/outcomes. Repeated individual ownership removed; role stays in ledger. |
 | Recall | Context + Problem | `#context`: memory fragments and task-dependent relevance. Reservation example withheld, not replaced with invented screenshot. |
 | Recall | System | `#system`: actual four stages in forward reading order. Original reverse-stacked illustration labeled as such. |
 | Recall | Cards + buried ranking observation | `#cards`: merged-ranking finding promoted, screenshot-led hierarchy and separated results accurately labeled. |
 | Recall | Transparency + primary film | `#transparency`: source, time, match type, false positives and query/result recording. |
-| Recall | Performance + Constraints | `#constraints`, nested `#performance`: qualitative cadence and original retrieval/synthesis decision preserved; optional answer-preview exploration recording, relabeled from inspected frames. Unsupported 200ms removed. |
+| Recall | Performance + Constraints | `#constraints`, nested `#performance`: qualitative cadence and original retrieval/synthesis decision preserved; answer-preview exploration recording visible directly without a disclosure or surrounding rules, relabeled from inspected frames. Unsupported 200ms removed. |
 | Recall | Trust | `#trust`: recovery/prevention pair and four principles bounded by version/design scope; sensitive stills withheld. |
 | Recall | Impact | `#impact`: bounded testing observations, Build 2024 and related design discussions. Removed “proved” and ripple/adoption inference. |
 | Teams | Context + Problem + research | `#context` and `#research`: retention reframing, method before themes, teacher logistics and peer conversation. Identifying research held. |

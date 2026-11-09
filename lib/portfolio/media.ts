@@ -141,10 +141,19 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
     title: "The same query, two ranking treatments",
     description: "Matched, cleared frames showing merged and separated results for the same query and content.",
   },
-  "RECALL-M02": {
-    kind: "request", requestId: "RECALL-M02", reason: "clearance-needed",
-    title: "Remove a moment. Change future capture.",
-    description: "A version-labeled recovery flow using a benign synthetic snapshot, deletion confirmation and capture settings.",
+  "recall-delete-snapshot": {
+    kind: "image", title: "Confirm snapshot deletion",
+    src: "/images/recall/privacy-delete-snapshot.png",
+    alt: "Recall Delete snapshot dialog with a redacted Fidelity snapshot preview, a deletion warning, and Cancel and Delete buttons",
+    width: 760, height: 800,
+    caption: "Confirm removal of the captured moment.",
+  },
+  "recall-capture-settings": {
+    kind: "image", title: "Review future capture settings",
+    src: "/images/recall/privacy-capture-settings.png",
+    alt: "Recall Snapshot removed dialog offering capture controls for Edge and www.fidelity.com, with a link to more Recall and snapshots settings",
+    width: 760, height: 800,
+    caption: "After removal, review capture settings for active apps and sites.",
   },
   "TEAMS-M01": {
     kind: "request", requestId: "TEAMS-M01", reason: "requested",

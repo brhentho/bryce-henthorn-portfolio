@@ -2,6 +2,7 @@ import { CaseLayout } from "./CaseLayout"
 import { CaseSection, Decisions, Pair, Prose, ShinyLink } from "./Blocks"
 import { PortfolioMedia } from "./PortfolioMedia"
 import { RecallModel, RecallProvenance } from "./RecallModel"
+import { RecallIdentity } from "./RecallIdentity"
 
 const chapters = [
   { id: "context", label: "Memory starts with fragments" },
@@ -34,8 +35,8 @@ export function RecallPage() {
     chapters={chapters}
   >
     <CaseSection id="context" title="Memory starts with fragments." tone="ink">
-      <div className="pf-recall-fragments">
-        <p className="pf-pull-line">The chart was blue.<br />The page was from last week.<br />The filename is gone.</p>
+      <div className="pf-recall-introduction">
+        <RecallIdentity />
         <Prose>
           <p>People could remember a presentation, a snippet of code or something in an email without remembering the words needed to find it. Traditional file search was a poor fit for that starting point.</p>
           <p>Recall aimed to make eligible captured content searchable by meaning. But retrieving something plausible was not enough. We needed to help people distinguish the moment they wanted from an interesting-looking false positive.</p>
@@ -83,10 +84,7 @@ export function RecallPage() {
         { title: "Synthesize an answer", tradeoff: "Early RAG exploration added latency and another interpretation layer between the query and its source moments.", disposition: "Cut from this search experience." },
         { title: "Retrieve relevant moments", tradeoff: "People interpret the evidence themselves, so match type and provenance must remain legible.", disposition: "Prioritize direct retrieval with inspectable sources.", chosen: true },
       ]} />
-      <details className="pf-supporting-recording">
-        <summary>Inspect the exploratory answer-preview concept</summary>
-        <PortfolioMedia id="recall-retrieval" number="05" />
-      </details>
+      <PortfolioMedia id="recall-retrieval" number="05" />
     </CaseSection>
 
     <CaseSection id="trust" title="Remove a moment. Control future capture." tone="ink">
@@ -98,7 +96,11 @@ export function RecallPage() {
         <article><span className="fn-label">The captured moment</span><h3>Remove the snapshot.</h3><p>Make deletion discoverable and explain the scope of the confirmation. A recovery action should not imply that future capture settings have also changed.</p></article>
         <article><span className="fn-label">What happens next</span><h3>Review capture settings.</h3><p>Offer a path to pause capture or manage app and website exclusions where supported. Make the difference between removing and preventing understandable.</p></article>
       </div>
-      <PortfolioMedia id="RECALL-M02" />
+      <Pair>
+        <PortfolioMedia id="recall-delete-snapshot" number="05.1" sizes="(max-width: 850px) 92vw, 45vw" />
+        <PortfolioMedia id="recall-capture-settings" number="05.2" sizes="(max-width: 850px) 92vw, 45vw" />
+      </Pair>
+      <p className="pf-caption">Privacy recovery design: confirm deletion, then review future capture settings. These are separate decisions, not a claim about a specific release or retention behavior.</p>
       <dl className="pf-principles">
         <div><dt>Local processing</dt><dd>On-device capture, indexing and retrieval were central to the architecture described in this work. Exact product guarantees require version-specific documentation.</dd></div>
         <div><dt>User control</dt><dd>Make capture choice, pause and exclusions understandable rather than leave people to infer what the system will retain.</dd></div>

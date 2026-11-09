@@ -20,6 +20,7 @@
 .portfolio .pf-split > div { min-width: 0; }
 .portfolio .pf-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
 .portfolio .pf-media { margin: 0; min-width: 0; }
+.portfolio .pf-section > .pf-media:not(:first-child) { margin-top: var(--space-block); }
 .portfolio .pf-media-frame { position: relative; border: 1px solid var(--rule); background: var(--xr-surface); }
 .portfolio .pf-media-frame img,.portfolio .pf-media-frame video { width: 100%; height: auto; display: block; }
 .portfolio .pf-media-frame video { max-height: 70svh; object-fit: contain; }

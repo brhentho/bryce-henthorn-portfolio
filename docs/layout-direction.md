@@ -129,8 +129,8 @@ Do not mechanically apply one background ramp or one case-body template to every
 | Page | Argument order | Layout and motion |
 |---|---|---|
 | Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve ASCII, layered project entrances and continuous atmosphere; clean linked product images with bounded pointer response, then staggered Approach |
-| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Scattered task-pill field (2.8, floating exception), decision table, floating keyframes, actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
-| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> milestone | Floating four-layer model with hover/focus emphasis (2.5/2.7), provenance crop with annotations (2.4), recordings, decision table, privacy pair and full reading-width announcement figure (2.8); mainly ink/graphite |
+| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Scattered task-pill field (2.8, floating exception), decision table with grouped taskbar explorations, actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
+| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> milestone | Floating Recall identity beside the opening prose (2.4), floating four-layer model with hover/focus emphasis (2.5/2.7), provenance crop with annotations (2.4), recordings, decision table, privacy pair and full reading-width announcement figure (2.8); mainly ink/graphite |
 | Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Curated research evidence strip (2.9), workflow finding/intent table (2.13), conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
 | About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split, grouped working-example/ledger arrivals and shared neutral ink; no warm-brown override or product simulation |
 
@@ -149,8 +149,13 @@ Recorded videos loop muted while sufficiently visible, pause offscreen and
 respect manual pause. Reduced-motion/data-saving preferences leave native Play
 available without automatic playback.
 
-The public Agents simulator is removed; the real recording, keyframes and
+The public Agents simulator is removed; the real recording, exploration images and
 five-state legend provide the explanation without a second workflow to learn.
+The legend uses native 110 x 110 state-icon exports from
+[the approved Figma lineup](https://www.figma.com/design/OFb99P2At6oxtDGjDicLx8/Bryce-s-scratch?node-id=1334-113968),
+with each state name and explanation beneath its icon. Five equal-width columns
+wrap to three and then two on narrower screens. Keep the portfolio typography,
+continuous environment and figure rules, not the reference's backdrop or intro.
 Archived simulations remain. The Agents task field and taskbar cutouts, and
 Recall's exploded model, intentionally float without a website matte or frame.
 Recall pairs four Figma-derived dark/cyan planes with an icon-led, two-column
@@ -164,6 +169,21 @@ or explanation highlights the pair, as does keyboard focus on an explanation.
 There is no click selection or radio control. Pointer hover gently separates
 the four planes, then reverses on departure; labels and leaders stay fixed.
 Keyboard, reduced motion and touch keep the stack stationary.
+
+The three Agents taskbar cutouts from Design playbook frame `380:39833` belong
+with the alternatives discussion in `#process`, after the decision table.
+All three are visible in source order as one grouped figure with a shared
+caption. They are explorations, not a pin/state/hover-card sequence. The later
+`#taskbar` section retains the actual recording and five-state legend.
+
+The Recall introduction replaces the three-line memory-fragment treatment with
+the authentic blue logo floating over a fading grid and blue-violet glow, matching
+the supplied scratch frame (1333:112890). Exact local source glow and mask assets
+preserve the reference; there is no dimensional tile or recessed face.
+The surrounding illustration is transparent, not an opaque section band. Existing
+heading and paragraphs remain unchanged; this does not assert authorship of the
+logo. The whole figure uses the existing evidence entrance and is static with
+reduced motion or no JavaScript.
 
 The Agents context illustration uses six scattered task pills from the supplied
 Design playbook frame (264:41080), without its background or title. It illustrates
@@ -390,7 +410,7 @@ Places where the existing copy is too thin to support a non-stacked layout, or w
 | AGENTS-M01 | Agents | Shared contract | Cleared cross-provider evidence beyond one agent recording | Existing image plus compact request; supply two agents using the same visible state contract |
 | AGENTS-M02 | Agents | Decision | Original evaluation board and observation | Keep the supported alternatives summary; request original evidence rather than inventing a research result |
 | RECALL-M01 | Recall | Ranking | Matched merged/separated results for the same query | Accurately label existing different-purpose figures; request a genuine comparison |
-| RECALL-M02 | Recall | Privacy | Cleared, version-bound deletion/capture-control artifact | Use a compact placeholder pending review; no unqualified system guarantee |
+| RECALL-M02 | Recall | Privacy | Product version and exact retention boundary remain unconfirmed | Author-approved deletion/capture-settings still pair replaces the placeholder; label as design artifacts, not a system guarantee |
 | RECALL-C01 | Recall | Responsiveness | A source for the former `200MS WINDOW` claim | Remove the number. It is quantitative, not a qualitative substitute for missing evidence |
 | TEAMS-M02 | Teams | Research/outcome | Cleared research-to-decision and prototype-test evidence | Compact request; qualify outcomes and retain tested-concept status |
 

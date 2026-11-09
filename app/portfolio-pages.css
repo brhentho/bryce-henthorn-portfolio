@@ -1,4 +1,6 @@
 /* Page-specific narrative composition. Shared surfaces live in portfolio.css. */
+.portfolio .pf-section > .pf-agents-explorations { max-width: 651px; margin-block-start: var(--space-block); }
+.portfolio .pf-agents-explorations-images { display: grid; gap: var(--space-block); }
 .portfolio .pf-constraints-section > .pf-media + h2 { margin-top: var(--space-section); }
 .portfolio [data-media-id="agents-constraints"] > .pf-media-frame {
   border: 0;
@@ -42,15 +44,20 @@
 .portfolio .pf-state-lexicon {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1rem;
-  padding-block: 1.5rem;
+  gap: var(--space-block);
+  padding-block: var(--space-block);
   list-style: none;
 }
 .portfolio .pf-state-lexicon li { display: grid; align-content: start; gap: .75rem; }
 .portfolio .pf-state-lexicon h3 { font-size: 1rem; line-height: 1.4; letter-spacing: -.01em; }
 .portfolio .pf-state-lexicon p { font-size: .875rem; line-height: 1.6; color: var(--text-secondary); }
 .portfolio .pf-state-figure figcaption { border-top: 1px solid var(--rule); padding-block: 1rem; }
-.portfolio .pf-recall-fragments { display: grid; grid-template-columns: .85fr 1.15fr; gap: 7%; align-items: start; }
+.portfolio .pf-recall-introduction { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 6%; align-items: center; }
+.portfolio .pf-recall-identity { margin: 0; min-width: 0; }
+.portfolio .pf-recall-identity__scene { display: block; width: 100%; height: auto; overflow: hidden; }
+.portfolio .pf-recall-identity__cell { fill: none; stroke: var(--pf-recall-identity-grid); stroke-width: .9106; }
+.portfolio .pf-recall-identity__cell[data-highlighted] { fill: var(--pf-recall-identity-cell); }
+.portfolio .pf-recall-identity__caption { max-width: 38ch; margin-inline: auto; text-align: center; font: .8125rem/1.6 var(--font-mono); color: var(--text-secondary); }
 .portfolio .pf-recall-model { --pf-recall-highlight: 0; --pf-recall-spread: 0px; display: grid; grid-template-columns: 1fr 1fr; gap: 4%; align-items: center; }
 .portfolio .pf-recall-model-copy { min-width: 0; }
 .portfolio .pf-recall-model-copy > * + * { margin-top: var(--space-block); }
@@ -110,14 +117,6 @@
 .portfolio .pf-recall-full-grid summary:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 3px; }
 .portfolio .pf-recall-full-grid img { display: block; width: 100%; height: auto; margin-bottom: 1rem; border: 1px solid var(--rule); }
 .portfolio .pf-recall .pf-decisions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.portfolio .pf-supporting-recording { border-block: 1px solid var(--rule); }
-.portfolio .pf-supporting-recording summary {
-  cursor: pointer;
-  padding: 1.25rem .25rem;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-.portfolio .pf-supporting-recording[open] > .pf-media { padding-bottom: 1.5rem; }
 .portfolio .pf-recovery-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding-block: 2rem; border-block: 1px solid var(--rule); }
 .portfolio .pf-recovery-pair h3 { font-size: 1.5rem; margin-block: 1rem; }
 .portfolio .pf-recovery-pair p { font-size: 1rem; line-height: 1.65; color: var(--text-secondary); }
@@ -165,11 +164,12 @@
   .portfolio .pf-state-lexicon { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 850px) {
-  .portfolio .pf-recall-fragments, .portfolio .pf-recall-model,
+  .portfolio .pf-recall-introduction, .portfolio .pf-recall-model,
   .portfolio .pf-working-examples, .portfolio .pf-about-philosophy,
   .portfolio .pf-prior-work, .portfolio .pf-student-split,
   .portfolio .pf-recall .pf-decisions { grid-template-columns: 1fr; gap: 2rem; }
   .portfolio .pf-recall-model { grid-template-columns: 1fr; }
+  .portfolio .pf-recall-identity { max-width: 32rem; margin-inline: auto; }
   .portfolio .pf-recall-model-copy { display: contents; }
   .portfolio .pf-recall-model-copy > * + * { margin-top: 0; }
   .portfolio .pf-recall-stages { grid-row: 4; }
