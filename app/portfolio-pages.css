@@ -44,8 +44,8 @@
 .portfolio .pf-state-lexicon {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1rem;
-  padding-block: 1.5rem;
+  gap: var(--space-block);
+  padding-block: var(--space-block);
   list-style: none;
 }
 .portfolio .pf-state-lexicon li { display: grid; align-content: start; gap: .75rem; }

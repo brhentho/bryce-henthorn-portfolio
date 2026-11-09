@@ -151,6 +151,11 @@ available without automatic playback.
 
 The public Agents simulator is removed; the real recording, keyframes and
 five-state legend provide the explanation without a second workflow to learn.
+The legend uses native 110 x 110 state-icon exports from
+[the approved Figma lineup](https://www.figma.com/design/OFb99P2At6oxtDGjDicLx8/Bryce-s-scratch?node-id=1334-113968),
+with each state name and explanation beneath its icon. Five equal-width columns
+wrap to three and then two on narrower screens. Keep the portfolio typography,
+continuous environment and figure rules, not the reference's backdrop or intro.
 Archived simulations remain. The Agents task field and taskbar cutouts, and
 Recall's exploded model, intentionally float without a website matte or frame.
 Recall retains its planes and stage controls but omits the large vertical arrow.
