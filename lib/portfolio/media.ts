@@ -2,11 +2,11 @@ import type { MediaItem } from "@/components/portfolio/types"
 
 export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   "cua-onboarding": {
-    kind: "image", title: "Microsoft's Copilot Actions onboarding screen",
-    src: "/images/copilot-actions/announcement-onboarding.png",
-    alt: "Copilot onboarding explains the Experimental agentic features setting, access to local folders, and experimental risks, with Cancel and Open Settings actions.",
-    width: 1920, height: 1307,
-    caption: "Published onboarding: enabling the capability, explaining access, and opening Settings. October 2025. Image: Microsoft.",
+    kind: "image", title: "Copilot Actions first-run designs",
+    src: "/images/copilot-actions/fre.png",
+    alt: "Two first-run cards on a blue background: Introducing Actions with Cancel and Continue, followed by Experimental agentic features, local-folder permissions and experimental risks with Cancel and Open Settings.",
+    width: 1036, height: 1014,
+    caption: "Supplied first-run designs: introducing Actions, explaining access and enabling Experimental agentic features in Settings. Not announcement imagery.",
   },
   "cua-intervention": {
     kind: "image", title: "Microsoft's Copilot Actions travel-video example",

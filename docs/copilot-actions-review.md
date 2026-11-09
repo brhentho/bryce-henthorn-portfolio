@@ -17,18 +17,35 @@ body wrapper, duplicate page background or new motion language. The route remain
 `noindex, nofollow` and is not linked from the homepage. This visual migration
 does not authorize publication.
 
-The opening image, `public/images/copilot-actions/cua-hero.png`, is the supplied
-`CUA.png` design image, displayed in full at its original aspect ratio. It shows a
+The opening image, `public/images/copilot-actions/cua-working.png`, is the supplied
+blue-background `CUA working.png` design image, displayed in full at its original
+1504 x 1024 aspect ratio. It shows a
 restaurant-reservation task with a browser workspace, progress and Take control
 action. It is not attributed to the October 2025 announcement and does not
 establish availability, authorship of every depicted element, or measured outcomes.
 The intervention section now uses separately supplied Take Control and hand-raise
-design stills, not the former travel-video announcement hero. Onboarding retains
-its announcement attribution. All shown product images retain full-size links.
+design stills, not the former travel-video announcement hero. Onboarding uses
+the supplied `FRE.png` composition, 1036 x 1014, with Introducing Actions and
+enable-in-Settings cards. It is not attributed to the announcement. All shown
+product images retain full-size links.
+
+## Shared portfolio refresh
+
+The branch incorporates latest main's shared sticky header, gooey case-progress
+rail and quiet name/location/email footer. Header height determines anchor and
+focus offsets, including when navigation wraps. Pointer highlights reuse main's
+motion; keyboard and reduced-motion changes settle directly.
+
+Copilot now also follows main's caption-free composition: no standalone hero,
+image, diagram or exhibit captions. The surrounding prose retains the editorial
+model and conceptual-diagram qualifications. The Public record section retains
+both Figma links and the Ginto-to-Inter limitation. Media-registry caption
+metadata, table semantics, state labels, disclosures and planned-media notices
+remain; neither local example behavior nor the publication hold changes.
 
 ## Intervention story and composer exploration pass
 
-Only `#intervention` is restructured in this pass. Its argument distinguishes
+The earlier story pass restructured only `#intervention`. Its argument distinguishes
 direct takeover from providing a missing decision, then examines the disabled
 composer and progressive disclosure. The supplied stills remain images; no
 recording, verified handoff behavior or selected design is implied.
@@ -62,7 +79,7 @@ wrap at enlarged text sizes rather than compressing status words.
 
 | Beat | Evidence supplied | Next section pass / primitive |
 | --- | --- | --- |
-| Permission before action | FRE introduction and enable-in-Settings cards | Access: 2.8 plate + 2.9 capability/access/choice strip; add the actual security-modal sequence before making broader claims. |
+| Permission before action | FRE introduction and enable-in-Settings cards, now displayed in Access | Access retains its 2.8 plate + 2.9 capability/access/choice strip; add the actual security-modal sequence before making broader claims. |
 | One task, different footprints | Responsive views and CUA working | Workspace: 2.6 compact/full comparison, showing which task, progress, composer and takeover elements persist. Do not invent breakpoint values. |
 | Two reasons to intervene | Take control and Hand raise | Implemented here as a 2.6 comparison; replace stills with cleared recordings when available. |
 | Steer without starting over | Both three-option composer boards | Implemented here as a 2.13 alternative/state matrix; add the eventual selection rationale when confirmed. |
@@ -110,7 +127,7 @@ The primitive vocabulary is unchanged. The retained conceptual diagram composes
 HTML/CSS in a hairline evidence plate. Original drawing brief: two stacked
 workspace outlines, one for ongoing user work and one dashed outline for the
 contained agent workspace, connected by a labeled check-in/takeover relationship.
-It uses existing tokens, registration marks and figure numbering, with a responsive
+It uses existing tokens and registration marks, with a responsive
 half-width slot in a split plate. It explains conceptual separation rather than
 security implementation details.
 
@@ -147,21 +164,24 @@ security implementation details.
 - Thurrott, [Microsoft explains how it will secure AI agents in Windows 11](https://www.thurrott.com/windows/windows-11/328457/microsoft-explains-how-it-will-secure-ai-agents-in-windows-11), October 16, 2025. Secondary coverage, not evidence of individual contribution.
 - PCMag, [Microsoft really wants you to talk to your PC (and Copilot)](https://www.pcmag.com/news/microsoft-heres-why-you-should-talk-to-your-windows-11-pc), October 16, 2025. Retrieved through its Yahoo syndication in the research conversation; the page links to the original supplied URL.
 
-The announcement PNGs remain in the repository; only onboarding is currently
-shown and attributed to Microsoft:
+The announcement PNGs remain in the repository as historical sources; neither
+is currently displayed on this page:
 
 - `public/images/copilot-actions/announcement-app.png`: https://blogs.windows.com/wp-content/uploads/sites/2/2025/10/Copilot-Actions-app1920.png
 - `public/images/copilot-actions/announcement-onboarding.png`: https://blogs.windows.com/wp-content/uploads/sites/2/2025/10/Under-embargo-until-10.16-Copilot-Actions-visual1920.png
 
 New supplied evidence (not attributed to the announcement):
 
+- `public/images/copilot-actions/cua-working.png`: unmodified `CUA working.png`, 1504 x 1024; current hero.
+- `public/images/copilot-actions/fre.png`: unmodified `FRE.png`, 1036 x 1014; current onboarding.
+- `public/images/copilot-actions/cua-hero.png`: earlier supplied `CUA.png`, retained but no longer displayed.
 - `public/images/copilot-actions/take-control.png`: unmodified `Take control.png`, 1504 x 1024.
 - `public/images/copilot-actions/hand-raise.png`: unmodified `Hand raise.png`, 1504 x 1024.
 - `public/images/copilot-actions/composer/`: native exports from the two linked
   Figma boards. Original filenames preserve traceability; no board screenshot is
   used as an implementation asset.
-- `FRE.png`, `Responsive views.png`, and `CUA working.png` were reviewed for the
-  proposed next passes but are not incorporated in this one-section edit.
+- `Responsive views.png` remains reviewed material for a later workspace pass;
+  no responsive comparison is implemented by this image refresh.
 
 Supplying designs for this draft does not establish clearance for publication,
 individual ownership of every element, or evidence that these exact states shipped.

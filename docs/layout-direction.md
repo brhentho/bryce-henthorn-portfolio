@@ -143,8 +143,10 @@ the `Fig. NN / ...` labels; surrounding content carries the explanation.
 Alt text, diagram annotations, media controls, planned-media notices and
 purposeful figure framing remain. Source-caption metadata stays in the media
 registry for review. This public composition overrides the caption conventions
-in the section-type vocabulary; archives and the unpublished draft retain
-their original captions. Public homepage synthetic device bars remain removed.
+in the section-type vocabulary. The unpublished Copilot Actions draft also
+adopts this caption-free composition while retaining its source qualifications
+in surrounding prose and review notes. Archives retain their original captions.
+Public homepage synthetic device bars remain removed.
 Reading/evidence reveals settle once, preserve text contrast and never hold
 document scrolling. These opt-ins do not restyle the archived explorations.
 

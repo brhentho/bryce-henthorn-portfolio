@@ -168,8 +168,6 @@
   text-underline-offset: .25em;
   cursor: pointer;
 }
-.explorations figcaption { margin-top: 1.5rem; }
-.explorations figcaption a { text-decoration: underline; text-underline-offset: .2em; }
 @container (max-width: 1120px) {
   .samples { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   [data-composer-board="steering"] .option[data-option="3"] [data-example="3-stopped"] { grid-column: auto; grid-row: auto; }

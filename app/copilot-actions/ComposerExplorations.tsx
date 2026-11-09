@@ -213,13 +213,6 @@ export function ComposerExplorations() {
         <summary>Steering in context <span>Second exploration</span></summary>
         <Board steering />
       </details>
-      <figcaption className="fn-label">
-        Fig. 06 / Three alternatives across two design boards. No selected direction
-        or tested outcome is implied. Product controls are recreated in code;
-        the unavailable Ginto typeface is represented with the portfolio’s Inter.
-        {" "}<a href="https://www.figma.com/design/OFb99P2At6oxtDGjDicLx8/Bryce-s-scratch?node-id=1339-53129" target="_blank" rel="noreferrer">Control placement source<span className="sr-only"> (opens in a new tab)</span></a>
-        {" · "}<a href="https://www.figma.com/design/OFb99P2At6oxtDGjDicLx8/Bryce-s-scratch?node-id=1339-53384" target="_blank" rel="noreferrer">Steering source<span className="sr-only"> (opens in a new tab)</span></a>
-      </figcaption>
       <noscript><p>Interactive examples require JavaScript. Both boards and their reference states remain readable above.</p></noscript>
     </figure>
   )

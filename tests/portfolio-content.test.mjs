@@ -177,6 +177,7 @@ test("Copilot supplied hero retains its source dimensions and full-size access",
   const draft = read("components/portfolio/CopilotActionsPage.tsx")
   const hero = draft.match(/src: "([^"]+)", width: (\d+), height: (\d+)/)
   assert.ok(hero)
+  assert.equal(hero[1], "/images/copilot-actions/cua-working.png")
   const png = readFileSync(new URL(`../public${hero[1]}`, import.meta.url))
   assert.equal(png.readUInt32BE(16), Number(hero[2]))
   assert.equal(png.readUInt32BE(20), Number(hero[3]))
@@ -193,7 +194,7 @@ test("Copilot body distinguishes supplied design stills, announcement evidence a
   assert.match(intervention, /<PortfolioMedia id="CUA-M01"/)
   assert.doesNotMatch(draft, /<MediaSlot|<SectionLabel|legacyBody|My work spanned/)
   assert.equal((draft.match(/<CaseSection /g) ?? []).length, 7)
-  for (const id of ["cua-onboarding", "cua-intervention"]) {
+  for (const id of ["cua-intervention"]) {
     const media = PORTFOLIO_MEDIA[id]
     assert.equal(media.kind, "image")
     assert.match(media.caption, /October 2025\. Image: Microsoft/)
@@ -201,6 +202,16 @@ test("Copilot body distinguishes supplied design stills, announcement evidence a
     assert.equal(media.width, png.readUInt32BE(16))
     assert.equal(media.height, png.readUInt32BE(20))
   }
+  const onboarding = PORTFOLIO_MEDIA["cua-onboarding"]
+  assert.equal(onboarding.src, "/images/copilot-actions/fre.png")
+  const firstRun = readFileSync(new URL(`../public${onboarding.src}`, import.meta.url))
+  assert.equal(onboarding.width, firstRun.readUInt32BE(16))
+  assert.equal(onboarding.height, firstRun.readUInt32BE(20))
+  assert.match(onboarding.alt, /Introducing Actions.*Experimental agentic features/)
+  assert.match(onboarding.caption, /Supplied first-run designs/)
+  assert.doesNotMatch(onboarding.caption, /October 2025\. Image: Microsoft/)
+  assert.match(draft, /<PortfolioMedia id="cua-onboarding"[^>]+linkToOriginal/)
+  assert.doesNotMatch(draft, /onboarding image is\s+reproduced from Microsoft/)
   for (const id of ["cua-take-control", "cua-hand-raise"]) {
     const media = PORTFOLIO_MEDIA[id]
     assert.equal(media.kind, "image")
@@ -215,6 +226,21 @@ test("Copilot body distinguishes supplied design stills, announcement evidence a
   assert.equal(request.requestId, "CUA-M01")
   assert.equal("src" in request, false)
   assert.match(read("docs/copilot-actions-review.md"), /### CUA-M01/)
+})
+
+test("Copilot omits standalone captions without losing exhibit guidance or source qualifications", () => {
+  const draft = read("components/portfolio/CopilotActionsPage.tsx")
+  const composer = read("app/copilot-actions/ComposerExplorations.tsx")
+  assert.doesNotMatch(draft + composer, /<figcaption\b|Fig\. \d/)
+  assert.match(draft, /editorial model, not a simulation/)
+  assert.match(draft, /conceptual relationship, not implementation/)
+  assert.match(draft, /unavailable Ginto typeface/)
+  assert.match(draft, /node-id=1339-53129/)
+  assert.match(draft, /node-id=1339-53384/)
+  assert.match(composer, /nothing operates your computer or sends a message/)
+  assert.match(composer, /<summary>Control placement/)
+  assert.match(composer, /<summary>Steering in context/)
+  assert.match(draft, /<caption[^>]*>Three explorations, not a selected or validated solution\./)
 })
 
 test("public figures omit caption lines while retaining accessible media and motion controls", () => {

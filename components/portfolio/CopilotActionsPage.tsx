@@ -22,7 +22,7 @@ const SOURCES = [
   {
     publisher: "MICROSOFT · 16 OCT 2025",
     title: "Securing AI agents on Windows",
-    detail: "Agent workspaces, access controls, and the published product screens shown here.",
+    detail: "Agent workspaces, access controls, and the announced product screens.",
     href: "https://blogs.windows.com/windowsexperience/2025/10/16/securing-ai-agents-on-windows/",
   },
   {
@@ -43,6 +43,18 @@ const SOURCES = [
     detail: "Reporting on the broader Copilot announcement and computer-use experience.",
     href: "https://www.pcmag.com/news/microsoft-heres-why-you-should-talk-to-your-windows-11-pc",
   },
+  {
+    publisher: "FIGMA · DESIGN EXPLORATION",
+    title: "Control placement source",
+    detail: "Three alternatives for interrupting, resuming and taking control. No selected direction or tested outcome is implied.",
+    href: "https://www.figma.com/design/OFb99P2At6oxtDGjDicLx8/Bryce-s-scratch?node-id=1339-53129",
+  },
+  {
+    publisher: "FIGMA · DESIGN EXPLORATION",
+    title: "Steering source",
+    detail: "The same alternatives with redirect-message, empty-composer and paused states.",
+    href: "https://www.figma.com/design/OFb99P2At6oxtDGjDicLx8/Bryce-s-scratch?node-id=1339-53384",
+  },
 ]
 
 export function CopilotActionsPage() {
@@ -60,8 +72,8 @@ export function CopilotActionsPage() {
         { label: "Milestone", value: "Oct 2025 · experimental, announced" },
       ]}
       hero={{
-        src: "/images/copilot-actions/cua-hero.png", width: 1504, height: 1024,
-        alt: "Copilot working on a restaurant reservation, with a browser workspace, task progress and a Take control action beside the conversation",
+        src: "/images/copilot-actions/cua-working.png", width: 1504, height: 1024,
+        alt: "Copilot on a blue desktop background, working on a restaurant reservation with a browser workspace, task progress and a Take control action beside the conversation",
         caption: "Restaurant reservation task: the workspace, progress and Take control action stay in view. Supplied design image.",
         linkToOriginal: true,
       }}
@@ -106,20 +118,21 @@ export function CopilotActionsPage() {
           <Prose><p>
             A useful way to read this experience is through the moments when
             responsibility changes hands. Each moment asks a different question
-            of the interface.
+            of the interface. Select a stage to explore its interaction question;
+            this is an editorial model, not a simulation of the product.
           </p></Prose>
           <figure className="pf-media" data-pf-reveal="evidence">
             <DelegationSequence />
-            <figcaption className="fn-label">Fig. 02 / An editorial model of delegation. Select a stage to explore the interaction question; this is not a simulation of the product.</figcaption>
           </figure>
         </CaseSection>
 
         {/* §2.8 Full-bleed Plate + §2.9 Strip Break */}
         <CaseSection id="access" title="Make the first handoff explicit.">
           <Prose><p>
-            Copilot Actions was announced as opt-in. The published onboarding
-            connects enabling the feature with access to local folders, explains
-            its experimental nature, and directs the user into Windows Settings.
+            Copilot Actions was announced as opt-in. The supplied first-run
+            designs introduce Actions, then connect enabling the feature with
+            access to local folders, explain its experimental nature, and direct
+            the user into Windows Settings.
             The design question is what someone needs to understand before they
             make that choice.
           </p></Prose>
@@ -145,7 +158,9 @@ export function CopilotActionsPage() {
                 <p>
                   That separation creates an interaction challenge: the agent’s
                   work still needs to be understandable and reachable. Giving it
-                  its own space should not mean losing track of the task.
+                  its own space should not mean losing track of the task. The
+                  diagram shows this conceptual relationship, not implementation
+                  details.
                 </p>
               </div>
               <div className={styles.workspaceDiagram} role="img" aria-label="Your desktop and the contained agent workspace are separate. You can check progress or take control of the agent’s work.">
@@ -165,7 +180,6 @@ export function CopilotActionsPage() {
                 </div>
               </div>
             </div>
-            <figcaption className="fn-label">Fig. 04 / Conceptual relationship from the announced workspace model. Separate work environments, with user oversight. Not an implementation diagram.</figcaption>
           </figure>
         </CaseSection>
 
@@ -186,14 +200,15 @@ export function CopilotActionsPage() {
             <PortfolioMedia id="cua-take-control" number="05a" linkToOriginal />
             <PortfolioMedia id="cua-hand-raise" number="05b" linkToOriginal />
           </Pair>
-          <p className="fn-label">Direct control / a request for input. Supplied design stills; recordings will show the transitions.</p>
           <Prose>
             <p>
               In the reservation task, “You’re in control” makes the handoff
               explicit and keeps Resume nearby. In the video task, the agent
               asks which app to use; “Use Capcut” answers that question in the
               composer. One changes who is operating the workspace. The other
-              supplies the decision the agent is missing.
+              supplies the decision the agent is missing. These supplied design
+              stills show the two states; recordings are planned to show the
+              transitions.
             </p>
             <p>
               The composer exposed a related problem: while an action was
@@ -248,13 +263,20 @@ export function CopilotActionsPage() {
 
         {/* §2.13 Data Table Block — source trail */}
         <CaseSection id="sources" title="Public record">
-          <Prose><p>
-            These sources document the October 2025 announcement, not current
-            availability or measured product outcomes. The onboarding image is
-            reproduced from Microsoft’s announcement. The opening, takeover and
-            hand-raise images were supplied separately; the composer boards are
-            design explorations, not evidence of shipped behavior.
-          </p></Prose>
+          <Prose>
+            <p>
+              The public reporting below documents the October 2025 announcement,
+              not current availability or measured product outcomes. The opening,
+              first-run, takeover and hand-raise images were supplied separately;
+              the composer boards are design explorations, not evidence of
+              shipped behavior.
+            </p>
+            <p>
+              The composer controls are recreated in code as local examples.
+              The unavailable Ginto typeface is represented with the portfolio’s
+              Inter. Both original design boards are linked below.
+            </p>
+          </Prose>
           <ol className={styles.sources}>
             {SOURCES.map((source) => (
               <li key={source.href} data-pf-reveal="reading">
