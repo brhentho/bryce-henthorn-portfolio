@@ -82,10 +82,7 @@ export function RecallPage() {
         { title: "Synthesize an answer", tradeoff: "Early RAG exploration added latency and another interpretation layer between the query and its source moments.", disposition: "Cut from this search experience." },
         { title: "Retrieve relevant moments", tradeoff: "People interpret the evidence themselves, so match type and provenance must remain legible.", disposition: "Prioritize direct retrieval with inspectable sources.", chosen: true },
       ]} />
-      <details className="pf-supporting-recording">
-        <summary>Inspect the exploratory answer-preview concept</summary>
-        <PortfolioMedia id="recall-retrieval" number="05" />
-      </details>
+      <PortfolioMedia id="recall-retrieval" number="05" />
     </CaseSection>
 
     <CaseSection id="trust" title="Remove a moment. Control future capture." tone="ink">

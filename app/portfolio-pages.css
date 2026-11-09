@@ -103,14 +103,6 @@
 .portfolio .pf-recall-full-grid summary:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 3px; }
 .portfolio .pf-recall-full-grid img { display: block; width: 100%; height: auto; margin-bottom: 1rem; border: 1px solid var(--rule); }
 .portfolio .pf-recall .pf-decisions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.portfolio .pf-supporting-recording { border-block: 1px solid var(--rule); }
-.portfolio .pf-supporting-recording summary {
-  cursor: pointer;
-  padding: 1.25rem .25rem;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-.portfolio .pf-supporting-recording[open] > .pf-media { padding-bottom: 1.5rem; }
 .portfolio .pf-recovery-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding-block: 2rem; border-block: 1px solid var(--rule); }
 .portfolio .pf-recovery-pair h3 { font-size: 1.5rem; margin-block: 1rem; }
 .portfolio .pf-recovery-pair p { font-size: 1rem; line-height: 1.65; color: var(--text-secondary); }

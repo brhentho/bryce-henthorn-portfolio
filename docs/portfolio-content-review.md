@@ -161,7 +161,7 @@ with their original source recordings.
   frames show search refinement and the separated Text matches / Visual matches
   full grid at approximately 12s.
 - `recall-retrieval`: existing `shilpa_0603_03%201.mp4` on the sayyacgp8fag7fqj
-  host, retrieval poster. Secondary, explicitly expandable **answer-preview
+  host, retrieval poster. Secondary, directly visible **answer-preview
   exploration**, not the selected retrieval-only direction. An inspected frame
   at approximately 17s shows a distinct answer-preview card above text and visual
   matches. Different queries/layouts mean this is not a matched before/after or
@@ -190,7 +190,7 @@ implementation. Future cleared exports can replace registry requests by ID.
 | Recall | System | `#system`: actual four stages in forward reading order. Original reverse-stacked illustration labeled as such. |
 | Recall | Cards + buried ranking observation | `#cards`: merged-ranking finding promoted, screenshot-led hierarchy and separated results accurately labeled. |
 | Recall | Transparency + primary film | `#transparency`: source, time, match type, false positives and query/result recording. |
-| Recall | Performance + Constraints | `#constraints`, nested `#performance`: qualitative cadence and original retrieval/synthesis decision preserved; optional answer-preview exploration recording, relabeled from inspected frames. Unsupported 200ms removed. |
+| Recall | Performance + Constraints | `#constraints`, nested `#performance`: qualitative cadence and original retrieval/synthesis decision preserved; answer-preview exploration recording visible directly without a disclosure or surrounding rules, relabeled from inspected frames. Unsupported 200ms removed. |
 | Recall | Trust | `#trust`: recovery/prevention pair and four principles bounded by version/design scope; sensitive stills withheld. |
 | Recall | Impact | `#impact`: bounded testing observations, Build 2024 and related design discussions. Removed “proved” and ripple/adoption inference. |
 | Teams | Context + Problem + research | `#context` and `#research`: retention reframing, method before themes, teacher logistics and peer conversation. Identifying research held. |
