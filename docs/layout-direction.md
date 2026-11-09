@@ -131,7 +131,7 @@ Do not mechanically apply one background ramp or one case-body template to every
 | Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve ASCII, layered project entrances and continuous atmosphere; clean linked product images with bounded pointer response, then staggered Approach |
 | Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Scattered task-pill field (2.8, floating exception), decision table with grouped taskbar explorations, actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
 | Recall | Fragmentary memory -> capture/index model -> cards as moments -> merged-ranking problem -> match types and provenance -> search latency -> RAG tradeoff -> privacy boundary -> milestone | Floating Recall identity beside the opening prose (2.4), floating four-layer model with hover/focus emphasis (2.5/2.7), screenshot-led hierarchy beside six card explorations (2.4, cutout exception), reversed ranking split (2.4), full reading-width provenance (2.8) with three-column annotations (2.13, stacked on mobile), latency and RAG reading columns with supporting recordings (2.3), privacy pair and full reading-width announcement (2.8); mainly ink/graphite |
-| Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Curated research evidence strip (2.9), workflow finding/intent table (2.13), conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
+| Teams | Pandemic scale -> classroom chapter break -> research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome and Class Home Page | Intro scale strip (2.9), class-wide avatar cover (2.10), curated research evidence strip (2.9), workflow finding/intent table (2.13), conceptual schematic and correctly placed recordings; impact uses an annotated split plate (2.4) followed by public-reaction evidence (2.6, floating exception: staggered, lightly overlapping original posts with attribution in each image and no separate caption or summary block, stacked without overlap on narrow screens); dark opening to warm-paper research/body |
 | About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split, grouped working-example/ledger arrivals and shared neutral ink; no warm-brown override or product simulation |
 
 Public navigation uses a name-only wordmark and a gooey moving highlight with
@@ -229,8 +229,12 @@ Recall's announcement photograph is no longer a capped thumbnail in a split.
 It fills the reading column beneath the closing heading, followed by readable
 body copy. The registry uses its measured 1434 x 807 dimensions.
 
-Teams uses one author-confirmed approximate statistic and anonymous student themes,
-not six reproduced slides. The research placeholder is replaced by the supplied
+Teams pairs the author-supplied 150M+ pandemic platform scale with the separate
+author-confirmed approximate teacher-preference statistic and anonymous student
+themes, not six reproduced slides. A static class-wide avatar/reaction composition
+from Bryce's scratch `1327:98310` closes the intro as a Cover Plate; it is a
+concept illustration, not a working meeting or research participant roster. The
+surrounding page keeps its continuous environment, with no new motion. The research placeholder is replaced by the supplied
 evidence; selected workflow findings connect to preparation, shared materials and
 teacher awareness. Keep the sources light on the page and traceable in the review
 notes; do not turn input research into an adoption or retention result.
