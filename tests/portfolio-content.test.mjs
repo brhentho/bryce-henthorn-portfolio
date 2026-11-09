@@ -88,17 +88,23 @@ test("Recall introduces card hierarchy between the system and ranking without du
   assert.match(recall.split("export function RecallPage")[0], /id: "moments"/)
 })
 
-test("Agents taskbar explorations stay together with the alternatives discussion", () => {
+test("Agents taskbar explorations pair the direction list with one grouped figure, not verdict cards", () => {
   const agents = pages[0]
   const process = agents.match(/<CaseSection id="process"[\s\S]*?<\/CaseSection>/)?.[0]
   const taskbar = agents.match(/<CaseSection id="taskbar"[\s\S]*?<\/CaseSection>/)?.[0]
   assert.ok(process)
   assert.ok(taskbar)
+  assert.match(process, /<Split className="pf-agents-exploration-split">/)
+  const directions = process.match(/<ol>[\s\S]*?<\/ol>/)?.[0]
+  assert.ok(directions)
+  assert.equal((directions.match(/<li>/g) ?? []).length, 3)
+  assert.ok(process.indexOf("</ol>") < process.indexOf("<figure"))
+  assert.doesNotMatch(process, /<Decisions|chosen:|Selected direction/)
   const sources = [...process.matchAll(/src="(\/assets\/Frame [^"]+)"/g)].map(match => match[1])
   assert.deepEqual(sources, [
-    "/assets/Frame 2147238301.png",
-    "/assets/Frame 2147238302.png",
-    "/assets/Frame 2147238303.png",
+    "/assets/Frame 2147262306.png",
+    "/assets/Frame 2147262307.png",
+    "/assets/Frame 2147262308.png",
   ])
   for (const src of sources) {
     assert.equal(agents.split(`src="${src}"`).length - 1, 1)
@@ -114,6 +120,15 @@ test("Agents taskbar explorations stay together with the alternatives discussion
   assert.doesNotMatch(taskbar, /\/assets\/Frame /)
   assert.match(taskbar, /id="agents-taskbar"/)
   assert.match(taskbar, /className="pf-state-lexicon"/)
+})
+
+test("Agents constraints image separates the contract rationale from shell testing", () => {
+  const agents = pages[0]
+  const constraints = agents.match(/<CaseSection id="constraints"[\s\S]*?<\/CaseSection>/)?.[0]
+  assert.ok(constraints)
+  assert.match(constraints, /<h2[^>]*>[^<]+<\/h2>\s*<Prose>\s*<p>[^<]+<\/p>\s*<p>[^<]+<\/p>\s*<\/Prose>\s*<PortfolioMedia id="agents-constraints" number="05.1" \/>\s*<div id="iteration"/)
+  assert.equal(agents.split('id="agents-constraints"').length - 1, 1)
+  assert.match(constraints, /<PortfolioMedia id="AGENTS-M01" \/>/)
 })
 
 test("Recall gives search latency and the RAG tradeoff distinct chapters and recordings", () => {

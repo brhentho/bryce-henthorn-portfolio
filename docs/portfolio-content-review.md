@@ -31,7 +31,7 @@ belongs with the verified search recording.
 | --- | --- | --- | --- |
 | AGENTS-C01 | Opening, invocation, states | Which build/version is shown? Which behaviors were prototype, preview or released? What can be stated publicly about partners? | Ongoing platform work; recordings labeled design artifacts. No general-availability or adoption claim. |
 | AGENTS-C02 | Shared contract | Does quarterly describe this particular program rather than Windows generally? | Removed the quarterly cadence and device-count claims. Preserved stable OS contract versus changing provider output. |
-| AGENTS-C03 | Taskbar decision | What permitted observations favored the taskbar over app-bound and dedicated-workspace options? | All three alternatives and tradeoffs retained as a decision summary. Original evaluation board requested in AGENTS-M02. |
+| AGENTS-C03 | Taskbar explorations | What permitted observations favored the taskbar over app-bound and dedicated-workspace options? | Author-supplied three-direction narrative and progressive-approach rationale beside grouped taskbar explorations; no verdict cards or added evaluation claims. Original evaluation board requested in AGENTS-M02. |
 | RECALL-C01 | Retrieval | Is there a measured/configured basis for the earlier 200ms statement? Which device, workload and build? | Removed the number and nonblocking absolutes. Qualitative query-cadence rationale only. |
 | RECALL-C02 | Privacy | Which versions and responsibilities does the earlier opt-out → opt-in account describe? What exact capture eligibility, local-processing and deletion/retention boundaries apply? | No migration chronology or universal security guarantee. Distinguish design intent, snapshot deletion and future capture settings. |
 | RECALL-C03 | Imagery | Are reservation and financial examples synthetic, redacted and cleared? Audit other product screenshots for names, account data and confidential content too. | Author explicitly approved the two supplied RECALL-M02 screenshots, including the redacted Fidelity snapshot and visible site name. Only these recovery crops are rendered as design artifacts; unrelated reservation/financial stills remain held. Product version and retention boundaries remain unconfirmed. |
@@ -71,7 +71,7 @@ The same stable request ID is used on the page and in the registry.
   comparable task context; observations that actually informed selection.
 - **Required context:** Evaluation method/date, participant context if
   permissible, source status and clearance.
-- **Fallback:** Readable three-alternative decision summary with the three taskbar exploration images, not a claim of original evaluation evidence.
+- **Fallback:** Author-supplied exploration narrative beside the three taskbar images, not a substitute for original evaluation evidence or a one-to-one illustration of the three destinations.
 
 ### RECALL-M01 — The same query, two ranking treatments
 
@@ -206,10 +206,10 @@ implementation. Future cleared exports can replace registry requests by ID.
 | Page | Source material | New location / disposition |
 | --- | --- | --- |
 | Agents | Context + Problem | `#context`: fragmented/observable pair, early-interview concern and OS opportunity, without universal psychological claims. |
-| Agents | Three candidate homes | `#process`: all alternatives and tradeoffs followed by the three taskbar exploration images from Figma frame `380:39833`, visible together under one caption. |
+| Agents | Three candidate homes | `#process`: author-supplied heading, three-direction list and progressive-approach rationale on the left; replacement taskbar exports `2147262306`, `2147262307` and `2147262308` grouped on the right in supplied order under one caption. Text precedes images on narrow screens. Earlier assets remain available to archived routes. |
 | Agents | Invocation | `#invocation`: dispatch → monitor → return, composer recording. |
 | Agents | Taskbar + state inventory | `#taskbar`, nested `#simulation`: actual detail recording and all five states. The exploration images belong to `#process`; no public simulator. |
-| Agents | Constraints + Iteration | `#constraints`, nested `#iteration`: provider requests, stable contract, actual-shell prototypes and multiple-agent testing retained. |
+| Agents | Constraints + Iteration | `#constraints`, nested `#iteration`: provider requests, stable contract, actual-shell prototypes and multiple-agent testing retained. The full reading-width multi-agent composition sits after the two shared-contract paragraphs and before the shell-testing subsection; it is not labeled test evidence. |
 | Agents | Impact | `#impact`: ongoing work and announcement distinguished from availability/outcomes. Repeated individual ownership removed; role stays in ledger. |
 | Recall | Context + Problem | `#context`: memory fragments and task-dependent relevance. Reservation example withheld, not replaced with invented screenshot. |
 | Recall | System | `#system`: actual four stages in forward reading order. Original reverse-stacked illustration labeled as such. |
