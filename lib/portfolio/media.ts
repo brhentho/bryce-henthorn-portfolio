@@ -68,10 +68,10 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
   },
   "recall-provenance": {
     kind: "image", title: "Result provenance",
-    src: "/images/recall/transparency-card-grid.png",
-    alt: "Recall results for Presentation with a red barn, showing screenshot context, source application and time",
-    width: 1641, height: 881,
-    caption: "Screenshot context, source app and time help a reader judge a result. This still does not show the separate text and visual match headings.",
+    src: "/images/recall/provenance-search-results-cropped.png",
+    alt: "Recall query Presentation with a red barn above four screenshot results: Designed to Amplify, Marketing review, Symbolism of colors and Netflix.com, with source badges and relative timestamps.",
+    width: 1678, height: 529,
+    caption: "A remembered phrase and four candidate moments. Source, time and screenshot context help a reader judge the match; this composition does not show separate text and visual headings.",
   },
   "recall-search": {
     kind: "video", title: "Recall search interaction",

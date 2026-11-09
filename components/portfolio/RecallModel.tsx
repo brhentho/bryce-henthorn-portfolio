@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useId, useRef } from "react"
+import { PORTFOLIO_MEDIA } from "@/lib/portfolio/media"
 import { EvidenceReveal } from "./Blocks"
 
 const stages = [
@@ -120,26 +121,22 @@ export function RecallModel() {
 }
 
 export function RecallProvenance() {
-  const id = useId()
+  const media = PORTFOLIO_MEDIA["recall-provenance"]
+  if (media.kind !== "image") throw new Error("Recall provenance requires an image")
   return <div className="pf-recall-provenance">
     <figure className="pf-media" data-media-id="recall-provenance">
-      <div className="pf-recall-provenance-plate pf-media-frame pf-recall-registered">
+      <div className="pf-media-frame pf-media-cutout">
         <EvidenceReveal>
-        <div className="pf-recall-result">
-          {/* Source pixels: the first complete result card, including time and source badge. */}
-          <svg viewBox="98 195 340 251" role="img" aria-labelledby={`${id}-title`}>
-            <title id={`${id}-title`}>Enlarged Recall result: a PowerPoint presentation titled Designed to Amplify, captured 1hr ago, with the surrounding slide and desktop visible.</title>
-            <image href="/images/recall/transparency-card-grid.png" width="1641" height="881" />
-          </svg>
-        </div>
+          <div className="pf-recall-result">
+            <Image src={media.src} alt={media.alt} width={media.width} height={media.height} sizes="(min-width: 1600px) calc(100vw - 24rem), (min-width: 1101px) calc(100vw - 20rem), 92vw" />
+          </div>
         </EvidenceReveal>
-        <dl className="pf-recall-annotations" data-pf-reveal="reading">
-          <div><dt>Source application</dt><dd className="pf-caption">The PowerPoint badge and “Designed to Amplify” title identify the source at the bottom of the card.</dd></div>
-          <div><dt>Timestamp</dt><dd className="pf-caption">“1hr ago” places the captured moment in time, directly beneath the result title.</dd></div>
-          <div><dt>Surrounding context</dt><dd className="pf-caption">The slide, thumbnail rail and desktop remain visible—not just an isolated image of the red barn.</dd></div>
-        </dl>
       </div>
-      <figcaption className="fn-label">Fig. 04.1 / Enlarged result from the existing Recall design. Source, time and screenshot context help a reader judge the match; this crop does not show separate text and visual headings.</figcaption>
+      <dl className="pf-recall-annotations" data-pf-reveal="reading">
+        <div><dt>Source</dt><dd className="pf-caption">The app and title show where it came from.</dd></div>
+        <div><dt>Time</dt><dd className="pf-caption">See when it was captured.</dd></div>
+        <div><dt>Context</dt><dd className="pf-caption">Recognize the moment from the full screenshot.</dd></div>
+      </dl>
     </figure>
     <details className="pf-recall-full-grid">
       <summary>Inspect the full result grid</summary>

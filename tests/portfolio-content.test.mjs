@@ -61,6 +61,16 @@ test("Teams films follow inspected content rather than historic captions", () =>
   assert.ok(teams.indexOf('id="teams-classroom"') < teams.indexOf('id="teams-student"'))
 })
 
+test("Recall provenance uses the trimmed composition at its intrinsic dimensions", () => {
+  const media = PORTFOLIO_MEDIA["recall-provenance"]
+  assert.equal(media.kind, "image")
+  assert.equal(media.src, "/images/recall/provenance-search-results-cropped.png")
+  const png = readFileSync(new URL(`../public${media.src}`, import.meta.url))
+  assert.equal(png.toString("ascii", 1, 4), "PNG")
+  assert.equal(media.width, png.readUInt32BE(16))
+  assert.equal(media.height, png.readUInt32BE(20))
+})
+
 test("publication holds do not leak back into main page content", () => {
   const content = pages.join("\n")
   assert.doesNotMatch(content, /problem-opentable|trust-sensitive-content|trust-delete-snapshot|teams-cocreation|impact-tweets/)

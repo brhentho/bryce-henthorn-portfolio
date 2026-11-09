@@ -11,9 +11,13 @@ been independently verified. Existing assets are retained, not deleted.
 
 The interactive Recall capture/index drawing is an explanatory reconstruction of
 the existing four-layer diagram, not a running system or measured timing model.
-The provenance enlargement uses the red-barn result screenshot's actual source,
-time and surrounding context. It does not show separated Text/Visual headings;
-that distinction belongs with the verified search recording.
+The provenance figure uses the supplied red-barn query and four-result composition
+at full reading width without a frame or numbered caption, with short Source,
+Time and Context annotations beneath it. The top 300px of empty space are cropped
+from the supplied 1678 x 829 image, preserving the query and all four result cards
+in a 1678 x 529 asset. The original full UI remains available in the disclosure.
+The composition does not show separated Text/Visual headings; that distinction
+belongs with the verified search recording.
 
 ## Publication and factual questions
 

@@ -130,7 +130,7 @@ Do not mechanically apply one background ramp or one case-body template to every
 |---|---|---|
 | Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve ASCII, layered project entrances and continuous atmosphere; clean linked product images with bounded pointer response, then staggered Approach |
 | Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Scattered task-pill field (2.8, floating exception), decision table, floating keyframes, actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
-| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> milestone | Floating Recall identity beside the opening prose (2.4), floating selectable four-layer model (2.5/2.7), provenance crop with annotations (2.4), recordings, decision table, privacy pair and full reading-width announcement figure (2.8); mainly ink/graphite |
+| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> milestone | Floating Recall identity beside the opening prose (2.4), floating selectable four-layer model (2.5/2.7), full reading-width provenance composition (2.8) with a three-column reference block below (2.13, stacked on mobile), recordings, decision table, privacy pair and full reading-width announcement figure (2.8); mainly ink/graphite |
 | Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Curated research evidence strip (2.9), workflow finding/intent table (2.13), conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
 | About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split, grouped working-example/ledger arrivals and shared neutral ink; no warm-brown override or product simulation |
 
@@ -154,6 +154,10 @@ five-state legend provide the explanation without a second workflow to learn.
 Archived simulations remain. The Agents task field and taskbar cutouts, and
 Recall's exploded model, intentionally float without a website matte or frame.
 Recall retains its planes and stage controls but omits the large vertical arrow.
+
+Recall's provenance composition also floats without a frame or registration
+marks. Its short Source, Time and Context annotations replace a numbered
+figure caption, per the approved simplification.
 
 The Recall introduction replaces the three-line memory-fragment treatment with
 the authentic blue logo floating over a fading grid and blue-violet glow, matching
