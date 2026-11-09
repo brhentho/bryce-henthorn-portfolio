@@ -92,6 +92,8 @@
   --pf-recall-hover-gap: 16px;
   --pf-recall-identity-grid: #ffffff;
   --pf-recall-identity-cell: rgb(255 255 255 / .25);
+  --pf-teams-initials-ink: #346c6d;
+  --pf-evidence-heading-size: clamp(1.75rem, 3vw, 2.5rem);
 
   /* Hero clip windows. 0.5em vertical clears Inter Tight's ascenders and
      descenders at display leading; 0.25em horizontal clears side bearings
