@@ -1,7 +1,11 @@
 /* Page-specific narrative composition. Shared surfaces live in portfolio.css. */
-.portfolio .pf-section > .pf-agents-explorations { max-width: 651px; margin-block-start: var(--space-block); }
+.portfolio .pf-agents-exploration-split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.portfolio .pf-agents-exploration-copy { display: grid; gap: var(--space-block); }
+.portfolio .pf-agents-exploration-copy ol { list-style: decimal; padding-inline-start: 1.5em; }
 .portfolio .pf-agents-explorations-images { display: grid; gap: var(--space-block); }
-.portfolio .pf-constraints-section > .pf-media + h2 { margin-top: var(--space-section); }
+@media (max-width: 850px) {
+  .portfolio .pf-agents-exploration-split { grid-template-columns: 1fr; }
+}
 .portfolio [data-media-id="agents-constraints"] > .pf-media-frame {
   border: 0;
   background: transparent;
