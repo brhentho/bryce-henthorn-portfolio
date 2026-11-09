@@ -96,7 +96,11 @@ export function RecallPage() {
         <article><span className="fn-label">The captured moment</span><h3>Remove the snapshot.</h3><p>Make deletion discoverable and explain the scope of the confirmation. A recovery action should not imply that future capture settings have also changed.</p></article>
         <article><span className="fn-label">What happens next</span><h3>Review capture settings.</h3><p>Offer a path to pause capture or manage app and website exclusions where supported. Make the difference between removing and preventing understandable.</p></article>
       </div>
-      <PortfolioMedia id="RECALL-M02" />
+      <Pair>
+        <PortfolioMedia id="recall-delete-snapshot" number="05.1" sizes="(max-width: 850px) 92vw, 45vw" />
+        <PortfolioMedia id="recall-capture-settings" number="05.2" sizes="(max-width: 850px) 92vw, 45vw" />
+      </Pair>
+      <p className="pf-caption">Privacy recovery design: confirm deletion, then review future capture settings. These are separate decisions, not a claim about a specific release or retention behavior.</p>
       <dl className="pf-principles">
         <div><dt>Local processing</dt><dd>On-device capture, indexing and retrieval were central to the architecture described in this work. Exact product guarantees require version-specific documentation.</dd></div>
         <div><dt>User control</dt><dd>Make capture choice, pause and exclusions understandable rather than leave people to infer what the system will retain.</dd></div>
