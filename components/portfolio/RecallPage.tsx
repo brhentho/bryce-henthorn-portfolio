@@ -2,6 +2,7 @@ import { CaseLayout } from "./CaseLayout"
 import { CaseSection, Decisions, Pair, Prose, ShinyLink } from "./Blocks"
 import { PortfolioMedia } from "./PortfolioMedia"
 import { RecallModel, RecallProvenance } from "./RecallModel"
+import { RecallIdentity } from "./RecallIdentity"
 
 const chapters = [
   { id: "context", label: "Memory starts with fragments" },
@@ -34,8 +35,8 @@ export function RecallPage() {
     chapters={chapters}
   >
     <CaseSection id="context" title="Memory starts with fragments." tone="ink">
-      <div className="pf-recall-fragments">
-        <p className="pf-pull-line">The chart was blue.<br />The page was from last week.<br />The filename is gone.</p>
+      <div className="pf-recall-introduction">
+        <RecallIdentity />
         <Prose>
           <p>People could remember a presentation, a snippet of code or something in an email without remembering the words needed to find it. Traditional file search was a poor fit for that starting point.</p>
           <p>Recall aimed to make eligible captured content searchable by meaning. But retrieving something plausible was not enough. We needed to help people distinguish the moment they wanted from an interesting-looking false positive.</p>

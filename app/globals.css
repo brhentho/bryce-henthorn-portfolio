@@ -83,6 +83,8 @@
   --pf-task-surface-high: color-mix(in srgb, var(--text-primary) 18%, transparent);
   --pf-task-shadow: 0 2px 8px rgb(0 0 0 / .12), inset 0 1px 0 rgb(255 255 255 / .08);
   --pf-task-drift-duration: 12000ms;
+  --pf-recall-identity-grid: #ffffff;
+  --pf-recall-identity-cell: rgb(255 255 255 / .25);
 
   /* Hero clip windows. 0.5em vertical clears Inter Tight's ascenders and
      descenders at display leading; 0.25em horizontal clears side bearings

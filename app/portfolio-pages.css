@@ -52,7 +52,12 @@
 .portfolio .pf-state-lexicon h3 { font-size: 1rem; line-height: 1.4; letter-spacing: -.01em; }
 .portfolio .pf-state-lexicon p { font-size: .875rem; line-height: 1.6; color: var(--text-secondary); }
 .portfolio .pf-state-figure figcaption { border-top: 1px solid var(--rule); padding-block: 1rem; }
-.portfolio .pf-recall-fragments { display: grid; grid-template-columns: .85fr 1.15fr; gap: 7%; align-items: start; }
+.portfolio .pf-recall-introduction { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 6%; align-items: center; }
+.portfolio .pf-recall-identity { margin: 0; min-width: 0; }
+.portfolio .pf-recall-identity__scene { display: block; width: 100%; height: auto; overflow: hidden; }
+.portfolio .pf-recall-identity__cell { fill: none; stroke: var(--pf-recall-identity-grid); stroke-width: .9106; }
+.portfolio .pf-recall-identity__cell[data-highlighted] { fill: var(--pf-recall-identity-cell); }
+.portfolio .pf-recall-identity__caption { max-width: 38ch; margin-inline: auto; text-align: center; font: .8125rem/1.6 var(--font-mono); color: var(--text-secondary); }
 .portfolio .pf-recall-model { display: grid; grid-template-columns: .85fr 1.15fr; gap: 4%; align-items: center; }
 .portfolio .pf-recall-stages { min-width: 0; border: 0; padding: 0; }
 .portfolio .pf-recall-stages legend { margin-bottom: 1rem; }
@@ -153,11 +158,12 @@
   .portfolio .pf-state-lexicon { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 850px) {
-  .portfolio .pf-recall-fragments, .portfolio .pf-recall-model,
+  .portfolio .pf-recall-introduction, .portfolio .pf-recall-model,
   .portfolio .pf-working-examples, .portfolio .pf-about-philosophy,
   .portfolio .pf-prior-work, .portfolio .pf-student-split,
   .portfolio .pf-recall .pf-decisions { grid-template-columns: 1fr; gap: 2rem; }
   .portfolio .pf-recall-model { grid-template-columns: 1fr; }
+  .portfolio .pf-recall-identity { max-width: 32rem; margin-inline: auto; }
   .portfolio .pf-recall-model-figure { grid-row: 1; width: 100%; max-width: 38rem; justify-self: center; }
   .portfolio .pf-recall-provenance-plate { grid-template-columns: 1fr; padding: 1.25rem; gap: 1.5rem; }
 }
