@@ -1,0 +1,130 @@
+/* Texture must not shift luminance after the crossing contrast is resolved. */
+body:has(.portfolio .fn-environment[data-crossing]) > .noise { opacity: 0; }
+.portfolio .fn-brand {
+  min-height: 44px;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -.025em;
+}
+.portfolio :is(a, button, summary, input[type="radio"]) { cursor: pointer; }
+.portfolio .pf-number-rail a {
+  width: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+  border-radius: 999px;
+  text-decoration: none;
+}
+.portfolio .pf-number-rail a span { font-size: .75rem; }
+.portfolio .pf-number-rail a:is(:hover, :focus-visible) { color: var(--text-primary); background: var(--xr-surface); }
+.portfolio .pf-number-rail a[aria-current] { background: var(--xr-surface); }
+.portfolio .pf-playback-notice { padding: .75rem 1rem; font-size: .875rem; line-height: 1.5; color: var(--text-primary); }
+.portfolio .fn-environment[data-crossing] :focus-visible { outline-color: var(--text-primary); }
+.portfolio .fn-environment[data-crossing] :is(.xp-btn, .xp-sim-state) {
+  color: var(--text-primary);
+  background: var(--surface-bg);
+  transition: none;
+}
+.portfolio .fn-environment[data-crossing] :is(.xp-btn, .xp-sim-state):is(:hover, :active, [aria-pressed="true"]) {
+  color: var(--text-primary);
+  background: var(--surface-bg);
+  border-color: var(--text-primary);
+}
+.portfolio .fn-environment[data-crossing] :is(.xp-btn, .xp-sim-state)[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+@media (max-width: 1100px) {
+  .portfolio .pf-number-rail nav { gap: .25rem; }
+}
+.portfolio .fn-nav .pf-navigation {
+  position: relative;
+  flex-wrap: wrap;
+  gap: .125rem;
+  isolation: isolate;
+}
+.portfolio .pf-navigation > a {
+  position: relative;
+  z-index: 1;
+  padding: .625rem 1rem;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 999px;
+}
+.portfolio .pf-navigation > a:is(:hover, :focus-visible, [aria-current]) { color: var(--text-primary); }
+.portfolio .pf-nav-filter { position: absolute; pointer-events: none; }
+.portfolio .pf-nav-fluid { position: absolute; inset: 0; pointer-events: none; opacity: .14; visibility: hidden; }
+.portfolio .pf-navigation[data-ready] .pf-nav-fluid { visibility: visible; }
+.portfolio .pf-nav-blob {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 60px;
+  height: var(--nav-height, 2.5rem);
+  border-radius: 999px;
+  background: var(--text-primary);
+  transform-origin: left center;
+  transform: translate(var(--nav-x, 0px), var(--nav-y, .125rem)) scaleX(var(--nav-width, 1));
+  transition: transform var(--duration-fast-ui) var(--ease-in-out-sine);
+}
+.portfolio .pf-nav-tail { transition-duration: var(--duration-normal-ui); }
+.portfolio .pf-navigation[data-keyboard] .pf-nav-blob { transition: none; }
+.portfolio .pf-route-status { flex-basis: 100%; font-size: .875rem; line-height: 1.5; }
+.portfolio .fn-shiny.pf-action {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  min-height: 44px;
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  text-decoration: none;
+}
+.portfolio .pf-action .fn-shiny-arrow {
+  display: inline-block;
+  flex: none;
+  transition: translate var(--duration-fast-ui) var(--ease-out-quad);
+}
+.portfolio .pf-action:hover .fn-shiny-arrow { translate: 3px 0; }
+.portfolio .fn-shiny.pf-action-quiet { --shine-spread: 0%; background: var(--xr-surface); border-color: var(--rule); }
+.portfolio .pf-action-quiet::before { opacity: 0; transition: opacity var(--duration-fast-ui) var(--ease-out-quad); }
+.portfolio .pf-action-quiet:is(:hover, :focus-visible)::before { opacity: 1; }
+.portfolio .fn-contact-title { text-decoration: none; }
+.portfolio .fn-contact-title span { display: inline-block; transition: translate var(--duration-normal-ui) var(--ease-out-expo); }
+.portfolio .fn-contact-title:hover span { translate: .12em -.08em; }
+.portfolio .fn-contact-title:focus-visible { outline-offset: .15em; }
+.portfolio .fn-project .fn-device { background: transparent; border: 0; overflow: visible; }
+.portfolio .fn-project .fn-device-view { overflow: visible; }
+.portfolio .pf-project-link { display: block; border-radius: var(--pf-media-radius); perspective: 1200px; }
+.portfolio .fn-project-plate { filter: var(--pf-media-drop-shadow); }
+.portfolio .fn-device-image img { border-radius: var(--pf-media-radius); }
+.portfolio .fn-environment[data-crossing] .fn-project-plate { filter: none; }
+.portfolio .pf-project-link:focus-visible { outline-offset: 6px; }
+.portfolio .pf-image-interaction {
+  transform: rotateX(0) rotateY(0) scale(1);
+  transition: transform var(--duration-fast-ui) var(--ease-out-quad);
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 851px) {
+  .portfolio .pf-project-link:hover .pf-image-interaction {
+    transform: rotateX(calc(var(--image-y, 0) * var(--pf-image-tilt))) rotateY(calc(var(--image-x, 0) * var(--pf-image-tilt))) scale(var(--pf-image-scale));
+  }
+}
+@keyframes pf-portrait-in {
+  from { opacity: .55; transform: translateY(var(--pf-reveal-distance)) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.portfolio .pf-portrait { animation: pf-portrait-in var(--duration-enter) var(--ease-out-expo) var(--stagger-eyebrow) backwards; }
+html[data-route-style="portfolio"] .portfolio .pf-portrait { animation-play-state: paused; }
+@media (max-width: 540px) {
+  .portfolio .fn-nav { gap: .5rem; }
+  .portfolio .pf-navigation > a { padding-inline: .75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio .pf-nav-blob, .portfolio .pf-action .fn-shiny-arrow,
+  .portfolio .fn-contact-title span, .portfolio .pf-image-interaction { transition: none; }
+  .portfolio .pf-image-interaction { transform: none !important; }
+  .portfolio .pf-action:hover .fn-shiny-arrow, .portfolio .fn-contact-title:hover span { translate: none; }
+  .portfolio .pf-portrait { animation: none; }
+  .portfolio [data-pf-pending] { opacity: 1; }
+}

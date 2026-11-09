@@ -21,4 +21,8 @@ critique/animations/
 # Agent scratch dirs and local worktrees (never commit these)
 .a5c/
 .claude/worktrees/
+.craft/
 fixes/
+
+# Withheld originals remain private during design rollback.
+.local-media/

@@ -1,5 +1,181 @@
 # Portfolio implementation — October 2026
 
+> Historical implementation record. The current main-route build promotes
+> Synthesis + ASCII and uses the page-specific outline in `docs/layout-direction.md`.
+> Current story questions and media requests are in `docs/portfolio-content-review.md`.
+> Production-source edits are now authorized locally; deployment is still separate.
+
+## Current local portfolio promotion
+
+- Main Home uses the selected Synthesis + ASCII experience, public navigation and
+  qualified project copy. Agents, Recall, Teams and About have distinct
+  narrative compositions using the shared public portfolio layer.
+- Existing environment math and visual foundations were promoted with compatibility
+  wrappers, preserving the exploration archive. Static Synthesis tokens live in
+  the root token block; public layout/content styles are scoped.
+- The critic's source-caption assumptions were checked against actual video
+  frames. Teams fig04 is preparation, fig06 is live orchestration, and fig05 is
+  shared materials. Recall's second clip is an answer-preview exploration, not a
+  matched performance comparison. All seven existing recordings advanced playback
+  in Chromium.
+- Missing artifacts have compact, stable-ID slots that remain visible in both dev
+  and production-mode local builds. The detailed replacement briefs, editorial
+  holds and source map are in `portfolio-content-review.md`.
+- Typecheck, 23 tests and the production build pass. The five main pages passed
+  40 viewport/reduced-motion combinations with no visible text clipping,
+  horizontal overflow, missing visible images or wrong/dead main-site links.
+- Public artifact navigation, destination-heading focus, Back, no-JS content,
+  recording failure fallback, visible build-mode placeholders and the unpublished
+  Copilot Actions robots metadata were exercised.
+- Technical review found low contrast behind the homepage's type. A public-only
+  soft scrim now protects text while retaining the selected ASCII geometry and
+  animation. Sampled composited contrast passed at desktop and narrow widths.
+  The accepted Inter typography and archived grid treatments are intentional;
+  generic style-lint warnings are not reasons to replace the chosen design.
+- One stale development image-optimizer request was cleared by restarting the
+  owned dev server. No source image or global optimization policy was bypassed.
+
+This is a **local review build**, not a deployed or publication-approved portfolio.
+Clearance/version/outcome questions, physical-browser/device checks and the
+continuous-artwork accessibility publication assessment remain explicit follow-up
+items. No fabricated research, metrics or completed-media claims fill those gaps.
+
+## Public interaction polish
+
+- The public header is a name-only home link. Work/About/Contact share a gooey
+  highlight that moves independently of text and click targets. Primary and quiet
+  actions share the cursor-responsive edge, mono labels, focus and press treatment.
+- `PortfolioLink` selects the public editorial wipe in the existing transition
+  coordinator. The opaque panel covers the route commit and continues offscreen
+  before the headline resolves. Public links do not also start an artifact morph.
+  Keyboard/reduced-motion navigation is direct; local anchors remain local and
+  cross-page hashes receive the correct scroll position and focus. Interrupted
+  and uncommitted navigation releases the shield, with an explicit recovery message.
+- Homepage project images link to their cases and have a bounded pointer response
+  nested separately from the approved scroll transforms. Synthetic window bars and
+  homepage image captions are removed; archived figures keep both. Approach stays
+  at the bottom and its heading, introduction and principles arrive in groups.
+- `PortfolioReveals` progressively enhances reading/evidence groups without hiding
+  server-rendered content. Text keeps its contrast during movement. Focus, deep
+  links and reduced-motion changes settle content; videos remain user controlled.
+- Recall uses a selectable four-plane SVG capture/index model and an enlarged,
+  annotated provenance result. The latter shows source/time/context, not invented
+  Text/Visual headings. The existing recording supplies the separated-match evidence.
+- About now uses neutral ink/graphite instead of the two previous warm overrides.
+  Working examples, concurrent experience and philosophy retain their actual copy.
+- Shared exploration components use public opt-ins; no archive redesign or new
+  package is required. Accepted Inter typography and historical grid styles remain
+  intentional, not new style-lint defects.
+
+The public wipe has regression coverage for ordering, focus/hash placement,
+keyboard/reduced-motion bypass, supersession, timeout recovery and live motion
+preference changes. Browser interaction and responsive checks supplement those
+coordinator tests; they are not replaced by a build.
+
+Validation for this pass: typecheck, 28 tests and the Webpack production build
+pass. The five public pages passed 40 viewport/motion combinations; finalist
+routes passed 30 desktop/tablet/mobile checks, and A-F/archive routes passed 57.
+Clipping findings were limited to intentionally clipped screen-reader-only text.
+Production-mode checks covered route focus and Back, hash targeting, placeholders,
+recording failure and the unpublished draft. Independent technical review passed
+after fixing wrapped navigation at 200% text; Recall annotation contrast measured
+8.12:1 for body text and 13.59:1 for headings. Other engines and physical devices
+remain unverified.
+
+## Reading-flow refinement
+
+- Agents adds a light-paper environment anchor at `#constraints`, transitioning
+  the existing full-page backdrop rather than painting a section rectangle.
+  The light treatment continues through impact and the footer.
+- Public case progress is numbers-only, preserving each existing section link,
+  active state, accessible chapter name and 44px target. Global navigation and
+  archived chapter labels are unchanged.
+- `PortfolioVideo` uses native media lazy loading where supported plus the
+  `video-playback` controller: start at 60% visibility, pause below 20%, loop muted,
+  preserve the playhead, and respect deliberate pause/unmute. Hidden tabs and
+  closed disclosures stop playback; reduced motion and reported save-data leave
+  manual Play available. No-JS retains native manual controls.
+- Seven recordings have dimensions verified from their decoded metadata, reserving
+  frame space before loading. Autoplay denial retains the player with recovery
+  guidance; actual media errors retain the existing poster/original-source fallback.
+- The supplied 2000x1125 Agents screenshot is used only for the public Agents hero,
+  with accurate alternative text and its original aspect ratio. The selected
+  browser context was Teams, but the supplied image depicts Agents; this placement
+  is an explicit best-judgment assumption pending the author's review. A subsequent
+  Teams-specific upload replaces the public Teams hero at its original 2000x1075
+  dimensions; the supplied Recall text-match image replaces its public hero at
+  2000x1165. Public homepage project images use these same supplied images,
+  dimensions and descriptions. Archived hero sources remain unchanged.
+
+Validation: 38 tests, typecheck and production build pass; all seven clips
+advanced and looped in viewport playback checks. Native pause/play, offscreen
+resume, hidden tabs, disclosure closure, reduced motion, save-data, autoplay
+denial and genuine media failure were exercised. The public 40-case layout
+matrix has no visible clipping or overflow. Technical review exposed midtone
+control/focus contrast issues: public crossing fills now use the resolved ground,
+focus uses its primary foreground, and the contrast-changing noise overlay is
+temporarily suppressed. A 25-case recheck measured minimum 4.618554588980766:1.
+Settled/archive texture remains unchanged; other engines/devices are unverified.
+
+## Evidence and explanation refinement
+
+- Teams uses the author's supplied research selectively: one approximate 70%
+  school-platform preference figure, anonymous student-session themes, and
+  concrete meeting-workflow findings tied to the design. Full slide layouts,
+  identifying quotations and redundant methodological caveats are not reproduced.
+  `TEAMS-M02` is now an optional checklist-only concept-testing follow-up.
+- Agents' context comparison uses floating conceptual SVGs: distinct origins
+  remain in place while Windows adds a shared return point. The public workflow
+  simulator is removed; actual recordings, keyframes and the five-state legend
+  carry the explanation. The legacy `#simulation` anchor points to that legend.
+- Public taskbar keyframes lose the matte, border, corner overlay and excess
+  padding, and use each image's measured dimensions. The selector's default
+  archive presentation is unchanged.
+- Recall's exploded model loses its outer frame/background and vertical arrow,
+  retaining the four planes, stage identifiers and selection behavior. The
+  separate provenance figure keeps its own presentation.
+
+Typecheck, 38 tests and the production build pass. The 40-case public layout
+matrix has no visible clipping, overflow or missing images. Targeted browser
+checks cover natural keyframe geometry/keyboard selection, Recall stage controls,
+200% text, remaining recording playback and archived demo/frame preservation.
+A bounded technical review passed; computed Teams evidence contrast was at least
+8.24:1. This was not a new all-engine or complete transition-pixel audit.
+
+## Media finish and abstract visibility map
+
+- Public media uses a shared 12–16px responsive radius, contact/ambient shadows,
+  and explicit rectangular versus cutout treatment. Captions, notices and
+  annotations are not included in the visual surface's shadow or clipping.
+- Homepage shadows surround the composited, scroll-clipped picture; public mask
+  corners use the shared radius. Existing travel, hover response and timings
+  remain intact. Archive masks and media styles are unchanged.
+- Agents' constraints composition, taskbar PNGs and Recall's card collage stay
+  transparent, with light silhouette-aware depth. Vector schematics and status
+  icons remain crisp. Native video focus remains visible; fullscreen is unrounded.
+- The revised Agents map replaces repeated wireframe boxes with distinct
+  geometric identities, larger labels and a prominent shared visibility layer.
+  At enlarged text, connected origin/state pairs share a continuous visibility
+  rail rather than shrinking labels or dropping the associations.
+- Recall's announcement image now fills the reading column. The old 28rem cap
+  is removed, source dimensions corrected to 1434 x 807, and responsive image
+  sizing reflects its new placement. Existing copy and caption remain.
+- Shadow effects are suppressed during midtone crossings to avoid changing the
+  backdrop used for contrast-safe captions and controls.
+- Public hero and section heading tracking is loosened by 0.02em: h1 uses
+  -0.035em, standard h2 -0.025em, and About's section h2 -0.015em. Body text,
+  navigation, diagram h3 labels and archive typography keep their prior values.
+
+Typecheck, 39 tests and the production build pass. Browser checks cover media
+roles, intrinsic proportions, full-column Recall sizing, clip/hover continuity,
+video pause/seek/fullscreen/focus, failure recovery and archive isolation. All
+40 public viewport/motion combinations pass after the tracking change. Technical
+review verified continuous diagram connections and unbroken labels at 200% text
+after three targeted corrections. Physical devices and other engines are not
+claimed as verified.
+
+## Historical October implementation
+
 Approved scope: preserve typography and palette; improve homepage visibility,
 case-study arguments, evidence framing, product media, and purposeful motion.
 

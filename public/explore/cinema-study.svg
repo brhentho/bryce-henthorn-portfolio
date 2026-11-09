@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <defs>
+    <linearGradient id="ground" x2="1" y2="1"><stop stop-color="#dbd1bb"/><stop offset="1" stop-color="#9b967f"/></linearGradient>
+    <linearGradient id="paper" x2=".2" y2="1"><stop stop-color="#f7f0e1"/><stop offset="1" stop-color="#ccc1a8"/></linearGradient>
+    <linearGradient id="edge" x2="0" y2="1"><stop stop-color="#a39a84"/><stop offset="1" stop-color="#666454"/></linearGradient>
+    <linearGradient id="cut" x2="1" y2=".3"><stop stop-color="#222920"/><stop offset="1" stop-color="#66705a"/></linearGradient>
+    <filter id="shadow" x="-.4" y="-.4" width="2" height="2"><feGaussianBlur stdDeviation="28"/></filter>
+  </defs>
+  <path fill="url(#ground)" d="M0 0h1200v1400H0z"/>
+  <path d="m130 390 620-225 355 222-95 528-480 330-390-227z" fill="#393e31" opacity=".22" filter="url(#shadow)"/>
+  <g transform="translate(80 160)">
+    <path d="m20 160 460-152 256 173-460 157z" fill="url(#paper)"/>
+    <path d="m20 160 256 178v72L20 232z" fill="url(#edge)"/>
+    <path d="m276 338 460-157v74L276 410z" fill="#a69e89"/>
+    <path d="m102 163 377-125 177 116-378 131z" fill="none" stroke="#c0b69f" stroke-width="2"/>
+    <ellipse cx="395" cy="170" rx="25" ry="14" fill="#873d28"/>
+    <path d="m147 180 119 80m246-163 80 53" stroke="#797865" stroke-width="2"/>
+  </g>
+  <g transform="translate(375 495)">
+    <path d="m0 135 423-145 289 194-422 146z" fill="url(#paper)"/>
+    <path d="m0 135 290 195v86L0 222z" fill="url(#edge)"/>
+    <path d="m290 330 422-146v87L290 416z" fill="#8f8e78"/>
+    <path d="m106 140 307-104 189 128-306 106z" fill="url(#cut)"/>
+    <path d="m149 143 259-87 145 97-256 91z" fill="#252b25"/>
+    <path d="m229 146 156-52 108 71-158 53z" fill="url(#paper)"/>
+    <path d="m229 146 106 72v20l-106-72z" fill="#a29980"/>
+  </g>
+  <g transform="translate(94 947)">
+    <path d="m0 90 430-147 308 205-428 150z" fill="url(#paper)"/>
+    <path d="m0 90 310 208v78L0 168z" fill="url(#edge)"/>
+    <path d="m310 298 428-150v78L310 376z" fill="#95927a"/>
+    <path d="m116 121 287-97 188 126-282 99-193-128" fill="none" stroke="#454e3c" stroke-width="14" stroke-linejoin="round"/>
+    <path d="m116 121 287-97 69 46" fill="none" stroke="#e6dcc4" stroke-width="6"/>
+  </g>
+  <g fill="#404333" font-family="monospace" font-size="14" letter-spacing="3">
+    <text x="64" y="77">STUDY / STATE, CONTROL, TRUST</text>
+    <text x="64" y="1348">ORIGINAL COMPOSITION</text>
+    <text x="1000" y="1348">01 / 03</text>
+  </g>
+</svg>

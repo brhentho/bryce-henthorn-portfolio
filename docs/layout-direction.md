@@ -1,7 +1,7 @@
 # Layout Direction — Operator-Manual Case Studies
 
 **Branch:** `feature/editorial-visual-system`
-**Scope:** Layout and narrative composition using the shared editorial visual system. The 13 layout primitives remain stable; canonical typography, color, and motion roles are defined in `CLAUDE.md`.
+**Scope:** Layout and narrative composition using the selected Synthesis + ASCII foundation. The 13 layout primitives remain stable; canonical typography, color, and motion roles are defined in `CLAUDE.md`. Current media/evidence requests live in `docs/portfolio-content-review.md`.
 **Audience:** A future Claude/agent or designer extending case study pages without rereading the source files.
 
 ---
@@ -26,7 +26,7 @@ These are imperative, opinionated rules. Apply them in order; later rules tie-br
 
 8. **Let the grid stretch — break the 68-character body column when figure content earns it.** The default `section-grid` + `max-w-[68ch]` body is the right baseline, but at least every third section should leave that lane: an Annotated Split Plate, a marginalia rail, a bleed figure, or a comparison plate. Lock-step body columns make the page feel like a Medium post.
 
-9. **Keep frame chrome on every plate that contains a figure.** Hairline borders and corner registration marks are how the operator-manual aesthetic survives layout variety. A "full-bleed" plate in this document means edge-to-container, not edge-of-viewport. Bleeding past the registration frame breaks the contract.
+9. **Use figure chrome deliberately.** Hairline borders and registration marks preserve the document treatment where a framed plate is intended. The explicitly floating artifacts in the current composition map remain unboxed. "Full-bleed" still means edge-to-container, not edge-of-viewport.
 
 10. **One pull-quote per page may take the entire viewport.** Recall's "Perfection wasn't the goal. Legibility was." or Teams' "The system worked for lecturing. It failed at learning." can stand alone as a Pull-quote Interlude — quote in display type, no body, hairline rules above and below. This is how text-only sections earn their place without stacking.
 
@@ -119,6 +119,95 @@ Document-chrome contract: Hairline rules between rows; never collapse rows into 
 ---
 
 ## 3. Per-page narrative outlines
+
+### Current main-portfolio composition
+
+The following map supersedes the historical page sequences below. It follows a
+source-grounded narrative critique and the user's selection of Synthesis + ASCII.
+Do not mechanically apply one background ramp or one case-body template to every page.
+
+| Page | Argument order | Layout and motion |
+|---|---|---|
+| Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve ASCII, layered project entrances and continuous atmosphere; clean linked product images with bounded pointer response, then staggered Approach |
+| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Scattered task-pill field (2.8, floating exception), decision table, floating keyframes, actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
+| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> milestone | Floating selectable four-layer model (2.5/2.7), provenance crop with annotations (2.4), recordings, decision table, privacy pair and full reading-width announcement figure (2.8); mainly ink/graphite |
+| Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Curated research evidence strip (2.9), workflow finding/intent table (2.13), conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
+| About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split, grouped working-example/ledger arrivals and shared neutral ink; no warm-brown override or product simulation |
+
+Public navigation uses a name-only wordmark and a gooey moving highlight with
+stationary labels/targets. Cross-page pointer navigation uses an editorial ink
+wipe; the existing headline resolve follows it. Keyboard/reduced-motion
+navigation remains direct, and local anchors do not trigger a page wipe.
+Public homepage captions and synthetic device bars are intentionally removed;
+case-study evidence retains its useful captions and figure framing.
+Reading/evidence reveals settle once, preserve text contrast and never hold
+document scrolling. These opt-ins do not restyle the archived explorations.
+
+The public case rail displays section numbers only, with the current number
+emphasized and complete chapter names retained in accessible link labels.
+Recorded videos loop muted while sufficiently visible, pause offscreen and
+respect manual pause. Reduced-motion/data-saving preferences leave native Play
+available without automatic playback.
+
+The public Agents simulator is removed; the real recording, keyframes and
+five-state legend provide the explanation without a second workflow to learn.
+Archived simulations remain. The Agents task field and taskbar cutouts, and
+Recall's exploded model, intentionally float without a website matte or frame.
+Recall retains its planes and stage controls but omits the large vertical arrow.
+
+The Agents context illustration uses six scattered task pills from the supplied
+Design playbook frame (264:41080), without its background or title. It illustrates
+distributed work rather than a before/after system comparison. Native task text
+uses the portfolio typography; local source icons and translucent pill surfaces
+preserve the reference. Gentle transform-only drift pauses offscreen, in hidden
+tabs or through the figure's pause control; reduced motion and no-JS are static.
+The responsive field recomposes into offset rows when labels need more room.
+There is no shared Windows container, connector, simulated status or task action.
+
+Public rectangular images and recordings share rounded corners and quiet
+elevation, with captions outside the visual surface. Transparent compositions
+and taskbar cutouts retain their silhouettes; icons and vector schematics are
+not blanket-rounded or filtered. Shadows are suppressed during contrast-sensitive
+ground crossings. Archives keep their existing treatment.
+
+Public hero and section headings retain negative tracking but are 0.02em looser
+than the earlier lock. The public tracking roles are defined in the root token
+block; body/navigation text and archived typography are not loosened globally.
+
+Recall's announcement photograph is no longer a capped thumbnail in a split.
+It fills the reading column beneath the closing heading, followed by readable
+body copy. The registry uses its measured 1434 x 807 dimensions.
+
+Teams uses one author-confirmed approximate statistic and anonymous student themes,
+not six reproduced slides. The research placeholder is replaced by the supplied
+evidence; selected workflow findings connect to preparation, shared materials and
+teacher awareness. Keep the sources light on the page and traceable in the review
+notes; do not turn input research into an adoption or retention result.
+
+Agents' constraints image is a full reading-container plate (2.8) between the
+interactive prototype and "A shared contract meant saying no." It leads the
+light passage, retaining its figure caption before the heading and constrained
+body copy. This image intentionally floats directly on the page without a frame
+border or background. It is not a half-width image beside the explanation.
+
+Actual media inspection corrected the source captions: `Teams_fig04` shows group
+preparation, `Teams_fig06` live teacher orchestration, and `Teams_fig05` shared
+notes/materials at a table. Recall's second recording shows an exploratory answer
+preview, not a measured matched comparison with the selected retrieval design.
+
+Preserve substantive content when merging repeated sections. State individual
+scope once in the case ledger and use team voice in the narrative. Planned media
+slots must stay compact, explicitly pending and visible in local review builds.
+No timing, adoption, research quotation or privacy guarantee may be invented to
+fill a layout.
+
+### Historical editorial-revision outlines
+
+The detailed outlines that follow document an earlier iteration. Asset
+availability and some claims have changed: current heroes and named taskbar
+frames exist; Teams already has a schematic; its old bandwidth proposal is not
+part of the current case. Do not use the historical proposals as a source of
+facts or new media requirements.
 
 Source files:
 - `app/recall/page.tsx` — Recall (10 sections)
@@ -286,15 +375,17 @@ Things that would break the narrative feel. Do not do these.
 
 Places where the existing copy is too thin to support a non-stacked layout, or where a proposed visual content brief depends on facts the source doesn't carry.
 
-| ID | Page | Section | What's missing |
-|---|---|---|---|
-| Q1 | Recall | 06 Performance | The proposed Pull-quote Interlude + telemetry strip needs three latency-related stats (e.g., median query latency, retrigger threshold, search-as-you-type cadence). Source copy says "we tuned how aggressively the system sent queries" but gives no numbers. Either the strip stays generic (3 unlabeled keyframes of a query growing) or new numbers need to be sourced from the team. **Recommendation: write three short qualitative metrics — "PER KEYSTROKE / 200MS WINDOW / NO BLOCKING WAIT" — that match the copy without claiming data we don't have.** |
-| Q2 | Recall | 03 Problem | The final paragraph (about static ranking and task-shaped relevance) is doing the work of a separate sub-section but lives buried at the end of a 5-paragraph body. Should it become its own plate (Pull-quote Interlude on "Relevance wasn't a fixed property of the result") and the surrounding text shrink? The proposed sequence in §3.1 assumes yes. |
-| Q3 | Agents in Windows | 00 Hero | Source has no Fig 0.1 in the hero. The repo contains `Agents in Windows hero.png` and `Agents in Windows Fractal.png` — confirm which to use, or commission a new SVG schematic mirroring `HeroSchematic` from Recall. |
-| Q4 | Agents in Windows | 03 Process | Captions read "Taskbar evolution — step 1/2/3" — placeholders. Each frame needs a real caption naming what changes between frames (initial pin, agent state visible, hover-card expanded?). Without this, the proposed Stage Rail Plate has nothing to anchor the rail labels to. |
-| Q5 | Teams for Education | 00 Hero | Source has no Fig 0.1. The proposed SVG (top-down virtual-tables grid) doesn't exist yet. Confirm whether to commission this drawing or pull from existing imagery. |
-| Q6 | Teams for Education | 04 Solution | The proposed Exploded Diagram Plate needs four marginalia call-outs naming the anatomy of a virtual table card ("TABLE CARD / FIXED SEAT / PERSISTENT MATERIALS SLOT / MODERATION HOOK"). Source copy supports the first three; "moderation hook" is interpolated from the long paragraph about ambient teacher controls. Confirm the four labels and whether `teams-fig02.png` shows enough anatomy to support call-outs, or whether a new SVG of a single table is needed. |
-| Q7 | Teams for Education | 08 Bandwidth | The proposed Strip Break needs three labeled stat columns. Source copy is qualitative ("older devices, spotty connections, shared home networks") with no numbers. Either keep the columns qualitative ("OLDER DEVICES / SHARED HOME NETWORKS / TIME LOST TO LOADING") or source real numbers. **Recommendation: qualitative is fine — the strip is breaking rhythm, not telling a data story.** |
+| ID | Page | Section | What's missing | Recommended fix |
+|---|---|---|---|---|
+| AGENTS-M01 | Agents | Shared contract | Cleared cross-provider evidence beyond one agent recording | Existing image plus compact request; supply two agents using the same visible state contract |
+| AGENTS-M02 | Agents | Decision | Original evaluation board and observation | Keep the supported alternatives summary; request original evidence rather than inventing a research result |
+| RECALL-M01 | Recall | Ranking | Matched merged/separated results for the same query | Accurately label existing different-purpose figures; request a genuine comparison |
+| RECALL-M02 | Recall | Privacy | Cleared, version-bound deletion/capture-control artifact | Use a compact placeholder pending review; no unqualified system guarantee |
+| RECALL-C01 | Recall | Responsiveness | A source for the former `200MS WINDOW` claim | Remove the number. It is quantitative, not a qualitative substitute for missing evidence |
+| TEAMS-M02 | Teams | Research/outcome | Cleared research-to-decision and prototype-test evidence | Compact request; qualify outcomes and retain tested-concept status |
+
+Detailed questions, clearance holds and replacement instructions are maintained
+in `docs/portfolio-content-review.md`, not expanded into empty page chapters.
 
 ---
 

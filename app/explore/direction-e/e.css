@@ -1,0 +1,58 @@
+.xe-opening { align-content: end; padding-bottom: 5rem; }
+.xe-opening .xp-art-layer { opacity: .8; }
+.xe-opening::after { background: linear-gradient(0deg, var(--xr-bg), color-mix(in srgb, var(--xr-bg) 25%, transparent) 65%, transparent); }
+.xe-opening .x3-hero-copy { max-width: none; }
+.xe-opening .x3-title { max-width: 16ch; }
+.xe-opening-bottom { display: flex; justify-content: space-between; gap: 2rem; align-items: end; }
+.xe-opening-bottom .xr-link { margin: 0 0 2rem; }
+.xe-index-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 2rem; }
+.xe .xe-index-head h2 { font: .75rem var(--font-mono); text-transform: uppercase; letter-spacing: .06em; }
+.xe-index-layout { display: grid; grid-template-columns: 1fr 1.05fr; gap: 5%; align-items: center; }
+.xe-project-names { display: grid; }
+.xe-index-link { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: 2rem 0; border-top: 1px solid var(--rule); text-decoration: none !important; color: var(--text-secondary); }
+.xe-index-link > .xr-label { grid-column: 1/-1; }
+.xe-index-name { font: 500 clamp(2rem, 3.8vw, 4rem)/1.02 var(--font-index-variable), var(--font-display); letter-spacing: -.05em; }
+.xe-index-link[data-active="true"] { color: var(--xr-fg); }
+.xe-index-arrow { align-self: center; font-size: 2rem; }
+.xe-index-proof { font-size: .75rem; grid-column: 1/-1; }
+.xe-mobile-shot { display: none; }
+.xp-proximity-word { display: inline-block; white-space: nowrap; }
+.xp-proximity [data-glyph] { display: inline-block; text-align: center; font-variation-settings: "wght" 500; transition: font-variation-settings var(--duration-fast-ui) var(--ease-out-quad); }
+.xe-index-link:focus-visible [data-glyph] { font-variation-settings: "wght" 650 !important; }
+.xe-preview { display: grid; min-width: 0; }
+.xe-preview figure { grid-area: 1/1; opacity: 0; visibility: hidden; transition: opacity var(--duration-normal-ui) var(--ease-out-expo), visibility var(--duration-normal-ui); }
+.xe-preview figure[data-active="true"] { opacity: 1; visibility: visible; }
+.xe-preview[data-instant] figure { transition: none; }
+.xe-preview .x3-project-image { aspect-ratio: 1; background: var(--xr-surface); display: grid; align-items: center; overflow: hidden; }
+.xe-preview img { width: 170%; max-width: none; margin-left: -35%; }
+.xe-preview figcaption { display: grid; gap: 1rem; padding-top: 1rem; }
+.xe-preview figcaption p { font: 500 clamp(1.5rem, 2.4vw, 2.5rem)/1.15 var(--font-display); letter-spacing: -.035em; max-width: 30ch; }
+.xe-principles { display: grid; grid-template-columns: 1fr 1fr; gap: 10%; padding-block: 4rem 8rem; }
+.xe-principle-intro { position: sticky; top: 4rem; align-self: start; display: grid; gap: 2rem; padding-top: 4rem; }
+.xe-principle-intro h2 { font-size: clamp(2rem, 3.5vw, 3.5rem); }
+.xe-principle { padding-block: 4rem; border-top: 1px solid var(--rule); transform-origin: 0 50%; display: grid; gap: 1rem; }
+.xe-principle h3 { font-size: clamp(3rem, 7vw, 7rem); letter-spacing: -.06em; }
+.xe-principle > p:last-child { font-size: 1.125rem; line-height: 1.6; }
+.xe-case-opening h1 { max-width: 19ch; }
+.xe-case-lead { display: grid; grid-template-columns: 1fr 1fr; gap: 8%; }
+.xe-contents { position: sticky; top: 0; z-index: 4; background: var(--xr-bg); }
+.xe-essay { display: grid; grid-template-columns: .85fr 1.15fr; gap: 8%; align-items: start; }
+.xe-reading { display: grid; gap: 2rem; }
+.xe-evidence { position: sticky; top: 7rem; }
+.xe-evidence .xr-film { margin-top: 2rem; }
+.xe-decision .xr-options { margin-top: 3rem; }
+.xe .xr-section + .xr-section { border-top: 1px solid var(--rule-hairline); }
+@media (max-width: 850px) {
+  .xe-index-layout, .xe-principles, .xe-essay, .xe-case-lead { grid-template-columns: 1fr; gap: 2rem; }
+  .xe-index-name { font-size: clamp(2rem, 7vw, 3rem); }
+  .xe-preview { display: none; }
+  .xe-index-link { grid-template-columns: 1fr auto; }
+  .xe-index-proof { max-width: 40ch; }
+  .xe-mobile-shot { display: block; grid-column: 1/-1; width: 100%; height: auto; border: 1px solid var(--rule); margin-top: .5rem; }
+  .xe-index-link:first-child .xe-mobile-shot { view-transition-name: direction-e-artifact; }
+  .xe-principle-intro, .xe-evidence, .xe-contents { position: static; }
+  .xe-opening-bottom { flex-direction: column; align-items: start; }
+  .xe-opening-bottom .xr-link { margin-bottom: 0; }
+  .xe-principle { padding-block: 3rem; }
+  .xe-principle-intro { padding-top: 0; }
+}

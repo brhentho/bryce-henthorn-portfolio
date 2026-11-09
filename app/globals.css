@@ -67,6 +67,22 @@
      these are the defaults and the documented scale. */
   --stagger-word:       32ms;
   --stagger-eyebrow:    220ms;
+  --pf-reveal-distance: 24px;
+  --pf-evidence-distance: 40px;
+  --pf-image-tilt: 2deg;
+  --pf-image-scale: 1.02;
+  --pf-media-radius: clamp(12px, 1.1vw, 16px);
+  --pf-media-shadow: 0 2px 6px rgb(0 0 0 / .16), 0 18px 42px -16px rgb(0 0 0 / .36);
+  --pf-media-drop-shadow: drop-shadow(0 2px 3px rgb(0 0 0 / .16)) drop-shadow(0 clamp(6px, 1vw, 14px) clamp(10px, 1.25vw, 18px) rgb(0 0 0 / .22));
+  --pf-cutout-shadow: drop-shadow(0 6px 10px rgb(0 0 0 / .14));
+  --pf-tracking-display: -.035em;
+  --pf-tracking-heading: -.025em;
+  --pf-tracking-about-heading: -.015em;
+  --pf-task-edge: color-mix(in srgb, var(--text-primary) 60%, transparent);
+  --pf-task-surface-low: color-mix(in srgb, var(--text-primary) 4%, transparent);
+  --pf-task-surface-high: color-mix(in srgb, var(--text-primary) 18%, transparent);
+  --pf-task-shadow: 0 2px 8px rgb(0 0 0 / .12), inset 0 1px 0 rgb(255 255 255 / .08);
+  --pf-task-drift-duration: 12000ms;
 
   /* Hero clip windows. 0.5em vertical clears Inter Tight's ascenders and
      descenders at display leading; 0.25em horizontal clears side bearings
@@ -90,6 +106,17 @@
   --space-room:    clamp(5rem, 9vw, 9rem);
   --space-section: clamp(3rem, 6vw, 6rem);
   --space-block:   clamp(1.5rem, 3vw, 2.5rem);
+
+  /* Selected Synthesis foundation; separate names preserve the archived manual palette. */
+  --fn-black: #0b0d12;
+  --fn-white: #efede6;
+  --fn-cool: #111b2b;
+  --fn-plum: #211728;
+  --fn-warm: #241d18;
+  --fn-accent-dark: #ffad78;
+  --fn-accent-light: #a53b09;
+  --fn-pad: clamp(1.25rem, 5vw, 5rem);
+  --fn-room: clamp(4rem, 8vw, 8rem);
 }
 
 /* ── Complementary data-flow route transition ── */
@@ -129,6 +156,20 @@ html[data-route-transition="waiting"] .hero-intro-word {
 }
 
 /* ── Tailwind v4 theme tokens ── */
+html[data-route-style="portfolio"] .route-transition {
+  background: var(--fn-black) !important;
+  border-right: 1px solid var(--rule-strong);
+  opacity: 1;
+  visibility: visible;
+  transition: none;
+  will-change: transform;
+}
+
+html[data-route-style="portfolio"][data-route-transition="revealing"] .hero-intro-word,
+html[data-route-style="portfolio"][data-route-transition="revealing"] .hero-intro-eyebrow-text {
+  animation-play-state: paused;
+}
+
 @theme inline {
   /* Tailwind only needs what the remaining source actually uses.
      --color-border and --color-ring are load-bearing: the
