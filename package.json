@@ -12,6 +12,7 @@
     "test": "node --experimental-strip-types --test tests/*.test.mjs"
   },
   "dependencies": {
+    "@fluentui/react-icons": "^2.0.345",
     "@react-three/fiber": "9.8.2",
     "@react-three/postprocessing": "3.2.2",
     "@vercel/analytics": "1.6.1",

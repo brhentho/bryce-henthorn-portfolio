@@ -95,10 +95,11 @@ test("Copilot supplied hero retains its source dimensions and full-size access",
   assert.match(read("components/portfolio/CaseLayout.tsx"), /href=\{hero.src\} target="_blank"/)
 })
 
-test("Copilot body keeps its announcement evidence and pending walkthrough distinct", () => {
+test("Copilot body distinguishes supplied design stills, announcement evidence and pending walkthrough", () => {
   const draft = read("components/portfolio/CopilotActionsPage.tsx")
   const intervention = draft.slice(draft.indexOf('<CaseSection id="intervention"'), draft.indexOf('<CaseSection id="perspective"'))
-  assert.match(intervention, /<PortfolioMedia id="cua-intervention" number="05" linkToOriginal/)
+  assert.match(intervention, /<Pair>\s*<PortfolioMedia id="cua-take-control"[^>]+\/>\s*<PortfolioMedia id="cua-hand-raise"[^>]+\/>\s*<\/Pair>/)
+  assert.match(intervention, /<ComposerExplorations/)
   assert.match(intervention, /<PortfolioMedia id="CUA-M01"/)
   assert.doesNotMatch(draft, /<MediaSlot|<SectionLabel|legacyBody|My work spanned/)
   assert.equal((draft.match(/<CaseSection /g) ?? []).length, 7)
@@ -106,6 +107,15 @@ test("Copilot body keeps its announcement evidence and pending walkthrough disti
     const media = PORTFOLIO_MEDIA[id]
     assert.equal(media.kind, "image")
     assert.match(media.caption, /October 2025\. Image: Microsoft/)
+    const png = readFileSync(new URL(`../public${media.src}`, import.meta.url))
+    assert.equal(media.width, png.readUInt32BE(16))
+    assert.equal(media.height, png.readUInt32BE(20))
+  }
+  for (const id of ["cua-take-control", "cua-hand-raise"]) {
+    const media = PORTFOLIO_MEDIA[id]
+    assert.equal(media.kind, "image")
+    assert.match(media.caption, /Supplied design still, recording planned/)
+    assert.doesNotMatch(media.caption, /October 2025/)
     const png = readFileSync(new URL(`../public${media.src}`, import.meta.url))
     assert.equal(media.width, png.readUInt32BE(16))
     assert.equal(media.height, png.readUInt32BE(20))

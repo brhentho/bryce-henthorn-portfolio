@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fluentui/react-icons':
+        specifier: ^2.0.345
+        version: 2.0.345(react@19.2.4)
       '@react-three/fiber':
         specifier: 9.8.2
         version: 9.8.2(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(three@0.186.1)
@@ -668,6 +671,9 @@ packages:
   '@emnapi/runtime@1.8.1':
     resolution: {integrity: sha1-VQ+n48DUnF+xdaEW6M1wYU+aIqU=, tarball: https://ms-feed-12.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/@emnapi/runtime/-/runtime-1.8.1.tgz}
 
+  '@emotion/hash@0.9.2':
+    resolution: {integrity: sha1-/5IhufWLTf5h5hmneIc0vWP2iYs=, tarball: https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/@emotion/hash/-/hash-0.9.2.tgz}
+
   '@esbuild/aix-ppc64@0.25.12':
     resolution: {integrity: sha1-gPy+NhMOWLdnBRHoiLjoiiWe12w=, tarball: https://ms-feed-2.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/@esbuild/aix-ppc64/-/aix-ppc64-0.25.12.tgz}
     engines: {node: '>=18'}
@@ -823,6 +829,22 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fluentui/react-icons@2.0.345':
+    resolution: {integrity: sha512-lU3TXTAknzs0n4luCR1dlir10ZJQkqSUPsfwCErEenZufZQp8P3Nj+agYVx7Dk2v76JSAPweA9CpQD/0AzeVFQ==, tarball: https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/@fluentui/react-icons/-/react-icons-2.0.345.tgz}
+    peerDependencies:
+      react: '>=16.8.0 <20.0.0'
+
+  '@griffel/core@1.21.4':
+    resolution: {integrity: sha512-Pt6tjaBCOYYC76L7U5yl3r+UqOGXEbeskvYuqUsUzaVQR2ueoMErA2+bRjvVPFr8NvvhPVU+QNBqd9Deg5st2A==, tarball: https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/@griffel/core/-/core-1.21.4.tgz}
+
+  '@griffel/react@1.7.8':
+    resolution: {integrity: sha512-kTegyzZoRqpRNUQ8Fd6QWLC8MUqSyO+/GDC/ffbEG8Y6JDole98rBrOVA/NN9PDD61/ktsd2UqtsTNwtAG6q3w==, tarball: https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/@griffel/react/-/react-1.7.8.tgz}
+    peerDependencies:
+      react: '>=16.14.0 <20.0.0'
+
+  '@griffel/style-types@1.4.3':
+    resolution: {integrity: sha512-sFxMK19oFUPQSmyCKT1Pvj5Nu/ODvhMczqhGjVAoksDTXUj1za40WA0CXqV3o+xxKWPec+K/rbS78jJLmomsQA==, tarball: https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/@griffel/style-types/-/style-types-1.4.3.tgz}
 
   '@img/colour@1.0.0':
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
@@ -3248,6 +3270,9 @@ packages:
     resolution: {integrity: sha512-5Di9UC0+8h1L6ZD2d7awM7E/T4uA1fJRlx6zk/NvdCCVEoAnFqvHmCuNeIKoCeIixBX/q8uM+6ycDvF8woqosA==}
     engines: {node: '>= 0.8'}
 
+  rtl-css-js@1.16.1:
+    resolution: {integrity: sha1-S0i0NUsP+RejBIjZUQD79yGaPoA=, tarball: https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/rtl-css-js/-/rtl-css-js-1.16.1.tgz}
+
   safe-buffer@5.1.2:
     resolution: {integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==}
 
@@ -3414,6 +3439,9 @@ packages:
         optional: true
       babel-plugin-macros:
         optional: true
+
+  stylis@4.4.0:
+    resolution: {integrity: sha1-xYRsk0X0v8Ub0MvXyjWgdE9IWl0=, tarball: https://ms-feed-25.pkgs.visualstudio.com/1es-public/_packaging/npm-public/npm/registry/stylis/-/stylis-4.4.0.tgz}
 
   supports-color@7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
@@ -4454,6 +4482,8 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
+  '@emotion/hash@0.9.2': {}
+
   '@esbuild/aix-ppc64@0.25.12':
     optional: true
 
@@ -4531,6 +4561,31 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.12':
     optional: true
+
+  '@fluentui/react-icons@2.0.345(react@19.2.4)':
+    dependencies:
+      '@griffel/react': 1.7.8(react@19.2.4)
+      react: 19.2.4
+      tslib: 2.8.1
+
+  '@griffel/core@1.21.4':
+    dependencies:
+      '@emotion/hash': 0.9.2
+      '@griffel/style-types': 1.4.3
+      csstype: 3.2.3
+      rtl-css-js: 1.16.1
+      stylis: 4.4.0
+      tslib: 2.8.1
+
+  '@griffel/react@1.7.8(react@19.2.4)':
+    dependencies:
+      '@griffel/core': 1.21.4
+      react: 19.2.4
+      tslib: 2.8.1
+
+  '@griffel/style-types@1.4.3':
+    dependencies:
+      csstype: 3.2.3
 
   '@img/colour@1.0.0':
     optional: true
@@ -7051,6 +7106,10 @@ snapshots:
       hash-base: 3.1.2
       inherits: 2.0.4
 
+  rtl-css-js@1.16.1:
+    dependencies:
+      '@babel/runtime': 7.28.6
+
   safe-buffer@5.1.2: {}
 
   safe-buffer@5.2.1: {}
@@ -7260,6 +7319,8 @@ snapshots:
       react: 19.2.4
     optionalDependencies:
       '@babel/core': 7.29.0
+
+  stylis@4.4.0: {}
 
   supports-color@7.2.0:
     dependencies:

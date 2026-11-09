@@ -2,9 +2,10 @@ import { CoverPlate } from "@/components/manual/CoverPlate"
 import { ScrollRevealController } from "@/components/manual/ScrollRevealController"
 import { RegistrationMark } from "@/components/manual/RegistrationMark"
 import { DelegationSequence } from "@/app/copilot-actions/DelegationSequence"
+import { ComposerExplorations } from "@/app/copilot-actions/ComposerExplorations"
 import styles from "@/app/copilot-actions/copilot-actions.module.css"
 import { CaseLayout } from "./CaseLayout"
-import { CaseSection, Prose, ShinyLink } from "./Blocks"
+import { CaseSection, Pair, Prose, ShinyLink } from "./Blocks"
 import { PortfolioMedia } from "./PortfolioMedia"
 
 const chapters = [
@@ -173,27 +174,56 @@ export function CopilotActionsPage() {
           <p data-pf-reveal="reading">Stepping in is part of delegation.</p>
         </section>
 
-        {/* §2.13 Data Table Block — different user needs, not interchangeable controls */}
-        <CaseSection id="intervention" title="Make the next human action clear.">
+        {/* §2.6 Two-up Comparison + §2.13 alternative/state matrix */}
+        <CaseSection id="intervention" title="Pause to steer. Take control to do.">
           <Prose><p>
-            In the published travel-video example, progress stops at an app
-            choice. The interface brings together the question, a paused state,
-            and a takeover action. The broader interaction problem is helping
-            someone understand whether to provide information, take over, or
-            change the agent’s access.
+            Stepping in does not always mean taking over. Sometimes the person
+            wants to do a step directly. Sometimes the agent needs an answer
+            before it can continue. We explored how to make those two moments
+            distinct without making the task feel like it had ended.
           </p></Prose>
-          <PortfolioMedia id="cua-intervention" number="05" linkToOriginal />
+          <Pair>
+            <PortfolioMedia id="cua-take-control" number="05a" linkToOriginal />
+            <PortfolioMedia id="cua-hand-raise" number="05b" linkToOriginal />
+          </Pair>
+          <p className="fn-label">Direct control / a request for input. Supplied design stills; recordings will show the transitions.</p>
+          <Prose>
+            <p>
+              In the reservation task, “You’re in control” makes the handoff
+              explicit and keeps Resume nearby. In the video task, the agent
+              asks which app to use; “Use Capcut” answers that question in the
+              composer. One changes who is operating the workspace. The other
+              supplies the decision the agent is missing.
+            </p>
+            <p>
+              The composer exposed a related problem: while an action was
+              running, it was disabled, leaving no place to redirect the work.
+              Our starting hypothesis was that pause and stop should not need
+              separate buttons in the running state. Interrupt first, then
+              reveal the relevant choices.
+            </p>
+          </Prose>
           <div data-pf-reveal="reading">
             <table className={styles.controlTable}>
-              <caption className="fn-label">Three distinct user needs the interaction model must account for.</caption>
-              <thead><tr><th scope="col">USER NEED</th><th scope="col">INTERFACE RESPONSIBILITY</th></tr></thead>
+              <caption className="fn-label">Three explorations, not a selected or validated solution.</caption>
+              <thead><tr><th scope="col">EXPLORATION</th><th scope="col">WHAT IT ASKS</th></tr></thead>
               <tbody>
-                <tr><th scope="row">“I can answer that.”</th><td>Explain the missing decision in the context of the task.</td></tr>
-                <tr><th scope="row">“Let me do this part.”</th><td>Make the handoff to direct control discoverable.</td></tr>
-                <tr><th scope="row">“Change what it can access.”</th><td>Provide a route back to permissions and settings.</td></tr>
+                <tr><th scope="row">Keep the familiar layout</th><td>Can one running control reveal the composer, Resume and an explicit end action only when needed?</td></tr>
+                <tr><th scope="row">Move controls with the state</th><td>Does placing Resume and stop beside the paused status make the next choice clearer?</td></tr>
+                <tr><th scope="row">Keep the composer available</th><td>Can someone steer without pausing first, with continuation and cancellation resolved separately?</td></tr>
               </tbody>
             </table>
           </div>
+          <ComposerExplorations />
+          <Prose><p>
+            The second board adds the redirect message to make the tradeoff
+            concrete. It also changes “Action stopped” to “Action paused” in
+            the first option. That distinction still needs a decision: these
+            explorations use “stopped” for a state that can resume, not only
+            for a task that is finished. A recording should establish what
+            happens after the person sends an instruction, hands back control,
+            or cancels.
+          </p></Prose>
           <PortfolioMedia id="CUA-M01" />
         </CaseSection>
 
@@ -220,9 +250,10 @@ export function CopilotActionsPage() {
         <CaseSection id="sources" title="Public record">
           <Prose><p>
             These sources document the October 2025 announcement, not current
-            availability or measured product outcomes. The onboarding and
-            travel-video images are reproduced from Microsoft’s announcement; the opening image is a
-            separately supplied design image.
+            availability or measured product outcomes. The onboarding image is
+            reproduced from Microsoft’s announcement. The opening, takeover and
+            hand-raise images were supplied separately; the composer boards are
+            design explorations, not evidence of shipped behavior.
           </p></Prose>
           <ol className={styles.sources}>
             {SOURCES.map((source) => (
@@ -240,7 +271,7 @@ export function CopilotActionsPage() {
           <details className={styles.reviewNotes}>
             <summary>Draft review notes</summary>
             <div>
-              <p>This draft uses Bryce’s stated scope, the supplied opening image and public product material. Before publishing, add:</p>
+              <p>This draft uses Bryce’s stated scope, supplied design images, composer explorations and public product material. Before publishing, add:</p>
               <ul>
                 <li>Exact ownership, dates, and collaborators.</li>
                 <li>Two or three design decisions, alternatives, and the evidence behind them.</li>

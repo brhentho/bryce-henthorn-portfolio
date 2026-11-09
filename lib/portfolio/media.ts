@@ -16,6 +16,20 @@ export const PORTFOLIO_MEDIA: Record<string, MediaItem> = {
     width: 1920, height: 1236,
     caption: "Published travel-video example: an app-choice question, Paused state and Take control action in context. October 2025. Image: Microsoft.",
   },
+  "cua-take-control": {
+    kind: "image", title: "Taking direct control",
+    src: "/images/copilot-actions/take-control.png",
+    alt: "Restaurant reservation workspace after takeover, with You're in control and a Resume button at the bottom.",
+    width: 1504, height: 1024,
+    caption: "The person takes over a step; Resume keeps the return to the agent in reach. Supplied design still, recording planned.",
+  },
+  "cua-hand-raise": {
+    kind: "image", title: "Answering an agent hand-raise",
+    src: "/images/copilot-actions/hand-raise.png",
+    alt: "Copilot asks which app to use for a travel video. The paused composer contains Use Capcut, with Take control and send available.",
+    width: 1504, height: 1024,
+    caption: "The agent needs a decision; the person can answer in the paused composer. Supplied design still, recording planned.",
+  },
   "CUA-M01": {
     kind: "request", requestId: "CUA-M01", reason: "requested",
     title: "Delegate, check in, take control, hand back",

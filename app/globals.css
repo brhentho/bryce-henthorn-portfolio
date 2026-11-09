@@ -119,6 +119,27 @@
   --fn-accent-light: #a53b09;
   --fn-pad: clamp(1.25rem, 5vw, 5rem);
   --fn-room: clamp(4rem, 8vw, 8rem);
+
+  /* Source-specific materials inside the unpublished Copilot design exhibits. */
+  --cua-ink: #272320;
+  --cua-secondary: #746d68;
+  --cua-white: #fff;
+  --cua-on-strong: #e2ddd9;
+  --cua-send: #1d1b1a;
+  --cua-destructive: #993a45;
+  --cua-pause: #8a4b30;
+  --cua-control-rule: rgb(0 0 0 / .08);
+  --cua-board-matte: rgb(250 244 239 / .6);
+  --cua-board-tint: rgb(255 255 255 / .24);
+  --cua-inner-top: rgb(255 255 255 / .9);
+  --cua-button: rgb(255 255 255 / .7);
+  --cua-acrylic: linear-gradient(transparent, rgb(255 255 255 / .35)),
+    linear-gradient(rgb(250 244 239 / .6), rgb(250 244 239 / .6)),
+    linear-gradient(rgb(240 234 229 / .8), rgb(240 234 229 / .8)),
+    linear-gradient(rgb(255 255 0 / .1), rgb(255 255 0 / .1));
+  --cua-shadow: 0 -4px 20px rgb(255 255 255 / .6),
+    0 16px 24px rgb(0 0 0 / .15), 0 16px 48px rgb(209 146 86 / .25);
+  --cua-button-shadow: 0 1px 3px rgb(0 0 0 / .12);
 }
 
 /* ── Complementary data-flow route transition ── */

@@ -22,9 +22,56 @@ The opening image, `public/images/copilot-actions/cua-hero.png`, is the supplied
 restaurant-reservation task with a browser workspace, progress and Take control
 action. It is not attributed to the October 2025 announcement and does not
 establish availability, authorship of every depicted element, or measured outcomes.
-The former travel-video announcement hero now accompanies the intervention copy.
-It preserves the original transparent silhouette; onboarding uses the shared
-rounded media surface. Both retain full-size image links and Microsoft attribution.
+The intervention section now uses separately supplied Take Control and hand-raise
+design stills, not the former travel-video announcement hero. Onboarding retains
+its announcement attribution. All shown product images retain full-size links.
+
+## Intervention story and composer exploration pass
+
+Only `#intervention` is restructured in this pass. Its argument distinguishes
+direct takeover from providing a missing decision, then examines the disabled
+composer and progressive disclosure. The supplied stills remain images; no
+recording, verified handoff behavior or selected design is implied.
+
+Both [control-placement](https://www.figma.com/design/OFb99P2At6oxtDGjDicLx8/Bryce-s-scratch?node-id=1339-53129)
+and [steering](https://www.figma.com/design/OFb99P2At6oxtDGjDicLx8/Bryce-s-scratch?node-id=1339-53384)
+boards are recreated as native React exhibits. Each contains the same three
+alternatives, not an approved winner. The second includes redirect-message,
+empty-composer and paused variants. Its visually adjacent paused example is
+nested in a different Figma group; canvas placement is not treated as a flow
+specification. The original CMC label is retained without inventing its expansion.
+
+Each example is independent. Pause/stop, instruction entry, send, takeover,
+resume and cancellation demonstrate local interface changes only. They neither
+operate a computer nor send instructions to an agent. The exhibits preserve the
+source's ambiguous "stopped but resumable" wording. Final cancellation ends the
+example with an editorial notice because no terminal product screen was
+supplied. Attachment/microphone buttons are disabled visual context.
+
+Native disclosures keep both boards readable without JavaScript. At smaller
+widths the matrix reflows rather than scaling the controls into an unreadable
+image. Geometry and colors follow the source inside the exhibits; the rest of
+the page remains Synthesis. Ginto Copilot is unavailable, so Inter is explicitly
+identified as a typography substitution. Code Connect uses the mapped Fluent
+icons; the other icons, wallpaper, caret and avatar are original Figma exports.
+Editorial state labels use darker secondary text than the canvas labels for
+readability. Product-sized controls retain their source geometry; status rows
+wrap at enlarged text sizes rather than compressing status words.
+
+### Proposed wider narrative, pending section-by-section review
+
+| Beat | Evidence supplied | Next section pass / primitive |
+| --- | --- | --- |
+| Permission before action | FRE introduction and enable-in-Settings cards | Access: 2.8 plate + 2.9 capability/access/choice strip; add the actual security-modal sequence before making broader claims. |
+| One task, different footprints | Responsive views and CUA working | Workspace: 2.6 compact/full comparison, showing which task, progress, composer and takeover elements persist. Do not invent breakpoint values. |
+| Two reasons to intervene | Take control and Hand raise | Implemented here as a 2.6 comparison; replace stills with cleared recordings when available. |
+| Steer without starting over | Both three-option composer boards | Implemented here as a 2.13 alternative/state matrix; add the eventual selection rationale when confirmed. |
+| Hand back or end clearly | Resume controls and stopped-state choices | Record the actual continuation, cancellation and completion behavior under CUA-M01. Still images cannot establish these transitions. |
+
+Keep saved actions, timeouts and unavailable actions out of the main narrative
+unless one explains a consequential recovery decision. A strong recovery example
+would show what work persists, what can resume, and how the person recovers.
+These are requests for existing evidence, not invitations to fabricate screens.
 
 ## Scope
 
@@ -55,7 +102,7 @@ The milestone is the October 16, 2025 announcement of an experimental capability
 | Access and onboarding | 2.8 Full-bleed Plate + 2.9 Strip Break |
 | Agent workspace | 2.4 Annotated Split Plate |
 | Stepping in | 2.11 Pull-quote Interlude |
-| Human action | 2.13 Data Table Block |
+| Human action | 2.6 Two-up Comparison + 2.13 alternative/state matrix |
 | Perspective | 2.3 Body Column |
 | Public record | 2.13 Data Table Block |
 
@@ -77,8 +124,9 @@ security implementation details.
   supported; show the result in context.
 - **Required context:** Build or prototype version, confirmed handoff behavior,
   source clearance and synthetic or permitted task content.
-- **Fallback:** Attributed announcement image, the three-needs table and the
-  compact planned-media request. No fabricated duration or play button.
+- **Fallback:** Supplied Take Control and hand-raise stills, the explicitly local
+  composer explorations and the compact planned-media request. No fabricated
+  recording duration or play button.
 
 ## Open questions before publication
 
@@ -88,6 +136,9 @@ security implementation details.
 | Copilot Actions | Design process | Alternatives and evidence behind key decisions | Add two or three specific decisions with artifacts; do not fabricate a research chapter. |
 | Copilot Actions | Visuals | Original design screens or a shareable walkthrough | Replace or supplement the attributed announcement images with approved original material. |
 | Copilot Actions | Outcomes | Verified rollout, adoption, or research results | Add only verifiable milestones or results; the current closer is perspective, not impact. |
+| Copilot Actions | Access | Full security-modal sequence beyond the supplied first-run cards | Supply cleared screens in actual flow order, with the decision each modal establishes. |
+| Copilot Actions | Composer | Selected alternative, rationale, and precise pause/stop/cancel semantics | Confirm the choice and its evidence; retain all three as explorations until then. |
+| Copilot Actions | Handback | What follows a redirect, Resume, cancellation or task completion | Record each supported transition, including the final result or confirmation. |
 
 ## Public sources and asset provenance
 
@@ -96,10 +147,24 @@ security implementation details.
 - Thurrott, [Microsoft explains how it will secure AI agents in Windows 11](https://www.thurrott.com/windows/windows-11/328457/microsoft-explains-how-it-will-secure-ai-agents-in-windows-11), October 16, 2025. Secondary coverage, not evidence of individual contribution.
 - PCMag, [Microsoft really wants you to talk to your PC (and Copilot)](https://www.pcmag.com/news/microsoft-heres-why-you-should-talk-to-your-windows-11-pc), October 16, 2025. Retrieved through its Yahoo syndication in the research conversation; the page links to the original supplied URL.
 
-The two unmodified PNGs are attributed to Microsoft in figure captions:
+The announcement PNGs remain in the repository; only onboarding is currently
+shown and attributed to Microsoft:
 
 - `public/images/copilot-actions/announcement-app.png`: https://blogs.windows.com/wp-content/uploads/sites/2/2025/10/Copilot-Actions-app1920.png
 - `public/images/copilot-actions/announcement-onboarding.png`: https://blogs.windows.com/wp-content/uploads/sites/2/2025/10/Under-embargo-until-10.16-Copilot-Actions-visual1920.png
+
+New supplied evidence (not attributed to the announcement):
+
+- `public/images/copilot-actions/take-control.png`: unmodified `Take control.png`, 1504 x 1024.
+- `public/images/copilot-actions/hand-raise.png`: unmodified `Hand raise.png`, 1504 x 1024.
+- `public/images/copilot-actions/composer/`: native exports from the two linked
+  Figma boards. Original filenames preserve traceability; no board screenshot is
+  used as an implementation asset.
+- `FRE.png`, `Responsive views.png`, and `CUA working.png` were reviewed for the
+  proposed next passes but are not incorporated in this one-section edit.
+
+Supplying designs for this draft does not establish clearance for publication,
+individual ownership of every element, or evidence that these exact states shipped.
 
 ## Local validation
 
