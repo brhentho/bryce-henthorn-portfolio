@@ -42,7 +42,6 @@ export function RecallIdentity() {
         </g>)}
         <image href={`${asset}/logo.svg`} x="382" y="310.002" width="110.001" height="119.996" mask={`url(#${id}-logo)`} />
       </svg>
-      <figcaption className="pf-recall-identity__caption">Recall / A new way to find a remembered moment.</figcaption>
     </figure>
   </EvidenceReveal>
 }

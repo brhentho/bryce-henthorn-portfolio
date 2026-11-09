@@ -57,7 +57,6 @@
 .portfolio .pf-recall-identity__scene { display: block; width: 100%; height: auto; overflow: hidden; }
 .portfolio .pf-recall-identity__cell { fill: none; stroke: var(--pf-recall-identity-grid); stroke-width: .9106; }
 .portfolio .pf-recall-identity__cell[data-highlighted] { fill: var(--pf-recall-identity-cell); }
-.portfolio .pf-recall-identity__caption { max-width: 38ch; margin-inline: auto; text-align: center; font: .8125rem/1.6 var(--font-mono); color: var(--text-secondary); }
 .portfolio .pf-recall-model { --pf-recall-highlight: 0; --pf-recall-spread: 0px; display: grid; grid-template-columns: 1fr 1fr; gap: 4%; align-items: center; }
 .portfolio .pf-recall-model-copy { min-width: 0; }
 .portfolio .pf-recall-model-copy > * + * { margin-top: var(--space-block); }
@@ -104,16 +103,10 @@
   .portfolio .pf-recall-model:has(.pf-recall-stage:focus-visible) .pf-recall-plane { transition: none; }
 }
 .portfolio .pf-recall-result { min-width: 0; }
-.portfolio .pf-recall-full-grid > img { border-radius: var(--pf-media-radius); box-shadow: var(--pf-media-shadow); }
 .portfolio .pf-recall-impact > .pf-media { margin-top: var(--space-block); }
-.portfolio .fn-environment[data-crossing] .pf-recall-full-grid > img { box-shadow: none; }
 .portfolio .pf-recall-annotations { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-block: 2rem; }
 .portfolio .pf-recall-annotations dt { font: .8125rem/1.5 var(--font-mono); color: var(--text-primary); }
 .portfolio .pf-recall-annotations dd { margin-top: .5rem; }
-.portfolio .pf-recall-full-grid { margin-top: 1rem; border-bottom: 1px solid var(--rule); }
-.portfolio .pf-recall-full-grid summary { cursor: pointer; padding: 1rem .25rem; font-size: .9375rem; line-height: 1.5; }
-.portfolio .pf-recall-full-grid summary:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 3px; }
-.portfolio .pf-recall-full-grid img { display: block; width: 100%; height: auto; margin-bottom: 1rem; border: 1px solid var(--rule); }
 .portfolio .pf-recall .pf-decisions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .portfolio .pf-recovery-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding-block: 2rem; border-block: 1px solid var(--rule); }
 .portfolio .pf-recovery-pair h3 { font-size: 1.5rem; margin-block: 1rem; }
