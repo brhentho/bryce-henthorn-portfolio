@@ -94,6 +94,8 @@
   --pf-recall-identity-cell: rgb(255 255 255 / .25);
   --pf-teams-initials-ink: #346c6d;
   --pf-evidence-heading-size: clamp(1.75rem, 3vw, 2.5rem);
+  --pf-action-blue: #8eb6ff;
+  --pf-action-purple: #b3a0ff;
 
   /* Hero clip windows. 0.5em vertical clears Inter Tight's ascenders and
      descenders at display leading; 0.25em horizontal clears side bearings

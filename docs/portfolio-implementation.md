@@ -45,6 +45,22 @@ items. No fabricated research, metrics or completed-media claims fill those gaps
 - The public header is a name-only home link. Work/About/Contact share a gooey
   highlight that moves independently of text and click targets. Primary and quiet
   actions share the cursor-responsive edge, mono labels, focus and press treatment.
+- Public navigation stays sticky at every scroll depth. An opaque environment
+  backing protects link contrast; the scrolled surface tint and divider fade over
+  the fast UI duration. Keyboard and reduced-motion scrolling settle directly.
+  Measured header height keeps anchors, focused controls and chapter rails clear
+  when navigation wraps. Archived headers retain their original behavior.
+- The public footer is a quiet name/location and plain email row. It retains the
+  Contact destination without a promotional heading or back-to-work button.
+- Public homepage summaries show date, title, subheader and case-study action,
+  without numbered dates or proof labels. The redundant hero action is omitted;
+  Work navigation and the skip link remain. The Approach heading aligns with its
+  body inset on desktop and stacks on narrow screens. Archives are unchanged.
+- Homepage case-study actions use content-matched blue (Agents) and purple
+  (Recall and Teams) accents for their shine, hover wash and keyboard focus.
+- Case progress rails share the site navigation's gooey highlight for active,
+  hovered and focused links, including wrapped mobile rows. Keyboard and
+  reduced-motion changes settle directly; section links retain native anchors.
 - `PortfolioLink` selects the public editorial wipe in the existing transition
   coordinator. The opaque panel covers the route commit and continues offscreen
   before the headline resolves. Public links do not also start an artifact morph.

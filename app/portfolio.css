@@ -1,4 +1,23 @@
 .portfolio { position: relative; z-index: 1; isolation: isolate; }
+.portfolio .pf-header { position: sticky; top: 0; z-index: 10; isolation: isolate; background: var(--surface-bg); }
+.portfolio .pf-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--xr-surface);
+  border-bottom: 1px solid var(--rule-hairline);
+  opacity: 0;
+}
+.portfolio .pf-header[data-scrolled]::before { opacity: 1; }
+.portfolio .fn-environment :is([id], a, button, input, select, textarea, summary, [tabindex]) {
+  scroll-margin-top: calc(var(--pf-header-height, 0px) + 1rem);
+}
+.portfolio .fn-rail nav { top: calc(var(--pf-header-height, 0px) + 1rem); }
+.portfolio .pf-footer { padding: var(--space-block) var(--fn-pad) 2rem; }
+.portfolio .pf-footer .fn-footer-line { flex-wrap: wrap; }
+.portfolio .pf-footer a { overflow-wrap: anywhere; min-width: 0; max-width: 100%; }
 .portfolio h1 { letter-spacing: var(--pf-tracking-display); }
 .portfolio h2 { letter-spacing: var(--pf-tracking-heading); }
 ::view-transition-group(portfolio-agents), ::view-transition-group(portfolio-recall), ::view-transition-group(portfolio-teams) {
@@ -63,6 +82,9 @@
 .portfolio .pf-experience dd { display: grid; gap: .75rem; }
 .portfolio .pf-experience p { line-height: 1.65; }
 .portfolio .pf-next { display: flex; gap: 1rem; flex-wrap: wrap; padding-block: 2rem; }
+@media (min-width:851px) {
+  .portfolio .fn-approach-heading { grid-template-columns: 27% minmax(0, 1fr); column-gap: 0; }
+}
 @media (max-width:850px) {
   .portfolio .pf-split,.portfolio .pf-pair,.portfolio .pf-decisions,.portfolio .pf-about-hero { grid-template-columns: 1fr; gap: 2rem; }
   .portfolio .pf-about-hero img { max-height: 65svh; object-fit: cover; object-position: 50% 30%; }

@@ -13,7 +13,6 @@ import { useMediaQuery } from "../useMediaQuery"
 import { Environment } from "./Environment"
 import { Approach, CaseLink, Chapter, FinalFooter, FinalHeader, useFinalHero } from "./Shared"
 import { PortfolioHeader, PortfolioFooter } from "@/components/portfolio/Navigation"
-import { PortfolioAction } from "@/components/portfolio/PortfolioAction"
 import { ProjectImageLink } from "@/components/portfolio/ProjectImageLink"
 
 const TONES = ["cool", "plum", "warm"] as const
@@ -33,8 +32,7 @@ export function FinalHome({ concept, publicMode = false, projects = PROJECTS }: 
           <p className="fn-label">{PERSON.location} / Microsoft / Product design</p>
           <RevealWords as="h1" id="fn-home-title" className="fn-home-title" text={PERSON.statement} />
           <p className="fn-intro">{PERSON.secondary}</p>
-          {publicMode ? <PortfolioAction variant="quiet" className="fn-work-cue" href="#work">Selected work</PortfolioAction>
-            : <a className="fn-work-cue" href="#work">Selected work <span aria-hidden="true">↓</span></a>}
+          {!publicMode && <a className="fn-work-cue" href="#work">Selected work <span aria-hidden="true">↓</span></a>}
         </div>
       </section>
       <div id="work" className="fn-work" aria-label="Selected work">
@@ -126,10 +124,10 @@ function Project({ concept, hero, index, project, publicMode }: { concept: Final
     <div className="fn-project-grid">
       <div ref={copy} className="fn-project-copy" data-project-copy={project.slug}>
         <motion.div className="fn-project-heading" style={motionOn && e.copyDrift ? { y: headingY } : REST}>
-          <div className="fn-line-mask"><motion.p className="fn-label" style={motionOn ? { y: labelY } : REST}>0{index + 1} / {project.years}</motion.p></div>
+          <div className="fn-line-mask"><motion.p className="fn-label" style={motionOn ? { y: labelY } : REST}>{!publicMode && `0${index + 1} / `}{project.years}</motion.p></div>
           <div className="fn-line-mask"><motion.h2 style={motionOn ? { y: titleY, opacity: titleOpacity } : REST}>{project.name}</motion.h2></div>
           <motion.p className="fn-project-thesis" style={motionOn ? { y: thesisY, opacity: thesisOpacity } : REST}>{project.title}</motion.p>
-          {concept !== "signal" && <motion.p className="fn-label fn-project-proof" style={motionOn ? { y: thesisY, opacity: thesisOpacity } : REST}>{project.proof}</motion.p>}
+          {!publicMode && concept !== "signal" && <motion.p className="fn-label fn-project-proof" style={motionOn ? { y: thesisY, opacity: thesisOpacity } : REST}>{project.proof}</motion.p>}
         </motion.div>
         <CaseLink concept={concept} hero={hero} index={index} publicMode={publicMode} />
       </div>

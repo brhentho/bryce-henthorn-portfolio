@@ -1,41 +1,45 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-import { useEffect, useId, useLayoutEffect, useRef, useState } from "react"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { PERSON } from "@/lib/explore/content"
 import { ContinuityListener } from "../explore/ContinuityLink"
 import { PortfolioLink } from "./PortfolioLink"
-import { PortfolioAction } from "./PortfolioAction"
+import { GooeyNavigation } from "./GooeyNavigation"
 
 export function PortfolioHeader({ route = "/" }: { route?: string }) {
   const pathname = usePathname()
-  const nav = useRef<HTMLElement>(null)
-  const filterId = `nav-goo-${useId().replace(/:/g, "")}`
+  const header = useRef<HTMLElement>(null)
   const [contact, setContact] = useState(false)
   const [notice, setNotice] = useState("")
   const current = contact ? "contact" : pathname === "/about" ? "about" : "work"
-  const [hover, setHover] = useState<string | null>(null)
-  const [focus, setFocus] = useState<string | null>(null)
-  const selected = focus ?? hover ?? current
   useLayoutEffect(() => {
-    const element = nav.current
-    if (!element) return
-    const measure = () => {
-      const link = element.querySelector<HTMLElement>(`[data-nav-item="${selected}"]`)
-      if (!link) return
-      const box = link.getBoundingClientRect(), parent = element.getBoundingClientRect()
-      element.style.setProperty("--nav-x", `${box.left - parent.left}px`)
-      element.style.setProperty("--nav-y", `${box.top - parent.top + 2}px`)
-      element.style.setProperty("--nav-width", `${box.width / 60}`)
-      element.style.setProperty("--nav-height", `${box.height - 4}px`)
-      element.dataset.ready = "true"
-    }
-    measure()
+    const element = header.current
+    const environment = element?.closest<HTMLElement>(".fn-environment")
+    if (!element || !environment) return
+    const measure = () => environment.style.setProperty("--pf-header-height", `${element.getBoundingClientRect().height}px`)
+    const scroll = () => element.toggleAttribute("data-scrolled", window.scrollY > 0)
+    const pointer = () => element.setAttribute("data-pointer-scroll", "")
+    const keyboard = () => element.removeAttribute("data-pointer-scroll")
+    const restore = () => { keyboard(); measure(); scroll() }
+    restore()
     const resize = new ResizeObserver(measure)
     resize.observe(element)
-    for (const child of element.querySelectorAll("a")) resize.observe(child)
-    return () => resize.disconnect()
-  }, [selected])
+    window.addEventListener("scroll", scroll, { passive: true })
+    window.addEventListener("pageshow", restore)
+    window.addEventListener("pointerdown", pointer, { passive: true })
+    window.addEventListener("wheel", pointer, { passive: true })
+    window.addEventListener("keydown", keyboard)
+    return () => {
+      resize.disconnect()
+      environment.style.removeProperty("--pf-header-height")
+      window.removeEventListener("scroll", scroll)
+      window.removeEventListener("pageshow", restore)
+      window.removeEventListener("pointerdown", pointer)
+      window.removeEventListener("wheel", pointer)
+      window.removeEventListener("keydown", keyboard)
+    }
+  }, [])
   useEffect(() => {
     const footer = document.getElementById("contact")
     const observer = new IntersectionObserver(([entry]) => setContact(entry.isIntersecting), { threshold: .2 })
@@ -48,37 +52,26 @@ export function PortfolioHeader({ route = "/" }: { route?: string }) {
   }, [])
   return <>
     <ContinuityListener />
-    <header className="fn-nav" data-portfolio-route={route}>
+    <header ref={header} className="fn-nav pf-header" data-portfolio-route={route}>
       <PortfolioLink className="fn-brand" href="/">{PERSON.name}</PortfolioLink>
-      <nav ref={nav} className="pf-navigation" aria-label="Portfolio" data-keyboard={focus ? "" : undefined}
-        onPointerLeave={() => setHover(null)} onBlur={event => {
-          if (!event.currentTarget.contains(event.relatedTarget)) setFocus(null)
-        }}>
-        <svg width="0" height="0" aria-hidden="true" className="pf-nav-filter"><defs><filter id={filterId} x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
-          <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" />
-        </filter></defs></svg>
-        <span className="pf-nav-fluid" aria-hidden="true" style={{ filter: `url(#${filterId})` }}>
-          <span className="pf-nav-blob pf-nav-tail" /><span className="pf-nav-blob" />
-        </span>
+      <GooeyNavigation className="pf-navigation" label="Portfolio" current={current}>
         {([{ id: "work", href: "/#work", label: "Work" }, { id: "about", href: "/about", label: "About" },
           { id: "contact", href: "#contact", label: "Contact" }] as const).map(item =>
           <PortfolioLink key={item.id} href={item.href} data-nav-item={item.id}
-            aria-current={current === item.id ? item.id === "contact" ? "location" : "page" : undefined}
-            onPointerEnter={event => { if (event.pointerType !== "touch") { setFocus(null); setHover(item.id) } }}
-            onFocus={event => { if (event.currentTarget.matches(":focus-visible")) setFocus(item.id) }}>
+            aria-current={current === item.id ? item.id === "contact" ? "location" : "page" : undefined}>
             {item.label}
           </PortfolioLink>)}
-      </nav>
+      </GooeyNavigation>
       {notice && <p className="pf-route-status" role="status">{notice}</p>}
     </header>
   </>
 }
 
 export function PortfolioFooter() {
-  return <footer className="fn-contact fn-chapter" id="contact">
-    <p className="fn-label">A conversation starts here</p>
-    <a className="fn-contact-title" href={`mailto:${PERSON.email}`}>Let’s talk. <span aria-hidden="true">↗</span></a>
-    <div className="fn-footer-line"><span>{PERSON.name} / {PERSON.location}</span><PortfolioAction variant="quiet" href="/#work">Back to the work</PortfolioAction></div>
+  return <footer className="pf-footer" id="contact">
+    <div className="fn-footer-line">
+      <span>{PERSON.name} / {PERSON.location}</span>
+      <a href={`mailto:${PERSON.email}`}>{PERSON.email}</a>
+    </div>
   </footer>
 }

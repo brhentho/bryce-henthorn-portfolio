@@ -8,6 +8,7 @@ import { useSectionProgress } from "../explore/useSectionProgress"
 import { useActiveSection } from "../explore/useActiveSection"
 import { RevealWords } from "../explore/RevealWords"
 import { PortfolioShell } from "./PortfolioShell"
+import { GooeyNavigation } from "./GooeyNavigation"
 import type { ChapterLink, LedgerItem, PortfolioPage } from "./types"
 
 type HeroImage = { src: string; alt: string; width: number; height: number; caption: string }
@@ -35,12 +36,12 @@ export function CaseLayout({ page, title, deck, call, ledger, hero, chapters, ch
         <div className="fn-case-intro"><p>{call}</p><dl className="xr-ledger">{ledger.map(item=><div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl></div>
       </header>
       <div className="fn-reading-grid">
-        <aside className="fn-rail pf-number-rail"><nav aria-label="Case progress">{chapters.map((chapter,index)=>{
+        <aside className="fn-rail pf-number-rail"><GooeyNavigation label="Case progress" current={active}>{chapters.map((chapter,index)=>{
           const number = String(index + 1).padStart(2, "0")
-          return <a key={chapter.id} href={`#${chapter.id}`}
+          return <a key={chapter.id} href={`#${chapter.id}`} data-nav-item={chapter.id}
             aria-label={`${number} of ${String(chapters.length).padStart(2, "0")}: ${chapter.label}`}
             aria-current={active===chapter.id?"location":undefined}><span>{number}</span></a>
-        })}</nav></aside>
+        })}</GooeyNavigation></aside>
         <div className="fn-reading-body">{children}</div>
       </div>
     </main>
