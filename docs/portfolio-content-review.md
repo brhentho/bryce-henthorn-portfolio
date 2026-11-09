@@ -10,7 +10,13 @@ for composition, **not** that all rights, release status or product claims have
 been independently verified. Existing assets are retained, not deleted.
 
 The interactive Recall capture/index drawing is an explanatory reconstruction of
-the existing four-layer diagram, not a running system or measured timing model.
+the supplied Design playbook's four-layer diagram (`384:40762` and
+`389:39713/39717/39722/39726`), not a running system or measured timing model.
+The Memory Index reference (`OFb99P2At6oxtDGjDicLx8`, `1329:73291`) informs
+layer markers and leader lines only, not claims about app launches, clipboard
+activity, desktop-file indexing or user graphs. Capture remains qualified by
+eligibility/settings, and index similarity scores are illustrative rather than
+measured results or confidence percentages.
 The provenance enlargement uses the red-barn result screenshot's actual source,
 time and surrounding context. It does not show separated Text/Visual headings;
 that distinction belongs with the verified search recording.

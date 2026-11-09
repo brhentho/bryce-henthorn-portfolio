@@ -58,8 +58,19 @@ items. No fabricated research, metrics or completed-media claims fill those gaps
 - `PortfolioReveals` progressively enhances reading/evidence groups without hiding
   server-rendered content. Text keeps its contrast during movement. Focus, deep
   links and reduced-motion changes settle content; videos remain user controlled.
-- Recall uses a selectable four-plane SVG capture/index model and an enlarged,
-  annotated provenance result. The latter shows source/time/context, not invented
+- Recall uses a four-plane SVG capture/index model: local Figma capture
+  and meaning artwork/icons, native OCR/index geometry in the same isometric
+  projection, an icon-led explanation grid, and static left-side layer callouts.
+  Hovering a plane or explanation instantly highlights both, clearing together
+  on departure, without selecting. Hover also spreads the stack around its center:
+  each gap grows by 16 SVG units over the normal UI duration (300ms, Quad Out).
+  Exit reverses continuously. Labels, leaders and layout stay fixed.
+  Focusable list items provide the same emphasis for keyboard readers without
+  motion. Reduced motion also stays stationary, and touch stays static with all
+  explanations visible. There are no radio or click actions.
+  A one-time arrival settles on hover or focus.
+  Scores are illustrative, and capture remains conditional on eligibility/settings.
+  The enlarged, annotated provenance result shows source/time/context, not invented
   Text/Visual headings. The existing recording supplies the separated-match evidence.
 - About now uses neutral ink/graphite instead of the two previous warm overrides.
   Working examples, concurrent experience and philosophy retain their actual copy.

@@ -45,9 +45,11 @@ export function RecallPage() {
       </div>
     </CaseSection>
 
-    <CaseSection id="system" title="From captured content to searchable moments.">
-      <p className="pf-caption">Simplified capture and indexing model—not a measured query-time sequence. Capture eligibility and behavior depend on the product version and settings.</p>
-      <RecallModel />
+    <CaseSection id="system">
+      <RecallModel>
+        <h2 data-pf-reveal="reading">From captured content to searchable moments.</h2>
+        <p className="pf-caption">Four layers turn eligible snapshots into searchable moments. Capture eligibility and behavior depend on the product version and settings.</p>
+      </RecallModel>
     </CaseSection>
 
     <CaseSection id="cards" title="One ranking hid the result people needed." tone="graphite">
