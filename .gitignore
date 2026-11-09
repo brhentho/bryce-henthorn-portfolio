@@ -23,3 +23,6 @@ critique/animations/
 .claude/worktrees/
 .craft/
 fixes/
+
+# Withheld originals remain private during design rollback.
+.local-media/

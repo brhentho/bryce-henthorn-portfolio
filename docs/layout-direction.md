@@ -129,7 +129,7 @@ Do not mechanically apply one background ramp or one case-body template to every
 | Page | Argument order | Layout and motion |
 |---|---|---|
 | Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve ASCII, layered project entrances and continuous atmosphere; clean linked product images with bounded pointer response, then staggered Approach |
-| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Floating SVG comparison (2.6), decision table, floating keyframes, actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
+| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Scattered task-pill field (2.8, floating exception), decision table, floating keyframes, actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
 | Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> milestone | Floating selectable four-layer model (2.5/2.7), provenance crop with annotations (2.4), recordings, decision table, privacy pair and full reading-width announcement figure (2.8); mainly ink/graphite |
 | Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Curated research evidence strip (2.9), workflow finding/intent table (2.13), conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
 | About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split, grouped working-example/ledger arrivals and shared neutral ink; no warm-brown override or product simulation |
@@ -151,15 +151,18 @@ available without automatic playback.
 
 The public Agents simulator is removed; the real recording, keyframes and
 five-state legend provide the explanation without a second workflow to learn.
-Archived simulations remain. The Agents comparison and taskbar cutouts, and
+Archived simulations remain. The Agents task field and taskbar cutouts, and
 Recall's exploded model, intentionally float without a website matte or frame.
 Recall retains its planes and stage controls but omits the large vertical arrow.
 
-The Agents comparison contrasts scattered work contexts with one shared Windows
-visibility layer. Matching geometric markers preserve identity without A/B/C
-codes; individual arrowless connections associate each context with its own
-state. The layer is a meaningful diagram object, not a backing card around the
-whole illustration or an execution engine.
+The Agents context illustration uses six scattered task pills from the supplied
+Design playbook frame (264:41080), without its background or title. It illustrates
+distributed work rather than a before/after system comparison. Native task text
+uses the portfolio typography; local source icons and translucent pill surfaces
+preserve the reference. Gentle transform-only drift pauses offscreen, in hidden
+tabs or through the figure's pause control; reduced motion and no-JS are static.
+The responsive field recomposes into offset rows when labels need more room.
+There is no shared Windows container, connector, simulated status or task action.
 
 Public rectangular images and recordings share rounded corners and quiet
 elevation, with captions outside the visual surface. Transparent compositions
@@ -379,7 +382,6 @@ Places where the existing copy is too thin to support a non-stacked layout, or w
 | RECALL-M01 | Recall | Ranking | Matched merged/separated results for the same query | Accurately label existing different-purpose figures; request a genuine comparison |
 | RECALL-M02 | Recall | Privacy | Cleared, version-bound deletion/capture-control artifact | Use a compact placeholder pending review; no unqualified system guarantee |
 | RECALL-C01 | Recall | Responsiveness | A source for the former `200MS WINDOW` claim | Remove the number. It is quantitative, not a qualitative substitute for missing evidence |
-| TEAMS-M01 | Teams | Teacher controls | Evidence of specific interventions beyond visible start/stop/join behavior | Keep the verified orchestration recording and request only the missing control behavior |
 | TEAMS-M02 | Teams | Research/outcome | Cleared research-to-decision and prototype-test evidence | Compact request; qualify outcomes and retain tested-concept status |
 
 Detailed questions, clearance holds and replacement instructions are maintained

@@ -122,7 +122,6 @@ export function TeamsPage() {
       </dl>
       <p className="fn-label">Source / Meeting-experience reviews, 2019–2021</p>
       <Prose><p>Starting, joining and stopping groups are visible in the recording. More specific interventions, such as muting or redirecting, remained part of the design exploration.</p></Prose>
-      <PortfolioMedia id="TEAMS-M01" />
     </CaseSection>
 
     <CaseSection id="impact" title="What we learned.">

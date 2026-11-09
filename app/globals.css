@@ -78,6 +78,11 @@
   --pf-tracking-display: -.035em;
   --pf-tracking-heading: -.025em;
   --pf-tracking-about-heading: -.015em;
+  --pf-task-edge: color-mix(in srgb, var(--text-primary) 60%, transparent);
+  --pf-task-surface-low: color-mix(in srgb, var(--text-primary) 4%, transparent);
+  --pf-task-surface-high: color-mix(in srgb, var(--text-primary) 18%, transparent);
+  --pf-task-shadow: 0 2px 8px rgb(0 0 0 / .12), inset 0 1px 0 rgb(255 255 255 / .08);
+  --pf-task-drift-duration: 12000ms;
 
   /* Hero clip windows. 0.5em vertical clears Inter Tight's ascenders and
      descenders at display leading; 0.25em horizontal clears side bearings

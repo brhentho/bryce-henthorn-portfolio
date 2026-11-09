@@ -90,20 +90,12 @@ The same stable request ID is used on the page and in the registry.
 - **Fallback:** Text comparison of recovery versus prevention and compact
   placeholder. Neither sensitive source still is rendered.
 
-### TEAMS-M01 — Intervene without breaking the discussion
+### TEAMS-M01 — Retired on-page request
 
-- **Priority / location:** P1, `/teams-for-education#teacher-control`.
-- **Kind / status:** Teacher-side prototype artifact; requested.
-- **Purpose:** Establish specific moderation beyond the **already observed**
-  start, join and stop group controls.
-- **Shot list:** Inspect an active table; exercise an actually supported
-  moderation action; show what the student sees and how discussion continues;
-  return to the global view. Omit unimplemented mute/redirect/flag interactions
-  rather than fabricate them.
-- **Required context:** Mark implemented, tested and intended behaviors
-  separately. Identify prototype date and clear all participants/content.
-- **Fallback:** Existing during-class orchestration recording plus compact
-  request; no claim that teacher perspective is wholly missing.
+Removed from the public Teams page at the author's request. The registry ID is
+retained for historical reference, not as an active requirement. Keep the
+teacher-control narrative and existing orchestration recording; do not restore
+the planned-media box.
 
 ### TEAMS-M02 — Supporting concept-testing notes
 

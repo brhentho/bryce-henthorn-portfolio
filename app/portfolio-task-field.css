@@ -1,0 +1,59 @@
+.portfolio .pf-task-field { container-type: inline-size; margin-inline: 0; color: var(--text-primary); }
+.pf-task-field__space { position: relative; height: clamp(24rem, 37cqw, 30rem); margin: 0; padding: 0; list-style: none; }
+.pf-task-position { position: absolute; width: max-content; max-width: 90%; }
+.pf-task-pill {
+  display: flex;
+  align-items: center;
+  gap: .45em;
+  padding: .65em .85em;
+  border: 1px solid var(--pf-task-edge);
+  border-radius: .65em;
+  background: linear-gradient(120deg, var(--pf-task-surface-low), var(--pf-task-surface-high));
+  box-shadow: var(--pf-task-shadow);
+  font: 400 var(--pf-task-size, 1rem)/1.25 var(--font-body);
+  letter-spacing: -.02em;
+  animation: pf-task-drift calc(var(--pf-task-drift-duration) * var(--pf-task-drift-scale, 1)) var(--ease-in-out-sine) infinite alternate;
+  animation-delay: var(--pf-task-phase, 0s);
+  animation-play-state: paused;
+}
+.pf-task-field:not([data-enhanced]) .pf-task-pill { animation: none; }
+.pf-task-field[data-running="true"] .pf-task-pill { animation-play-state: running; }
+.pf-task-icon { display: grid; place-items: center; flex: 0 0 1.2em; width: 1.2em; height: 1.2em; }
+.pf-task-icon > img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+.pf-task-copilot { display: block; position: relative; width: 100%; height: 100%; }
+.pf-task-copilot > span { position: absolute; }
+.pf-task-copilot img { display: block; max-width: 100%; height: auto; }
+.pf-task-label { min-width: 0; overflow-wrap: break-word; }
+.pf-task-position--github { left: 31%; top: 5%; --pf-task-size: 1.5rem; --pf-task-phase: -3s; --pf-task-drift-scale: .85; --pf-task-dx: 3px; --pf-task-dy: -5px; }
+.pf-task-position--outreach { left: 4%; top: 31%; --pf-task-phase: -8s; --pf-task-drift-scale: 1.15; --pf-task-dx: -4px; --pf-task-dy: 3px; }
+.pf-task-position--ticket { right: 3%; top: 25%; --pf-task-phase: -5s; --pf-task-drift-scale: 1; --pf-task-dx: 2px; --pf-task-dy: 6px; }
+.pf-task-position--finance { left: 17%; top: 65%; --pf-task-size: 1.25rem; --pf-task-phase: -13s; --pf-task-drift-scale: 1.3; --pf-task-dx: -3px; --pf-task-dy: -4px; }
+.pf-task-position--research { left: 52%; top: 49%; --pf-task-phase: -17s; --pf-task-drift-scale: .92; --pf-task-dx: 4px; --pf-task-dy: -2px; }
+.pf-task-position--copilot { right: 9%; top: 81%; --pf-task-size: 1.375rem; --pf-task-phase: -7s; --pf-task-drift-scale: 1.08; --pf-task-dx: -2px; --pf-task-dy: 5px; }
+.pf-task-field__caption { display: flex; align-items: center; justify-content: space-between; gap: .5rem 1.5rem; flex-wrap: wrap; margin-top: 1rem; font: .8125rem/1.6 var(--font-mono); color: var(--text-secondary); }
+.pf-task-field__caption button { min-height: 44px; padding: .5rem 0; color: var(--text-primary); text-decoration: underline; text-underline-offset: .3em; cursor: pointer; }
+.pf-task-field__caption button:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 4px; }
+.pf-task-field:not([data-enhanced]) button { display: none; }
+.portfolio .fn-environment[data-crossing] .pf-task-pill { background: var(--surface-bg); border-color: var(--text-primary); box-shadow: none; }
+@keyframes pf-task-drift {
+  from { transform: translate(calc(var(--pf-task-dx) * -1), calc(var(--pf-task-dy) * -1)); }
+  to { transform: translate(var(--pf-task-dx), var(--pf-task-dy)); }
+}
+@container (max-width: 48rem) {
+  .pf-task-field__space { display: flex; flex-direction: column; align-items: flex-start; gap: 1.75rem; height: auto; padding: 1.5rem .5rem; }
+  .pf-task-position { position: static; max-width: calc(100% - 1rem); }
+  .pf-task-position--github { align-self: center; --pf-task-size: 1.25rem; }
+  .pf-task-position--outreach { margin-left: 2%; }
+  .pf-task-position--ticket { align-self: flex-end; }
+  .pf-task-position--finance { margin-left: 8%; --pf-task-size: 1.125rem; }
+  .pf-task-position--research { align-self: flex-end; margin-right: 7%; }
+  .pf-task-position--copilot { align-self: center; --pf-task-size: 1.25rem; }
+}
+@container (max-width: 24rem) {
+  .pf-task-position { --pf-task-size: 1rem; max-width: 100%; margin-inline: 0; }
+  .pf-task-pill { padding-inline: .65em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-task-field .pf-task-pill { animation: none; }
+  .pf-task-field__caption button { display: none; }
+}

@@ -2,7 +2,7 @@ import Image from "next/image"
 import { CaseLayout } from "./CaseLayout"
 import { AgentKeyframes, CaseSection, Decisions, Prose, ShinyLink, Split } from "./Blocks"
 import { PortfolioMedia } from "./PortfolioMedia"
-import { AgentsComparison } from "./AgentsComparison"
+import { AgentsTaskField } from "./AgentsTaskField"
 
 const chapters = [
   { id: "context", label: "The missing return point" },
@@ -46,7 +46,7 @@ export function AgentsPage() {
         <p>Some agents lived inside apps. Others appeared in Copilot conversations or arrived as notifications. Starting work was only part of the interaction: people also needed to find it later, understand whether it was still running, and know when it needed them.</p>
         <p>Early interviews surfaced a consistent concern about surprises and unclear progress. We treated that as an observability problem—not evidence that everyone distrusts automation. The OS offered a common surface across the different places work began.</p>
       </Prose>
-      <AgentsComparison />
+      <AgentsTaskField />
     </CaseSection>
 
     <CaseSection id="process" title="Why the taskbar, not another workspace.">
