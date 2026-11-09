@@ -61,7 +61,7 @@ The same stable request ID is used on the page and in the registry.
   comparable task context; observations that actually informed selection.
 - **Required context:** Evaluation method/date, participant context if
   permissible, source status and clearance.
-- **Fallback:** Readable three-alternative decision summary before keyframes.
+- **Fallback:** Readable three-alternative decision summary with the three taskbar exploration images, not a claim of original evaluation evidence.
 
 ### RECALL-M01 — The same query, two ranking treatments
 
@@ -186,9 +186,9 @@ implementation. Future cleared exports can replace registry requests by ID.
 | Page | Source material | New location / disposition |
 | --- | --- | --- |
 | Agents | Context + Problem | `#context`: fragmented/observable pair, early-interview concern and OS opportunity, without universal psychological claims. |
-| Agents | Three candidate homes | `#process`: all alternatives and tradeoffs precede the selected state keyframes. |
+| Agents | Three candidate homes | `#process`: all alternatives and tradeoffs followed by the three taskbar exploration images from Figma frame `380:39833`, visible together under one caption. |
 | Agents | Invocation | `#invocation`: dispatch → monitor → return, composer recording. |
-| Agents | Taskbar + state inventory + simulation | `#taskbar`, nested `#simulation`: compact selected keyframes, actual detail recording, all five states, explicitly fictional user-driven demo. |
+| Agents | Taskbar + state inventory | `#taskbar`, nested `#simulation`: actual detail recording and all five states. The exploration images belong to `#process`; no public simulator. |
 | Agents | Constraints + Iteration | `#constraints`, nested `#iteration`: provider requests, stable contract, actual-shell prototypes and multiple-agent testing retained. |
 | Agents | Impact | `#impact`: ongoing work and announcement distinguished from availability/outcomes. Repeated individual ownership removed; role stays in ledger. |
 | Recall | Context + Problem | `#context`: memory fragments and task-dependent relevance. Reservation example withheld, not replaced with invented screenshot. |

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { CaseLayout } from "./CaseLayout"
-import { AgentKeyframes, CaseSection, Decisions, Prose, ShinyLink, Split } from "./Blocks"
+import { CaseSection, Decisions, Prose, ShinyLink, Split } from "./Blocks"
 import { PortfolioMedia } from "./PortfolioMedia"
 import { AgentsTaskField } from "./AgentsTaskField"
 
@@ -58,6 +58,26 @@ export function AgentsPage() {
         { title: "An independent taskbar pin", tradeoff: "Provides a familiar return point. Progress still needs a language that works across providers.", disposition: "Build on the existing location and add shared states.", chosen: true },
         { title: "A dedicated agent workspace", tradeoff: "Creates room for rich management, but adds another place to learn before the interaction model is established.", disposition: "Keep the first step progressive rather than create a separate destination." },
       ]} />
+      <figure className="pf-media pf-agents-explorations">
+        <div className="pf-agents-explorations-images">
+          <div className="pf-media-frame pf-media-cutout">
+            <Image src="/assets/Frame 2147238301.png" width={651} height={155}
+              alt="Taskbar exploration with numbered activity indicators beside Copilot and File Explorer."
+              sizes="(max-width: 850px) 92vw, 651px" />
+          </div>
+          <div className="pf-media-frame pf-media-cutout">
+            <Image src="/assets/Frame 2147238302.png" width={640} height={159}
+              alt="Taskbar exploration with distinct agent icons grouped before the application icons."
+              sizes="(max-width: 850px) 92vw, 651px" />
+          </div>
+          <div className="pf-media-frame pf-media-cutout">
+            <Image src="/assets/Frame 2147238303.png" width={640} height={157}
+              alt="Taskbar exploration with a compact agent group beside the weather widget and a count of additional agents."
+              sizes="(max-width: 850px) 92vw, 651px" />
+          </div>
+        </div>
+        <figcaption className="fn-label">Fig. 02 / Taskbar explorations: different ways to make agent work visible within a familiar Windows surface.</figcaption>
+      </figure>
       <Prose><p>The taskbar let agents become a Windows construct without pretending they behave exactly like apps. We could preserve the familiar location while defining how ongoing work, requests for help and completion should appear.</p></Prose>
     </CaseSection>
 
@@ -76,9 +96,8 @@ export function AgentsPage() {
 
     <CaseSection id="taskbar" title="Know when to look, and when to act." tone="graphite">
       <Prose>
-        <p>A pin establishes the return point. A state signal says whether attention is needed. The expanded hover card reveals the current step without requiring someone to reopen the conversation. These are three views of the chosen direction, not three alternative designs.</p>
+        <p>A pin establishes the return point. A state signal says whether attention is needed. The expanded hover card reveals the current step without requiring someone to reopen the conversation.</p>
       </Prose>
-      <AgentKeyframes floating />
       <Split>
         <Prose>
           <p>Providers report progress differently. Some stream detailed steps; others remain quiet for long stretches. We needed enough common structure to communicate state without promising detail the agent could not supply.</p>

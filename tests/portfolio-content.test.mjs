@@ -61,6 +61,34 @@ test("Teams films follow inspected content rather than historic captions", () =>
   assert.ok(teams.indexOf('id="teams-classroom"') < teams.indexOf('id="teams-student"'))
 })
 
+test("Agents taskbar explorations stay together with the alternatives discussion", () => {
+  const agents = pages[0]
+  const process = agents.match(/<CaseSection id="process"[\s\S]*?<\/CaseSection>/)?.[0]
+  const taskbar = agents.match(/<CaseSection id="taskbar"[\s\S]*?<\/CaseSection>/)?.[0]
+  assert.ok(process)
+  assert.ok(taskbar)
+  const sources = [...process.matchAll(/src="(\/assets\/Frame [^"]+)"/g)].map(match => match[1])
+  assert.deepEqual(sources, [
+    "/assets/Frame 2147238301.png",
+    "/assets/Frame 2147238302.png",
+    "/assets/Frame 2147238303.png",
+  ])
+  for (const src of sources) {
+    assert.equal(agents.split(`src="${src}"`).length - 1, 1)
+    const png = readFileSync(new URL(`../public${src}`, import.meta.url))
+    assert.ok(png.length > 24)
+    const dimensions = process.match(new RegExp(`src="${src.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}" width=\\{(\\d+)\\} height=\\{(\\d+)\\}`))
+    assert.ok(dimensions)
+    assert.equal(Number(dimensions[1]), png.readUInt32BE(16))
+    assert.equal(Number(dimensions[2]), png.readUInt32BE(20))
+  }
+  assert.equal((process.match(/<figcaption/g) ?? []).length, 1)
+  assert.doesNotMatch(agents, /AgentKeyframes|three views of the chosen direction/)
+  assert.doesNotMatch(taskbar, /\/assets\/Frame /)
+  assert.match(taskbar, /id="agents-taskbar"/)
+  assert.match(taskbar, /className="pf-state-lexicon"/)
+})
+
 test("publication holds do not leak back into main page content", () => {
   const content = pages.join("\n")
   assert.doesNotMatch(content, /problem-opentable|trust-sensitive-content|trust-delete-snapshot|teams-cocreation|impact-tweets/)

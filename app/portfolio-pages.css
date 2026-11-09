@@ -1,4 +1,6 @@
 /* Page-specific narrative composition. Shared surfaces live in portfolio.css. */
+.portfolio .pf-section > .pf-agents-explorations { max-width: 651px; margin-block-start: var(--space-block); }
+.portfolio .pf-agents-explorations-images { display: grid; gap: var(--space-block); }
 .portfolio .pf-constraints-section > .pf-media + h2 { margin-top: var(--space-section); }
 .portfolio [data-media-id="agents-constraints"] > .pf-media-frame {
   border: 0;
