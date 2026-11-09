@@ -92,7 +92,7 @@ test("Agents taskbar explorations stay together with the alternatives discussion
     assert.equal(Number(dimensions[1]), png.readUInt32BE(16))
     assert.equal(Number(dimensions[2]), png.readUInt32BE(20))
   }
-  assert.equal((process.match(/<figcaption/g) ?? []).length, 1)
+  assert.doesNotMatch(process, /<figcaption/)
   assert.doesNotMatch(agents, /AgentKeyframes|three views of the chosen direction/)
   assert.doesNotMatch(taskbar, /\/assets\/Frame /)
   assert.match(taskbar, /id="agents-taskbar"/)
@@ -105,6 +105,19 @@ test("publication holds do not leak back into main page content", () => {
   assert.doesNotMatch(content, /200MS|Windows updates quarterly/)
   assert.doesNotMatch(content, /href=["']\/(?:copilot-actions|explore)/)
   assert.match(pages[2], /Tested concept/)
+})
+
+test("public figures omit caption lines while retaining accessible media and motion controls", () => {
+  const media = read("components/portfolio/PortfolioMedia.tsx")
+  const hero = read("components/portfolio/CaseLayout.tsx")
+  const tasks = read("components/portfolio/AgentsTaskField.tsx")
+  const figures = ["RecallModel", "RecallIdentity"].map(name => read(`components/portfolio/${name}.tsx`))
+  assert.doesNotMatch([...pages, media, hero, tasks, ...figures].join("\n"), /<figcaption\b/)
+  assert.match(media, /alt=\{media\.alt\}/)
+  assert.match(hero, /alt=\{hero\.alt\}/)
+  assert.match(tasks, /<button[^>]+aria-pressed=\{paused\}/)
+  assert.match(tasks, /"Resume motion" : "Pause motion"/)
+  assert.match(media, /Planned media/)
 })
 
 test("Teams places pandemic scale before research without claiming a project outcome", () => {

@@ -41,7 +41,6 @@
 .portfolio .fn-case-product .fn-device img { border-radius: inherit; }
 .portfolio .fn-environment[data-crossing] :is(.pf-media-surface > img, .pf-media-surface > video, .fn-case-product .fn-device) { box-shadow: none; }
 .portfolio .fn-environment[data-crossing] .pf-media-cutout > img { filter: none; }
-.portfolio .pf-media figcaption { padding-top: .875rem; text-transform: none; letter-spacing: .01em; }
 .portfolio .pf-media-request { display: grid; gap: .75rem; border: 1px dashed var(--rule-strong); padding: 1.5rem; max-width: 52rem; }
 .portfolio .pf-media-request h3 { font-size: 1.125rem; letter-spacing: -.02em; }
 .portfolio .pf-media-request > p:not(.fn-label) { line-height: 1.55; color: var(--text-secondary); font-size: .9375rem; }

@@ -26,6 +26,5 @@ function MediaContent({id,media,number,className,sizes}:{id:string;media:MediaIt
         : <PortfolioVideo id={id} media={media} onError={()=>{console.warn(`Portfolio recording unavailable: ${id}`);setFailed(true)}} />}
       {failed && <p className="pf-media-error" role="status">{media.kind==="video"?"Recording":"Image"} unavailable. <a href={media.src}>Open original source ↗</a></p>}
     </div>
-    <figcaption className="fn-label">{number?`Fig. ${number} / `:""}{media.caption}</figcaption>
   </figure>
 }

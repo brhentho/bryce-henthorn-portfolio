@@ -125,7 +125,6 @@ export function RecallModel({ children }: { children: ReactNode }) {
           </g>)}
         </svg>
       </div>
-      <figcaption className="fn-label">Fig. 02 / Capture to index, read bottom to top. Conceptual architecture, not a query-time trace. Similarity scores are illustrative.</figcaption>
     </figure>
   </div>
 }

@@ -76,7 +76,6 @@ export function AgentsPage() {
               sizes="(max-width: 850px) 92vw, 651px" />
           </div>
         </div>
-        <figcaption className="fn-label">Fig. 02 / Taskbar explorations: different ways to make agent work visible within a familiar Windows surface.</figcaption>
       </figure>
       <Prose><p>The taskbar let agents become a Windows construct without pretending they behave exactly like apps. We could preserve the familiar location while defining how ongoing work, requests for help and completion should appear.</p></Prose>
     </CaseSection>
@@ -112,7 +111,6 @@ export function AgentsPage() {
             <h3>{state.label}</h3><p>{state.meaning}</p>
           </li>)}
         </ul>
-        <figcaption className="fn-label">Fig. 04.2 / One shared language for five states of agent work.</figcaption>
       </figure>
     </CaseSection>
 

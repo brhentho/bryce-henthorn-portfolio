@@ -66,11 +66,10 @@ export function AgentsTaskField() {
         </div>
       </li>)}
     </ul>
-    <figcaption className="pf-task-field__caption">
-      <span>Fig. 02 / Illustrative tasks, scattered across agents.</span>
+    <div className="pf-task-field__controls">
       <button type="button" aria-pressed={paused} onClick={() => setPaused(value => !value)}>
         {paused ? "Resume motion" : "Pause motion"}
       </button>
-    </figcaption>
+    </div>
   </figure>
 }

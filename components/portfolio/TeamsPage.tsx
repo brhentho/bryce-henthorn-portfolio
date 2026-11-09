@@ -69,7 +69,6 @@ export function TeamsPage() {
             <p>Students missed group activities, talking with friends, and feeling part of a class—not simply being present on a call.</p>
           </div>
         </div>
-        <figcaption className="fn-label">Fig. 01.1 / Teacher survey and student-session themes. School platforms include learning management and student information systems.</figcaption>
       </figure>
       <Prose><p>We needed to keep collaboration inside the class’s existing workflow while making the group itself recognizable. That pointed toward a place people could return to, rather than a new set of meeting controls.</p></Prose>
     </CaseSection>
@@ -83,7 +82,6 @@ export function TeamsPage() {
       ]} />
       <figure className="pf-media pf-classroom-diagram">
         <div className="pf-media-frame"><HeroSchematic /></div>
-        <figcaption className="fn-label">Fig. 02 / Conceptual classroom: persistent tables, recognizable seats and a teacher’s global view.</figcaption>
       </figure>
       <Prose><p>Fixed positions made neighbors recognizable. Table-level discussion, shared materials and instructions were intended to persist between sessions. The next class could begin with a group’s context, instead of another round of assignments and redistribution.</p></Prose>
     </CaseSection>

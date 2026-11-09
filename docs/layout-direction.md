@@ -138,8 +138,13 @@ Public navigation uses a name-only wordmark and a gooey moving highlight with
 stationary labels/targets. Cross-page pointer navigation uses an editorial ink
 wipe; the existing headline resolve follows it. Keyboard/reduced-motion
 navigation remains direct, and local anchors do not trigger a page wipe.
-Public homepage captions and synthetic device bars are intentionally removed;
-case-study evidence retains its useful captions and figure framing.
+Public images, recordings and diagrams omit standalone caption lines, including
+the `Fig. NN / ...` labels; surrounding content carries the explanation.
+Alt text, diagram annotations, media controls, planned-media notices and
+purposeful figure framing remain. Source-caption metadata stays in the media
+registry for review. This public composition overrides the caption conventions
+in the section-type vocabulary; archives and the unpublished draft retain
+their original captions. Public homepage synthetic device bars remain removed.
 Reading/evidence reveals settle once, preserve text contrast and never hold
 document scrolling. These opt-ins do not restyle the archived explorations.
 
@@ -172,8 +177,8 @@ Keyboard, reduced motion and touch keep the stack stationary.
 
 The three Agents taskbar cutouts from Design playbook frame `380:39833` belong
 with the alternatives discussion in `#process`, after the decision table.
-All three are visible in source order as one grouped figure with a shared
-caption. They are explorations, not a pin/state/hover-card sequence. The later
+All three are visible in source order as one grouped figure without a caption.
+They are explorations, not a pin/state/hover-card sequence. The later
 `#taskbar` section retains the actual recording and five-state legend.
 
 Recall's provenance composition also floats without a frame or registration
@@ -199,7 +204,7 @@ The responsive field recomposes into offset rows when labels need more room.
 There is no shared Windows container, connector, simulated status or task action.
 
 Public rectangular images and recordings share rounded corners and quiet
-elevation, with captions outside the visual surface. Transparent compositions
+elevation, without caption lines below the visual surface. Transparent compositions
 and taskbar cutouts retain their silhouettes; icons and vector schematics are
 not blanket-rounded or filtered. Shadows are suppressed during contrast-sensitive
 ground crossings. Archives keep their existing treatment.
@@ -224,7 +229,7 @@ notes; do not turn input research into an adoption or retention result.
 
 Agents' constraints image is a full reading-container plate (2.8) between the
 interactive prototype and "A shared contract meant saying no." It leads the
-light passage, retaining its figure caption before the heading and constrained
+light passage, preceding the heading and constrained
 body copy. This image intentionally floats directly on the page without a frame
 border or background. It is not a half-width image beside the explanation.
 

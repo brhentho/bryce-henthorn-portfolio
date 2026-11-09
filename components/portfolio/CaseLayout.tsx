@@ -31,7 +31,6 @@ export function CaseLayout({ page, title, deck, call, ledger, hero, chapters, ch
         <p className="fn-intro">{deck}</p>
         <div className="fn-case-product-view"><motion.figure className="fn-case-product pf-motion" style={reduce ? {rotateX:0,y:0,scale:1} : {rotateX:tilt,y,scale}}>
           <div className="fn-device"><Image src={hero.src} alt={hero.alt} width={hero.width} height={hero.height} sizes="94vw" priority /></div>
-          <figcaption className="fn-label">Fig. 01 / {hero.caption}</figcaption>
         </motion.figure></div>
         <div className="fn-case-intro"><p>{call}</p><dl className="xr-ledger">{ledger.map(item=><div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl></div>
       </header>
