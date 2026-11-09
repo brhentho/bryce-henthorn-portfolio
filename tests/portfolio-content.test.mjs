@@ -71,6 +71,23 @@ test("Recall provenance uses the trimmed composition at its intrinsic dimensions
   assert.equal(media.height, png.readUInt32BE(20))
 })
 
+test("Recall introduces card hierarchy between the system and ranking without duplicating artwork", () => {
+  const recall = pages[1]
+  const sections = [...recall.matchAll(/<CaseSection id="([^"]+)"[\s\S]*?<\/CaseSection>/g)]
+  const systemIndex = sections.findIndex(section => section[1] === "system")
+  assert.ok(systemIndex >= 0)
+  assert.equal(sections[systemIndex + 1][1], "moments")
+  assert.equal(sections[systemIndex + 2][1], "cards")
+  const moments = sections[systemIndex + 1][0]
+  const ranking = sections[systemIndex + 2][0]
+  assert.match(moments, /<PortfolioMedia id="recall-card-anatomy"/)
+  assert.equal((recall.match(/id="recall-card-anatomy"/g) ?? []).length, 1)
+  assert.doesNotMatch(moments, /id="recall-separated-results"/)
+  assert.match(ranking, /id="recall-separated-results"/)
+  assert.match(ranking, /id="RECALL-M01"/)
+  assert.match(recall.split("export function RecallPage")[0], /id: "moments"/)
+})
+
 test("Agents taskbar explorations pair the direction list with one grouped figure, not verdict cards", () => {
   const agents = pages[0]
   const process = agents.match(/<CaseSection id="process"[\s\S]*?<\/CaseSection>/)?.[0]
@@ -114,12 +131,53 @@ test("Agents constraints image separates the contract rationale from shell testi
   assert.match(constraints, /<PortfolioMedia id="AGENTS-M01" \/>/)
 })
 
+test("Recall gives search latency and the RAG tradeoff distinct chapters and recordings", () => {
+  const recall = pages[1]
+  const sections = [...recall.matchAll(/<CaseSection id="([^"]+)"[\s\S]*?<\/CaseSection>/g)]
+  assert.deepEqual(sections.map(section => section[1]), [
+    "context", "system", "moments", "cards", "transparency", "performance", "constraints", "trust", "impact",
+  ])
+  const chapters = [...recall.split("export function RecallPage")[0].matchAll(/id: "([^"]+)"/g)].map(match => match[1])
+  assert.deepEqual(chapters, sections.map(section => section[1]))
+  for (const [sectionId, mediaId] of [["performance", "recall-search"], ["constraints", "recall-retrieval"]]) {
+    const section = sections.find(item => item[1] === sectionId)[0]
+    assert.equal((recall.match(new RegExp(`id="${mediaId}"`, "g")) ?? []).length, 1)
+    assert.ok(section.indexOf("</Prose>") < section.indexOf(`<PortfolioMedia id="${mediaId}"`))
+    assert.match(section, new RegExp(`<PortfolioMedia id="${mediaId}"`))
+    assert.doesNotMatch(section, /<Decisions|<Pair|<Split/)
+  }
+  const transparency = sections.find(section => section[1] === "transparency")[0]
+  assert.match(transparency, /<RecallProvenance/)
+  assert.doesNotMatch(transparency, /id="recall-search"/)
+})
+
 test("publication holds do not leak back into main page content", () => {
   const content = pages.join("\n")
   assert.doesNotMatch(content, /problem-opentable|trust-sensitive-content|trust-delete-snapshot|teams-cocreation|impact-tweets/)
-  assert.doesNotMatch(content, /200MS|150M\+|Windows updates quarterly/)
+  assert.doesNotMatch(content, /200MS|Windows updates quarterly/)
   assert.doesNotMatch(content, /href=["']\/(?:copilot-actions|explore)/)
   assert.match(pages[2], /Tested concept/)
+})
+
+test("Teams places pandemic scale before research without claiming a project outcome", () => {
+  const teams = pages[2]
+  const context = teams.slice(teams.indexOf('<CaseSection id="context"'), teams.indexOf('<CaseSection id="research"'))
+  assert.match(context, /150M\+/)
+  assert.match(context, /Students and educators on Teams during the pandemic/)
+  assert.match(context, /<TeamsClassroomCover \/>/)
+  assert.doesNotMatch(teams.slice(teams.indexOf('<CaseSection id="impact"')), /150M\+/)
+})
+
+test("Teams classroom cover uses local source layers rather than an embedded reference frame", () => {
+  const cover = read("components/portfolio/TeamsClassroomIllustrations.tsx")
+  const sources = [...cover.matchAll(/from "@\/public\/([^"]+)"/g)]
+  assert.ok(sources.length > 0)
+  for (const [, path] of sources) {
+    assert.ok(readFileSync(new URL(`../public/${path}`, import.meta.url)).length > 0, `Empty classroom source ${path}`)
+  }
+  assert.ok(existsSync(new URL("../public/images/teams/classroom/initials.svg", import.meta.url)))
+  assert.doesNotMatch(cover, /figma\.com|<button|tabIndex|onClick/)
+  assert.match(cover, /Classroom concept with thirteen/)
 })
 
 test("Recall distinguishes inspected answer-preview exploration from chosen result grid", () => {
@@ -149,6 +207,25 @@ test("Recall layer explanations are a reading list, not selectable controls", ()
   assert.match(model, /<ol[^>]+aria-label="Capture-to-index layers"/)
   assert.match(model, /<li[^>]+tabIndex=\{0\}/)
   assert.doesNotMatch(model, /<input|<button|<label|<fieldset|onClick|onChange|defaultChecked|aria-selected|Select a layer/)
+})
+
+test("Teams impact separates Class Home Page reception from the unshipped concept", () => {
+  const impact = pages[2].slice(pages[2].indexOf('<CaseSection id="impact"'))
+  assert.match(impact, /full virtual-tables experience did not ship as designed/)
+  assert.match(impact, /research informed Class Home Page/)
+  assert.match(impact, /not the virtual-tables concept/)
+  assert.doesNotMatch(impact, /Read reaction summaries|Fig\. 07 \/ Public reactions|pf-teams-reaction-text/)
+  for (const name of ["kim", "ellis", "megan", "madeline"]) {
+    const id = `teams-reaction-${name}`
+    assert.ok(impact.includes(`id="${id}"`))
+    const media = PORTFOLIO_MEDIA[id]
+    assert.match(media.caption, /@/)
+    const png = readFileSync(new URL(`../public${media.src}`, import.meta.url))
+    assert.equal(png.toString("ascii", 1, 4), "PNG")
+    assert.equal(media.width, png.readUInt32BE(16))
+    assert.equal(media.height, png.readUInt32BE(20))
+  }
+  assert.doesNotMatch(impact, /150M\+|retention (lift|increase)|<iframe|twitter\.com|x\.com/)
 })
 
 test("floating compositions keep their cutout treatment and keynote dimensions match the source", () => {
