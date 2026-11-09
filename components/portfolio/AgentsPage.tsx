@@ -14,11 +14,11 @@ const chapters = [
 ] as const
 
 const states = [
-  { asset: "Running", label: "Running", meaning: "Work is continuing." },
-  { asset: "Needs attention", label: "Needs attention", meaning: "A person needs to respond." },
-  { asset: "Completed", label: "Completed", meaning: "The result is ready to inspect." },
-  { asset: "Failed", label: "Failed", meaning: "Work could not finish." },
-  { asset: "Paused", label: "Paused", meaning: "Work is on hold." },
+  { asset: "running", label: "Running", meaning: "Work is continuing." },
+  { asset: "attention", label: "Needs attention", meaning: "A person needs to respond." },
+  { asset: "completed", label: "Completed", meaning: "The result is ready to inspect." },
+  { asset: "failed", label: "Failed", meaning: "Work could not finish." },
+  { asset: "paused", label: "Paused", meaning: "Work is on hold." },
 ]
 
 export function AgentsPage() {
@@ -89,7 +89,7 @@ export function AgentsPage() {
       <figure id="simulation" className="pf-state-figure pf-anchor">
         <ul className="pf-state-lexicon">
           {states.map(state => <li key={state.label}>
-            <Image src={`/assets/agents/${state.asset} agent.svg`} alt="" width={40} height={40} />
+            <Image src={`/assets/agents/state-${state.asset}.svg`} alt="" width={110} height={110} />
             <h3>{state.label}</h3><p>{state.meaning}</p>
           </li>)}
         </ul>
