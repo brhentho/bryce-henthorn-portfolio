@@ -1,16 +1,38 @@
 "use client"
 
 import Image from "next/image"
-import { useEffect, useId, useRef } from "react"
+import { useEffect, useId, useRef, type ReactNode } from "react"
 import { PORTFOLIO_MEDIA } from "@/lib/portfolio/media"
 import { EvidenceReveal } from "./Blocks"
 
 const stages = [
-  { title: "Screenshot capture", detail: "When capture is enabled and content is eligible, screen snapshots provide the visual source material." },
-  { title: "OCR processing", detail: "Image processing and optical character recognition extract text from the snapshot." },
-  { title: "Meaning analysis", detail: "Extracted content is interpreted and represented as semantic vectors for matching." },
-  { title: "Search and index service", detail: "An index makes captured content retrievable by similarity to a query, rather than exact words alone." },
+  { title: "Screenshot capture", icon: "capture", detail: "When capture is enabled and content is eligible, snapshots preserve the screen as the source material." },
+  { title: "OCR processing", icon: "ocr", detail: "Image processing and optical character recognition turn text in the snapshot into structured, readable content." },
+  { title: "Meaning analysis", icon: "meaning", detail: "Extracted content is interpreted as concepts and represented as semantic vectors for matching." },
+  { title: "Search and index service", icon: "index", detail: "A semantic index makes captured moments retrievable by meaning, not just an exact match to the words in a query." },
 ]
+
+// Figma's planes share this affine projection; the supplied SVGs are unprojected.
+const planeProjection = "matrix(.8660254 .5 -.8660254 .5 210 0)"
+
+function ProcessingPlane({ index }: { index: 1 | 3 }) {
+  return <>
+    <rect className="pf-recall-plane-surface" width="330.702" height="224.763" rx="8.59" />
+    {index === 1 ? <>
+      <rect className="pf-recall-extraction" x="173.225" y="17.179" width="135.287" height="189.688" rx="12" />
+      {[93.055, 65.138, 76.591, 47.243, 65.138].map((width, row) =>
+        <rect className="pf-recall-text-bar" key={row} x="17.179" y={27.201 + row * 22.906} width={width} height="15.032" rx="4" opacity={[.65, .35, .45, .25, .55][row]} />)}
+      {[108.086, 101.644, 108.086, 101.644, 88.76, 108.086, 61.559].map((width, row) =>
+        <rect className="pf-recall-text-bar" key={row} x="181.814" y={27.201 + row * 22.906} width={width} height="15.032" rx="4" opacity=".5" />)}
+    </> : <>
+      {[168.93, 130.276, 103.076, 150.319].map((width, row) => <g key={row}>
+        <rect className="pf-recall-index-row" x="17.179" y={27.201 + row * 34.359} width="288.469" height="25.769" rx="4" />
+        <rect className="pf-recall-text-bar" x="22.906" y={32.927 + row * 34.359} width={width} height="14.316" rx="4" opacity={[.65, .45, .35, .25][row]} />
+        <text className="pf-recall-score" x="272.721" y={[35.074, 68.717, 103.076, 136.719][row]} dominantBaseline="hanging">{["0.94", "0.81", "0.76", "0.61"][row]}</text>
+      </g>)}
+    </>}
+  </>
+}
 
 function useRecallArrival() {
   const ref = useRef<HTMLDivElement>(null)
@@ -37,7 +59,7 @@ function useRecallArrival() {
       if (settled || reduce.matches || initiallyVisible) return
       root.querySelectorAll<SVGElement | HTMLElement>("[data-recall-arrival]").forEach((element, index) => {
         animations.push(element.animate(
-          [{ transform: "translateY(16px)", opacity: .6 }, { transform: "translateY(0)", opacity: 1 }],
+          [{ transform: `translateY(${tokens.getPropertyValue("--pf-recall-arrival-distance").trim()})`, opacity: .6 }, { transform: "translateY(0)", opacity: 1 }],
           {
             duration: milliseconds("--duration-enter"),
             delay: Math.min(index, 3) * milliseconds("--stagger-word"),
@@ -49,73 +71,61 @@ function useRecallArrival() {
     }, { threshold: .12 })
     observer.observe(root)
     root.addEventListener("focusin", settle)
-    root.addEventListener("pointerdown", settle)
+    root.addEventListener("pointerover", settle)
     reduce.addEventListener("change", settle)
     return () => {
       observer.disconnect()
       settle()
       root.removeEventListener("focusin", settle)
-      root.removeEventListener("pointerdown", settle)
+      root.removeEventListener("pointerover", settle)
       reduce.removeEventListener("change", settle)
     }
   }, [])
   return ref
 }
 
-export function RecallModel() {
+export function RecallModel({ children }: { children: ReactNode }) {
   const name = useId()
   const ref = useRecallArrival()
   return <div className="pf-recall-model" ref={ref}>
-    <fieldset className="pf-recall-stages">
-      <legend className="fn-label">Select a layer to inspect</legend>
-      {stages.map((stage, index) => <label className="pf-recall-stage" key={stage.title}>
-        <input type="radio" name={name} value={index} defaultChecked={index === 0} aria-label={`${index + 1}. ${stage.title}`} aria-describedby={`${name}-${index}`} />
-        <span className="pf-recall-stage-copy">
-          <span className="pf-recall-stage-title"><span className="fn-label">0{index + 1}</span>{stage.title}</span>
-          <span className="pf-recall-stage-detail pf-caption" id={`${name}-${index}`}>{stage.detail}</span>
-        </span>
-      </label>)}
-    </fieldset>
+    <div className="pf-recall-model-copy">
+      {children}
+      <ol className="pf-recall-stages pf-recall-stage-grid" aria-label="Capture-to-index layers">
+        {stages.map((stage, index) => <li className="pf-recall-stage" data-layer={index} tabIndex={0} key={stage.title}>
+          <span className="pf-recall-stage-copy">
+            <span className="pf-recall-stage-heading">
+              <Image src={`/images/recall/model-${stage.icon}-icon.svg`} width={32} height={32} alt="" />
+              <span className="fn-label">0{index + 1}</span>
+            </span>
+            <span className="pf-recall-stage-title">{stage.title}</span>
+            <span className="pf-recall-stage-detail pf-caption">{stage.detail}</span>
+          </span>
+        </li>)}
+      </ol>
+    </div>
     <figure className="pf-media pf-recall-model-figure" data-media-id="recall-model">
-      <div className="pf-media-frame pf-recall-registered">
-        <svg viewBox="0 0 720 540" role="img" aria-labelledby={`${name}-title ${name}-description`}>
+      <div className="pf-media-frame">
+        <svg viewBox="-120 0 640 960" role="img" aria-labelledby={`${name}-title ${name}-description`}>
           <title id={`${name}-title`}>Capture to index, read bottom to top</title>
-          <desc id={`${name}-description`}>Four conceptual planes: screenshot capture, OCR text extraction, semantic relationships, and indexed results. The controls emphasize a plane, not a running process.</desc>
-          {stages.map((stage, index) => <g key={stage.title} transform={`translate(0 ${300 - index * 85})`}>
+          <desc id={`${name}-description`}>Four conceptual planes: screenshot capture, OCR text extraction, semantic relationships, and a search index. Each numbered plane corresponds to a layer description. Similarity scores are illustrative, not measured results.</desc>
+          {stages.map((stage, index) => <g key={stage.title} transform={`translate(0 ${32 + (3 - index) * 208})`}>
             <g data-recall-arrival="">
-              <g className="pf-recall-plane" data-plane={index}>
-                <path className="pf-recall-plane-surface" d="M105 100 355 10 615 120 365 210Z" />
-                <path className="pf-recall-plane-outline" d="M105 100 355 10 615 120 365 210Z" />
-                <g className="pf-recall-plane-drawing">
-                  {index === 0 && <>
-                    <path d="m180 114 168-60 183 77-168 60Z" />
-                    <path d="m193 119 168 71m-123-55 39-14 48 20-39 14Z" />
-                    <path d="m317 156 82 35m-65-45 82 35" />
-                  </>}
-                  {index === 1 && <>
-                    <path d="m185 119 97-35m-68 48 97-35m-68 48 97-35" />
-                    <path d="m307 157 128-46m-99 59 128-46m-99 59 128-46" />
-                  </>}
-                  {index === 2 && <>
-                    <path d="m251 132 112 27 94-28m-94 28 24 30" />
-                    <ellipse cx="251" cy="132" rx="26" ry="12" />
-                    <ellipse cx="363" cy="159" rx="32" ry="14" />
-                    <ellipse cx="457" cy="131" rx="26" ry="12" />
-                    <ellipse cx="387" cy="189" rx="21" ry="9" />
-                  </>}
-                  {index === 3 && <>
-                    <path d="m235 82 113-40 183 77-113 40Z" />
-                    <path d="m258 84 89-31m-59 44 89-31m-59 44 89-31m-59 44 89-31m-59 44 89-31" />
-                  </>}
+              <g className="pf-recall-plane" data-plane={index} data-layer={index}>
+                <g transform={planeProjection}>
+                  {index === 0 || index === 2
+                    ? <image href={`/images/recall/model-${index === 0 ? "capture" : "meaning"}.svg`} width="330.702" height="224.763" />
+                    : <ProcessingPlane index={index === 1 ? 1 : 3} />}
+                  <rect className="pf-recall-plane-outline" width="330.702" height="224.763" rx="8.59" />
                 </g>
-                <text x="645" y="126" className="pf-recall-plane-number">0{index + 1}</text>
-                <path className="pf-recall-axis" d="M619 120h16" />
               </g>
             </g>
+            <rect className="pf-recall-layer-marker" x="-106" y="96" width="40" height="32" rx="4" />
+            <text x="-86" y="118" textAnchor="middle" className="pf-recall-plane-number">0{index + 1}</text>
+            <path className="pf-recall-axis" d="M-58 112H8" />
           </g>)}
         </svg>
       </div>
-      <figcaption className="fn-label">Fig. 02 / Capture and indexing model, read bottom to top. The numbered explanation follows capture to index; this is not a query-time trace.</figcaption>
+      <figcaption className="fn-label">Fig. 02 / Capture to index, read bottom to top. Conceptual architecture, not a query-time trace. Similarity scores are illustrative.</figcaption>
     </figure>
   </div>
 }

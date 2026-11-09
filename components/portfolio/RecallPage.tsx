@@ -45,9 +45,11 @@ export function RecallPage() {
       </div>
     </CaseSection>
 
-    <CaseSection id="system" title="From captured content to searchable moments.">
-      <p className="pf-caption">Simplified capture and indexing model—not a measured query-time sequence. Capture eligibility and behavior depend on the product version and settings.</p>
-      <RecallModel />
+    <CaseSection id="system">
+      <RecallModel>
+        <h2 data-pf-reveal="reading">From captured content to searchable moments.</h2>
+        <p className="pf-caption">Four layers turn eligible snapshots into searchable moments. Capture eligibility and behavior depend on the product version and settings.</p>
+      </RecallModel>
     </CaseSection>
 
     <CaseSection id="cards" title="One ranking hid the result people needed." tone="graphite">
@@ -82,10 +84,7 @@ export function RecallPage() {
         { title: "Synthesize an answer", tradeoff: "Early RAG exploration added latency and another interpretation layer between the query and its source moments.", disposition: "Cut from this search experience." },
         { title: "Retrieve relevant moments", tradeoff: "People interpret the evidence themselves, so match type and provenance must remain legible.", disposition: "Prioritize direct retrieval with inspectable sources.", chosen: true },
       ]} />
-      <details className="pf-supporting-recording">
-        <summary>Inspect the exploratory answer-preview concept</summary>
-        <PortfolioMedia id="recall-retrieval" number="05" />
-      </details>
+      <PortfolioMedia id="recall-retrieval" number="05" />
     </CaseSection>
 
     <CaseSection id="trust" title="Remove a moment. Control future capture." tone="ink">

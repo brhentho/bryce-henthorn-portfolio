@@ -1,0 +1,61 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="File_dock_search">
+<g id="Vector 55">
+<use xlink:href="#stroke0_0_36" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke0_0_36" stroke="url(#paint0_linear_0_36)" stroke-opacity="0.2"/>
+</g>
+<g id="Vector 59">
+<use xlink:href="#stroke1_0_36" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke1_0_36" stroke="url(#paint1_linear_0_36)" stroke-opacity="0.2"/>
+</g>
+<g id="Vector 58">
+<use xlink:href="#stroke2_0_36" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke2_0_36" stroke="url(#paint2_linear_0_36)" stroke-opacity="0.2"/>
+</g>
+<g id="Rectangle 4012">
+<use xlink:href="#stroke3_0_36" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke3_0_36" stroke="url(#paint3_linear_0_36)" stroke-opacity="0.2"/>
+</g>
+<g id="Group 8656">
+<g id="Ellipse 65">
+<circle cx="23.3333" cy="23.3333" r="3.33333" stroke-width="2" stroke="white" stroke-opacity="0.786"/>
+<circle cx="23.3333" cy="23.3333" r="3.33333" stroke-width="2" stroke="url(#paint4_linear_0_36)" stroke-opacity="0.2"/>
+</g>
+<g id="Vector 109">
+<use xlink:href="#stroke4_0_36" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke4_0_36" stroke="url(#paint5_linear_0_36)" stroke-opacity="0.2"/>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_36" x1="13.1691" y1="9.35898" x2="13.1691" y2="10.534" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_36" x1="12.8768" y1="20.025" x2="12.8768" y2="21.2" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_36" x1="13.7536" y1="14.691" x2="13.7536" y2="15.866" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_36" x1="10.7577" y1="27.4" x2="10.7577" y2="-0.799999" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint4_linear_0_36" x1="21.4613" y1="20.1667" x2="21.4613" y2="28" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint5_linear_0_36" x1="26.4384" y1="26.05" x2="26.4384" y2="28.4" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<path id="stroke0_0_36" d="M12 9.33398L17.3333 9.33398" stroke-width="2" stroke-linecap="round"/>
+<path id="stroke1_0_36" d="M12 20L16 20" stroke-width="2" stroke-linecap="round"/>
+<path id="stroke2_0_36" d="M12 14.666L20 14.666" stroke-width="2" stroke-linecap="round"/>
+<path id="stroke3_0_36" d="M25.3327 14.6667V10C25.3327 7.17157 25.3327 5.75736 24.454 4.87868C23.5753 4 22.1611 4 19.3327 4H12.666C9.83759 4 8.42337 4 7.5447 4.87868C6.66602 5.75736 6.66602 7.17157 6.66602 10V22C6.66602 24.8284 6.66602 26.2426 7.5447 27.1213C8.42337 28 9.83759 28 12.666 28H15.9993" stroke-width="2"/>
+<path id="stroke4_0_36" d="M28 28L26 26" stroke-width="2" stroke-linecap="round"/>
+</defs>
+</svg>

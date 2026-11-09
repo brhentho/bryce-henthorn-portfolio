@@ -1,0 +1,33 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Line">
+<g id="Rectangle 51">
+<use xlink:href="#stroke0_0_8" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke0_0_8" stroke="url(#paint0_linear_0_8)" stroke-opacity="0.2"/>
+</g>
+<g id="Rectangle 52">
+<use xlink:href="#stroke1_0_8" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke1_0_8" stroke="url(#paint1_linear_0_8)" stroke-opacity="0.2"/>
+</g>
+<g id="Vector 183">
+<use xlink:href="#stroke2_0_8" stroke="white" stroke-opacity="0.786"/>
+<use xlink:href="#stroke2_0_8" stroke="url(#paint2_linear_0_8)" stroke-opacity="0.2"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_8" x1="11.8333" y1="21.4613" x2="4" y2="21.4613" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_8" x1="20.1667" y1="10.5387" x2="28" y2="10.5387" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_8" x1="13.7536" y1="12.2" x2="13.7536" y2="21.6" gradientUnits="userSpaceOnUse">
+<stop stop-color="#60CDFF" stop-opacity="0"/>
+<stop offset="1" stop-color="#60CDFF"/>
+</linearGradient>
+<path id="stroke0_0_8" d="M12 20L12 24.6667C12 25.6095 12 26.0809 11.7071 26.3738C11.4142 26.6667 10.9428 26.6667 10 26.6667L7.33333 26.6667C6.39052 26.6667 5.91912 26.6667 5.62623 26.3738C5.33333 26.0809 5.33333 25.6095 5.33333 24.6667L5.33333 22C5.33333 21.0572 5.33333 20.5858 5.62623 20.2929C5.91912 20 6.39052 20 7.33333 20L12 20Z" stroke-width="2"/>
+<path id="stroke1_0_8" d="M20 12L20 7.33333C20 6.39052 20 5.91912 20.2929 5.62623C20.5858 5.33333 21.0572 5.33333 22 5.33333L24.6667 5.33333C25.6095 5.33333 26.0809 5.33333 26.3738 5.62623C26.6667 5.91912 26.6667 6.39052 26.6667 7.33333L26.6667 10C26.6667 10.9428 26.6667 11.4142 26.3738 11.7071C26.0809 12 25.6095 12 24.6667 12L20 12Z" stroke-width="2"/>
+<path id="stroke2_0_8" d="M20 12L12 20" stroke-width="2"/>
+</defs>
+</svg>

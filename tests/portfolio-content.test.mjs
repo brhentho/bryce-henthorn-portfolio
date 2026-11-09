@@ -71,6 +71,34 @@ test("Recall provenance uses the trimmed composition at its intrinsic dimensions
   assert.equal(media.height, png.readUInt32BE(20))
 })
 
+test("Agents taskbar explorations stay together with the alternatives discussion", () => {
+  const agents = pages[0]
+  const process = agents.match(/<CaseSection id="process"[\s\S]*?<\/CaseSection>/)?.[0]
+  const taskbar = agents.match(/<CaseSection id="taskbar"[\s\S]*?<\/CaseSection>/)?.[0]
+  assert.ok(process)
+  assert.ok(taskbar)
+  const sources = [...process.matchAll(/src="(\/assets\/Frame [^"]+)"/g)].map(match => match[1])
+  assert.deepEqual(sources, [
+    "/assets/Frame 2147238301.png",
+    "/assets/Frame 2147238302.png",
+    "/assets/Frame 2147238303.png",
+  ])
+  for (const src of sources) {
+    assert.equal(agents.split(`src="${src}"`).length - 1, 1)
+    const png = readFileSync(new URL(`../public${src}`, import.meta.url))
+    assert.ok(png.length > 24)
+    const dimensions = process.match(new RegExp(`src="${src.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}" width=\\{(\\d+)\\} height=\\{(\\d+)\\}`))
+    assert.ok(dimensions)
+    assert.equal(Number(dimensions[1]), png.readUInt32BE(16))
+    assert.equal(Number(dimensions[2]), png.readUInt32BE(20))
+  }
+  assert.equal((process.match(/<figcaption/g) ?? []).length, 1)
+  assert.doesNotMatch(agents, /AgentKeyframes|three views of the chosen direction/)
+  assert.doesNotMatch(taskbar, /\/assets\/Frame /)
+  assert.match(taskbar, /id="agents-taskbar"/)
+  assert.match(taskbar, /className="pf-state-lexicon"/)
+})
+
 test("publication holds do not leak back into main page content", () => {
   const content = pages.join("\n")
   assert.doesNotMatch(content, /problem-opentable|trust-sensitive-content|trust-delete-snapshot|teams-cocreation|impact-tweets/)
@@ -83,6 +111,29 @@ test("Recall distinguishes inspected answer-preview exploration from chosen resu
   assert.match(PORTFOLIO_MEDIA["recall-search"].description, /Text matches and Visual matches/)
   assert.match(PORTFOLIO_MEDIA["recall-retrieval"].title, /Exploratory answer-preview/)
   assert.match(PORTFOLIO_MEDIA["recall-retrieval"].caption, /not a matched comparison/)
+})
+
+test("Recall model keeps source planes local and qualifies capture and illustrative scores", () => {
+  const model = read("components/portfolio/RecallModel.tsx")
+  for (const stage of ["capture", "ocr", "meaning", "index"]) {
+    const icon = read(`public/images/recall/model-${stage}-icon.svg`)
+    assert.match(icon, /<svg\b/)
+  }
+  for (const stage of ["capture", "meaning"]) {
+    const plane = read(`public/images/recall/model-${stage}.svg`)
+    assert.match(plane, /viewBox="0 0 330\.702 224\.763"/)
+    assert.doesNotMatch(plane, /(?:href|src)="https?:/)
+  }
+  assert.match(model, /When capture is enabled and content is eligible/)
+  assert.match(model, /Similarity scores are illustrative, not measured results/)
+  assert.doesNotMatch(model, /figma\.com\/api\/mcp\/asset|continuously monitors/)
+})
+
+test("Recall layer explanations are a reading list, not selectable controls", () => {
+  const model = read("components/portfolio/RecallModel.tsx").split("export function RecallProvenance")[0]
+  assert.match(model, /<ol[^>]+aria-label="Capture-to-index layers"/)
+  assert.match(model, /<li[^>]+tabIndex=\{0\}/)
+  assert.doesNotMatch(model, /<input|<button|<label|<fieldset|onClick|onChange|defaultChecked|aria-selected|Select a layer/)
 })
 
 test("floating compositions keep their cutout treatment and keynote dimensions match the source", () => {

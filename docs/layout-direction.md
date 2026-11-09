@@ -129,8 +129,8 @@ Do not mechanically apply one background ramp or one case-body template to every
 | Page | Argument order | Layout and motion |
 |---|---|---|
 | Home | Promise -> Agents -> Recall -> tested Teams concept -> approach -> contact | Preserve ASCII, layered project entrances and continuous atmosphere; clean linked product images with bounded pointer response, then staggered Approach |
-| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Scattered task-pill field (2.8, floating exception), decision table, floating keyframes, actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
-| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> milestone | Floating Recall identity beside the opening prose (2.4), floating selectable four-layer model (2.5/2.7), full reading-width provenance composition (2.8) with a three-column reference block below (2.13, stacked on mobile), recordings, decision table, privacy pair and full reading-width announcement figure (2.8); mainly ink/graphite |
+| Agents | Fragmentation -> taskbar alternatives -> dispatch/monitor/return -> state contract -> platform constraints -> what was established | Scattered task-pill field (2.8, floating exception), decision table with grouped taskbar explorations, actual recording and state legend; no public workflow simulator; dark opening fades to light at constraints and stays light through the ending |
+| Recall | Fragmentary memory -> capture/index model -> ranking -> provenance -> retrieval tradeoff -> privacy boundary -> milestone | Floating Recall identity beside the opening prose (2.4), floating four-layer model with hover/focus emphasis (2.5/2.7), full reading-width provenance composition (2.8) with a three-column reference block below (2.13, stacked on mobile), recordings, decision table, privacy pair and full reading-width announcement figure (2.8); mainly ink/graphite |
 | Teams | Research reframes brief -> alternatives -> prepare groups -> live orchestration -> shared continuity -> tested outcome | Curated research evidence strip (2.9), workflow finding/intent table (2.13), conceptual schematic and correctly placed recordings; dark opening to warm-paper research/body |
 | About | Person -> concrete working examples -> concurrent experience -> concise philosophy -> contact | Portrait split, grouped working-example/ledger arrivals and shared neutral ink; no warm-brown override or product simulation |
 
@@ -149,11 +149,32 @@ Recorded videos loop muted while sufficiently visible, pause offscreen and
 respect manual pause. Reduced-motion/data-saving preferences leave native Play
 available without automatic playback.
 
-The public Agents simulator is removed; the real recording, keyframes and
+The public Agents simulator is removed; the real recording, exploration images and
 five-state legend provide the explanation without a second workflow to learn.
+The legend uses native 110 x 110 state-icon exports from
+[the approved Figma lineup](https://www.figma.com/design/OFb99P2At6oxtDGjDicLx8/Bryce-s-scratch?node-id=1334-113968),
+with each state name and explanation beneath its icon. Five equal-width columns
+wrap to three and then two on narrower screens. Keep the portfolio typography,
+continuous environment and figure rules, not the reference's backdrop or intro.
 Archived simulations remain. The Agents task field and taskbar cutouts, and
 Recall's exploded model, intentionally float without a website matte or frame.
-Recall retains its planes and stage controls but omits the large vertical arrow.
+Recall pairs four Figma-derived dark/cyan planes with an icon-led, two-column
+stage explanation grid (2.5/2.7). Increased vertical separation exposes the capture,
+OCR, semantic and index artwork; quiet left-side identifiers and leader lines
+connect the layer order to the explanations. This borrows the callout treatment
+from the supplied Memory Index reference, not its broader activity/user-graph
+claims. The large vertical arrow remains omitted. On narrow screens the diagram
+precedes the explanations; scores are explicitly illustrative. Hovering a plane
+or explanation highlights the pair, as does keyboard focus on an explanation.
+There is no click selection or radio control. Pointer hover gently separates
+the four planes, then reverses on departure; labels and leaders stay fixed.
+Keyboard, reduced motion and touch keep the stack stationary.
+
+The three Agents taskbar cutouts from Design playbook frame `380:39833` belong
+with the alternatives discussion in `#process`, after the decision table.
+All three are visible in source order as one grouped figure with a shared
+caption. They are explorations, not a pin/state/hover-card sequence. The later
+`#taskbar` section retains the actual recording and five-state legend.
 
 Recall's provenance composition also floats without a frame or registration
 marks. Its short Source, Time and Context annotations replace a numbered

@@ -10,7 +10,13 @@ for composition, **not** that all rights, release status or product claims have
 been independently verified. Existing assets are retained, not deleted.
 
 The interactive Recall capture/index drawing is an explanatory reconstruction of
-the existing four-layer diagram, not a running system or measured timing model.
+the supplied Design playbook's four-layer diagram (`384:40762` and
+`389:39713/39717/39722/39726`), not a running system or measured timing model.
+The Memory Index reference (`OFb99P2At6oxtDGjDicLx8`, `1329:73291`) informs
+layer markers and leader lines only, not claims about app launches, clipboard
+activity, desktop-file indexing or user graphs. Capture remains qualified by
+eligibility/settings, and index similarity scores are illustrative rather than
+measured results or confidence percentages.
 The provenance figure uses the supplied red-barn query and four-result composition
 at full reading width without a frame or numbered caption, with short Source,
 Time and Context annotations beneath it. The top 300px of empty space are cropped
@@ -65,7 +71,7 @@ The same stable request ID is used on the page and in the registry.
   comparable task context; observations that actually informed selection.
 - **Required context:** Evaluation method/date, participant context if
   permissible, source status and clearance.
-- **Fallback:** Readable three-alternative decision summary before keyframes.
+- **Fallback:** Readable three-alternative decision summary with the three taskbar exploration images, not a claim of original evaluation evidence.
 
 ### RECALL-M01 — The same query, two ranking treatments
 
@@ -170,7 +176,7 @@ with their original source recordings.
   frames show search refinement and the separated Text matches / Visual matches
   full grid at approximately 12s.
 - `recall-retrieval`: existing `shilpa_0603_03%201.mp4` on the sayyacgp8fag7fqj
-  host, retrieval poster. Secondary, explicitly expandable **answer-preview
+  host, retrieval poster. Secondary, directly visible **answer-preview
   exploration**, not the selected retrieval-only direction. An inspected frame
   at approximately 17s shows a distinct answer-preview card above text and visual
   matches. Different queries/layouts mean this is not a matched before/after or
@@ -190,16 +196,16 @@ implementation. Future cleared exports can replace registry requests by ID.
 | Page | Source material | New location / disposition |
 | --- | --- | --- |
 | Agents | Context + Problem | `#context`: fragmented/observable pair, early-interview concern and OS opportunity, without universal psychological claims. |
-| Agents | Three candidate homes | `#process`: all alternatives and tradeoffs precede the selected state keyframes. |
+| Agents | Three candidate homes | `#process`: all alternatives and tradeoffs followed by the three taskbar exploration images from Figma frame `380:39833`, visible together under one caption. |
 | Agents | Invocation | `#invocation`: dispatch → monitor → return, composer recording. |
-| Agents | Taskbar + state inventory + simulation | `#taskbar`, nested `#simulation`: compact selected keyframes, actual detail recording, all five states, explicitly fictional user-driven demo. |
+| Agents | Taskbar + state inventory | `#taskbar`, nested `#simulation`: actual detail recording and all five states. The exploration images belong to `#process`; no public simulator. |
 | Agents | Constraints + Iteration | `#constraints`, nested `#iteration`: provider requests, stable contract, actual-shell prototypes and multiple-agent testing retained. |
 | Agents | Impact | `#impact`: ongoing work and announcement distinguished from availability/outcomes. Repeated individual ownership removed; role stays in ledger. |
 | Recall | Context + Problem | `#context`: memory fragments and task-dependent relevance. Reservation example withheld, not replaced with invented screenshot. |
 | Recall | System | `#system`: actual four stages in forward reading order. Original reverse-stacked illustration labeled as such. |
 | Recall | Cards + buried ranking observation | `#cards`: merged-ranking finding promoted, screenshot-led hierarchy and separated results accurately labeled. |
 | Recall | Transparency + primary film | `#transparency`: source, time, match type, false positives and query/result recording. |
-| Recall | Performance + Constraints | `#constraints`, nested `#performance`: qualitative cadence and original retrieval/synthesis decision preserved; optional answer-preview exploration recording, relabeled from inspected frames. Unsupported 200ms removed. |
+| Recall | Performance + Constraints | `#constraints`, nested `#performance`: qualitative cadence and original retrieval/synthesis decision preserved; answer-preview exploration recording visible directly without a disclosure or surrounding rules, relabeled from inspected frames. Unsupported 200ms removed. |
 | Recall | Trust | `#trust`: recovery/prevention pair and four principles bounded by version/design scope; sensitive stills withheld. |
 | Recall | Impact | `#impact`: bounded testing observations, Build 2024 and related design discussions. Removed “proved” and ripple/adoption inference. |
 | Teams | Context + Problem + research | `#context` and `#research`: retention reframing, method before themes, teacher logistics and peer conversation. Identifying research held. |
