@@ -218,7 +218,7 @@ preserve the reference; there is no dimensional tile or recessed face.
 The surrounding illustration is transparent, not an opaque section band. Existing
 heading and paragraphs remain unchanged; this does not assert authorship of the
 logo. Instead of the generic evidence entrance, the figure owns a one-shot
-layered reveal on its first scrolled arrival: the existing light opens outward
+layered reveal once its top reaches the middle of the viewport: the existing light opens outward
 from the centre, the logo fades and scales in from .95, then one restrained
 glint masked to the logo silhouette crosses it. The grid, layout and copy stay
 still; it never replays on re-entry and ends on the unchanged static artwork.

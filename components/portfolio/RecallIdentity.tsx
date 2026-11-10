@@ -38,7 +38,7 @@ function useIdentityReveal() {
       // A jump (hash, restoration) lands with the figure already deep in view; show it settled.
       if (reduce.matches || document.hidden || entry.boundingClientRect.top < window.innerHeight * .15) settle()
       else set("playing")
-    }, { threshold: .2 })
+    }, { rootMargin: "0px 0px -50% 0px", threshold: 0 }) // wait until the figure reaches the middle of the viewport
     // A fast scroll can carry the figure past the viewport without an intersection; never leave it armed above.
     const passed = () => { if (current === "armed" && figure.getBoundingClientRect().bottom <= 0) settle() }
     const ended = (event: AnimationEvent) => { if (event.animationName === "pf-recall-identity-glint") settle() }
