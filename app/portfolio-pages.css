@@ -60,6 +60,39 @@
 .portfolio .pf-recall-identity__scene { display: block; width: 100%; height: auto; overflow: hidden; }
 .portfolio .pf-recall-identity__cell { fill: none; stroke: var(--pf-recall-identity-grid); stroke-width: .9106; }
 .portfolio .pf-recall-identity__cell[data-highlighted] { fill: var(--pf-recall-identity-cell); }
+/* One-shot arrival: light opens from the centre, the logo follows, then a single silhouette glint.
+   Without the data-reveal state (no JavaScript, already in view, reduced motion) this is the static artwork. */
+.portfolio .pf-recall-identity__bloom,
+.portfolio .pf-recall-identity__logo { transform-box: fill-box; transform-origin: center; }
+.portfolio .pf-recall-identity__glint-stop { stop-color: var(--pf-recall-detail); }
+.portfolio .pf-recall-identity__glint { opacity: 0; }
+.portfolio .pf-recall-identity[data-reveal="armed"] :is(.pf-recall-identity__light, .pf-recall-identity__logo) { opacity: 0; }
+.portfolio .pf-recall-identity[data-reveal="playing"] .pf-recall-identity__light {
+  animation: pf-recall-identity-light var(--duration-slow-ui) var(--ease-out-expo) both;
+}
+.portfolio .pf-recall-identity[data-reveal="playing"] .pf-recall-identity__bloom {
+  animation: pf-recall-identity-bloom var(--duration-slow-ui) var(--ease-out-expo) both;
+}
+.portfolio .pf-recall-identity[data-reveal="playing"] .pf-recall-identity__logo {
+  animation: pf-recall-identity-logo var(--duration-enter) var(--ease-out-expo) var(--stagger-eyebrow) both;
+}
+.portfolio .pf-recall-identity[data-reveal="playing"] .pf-recall-identity__glint {
+  animation: pf-recall-identity-glint var(--duration-enter) var(--ease-in-out-sine) calc(var(--stagger-eyebrow) + var(--duration-enter)) both;
+}
+.portfolio .pf-recall-identity[data-reveal="playing"] .pf-recall-identity__glint-band {
+  animation: pf-recall-identity-sweep var(--duration-enter) var(--ease-in-out-sine) calc(var(--stagger-eyebrow) + var(--duration-enter)) both;
+}
+@keyframes pf-recall-identity-light { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pf-recall-identity-bloom { from { transform: scale(.08); } to { transform: scale(1); } }
+@keyframes pf-recall-identity-logo { from { opacity: 0; transform: scale(.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes pf-recall-identity-glint { 0%, 100% { opacity: 0; } 50% { opacity: .45; } }
+@keyframes pf-recall-identity-sweep { from { transform: translateX(0); } to { transform: translateX(220px); } }
+@media (prefers-reduced-motion: reduce) {
+  .portfolio .pf-recall-identity[data-reveal] :is(.pf-recall-identity__light, .pf-recall-identity__logo, .pf-recall-identity__bloom) {
+    animation: none; opacity: 1; transform: none;
+  }
+  .portfolio .pf-recall-identity[data-reveal] .pf-recall-identity__glint { display: none; }
+}
 .portfolio .pf-recall-model { --pf-recall-highlight: 0; --pf-recall-spread: 0px; display: grid; grid-template-columns: 1fr 1fr; gap: 4%; align-items: center; }
 .portfolio .pf-recall-model-copy { min-width: 0; }
 .portfolio .pf-recall-model-copy > * + * { margin-top: var(--space-block); }

@@ -217,8 +217,13 @@ the supplied scratch frame (1333:112890). Exact local source glow and mask asset
 preserve the reference; there is no dimensional tile or recessed face.
 The surrounding illustration is transparent, not an opaque section band. Existing
 heading and paragraphs remain unchanged; this does not assert authorship of the
-logo. The whole figure uses the existing evidence entrance and is static with
-reduced motion or no JavaScript.
+logo. Instead of the generic evidence entrance, the figure owns a one-shot
+layered reveal on its first scrolled arrival: the existing light opens outward
+from the centre, the logo fades and scales in from .95, then one restrained
+glint masked to the logo silhouette crosses it. The grid, layout and copy stay
+still; it never replays on re-entry and ends on the unchanged static artwork.
+Content already in view, deep links, restored scroll, reduced motion and no
+JavaScript all show the static artwork without a hide-then-reveal.
 
 The Agents context illustration uses six scattered task pills from the supplied
 Design playbook frame (264:41080), without its background or title. It illustrates
