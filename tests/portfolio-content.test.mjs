@@ -243,7 +243,7 @@ test("Copilot omits standalone captions without losing exhibit guidance or sourc
   assert.match(draft, /<caption[^>]*>Three explorations, not a selected or validated solution\./)
 })
 
-test("public figures omit caption lines while retaining accessible media and motion controls", () => {
+test("public figures omit caption lines while retaining accessible media and task descriptions", () => {
   const media = read("components/portfolio/PortfolioMedia.tsx")
   const hero = read("components/portfolio/CaseLayout.tsx")
   const tasks = read("components/portfolio/AgentsTaskField.tsx")
@@ -251,8 +251,8 @@ test("public figures omit caption lines while retaining accessible media and mot
   assert.doesNotMatch([...pages, media, hero, tasks, ...figures].join("\n"), /<figcaption\b/)
   assert.match(media, /alt=\{media\.alt\}/)
   assert.match(hero, /alt=\{hero\.alt\}/)
-  assert.match(tasks, /<button[^>]+aria-pressed=\{paused\}/)
-  assert.match(tasks, /"Resume motion" : "Pause motion"/)
+  assert.match(tasks, /aria-label="Examples of distributed work"/)
+  assert.doesNotMatch(tasks, /<button\b|Pause motion|Resume motion/)
   assert.match(media, /Planned media/)
 })
 

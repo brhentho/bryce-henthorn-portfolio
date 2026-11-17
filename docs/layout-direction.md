@@ -229,8 +229,13 @@ The Agents context illustration uses six scattered task pills from the supplied
 Design playbook frame (264:41080), without its background or title. It illustrates
 distributed work rather than a before/after system comparison. Native task text
 uses the portfolio typography; local source icons and translucent pill surfaces
-preserve the reference. Gentle transform-only drift pauses offscreen, in hidden
-tabs or through the figure's pause control; reduced motion and no-JS are static.
+preserve the reference. On a scrolled arrival, the six pills grow from zero scale
+and opacity once the field's center reaches the viewport center. A shuffled order
+uses the existing 500ms entrance and 32ms stagger tokens, then gentle transform-only
+drift resumes. Returning to the field does not replay the entrance. Initially
+visible content stays settled. Drift pauses offscreen and in hidden tabs;
+reduced motion and no-JS are static. The pause control is intentionally removed;
+continuous drift without an in-page stop control remains an accessibility limitation.
 The responsive field recomposes into offset rows when labels need more room.
 There is no shared Windows container, connector, simulated status or task action.
 
