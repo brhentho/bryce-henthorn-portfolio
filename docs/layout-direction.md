@@ -211,6 +211,23 @@ without an extra atmospheric plate or environment transition. The former
 Synthesize/Retrieve comparison table is removed. Privacy and impact retain
 their established compositions.
 
+The `#performance` search recording trials the Surface Book shell from
+Bryce's scratch frame `1355:47343`, adapted to a 16:9 screen without cropping
+the recording. Exact local bezel, camera and speaker assets supply the device
+detail. This is a presentation opt-in for this recording only, within the
+existing 2.3 composition; other media keep their current treatment. Native
+controls, playback preferences and the failure poster remain available, with
+playback/error notices outside the device. No additional device motion is added.
+
+The four shared case-study heroes (Agents, Recall, Teams, and the unpublished
+Copilot Actions draft) reuse this shell with an opt-in slim laptop base inside
+the existing Hero Header (2.1). Screen, bezel, and base share the existing
+tilt-to-flat scroll transform; reduced motion shows the settled device.
+Hero images fit the 16:9 aperture without stretching or cropping, with quiet
+letterboxing where needed. The Copilot Actions original-image link remains
+available. Homepage cards, archived explorations, and body-media opt-ins are
+unchanged; the Recall search recording retains the screen-only shell.
+
 The Recall introduction replaces the three-line memory-fragment treatment with
 the authentic blue logo floating over a fading grid and blue-violet glow, matching
 the supplied scratch frame (1333:112890). Exact local source glow and mask assets

@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState } from "react"
 import { createVideoPlayback, VIDEO_START_RATIO, VIDEO_STOP_RATIO } from "@/lib/portfolio/video-playback"
 import type { MediaItem } from "./types"
+import { SurfaceBookFrame } from "./SurfaceBookFrame"
 
 type VideoMedia = Extract<MediaItem, { kind: "video" }>
 const lazyMedia = { loading: "lazy" } as const
 
-export function PortfolioVideo({ id, media, onError }: { id: string; media: VideoMedia; onError: () => void }) {
+export function PortfolioVideo({ id, media, onError, device }: { id: string; media: VideoMedia; onError: () => void; device?: "surface-book" }) {
   const ref = useRef<HTMLVideoElement>(null)
   const [notice, setNotice] = useState("")
   useEffect(() => {
@@ -48,10 +49,11 @@ export function PortfolioVideo({ id, media, onError }: { id: string; media: Vide
       playback.dispose()
     }
   }, [id, media.src])
-  return <>
-    <video ref={ref} {...lazyMedia} src={media.src} poster={media.poster}
+  const video = <video ref={ref} {...lazyMedia} src={media.src} poster={media.poster}
       width={media.width} height={media.height} controls muted loop playsInline
       preload="none" aria-label={media.title} onError={onError} />
+  return <>
+    {device === "surface-book" ? <SurfaceBookFrame>{video}</SurfaceBookFrame> : video}
     {notice && <p className="pf-playback-notice" role="status">{notice}</p>}
   </>
 }

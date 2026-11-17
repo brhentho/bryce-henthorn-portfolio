@@ -1,4 +1,26 @@
 /* Page-specific narrative composition. Shared surfaces live in portfolio.css. */
+.portfolio .pf-surface-book { container-type: inline-size; }
+.portfolio .pf-surface-book-shell { position: relative; aspect-ratio: 3560 / 2186.5; }
+.portfolio .pf-surface-book-body {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 3.146067% / 5.122342%;
+  background: linear-gradient(125.3362deg, var(--pf-device-metal-stops)), linear-gradient(54.6638deg, var(--pf-device-metal-stops)), var(--pf-device-metal);
+  box-shadow: 5.617978cqw 5.617978cqw 5.617978cqw var(--pf-device-shadow), inset 0 .02764cqw .01843cqw var(--pf-device-shadow);
+}
+.portfolio .pf-surface-book-body svg { display: block; width: 100%; height: auto; }
+.portfolio .pf-surface-book-screen {
+  position: absolute;
+  top: 8.323804%;
+  left: 4.494382%;
+  width: 91.011236%;
+  aspect-ratio: 16 / 9;
+  background: var(--pf-device-screen);
+}
+.portfolio .pf-surface-book-screen > :is(video, img) { width: 100%; height: 100%; max-height: none; object-fit: contain; border-radius: 0; box-shadow: none; }
+.portfolio .pf-surface-book-screen > video:focus-visible { outline: 2px solid var(--surface-accent, var(--ring)); outline-offset: 4px; }
+.portfolio .pf-surface-book-screen > video:fullscreen { width: 100%; height: 100%; }
 .portfolio .pf-agents-exploration-split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .portfolio .pf-agents-exploration-copy { display: grid; gap: var(--space-block); }
 .portfolio .pf-agents-exploration-copy ol { list-style: decimal; padding-inline-start: 1.5em; }

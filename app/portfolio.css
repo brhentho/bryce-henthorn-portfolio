@@ -59,6 +59,27 @@
 }
 .portfolio .fn-case-product .fn-device img { border-radius: inherit; }
 .portfolio .pf-hero-image-link { display: block; border-radius: var(--pf-media-radius); }
+.portfolio .pf-surface-laptop .pf-surface-book-shell { width: 94%; margin-inline: auto; }
+.portfolio .pf-surface-laptop .pf-surface-book-body { box-shadow: none; }
+.portfolio .pf-surface-laptop-base {
+  position: relative;
+  height: 1.6cqw;
+  margin-top: -.5cqw;
+  border-radius: var(--pf-device-base-radius);
+  background: var(--pf-device-base-fill);
+  box-shadow: var(--pf-device-base-shadow);
+  pointer-events: none;
+}
+.portfolio .pf-surface-laptop-base::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 44%;
+  width: 12%;
+  height: .45cqw;
+  border-radius: var(--pf-device-notch-radius);
+  background: var(--pf-device-shadow);
+}
 .portfolio .pf-media-original { display: block; border-radius: var(--pf-media-radius); }
 .portfolio .fn-environment[data-crossing] :is(.pf-media-surface > img, .pf-media-surface > video, .fn-case-product .fn-device) { box-shadow: none; }
 .portfolio .fn-environment[data-crossing] .pf-media-original > img { box-shadow: none; }

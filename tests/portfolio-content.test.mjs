@@ -51,6 +51,36 @@ test("Recall recovery replaces the request with approved images in flow order", 
   assert.deepEqual(dimensions[0], dimensions[1], "Recovery crops must share dimensions")
 })
 
+test("the device trial is limited to Recall search and uses local source shell assets", () => {
+  const optedIn = pages.flatMap(source => [...source.matchAll(/<PortfolioMedia\s+id="([^"]+)"[^>]*device="surface-book"/g)].map(match => match[1]))
+  assert.deepEqual(optedIn, ["recall-search"])
+  const frame = read("components/portfolio/SurfaceBookFrame.tsx")
+  const sources = [...frame.matchAll(/href="([^"]+)"/g)].map(match => match[1])
+  assert.equal(sources.length, 3)
+  for (const source of sources) {
+    assert.ok(source.startsWith("/images/recall/device/"))
+    assert.ok(readFileSync(new URL(`../public${source}`, import.meta.url)).length > 0)
+  }
+  assert.doesNotMatch(frame, /localhost:3845|<video|<canvas/)
+  assert.match(frame, /aria-hidden="true"/)
+})
+
+test("case heroes share the laptop frame without changing body-media opt-ins", () => {
+  const layout = read("components/portfolio/CaseLayout.tsx")
+  const frame = read("components/portfolio/SurfaceBookFrame.tsx")
+  for (const name of ["Agents", "Recall", "Teams", "CopilotActions"]) {
+    assert.match(read(`components/portfolio/${name}Page.tsx`), /<CaseLayout/)
+  }
+  assert.match(layout, /<SurfaceBookFrame laptop><Image/)
+  assert.doesNotMatch(layout, /className="fn-device"/)
+  assert.match(layout, /hero\.linkToOriginal[\s\S]*href=\{hero\.src\}[\s\S]*\{image\}/)
+  assert.match(frame, /laptop = false/)
+  assert.match(frame, /laptop && <div className="pf-surface-laptop-base" aria-hidden="true"/)
+  for (const name of ["PortfolioMedia", "PortfolioVideo"]) {
+    assert.doesNotMatch(read(`components/portfolio/${name}.tsx`), /<SurfaceBookFrame\s+laptop/)
+  }
+})
+
 test("Teams films follow inspected content rather than historic captions", () => {
   assert.match(PORTFOLIO_MEDIA["teams-prepare"].src, /Teams_fig04-/)
   assert.match(PORTFOLIO_MEDIA["teams-classroom"].src, /Teams_fig06-/)

@@ -93,7 +93,7 @@ export function RecallPage() {
         <p>We made waiting feel like progress. Results refined as people typed, rather than requiring a finished query before anything could appear. The interaction kept moving toward the moment they remembered.</p>
         <p>Design and engineering iterated on how often to send queries, using actual typing patterns to balance result refinement with responsiveness. We wanted to avoid expensive retriggering without making the interface feel stalled.</p>
       </Prose>
-      <PortfolioMedia id="recall-search" number="06" />
+      <PortfolioMedia id="recall-search" number="06" device="surface-book" />
     </CaseSection>
 
     <CaseSection id="constraints" title="We killed RAG to keep search fast.">

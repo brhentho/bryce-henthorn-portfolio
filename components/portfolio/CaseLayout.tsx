@@ -9,6 +9,7 @@ import { useActiveSection } from "../explore/useActiveSection"
 import { RevealWords } from "../explore/RevealWords"
 import { PortfolioShell } from "./PortfolioShell"
 import { GooeyNavigation } from "./GooeyNavigation"
+import { SurfaceBookFrame } from "./SurfaceBookFrame"
 import type { ChapterLink, LedgerItem, PortfolioPage } from "./types"
 
 type HeroImage = { src: string; alt: string; width: number; height: number; caption: string; linkToOriginal?: boolean }
@@ -31,7 +32,7 @@ export function CaseLayout({ page, title, deck, call, ledger, hero, chapters, ch
   const scale = useTransform(progress,[0,.65],[.92,1])
   const ids = useMemo(() => chapters.map(chapter => chapter.id), [chapters])
   const active = useActiveSection(ids,.3)
-  const image = <div className="fn-device"><Image src={hero.src} alt={hero.alt} width={hero.width} height={hero.height} sizes="94vw" priority /></div>
+  const image = <SurfaceBookFrame laptop><Image src={hero.src} alt={hero.alt} width={hero.width} height={hero.height} sizes="80vw" priority /></SurfaceBookFrame>
   return <PortfolioShell page={page}>
     <main id="main">
       <header ref={ref} id="overview" className="fn-case-hero">
