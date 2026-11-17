@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import "../../app/portfolio-task-field.css"
 
 const tasks = [
@@ -30,28 +30,122 @@ function CopilotIcon() {
 
 export function AgentsTaskField() {
   const ref = useRef<HTMLElement>(null)
-  const [paused, setPaused] = useState(false)
 
   useEffect(() => {
     const root = ref.current
-    if (!root) return
+    const space = root?.querySelector<HTMLElement>(".pf-task-field__space")
+    if (!root || !space || typeof IntersectionObserver === "undefined") return
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const pills = Array.from(space.querySelectorAll<HTMLElement>(".pf-task-position"))
+    const animations: Animation[] = []
+    let phase: "armed" | "playing" | "settled" = "settled"
+    let frame = 0
     let visible = false
     const sync = () => {
-      root.dataset.running = String(visible && !paused && !reduced.matches && document.visibilityState === "visible")
+      root.dataset.running = String(visible && phase === "settled" && !reduced.matches && !document.hidden)
+    }
+    const stopWatching = () => {
+      window.removeEventListener("scroll", schedule)
+      window.removeEventListener("resize", schedule)
+      resize.disconnect()
+      cancelAnimationFrame(frame)
+      frame = 0
+    }
+    const settle = () => {
+      phase = "settled"
+      delete root.dataset.reveal
+      stopWatching()
+      animations.forEach(animation => animation.cancel())
+      sync()
+    }
+    const tokens = getComputedStyle(root)
+    const milliseconds = (name: string) => {
+      const value = tokens.getPropertyValue(name).trim()
+      return parseFloat(value) * (value.endsWith("ms") ? 1 : 1000)
+    }
+    const order = pills.map((_, index) => index)
+    // Shuffle animation order only; positions and accessible reading order stay fixed.
+    for (let index = order.length - 1; index > 0; index--) {
+      const swap = Math.floor(Math.random() * (index + 1))
+      ;[order[index], order[swap]] = [order[swap], order[index]]
+    }
+    const reveal = () => {
+      phase = "playing"
+      try {
+        order.forEach((index, rank) => {
+          animations.push(pills[index].animate([
+            { transform: "scale(0)", opacity: 0 },
+            { transform: "scale(1)", opacity: 1 },
+          ], {
+            duration: milliseconds("--duration-enter"),
+            delay: rank * milliseconds("--stagger-word"),
+            easing: tokens.getPropertyValue("--ease-out-expo").trim(),
+            fill: "backwards",
+          }))
+        })
+        root.dataset.reveal = "playing"
+        void Promise.all(animations.map(animation => animation.finished)).then(settle, error => {
+          if (!(error instanceof DOMException && error.name === "AbortError")) {
+            console.warn("Task pill reveal interrupted.", error)
+            settle()
+          }
+        })
+      } catch (error) {
+        console.warn("Task pill reveal could not start.", error)
+        settle()
+      }
+    }
+    const check = () => {
+      frame = 0
+      const rect = space.getBoundingClientRect()
+      if (rect.bottom <= 0 || (phase === "playing" && rect.top >= window.innerHeight)) {
+        settle()
+      } else if (phase === "armed" && rect.top + rect.height / 2 <= window.innerHeight / 2) {
+        if (reduced.matches || document.hidden) settle()
+        else reveal()
+      }
+    }
+    function schedule() {
+      if (!frame) frame = requestAnimationFrame(check)
+    }
+    const resize = new ResizeObserver(schedule)
+    const preferences = () => {
+      if (reduced.matches) settle()
+      sync()
+    }
+    const visibility = () => {
+      if (document.hidden && phase === "playing") settle()
+      sync()
+    }
+    const hash = () => {
+      const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)))
+      if (target && (target.contains(root) || root.contains(target))) settle()
     }
     root.dataset.enhanced = ""
     const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync() }, { threshold: .1 })
     observer.observe(root)
-    document.addEventListener("visibilitychange", sync)
-    reduced.addEventListener("change", sync)
+    // Already-visible content, restored scroll and no-JS output remain fully visible.
+    if (!reduced.matches && space.getBoundingClientRect().top >= window.innerHeight) {
+      phase = "armed"
+      root.dataset.reveal = "armed"
+      window.addEventListener("scroll", schedule, { passive: true })
+      window.addEventListener("resize", schedule)
+      resize.observe(space)
+      hash()
+    }
+    document.addEventListener("visibilitychange", visibility)
+    reduced.addEventListener("change", preferences)
+    window.addEventListener("hashchange", hash)
     return () => {
       observer.disconnect()
-      document.removeEventListener("visibilitychange", sync)
-      reduced.removeEventListener("change", sync)
-      root.dataset.running = "false"
+      document.removeEventListener("visibilitychange", visibility)
+      reduced.removeEventListener("change", preferences)
+      window.removeEventListener("hashchange", hash)
+      settle()
+      delete root.dataset.enhanced
+      delete root.dataset.running
     }
-  }, [paused])
+  }, [])
 
   return <figure ref={ref} className="pf-task-field" aria-label="Illustrative tasks scattered across agents">
     <ul className="pf-task-field__space" aria-label="Examples of distributed work">
@@ -66,10 +160,5 @@ export function AgentsTaskField() {
         </div>
       </li>)}
     </ul>
-    <div className="pf-task-field__controls">
-      <button type="button" aria-pressed={paused} onClick={() => setPaused(value => !value)}>
-        {paused ? "Resume motion" : "Pause motion"}
-      </button>
-    </div>
   </figure>
 }
