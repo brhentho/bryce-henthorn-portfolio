@@ -75,6 +75,14 @@
   --pf-media-shadow: 0 2px 6px rgb(0 0 0 / .16), 0 18px 42px -16px rgb(0 0 0 / .36);
   --pf-media-drop-shadow: drop-shadow(0 2px 3px rgb(0 0 0 / .16)) drop-shadow(0 clamp(6px, 1vw, 14px) clamp(10px, 1.25vw, 18px) rgb(0 0 0 / .22));
   --pf-cutout-shadow: drop-shadow(0 6px 10px rgb(0 0 0 / .14));
+  --pf-device-metal-stops: rgb(206 206 206 / .5) 0%, rgb(71 71 71 / .5) 11.458%, rgb(255 255 255 / .5) 28.646%, rgb(185 185 185 / .5) 49.479%, rgb(255 255 255 / .5) 69.792%, rgb(71 71 71 / .5) 88.021%, rgb(206 206 206 / .5) 100%;
+  --pf-device-metal: #b9b9b9;
+  --pf-device-shadow: rgb(0 0 0 / .25);
+  --pf-device-screen: #000;
+  --pf-device-base-fill: linear-gradient(180deg, var(--pf-device-metal), color-mix(in srgb, var(--pf-device-metal) 80%, var(--pf-device-screen)) 55%, color-mix(in srgb, var(--pf-device-metal) 40%, var(--pf-device-screen)));
+  --pf-device-base-radius: .2cqw .2cqw 2cqw 2cqw / .2cqw .2cqw 1.3cqw 1.3cqw;
+  --pf-device-base-shadow: 0 .5cqw 1cqw var(--pf-device-shadow);
+  --pf-device-notch-radius: 0 0 .5cqw .5cqw;
   --pf-tracking-display: -.035em;
   --pf-tracking-heading: -.025em;
   --pf-tracking-about-heading: -.015em;
